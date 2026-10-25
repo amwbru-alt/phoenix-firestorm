@@ -2,14 +2,6 @@ name: Build
 
 on:
   workflow_dispatch:
-    inputs:
-      installer_type:
-        description: 'Windows installer type'
-        type: choice
-        options:
-          - velopack
-          - nsis
-        default: 'velopack'
   pull_request:
   push:
     branches: ["main", "release/*", "project/*"]
