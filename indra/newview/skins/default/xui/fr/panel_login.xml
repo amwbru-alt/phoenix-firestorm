@@ -19,7 +19,7 @@
 			<text name="forgot_password_text">
 				Mot de passe oublié
 			</text>
-			<combo_box label="Sélectionner la grille" left_pad="20" name="server_combo"/>
+			<combo_box label="Sélectionner la grille" left_pad="20" name="server_combo"/ enabled="false">
 			<text name="sign_up_text">
 				S&apos;inscrire
 			</text>

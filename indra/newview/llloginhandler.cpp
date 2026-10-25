@@ -25,6 +25,7 @@
  * $/LicenseInfo$
  */
 #include "llviewerprecompiledheaders.h"
+#include "formegridpolicy.h" // <FS:ForMe> Fixed-grid policy.
 
 #include "llloginhandler.h"
 
@@ -64,8 +65,9 @@ bool LLLoginHandler::parseDirectLogin(std::string url)
 
 void LLLoginHandler::parse(const LLSD& queryMap)
 {
+    if (queryMap.has("grid") && !ForMeGrid::allowedGrid(queryMap["grid"].asString())) return; // <FS:ForMe>
 
-    if (queryMap.has("grid"))
+    if (queryMap.has("grid") && ForMeGrid::allowedGrid(queryMap["grid"].asString()))
     {
       LLGridManager::getInstance()->setGridChoice(queryMap["grid"].asString());
     }
@@ -186,6 +188,9 @@ LLPointer<LLCredential> LLLoginHandler::loadSavedUserLoginInfo()
     // <FS:Zi> Fix --autologin by loading the currently selected credentials if the above fails.
     //         UserLoginInfo contains "First Last @ Grid" and gets set in LLPanelLogin::onClickConnect()
     // return NULL;
+    // <FS:ForMe> Do not send a remembered Second Life/other-grid password to this grid.
+    const std::string saved = gSavedSettings.getString("UserLoginInfo");
+    if (!ForMeGrid::allowedCredential(saved)) return NULL;
     return gSecAPIHandler->loadCredential(gSavedSettings.getLLSD("UserLoginInfo"));
     // </FS:Zi>
 }

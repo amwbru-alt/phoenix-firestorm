@@ -17,7 +17,7 @@
 			<text name="forgot_password_text">
 				忘記密碼
 			</text>
-			<combo_box label="選擇類比主機" name="server_combo" />
+			<combo_box label="選擇類比主機" name="server_combo" / enabled="false">
 		</layout_panel>
 	</layout_stack>
 </panel>

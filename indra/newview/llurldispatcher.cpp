@@ -24,6 +24,7 @@
  * $/LicenseInfo$
  */
 #include "llviewerprecompiledheaders.h"
+#include "formegridpolicy.h" // <FS:ForMe> Fixed-grid policy.
 
 #include "llurldispatcher.h"
 
@@ -208,6 +209,10 @@ bool LLURLDispatcherImpl::dispatchApp(const LLSLURL& slurl,
 // static
 bool LLURLDispatcherImpl::dispatchRegion(const LLSLURL& slurl, const std::string& nav_type, bool right_mouse)
 {
+    // <FS:ForMe> Block external grid links before UI changes, map lookup or teleport.
+    if ((!slurl.getGrid().empty() && !ForMeGrid::allowedGrid(slurl.getGrid()))
+        || slurl.getHypergrid() || !ForMeGrid::localRegion(slurl.getRegion())) return true;
+
     if(slurl.getType() != LLSLURL::LOCATION)
     {
         return false;
@@ -389,6 +394,8 @@ public:
 #ifdef OPENSIM
         LLSLURL slurl(tokens, true);
 
+        if ((!slurl.getGrid().empty() && !ForMeGrid::allowedGrid(slurl.getGrid()))
+            || slurl.getHypergrid() || !ForMeGrid::localRegion(slurl.getRegion())) return true; // <FS:ForMe>
         std::string url_grid = slurl.getGrid();
         std::string gatekeeper = LLGridManager::getInstance()->getGatekeeper(url_grid);
         std::string region_name = slurl.getRegion();

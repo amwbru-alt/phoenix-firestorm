@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "formegridpolicy.h" // <FS:ForMe> Fixed-grid policy.
 
 #include "llworld.h"
 #include "llrender.h"
@@ -519,6 +520,8 @@ void LLWorld::updateLimits()
 
 LLViewerRegion* LLWorld::addRegion(const U64 &region_handle, const LLHost &host, const U32 &region_size_x, const U32 &region_size_y)
 {
+    if (!ForMeGrid::allowedSimulator(host.getIPString())) return nullptr; // <FS:ForMe>
+
     // <AW: opensim-limits>
     if(mLimitsNeedRefresh)
     {
@@ -1635,6 +1638,7 @@ void process_enable_simulator(LLMessageSystem *msg, void **user_data)
     }
 #endif
 // </FS:CR> Aurora Sim
+    if (!ForMeGrid::allowedSimulator(sim.getIPString())) return; // <FS:ForMe> Before enabling any circuit.
     // Viewer trusts the simulator.
     msg->enableCircuit(sim, true);
 // <FS:CR> Aurora Sim

@@ -1,0 +1,18 @@
+name: ForMe fixed-grid policy
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  policy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile and execute production policy tests
+        run: |
+          g++ -std=c++20 -Wall -Wextra -Werror -pedantic -Iindra/llcommon tests/forme/grid_policy_test.cpp -o "$RUNNER_TEMP/grid-policy-test"
+          "$RUNNER_TEMP/grid-policy-test"
+      - name: Check grid boundaries and all shipped preference skins
+        run: python3 tests/forme/check_grid_integration.py

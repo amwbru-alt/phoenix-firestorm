@@ -780,7 +780,7 @@ bool LLFloaterPreference::postBuild()
 // [/SL:KB]
 
 // <FS:AW  opensim preferences>
-#if !defined(OPENSIM) || defined(SINGLEGRID)
+#if 1 // <FS:ForMe> This distribution never exposes the OpenSim/grid editor tab.
     // Hide the opensim tab if opensim isn't enabled
     LLTabContainer* tab_container = getChild<LLTabContainer>("pref core");
     if (tab_container)
@@ -793,6 +793,7 @@ bool LLFloaterPreference::postBuild()
 #if defined(OPENSIM) && !defined(SINGLEGRID)
     childSetEnabled("show_grid_selection_check", !gSavedSettings.getBOOL("FSOpenSimAlwaysForceShowGrid"));
 #endif
+    childSetVisible("show_grid_selection_check", false); // <FS:ForMe>
 // </FS:AW  opensim preferences>
 
     // <FS:Zi> Pie menu

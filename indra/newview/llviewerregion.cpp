@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "formegridpolicy.h" // <FS:ForMe> Fixed-grid policy.
 
 #include "llviewerregion.h"
 
@@ -3600,6 +3601,12 @@ void LLViewerRegionImpl::buildCapabilityNames(LLSD& capabilityNames)
 
 void LLViewerRegion::setSeedCapability(const std::string& url)
 {
+    if (!ForMeGrid::allowedServiceURI(url))
+    {
+        LL_WARNS("CrossingCaps") << "Blocked a seed capability outside ForMe.World." << LL_ENDL;
+        return;
+    } // <FS:ForMe>
+
     if (getCapability("Seed") == url)
     {
         setCapabilityDebug("Seed", url);

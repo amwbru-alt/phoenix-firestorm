@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "formegridpolicy.h" // <FS:ForMe> Fixed-grid policy.
 #include "llviewermessage.h"
 
 // Linden libraries
@@ -3720,6 +3721,7 @@ void process_teleport_finish(LLMessageSystem* msg, void**)
 
     std::string seedCap;
     msg->getStringFast(_PREHASH_Info, _PREHASH_SeedCapability, seedCap);
+    if (!ForMeGrid::allowedServiceURI(seedCap)) { gAgent.setTeleportState(LLAgent::TELEPORT_NONE); return; } // <FS:ForMe>
 
     LL_DEBUGS("Teleport") << "TeleportFinish message params are:"
                           << " sim_ip " << sim_ip
@@ -3741,6 +3743,13 @@ void process_teleport_finish(LLMessageSystem* msg, void**)
     }
 
     LLHost sim_host(sim_ip, sim_port);
+    // <FS:ForMe> Reject foreign simulator hosts before any circuit/movement messages.
+    if (!ForMeGrid::allowedSimulator(sim_host.getIPString()))
+    {
+        gAgent.setTeleportState(LLAgent::TELEPORT_NONE);
+        LL_WARNS("Teleport") << "Blocked a simulator outside ForMe.World." << LL_ENDL;
+        return;
+    }
 
     // Viewer trusts the simulator.
     gMessageSystem->enableCircuit(sim_host, true);
@@ -4144,11 +4153,19 @@ void process_crossed_region(LLMessageSystem* msg, void**)
     U16 sim_port;
     msg->getIPPortFast(_PREHASH_RegionData, _PREHASH_SimPort, sim_port);
     LLHost sim_host(sim_ip, sim_port);
+    // <FS:ForMe> Reject foreign simulator hosts before any circuit/movement messages.
+    if (!ForMeGrid::allowedSimulator(sim_host.getIPString()))
+    {
+        gAgent.setTeleportState(LLAgent::TELEPORT_NONE);
+        LL_WARNS("Teleport") << "Blocked a simulator outside ForMe.World." << LL_ENDL;
+        return;
+    }
     U64 region_handle;
     msg->getU64Fast(_PREHASH_RegionData, _PREHASH_RegionHandle, region_handle);
 
     std::string seedCap;
     msg->getStringFast(_PREHASH_RegionData, _PREHASH_SeedCapability, seedCap);
+    if (!ForMeGrid::allowedServiceURI(seedCap)) return; // <FS:ForMe>
 
 // <FS:CR> Aurora Sim
     U32 region_size_x = 256;

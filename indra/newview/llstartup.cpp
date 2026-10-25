@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "formegridpolicy.h" // <FS:ForMe> Fixed-grid policy.
 
 #include "llappviewer.h"
 #include "llstartup.h"
@@ -4383,6 +4384,10 @@ bool LLStartUp::dispatchURL()
 
 void LLStartUp::setStartSLURL(const LLSLURL& slurl)
 {
+    // <FS:ForMe> Keep local home/last locations; reject explicit foreign/HG destinations.
+    if ((!slurl.getGrid().empty() && !ForMeGrid::allowedGrid(slurl.getGrid()))
+        || slurl.getHypergrid() || !ForMeGrid::localRegion(slurl.getRegion())) return;
+
   sStartSLURL = slurl;
   switch(slurl.getType())
     {

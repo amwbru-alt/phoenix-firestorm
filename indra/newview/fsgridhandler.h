@@ -201,14 +201,11 @@ public:
     bool isTemporary(const std::string& grid) const { return mGridList[grid].has("FLAG_TEMPORARY"); }
 
     // tell if we got this from a Hypergrid SLURL
-    bool isHyperGrid(const std::string& grid) { return mGridList[grid].has("HG"); }
+    bool isHyperGrid(const std::string& grid) { return false; } // <FS:ForMe> No external grids.
 
     // tell if we know how to acess this grid via Hypergrid
     std::string getGatekeeper() { return getGatekeeper(mGrid); }
-    std::string getGatekeeper(const std::string& grid)
-    {
-        return mGridList[grid].has("gatekeeper") ? mGridList[grid]["gatekeeper"].asString() : std::string();
-    }
+    std::string getGatekeeper(const std::string& grid) { return ""; } // <FS:ForMe> No Hypergrid gateways.
 
     std::string getGridByLabel(const std::string& grid_label, bool case_sensitive = false) const;
 
@@ -254,7 +251,7 @@ private:
     void decResponderCount() { --mResponderCount; }
     void gridInfoResponderCB(GridEntry* grid_data);
 
-    void setGridData(const LLSD& grid_info) { mGridList[mGrid] = grid_info; }
+    void setGridData(const LLSD& grid_info) { /* <FS:ForMe> Trusted grid data is immutable. */ }
     S32  mClassifiedFee;
     S32  mDirectoryFee;
 
