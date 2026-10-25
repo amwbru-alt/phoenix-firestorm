@@ -131,17 +131,17 @@
 	<menu_item_call name="Settings Apply Local" label="Stosuj tylko dla mnie" />
 	<menu_item_call name="Settings Apply Parcel" label="Stosuj dla działki" />
 	<menu label="Marketplace" name="Marketplace">
-		<menu_item_call label="Utwórz nową rzecz" name="Marketplace Create Listing"/>
-		<menu_item_call label="Przypisz rzecz" name="Marketplace Associate Listing"/>
-		<menu_item_call label="Pobierz ponownie (odśwież)" name="Marketplace Get Listing"/>
-		<menu_item_call label="Sprawdź pod kątem błędów" name="Marketplace Check Listing"/>
-		<menu_item_call label="Edytuj rzecz" name="Marketplace Edit Listing"/>
-		<menu_item_call label="Dodaj na listę" name="Marketplace List"/>
-		<menu_item_call label="Usuń z listy" name="Marketplace Unlist"/>
-		<menu_item_call label="Aktywuj" name="Marketplace Activate"/>
-		<menu_item_call label="Dezaktywuj" name="Marketplace Deactivate"/>
-		<menu_item_call label="Kopiuj do rzeczy Marketplace" name="Marketplace Copy"/>
-		<menu_item_call label="Przenieś do rzeczy Marketplace" name="Marketplace Move"/>
+		<menu_item_call label="Utwórz nową rzecz" name="Marketplace Create Listing" forme_creator_only="true"/>
+		<menu_item_call label="Przypisz rzecz" name="Marketplace Associate Listing" forme_creator_only="true"/>
+		<menu_item_call label="Pobierz ponownie (odśwież)" name="Marketplace Get Listing" forme_creator_only="true"/>
+		<menu_item_call label="Sprawdź pod kątem błędów" name="Marketplace Check Listing" forme_creator_only="true"/>
+		<menu_item_call label="Edytuj rzecz" name="Marketplace Edit Listing" forme_creator_only="true"/>
+		<menu_item_call label="Dodaj na listę" name="Marketplace List" forme_creator_only="true"/>
+		<menu_item_call label="Usuń z listy" name="Marketplace Unlist" forme_creator_only="true"/>
+		<menu_item_call label="Aktywuj" name="Marketplace Activate" forme_creator_only="true"/>
+		<menu_item_call label="Dezaktywuj" name="Marketplace Deactivate" forme_creator_only="true"/>
+		<menu_item_call label="Kopiuj do rzeczy Marketplace" name="Marketplace Copy" forme_creator_only="true"/>
+		<menu_item_call label="Przenieś do rzeczy Marketplace" name="Marketplace Move" forme_creator_only="true"/>
 	</menu>
 	<menu_item_call label="--brak opcji--" name="--no options--"/>
 </menu>

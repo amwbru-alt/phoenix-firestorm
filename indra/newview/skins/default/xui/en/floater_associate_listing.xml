@@ -7,7 +7,7 @@
  name="associate listing"
  help_topic="associate_listing"
  title="Associate Listing"
- width="375">
+ width="375" forme_creator_only="true">
     <text
      type="string"
      length="1"

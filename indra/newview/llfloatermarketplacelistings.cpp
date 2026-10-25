@@ -26,6 +26,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fsmarketplacelistings.h"
 
 #include "llfloatermarketplacelistings.h"
 
@@ -439,6 +440,7 @@ void LLFloaterMarketplaceListings::onClose(bool app_quitting)
 
 void LLFloaterMarketplaceListings::onOpen(const LLSD& key)
 {
+    if (!ForMeMarketplace::available()) { closeFloater(); return; }
     //
     // Initialize the Market Place or go update the marketplace listings
     //
@@ -459,6 +461,7 @@ void LLFloaterMarketplaceListings::onFocusReceived()
 
 bool LLFloaterMarketplaceListings::fetchContents()
 {
+    if (!ForMeMarketplace::available()) return false;
     if (mRootFolderId.notNull() &&
         (LLMarketplaceData::instance().getSLMDataFetched() != MarketplaceFetchCodes::MARKET_FETCH_LOADING) &&
         (LLMarketplaceData::instance().getSLMDataFetched() != MarketplaceFetchCodes::MARKET_FETCH_DONE))

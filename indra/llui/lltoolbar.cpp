@@ -1137,7 +1137,7 @@ LLToolBarButton* LLToolBar::createButton(const LLCommandId& id)
     // </FS:Zi>
     button_p.button_flash_enable = commandp->isFlashingAllowed();
     button_p.overwriteFrom(mButtonParams[mButtonType]);
-    button_p.forme_creator_only = commandp->name() == "build";
+    button_p.forme_creator_only = commandp->name() == "build" || commandp->name() == "marketplacelistings";
     LLToolBarButton* button = LLUICtrlFactory::create<LLToolBarButton>(button_p);
 
     if (!mReadOnly)

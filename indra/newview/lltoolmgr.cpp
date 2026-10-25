@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fsmarketplacelistings.h"
 #include "fscreatoraccess.h"
 
 #include "lltoolmgr.h"
@@ -489,7 +490,8 @@ bool LLToolMgr::inBuildMode()
 
 bool LLToolMgr::canAccessMarketplace()
 {
-    return (LLMarketplaceData::instance().getSLMStatus() != MarketplaceStatusCodes::MARKET_PLACE_NOT_MIGRATED_MERCHANT);
+    return ForMeMarketplace::available()
+        && LLMarketplaceData::instance().getSLMStatus() == MarketplaceStatusCodes::MARKET_PLACE_MERCHANT;
 }
 
 void LLToolMgr::toggleMarketplace(const LLSD& sdname)

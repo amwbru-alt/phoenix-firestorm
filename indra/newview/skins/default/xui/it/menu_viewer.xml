@@ -2,7 +2,7 @@
 <menu_bar name="Main Menu">
 	<menu label="Avatar" name="Me">
 		<menu_item_call label="Account" name="Manage Account"/>
-		<menu_item_call label="Annunci Marketplace" name="MarketplaceListings"/>
+		<menu_item_call label="Annunci Marketplace" name="MarketplaceListings" forme_creator_only="true"/>
 		<menu_item_call label="Compra L$" name="Buy and Sell L$"/>
 		<menu_item_call label="Inventario" name="NewInventoryWindow"/>
 		<menu_item_check label="Inventario" name="Inventory"/>

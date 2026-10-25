@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fsmarketplacelistings.h"
 #include "fscreatoraccess.h"
 
 #ifdef INCLUDE_VLD
@@ -517,6 +518,9 @@ LLSLMMenuUpdater::LLSLMMenuUpdater()
 }
 void LLSLMMenuUpdater::setMerchantMenu()
 {
+    const bool forme_merchant = ForMeMarketplace::available()
+        && LLMarketplaceData::instance().getSLMStatus() == MarketplaceStatusCodes::MARKET_PLACE_MERCHANT;
+    if (!forme_merchant) return;
     // All other cases (new merchant, not merchant, migrated merchant): show the new Marketplace Listings menu and enable the tool
     if(!mMarketplaceListingsItem.isDead())
     {
@@ -541,9 +545,13 @@ void LLSLMMenuUpdater::setMerchantMenu()
 void LLSLMMenuUpdater::checkMerchantStatus(bool force)
 {
     // <FS:Ansariel> Don't show merchant outbox or SL Marketplace stuff outside SL
-    if (!LLGridManager::getInstance()->isInSecondLife())
+    if (!ForMeMarketplace::available())
     {
         gMenuHolder->getChild<LLView>("MarketplaceListings")->setVisible(false);
+        if (LLCommand* command = LLCommandManager::instance().getCommand("marketplacelistings"))
+            gToolBarView->enableCommand(command->id(), false);
+        LLFloaterReg::hideInstance("marketplace_listings");
+        LLMarketplaceData::instance().setSLMStatus(MarketplaceStatusCodes::MARKET_PLACE_NOT_MERCHANT);
         return;
     }
     // </FS:Ansariel>

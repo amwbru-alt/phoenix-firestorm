@@ -101,8 +101,8 @@
 		<menu_item_check label="Hochgeladene PBR-Materialien" name="PBR uploads"/>
 	</menu>
 	<menu label="Marketplace" name="Marketplace">
-		<menu_item_call label="In Marktplatz-Auflistungen kopieren" name="Marketplace Copy"/>
-		<menu_item_call label="In Marktplatz-Auflistungen verschieben" name="Marketplace Move"/>
+		<menu_item_call label="In Marktplatz-Auflistungen kopieren" name="Marketplace Copy" forme_creator_only="true"/>
+		<menu_item_call label="In Marktplatz-Auflistungen verschieben" name="Marketplace Move" forme_creator_only="true"/>
 	</menu>
 	<menu_item_call label="--keine Optionen--" name="--no options--"/>
 </context_menu>

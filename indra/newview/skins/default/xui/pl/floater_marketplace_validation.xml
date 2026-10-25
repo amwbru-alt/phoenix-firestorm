@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="floater_marketplace_validation" title="Sprawdź rzeczy na Marketplace" />
+<floater name="floater_marketplace_validation" title="Sprawdź rzeczy na Marketplace"  forme_creator_only="true"/>

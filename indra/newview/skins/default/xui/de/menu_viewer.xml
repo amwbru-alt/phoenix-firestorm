@@ -4,7 +4,7 @@
 		<menu_item_call label="Konto" name="Manage Account">
 			<menu_item_call.on_click name="ManageMyAccount_url" parameter="WebLaunchJoinNow,http://secondlife.com/account/index.php?lang=de"/>
 		</menu_item_call>
-		<menu_item_call label="Marktplatz-Auflistungen..." name="MarketplaceListings"/>
+		<menu_item_call label="Marktplatz-Auflistungen..." name="MarketplaceListings" forme_creator_only="true"/>
 		<menu_item_call label="L$ kaufen" name="Buy and Sell L$"/>
 		<menu_item_call label="[Membership]" name="Membership">
 			<menu_item_call.on_click function="Advanced.ShowURL" parameter="https://secondlife.com/my/account/membership.php?lang=de-DE"/>

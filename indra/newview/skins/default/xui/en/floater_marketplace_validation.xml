@@ -15,7 +15,7 @@
     can_minimize="true"
     save_rect="true"
     reuse_instance="true"
-    save_visibility="false">
+    save_visibility="false" forme_creator_only="true">
     <button
     name="OK"
     label="OK"

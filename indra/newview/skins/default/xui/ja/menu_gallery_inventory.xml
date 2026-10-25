@@ -105,8 +105,8 @@
 		<menu_item_check label="アップロードしたＰＢＲマテリアル" name="PBR uploads"/>
 	</menu>
 	<menu label="マーケットプレイス" name="Marketplace">
-		<menu_item_call label="マーケットプレイスの出品リストにコピー" name="Marketplace Copy"/>
-		<menu_item_call label="マーケットプレイスの出品リストに移動" name="Marketplace Move"/>
+		<menu_item_call label="マーケットプレイスの出品リストにコピー" name="Marketplace Copy" forme_creator_only="true"/>
+		<menu_item_call label="マーケットプレイスの出品リストに移動" name="Marketplace Move" forme_creator_only="true"/>
 	</menu>
 	<menu_item_call label="‐オプション無し‐" name="--no options--"/>
 </context_menu>

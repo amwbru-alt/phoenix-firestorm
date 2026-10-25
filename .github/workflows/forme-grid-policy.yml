@@ -34,3 +34,5 @@ jobs:
         run: |
           python3 tests/forme/check_creator_integration.py
           python3 tests/forme/creator_ui.py --check
+      - name: Check native ForMe marketplace integration
+        run: python3 tests/forme/check_marketplace_listings.py

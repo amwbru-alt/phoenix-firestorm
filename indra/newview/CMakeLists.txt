@@ -1017,6 +1017,7 @@ set(viewer_HEADER_FILES
     fsfloaterwearablefavorites.h
     fsfloaterwhitelisthelper.h
     fsjointpose.h
+    fsmarketplacelistings.h
     fscreatoraccess.h
     fsavatarbadges.h
     fsgridhandler.h

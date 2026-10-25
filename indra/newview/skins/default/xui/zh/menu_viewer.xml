@@ -2,7 +2,7 @@
 <menu_bar name="Main Menu">
 	<menu label="我自己" name="Me">
 		<menu_item_call label="帳戶" name="Manage Account" />
-		<menu_item_call label="市場刊登" name="MarketplaceListings" />
+		<menu_item_call label="市場刊登" name="MarketplaceListings"  forme_creator_only="true"/>
 		<menu_item_call label="購買 L$" name="Buy and Sell L$" />
 		<menu_item_check label="庫存" name="Inventory" />
 		<menu_item_call label="新庫存視窗" name="NewInventoryWindow" />

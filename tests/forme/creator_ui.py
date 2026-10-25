@@ -30,7 +30,7 @@ import sys
 import xml.etree.ElementTree as ET
 ROOT=Path(__file__).resolve().parents[2]
 # Whole tools/editor windows; appearance and ordinary inventory usage are separate.
-WINDOWS={'floater_tools.xml','floater_build_options.xml','floater_bulk_upload.xml','floater_model_preview.xml',
+WINDOWS={'floater_marketplace_listings.xml','floater_associate_listing.xml','floater_marketplace_validation.xml','floater_tools.xml','floater_build_options.xml','floater_bulk_upload.xml','floater_model_preview.xml',
          'floater_import_collada.xml','floater_fs_import.xml','floater_material_editor.xml',
          'floater_live_material_editor.xml','floater_particle_editor.xml','floater_script.xml',
          'floater_script_preview.xml','floater_script_queue.xml','floater_script_recover.xml',
@@ -40,7 +40,7 @@ ACTIONS={'Object.Delete','Tools.SaveToObjectInventory','Tools.SnapObjectXY','Obj
          'Tools.Link','Tools.Unlink','Tools.EditLinkedParts','Tools.TakeCopy','Tools.SelectedScriptAction',
          'Tools.SelectTool','Advanced.ClickGLTFUpload','Advanced.ClickGLTFEdit','Admin.ForceTakeCopy',
          'Inventory.Share','Avatar.Share','InspectAvatar.Share','Minimap.Share','Attachment.Edit'}
-PARENTS={'BuildTools','Upload','upload','upload_options','upload_def','Export Menu'}
+PARENTS={'MarketplaceListings','BuildTools','Upload','upload','upload_options','upload_def','Export Menu'}
 FLOATER_IDS={'build','build_options','bulk_upload','upload_model','import','fs_import','material_editor',
              'live_material_editor','particle_editor','preview_script','script_recover'}
 # Explicit transfer and content-authoring buttons. No generic edit/copy/appearance-name matching.
@@ -48,6 +48,7 @@ BUTTON_NAMES={'share_btn','share_button','btn_share','give_btn','give_button','b
 INVENTORY_CREATE={'lsl','script','notecard','gesture','material','pbr_material'}
 TOKEN=re.compile(r'<!--[\s\S]*?-->|<!\[CDATA\[[\s\S]*?\]\]>|<(?:"[^"]*"|\'[^\']*\'|[^\'">])*>')
 def restricted_action(function,parameter):
+    if function == 'Inventory.DoToSelected' and (parameter.startswith('marketplace_') or parameter in {'copy_to_marketplace_listings','move_to_marketplace_listings'}): return True
     if function.startswith('Admin.HandleObject') or function=='Admin.HandleForceDelete':return True
     if function in ACTIONS or function.startswith('File.Upload') or function=='File.ImportLinkset':return True
     if function=='Inventory.FileUploadLocation' and parameter.startswith('upload_'):return True

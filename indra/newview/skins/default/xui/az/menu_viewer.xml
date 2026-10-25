@@ -2,7 +2,7 @@
 <menu_bar name="Main Menu">
 	<menu label="Avatar" name="Me">
 		<menu_item_call label="Hesabınızı idarə etmək" name="Manage Account"/>
-		<menu_item_call label="Ticarət Mərkəzi siyahıları..." name="MarketplaceListings"/>
+		<menu_item_call label="Ticarət Mərkəzi siyahıları..." name="MarketplaceListings" forme_creator_only="true"/>
 		<menu_item_call label="L$ almaq və satmaq" name="Buy and Sell L$"/>
 
 		<menu_item_call label="Yeni Avadanlıq siyahısı pəncərəsi" name="NewInventoryWindow"/>
