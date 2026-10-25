@@ -5871,6 +5871,10 @@ void LLAppViewer::idle()
     if (current_listing_cap != forme_listing_cap)
     {
         forme_listing_cap = current_listing_cap;
+        LLMarketplaceData::instance().resetForMeSession();
+        LLFloaterReg::destroyInstance("marketplace_listings");
+        LLFloaterReg::destroyInstance("associate_listing");
+        LLFloaterReg::destroyInstance("marketplace_validation");
         check_merchant_status(true);
     }
 

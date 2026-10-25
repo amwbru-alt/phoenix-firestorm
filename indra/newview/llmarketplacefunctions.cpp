@@ -727,6 +727,22 @@ LLSD LLMarketplaceData::getMarketplaceStringSubstitutions()
     return marketplace_sub_map;
 }
 
+void LLMarketplaceData::resetForMeSession()
+{
+    // Data and callback targets from a previous account/capability cannot survive
+    // a region handoff, role revocation or logout/login in the same process.
+    if (mStatusUpdatedSignal) mStatusUpdatedSignal->disconnect_all_slots();
+    if (mDataFetchedSignal) mDataFetchedSignal->disconnect_all_slots();
+    mMarketplaceItems.clear();
+    mVersionFolders.clear();
+    mPendingUpdateSet.clear();
+    mValidationWaitingList.clear();
+    mMarketPlaceFailureReason.clear();
+    mMarketPlaceStatus = MarketplaceStatusCodes::MARKET_PLACE_NOT_INITIALIZED;
+    mMarketPlaceDataFetched = MarketplaceFetchCodes::MARKET_FETCH_NOT_DONE;
+    mDirtyCount = false;
+}
+
 void LLMarketplaceData::initializeSLM(const status_updated_signal_t::slot_type& cb)
 {
     if (!ForMeMarketplace::available())

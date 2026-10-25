@@ -16,8 +16,12 @@ assert 'isInSecondLife()' not in menu[start:end]
 assert 'LLFloaterReg::hideInstance("marketplace_listings")' in menu[start:end]
 app = read('indra/newview/llappviewer.cpp')
 assert 'current_listing_cap != forme_listing_cap' in app and 'check_merchant_status(true)' in app
+assert 'resetForMeSession()' in app and 'destroyInstance("marketplace_listings")' in app
 market = read('indra/newview/llmarketplacefunctions.cpp')
 assert market.count('if (!ForMeMarketplace::currentRequest(url)) return;') == 7
+assert 'void LLMarketplaceData::resetForMeSession()' in market
+assert 'mMarketplaceItems.clear();' in market and 'mPendingUpdateSet.clear();' in market
+assert 'disconnect_all_slots();' in market
 url_start = market.index('static std::string getMarketplaceURL(')
 assert 'secondlife' not in market[url_start:market.index('// Get the version folder:', url_start)]
 bridge = read('indra/newview/llinventorybridge.cpp')
