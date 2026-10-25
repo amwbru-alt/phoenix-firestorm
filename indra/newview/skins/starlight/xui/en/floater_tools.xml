@@ -11,7 +11,7 @@
  single_instance="true"
  save_visibility="true"
  sound_flags="0"
- width="295">
+ width="295" forme_creator_only="true">
   <floater.string
      name="grid_screen_text">
     Screen

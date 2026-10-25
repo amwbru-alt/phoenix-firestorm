@@ -67,7 +67,7 @@
 	<spinner label="Верх" name="height_range_spin_0"/>
 	<spinner label="Верх" name="height_range_spin_2"/>
 	<button label="Загрузить ландшафт RAW..." name="download_raw_btn" tool_tip="Доступно только землевладельцам, не менеджерам"/>
-	<button label="Передать ландшафт RAW..." name="upload_raw_btn" tool_tip="Доступно только землевладельцам, не менеджерам"/>
-	<button label="Зафиксировать пределы" name="bake_terrain_btn" tool_tip="Установить высоту ландшафта по средней точке между верхней и нижней точками"/>
+	<button label="Передать ландшафт RAW..." name="upload_raw_btn" tool_tip="Доступно только землевладельцам, не менеджерам" forme_creator_only="true"/>
+	<button label="Зафиксировать пределы" name="bake_terrain_btn" tool_tip="Установить высоту ландшафта по средней точке между верхней и нижней точками" forme_creator_only="true"/>
 	<button label="Применить" name="apply_btn"/>
 </panel>

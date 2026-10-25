@@ -15,7 +15,7 @@
   </menu_item_call>
   <menu_item_call
       label="Edit"
-      name="Edit...">
+      name="Edit..." forme_creator_only="true">
     <menu_item_call.on_click
         function="Object.Edit" />
     <menu_item_call.on_enable
@@ -23,7 +23,7 @@
   </menu_item_call>
   <menu_item_call
       label="Edit PBR Material"
-      name="EditGLTFMaterial">
+      name="EditGLTFMaterial" forme_creator_only="true">
     <menu_item_call.on_click
         function="Object.EditGLTFMaterial" />
     <menu_item_call.on_enable
@@ -31,7 +31,7 @@
   </menu_item_call>
   <menu_item_call
       label="Build"
-      name="Build">
+      name="Build" forme_creator_only="true">
     <menu_item_call.on_click
         function="Object.Build" />
     <menu_item_call.on_enable
@@ -96,7 +96,7 @@
       <menu_item_call
          enabled="false"
          label="Link"
-         name="Object Link">
+         name="Object Link" forme_creator_only="true">
          <menu_item_call.on_click
             function="Tools.Link" />
          <menu_item_call.on_enable
@@ -105,13 +105,13 @@
       <menu_item_call
          enabled="false"
          label="Unlink"
-         name="Object Unlink">
+         name="Object Unlink" forme_creator_only="true">
          <menu_item_call.on_click
             function="Tools.Unlink" />
          <menu_item_call.on_enable
             function="Tools.EnableUnlink" />
          </menu_item_call>
-      <menu_item_check label="Edit Linked Parts" name="Object Edit Linked Parts">
+      <menu_item_check label="Edit Linked Parts" name="Object Edit Linked Parts" forme_creator_only="true">
          <menu_item_check.on_check control="EditLinkedParts" />
          <menu_item_check.on_click function="Tools.EditLinkedParts" parameter="EditLinkedParts" />
          <menu_item_check.on_enable function="Tools.EnableToolNotPie" />
@@ -119,7 +119,7 @@
    <menu_item_separator layout="topleft" />
         <menu_item_call
                 label="Compile (Mono)"
-                name="Mono">
+                name="Mono" forme_creator_only="true">
           <menu_item_call.on_click
             function="Tools.SelectedScriptAction"
             parameter="compile mono" />
@@ -128,7 +128,7 @@
         </menu_item_call>
         <menu_item_call
           label="Compile (LSL)"
-          name="LSL">
+          name="LSL" forme_creator_only="true">
           <menu_item_call.on_click
             function="Tools.SelectedScriptAction"
             parameter="compile lsl" />
@@ -137,7 +137,7 @@
         </menu_item_call>
        <menu_item_call
           label="Reset Scripts"
-          name="Object Reset Scripts">
+          name="Object Reset Scripts" forme_creator_only="true">
           <menu_item_call.on_click
              function="Tools.SelectedScriptAction"
              parameter="reset" />
@@ -146,7 +146,7 @@
           </menu_item_call>
        <menu_item_call
           label="Run Scripts"
-          name="Object Set Scripts to Running">
+          name="Object Set Scripts to Running" forme_creator_only="true">
           <menu_item_call.on_click
              function="Tools.SelectedScriptAction"
              parameter="start" />
@@ -155,7 +155,7 @@
            </menu_item_call>
         <menu_item_call
            label="Stop Scripts"
-           name="Object Set Scripts to Not Running">
+           name="Object Set Scripts to Not Running" forme_creator_only="true">
            <menu_item_call.on_click
               function="Tools.SelectedScriptAction"
               parameter="stop" />
@@ -164,7 +164,7 @@
            </menu_item_call>
          <menu_item_call
                  label="Remove Scripts"
-                 name="Remove Scripts From Selection">
+                 name="Remove Scripts From Selection" forme_creator_only="true">
            <menu_item_call.on_click
               function="Tools.SelectedScriptAction"
               parameter="delete" />
@@ -284,7 +284,7 @@
     <menu_item_call
         enabled="false"
         label="Return"
-        name="Return...">
+        name="Return..." forme_creator_only="true">
       <menu_item_call.on_click
           function="Object.Return" />
       <menu_item_call.on_enable
@@ -293,7 +293,7 @@
   <menu_item_call
       label="Take"
       layout="topleft"
-      name="Pie Object Take">
+      name="Pie Object Take" forme_creator_only="true">
     <menu_item_call.on_click
         function="Object.Take"/>
     <menu_item_call.on_enable
@@ -304,7 +304,7 @@
   <menu_item_call
       enabled="false"
       label="Take copy"
-      name="Take Copy">
+      name="Take Copy" forme_creator_only="true">
     <menu_item_call.on_click
         function="Tools.TakeCopy" />
     <menu_item_call.on_enable
@@ -318,7 +318,7 @@
     <menu_item_call
       label="Take as combined item"
       layout="topleft"
-      name="Take combined">
+      name="Take combined" forme_creator_only="true">
       <menu_item_call.on_click
         function="Object.Take"/>
       <menu_item_call.on_enable
@@ -329,7 +329,7 @@
     <menu_item_call
       enabled="false"
       label="Take copy as combined item"
-      name="Take Copy combined">
+      name="Take Copy combined" forme_creator_only="true">
       <menu_item_call.on_click
         function="Tools.TakeCopy" />
       <menu_item_call.on_enable
@@ -340,7 +340,7 @@
     <menu_item_call
       label="Take as separate items"
       layout="topleft"
-      name="Take Separate">
+      name="Take Separate" forme_creator_only="true">
       <menu_item_call.on_click
         function="Object.TakeSeparate"/>
       <menu_item_call.on_enable
@@ -351,7 +351,7 @@
     <menu_item_call
       label="Take copies as separate items"
       layout="topleft"
-       name="Take Copy Separate">
+       name="Take Copy Separate" forme_creator_only="true">
        <menu_item_call.on_click
         function="Object.TakeSeparateCopy"/>
        <menu_item_call.on_enable
@@ -380,10 +380,10 @@
   </menu_item_call>
   <context_menu
     label="Save as"
-    name="Export Menu">
+    name="Export Menu" forme_creator_only="true">
     <menu_item_call
       label="Backup"
-      name="Backup">
+      name="Backup" forme_creator_only="true">
       <menu_item_call.on_click
         function="Object.Export" />
       <menu_item_call.on_enable
@@ -391,7 +391,7 @@
     </menu_item_call>
     <menu_item_call
       label="Collada"
-      name="Collada">
+      name="Collada" forme_creator_only="true">
       <menu_item_call.on_click
         function="Object.ExportCollada" />
       <menu_item_call.on_enable
@@ -402,7 +402,7 @@
   <menu_item_call
       enabled="false"
       label="Delete"
-      name="Delete">
+      name="Delete" forme_creator_only="true">
     <menu_item_call.on_click
         function="Object.Delete" />
     <menu_item_call.on_enable

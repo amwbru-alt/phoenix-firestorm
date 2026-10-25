@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fscreatoraccess.h"
 
 // self header
 #include "lltoolplacer.h"
@@ -219,6 +220,8 @@ bool LLToolPlacer::raycastForNewObjPos( S32 x, S32 y, LLViewerObject** hit_obj, 
 
 bool LLToolPlacer::addObject( LLPCode pcode, S32 x, S32 y, U8 use_physics )
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     LLVector3 ray_start_region;
     LLVector3 ray_end_region;
     LLViewerRegion* regionp = NULL;
@@ -531,6 +534,8 @@ bool LLToolPlacer::addObject( LLPCode pcode, S32 x, S32 y, U8 use_physics )
 // Inspired by add_object().  JC
 bool LLToolPlacer::addDuplicate(S32 x, S32 y)
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     LLVector3 ray_start_region;
     LLVector3 ray_end_region;
     LLViewerRegion* regionp = NULL;
@@ -585,6 +590,8 @@ bool LLToolPlacer::addDuplicate(S32 x, S32 y)
 
 bool LLToolPlacer::placeObject(S32 x, S32 y, MASK mask)
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     bool added = true;
 
 // [RLVa:KB] - Checked: 2010-03-23 (RLVa-1.2.0e) | Modified: RLVa-1.1.0l

@@ -563,7 +563,7 @@ Looking for people to hang out with? Use the search box to find topics or conten
 	<button	 	follows="top|left" height="0" layout="topleft" name="call_btn"
 					left="0" top="0" width="0" />
 	<button	 	follows="top|left" height="0" layout="topleft" name="share_btn"
-					left="0" top="0" width="0" />
+					left="0" top="0" width="0"  forme_creator_only="true"/>
 	<button	 	follows="top|left" height="0" layout="topleft" name="teleport_btn"
 					left="0" top="0" width="0" />
 	<button	 	follows="top|left" height="0" layout="topleft" name="group_info_btn"
@@ -613,7 +613,7 @@ Looking for people to hang out with? Use the search box to find topics or conten
 	<button	 	follows="top|left" height="0" layout="topleft" name="teleport_btn"
 					left="0" top="0" width="0" />
 	<button	 	follows="top|left" height="0" layout="topleft" name="share_btn"
-					left="0" top="0" width="0" />
+					left="0" top="0" width="0"  forme_creator_only="true"/>
 	</panel>
 	<!-- Keep these controls so the code doesn't complain about them being missing -Zi -->
 </panel>

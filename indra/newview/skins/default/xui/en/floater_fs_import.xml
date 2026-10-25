@@ -8,7 +8,7 @@
   save_rect="true"
   can_resize="false"
   can_minimize="true"
-  can_close="true">
+  can_close="true" forme_creator_only="true">
 	<floater.string
 	 name="floater_title">
 		Import [FILENAME]

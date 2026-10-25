@@ -12,7 +12,7 @@
 	<menu_item_call label="Qrupa dəvət et" name="invite_to_group"/>
 	<menu_item_call label="Kameranı yaxınlaşdır" name="zoom_in"/>
 	<menu_item_call label="Xəritədə göstər" name="map"/>
-	<menu_item_call label="Əşya ilə paylaş" name="share"/>
+	<menu_item_call label="Əşya ilə paylaş" name="share" forme_creator_only="true"/>
 	<menu_item_call label="Ödə" name="pay"/>
 	<menu_item_check label="Blokla/Blokdan çıxart" name="block_unblock"/>
 	<menu_item_call label="Dondur" name="freeze"/>

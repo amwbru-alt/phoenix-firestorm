@@ -11,7 +11,7 @@
 	<menu_item_call label="Usuń znajomego" name="remove_friend" />
 	<menu_item_call label="Zaproś do grupy..." name="Invite" />
 	<menu_item_call label="Mapa" name="Map" />
-	<menu_item_call label="Udostępnij" name="Share" />
+	<menu_item_call label="Udostępnij" name="Share"  forme_creator_only="true"/>
 	<menu_item_call label="Zapłać" name="Pay" />
 	<menu_item_check label="Blokuj/Odblokuj" name="Block/Unblock" />
 </toggleable_menu>

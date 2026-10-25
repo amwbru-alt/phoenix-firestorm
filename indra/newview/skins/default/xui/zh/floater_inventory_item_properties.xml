@@ -20,20 +20,20 @@
 	<check_box label="編輯" name="CheckOwnerModify" />
 	<check_box label="複製" name="CheckOwnerCopy" />
 	<check_box label="轉讓" name="CheckOwnerTransfer" />
-	<check_box label="匯出" name="CheckOwnerExport" />
+	<check_box label="匯出" name="CheckOwnerExport"  forme_creator_only="true"/>
 	<text name="AnyoneLabel">任何人：</text>
-	<check_box label="複製" name="CheckEveryoneCopy" />
+	<check_box label="複製" name="CheckEveryoneCopy"  forme_creator_only="true"/>
 	<text name="GroupLabel">群組：</text>
-	<check_box label="分享" name="CheckShareWithGroup" />
+	<check_box label="分享" name="CheckShareWithGroup"  forme_creator_only="true"/>
 	<text name="NextOwnerLabel">下一個所有者：</text>
-	<check_box label="編輯" name="CheckNextOwnerModify" />
-	<check_box label="複製" name="CheckNextOwnerCopy" />
-	<check_box label="轉讓" name="CheckNextOwnerTransfer" />
-	<check_box label="出售" name="CheckPurchase" />
-	<combo_box name="ComboBoxSaleType">
+	<check_box label="編輯" name="CheckNextOwnerModify"  forme_creator_only="true"/>
+	<check_box label="複製" name="CheckNextOwnerCopy"  forme_creator_only="true"/>
+	<check_box label="轉讓" name="CheckNextOwnerTransfer"  forme_creator_only="true"/>
+	<check_box label="出售" name="CheckPurchase"  forme_creator_only="true"/>
+	<combo_box name="ComboBoxSaleType" forme_creator_only="true">
 		<combo_box.item label="複製" name="Copy" />
 		<combo_box.item label="內容" name="Contents" />
 		<combo_box.item label="原件" name="Original" />
 	</combo_box>
-	<spinner label="價格：" name="Edit Cost" />
+	<spinner label="價格：" name="Edit Cost"  forme_creator_only="true"/>
 </floater>

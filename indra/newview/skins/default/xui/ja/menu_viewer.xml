@@ -182,18 +182,18 @@
 		</menu>
 		<menu_item_check label="フレンドのみ表示" name="Render Friends Only"/>
 	</menu>
-	<menu label="ビルド" name="BuildTools">
-		<menu_item_check label="ビルドツールを表示" name="Show Build Tools"/>
+	<menu label="ビルド" name="BuildTools" forme_creator_only="true">
+		<menu_item_check label="ビルドツールを表示" name="Show Build Tools" forme_creator_only="true"/>
 		<menu label="ビルドツールを選択する" name="Select Tool">
-			<menu_item_call label="フォーカスツール" name="Focus"/>
-			<menu_item_call label="移動ツール" name="Move"/>
-			<menu_item_call label="編集ツール" name="Edit"/>
-			<menu_item_call label="作成ツール" name="Create"/>
-			<menu_item_call label="土地ツール" name="Land"/>
+			<menu_item_call label="フォーカスツール" name="Focus" forme_creator_only="true"/>
+			<menu_item_call label="移動ツール" name="Move" forme_creator_only="true"/>
+			<menu_item_call label="編集ツール" name="Edit" forme_creator_only="true"/>
+			<menu_item_call label="作成ツール" name="Create" forme_creator_only="true"/>
+			<menu_item_call label="土地ツール" name="Land" forme_creator_only="true"/>
 		</menu>
-		<menu_item_call label="リンク" name="Link"/>
-		<menu_item_call label="リンク解除" name="Unlink"/>
-		<menu_item_check label="リンクされた部分を編集" name="Edit Linked Parts"/>
+		<menu_item_call label="リンク" name="Link" forme_creator_only="true"/>
+		<menu_item_call label="リンク解除" name="Unlink" forme_creator_only="true"/>
+		<menu_item_check label="リンクされた部分を編集" name="Edit Linked Parts" forme_creator_only="true"/>
 		<menu label="要素を選択" name="Select Elements">
 			<menu_item_call label="次のパーツまたは面を選択" name="Select Next Part or Face"/>
 			<menu_item_call label="前のパーツまたは面を選択" name="Select Previous Part or Face"/>
@@ -205,25 +205,25 @@
 		<menu label="オブジェクト" name="Object">
 			<menu_item_call label="購入" name="Menu Object Buy"/>
 			<menu_item_call label="取得" name="Menu Object Take"/>
-			<menu_item_call label="コピーを取得" name="Take Copy"/>
-			<menu_item_call label="複製" name="Duplicate"/>
-			<menu_item_call label="パーティクルの編集" name="Menu Object Edit Particles"/>
-			<menu_item_call label="オブジェクトの中身に保存" name="Save Object Back to Object Contents"/>
-			<menu_item_call label="オブジェクトを返却" name="Return Object back to Owner"/>
-			<menu label="別名で保存" name="Export Menu">
-				<menu_item_call label="バックアップを作成" name="Backup"/>
-				<menu_item_call label="メッシュとしてエクスポート" name="Collada"/>
+			<menu_item_call label="コピーを取得" name="Take Copy" forme_creator_only="true"/>
+			<menu_item_call label="複製" name="Duplicate" forme_creator_only="true"/>
+			<menu_item_call label="パーティクルの編集" name="Menu Object Edit Particles" forme_creator_only="true"/>
+			<menu_item_call label="オブジェクトの中身に保存" name="Save Object Back to Object Contents" forme_creator_only="true"/>
+			<menu_item_call label="オブジェクトを返却" name="Return Object back to Owner" forme_creator_only="true"/>
+			<menu label="別名で保存" name="Export Menu" forme_creator_only="true">
+				<menu_item_call label="バックアップを作成" name="Backup" forme_creator_only="true"/>
+				<menu_item_call label="メッシュとしてエクスポート" name="Collada" forme_creator_only="true"/>
 			</menu>
 		</menu>
 		<menu label="スクリプト" name="Scripts">
 			<menu_item_call label="スクリプトの警告／エラーを表示" name="Script Debug"/>
 			<menu_item_call label="スクリプト情報（カウンター）" name="Script Info"/>
-			<menu_item_call label="スクリプトの再コンパイル（Ｍｏｎｏ）" name="Mono"/>
-			<menu_item_call label="スクリプトの再コンパイル（ＬＳＬ）" name="LSL"/>
-			<menu_item_call label="スクリプトのリセット" name="Reset Scripts"/>
-			<menu_item_call label="スクリプトを実行中にする" name="Set Scripts to Running"/>
-			<menu_item_call label="スクリプトを実行停止にする" name="Set Scripts to Not Running"/>
-			<menu_item_call label="選択からスクリプトを削除する" name="Remove Scripts From Selection"/>
+			<menu_item_call label="スクリプトの再コンパイル（Ｍｏｎｏ）" name="Mono" forme_creator_only="true"/>
+			<menu_item_call label="スクリプトの再コンパイル（ＬＳＬ）" name="LSL" forme_creator_only="true"/>
+			<menu_item_call label="スクリプトのリセット" name="Reset Scripts" forme_creator_only="true"/>
+			<menu_item_call label="スクリプトを実行中にする" name="Set Scripts to Running" forme_creator_only="true"/>
+			<menu_item_call label="スクリプトを実行停止にする" name="Set Scripts to Not Running" forme_creator_only="true"/>
+			<menu_item_call label="選択からスクリプトを削除する" name="Remove Scripts From Selection" forme_creator_only="true"/>
 		</menu>
 		<menu label="経路探索" name="Pathfinding">
 			<menu_item_call label="リージョンのオブジェクト" name="pathfinding_linksets_menu_item"/>
@@ -259,19 +259,19 @@
 				<menu_item_check label="最低" name="Lowest lod setting"/>
 			</menu>
 			<menu_item_check label="グリッド吸着" name="Snap to Grid"/>
-			<menu_item_call label="オブジェクトのＸＹ軸をグリッドに吸着させる" name="Snap Object XY to Grid"/>
+			<menu_item_call label="オブジェクトのＸＹ軸をグリッドに吸着させる" name="Snap Object XY to Grid" forme_creator_only="true"/>
 			<menu_item_call label="選択をグリッドに使用する" name="Use Selection for Grid"/>
-			<menu_item_call label="グリッドオプション…" name="Grid Options"/>
+			<menu_item_call label="グリッドオプション…" name="Grid Options" forme_creator_only="true"/>
 			<menu_item_call label="デフォルトの権限設定…" name="Set default permissions"/>
 		</menu>
-		<menu label="アップロード" name="Upload">
-			<menu_item_call label="画像（L$ [COST]）…" name="Upload Image"/>
-			<menu_item_call label="サウンド（L$ [COST]）…" name="Upload Sound"/>
-			<menu_item_call label="アニメーション（L$ [COST]）…" name="Upload Animation"/>
-			<menu_item_call label="モデル…" name="Upload Model"/>
-			<menu_item_call label="マテリアル…" name="Upload Material"/>
-			<menu_item_call label="一括…" name="Bulk Upload"/>
-			<menu_item_call label="リンクセットをインポート" name="import linkset"/>
+		<menu label="アップロード" name="Upload" forme_creator_only="true">
+			<menu_item_call label="画像（L$ [COST]）…" name="Upload Image" forme_creator_only="true"/>
+			<menu_item_call label="サウンド（L$ [COST]）…" name="Upload Sound" forme_creator_only="true"/>
+			<menu_item_call label="アニメーション（L$ [COST]）…" name="Upload Animation" forme_creator_only="true"/>
+			<menu_item_call label="モデル…" name="Upload Model" forme_creator_only="true"/>
+			<menu_item_call label="マテリアル…" name="Upload Material" forme_creator_only="true"/>
+			<menu_item_call label="一括…" name="Bulk Upload" forme_creator_only="true"/>
+			<menu_item_call label="リンクセットをインポート" name="import linkset" forme_creator_only="true"/>
 		</menu>
 		<!-- local mesh begin -->
 		<menu_item_call label="ローカルメッシュ" name="local_mesh"/>
@@ -489,8 +489,8 @@
 		<menu label="ＧＬＴＦ" name="GLTF">
 			<menu_item_call label="開く…" name="Open..."/>
 			<menu_item_call label="名前をつけて保存…" name="Save As..."/>
-			<menu_item_call label="アップロード…" name="Upload..."/>
-			<menu_item_call label="編集…" name="Edit..."/>
+			<menu_item_call label="アップロード…" name="Upload..." forme_creator_only="true"/>
+			<menu_item_call label="編集…" name="Edit..." forme_creator_only="true"/>
 		</menu>
 		<menu label="ビデオ" name="Video">
 			<menu_item_call label="1080✕1920" name="1080x1920"/>
@@ -706,12 +706,12 @@
 	</menu>
 	<menu label="管理" name="Admin">
 		<menu label="オブジェクト" name="AdminObject">
-			<menu_item_call label="コピーを取る" name="Admin Take Copy"/>
-			<menu_item_call label="自分を所有者にする" name="Force Owner To Me"/>
-			<menu_item_call label="所有者権限の実行" name="Force Owner Permissive"/>
-			<menu_item_call label="削除" name="Delete"/>
-			<menu_item_call label="ロック" name="Lock"/>
-			<menu_item_call label="アセットのＩＤを取得" name="Get Assets IDs"/>
+			<menu_item_call label="コピーを取る" name="Admin Take Copy" forme_creator_only="true"/>
+			<menu_item_call label="自分を所有者にする" name="Force Owner To Me" forme_creator_only="true"/>
+			<menu_item_call label="所有者権限の実行" name="Force Owner Permissive" forme_creator_only="true"/>
+			<menu_item_call label="削除" name="Delete" forme_creator_only="true"/>
+			<menu_item_call label="ロック" name="Lock" forme_creator_only="true"/>
+			<menu_item_call label="アセットのＩＤを取得" name="Get Assets IDs" forme_creator_only="true"/>
 		</menu>
 		<menu label="区画" name="Parcel">
 			<menu_item_call label="自分を所有者にする" name="Owner To Me"/>

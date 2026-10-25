@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <menu name="Popup">
-	<menu_item_call label="Compartilhar" name="Share"/>
+	<menu_item_call label="Compartilhar" name="Share" forme_creator_only="true"/>
 	<menu_item_call label="Abrir" name="Task Open"/>
 	<menu_item_call label="Reproduzir" name="Task Play"/>
 	<menu_item_call label="Propriedades" name="Task Properties"/>
@@ -12,10 +12,10 @@
 	<menu_item_call label="Nova pasta" name="New Listing Folder"/>
 	<menu_item_call label="Nova pasta" name="New Outfit Folder"/>
 	<menu_item_call label="Novo visual" name="New Outfit"/>
-	<menu_item_call label="Novo script" name="New Script"/>
-	<menu_item_call label="Novo notecard" name="New Note"/>
-	<menu_item_call label="Novo gesto" name="New Gesture"/>
-	<menu_item_call label="Novo material" name="New Material"/>
+	<menu_item_call label="Novo script" name="New Script" forme_creator_only="true"/>
+	<menu_item_call label="Novo notecard" name="New Note" forme_creator_only="true"/>
+	<menu_item_call label="Novo gesto" name="New Gesture" forme_creator_only="true"/>
+	<menu_item_call label="Novo material" name="New Material" forme_creator_only="true"/>
 	<menu label="Novas roupas" name="New Clothes">
 		<menu_item_call label="Nova camisa" name="New Shirt"/>
 		<menu_item_call label="Nova calça" name="New Pants"/>
@@ -42,7 +42,7 @@
 		<menu_item_call label="Nova água" name="New Water"/>
 		<menu_item_call label="Novo ciclo diário" name="New Day Cycle"/>
 	</menu>
-	<menu label="Usar como padrão para" name="upload_def">
+	<menu label="Usar como padrão para" name="upload_def" forme_creator_only="true">
 		<menu_item_check label="Uploads de imagem" name="Image uploads"/>
 		<menu_item_check label="Uploads de som" name="Sound uploads"/>
 		<menu_item_check label="Uploads de animação" name="Animation uploads"/>

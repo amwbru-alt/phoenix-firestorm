@@ -8,7 +8,7 @@
  help_topic="script_queue"
  save_rect="true"
  title="Reset Progress"
- width="300">
+ width="300" forme_creator_only="true">
     <floater.string
      name="Starting">
         Starting [START] of [COUNT] items.

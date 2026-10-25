@@ -3,7 +3,7 @@
  height="380"
  layout="topleft"
  name="panel_snapshot_inventory"
- width="490">
+ width="490" forme_creator_only="true">
     <icon
      follows="top|left"
      height="18"

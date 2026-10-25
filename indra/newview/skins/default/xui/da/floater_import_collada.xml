@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="Import Collada" title="Import Scene">
+<floater name="Import Collada" title="Import Scene" forme_creator_only="true">
 	<text name="mesh count">
 		Meshes: [COUNT]
 	</text>

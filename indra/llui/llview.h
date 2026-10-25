@@ -26,6 +26,7 @@
 
 #ifndef LL_LLVIEW_H
 #define LL_LLVIEW_H
+#include "formecreatorpolicy.h"
 
 // A view is an area in a window that can draw.  It might represent
 // the HUD or a dialog box or a button.  It can also contain sub-views
@@ -123,6 +124,8 @@ public:
                                     use_bounding_rect,
                                     from_xui,
                                     focus_root;
+
+        Optional<bool>              forme_creator_only;
 
         Optional<S32>               tab_group,
                                     default_tab_group;
@@ -290,9 +293,11 @@ public:
 
     virtual void    setVisible(bool visible);
     void            setVisibleDirect(bool visible) { mVisible = visible; }
-    const bool&     getVisible() const          { return mVisible; }
+    static void setForMeCreatorAccess(bool allowed) { sForMeCreatorAccess = allowed; }
+    bool forMeCreatorVisible() const { return ForMeCreator::viewAllowed(mForMeCreatorOnly, sForMeCreatorAccess); }
+    const bool&     getVisible() const          { static const bool hidden = false; return forMeCreatorVisible() ? mVisible : hidden; }
     virtual void    setEnabled(bool enabled);
-    bool            getEnabled() const          { return mEnabled; }
+    bool            getEnabled() const          { return mEnabled && forMeCreatorVisible(); }
     /// 'available' in this context means 'visible and enabled': in other
     /// words, can a user actually interact with this?
     virtual bool    isAvailable() const;
@@ -589,7 +594,9 @@ private:
     child_list_t mChildList;
 
     // location in pixels, relative to surrounding structure, bottom,left=0,0
+    inline static bool sForMeCreatorAccess = false; // Deny until authenticated metadata arrives.
     bool        mVisible;
+    bool        mForMeCreatorOnly;
     LLRect      mRect;
     LLRect      mBoundingRect;
 

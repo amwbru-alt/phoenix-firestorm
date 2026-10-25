@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="script ed float" title="Script: Script nuevo">
+<floater name="script ed float" title="Script: Script nuevo" forme_creator_only="true">
 	<floater.string name="not_allowed">
 		No puedes ver ni editar este script, ya que ha sido configurado con permisos restringidos. Necesitas todos los permisos para ver o editar un script que está dentro de un objeto.
 	</floater.string>

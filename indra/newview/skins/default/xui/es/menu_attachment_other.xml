@@ -28,8 +28,8 @@
 	<menu_item_call  label="Desdibujar permanentemente" name="DerenderPermanent"/>
 	<menu_item_call label="Mostrar texturas" name="Debug..."/>
 	<menu_item_call label="Retexturizar" name="Texture Refresh"/>
-	<context_menu label="Guardar como" name="Export Menu">
-		<menu_item_call label="Respaldo" name="Backup"/>
-		<menu_item_call label="Collada" name="Collada"/>
+	<context_menu label="Guardar como" name="Export Menu" forme_creator_only="true">
+		<menu_item_call label="Respaldo" name="Backup" forme_creator_only="true"/>
+		<menu_item_call label="Collada" name="Collada" forme_creator_only="true"/>
 	</context_menu>
 </context_menu>

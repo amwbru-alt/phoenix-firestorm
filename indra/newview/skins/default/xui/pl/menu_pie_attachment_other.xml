@@ -30,8 +30,8 @@
                 <pie_slice label="Detale meszu" name="Reset Mesh LOD" />
             </pie_menu>
             <pie_menu name="ExportMenu" label="Zapisz jako &gt;">
-                <pie_slice label="Kopia zapasowa" name="Backup"/>
-                <pie_slice label="Collada" name="Collada"/>
+                <pie_slice label="Kopia zapasowa" name="Backup" forme_creator_only="true"/>
+                <pie_slice label="Collada" name="Collada" forme_creator_only="true"/>
                 <pie_slice label="Zrzuć XML" name="Dump XML"/>
             </pie_menu>
             <pie_menu name="RenderMenu" label="Renderuj &gt;">

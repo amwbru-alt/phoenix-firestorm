@@ -10,7 +10,7 @@
  min_height="168"
  save_rect="true"
  can_resize="true"
- title="Backup objects...">
+ title="Backup objects..." forme_creator_only="true">
 	<floater.string name="title_floater">
 		Backup [OBJECT] to Hard Disk...
 	</floater.string>

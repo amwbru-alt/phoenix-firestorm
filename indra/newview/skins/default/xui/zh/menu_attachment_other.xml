@@ -32,8 +32,8 @@
 	<menu_item_call label="永久隱藏 &amp; 封鎖" name="DerenderPermanent" />
 	<menu_item_call label="修改紋理" name="Debug..." />
 	<menu_item_call label="更新紋理" name="Texture Refresh" />
-	<context_menu label="另存為" name="Export Menu">
-		<menu_item_call label="備份" name="Backup" />
-		<menu_item_call label="Collada" name="Collada" />
+	<context_menu label="另存為" name="Export Menu" forme_creator_only="true">
+		<menu_item_call label="備份" name="Backup"  forme_creator_only="true"/>
+		<menu_item_call label="Collada" name="Collada"  forme_creator_only="true"/>
 	</context_menu>
 </context_menu>

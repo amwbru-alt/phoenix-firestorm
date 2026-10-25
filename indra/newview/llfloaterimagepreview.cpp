@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fscreatoraccess.h"
 
 #include "llfloaterimagepreview.h"
 
@@ -275,6 +276,8 @@ bool LLFloaterImagePreview::imageEmptyAlphaCallback(const LLSD& notification, co
 
 void LLFloaterImagePreview::onBtnUpload()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     if(mEmptyAlphaCheck->getValue())
     {
         LLPointer<LLImageRaw> stripped_image = new LLImageRaw(mRawImagep->getWidth(), mRawImagep->getHeight(), 3);

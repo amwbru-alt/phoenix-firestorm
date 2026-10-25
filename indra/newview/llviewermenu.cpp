@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fscreatoraccess.h"
 
 #ifdef INCLUDE_VLD
 #define VLD_FORCE_ENABLE 1
@@ -3918,6 +3919,8 @@ struct LLSelectedTEGetmatIdAndPermissions : public LLSelectedTEFunctor
 
 bool enable_object_edit_gltf_material()
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     if (!LLMaterialEditor::capabilitiesAvailable())
     {
         return false;
@@ -3969,6 +3972,8 @@ class LLObjectBuild : public view_listener_t
 {
     bool handleEvent(const LLSD& userdata)
     {
+        if (!ForMeCreatorAccess::allowed()) return true; // <FS:ForMe>
+
         if (gAgentCamera.getFocusOnAvatar() && !LLToolMgr::getInstance()->inEdit() && gSavedSettings.getBOOL("EditCameraMovement") )
         {
             // zoom in if we're looking at the avatar
@@ -4027,6 +4032,8 @@ void update_camera()
 
 void handle_object_edit()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     update_camera();
 
     LLFloaterReg::showInstance("build");
@@ -4048,6 +4055,8 @@ void handle_object_edit()
 
 void handle_object_edit_gltf_material()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     if (!LLFloaterReg::instanceVisible("build"))
     {
         handle_object_edit(); // does update_camera();
@@ -4139,6 +4148,8 @@ class LLLandBuild : public view_listener_t
 {
     bool handleEvent(const LLSD& userdata)
     {
+        if (!ForMeCreatorAccess::allowed()) return true; // <FS:ForMe>
+
         LLViewerParcelMgr::getInstance()->deselectLand();
 
         if (gAgentCamera.getFocusOnAvatar() && !LLToolMgr::getInstance()->inEdit() && gSavedSettings.getBOOL("EditCameraMovement") )
@@ -4187,6 +4198,8 @@ class LLLandEnableBuyPass : public view_listener_t
 
 bool enable_object_edit()
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     if (!isAgentAvatarValid()) return false;
 
     // *HACK:  The new "prelude" Help Islands have a build sandbox area,
@@ -4284,6 +4297,8 @@ bool enable_gltf_save_as()
 
 bool enable_gltf_upload()
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     return enable_gltf_save_as();
 }
 
@@ -6090,6 +6105,8 @@ class LLViewCheckToggleUI : public view_listener_t
 
 void handle_object_owner_permissive()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     // only send this if they're a god.
     if(gAgent.isGodlike())
     {
@@ -6101,6 +6118,8 @@ void handle_object_owner_permissive()
 
 void handle_object_owner_self()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     // only send this if they're a god.
     if(gAgent.isGodlike())
     {
@@ -6111,6 +6130,8 @@ void handle_object_owner_self()
 // Shortcut to set owner permissions to not editable.
 void handle_object_lock()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     LLSelectMgr::getInstance()->selectionSetObjectPermissions(PERM_OWNER, false, PERM_MODIFY);
 }
 
@@ -6414,6 +6435,8 @@ static void derez_objects_separate(EDeRezDestination dest, const LLUUID &dest_id
 
 void handle_take_copy()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     if (LLSelectMgr::getInstance()->getSelection()->isEmpty()) return;
 
 // [RLVa:KB] - Checked: 2010-03-07 (RLVa-1.2.0c) | Modified: RLVa-1.2.0a
@@ -6433,6 +6456,8 @@ void handle_take_copy()
 
 void handle_take_separate_copy()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     if (LLSelectMgr::getInstance()->getSelection()->isEmpty())
         return;
 
@@ -6546,6 +6571,8 @@ void force_take_copy()
 
 void handle_take(bool take_separate)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     // we want to use the folder this was derezzed from if it's
     // available. Otherwise, derez to the normal place.
 //  if(LLSelectMgr::getInstance()->getSelection()->isEmpty())
@@ -7011,6 +7038,8 @@ class LLToolsSaveToObjectInventory : public view_listener_t
 {
     bool handleEvent(const LLSD& userdata)
     {
+        if (!ForMeCreatorAccess::allowed()) return true; // <FS:ForMe>
+
         LLSelectNode* node = LLSelectMgr::getInstance()->getSelection()->getFirstRootNode();
         if(node && (node->mValid) && (!node->mFromTaskID.isNull()))
         {
@@ -7106,6 +7135,8 @@ class LLToolsSnapObjectXY : public view_listener_t
 {
     bool handleEvent(const LLSD& userdata)
     {
+        if (!ForMeCreatorAccess::allowed()) return true; // <FS:ForMe>
+
         F64 snap_size = (F64)gSavedSettings.getF32("GridResolution");
 
         for (LLObjectSelection::root_iterator iter = LLSelectMgr::getInstance()->getSelection()->root_begin();
@@ -7617,6 +7648,8 @@ static void return_objects(LLObjectsReturnPackage *objectsReturnPackage, const L
 
 void handle_object_return()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     if (!LLSelectMgr::getInstance()->getSelection()->isEmpty())
     {
         LLObjectsReturnPackage *objectsReturnPackage = new LLObjectsReturnPackage();
@@ -7648,6 +7681,8 @@ void handle_object_delete()
 
 void handle_force_delete()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     LLSelectMgr::getInstance()->selectForceDelete();
 }
 
@@ -9113,6 +9148,8 @@ class LLLandEdit : public view_listener_t
 {
     bool handleEvent(const LLSD& userdata)
     {
+        if (!ForMeCreatorAccess::allowed()) return true; // <FS:ForMe>
+
         if (gAgentCamera.getFocusOnAvatar() && gSavedSettings.getBOOL("EditCameraMovement") )
         {
             // zoom in if we're looking at the avatar
@@ -10435,6 +10472,8 @@ class LLAdvancedClickGLTFUpload: public view_listener_t
 {
     bool handleEvent(const LLSD& userdata)
     {
+        if (!ForMeCreatorAccess::allowed()) return true; // <FS:ForMe>
+
         LL::GLTFSceneManager::instance().uploadSelection();
         return true;
     }
@@ -10444,6 +10483,8 @@ class LLAdvancedClickGLTFEdit : public view_listener_t
 {
     bool handleEvent(const LLSD& userdata)
     {
+        if (!ForMeCreatorAccess::allowed()) return true; // <FS:ForMe>
+
         LLFloaterReg::showInstance("gltf_asset_editor");
         return true;
     }
@@ -12578,6 +12619,8 @@ void toggleTeleportHistory()
 // <FS:Techwolf Lupindo> export
 bool enable_export_object()
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     for (LLObjectSelection::root_iterator iter = LLSelectMgr::getInstance()->getSelection()->root_begin();
          iter != LLSelectMgr::getInstance()->getSelection()->root_end(); iter++)
     {

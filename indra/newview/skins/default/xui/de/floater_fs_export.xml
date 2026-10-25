@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="floater_fs_export" title="Objekt-Backup">
+<floater name="floater_fs_export" title="Objekt-Backup" forme_creator_only="true">
 	<floater.string name="title_floater">
 		Backup von [OBJECT] auf Festplatte...
 	</floater.string>

@@ -19,5 +19,5 @@
 	<menu_item_call label="Trouver sur la carte" name="find_on_map"/>
 	<menu_item_call label="Zoomer" name="zoom_in"/>
 	<menu_item_call label="Payer" name="pay"/>
-	<menu_item_call label="Partager" name="share"/>
+	<menu_item_call label="Partager" name="share" forme_creator_only="true"/>
 </toggleable_menu>

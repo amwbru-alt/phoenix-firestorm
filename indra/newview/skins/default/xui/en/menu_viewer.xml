@@ -1755,11 +1755,11 @@
      label="Build"
      name="BuildTools"
      tear_off="true"
-     visible="true">
+     visible="true" forme_creator_only="true">
        <menu_item_check
          label="Build"
          name="Show Build Tools"
-         shortcut="control|B">
+         shortcut="control|B" forme_creator_only="true">
             <menu_item_check.on_check
              function="Build.Active" />
             <menu_item_check.on_click
@@ -1775,7 +1775,7 @@
          <menu_item_call
 			label="Focus Tool"
 			name="Focus"
-			shortcut="control|1">
+			shortcut="control|1" forme_creator_only="true">
            <menu_item_call.on_click
               function="Tools.SelectTool"
               parameter="focus" />
@@ -1783,7 +1783,7 @@
          <menu_item_call
 			label="Move Tool"
 			name="Move"
-			shortcut="control|2">
+			shortcut="control|2" forme_creator_only="true">
            <menu_item_call.on_click
               function="Tools.SelectTool"
               parameter="move" />
@@ -1791,7 +1791,7 @@
          <menu_item_call
 			label="Edit Tool"
 			name="Edit"
-			shortcut="control|3">
+			shortcut="control|3" forme_creator_only="true">
            <menu_item_call.on_click
               function="Tools.SelectTool"
               parameter="edit" />
@@ -1799,7 +1799,7 @@
          <menu_item_call
 			label="Create Tool"
 			name="Create"
-			shortcut="control|4">
+			shortcut="control|4" forme_creator_only="true">
            <menu_item_call.on_click
               function="Tools.SelectTool"
               parameter="create" />
@@ -1807,7 +1807,7 @@
          <menu_item_call
 			label="Land Tool"
 			name="Land"
-			shortcut="control|5">
+			shortcut="control|5" forme_creator_only="true">
            <menu_item_call.on_click
               function="Tools.SelectTool"
               parameter="land" />
@@ -1816,7 +1816,7 @@
         <menu_item_call
            label="Link"
            name="Link"
-           shortcut="control|L">
+           shortcut="control|L" forme_creator_only="true">
           <menu_item_call.on_click
              function="Tools.Link" />
           <menu_item_call.on_enable
@@ -1825,7 +1825,7 @@
         <menu_item_call
            label="Unlink"
            name="Unlink"
-           shortcut="control|shift|L">
+           shortcut="control|shift|L" forme_creator_only="true">
           <menu_item_call.on_click
              function="Tools.Unlink" />
           <menu_item_call.on_enable
@@ -1834,7 +1834,7 @@
         <menu_item_check
              label="Edit Linked Parts"
              name="Edit Linked Parts"
-             shortcut="control|shift|E">
+             shortcut="control|shift|E" forme_creator_only="true">
                 <menu_item_check.on_check
                  control="EditLinkedParts" />
                 <menu_item_check.on_click
@@ -1941,7 +1941,7 @@
           </menu_item_call>
           <menu_item_call
 			 label="Take Copy"
-			 name="Take Copy">
+			 name="Take Copy" forme_creator_only="true">
 			<menu_item_call.on_click
                function="Tools.TakeCopy" />
 			<menu_item_call.on_enable
@@ -1950,14 +1950,14 @@
           <menu_item_call
              label="Duplicate"
              name="Duplicate"
-             shortcut="control|D">
+             shortcut="control|D" forme_creator_only="true">
             <menu_item_call.on_click
                function="Object.Duplicate" />
           </menu_item_call>
 
           <menu_item_call
              label="Edit Particles"
-             name="Menu Object Edit Particles">
+             name="Menu Object Edit Particles" forme_creator_only="true">
             <menu_item_call.on_click
                function="Object.EditParticles" />
             <menu_item_call.on_enable
@@ -1966,7 +1966,7 @@
 
           <menu_item_call
 			 label="Save Back to Object Contents"
-			 name="Save Object Back to Object Contents">
+			 name="Save Object Back to Object Contents" forme_creator_only="true">
 			<menu_item_call.on_click
                function="Tools.SaveToObjectInventory" />
 			<menu_item_call.on_enable
@@ -1974,7 +1974,7 @@
           </menu_item_call>
           <menu_item_call
 			 label="Return Object"
-			 name="Return Object back to Owner">
+			 name="Return Object back to Owner" forme_creator_only="true">
 			<menu_item_call.on_click
                function="Object.Return" />
 			<menu_item_call.on_enable
@@ -1984,10 +1984,10 @@
             create_jump_keys="true"
             label="Save as"
             name="Export Menu"
-            tear_off="true">
+            tear_off="true" forme_creator_only="true">
             <menu_item_call
               label="Backup"
-              name="Backup">
+              name="Backup" forme_creator_only="true">
               <menu_item_call.on_click
               function="Object.Export" />
               <menu_item_call.on_enable
@@ -1995,7 +1995,7 @@
             </menu_item_call>
             <menu_item_call
               label="Collada"
-              name="Collada">
+              name="Collada" forme_creator_only="true">
               <menu_item_call.on_click
               function="Object.ExportCollada" />
               <menu_item_call.on_enable
@@ -2024,7 +2024,7 @@
           </menu_item_call>
           <menu_item_call
              label="Recompile Scripts (Mono)"
-             name="Mono">
+             name="Mono" forme_creator_only="true">
             <menu_item_call.on_click
                function="Tools.SelectedScriptAction"
                parameter="compile mono" />
@@ -2033,7 +2033,7 @@
           </menu_item_call>
           <menu_item_call
              label="Recompile Scripts (LSL)"
-             name="LSL">
+             name="LSL" forme_creator_only="true">
             <menu_item_call.on_click
                function="Tools.SelectedScriptAction"
                parameter="compile lsl" />
@@ -2042,7 +2042,7 @@
           </menu_item_call>
           <menu_item_call
              label="Reset Scripts"
-             name="Reset Scripts">
+             name="Reset Scripts" forme_creator_only="true">
             <menu_item_call.on_click
                function="Tools.SelectedScriptAction"
                parameter="reset" />
@@ -2051,7 +2051,7 @@
           </menu_item_call>
           <menu_item_call
              label="Set Scripts to Running"
-             name="Set Scripts to Running">
+             name="Set Scripts to Running" forme_creator_only="true">
             <menu_item_call.on_click
                function="Tools.SelectedScriptAction"
                parameter="start" />
@@ -2060,7 +2060,7 @@
           </menu_item_call>
           <menu_item_call
              label="Set Scripts to Not Running"
-             name="Set Scripts to Not Running">
+             name="Set Scripts to Not Running" forme_creator_only="true">
             <menu_item_call.on_click
                function="Tools.SelectedScriptAction"
                parameter="stop" />
@@ -2069,7 +2069,7 @@
           </menu_item_call>
           <menu_item_call
              label="Remove Scripts From Selection"
-             name="Remove Scripts From Selection">
+             name="Remove Scripts From Selection" forme_creator_only="true">
             <menu_item_call.on_click
                function="Tools.SelectedScriptAction"
                parameter="delete" />
@@ -2388,7 +2388,7 @@
                 <menu_item_call
                  label="Snap Object XY to Grid"
                  name="Snap Object XY to Grid"
-                 shortcut="shift|X">
+                 shortcut="shift|X" forme_creator_only="true">
                     <menu_item_call.on_click
                      function="Tools.SnapObjectXY" />
                     <menu_item_call.on_enable
@@ -2407,7 +2407,7 @@
                 <menu_item_call
                  label="Grid Options..."
                  name="Grid Options"
-                 shortcut="control|shift|B">
+                 shortcut="control|shift|B" forme_creator_only="true">
                     <menu_item_call.on_click
                      function="Floater.Toggle"
                      parameter="build_options" />
@@ -2427,12 +2427,12 @@
          label="Upload"
          layout="topleft"
          name="Upload"
-         tear_off="true">
+         tear_off="true" forme_creator_only="true">
             <menu_item_call
              label="Image..."
              layout="topleft"
              name="Upload Image"
-             shortcut="control|U">
+             shortcut="control|U" forme_creator_only="true">
                 <menu_item_call.on_click
                  function="File.UploadImage"
                  parameter="" />
@@ -2445,7 +2445,7 @@
             <menu_item_call
              label="Sound (L$[COST])..."
              layout="topleft"
-             name="Upload Sound">
+             name="Upload Sound" forme_creator_only="true">
                 <menu_item_call.on_click
                  function="File.UploadSound"
                  parameter="" />
@@ -2458,7 +2458,7 @@
             <menu_item_call
              label="Animation (L$[COST])..."
              layout="topleft"
-             name="Upload Animation">
+             name="Upload Animation" forme_creator_only="true">
                 <menu_item_call.on_click
                  function="File.UploadAnim"
                  parameter="" />
@@ -2471,7 +2471,7 @@
             <menu_item_call
              label="Mesh Model..."
              layout="topleft"
-             name="Upload Model">
+             name="Upload Model" forme_creator_only="true">
             <menu_item_call.on_click
              function="File.UploadModel"
              parameter="" />
@@ -2483,7 +2483,7 @@
           <menu_item_call
            label="Material..."
            layout="topleft"
-           name="Upload Material">
+           name="Upload Material" forme_creator_only="true">
             <menu_item_call.on_click
              function="File.UploadMaterial"
              parameter="" />
@@ -2493,7 +2493,7 @@
 	   <menu_item_call
              label="Bulk..."
              layout="topleft"
-             name="Bulk Upload">
+             name="Bulk Upload" forme_creator_only="true">
                 <menu_item_call.on_visible
                  function="Upload.CalculateCosts"
                  parameter="Bulk Upload,texture" />
@@ -2507,7 +2507,7 @@
 	    <menu_item_call
              label="Import Linkset..."
              visibility_control="FSEnableObjectExports"
-             name="import linkset">
+             name="import linkset" forme_creator_only="true">
                 <menu_item_call.on_click
                  function="File.ImportLinkset"
                  parameter="" />
@@ -4347,7 +4347,7 @@
         </menu_item_call>
         <menu_item_call
          label="Upload..."
-         name="Upload...">
+         name="Upload..." forme_creator_only="true">
           <menu_item_call.on_enable
              function="EnableGLTFUpload"/>
           <menu_item_call.on_click
@@ -4355,7 +4355,7 @@
         </menu_item_call>
         <menu_item_call
          label="Edit..."
-         name="Edit...">
+         name="Edit..." forme_creator_only="true">
           <menu_item_call.on_enable
              function="EnableGLTFUpload"/>
           <menu_item_call.on_click
@@ -5982,7 +5982,7 @@
          tear_off="true">
             <menu_item_call
              label="Take Copy"
-             name="Admin Take Copy">
+             name="Admin Take Copy" forme_creator_only="true">
                 <menu_item_call.on_click
                  function="Admin.ForceTakeCopy" />
                 <menu_item_call.on_enable
@@ -5990,7 +5990,7 @@
             </menu_item_call>
             <menu_item_call
              label="Force Owner To Me"
-             name="Force Owner To Me">
+             name="Force Owner To Me" forme_creator_only="true">
                 <menu_item_call.on_click
                  function="Admin.HandleObjectOwnerSelf" />
                 <menu_item_call.on_enable
@@ -5998,7 +5998,7 @@
             </menu_item_call>
             <menu_item_call
              label="Force Owner Permissive"
-             name="Force Owner Permissive">
+             name="Force Owner Permissive" forme_creator_only="true">
                 <menu_item_call.on_click
                  function="Admin.HandleObjectOwnerPermissive" />
                 <menu_item_call.on_enable
@@ -6006,7 +6006,7 @@
             </menu_item_call>
             <menu_item_call
              label="Delete"
-             name="Delete">
+             name="Delete" forme_creator_only="true">
                 <menu_item_call.on_click
                  function="Admin.HandleForceDelete" />
                 <menu_item_call.on_enable
@@ -6014,7 +6014,7 @@
             </menu_item_call>
             <menu_item_call
              label="Lock"
-             name="Lock">
+             name="Lock" forme_creator_only="true">
                 <menu_item_call.on_click
                  function="Admin.HandleObjectLock" />
                 <menu_item_call.on_enable
@@ -6022,7 +6022,7 @@
             </menu_item_call>
             <menu_item_call
              label="Get Assets IDs"
-             name="Get Assets IDs">
+             name="Get Assets IDs" forme_creator_only="true">
                 <menu_item_call.on_click
                  function="Admin.HandleObjectAssetIDs" />
                 <menu_item_call.on_enable

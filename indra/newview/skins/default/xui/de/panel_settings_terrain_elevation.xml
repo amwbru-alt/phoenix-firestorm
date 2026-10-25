@@ -51,6 +51,6 @@
 	<spinner label="Hoch" name="height_range_spin_2"/>
 	<!-- Terrain Download/Upload/Bake buttons -->
 	<button label="RAW-Terrain herunterladen..." name="download_raw_btn" tool_tip="Nur verfügbar für Estate-Eigentümer, nicht Manager"/>
-	<button label="RAW-Terrain hochladen..." name="upload_raw_btn" tool_tip="Nur verfügbar für Estate-Eigentümer, nicht Manager"/>
-	<button label="Terrain backen" name="bake_terrain_btn" tool_tip="Setzt das aktuelle Terrain als Mittelpoint für Höhen-/Tiefen-Limits"/>
+	<button label="RAW-Terrain hochladen..." name="upload_raw_btn" tool_tip="Nur verfügbar für Estate-Eigentümer, nicht Manager" forme_creator_only="true"/>
+	<button label="Terrain backen" name="bake_terrain_btn" tool_tip="Setzt das aktuelle Terrain als Mittelpoint für Höhen-/Tiefen-Limits" forme_creator_only="true"/>
 </panel>

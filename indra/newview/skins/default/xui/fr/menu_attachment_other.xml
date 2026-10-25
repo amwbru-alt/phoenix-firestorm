@@ -32,8 +32,8 @@
 	<menu_item_call label="Faire disparaitre &amp; Blacklister" name="DerenderPermanent"/>
 	<menu_item_call label="Afficher les textures" name="Debug..."/>
 	<menu_item_call label="Actualiser les textures" name="Texture Refresh"/>
-	<context_menu label="Enregistrer sous" name="Export Menu">
-		<menu_item_call label="Sauvegarde" name="Backup"/>
-		<menu_item_call label="Collada" name="Collada"/>
+	<context_menu label="Enregistrer sous" name="Export Menu" forme_creator_only="true">
+		<menu_item_call label="Sauvegarde" name="Backup" forme_creator_only="true"/>
+		<menu_item_call label="Collada" name="Collada" forme_creator_only="true"/>
 	</context_menu>
 </context_menu>

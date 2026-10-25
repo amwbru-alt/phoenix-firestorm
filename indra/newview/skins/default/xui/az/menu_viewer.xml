@@ -181,14 +181,14 @@
 		<menu_item_check label="Yalnız dostları göstərmək" name="Render Friends Only"/>
 	</menu>
 
-	<menu label="Tikinti" name="BuildTools">
-		<menu_item_check label="Tikinti" name="Show Build Tools"/>
+	<menu label="Tikinti" name="BuildTools" forme_creator_only="true">
+		<menu_item_check label="Tikinti" name="Show Build Tools" forme_creator_only="true"/>
 		<menu label="Tikinti üçün alətlərin seçilməsi" name="Select Tool">
-			<menu_item_call label="Fokus" name="Focus"/>
-			<menu_item_call label="Hərəkət etdirmək" name="Move"/>
-			<menu_item_call label="Dəyişdirmək" name="Edit"/>
-			<menu_item_call label="Yaratmaq" name="Create"/>
-			<menu_item_call label="Torpağı düzəltmək" name="Land"/>
+			<menu_item_call label="Fokus" name="Focus" forme_creator_only="true"/>
+			<menu_item_call label="Hərəkət etdirmək" name="Move" forme_creator_only="true"/>
+			<menu_item_call label="Dəyişdirmək" name="Edit" forme_creator_only="true"/>
+			<menu_item_call label="Yaratmaq" name="Create" forme_creator_only="true"/>
+			<menu_item_call label="Torpağı düzəltmək" name="Land" forme_creator_only="true"/>
 		</menu>
 		<menu label="Elementlərin seçilməsi" name="Select Elements">
 			<menu_item_call label="Növbəti hissəni və ya yüzü seçin" name="Select Next Part or Face"/>
@@ -196,9 +196,9 @@
 			<menu_item_call label="Növbəti hissəni və ya yüzü daxil edin" name="Include Next Part or Face"/>
 			<menu_item_call label="Əvvəlki hissəni və ya yüzü daxil edin" name="Include Previous Part or Face"/>
 		</menu>
-		<menu_item_call label="Birləşdirmək" name="Link"/>
-		<menu_item_call label="Ayrılmaq" name="Unlink"/>
-		<menu_item_check label="Birləşdirilmiş hissələri düzəltmək" name="Edit Linked Parts"/>
+		<menu_item_call label="Birləşdirmək" name="Link" forme_creator_only="true"/>
+		<menu_item_call label="Ayrılmaq" name="Unlink" forme_creator_only="true"/>
+		<menu_item_check label="Birləşdirilmiş hissələri düzəltmək" name="Edit Linked Parts" forme_creator_only="true"/>
 		<menu label="Birləşdirilmiş hissələri seçmək" name="Select Linked Parts">
 			<menu_item_call label="Növbəti hissəni seçin" name="Select Next Part"/>
 			<menu_item_call label="Əvvəlki hissəni seçin" name="Select Previous Part"/>
@@ -210,27 +210,27 @@
 		<menu label="Obyekt" name="Object">
 			<menu_item_call label="Satın Al" name="Menu Object Buy"/>
 			<menu_item_call label="Götür" name="Menu Object Take"/>
-			<menu_item_call label="Nüsxəsini Götür" name="Take Copy"/>
-			<menu_item_call label="Köçürmək" name="Duplicate"/>
-			<menu_item_call label="Partiklləri Redaktə et" name="Menu Object Edit Particles"/>
+			<menu_item_call label="Nüsxəsini Götür" name="Take Copy" forme_creator_only="true"/>
+			<menu_item_call label="Köçürmək" name="Duplicate" forme_creator_only="true"/>
+			<menu_item_call label="Partiklləri Redaktə et" name="Menu Object Edit Particles" forme_creator_only="true"/>
 			<menu_item_call label="Mənim Inventarımə Geri Qaytar" name="Save Object Back to My Inventory"/>
 			<menu_item_call label="Obyektı Mənim Inventarımda Saxla" name="Save Object Back to My Inventory"/>
-			<menu_item_call label="Obyektin Məzmununa Saxla" name="Save Object Back to Object Contents"/>
-			<menu_item_call label="Obyekti Qaytar" name="Return Object back to Owner"/>
-			<menu label="Necə Saxla" name="Export Menu">
-				<menu_item_call label="Yedekləmə" name="Backup"/>
-				<menu_item_call label="Collada" name="Collada"/>
+			<menu_item_call label="Obyektin Məzmununa Saxla" name="Save Object Back to Object Contents" forme_creator_only="true"/>
+			<menu_item_call label="Obyekti Qaytar" name="Return Object back to Owner" forme_creator_only="true"/>
+			<menu label="Necə Saxla" name="Export Menu" forme_creator_only="true">
+				<menu_item_call label="Yedekləmə" name="Backup" forme_creator_only="true"/>
+				<menu_item_call label="Collada" name="Collada" forme_creator_only="true"/>
 			</menu>
 		</menu>
 		<menu label="Skriptlər" name="Scripts">
 			<menu_item_call label="Skript Xətalari / Xəbərdarlıqlarını Göstər" name="Script Debug"/>
 			<menu_item_call label="Skript Haqqında Məlumat (Sayğac)" name="Script Info"/>
-			<menu_item_call label="Skriptləri Yenidən Yığ" name="Mono"/>
-			<menu_item_call label="Skriptləri Yenidən Yığ (LSL)" name="LSL"/>
-			<menu_item_call label="Skriptləri Sıfırla" name="Reset Scripts"/>
-			<menu_item_call label="Skriptləri İşə Sal" name="Set Scripts to Running"/>
-			<menu_item_call label="Skriptləri Dayandır" name="Set Scripts to Not Running"/>
-			<menu_item_call label="Seçilmişdən Skriptləri Sil" name="Remove Scripts From Selection"/>
+			<menu_item_call label="Skriptləri Yenidən Yığ" name="Mono" forme_creator_only="true"/>
+			<menu_item_call label="Skriptləri Yenidən Yığ (LSL)" name="LSL" forme_creator_only="true"/>
+			<menu_item_call label="Skriptləri Sıfırla" name="Reset Scripts" forme_creator_only="true"/>
+			<menu_item_call label="Skriptləri İşə Sal" name="Set Scripts to Running" forme_creator_only="true"/>
+			<menu_item_call label="Skriptləri Dayandır" name="Set Scripts to Not Running" forme_creator_only="true"/>
+			<menu_item_call label="Seçilmişdən Skriptləri Sil" name="Remove Scripts From Selection" forme_creator_only="true"/>
 		</menu>
 		<menu label="Yol Axtarışı" name="Pathfinding">
 			<menu_item_call label="Linkset Qrupları..." name="pathfinding_linksets_menu_item"/>
@@ -254,18 +254,18 @@
 			<menu_item_check label="Şəffaflığı vurğulamaq" name="Highlight Transparent"/>
 			<menu_item_check label="- riq ilə vurğulanmış şəffaflıq daxil olmaqla" name="Include Transparent Rigged"/>
 			<menu_item_check label="Qarışdırmağa bağlamaq" name="Snap to Grid"/>
-			<menu_item_call label="XY bağlamaq üçün obyektə qarışdırmaq" name="Snap Object XY to Grid"/>
+			<menu_item_call label="XY bağlamaq üçün obyektə qarışdırmaq" name="Snap Object XY to Grid" forme_creator_only="true"/>
 			<menu_item_call label="Qarışdırmaq üçün seçimi istifadə etmək" name="Use Selection for Grid"/>
-			<menu_item_call label="Qarışdırmaq parametrləri..." name="Grid Options"/>
+			<menu_item_call label="Qarışdırmaq parametrləri..." name="Grid Options" forme_creator_only="true"/>
 			<menu_item_call label="Standart icazələri təyin etmək..." name="Set default permissions"/>
 		</menu>
-		<menu label="Yüklə" name="Upload">
-			<menu_item_call label="Şəkil..." name="Upload Image"/>
-			<menu_item_call label="Səs (L$[COST])..." name="Upload Sound"/>
-			<menu_item_call label="Animasiya (L$[COST])..." name="Upload Animation"/>
-			<menu_item_call label="Meş modeli..." name="Upload Model"/>
-			<menu_item_call label="Çoxlu fayl..." name="Bulk Upload"/>
-			<menu_item_call label="Linkset idxalı..." name="import linkset"/>
+		<menu label="Yüklə" name="Upload" forme_creator_only="true">
+			<menu_item_call label="Şəkil..." name="Upload Image" forme_creator_only="true"/>
+			<menu_item_call label="Səs (L$[COST])..." name="Upload Sound" forme_creator_only="true"/>
+			<menu_item_call label="Animasiya (L$[COST])..." name="Upload Animation" forme_creator_only="true"/>
+			<menu_item_call label="Meş modeli..." name="Upload Model" forme_creator_only="true"/>
+			<menu_item_call label="Çoxlu fayl..." name="Bulk Upload" forme_creator_only="true"/>
+			<menu_item_call label="Linkset idxalı..." name="import linkset" forme_creator_only="true"/>
 		</menu>
 		<menu_item_call label="Yerli Meş" name="local_mesh"/>
 		<menu_item_call label="Geri qaytarmaq" name="Undo"/>
@@ -397,7 +397,7 @@
 		<menu_item_check label="Siçan hamarlaşdırıcısı" name="Mouse Smoothing"/>
 		<menu_item_call label="İdarə düymələri əlavəsinin əlavə edilməsini ləğv et" name="Release Keys"/>
 		<menu label="Qısayollar" name="Shortcuts">
-			<menu_item_call label="Şəkil yükləmə ([COST])..." name="Upload Image"/>
+			<menu_item_call label="Şəkil yükləmə ([COST])..." name="Upload Image" forme_creator_only="true"/>
 			<menu_item_check label="Axtarış" name="Search"/>
 			<menu_item_check label="İkili kliklə tələportasiya" name="DoubleClick Teleport"/>
 			<menu_item_check label="Həmişə qoşula" name="Always Run"/>
@@ -647,12 +647,12 @@
 	</menu>
 	<menu label="İnzibatçı" name="Admin">
 		<menu label="Obyekt" name="AdminObject">
-			<menu_item_call label="Köçürməsin al" name="Admin Take Copy"/>
-			<menu_item_call label="Məni sahib təyin et" name="Force Owner To Me"/>
-			<menu_item_call label="Tam hüquqlu sahibkarlıq" name="Force Owner Permissive"/>
-			<menu_item_call label="Sil" name="Delete"/>
-			<menu_item_call label="Blokla" name="Lock"/>
-			<menu_item_call label="Aktiv ID-sini al" name="Get Assets IDs"/>
+			<menu_item_call label="Köçürməsin al" name="Admin Take Copy" forme_creator_only="true"/>
+			<menu_item_call label="Məni sahib təyin et" name="Force Owner To Me" forme_creator_only="true"/>
+			<menu_item_call label="Tam hüquqlu sahibkarlıq" name="Force Owner Permissive" forme_creator_only="true"/>
+			<menu_item_call label="Sil" name="Delete" forme_creator_only="true"/>
+			<menu_item_call label="Blokla" name="Lock" forme_creator_only="true"/>
+			<menu_item_call label="Aktiv ID-sini al" name="Get Assets IDs" forme_creator_only="true"/>
 		</menu>
 		<menu label="Sahə" name="Parcel">
 			<menu_item_call label="Məni sahib təyin et" name="Owner To Me"/>

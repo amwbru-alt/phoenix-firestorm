@@ -53,7 +53,7 @@
 		</menu_item_call>
 		<menu_item_call
 			name="inventory_share"
-			label="Share">
+			label="Share" forme_creator_only="true">
 			<menu_item_call.on_click
 				function="Inventory.Share" />
 		</menu_item_call>
@@ -251,28 +251,28 @@
 		</menu_item_call>
 		<menu_item_call
 			name="inventory_new_script"
-			label="New Script">
+			label="New Script" forme_creator_only="true">
 			<menu_item_call.on_click
 				function="Inventory.DoCreate"
 				parameter="lsl" />
 		</menu_item_call>
 		<menu_item_call
 			name="inventory_new_note"
-			label="New Note">
+			label="New Note" forme_creator_only="true">
 			<menu_item_call.on_click
 				function="Inventory.DoCreate"
 				parameter="notecard" />
 		</menu_item_call>
 		<menu_item_call
 			name="inventory_new_gesture"
-			label="New Gesture">
+			label="New Gesture" forme_creator_only="true">
 			<menu_item_call.on_click
 				function="Inventory.DoCreate"
 				parameter="gesture" />
 		</menu_item_call>
 		<menu_item_call
 			name="inventory_new_material"
-			label="New Material">
+			label="New Material" forme_creator_only="true">
 			<menu_item_call.on_click
 				function="Inventory.DoCreate"
 				parameter="material" />

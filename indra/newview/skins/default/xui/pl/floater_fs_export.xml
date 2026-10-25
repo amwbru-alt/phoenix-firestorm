@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="floater_fs_export" title="Kopia zapasowa obiektów">
+<floater name="floater_fs_export" title="Kopia zapasowa obiektów" forme_creator_only="true">
 	<floater.string name="title_floater">
 		Zapis [OBJECT] na twardym dysku...
 	</floater.string>

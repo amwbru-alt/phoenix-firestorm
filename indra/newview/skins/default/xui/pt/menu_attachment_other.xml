@@ -33,8 +33,8 @@
 	<menu_item_call label="Nao renderizar e colocar na blacklist" name="DerenderPermanent"/>
 	<menu_item_call label="Mostrar texturas" name="Debug..."/>
 	<menu_item_call label="Atualizar texturas" name="Texture Refresh"/>
-	<context_menu label="Salvar como" name="Export Menu">
-		<menu_item_call label="Backup" name="Backup"/>
-		<menu_item_call label="Collada" name="Collada"/>
+	<context_menu label="Salvar como" name="Export Menu" forme_creator_only="true">
+		<menu_item_call label="Backup" name="Backup" forme_creator_only="true"/>
+		<menu_item_call label="Collada" name="Collada" forme_creator_only="true"/>
 	</context_menu>
 </context_menu>

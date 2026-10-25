@@ -8,7 +8,7 @@
      label="Share"
      layout="topleft"
      name="Share"
-     visible="true">
+     visible="true" forme_creator_only="true">
         <menu_item_call.on_click
          function="Inventory.Share" />
     </menu_item_call>
@@ -103,7 +103,7 @@
     <menu_item_call
      label="New Script"
      layout="topleft"
-     name="New Script">
+     name="New Script" forme_creator_only="true">
         <menu_item_call.on_click
          function="Inventory.DoCreate"
          parameter="lsl" />
@@ -111,7 +111,7 @@
     <menu_item_call
      label="New Notecard"
      layout="topleft"
-     name="New Note">
+     name="New Note" forme_creator_only="true">
         <menu_item_call.on_click
          function="Inventory.DoCreate"
          parameter="notecard" />
@@ -119,7 +119,7 @@
     <menu_item_call
      label="New Gesture"
      layout="topleft"
-     name="New Gesture">
+     name="New Gesture" forme_creator_only="true">
         <menu_item_call.on_click
          function="Inventory.DoCreate"
          parameter="gesture" />
@@ -127,7 +127,7 @@
     <menu_item_call
        label="New Material"
        layout="topleft"
-       name="New Material">
+       name="New Material" forme_creator_only="true">
       <menu_item_call.on_click
        function="Inventory.DoCreate"
        parameter="material" />
@@ -318,7 +318,7 @@
     <menu
      label="Use as default for"
      layout="topleft"
-     name="upload_def">
+     name="upload_def" forme_creator_only="true">
       <menu_item_check
        label="Image uploads"
        layout="topleft"

@@ -25,9 +25,9 @@
 	     tool_tip="Kun tilgængelig for ejer af estate - ikke for administratorer" />
 	<button label="?" name="download_raw_help" />
 	<button label="Upload RAW terræn fil..." name="upload_raw_btn"
-	     tool_tip="Kun tilgængelig for ejer af estate - ikke for administratorer" />
+	     tool_tip="Kun tilgængelig for ejer af estate - ikke for administratorer"  forme_creator_only="true"/>
 	<button label="?" name="upload_raw_help" />
 	<button label="Gem terræn" name="bake_terrain_btn"
-	     tool_tip="Lav det nuværende terræn som base for begrænsning af fremtidige hævninger og sænkninger af terræn" />
+	     tool_tip="Lav det nuværende terræn som base for begrænsning af fremtidige hævninger og sænkninger af terræn"  forme_creator_only="true"/>
 	<button label="?" name="bake_terrain_help" />
 </panel>

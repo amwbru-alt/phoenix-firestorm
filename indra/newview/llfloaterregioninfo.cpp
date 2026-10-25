@@ -26,6 +26,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fscreatoraccess.h"
 #include "llfloaterregioninfo.h"
 
 #include <algorithm>
@@ -2288,6 +2289,8 @@ void LLPanelRegionTerrainInfo::onDownloadRawFilepickerCB(const std::vector<std::
 // static
 void LLPanelRegionTerrainInfo::onClickUploadRaw(void* data)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     LLPanelRegionTerrainInfo* self = (LLPanelRegionTerrainInfo*)data;
     LLFilePickerReplyThread::startPicker(boost::bind(&LLPanelRegionTerrainInfo::onUploadRawFilepickerCB, self, _1), LLFilePicker::FFLOAD_RAW, false);
 }
@@ -2310,6 +2313,8 @@ void LLPanelRegionTerrainInfo::onUploadRawFilepickerCB(const std::vector<std::st
 // static
 void LLPanelRegionTerrainInfo::onClickBakeTerrain(void* data)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     LLNotificationsUtil::add("ConfirmBakeTerrain", LLSD(), LLSD(), boost::bind(&LLPanelRegionTerrainInfo::callbackBakeTerrain, (LLPanelRegionTerrainInfo*)data, _1, _2));
 }
 

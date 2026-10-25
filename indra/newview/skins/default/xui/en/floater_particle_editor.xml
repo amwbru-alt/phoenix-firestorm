@@ -11,7 +11,7 @@
 	save_visibility="false"
 	single_instance="false"
 	title="Particle Editor"
-	width="506">
+	width="506" forme_creator_only="true">
 
 <panel
 	follows="all"

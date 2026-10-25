@@ -10,7 +10,7 @@
  min_width="960"
  name="Model Preview"
  title="Upload Model"
- help_topic="upload_model">
+ help_topic="upload_model" forme_creator_only="true">
   <string name="status_idle"></string>
   <string name="status_parse_error">Error: Model parsing issue - see log for details.</string>
   <string name="status_bind_shape_orientation">Warning: bind shape matrix is not in standard X-forward orientation.</string>

@@ -45,8 +45,8 @@ Data di nascita: [REG_DATE]
 			<icon tool_tip="L'amico non può vedere il mio stato online" name="cant_see_online" />
 			<icon tool_tip="L'amico può vedermi sulla mappa" name="can_see_on_map" />
 			<icon tool_tip="L'amico non può vedermi sulla mappa" name="cant_see_on_map" />
-			<icon tool_tip="L'amico può modificare i miei oggetti" name="can_edit_objects" />
-			<icon tool_tip="L'amico non può modificare i miei oggetti" name="cant_edit_objects" />
+			<icon tool_tip="L'amico può modificare i miei oggetti" name="can_edit_objects"  forme_creator_only="true"/>
+			<icon tool_tip="L'amico non può modificare i miei oggetti" name="cant_edit_objects"  forme_creator_only="true"/>
 			<text_editor name="user_age" value="(caricamento...)" />
 			<text name="label2" value="Account:" />
 			<panel name="badge_layout">

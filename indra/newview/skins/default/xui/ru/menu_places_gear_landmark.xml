@@ -2,7 +2,7 @@
 <toggleable_menu name="menu_ladmark_gear">
 	<menu_item_call label="Телепортироваться" name="teleport"/>
 	<menu_item_call label="Показать на карте" name="show_on_map"/>
-	<menu_item_call label="Поделиться" name="share"/>
+	<menu_item_call label="Поделиться" name="share" forme_creator_only="true"/>
 	<menu_item_call label="Смотреть / Править" name="more_info"/>
 	<menu_item_call label="Переместить в Закладки" name="Move to Landmarks"/>
 	<menu_item_call label="Переместить в Избранное" name="Move to Favorites"/>

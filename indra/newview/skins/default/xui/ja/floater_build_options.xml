@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="build options floater" title="グリッドオプション">
+<floater name="build options floater" title="グリッドオプション" forme_creator_only="true">
 	<spinner label="単位（メートル）" name="GridResolution"/>
 	<spinner label="範囲（メートル）" name="GridDrawSize"/>
 	<spinner label="小数精度" name="DecimalPrecision"/>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="Import Collada" title="匯入場景">
+<floater name="Import Collada" title="匯入場景" forme_creator_only="true">
 	<text name="mesh count">
 		網格模型：[COUNT]
 	</text>

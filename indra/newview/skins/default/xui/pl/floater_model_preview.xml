@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<floater name="Model Preview" title="Przesyłanie modelu">
+<floater name="Model Preview" title="Przesyłanie modelu" forme_creator_only="true">
 <string name="status_parse_error">Błąd: Problem z parsowaniem modelu, zobacz log.</string>
 <string name="status_bind_shape_orientation">Uwaga: Macierz powiązań kształtu nie jest w standardowej orientacji X-forward.</string>
 <string name="status_material_mismatch">Błąd: Materiał nie jest podzbiorem modelu referencyjnego.</string>

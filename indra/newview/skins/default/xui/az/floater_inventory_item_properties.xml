@@ -18,21 +18,21 @@
 	<check_box label="Dəyişdir" name="CheckOwnerModify"/>
 	<check_box label="Köçürt" name="CheckOwnerCopy"/>
 	<check_box label="Paylaş" name="CheckOwnerTransfer"/>
-	<check_box label="İxrac" name="CheckOwnerExport"/>
+	<check_box label="İxrac" name="CheckOwnerExport" forme_creator_only="true"/>
 	<text name="AnyoneLabel">Hamı:</text>
-	<check_box label="Köçürt" name="CheckEveryoneCopy"/>
+	<check_box label="Köçürt" name="CheckEveryoneCopy" forme_creator_only="true"/>
 	<text name="GroupLabel">Qrup:</text>
-	<check_box label="Paylaş" name="CheckShareWithGroup"/>
+	<check_box label="Paylaş" name="CheckShareWithGroup" forme_creator_only="true"/>
 	<text name="NextOwnerLabel">Yeni sahibi:</text>
-	<check_box label="Dəyişdir" name="CheckNextOwnerModify"/>
-	<check_box label="Köçürt" name="CheckNextOwnerCopy"/>
-	<check_box label="Paylaş" name="CheckNextOwnerTransfer"/>
-	<check_box label="Satmaq" name="CheckPurchase"/>
-	<combo_box name="ComboBoxSaleType">
+	<check_box label="Dəyişdir" name="CheckNextOwnerModify" forme_creator_only="true"/>
+	<check_box label="Köçürt" name="CheckNextOwnerCopy" forme_creator_only="true"/>
+	<check_box label="Paylaş" name="CheckNextOwnerTransfer" forme_creator_only="true"/>
+	<check_box label="Satmaq" name="CheckPurchase" forme_creator_only="true"/>
+	<combo_box name="ComboBoxSaleType" forme_creator_only="true">
 		<combo_box.item label="Köçürtməsin" name="Copy"/>
 		<combo_box.item label="Məzmununu" name="Contents"/>
 		<combo_box.item label="Orijinal" name="Original"/>
 	</combo_box>
-	<spinner label="Qiymət:" name="Edit Cost"/>
+	<spinner label="Qiymət:" name="Edit Cost" forme_creator_only="true"/>
 	<text name="CurrencySymbol">L$</text>
 </floater>

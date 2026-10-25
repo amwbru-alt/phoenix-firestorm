@@ -193,7 +193,7 @@
        image_selected="PushButton_Selected_Press"
        tool_tip="Send an item to this resident"
        name="share_btn"
-       width="24">
+       width="24" forme_creator_only="true">
         <button.commit_callback
          function="IMSession.Menu.Action"
          parameter="share"/>

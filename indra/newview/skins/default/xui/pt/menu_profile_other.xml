@@ -10,7 +10,7 @@
 	<menu_item_call name="invite_to_group" label="Convidar para grupo..." />
 	<menu_item_call name="agent_permissions" label="Permissões do agente" />
 	<menu_item_call name="map" label="Mapa" />
-	<menu_item_call name="share" label="Compartilhar" />
+	<menu_item_call name="share" label="Compartilhar"  forme_creator_only="true"/>
 	<menu_item_call name="pay" label="Pagar" />
 	<menu_item_check name="block_unblock" label="Bloquear/Desbloquear" />
 	<menu_item_call name="copy_display_name" label="Copiar nome de exibição" />

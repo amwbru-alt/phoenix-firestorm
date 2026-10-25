@@ -68,3 +68,5 @@ test. Before distributing an installer, build the complete viewer and check the
 four roles plus a custom role, role removal, legacy/native prefix modes, both
 chat layouts, console URL resolution, region crossings and privacy restrictions
 against the configured server.
+
+Creator-only client controls are documented in [FORME_CREATOR_ACCESS.md](FORME_CREATOR_ACCESS.md).

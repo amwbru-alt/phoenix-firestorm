@@ -61,7 +61,7 @@
 	<spinner label="Alto" name="height_range_spin_0"/>
 	<spinner label="Alto" name="height_range_spin_2"/>
 	<button label="Scarica RAW terreno..." name="download_raw_btn" tool_tip="Disponibile solo per i proprietari del terreno, non per i manager"/>
-	<button label="Carica RAW terreno..." name="upload_raw_btn" tool_tip="Disponibile solo per i proprietari del terreno, non per i manager"/>
-	<button label="Bake terreno" name="bake_terrain_btn" tool_tip="Imposta il terreno corrente come punto medio per i limiti di innalzamento/abbassamento"/>
+	<button label="Carica RAW terreno..." name="upload_raw_btn" tool_tip="Disponibile solo per i proprietari del terreno, non per i manager" forme_creator_only="true"/>
+	<button label="Bake terreno" name="bake_terrain_btn" tool_tip="Imposta il terreno corrente come punto medio per i limiti di innalzamento/abbassamento" forme_creator_only="true"/>
 	<button label="Applica" name="apply_btn"/>
 </panel>

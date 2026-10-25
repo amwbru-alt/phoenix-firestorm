@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fscreatoraccess.h"
 
 #include "llappviewer.h"
 
@@ -5861,6 +5862,10 @@ void LLAppViewer::idle()
 {
     LL_PROFILE_ZONE_SCOPED_CATEGORY_APP;
     pingMainloopTimeout("Main:Idle");
+    // UI visibility is derived in memory, never from an editable debug setting.
+    const bool forme_creator = !gDisconnected && ForMeCreatorAccess::allowed();
+    LLView::setForMeCreatorAccess(forme_creator);
+
 
     // Update frame timers
     static LLTimer idle_timer;
@@ -6048,6 +6053,7 @@ void LLAppViewer::idle()
         //
         idleNameCache();
         idleNetwork();
+        LLView::setForMeCreatorAccess(!gDisconnected && ForMeCreatorAccess::allowed());
 
 
         // Check for away from keyboard, kick idle agents.

@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fscreatoraccess.h"
 
 #include "lltoolbrush.h"
 #include "lltoolselectland.h"
@@ -114,6 +115,8 @@ U8 LLToolBrushLand::getBrushIndex()
 void LLToolBrushLand::modifyLandAtPointGlobal(const LLVector3d &pos_global,
                                               MASK mask)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     S32 radioAction = gSavedSettings.getS32("RadioLandBrushAction");
 
     mLastAffectedRegions.clear();
@@ -193,6 +196,8 @@ void LLToolBrushLand::modifyLandAtPointGlobal(const LLVector3d &pos_global,
 
 void LLToolBrushLand::modifyLandInSelectionGlobal()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     if (LLViewerParcelMgr::getInstance()->selectionEmpty())
     {
         return;
@@ -641,6 +646,8 @@ void LLToolBrushLand::onMouseCaptureLost()
 // static
 void LLToolBrushLand::undo()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     for(region_list_t::iterator iter = mLastAffectedRegions.begin();
         iter != mLastAffectedRegions.end(); ++iter)
     {
@@ -657,6 +664,8 @@ void LLToolBrushLand::undo()
 /*
 void LLToolBrushLand::redo()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     for(region_list_t::iterator iter = mLastAffectedRegions.begin();
         iter != mLastAffectedRegions.end(); ++iter)
     {
@@ -672,6 +681,8 @@ void LLToolBrushLand::redo()
 // static
 bool LLToolBrushLand::canTerraformRegion(LLViewerRegion* regionp) const
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     if (!regionp) return false;
     if (regionp->canManageEstate()) return true;
     return !regionp->getRegionFlag(REGION_FLAGS_BLOCK_TERRAFORM);
@@ -680,6 +691,8 @@ bool LLToolBrushLand::canTerraformRegion(LLViewerRegion* regionp) const
 // static
 bool LLToolBrushLand::canTerraformParcel(LLViewerRegion* regionp) const
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     LLParcel* selected_parcel = LLViewerParcelMgr::getInstance()->getHoverParcel();
     bool is_terraform_allowed = false;
     if (selected_parcel)

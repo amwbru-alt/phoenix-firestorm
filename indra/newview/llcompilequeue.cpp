@@ -33,6 +33,7 @@
 
 
 #include "llviewerprecompiledheaders.h"
+#include "fscreatoraccess.h"
 
 #include "llcompilequeue.h"
 
@@ -246,6 +247,8 @@ void LLFloaterScriptQueue::addObject(const LLUUID& id, std::string name)
 
 bool LLFloaterScriptQueue::start()
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     LLNotificationsUtil::add("ConfirmScriptModify", LLSD(), LLSD(), boost::bind(&LLFloaterScriptQueue::onScriptModifyConfirmation, this, _1, _2));
     return true;
     /*
@@ -264,6 +267,8 @@ bool LLFloaterScriptQueue::start()
 
 bool LLFloaterScriptQueue::onScriptModifyConfirmation(const LLSD& notification, const LLSD& response)
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     S32 option = LLNotificationsUtil::getSelectedOption(notification, response);
     if (option != 0)// canceled
     {
@@ -450,6 +455,8 @@ void LLFloaterCompileQueue::processExperienceIdResults(LLSD result, LLUUID paren
 bool LLFloaterCompileQueue::processScript(LLHandle<LLFloaterCompileQueue> hfloater,
     const LLPointer<LLViewerObject> &object, LLInventoryObject* inventory, LLEventPump &pump)
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     if (LLApp::isExiting())
     {
         // Reply from coroutine came on shutdown
@@ -673,6 +680,8 @@ bool LLFloaterCompileQueue::processScript(LLHandle<LLFloaterCompileQueue> hfloat
 
 bool LLFloaterCompileQueue::startQueue()
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     LLViewerRegion* region = gAgent.getRegion();
     if (region)
     {
@@ -744,6 +753,8 @@ bool LLFloaterResetQueue::resetObjectScripts(LLHandle<LLFloaterScriptQueue> hflo
 
 bool LLFloaterResetQueue::startQueue()
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     // Bind the resetObjectScripts method into a QueueAction function and pass it
     // into the object queue processing coroutine.
     fnQueueAction_t fn = boost::bind(LLFloaterResetQueue::resetObjectScripts,
@@ -802,6 +813,8 @@ bool LLFloaterRunQueue::runObjectScripts(LLHandle<LLFloaterScriptQueue> hfloater
 
 bool LLFloaterRunQueue::startQueue()
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     LLHandle<LLFloaterScriptQueue> hFloater(getDerivedHandle<LLFloaterScriptQueue>());
     fnQueueAction_t fn = boost::bind(LLFloaterRunQueue::runObjectScripts, hFloater, _1, _2, _3);
 
@@ -859,6 +872,8 @@ bool LLFloaterNotRunQueue::stopObjectScripts(LLHandle<LLFloaterScriptQueue> hflo
 
 bool LLFloaterNotRunQueue::startQueue()
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     LLHandle<LLFloaterScriptQueue> hFloater(getDerivedHandle<LLFloaterScriptQueue>());
 
     fnQueueAction_t fn = boost::bind(&LLFloaterNotRunQueue::stopObjectScripts, hFloater, _1, _2, _3);
@@ -916,6 +931,8 @@ bool LLFloaterDeleteQueue::deleteObjectScripts(LLHandle<LLFloaterScriptQueue> hf
 
 bool LLFloaterDeleteQueue::startQueue()
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     LLHandle<LLFloaterScriptQueue> hFloater(getDerivedHandle<LLFloaterScriptQueue>());
 
     fnQueueAction_t fn = boost::bind(&LLFloaterDeleteQueue::deleteObjectScripts, hFloater, _1, _2, _3);

@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fscreatoraccess.h"
 #include "llinventorybridge.h"
 
 // external projects
@@ -1791,6 +1792,8 @@ void LLInvFVBridge::removeObject(LLInventoryModel *model, const LLUUID &uuid)
 
 bool LLInvFVBridge::canShare() const
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     bool can_share = false;
 
     if (isAgentInventory())

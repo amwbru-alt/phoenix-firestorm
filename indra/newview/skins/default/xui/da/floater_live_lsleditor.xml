@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="script ed float" title="SCRIPT: NYT SCRIPT">
+<floater name="script ed float" title="SCRIPT: NYT SCRIPT" forme_creator_only="true">
 	<floater.string name="not_allowed">
 		Du kan ikke se eller redigere dette script, da det er sat til &quot;no copy&quot;. Du skal bruge fulde rettigheder for at kunne se og redigere et script i dette objekt.
 	</floater.string>

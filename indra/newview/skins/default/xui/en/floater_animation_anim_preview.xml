@@ -6,7 +6,7 @@
  name="Anim Preview"
  help_topic="animation_anim_preview"
  title="Animation.Anim"
- width="300">
+ width="300" forme_creator_only="true">
     <text
      type="string"
      length="1"

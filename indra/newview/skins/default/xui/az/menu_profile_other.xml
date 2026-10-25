@@ -10,7 +10,7 @@
 	<menu_item_call label="Qrupa dəvət et..." name="invite_to_group" />
 	<menu_item_call label="İcazələr" name="agent_permissions" />
 	<menu_item_call label="Xəritə" name="map" />
-	<menu_item_call label="Paylaş" name="share" />
+	<menu_item_call label="Paylaş" name="share"  forme_creator_only="true"/>
 	<menu_item_call label="Ödə" name="pay" />
 	<menu_item_check label="Blokla/Blokdan çıxart" name="block_unblock" />
 	<menu_item_call label="Göstərilən adı köçürt" name="copy_display_name" />

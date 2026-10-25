@@ -262,7 +262,7 @@
      right="-1"
      height="24"
      width="24"
-     left_pad="2"/>
+     left_pad="2" forme_creator_only="true"/>
 
     <icon
      tool_tip="Friend can not edit my objects"
@@ -276,7 +276,7 @@
      right="-1"
      height="24"
      width="24"
-     left_pad="2"/>
+     left_pad="2" forme_creator_only="true"/>
 
     <text
      top_pad="4"

@@ -188,18 +188,18 @@
 		</menu>
 		<menu_item_check label="Renderuj tylko znajomych" name="Render Friends Only"/>
 	</menu>
-	<menu label="Buduj" name="BuildTools">
-		<menu_item_check label="Pokaż narzędzia budowania" name="Show Build Tools"/>
+	<menu label="Buduj" name="BuildTools" forme_creator_only="true">
+		<menu_item_check label="Pokaż narzędzia budowania" name="Show Build Tools" forme_creator_only="true"/>
 		<menu label="Wybierz narzędzie budowania" name="Select Tool">
-			<menu_item_call label="Narzędzie centrowania" name="Focus"/>
-			<menu_item_call label="Narzędzie ruchu" name="Move"/>
-			<menu_item_call label="Narzędzie edycji" name="Edit"/>
-			<menu_item_call label="Narzędzie tworzenia" name="Create"/>
-			<menu_item_call label="Narzędzie terenu" name="Land"/>
+			<menu_item_call label="Narzędzie centrowania" name="Focus" forme_creator_only="true"/>
+			<menu_item_call label="Narzędzie ruchu" name="Move" forme_creator_only="true"/>
+			<menu_item_call label="Narzędzie edycji" name="Edit" forme_creator_only="true"/>
+			<menu_item_call label="Narzędzie tworzenia" name="Create" forme_creator_only="true"/>
+			<menu_item_call label="Narzędzie terenu" name="Land" forme_creator_only="true"/>
 		</menu>
-		<menu_item_call label="Scal" name="Link"/>
-		<menu_item_call label="Rozłącz" name="Unlink"/>
-		<menu_item_check label="Edytuj części pojedynczo" name="Edit Linked Parts"/>
+		<menu_item_call label="Scal" name="Link" forme_creator_only="true"/>
+		<menu_item_call label="Rozłącz" name="Unlink" forme_creator_only="true"/>
+		<menu_item_check label="Edytuj części pojedynczo" name="Edit Linked Parts" forme_creator_only="true"/>
 		<menu label="Wybierz elementy" name="Select Elements">
 			<menu_item_call label="Wybierz następną część lub stronę" name="Select Next Part or Face"/>
 			<menu_item_call label="Zaznacz poprzednią część lub stronę" name="Select Previous Part or Face"/>
@@ -211,24 +211,24 @@
 		<menu label="Obiekt" name="Object">
 			<menu_item_call label="Kup" name="Menu Object Buy"/>
 			<menu_item_call label="Weź" name="Menu Object Take"/>
-			<menu_item_call label="Weź kopię" name="Take Copy"/>
-			<menu_item_call label="Duplikuj" name="Duplicate"/>
-			<menu_item_call label="Edytor cząsteczek" name="Menu Object Edit Particles"/>
-			<menu_item_call label="Zapisz do zawartości obiektu" name="Save Object Back to Object Contents"/>
-			<menu_item_call label="Zwróć obiekt" name="Return Object back to Owner"/>
-			<menu label="Zapisz jako" name="Export Menu">
-				<menu_item_call label="Kopia zapasowa" name="Backup"/>
+			<menu_item_call label="Weź kopię" name="Take Copy" forme_creator_only="true"/>
+			<menu_item_call label="Duplikuj" name="Duplicate" forme_creator_only="true"/>
+			<menu_item_call label="Edytor cząsteczek" name="Menu Object Edit Particles" forme_creator_only="true"/>
+			<menu_item_call label="Zapisz do zawartości obiektu" name="Save Object Back to Object Contents" forme_creator_only="true"/>
+			<menu_item_call label="Zwróć obiekt" name="Return Object back to Owner" forme_creator_only="true"/>
+			<menu label="Zapisz jako" name="Export Menu" forme_creator_only="true">
+				<menu_item_call label="Kopia zapasowa" name="Backup" forme_creator_only="true"/>
 			</menu>
 		</menu>
 		<menu label="Skrypty" name="Scripts">
 			<menu_item_call label="Ostrzeżenia/błędy skryptów" name="Script Debug"/>
 			<menu_item_call label="Info o skryptach (Licznik)" name="Script Info"/>
-			<menu_item_call label="Zrekompiluj skrypty (Mono)" name="Mono"/>
-			<menu_item_call label="Zrekompiluj skrypty (LSL)" name="LSL"/>
-			<menu_item_call label="Reset skryptów" name="Reset Scripts"/>
-			<menu_item_call label="Przestaw skrypty na stan Włączony" name="Set Scripts to Running"/>
-			<menu_item_call label="Przestaw skrypty na stan Wyłączony" name="Set Scripts to Not Running"/>
-			<menu_item_call label="Usuń skrypty z zaznaczenia" name="Remove Scripts From Selection"/>
+			<menu_item_call label="Zrekompiluj skrypty (Mono)" name="Mono" forme_creator_only="true"/>
+			<menu_item_call label="Zrekompiluj skrypty (LSL)" name="LSL" forme_creator_only="true"/>
+			<menu_item_call label="Reset skryptów" name="Reset Scripts" forme_creator_only="true"/>
+			<menu_item_call label="Przestaw skrypty na stan Włączony" name="Set Scripts to Running" forme_creator_only="true"/>
+			<menu_item_call label="Przestaw skrypty na stan Wyłączony" name="Set Scripts to Not Running" forme_creator_only="true"/>
+			<menu_item_call label="Usuń skrypty z zaznaczenia" name="Remove Scripts From Selection" forme_creator_only="true"/>
 		</menu>
 		<menu label="Odnajdywanie ścieżek" name="Pathfinding">
 			<menu_item_call label="Obiekty w regionie" name="pathfinding_linksets_menu_item"/>
@@ -264,19 +264,19 @@
 				<menu_item_check label="Najniższy" name="Lowest lod setting" />
 			</menu>
 			<menu_item_check label="Przyciągaj do siatki" name="Snap to Grid"/>
-			<menu_item_call label="Przeciągnij obiekt XY do siatki" name="Snap Object XY to Grid"/>
+			<menu_item_call label="Przeciągnij obiekt XY do siatki" name="Snap Object XY to Grid" forme_creator_only="true"/>
 			<menu_item_call label="Wybierz zaznaczenie siatki" name="Use Selection for Grid"/>
-			<menu_item_call label="Opcje siatki..." name="Grid Options"/>
+			<menu_item_call label="Opcje siatki..." name="Grid Options" forme_creator_only="true"/>
 			<menu_item_call label="Ustaw domyślne uprawnienia..." name="Set default permissions"/>
 		</menu>
-		<menu label="Prześlij" name="Upload">
-			<menu_item_call label="Teksturę..." name="Upload Image"/>
-			<menu_item_call label="Dźwięk ([COST]L$)..." name="Upload Sound"/>
-			<menu_item_call label="Animację ([COST]L$)..." name="Upload Animation"/>
-			<menu_item_call label="Model meszowy..." name="Upload Model"/>
-			<menu_item_call label="Materiał..." name="Upload Material" />
-			<menu_item_call label="Zbiór wielu plików..." name="Bulk Upload"/>
-			<menu_item_call label="Importuj zbiór części..." name="import linkset"/>
+		<menu label="Prześlij" name="Upload" forme_creator_only="true">
+			<menu_item_call label="Teksturę..." name="Upload Image" forme_creator_only="true"/>
+			<menu_item_call label="Dźwięk ([COST]L$)..." name="Upload Sound" forme_creator_only="true"/>
+			<menu_item_call label="Animację ([COST]L$)..." name="Upload Animation" forme_creator_only="true"/>
+			<menu_item_call label="Model meszowy..." name="Upload Model" forme_creator_only="true"/>
+			<menu_item_call label="Materiał..." name="Upload Material"  forme_creator_only="true"/>
+			<menu_item_call label="Zbiór wielu plików..." name="Bulk Upload" forme_creator_only="true"/>
+			<menu_item_call label="Importuj zbiór części..." name="import linkset" forme_creator_only="true"/>
 		</menu>
 		<menu_item_call label="Lokalny mesz" name="local_mesh" />
 		<menu_item_call label="Cofnij" name="Undo"/>
@@ -488,8 +488,8 @@
 		<menu name="GLTF">
 			<menu_item_call label="Otwórz..." name="Open..." />
 			<menu_item_call label="Zapisz jako..." name="Save As..." />
-			<menu_item_call label="Prześlij..." name="Upload..." />
-			<menu_item_call label="Edytuj..." name="Edit..." />
+			<menu_item_call label="Prześlij..." name="Upload..."  forme_creator_only="true"/>
+			<menu_item_call label="Edytuj..." name="Edit..."  forme_creator_only="true"/>
 		</menu>
 		<menu label="Wideo" name="Video" />
 		<menu label="Testy renderowania" name="Render Tests">
@@ -694,12 +694,12 @@
 	</menu>
 	<menu label="Administrator" name="Admin">
 		<menu label="Obiekt" name="AdminObject">
-			<menu_item_call label="Weź kopię" name="Admin Take Copy"/>
-			<menu_item_call label="Wymuś ustawienie właściciela na mnie" name="Force Owner To Me"/>
-			<menu_item_call label="Wymuś ustawienie właściciela na mnie, ale liberalnie" name="Force Owner Permissive"/>
-			<menu_item_call label="Usuń" name="Delete"/>
-			<menu_item_call label="Zablokuj" name="Lock"/>
-			<menu_item_call label="Pobierz ID zasobów danych (assetów)" name="Get Assets IDs"/>
+			<menu_item_call label="Weź kopię" name="Admin Take Copy" forme_creator_only="true"/>
+			<menu_item_call label="Wymuś ustawienie właściciela na mnie" name="Force Owner To Me" forme_creator_only="true"/>
+			<menu_item_call label="Wymuś ustawienie właściciela na mnie, ale liberalnie" name="Force Owner Permissive" forme_creator_only="true"/>
+			<menu_item_call label="Usuń" name="Delete" forme_creator_only="true"/>
+			<menu_item_call label="Zablokuj" name="Lock" forme_creator_only="true"/>
+			<menu_item_call label="Pobierz ID zasobów danych (assetów)" name="Get Assets IDs" forme_creator_only="true"/>
 		</menu>
 		<menu label="Działka" name="Parcel">
 			<menu_item_call label="Wymuś ustawienie właściciela na mnie" name="Owner To Me"/>

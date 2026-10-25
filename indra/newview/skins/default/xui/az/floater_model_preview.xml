@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="Model Preview" title="Model yüklənməsi">
+<floater name="Model Preview" title="Model yüklənməsi" forme_creator_only="true">
   <string name="status_parse_error">Xəta: DAE faylının təhlilində problem var - Ətraflı məlumatlar üçün jurnalı baxın.</string>
   <string name="status_bind_shape_orientation">Xəbərdarlıq: Matrix formu standart olaraq X koordinatına uyğun deyil.</string>
   <string name="status_material_mismatch">Xəta: Modelin materialı standart modeldə yoxdur.</string>

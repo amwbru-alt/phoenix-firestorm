@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fscreatoraccess.h"
 #include "llgiveinventory.h"
 
 // library includes
@@ -124,6 +125,8 @@ bool LLUncopyableItems::operator()(LLInventoryCategory* cat,
 // static
 bool LLGiveInventory::isInventoryGiveAcceptable(const LLInventoryItem* item)
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     if (!item) return false;
 
     if (!isAgentAvatarValid()) return false;
@@ -156,6 +159,8 @@ bool LLGiveInventory::isInventoryGiveAcceptable(const LLInventoryItem* item)
 // static
 bool LLGiveInventory::isInventoryGroupGiveAcceptable(const LLInventoryItem* item)
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     if (!item) return false;
 
     if (!isAgentAvatarValid()) return false;
@@ -193,6 +198,8 @@ bool LLGiveInventory::doGiveInventoryItem(const LLUUID& to_agent,
                                       const LLUUID& im_session_id/* = LLUUID::null*/)
 
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     bool res = true;
     LL_INFOS() << "LLGiveInventory::giveInventory()" << LL_ENDL;
     if (!isInventoryGiveAcceptable(item))
@@ -231,6 +238,8 @@ bool LLGiveInventory::doGiveInventoryCategory(const LLUUID& to_agent,
                                               const std::string& notification_name)
 
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     if (!cat)
     {
         return false;
@@ -430,6 +439,8 @@ bool LLGiveInventory::commitGiveInventoryItem(const LLUUID& to_agent,
                                                 const LLUUID& im_session_id)
 // [/RLVa:KB]
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
 //  if (!item) return;
 // [RLVa:KB] - @share
     if (!item) return false;
@@ -563,6 +574,8 @@ bool LLGiveInventory::commitGiveInventoryCategory(const LLUUID& to_agent,
                                                     const LLUUID& im_session_id)
 
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     if (!cat)
     {
         return false;

@@ -14,7 +14,7 @@
 	<menu_item_call label="放大" name="Zoom In" />
 	<menu_item_call label="地圖" name="Map" />
 	<menu_item_call label="追蹤" name="track" />
-	<menu_item_call label="分享" name="Share" />
+	<menu_item_call label="分享" name="Share"  forme_creator_only="true"/>
 	<menu_item_call label="支付" name="Pay" />
 	<menu_item_call label="複製名稱" name="copy name" />
 	<menu_item_call label="複製URL" name="copy url" />

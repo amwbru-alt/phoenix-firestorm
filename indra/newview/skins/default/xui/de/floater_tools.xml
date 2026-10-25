@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="toolbox floater" short_title="Bau-Werkzeuge" title="">
+<floater name="toolbox floater" short_title="Bau-Werkzeuge" title="" forme_creator_only="true">
 	<floater.string name="grid_screen_text">
 		Bildschirm
 	</floater.string>

@@ -174,18 +174,18 @@
 		</menu>
 		<menu_item_check label="僅彩現好友" name="Render Friends Only" />
 	</menu>
-	<menu label="建造" name="BuildTools">
-		<menu_item_check label="建造" name="Show Build Tools" />
+	<menu label="建造" name="BuildTools" forme_creator_only="true">
+		<menu_item_check label="建造" name="Show Build Tools"  forme_creator_only="true"/>
 		<menu label="選擇建造工具" name="Select Tool">
-			<menu_item_call label="聚焦工具" name="Focus" />
-			<menu_item_call label="移動工具" name="Move" />
-			<menu_item_call label="編輯工具" name="Edit" />
-			<menu_item_call label="創造工具" name="Create" />
-			<menu_item_call label="土地工具" name="Land" />
+			<menu_item_call label="聚焦工具" name="Focus"  forme_creator_only="true"/>
+			<menu_item_call label="移動工具" name="Move"  forme_creator_only="true"/>
+			<menu_item_call label="編輯工具" name="Edit"  forme_creator_only="true"/>
+			<menu_item_call label="創造工具" name="Create"  forme_creator_only="true"/>
+			<menu_item_call label="土地工具" name="Land"  forme_creator_only="true"/>
 		</menu>
-		<menu_item_call label="聯結" name="Link" />
-		<menu_item_call label="取消聯結" name="Unlink" />
-		<menu_item_check label="編輯聯結部件" name="Edit Linked Parts" />
+		<menu_item_call label="聯結" name="Link"  forme_creator_only="true"/>
+		<menu_item_call label="取消聯結" name="Unlink"  forme_creator_only="true"/>
+		<menu_item_check label="編輯聯結部件" name="Edit Linked Parts"  forme_creator_only="true"/>
 		<menu label="選擇內容" name="Select Elements">
 			<menu_item_call label="選擇下一部件或面" name="Select Next Part or Face" />
 			<menu_item_call label="選擇上一部件或面" name="Select Previous Part or Face" />
@@ -197,25 +197,25 @@
 		<menu label="物件" name="Object">
 			<menu_item_call label="購買" name="Menu Object Buy" />
 			<menu_item_call label="取得" name="Menu Object Take" />
-			<menu_item_call label="取得副本" name="Take Copy" />
-			<menu_item_call label="建立副本" name="Duplicate" />
-			<menu_item_call label="編輯粒子" name="Menu Object Edit Particles" />
-			<menu_item_call label="回存到物件內容" name="Save Object Back to Object Contents" />
-			<menu_item_call label="退回物件" name="Return Object back to Owner" />
-			<menu label="另存為" name="Export Menu">
-				<menu_item_call label="備份" name="Backup" />
-				<menu_item_call label="Collada" name="Collada" />
+			<menu_item_call label="取得副本" name="Take Copy"  forme_creator_only="true"/>
+			<menu_item_call label="建立副本" name="Duplicate"  forme_creator_only="true"/>
+			<menu_item_call label="編輯粒子" name="Menu Object Edit Particles"  forme_creator_only="true"/>
+			<menu_item_call label="回存到物件內容" name="Save Object Back to Object Contents"  forme_creator_only="true"/>
+			<menu_item_call label="退回物件" name="Return Object back to Owner"  forme_creator_only="true"/>
+			<menu label="另存為" name="Export Menu" forme_creator_only="true">
+				<menu_item_call label="備份" name="Backup"  forme_creator_only="true"/>
+				<menu_item_call label="Collada" name="Collada"  forme_creator_only="true"/>
 			</menu>
 		</menu>
 		<menu label="指令碼" name="Scripts">
 			<menu_item_call label="指令碼警告/錯誤…" name="Script Debug" />
 			<menu_item_call label="指令碼資訊 (計數器)" name="Script Info" />
-			<menu_item_call label="重新編譯指令碼（Mono）" name="Mono" />
-			<menu_item_call label="重新編譯指令碼（LSL）" name="LSL" />
-			<menu_item_call label="重設指令碼" name="Reset Scripts" />
-			<menu_item_call label="運行指令碼" name="Set Scripts to Running" />
-			<menu_item_call label="停止指令碼" name="Set Scripts to Not Running" />
-			<menu_item_call label="從選擇中移除指令碼" name="Remove Scripts From Selection" />
+			<menu_item_call label="重新編譯指令碼（Mono）" name="Mono"  forme_creator_only="true"/>
+			<menu_item_call label="重新編譯指令碼（LSL）" name="LSL"  forme_creator_only="true"/>
+			<menu_item_call label="重設指令碼" name="Reset Scripts"  forme_creator_only="true"/>
+			<menu_item_call label="運行指令碼" name="Set Scripts to Running"  forme_creator_only="true"/>
+			<menu_item_call label="停止指令碼" name="Set Scripts to Not Running"  forme_creator_only="true"/>
+			<menu_item_call label="從選擇中移除指令碼" name="Remove Scripts From Selection"  forme_creator_only="true"/>
 		</menu>
 		<menu label="尋路" name="Pathfinding">
 			<menu_item_call label="區域物件" name="pathfinding_linksets_menu_item" />
@@ -251,19 +251,19 @@
 				<menu_item_check label="最低" name="Lowest lod setting" />
 			</menu>
 			<menu_item_check label="對齊到網格" name="Snap to Grid" />
-			<menu_item_call label="將物件XY對齊到網格" name="Snap Object XY to Grid" />
+			<menu_item_call label="將物件XY對齊到網格" name="Snap Object XY to Grid"  forme_creator_only="true"/>
 			<menu_item_call label="使用選區為網格" name="Use Selection for Grid" />
-			<menu_item_call label="網格選項" name="Grid Options" />
+			<menu_item_call label="網格選項" name="Grid Options"  forme_creator_only="true"/>
 			<menu_item_call label="設定預設權限" name="Set default permissions" />
 		</menu>
-		<menu label="上傳" name="Upload">
-			<menu_item_call label="圖像" name="Upload Image" />
-			<menu_item_call label="聲音（[COST] L$）" name="Upload Sound" />
-			<menu_item_call label="動畫（[COST] L$）" name="Upload Animation" />
-			<menu_item_call label="網格模型" name="Upload Model" />
-			<menu_item_call label="材質" name="Upload Material" />
-			<menu_item_call label="批次" name="Bulk Upload" />
-			<menu_item_call label="匯入聯結集" name="import linkset" />
+		<menu label="上傳" name="Upload" forme_creator_only="true">
+			<menu_item_call label="圖像" name="Upload Image"  forme_creator_only="true"/>
+			<menu_item_call label="聲音（[COST] L$）" name="Upload Sound"  forme_creator_only="true"/>
+			<menu_item_call label="動畫（[COST] L$）" name="Upload Animation"  forme_creator_only="true"/>
+			<menu_item_call label="網格模型" name="Upload Model"  forme_creator_only="true"/>
+			<menu_item_call label="材質" name="Upload Material"  forme_creator_only="true"/>
+			<menu_item_call label="批次" name="Bulk Upload"  forme_creator_only="true"/>
+			<menu_item_call label="匯入聯結集" name="import linkset"  forme_creator_only="true"/>
 		</menu>
 		<menu_item_call label="本地網格模型" name="local_mesh" />
 		<menu_item_call label="復原" name="Undo" />
@@ -463,8 +463,8 @@
 		<menu label="GLTF" name="GLTF">
 			<menu_item_call label="打開..." name="Open..." />
 			<menu_item_call label="另存為..." name="Save As..." />
-			<menu_item_call label="上傳..." name="Upload..." />
-			<menu_item_call label="編輯..." name="Edit..." />
+			<menu_item_call label="上傳..." name="Upload..."  forme_creator_only="true"/>
+			<menu_item_call label="編輯..." name="Edit..."  forme_creator_only="true"/>
 		</menu>
 		<menu label="解析度" name="Video">
 			<menu_item_call label="1080x1920" name="1080x1920" />
@@ -673,12 +673,12 @@
 	</menu>
 	<menu label="管理員" name="Admin">
 		<menu label="物件" name="AdminObject">
-			<menu_item_call label="取得副本" name="Admin Take Copy" />
-			<menu_item_call label="將所有者強設為我自己" name="Force Owner To Me" />
-			<menu_item_call label="強設為「準許所有者」" name="Force Owner Permissive" />
-			<menu_item_call label="刪除" name="Delete" />
-			<menu_item_call label="鎖定" name="Lock" />
-			<menu_item_call label="取得資源 ID" name="Get Assets IDs" />
+			<menu_item_call label="取得副本" name="Admin Take Copy"  forme_creator_only="true"/>
+			<menu_item_call label="將所有者強設為我自己" name="Force Owner To Me"  forme_creator_only="true"/>
+			<menu_item_call label="強設為「準許所有者」" name="Force Owner Permissive"  forme_creator_only="true"/>
+			<menu_item_call label="刪除" name="Delete"  forme_creator_only="true"/>
+			<menu_item_call label="鎖定" name="Lock"  forme_creator_only="true"/>
+			<menu_item_call label="取得資源 ID" name="Get Assets IDs"  forme_creator_only="true"/>
 		</menu>
 		<menu label="地塊" name="Parcel">
 			<menu_item_call label="將所有者強設為我自己" name="Owner To Me" />

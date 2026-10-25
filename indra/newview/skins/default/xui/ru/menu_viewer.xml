@@ -214,14 +214,14 @@
 		<menu_item_check label="Показывать только друзей" name="Render Friends Only"/>
 	</menu>
 
-	<menu label="Строить" name="BuildTools">
-		<menu_item_check label="Строить" name="Show Build Tools"/>
+	<menu label="Строить" name="BuildTools" forme_creator_only="true">
+		<menu_item_check label="Строить" name="Show Build Tools" forme_creator_only="true"/>
 		<menu label="Выбор инструмента строительства" name="Select Tool">
-			<menu_item_call label="Фокус" name="Focus"/>
-			<menu_item_call label="Двигать" name="Move"/>
-			<menu_item_call label="Редактировать" name="Edit"/>
-			<menu_item_call label="Создать" name="Create"/>
-			<menu_item_call label="Править землю" name="Land"/>
+			<menu_item_call label="Фокус" name="Focus" forme_creator_only="true"/>
+			<menu_item_call label="Двигать" name="Move" forme_creator_only="true"/>
+			<menu_item_call label="Редактировать" name="Edit" forme_creator_only="true"/>
+			<menu_item_call label="Создать" name="Create" forme_creator_only="true"/>
+			<menu_item_call label="Править землю" name="Land" forme_creator_only="true"/>
 		</menu>
 		<menu label="Выберите элементы" name="Select Elements">
 			<menu_item_call label="Выбрать следующую часть или грань" name="Select Next Part or Face"/>
@@ -229,9 +229,9 @@
 			<menu_item_call label="Включать следующую часть или грань" name="Include Next Part or Face"/>
 			<menu_item_call label="Включать предыдущую часть или грань" name="Include Previous Part or Face"/>
 		</menu>
-		<menu_item_call label="Соеденить" name="Link"/>
-		<menu_item_call label="Разделить" name="Unlink"/>
-		<menu_item_check label="Править соединенные части" name="Edit Linked Parts"/>
+		<menu_item_call label="Соеденить" name="Link" forme_creator_only="true"/>
+		<menu_item_call label="Разделить" name="Unlink" forme_creator_only="true"/>
+		<menu_item_check label="Править соединенные части" name="Edit Linked Parts" forme_creator_only="true"/>
 		<menu label="Выбрать соединенные части" name="Select Linked Parts">
 			<menu_item_call label="Выбрать следующую часть" name="Select Next Part"/>
 			<menu_item_call label="Выбрать предыдущую часть" name="Select Previous Part"/>
@@ -243,27 +243,27 @@
 		<menu label="Объект" name="Object">
 			<menu_item_call label="Купить" name="Menu Object Buy"/>
 			<menu_item_call label="Взять" name="Menu Object Take"/>
-			<menu_item_call label="Взять копию" name="Take Copy"/>
-			<menu_item_call label="Дублировать" name="Duplicate"/>
-			<menu_item_call label="Править частицы" name="Menu Object Edit Particles"/>
+			<menu_item_call label="Взять копию" name="Take Copy" forme_creator_only="true"/>
+			<menu_item_call label="Дублировать" name="Duplicate" forme_creator_only="true"/>
+			<menu_item_call label="Править частицы" name="Menu Object Edit Particles" forme_creator_only="true"/>
 			<menu_item_call label="Сохранить с возвращением в инвентарь" name="Save Object Back to My Inventory"/>
 			<menu_item_call label="Сохранить объект в инвентаре" name="Save Object Back to My Inventory"/>
-			<menu_item_call label="Сохранить в содержимом объекта" name="Save Object Back to Object Contents"/>
-			<menu_item_call label="Вернуть объект" name="Return Object back to Owner"/>
-			<menu label="Сохранить как" name="Export Menu">
-				<menu_item_call label="Резервную копию" name="Backup"/>
-				<menu_item_call label="Collada" name="Collada"/>
+			<menu_item_call label="Сохранить в содержимом объекта" name="Save Object Back to Object Contents" forme_creator_only="true"/>
+			<menu_item_call label="Вернуть объект" name="Return Object back to Owner" forme_creator_only="true"/>
+			<menu label="Сохранить как" name="Export Menu" forme_creator_only="true">
+				<menu_item_call label="Резервную копию" name="Backup" forme_creator_only="true"/>
+				<menu_item_call label="Collada" name="Collada" forme_creator_only="true"/>
 			</menu>
 		</menu>
 		<menu label="Скрипты" name="Scripts">
 			<menu_item_call label="Показать предупреждения/ошибки скриптов" name="Script Debug"/>
 			<menu_item_call label="Информация о скриптах (Счетчик)" name="Script Info"/>
-			<menu_item_call label="Перекомпилировать скрипты (Моно)" name="Mono"/>
-			<menu_item_call label="Перекомпилировать скрипты (LSL)" name="LSL"/>
-			<menu_item_call label="Сбросить скрипты" name="Reset Scripts"/>
-			<menu_item_call label="Запустить скрипты" name="Set Scripts to Running"/>
-			<menu_item_call label="Остановить скрипты" name="Set Scripts to Not Running"/>
-			<menu_item_call label="Удалить скрипты в выбранном" name="Remove Scripts From Selection"/>
+			<menu_item_call label="Перекомпилировать скрипты (Моно)" name="Mono" forme_creator_only="true"/>
+			<menu_item_call label="Перекомпилировать скрипты (LSL)" name="LSL" forme_creator_only="true"/>
+			<menu_item_call label="Сбросить скрипты" name="Reset Scripts" forme_creator_only="true"/>
+			<menu_item_call label="Запустить скрипты" name="Set Scripts to Running" forme_creator_only="true"/>
+			<menu_item_call label="Остановить скрипты" name="Set Scripts to Not Running" forme_creator_only="true"/>
+			<menu_item_call label="Удалить скрипты в выбранном" name="Remove Scripts From Selection" forme_creator_only="true"/>
 		</menu>
 		<menu label="Поиск пути" name="Pathfinding">
 			<menu_item_call label="Группы каналов..." name="pathfinding_linksets_menu_item"/>
@@ -298,19 +298,19 @@
 				<menu_item_check label="Самый низкий" name="Lowest lod setting"/>
 			</menu>
 			<menu_item_check label="Привязка к сетке" name="Snap to Grid"/>
-			<menu_item_call label="Привязка XY объекта к сетке" name="Snap Object XY to Grid"/>
+			<menu_item_call label="Привязка XY объекта к сетке" name="Snap Object XY to Grid" forme_creator_only="true"/>
 			<menu_item_call label="Использовать выбранное для сетки" name="Use Selection for Grid"/>
-			<menu_item_call label="Параметры сетки..." name="Grid Options"/>
+			<menu_item_call label="Параметры сетки..." name="Grid Options" forme_creator_only="true"/>
 			<menu_item_call label="Установить разрешения по умолчанию..." name="Set default permissions"/>
 		</menu>
-		<menu label="Загрузить" name="Upload">
-			<menu_item_call label="Изображение..." name="Upload Image"/>
-			<menu_item_call label="Звук (L$[COST])..." name="Upload Sound"/>
-			<menu_item_call label="Анимацию (L$[COST])..." name="Upload Animation"/>
-			<menu_item_call label="Меш модель..." name="Upload Model"/>
-			<menu_item_call label="Материалы..." name="Upload Material"/>
-			<menu_item_call label="Несколько..." name="Bulk Upload"/>
-			<menu_item_call label="Импортировать..." name="import linkset"/>
+		<menu label="Загрузить" name="Upload" forme_creator_only="true">
+			<menu_item_call label="Изображение..." name="Upload Image" forme_creator_only="true"/>
+			<menu_item_call label="Звук (L$[COST])..." name="Upload Sound" forme_creator_only="true"/>
+			<menu_item_call label="Анимацию (L$[COST])..." name="Upload Animation" forme_creator_only="true"/>
+			<menu_item_call label="Меш модель..." name="Upload Model" forme_creator_only="true"/>
+			<menu_item_call label="Материалы..." name="Upload Material" forme_creator_only="true"/>
+			<menu_item_call label="Несколько..." name="Bulk Upload" forme_creator_only="true"/>
+			<menu_item_call label="Импортировать..." name="import linkset" forme_creator_only="true"/>
 		</menu>
 		<menu_item_call label="Локальный Меш" name="local_mesh"/>
 		<menu_item_call label="Отменить" name="Undo"/>
@@ -448,7 +448,7 @@
 		<menu_item_check label="Сглаживание мыши" name="Mouse Smoothing"/>
 		<menu_item_call label="Отменить добавление элементов управления кнопками" name="Release Keys"/>
 		<menu label="Горячие клавиши" name="Shortcuts">
-			<menu_item_call label="Загрузить изображение ([COST])..." name="Upload Image"/>
+			<menu_item_call label="Загрузить изображение ([COST])..." name="Upload Image" forme_creator_only="true"/>
 			<menu_item_check label="Поиск" name="Search"/>
 			<menu_item_check label="Телепортация двойным нажатием" name="DoubleClick Teleport"/>
 			<menu_item_check label="Всегда бежать" name="Always Run"/>
@@ -526,8 +526,8 @@
 		<menu label="GLTF" name="GLTF">
 			<menu_item_call label="Открыть..." name="Open..."/>
 			<menu_item_call label="Сохранить как..." name="Save As..."/>
-			<menu_item_call label="Загрузить..." name="Upload..."/>
-			<menu_item_call label="Редактировать..." name="Edit..."/>
+			<menu_item_call label="Загрузить..." name="Upload..." forme_creator_only="true"/>
+			<menu_item_call label="Редактировать..." name="Edit..." forme_creator_only="true"/>
 		</menu>
 		<menu label="Видео" name="Video"/>
 		<menu label="Тестирование прорисовки" name="Render Tests">
@@ -737,12 +737,12 @@
 	</menu>
 	<menu label="Администратор" name="Admin">
 		<menu label="Объект" name="AdminObject">
-			<menu_item_call label="Получить копию" name="Admin Take Copy"/>
-			<menu_item_call label="Назначить меня владельцем" name="Force Owner To Me"/>
-			<menu_item_call label="Назначить полноправным владельцем" name="Force Owner Permissive"/>
-			<menu_item_call label="Удалить" name="Delete"/>
-			<menu_item_call label="Заблокировать" name="Lock"/>
-			<menu_item_call label="Получить ID активов" name="Get Assets IDs"/>
+			<menu_item_call label="Получить копию" name="Admin Take Copy" forme_creator_only="true"/>
+			<menu_item_call label="Назначить меня владельцем" name="Force Owner To Me" forme_creator_only="true"/>
+			<menu_item_call label="Назначить полноправным владельцем" name="Force Owner Permissive" forme_creator_only="true"/>
+			<menu_item_call label="Удалить" name="Delete" forme_creator_only="true"/>
+			<menu_item_call label="Заблокировать" name="Lock" forme_creator_only="true"/>
+			<menu_item_call label="Получить ID активов" name="Get Assets IDs" forme_creator_only="true"/>
 		</menu>
 		<menu label="Участок" name="Parcel">
 			<menu_item_call label="Назначить меня владельцем" name="Owner To Me"/>
