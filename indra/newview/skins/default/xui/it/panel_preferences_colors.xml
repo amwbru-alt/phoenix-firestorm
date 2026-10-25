@@ -111,7 +111,7 @@
 		</panel>
 		<panel name="client_tags_panel">
 			<text name="client_tags_colors">
-				Colora targhette client: (solo OpenSim/AuroraSim)
+				Colora targhette client: (solo ForMe.World/AuroraSim)
 			</text>
 			<text name="whattagstoshow">
 				Targhette che si vogliono vedere

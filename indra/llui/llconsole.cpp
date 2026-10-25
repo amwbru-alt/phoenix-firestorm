@@ -480,13 +480,13 @@ void LLConsole::draw()
 }
 
 // <FS:Ansariel> Chat console
-void LLConsole::addConsoleLine(const std::string& utf8line, const LLColor4 &color, const LLUUID& session_id, LLFontGL::StyleFlags styleflags)
+void LLConsole::addConsoleLine(const std::string& utf8line, const LLColor4 &color, const LLUUID& session_id, LLFontGL::StyleFlags styleflags, const std::string& prefix, const LLColor4& prefix_color)
 {
     LLWString wline = utf8str_to_wstring(utf8line);
-    addConsoleLine(wline, color, session_id, styleflags);
+    addConsoleLine(wline, color, session_id, styleflags, utf8str_to_wstring(prefix), prefix_color);
 }
 
-void LLConsole::addConsoleLine(const LLWString& wline, const LLColor4 &color, const LLUUID& session_id, LLFontGL::StyleFlags styleflags)
+void LLConsole::addConsoleLine(const LLWString& wline, const LLColor4 &color, const LLUUID& session_id, LLFontGL::StyleFlags styleflags, const LLWString& prefix, const LLColor4& prefix_color)
 {
     if (wline.empty())
     {
@@ -503,6 +503,7 @@ void LLConsole::addConsoleLine(const LLWString& wline, const LLColor4 &color, co
     mLineLengths.push_back((S32)wline.length());
     mAddTimes.push_back(mTimer.getElapsedTimeF32());
     mLineColors.push_back(color);
+    mLinePrefixes.emplace_back(wline.compare(0, prefix.size(), prefix) == 0 ? prefix : LLWString(), prefix_color);
     mLineStyle.push_back(styleflags);
     mSessionIDs.push_back(session_id);
     mMutex.unlock();
@@ -516,6 +517,7 @@ void LLConsole::clear()
     mAddTimes.clear();
     mLineLengths.clear();
     mLineColors.clear();
+    mLinePrefixes.clear();
     mLineStyle.clear();
     mSessionIDs.clear();
     mMutex.unlock();
@@ -535,6 +537,8 @@ void LLConsole::removeExtraLines()
         {
             mLineColors.pop_front();
         }
+        if (!mLinePrefixes.empty()) mLinePrefixes.pop_front();
+        if (!mSessionIDs.empty()) mSessionIDs.pop_front();
         if (!mLineStyle.empty())
         {
             mLineStyle.pop_front();
@@ -547,24 +551,18 @@ void LLConsole::removeExtraLines()
 //Generate highlight color segments for this paragraph.  Pass in default color of paragraph.
 void LLConsole::Paragraph::makeParagraphColorSegments (const LLColor4 &color)
 {
-    LLSD paragraph_color_segments;
-    paragraph_color_segments[0]["text"] =wstring_to_utf8str(mParagraphText);
-    LLSD color_sd = color.getValue();
-    paragraph_color_segments[0]["color"]=color_sd;
-
-    for(LLSD::array_const_iterator color_segment_it = paragraph_color_segments.beginArray();
-        color_segment_it != paragraph_color_segments.endArray();
-        ++color_segment_it)
+    mParagraphColorSegments.clear();
+    const S32 prefix_length = static_cast<S32>(mColoredPrefix.size());
+    const S32 total_length = static_cast<S32>(mParagraphText.size());
+    if (prefix_length > 0 && prefix_length <= total_length)
     {
-        LLSD color_llsd = (*color_segment_it)["color"];
-        std::string color_str  = (*color_segment_it)["text"].asString();
-
-        ParagraphColorSegment color_segment;
-
-        color_segment.mColor.setValue(color_llsd);
-        color_segment.mNumChars = static_cast<S32>(color_str.length());
-
-        mParagraphColorSegments.push_back(color_segment);
+        mParagraphColorSegments.push_back({prefix_length, mPrefixColor});
+        if (prefix_length < total_length)
+            mParagraphColorSegments.push_back({total_length - prefix_length, color});
+    }
+    else
+    {
+        mParagraphColorSegments.push_back({total_length, color});
     }
 }
 
@@ -695,12 +693,16 @@ void LLConsole::Paragraph::updateLines(F32 screen_width, const LLFontGL* font, L
 // <FS:Ansariel> Added styleflags parameter for style customization and session support
 //LLConsole::Paragraph::Paragraph (LLWString str, const LLColor4 &color, F32 add_time, const LLFontGL* font, F32 screen_width)
 //: mParagraphText(str), mAddTime(add_time), mMaxWidth(-1)
-LLConsole::Paragraph::Paragraph (LLWString str, const LLColor4 &color, F32 add_time, const LLFontGL* font, F32 screen_width, LLFontGL::StyleFlags styleflags, const LLUUID& session_id, bool parse_urls, LLConsole* console)
+LLConsole::Paragraph::Paragraph (LLWString str, const LLColor4 &color, F32 add_time, const LLFontGL* font, F32 screen_width, LLFontGL::StyleFlags styleflags, const LLUUID& session_id, bool parse_urls, LLConsole* console, const LLWString& prefix, const LLColor4& prefix_color)
 :   mParagraphText(str), mAddTime(add_time), mMaxWidth(-1), mSessionID(session_id)
 // </FS:Ansariel>
 {
     // <FS:Ansariel> Parse SLURLs
     mSourceText = str;
+    mSourcePrefix = prefix;
+    mColoredPrefix = prefix;
+    mBodyColor = color;
+    mPrefixColor = prefix_color;
     mID.generate();
 
     if (parse_urls)
@@ -724,6 +726,7 @@ LLConsole::Paragraph::Paragraph (LLWString str, const LLColor4 &color, F32 add_t
             // there is no callback involved for which we are storing the
             // matched Url
             LLWStringUtil::replaceString(mParagraphText, utf8str_to_wstring(urlMatch.getMatchedText()), utf8str_to_wstring(label));
+            LLWStringUtil::replaceString(mColoredPrefix, utf8str_to_wstring(urlMatch.getMatchedText()), utf8str_to_wstring(label));
             mUrlLabels[urlMatch.getUrl()] = label;
 
             // Remove the URL from the work line so we don't end in a loop in case of regular URLs!
@@ -752,13 +755,15 @@ void LLConsole::onUrlLabelCallback(const LLUUID& paragraph_id, const std::string
             paragraph.mUrlLabels[url] = label;
 
             LLWString newText = paragraph.mSourceText;
+            paragraph.mColoredPrefix = paragraph.mSourcePrefix;
             for (std::map<std::string, std::string>::iterator url_it = paragraph.mUrlLabels.begin(); url_it != paragraph.mUrlLabels.end(); ++url_it)
             {
                 LLWStringUtil::replaceString(newText, utf8string_to_wstring(url_it->first), utf8string_to_wstring(url_it->second));
+                LLWStringUtil::replaceString(paragraph.mColoredPrefix, utf8string_to_wstring(url_it->first), utf8string_to_wstring(url_it->second));
             }
             paragraph.mParagraphText = newText;
 
-            paragraph.makeParagraphColorSegments(paragraph.mLines.front().mLineColorSegments.front().mColor);
+            paragraph.makeParagraphColorSegments(paragraph.mBodyColor);
             paragraph.updateLines((F32)getRect().getWidth(), mFont, paragraph.mLines.front().mStyleFlags, true);
 
             break;
@@ -803,10 +808,14 @@ void LLConsole::update()
                             (!mLineStyle.empty() ? mLineStyle.front() : LLFontGL::NORMAL),
                             (!mSessionIDs.empty() ? mSessionIDs.front(): LLUUID::null),
                             mParseUrls,
-                            this));
+                            this,
+                            (!mLinePrefixes.empty() ? mLinePrefixes.front().first : LLWString()),
+                            (!mLinePrefixes.empty() ? mLinePrefixes.front().second : LLColor4::white)));
             mLines.pop_front();
             if (!mLineColors.empty())
                 mLineColors.pop_front();
+            if (!mLinePrefixes.empty())
+                mLinePrefixes.pop_front();
             if (!mLineStyle.empty())
                 mLineStyle.pop_front();
             if (!mSessionIDs.empty())

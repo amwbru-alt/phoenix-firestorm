@@ -18,7 +18,7 @@
 			</text>
 			<radio_group name="preferred_browser_behavior">
 				<radio_item label="Использовать мой браузер (Chrome, Firefox, IE) для всех ссылок" name="new_external" tool_tip="Использовать системный браузер для просмотра ссылок. Не рекомендуется, если включен полноэкранный режим." />
-				<radio_item label="Использовать встроенный браузер только для Second Life ссылок" name="new_internal" tool_tip="Использовать встроенный браузер только для Second Life ссылок" />
+				<radio_item label="Использовать встроенный браузер только для ForMe.World ссылок" name="new_internal" tool_tip="Использовать встроенный браузер только для ForMe.World ссылок" />
 				<radio_item label="Использовать встроенный браузер для всех ссылок" name="new_internal_all" />
 			</radio_group>
 			<text name="numberwebfloaters_label">

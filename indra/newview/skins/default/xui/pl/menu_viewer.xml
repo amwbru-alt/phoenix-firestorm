@@ -284,7 +284,7 @@
 	</menu>
 	<menu label="Zawartość" name="Content">
 		<menu_item_check label="Wyszukiwarka" name="Search"/>
-		<menu_item_call label="Marketplace Second Life" name="SL Marketplace"/>
+		<menu_item_call label="Marketplace ForMe.World" name="SL Marketplace"/>
 		<menu_item_call label="Dane z rynku L$" name="LindenXchange"/>
 		<menu_item_call label="Biblioteka skryptów" name="Script Library"/>
 		<menu_item_call label="Społeczność SL (blogi, fora, aktualności)" name="SL Community Pages"/>

@@ -21,7 +21,7 @@
 	<string name="AboutHeader">
 [APP_NAME] [VIEWER_VERSION_0].[VIEWER_VERSION_1].[VIEWER_VERSION_2] ([VIEWER_VERSION_3]) [BUILD_DATE] [BUILD_TIME] ([ADDRESS_SIZE]bit / [SIMD]) ([CHANNEL]) [BUILD_TYPE]
 [[VIEWER_RELEASE_NOTES_URL] [ReleaseNotes]]
-Zgodność z Second Life Viewer: [VIEWER_VERSION_LL]
+Zgodność z ForMe.World Viewer: [VIEWER_VERSION_LL]
 	</string>
 	<string name="AboutCompiler">
 		Zbudowane za pomocą [COMPILER] w wersji [COMPILER_VERSION]
@@ -206,16 +206,16 @@ Wersja serwera głosu (Voice Server): [VOICE_VERSION]
 		Wyłącz
 	</string>
 	<string name="AgniGridLabel">
-		Second Life: świat główny (Agni)
+		ForMe.World: świat główny (Agni)
 	</string>
 	<string name="AditiGridLabel">
-		Second Life Beta: świat testowy (Aditi)
+		ForMe.World Beta: świat testowy (Aditi)
 	</string>
 	<string name="AgniGridLabelShort">
 		Agni (produkcja)
 	</string>
 	<string name="LoginFailedViewerNotPermitted">
-		Przeglądarka używana przez Ciebie nie ma już dostępu do Second Life. Proszę przejść na poniższą stronę i pobrać nową:
+		Przeglądarka używana przez Ciebie nie ma już dostępu do ForMe.World. Proszę przejść na poniższą stronę i pobrać nową:
 https://www.firestormviewer.org/choose-your-platform/
 
 Więcej informacji w naszym FAQ:
@@ -260,12 +260,12 @@ Logować się mogą w tej chwili tylko pracownicy Linden Lab.
 Odwiedź www.secondlife.com/status i śledź wiadomości.
 	</string>
 	<string name="LoginFailedPremiumOnly">
-		Logowanie do Second Life jest tymczasowo ograniczone aby mieć pewność, że osoby już zalogowane nie stracą na wydajności.
+		Logowanie do ForMe.World jest tymczasowo ograniczone aby mieć pewność, że osoby już zalogowane nie stracą na wydajności.
 
 Osoby posiadające darmowe konta nie mogą się teraz zalogować, aby ludzie posiadający te płatne mogli to zrobić.
 	</string>
 	<string name="LoginFailedComputerProhibited">
-		Second Life odmawia dostępu temu komputerowi.
+		ForMe.World odmawia dostępu temu komputerowi.
 Jeśli myślisz, że to błąd skontaktuj się z
 support@secondlife.com
 	</string>
@@ -305,7 +305,7 @@ Poczekaj chwilę, zanim spróbujesz zalogować się ponownie.
 		Nie można połączyć się z symulatorem.
 	</string>
 	<string name="LoginFailedRestrictedHours">
-		Twoje konto może się łączyć z Second Life tylko
+		Twoje konto może się łączyć z ForMe.World tylko
 pomiędzy [START] i [END] czasu pacyficznego.
 Wróć proszę w tych godzinach.
 Jeśli myślisz, że to błąd skontaktuj się z support@secondlife.com
@@ -690,7 +690,7 @@ Jeśli myślisz, że to błąd skontaktuj się z support@secondlife.com
 		Kliknij aby zobaczyć to miejsce na mapie
 	</string>
 	<string name="TooltipSLAPP">
-		Kliknij aby uruchomić komendę secondlife://
+		Kliknij aby uruchomić komendę ForMe.World://
 	</string>
 	<string name="TooltipFSHelpDebugSLUrl">
 		Kliknij aby otworzyć ustawienia debugowania dla tej opcji
@@ -1775,15 +1775,15 @@ https://www.firestormviewer.org/support aby uzyskać pomoc.
 	</string>
 	<string name="InventoryMarketplaceError">
 		Wystapił błąd podczas otwierania listy rzeczy z Marketplace.
-Jeśli ciągle otrzymujesz tą wiadomość, to skontaktuj się z pomocą techniczną Second Life: http://support.secondlife.com
+Jeśli ciągle otrzymujesz tą wiadomość, to skontaktuj się z pomocą techniczną ForMe.World: http://support.secondlife.com
 	</string>
 	<string name="InventoryMarketplaceConnectionError">
 		Wystapił błąd podczas łączenia z Marketplace.
-Jeśli ciągle otrzymujesz tą wiadomość, to skontaktuj się z pomocą techniczną Second Life: http://support.secondlife.com
+Jeśli ciągle otrzymujesz tą wiadomość, to skontaktuj się z pomocą techniczną ForMe.World: http://support.secondlife.com
 	</string>
 	<string name="InventoryMarketplaceConnectionErrorReason">
 		Wystapił błąd podczas łączenia z Marketplace. Powód: [REASON]
-Jeśli ciągle otrzymujesz tą wiadomość, to skontaktuj się z pomocą techniczną Second Life: http://support.secondlife.com
+Jeśli ciągle otrzymujesz tą wiadomość, to skontaktuj się z pomocą techniczną ForMe.World: http://support.secondlife.com
 	</string>
 	<string name="InventoryMarketplaceListingsNoItemsTitle">
 		Twój folder rzeczy na Marketplace jest pusty.
@@ -4821,7 +4821,7 @@ Dowiedz się więcej na https://second.life/scripted-agents.
 		Jesteś jedyną osobą w tej konferencji.
 	</string>
 	<string name="offline_message">
-		[NAME] opuszcza Second Life.
+		[NAME] opuszcza ForMe.World.
 	</string>
 	<string name="invite_message">
 		Kliknij na przycisk [BUTTON NAME] by zaakceptować/dołączyć do tej rozmowy.

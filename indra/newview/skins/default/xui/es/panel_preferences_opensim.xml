@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<panel label="Opensim" name="opensim_panel">
+<panel label="ForMe.World" name="opensim_panel">
 	<tab_container name="tabs">
 		<panel label="Gestor de redes" name="grid_management_panel">
 			<text name="add_grid_text">

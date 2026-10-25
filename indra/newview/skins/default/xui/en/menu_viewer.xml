@@ -2614,7 +2614,7 @@
        </menu_item_call>
        <menu_item_separator/>
     	<menu_item_call
-             label="Firestorm Blog"
+             label="ForMe.World Blog"
              name="Firestorm Blog">
              <menu_item_call.on_click
              function="PromptShowURL"
@@ -2622,7 +2622,7 @@
              parameter="WebLaunchExternalTarget,https://www.firestormviewer.org/" />
        </menu_item_call>
     	<menu_item_call
-             label="Firestorm Primfeed"
+             label="ForMe.World Primfeed"
              name="Firestorm Primfeed">
              <menu_item_call.on_click
              function="PromptShowURL"
@@ -2630,7 +2630,7 @@
              parameter="WebLaunchExternalTarget,https://www.primfeed.com/firestorm-viewer" />
        </menu_item_call>
     	<menu_item_call
-             label="Firestorm Flickr"
+             label="ForMe.World Flickr"
              name="Firestorm Flickr">
              <menu_item_call.on_click
              function="PromptShowURL"
@@ -2638,7 +2638,7 @@
              parameter="WebLaunchExternalTarget,http://www.flickr.com/groups/firestormviewer/pool/" />
        </menu_item_call>
     	<menu_item_call
-             label="Firestorm YouTube"
+             label="ForMe.World YouTube"
              name="Firestorm YouTube">
              <menu_item_call.on_click
              function="PromptShowURL"
@@ -2646,7 +2646,7 @@
              parameter="WebLaunchExternalTarget,http://www.youtube.com/user/PhoenixViewerSL" />
        </menu_item_call>
     	<menu_item_call
-             label="Firestorm Twitter"
+             label="ForMe.World Twitter"
              name="Firestorm Twitter">
              <menu_item_call.on_click
              function="PromptShowURL"
@@ -2654,7 +2654,7 @@
              parameter="WebLaunchExternalTarget,https://twitter.com/phoenixviewersl" />
        </menu_item_call>
     	<menu_item_call
-             label="Firestorm Plurk"
+             label="ForMe.World Plurk"
              name="Firestorm Plurk">
              <menu_item_call.on_click
              function="PromptShowURL"
@@ -2690,7 +2690,7 @@
         </menu_item_check>
         
         <menu_item_call
-         label="Firestorm Wiki"
+         label="ForMe.World Wiki"
          name="Firestorm Wiki"
 	     shortcut="F1">
              <menu_item_call.on_click
@@ -2709,7 +2709,7 @@
         </menu_item_call>
 	   
         <menu_item_call
-         label="Join Firestorm Support Group"
+         label="Join ForMe.World Support Group"
          name="firestorm_support_group">
             <menu_item_call.on_click
              function="Advanced.WebBrowserTest"
@@ -2720,7 +2720,7 @@
         </menu_item_call>
 
         <menu_item_call
-         label="Firestorm Classes Schedule"
+         label="ForMe.World Classes Schedule"
          name="Firestorm Classes Schedule">
              <menu_item_call.on_click
              function="PromptShowURL"
@@ -2729,7 +2729,7 @@
         </menu_item_call>
 
         <menu_item_call
-         label="Firestorm Events Calendar"
+         label="ForMe.World Events Calendar"
          name="Firestorm Events Calendar">
              <menu_item_call.on_click
              function="PromptShowURL"

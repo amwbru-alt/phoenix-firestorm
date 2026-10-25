@@ -26,6 +26,9 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "formeviewbranding.h"
+#include "rlvactions.h"
+#include "fsavatarbadges.h" // <FS:ForMe> Authoritative server badges.
 
 #include "fsconsoleutils.h"
 
@@ -110,7 +113,8 @@ bool FSConsoleUtils::ProcessChatMessage(const LLChat& chat_msg, const LLSD &args
         }
         else
         {
-            console_chat = chat_msg.mFromName + " " + chat_msg.mText;
+            console_chat = (chat_msg.mSourceType == CHAT_SOURCE_SYSTEM && chat_msg.mChatType != CHAT_TYPE_RADAR
+                ? ForMeBranding::systemName(chat_msg.mFromName) : chat_msg.mFromName) + " " + chat_msg.mText;
         }
         // FS:LO FIRE-1439 - Clickable avatar names on local chat radar crossing reports
 
@@ -158,11 +162,14 @@ void FSConsoleUtils::onProcessChatAvatarNameLookup(const LLUUID& agent_id, const
         sender_name = FSCommon::getAvatarNameByDisplaySettings(av_name);
     }
 
+    const ForMeBadge::Data badge = ForMeAvatarBadges::forChat(chat_msg);
+    sender_name = ForMeBadge::decorate(badge, sender_name); // <FS:ForMe>
     console_chat = sender_name + delimiter + message;
     F32 alpha = 1.f;
     LLUIColor chatcolor;
     LLViewerChat::getChatColor(chat_msg, chatcolor, alpha);
-    gConsole->addConsoleLine(console_chat, chatcolor % alpha);
+    gConsole->addConsoleLine(console_chat, chatcolor % alpha, LLUUID::null, LLFontGL::NORMAL,
+        badge.valid ? sender_name : "", badge.valid ? ForMeAvatarBadges::color(badge.badgeColor) : LLColor4::white);
 }
 
 //static
@@ -229,6 +236,10 @@ void FSConsoleUtils::onProccessInstantMessageNameLookup(const LLUUID& agent_id, 
 
     sender_name = FSCommon::getAvatarNameByDisplaySettings(av_name);
 
+    const ForMeBadge::Data badge = RlvActions::canShowName(RlvActions::SNC_DEFAULT, agent_id)
+        ? ForMeAvatarBadges::get(agent_id) : ForMeBadge::Data();
+    sender_name = ForMeBadge::decorate(badge, sender_name);
+
     // Replacing the "IM" in front of group chat messages with the actual group name
     if (is_group)
     {
@@ -240,10 +251,12 @@ void FSConsoleUtils::onProccessInstantMessageNameLookup(const LLUUID& agent_id, 
     chat.mFromName = sender_name;
     chat.mText = message_str;
     chat.mSourceType = CHAT_SOURCE_AGENT;
+    chat.mRlvNamesFiltered = !RlvActions::canShowName(RlvActions::SNC_DEFAULT, agent_id);
     chat.mChatType = is_group ? CHAT_TYPE_IM_GROUP : CHAT_TYPE_IM;
     F32 alpha = 1.f;
     LLUIColor textcolor;
     LLViewerChat::getChatColor(chat, textcolor, alpha, LLSD().with("is_local", false).with("for_console", true));
 
-    gConsole->addConsoleLine("IM: " + sender_name + delimiter + message, textcolor % alpha, session_id);
+    gConsole->addConsoleLine("IM: " + sender_name + delimiter + message, textcolor % alpha, session_id, LLFontGL::NORMAL,
+        badge.valid ? "IM: " + sender_name : "", badge.valid ? ForMeAvatarBadges::color(badge.badgeColor) : LLColor4::white);
 }

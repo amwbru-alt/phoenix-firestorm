@@ -259,7 +259,7 @@ class ViewerManifest(LLManifest,FSViewerManifest):
         return self.args['grid']
 
     def channel(self):
-        return self.args['channel']
+        return 'ForMe.World'
 
     def channel_with_pkg_suffix(self):
         fullchannel=self.channel()
@@ -274,10 +274,12 @@ class ViewerManifest(LLManifest,FSViewerManifest):
 
     def channel_type(self): # returns 'release', 'beta', 'project', or 'test'
         channel_qualifier=self.channel_variant().lower()
+        if self.channel() == 'ForMe.World':
+            return 'release'
         #<FS:TS> Somehow, we started leaving the - separating the variant from the app name
         # on the beginning of the channel qualifier. This screws up later processing that
         # depends on the channel type. If it's there, we chop it off.
-        if channel_qualifier[0] == '-':
+        if channel_qualifier.startswith('-'):
             channel_qualifier = channel_qualifier[1:]
         if channel_qualifier.startswith('release'):
             channel_type='release'
@@ -318,50 +320,13 @@ class ViewerManifest(LLManifest,FSViewerManifest):
         return suffix
 
     def installer_base_name(self):
-        global CHANNEL_VENDOR_BASE
-        # a standard map of strings for replacing in the templates
-        #<FS:TS> tag "OS" after CHANNEL_VENDOR_BASE and before any suffix
-        channel_base = "Phoenix-" + CHANNEL_VENDOR_BASE
-        if self.fs_is_opensim():
-            channel_base = channel_base + "OS"
-        #</FS:TS>
-        substitution_strings = {
-            'channel_vendor_base' : '_'.join(channel_base.split()),
-            'channel_variant_underscores':self.channel_variant_app_suffix(),
-            'version_underscores' : '_'.join(self.args['version']),
-            'arch':self.args['arch']
-            }
-        return "%(channel_vendor_base)s%(channel_variant_underscores)s_%(version_underscores)s_%(arch)s" % substitution_strings
+        return 'ForMe.World_%s_%s' % ('_'.join(self.args['version']), self.args['arch'])
 
     def installer_base_name_mac(self):
-        global CHANNEL_VENDOR_BASE
-        # a standard map of strings for replacing in the templates
-        substitution_strings = {
-            'channel_vendor_base' : '_'.join(CHANNEL_VENDOR_BASE.split()),
-            'channel_variant_underscores':self.channel_variant_app_suffix(),
-            'version_underscores' : '_'.join(self.args['version'])
-            }
-        return "%(channel_vendor_base)s%(channel_variant_underscores)s_%(version_underscores)s_universal" % substitution_strings
+        return 'ForMe.World_%s_universal' % '_'.join(self.args['version'])
 
     def app_name(self):
-        global CHANNEL_VENDOR_BASE
-        channel_type=self.channel_type()
-        #<FS:TS> LL uses "Viewer" in the name of their release package. We use "Release".
-        #if channel_type == 'release':
-        #    app_suffix='Viewer'
-        #else:
-        #    app_suffix=self.channel_variant()
-        app_suffix=self.channel_variant()
-
-        #<FS:ND> tag "OS" after CHANNEL_VENDOR_BASE and before any suffix
-        if self.fs_is_opensim():
-            app_suffix = "OS" + app_suffix
-        #</FS:ND>
-
-        #<FS:ND> Don't separate name by whitespace. This break a lot of things in the old FS installer logic.
-        #return CHANNEL_VENDOR_BASE + ' ' + app_suffix
-        return CHANNEL_VENDOR_BASE + app_suffix
-        #</FS:ND>
+        return 'ForMe.World'
 
     def exec_name(self):
         # <FS:Ansariel> Same as app_name_oneword()
@@ -373,9 +338,7 @@ class ViewerManifest(LLManifest,FSViewerManifest):
 
     # <FS:Ansariel> FIRE-30446: Set FriendlyAppName for protocol registrations
     def friendly_app_name(self):
-        global CHANNEL_VENDOR_BASE
-        return CHANNEL_VENDOR_BASE
-    # </FS:Ansariel>
+        return 'ForMe.World'
 
     def icon_path(self):
         # <FS:ND> Add -os for oss builds

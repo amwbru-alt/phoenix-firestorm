@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <strings>
 	<string name="SUPPORT_SITE">
-		Portale di supporto di Firestorm
+		Portale di supporto di ForMe.World
 	</string>
 	<string name="StartupDetectingHardware">
 		Ricerca hardware...
@@ -24,7 +24,7 @@
 	<string name="AboutHeader">
 [APP_NAME] [VIEWER_VERSION_0].[VIEWER_VERSION_1].[VIEWER_VERSION_2] ([VIEWER_VERSION_3]) [BUILD_DATE] [BUILD_TIME] ([ADDRESS_SIZE]bit / [SIMD]) ([CHANNEL]) [BUILD_TYPE]
 [[VIEWER_RELEASE_NOTES_URL] [ReleaseNotes]]
-Parità con Second Life Viewer: [VIEWER_VERSION_LL]
+Parità con ForMe.World Viewer: [VIEWER_VERSION_LL]
 	</string>
 	<string name="AboutCompiler">
 		Generato con [COMPILER] versione [COMPILER_VERSION]
@@ -200,13 +200,13 @@ Voice Server Version: [VOICE_VERSION]
 		Esci
 	</string>
 	<string name="AgniGridLabel">
-		Grid principale di Second Life (Agni)
+		Grid principale di ForMe.World (Agni)
 	</string>
 	<string name="AditiGridLabel">
-		Grid beta test di Second Life (Aditi)
+		Grid beta test di ForMe.World (Aditi)
 	</string>
 	<string name="LoginFailedViewerNotPermitted">
-		Il viewer utilizzato non è più in grado di accedere a Second Life. Visitare questa pagina per scaricare un nuovo viewer:
+		Il viewer utilizzato non è più in grado di accedere a ForMe.World. Visitare questa pagina per scaricare un nuovo viewer:
 https://www.firestormviewer.org/downloads/
 
 Per maggiori informazioni, consultare le domande frequenti alla pagina:
@@ -241,17 +241,17 @@ e rispondere alla domanda di sicurezza per reimpostare la password.
 Ci scusiamo per l&apos;inconveniente.
 	</string>
 	<string name="LoginFailedEmployeesOnly">
-		Second Life è chiuso temporaneamente per manutenzione.
+		ForMe.World è chiuso temporaneamente per manutenzione.
 Al momento, solo i dipendenti possono eseguire l&apos;accesso.
 Visitare www.secondlife.com/status per aggiornamenti.
 	</string>
 	<string name="LoginFailedPremiumOnly">
-		L&apos;accesso a Second Life è temporaneamente limitato per garantire che chi è nel mondo virtuale abbia la migliore esperienza possibile.
+		L&apos;accesso a ForMe.World è temporaneamente limitato per garantire che chi è nel mondo virtuale abbia la migliore esperienza possibile.
 
-Le persone con account gratuiti non potranno accedere a Second Life durante questo periodo, per lasciare spazio alle persone che hanno pagato per Second Life.
+Le persone con account gratuiti non potranno accedere a ForMe.World durante questo periodo, per lasciare spazio alle persone che hanno pagato per ForMe.World.
 	</string>
 	<string name="LoginFailedComputerProhibited">
-		Non si può accedere a Second Life da questo computer.
+		Non si può accedere a ForMe.World da questo computer.
 Se si ritiene che si tratti di un errore, contattare
 support@secondlife.com.
 	</string>
@@ -261,7 +261,7 @@ support@secondlife.com.
 	</string>
 	<string name="LoginFailedAccountDisabled">
 		Non siamo attualmente in grado di completare la richiesta.
-Contattare l&apos;assistenza Second Life alla pagina http://secondlife.com/support.
+Contattare l&apos;assistenza ForMe.World alla pagina http://secondlife.com/support.
 	</string>
 	<string name="LoginFailedTransformError">
 		Dati incompatibili rilevati durante l&apos;accesso.
@@ -287,7 +287,7 @@ Attendere qualche minuto e riprovare l&apos;accesso.
 		Non è possibile collegarsi a un simulatore.
 	</string>
 	<string name="LoginFailedRestrictedHours">
-		Il tuo account può accedere a Second Life solo
+		Il tuo account può accedere a ForMe.World solo
 tra le [START] e le [END] fuso orario del Pacifico.
 Torna durante quell&apos;orario.
 Se si ritiene che si tratti di un errore, contattare support@secondlife.com.
@@ -690,7 +690,7 @@ Se ritieni che si tratti di un errore, contatta support@secondlife.com
 		Clic per vedere questo posto sulla mappa
 	</string>
 	<string name="TooltipSLAPP">
-		Clic per avviare il comando secondlife://
+		Clic per avviare il comando ForMe.World://
 	</string>
 	<string name="TooltipFSHelpDebugSLUrl">
 		Clic per aprire la finestra delle impostazioni di debug su questa impostazione
@@ -1716,7 +1716,7 @@ https://www.firestormviewer.org/support per avere aiuto nella soluzione.
 	</string>
 	<string name="InventoryMarketplaceError">
 		Si è verificato un errore durante l&apos;apertura degli elenchi Marketplace.
-Se il messaggio persiste, contattare il supporto Second Life per assistenza http://support.secondlife.com
+Se il messaggio persiste, contattare il supporto ForMe.World per assistenza http://support.secondlife.com
 	</string>
 	<string name="InventoryMarketplaceListingsNoItemsTitle">
 		La cartella degli annunci di Marketplace è vuota.
@@ -2709,16 +2709,16 @@ Se il messaggio persiste, contattare il supporto Second Life per assistenza http
 		Questo residente ha attivato la modalità &apos;non disturbare&apos; e vedrà il tuo messaggio più tardi.
 	</string>
 	<string name="AutoResponseModeDefault">
-		Il residente a cui hai mandato un messaggio ha attivato la modalità &apos;auto-risposta&apos; di Firestorm e quindi ha chiesto di non essere disturbato. Il messaggio sarà visibile nel pannello IM per essere letto in seguito.
+		Il residente a cui hai mandato un messaggio ha attivato la modalità &apos;auto-risposta&apos; di ForMe.World e quindi ha chiesto di non essere disturbato. Il messaggio sarà visibile nel pannello IM per essere letto in seguito.
 	</string>
 	<string name="AutoResponseModeNonFriendsDefault">
-		Il residente a cui hai mandato un messaggio ha attivato la modalità auto-risposta di Firestorm e quindi ha chiesto di non essere disturbato.  Il messaggio sarà visibile nel pannello IM per essere letto in seguito.
+		Il residente a cui hai mandato un messaggio ha attivato la modalità auto-risposta di ForMe.World e quindi ha chiesto di non essere disturbato.  Il messaggio sarà visibile nel pannello IM per essere letto in seguito.
 	</string>
 	<string name="RejectTeleportOffersResponseDefault">
-		Il residente a cui hai mandato un messaggio ha attivato la modalità &apos;rifiuta tutti i teleport&apos; di Firestorm e quindi ha chiesto di non essere disturbato con offerte o richieste di TP. Si può sempre mandare un IM.
+		Il residente a cui hai mandato un messaggio ha attivato la modalità &apos;rifiuta tutti i teleport&apos; di ForMe.World e quindi ha chiesto di non essere disturbato con offerte o richieste di TP. Si può sempre mandare un IM.
 	</string>
 	<string name="RejectFriendshipRequestsResponseDefault">
-		Il residente a cui hai mandato un messaggio ha attivato la modalità &apos;rifiuta tutte le amicizie&apos; di Firestorm e quindi ha chiesto di non essere disturbato con richieste di amicizia. Si può sempre mandare un IM.
+		Il residente a cui hai mandato un messaggio ha attivato la modalità &apos;rifiuta tutte le amicizie&apos; di ForMe.World e quindi ha chiesto di non essere disturbato con richieste di amicizia. Si può sempre mandare un IM.
 	</string>
 	<string name="MutedAvatarsResponseDefault">
 		Il residente a cui hai mandato un messaggio ti ha bloccato la possibilità di mandare messaggi.
@@ -6204,7 +6204,7 @@ Assistenza nel sito SecondLife.com e segnala il problema.
 		con supporto Havok
 	</string>
 	<string name="FSWithOpensim">
-		con supporto OpenSimulator
+		con supporto ForMe.World
 	</string>
 	<string name="not_found">
 		&apos;[TEXT]&apos; non trovato
@@ -6249,10 +6249,10 @@ Assistenza nel sito SecondLife.com e segnala il problema.
 		Sconosciuta, oltre la gamma normale. Controllare l&apos;impostazione di debug RenderQualityPerformance
 	</string>
 	<string name="fsbridge_cant_create_disabled">
-		Firestorm non può creare un bridge LSL se nelle preferenze non è spuntato "Abilita LSL-Client Bridge".
+		ForMe.World non può creare un bridge LSL se nelle preferenze non è spuntato "Abilita LSL-Client Bridge".
 	</string>
 	<string name="fsbridge_no_library">
-		Firestorm non ha potuto creare un bridge LSL. Abilitare la library e riavviare.
+		ForMe.World non ha potuto creare un bridge LSL. Abilitare la library e riavviare.
 	</string>
 	<string name="fsbridge_already_creating">
 		Creazione del bridge in corso, impossibile avviarne un&apos;altra. Attendere qualche minuto e riprovare.
@@ -6306,7 +6306,7 @@ Assistenza nel sito SecondLife.com e segnala il problema.
 		Info script: Il bridge ha emesso una risposta malformata. Riprovare.
 	</string>
 	<string name="fsbridge_error_injection">
-		NOTA: Alcuni script sono stati aggiunti al bridge di Firestorm. Se il messaggio è inatteso, usare il comando di menu &apos;Avatar/Salute avatar/Ricrea LSL bridge&apos; per riavviarlo.
+		NOTA: Alcuni script sono stati aggiunti al bridge di ForMe.World. Se il messaggio è inatteso, usare il comando di menu &apos;Avatar/Salute avatar/Ricrea LSL bridge&apos; per riavviarlo.
 	</string>
 	<string name="fsbridge_error_wrongvm">
 		NOTA: Lo script del bridge usa la vecchia macchina virtuale LSO (limite di memoria 16 KB) invece della nuova Mono (limite 64 KB). Ciò crea molta probabilità di collisioni stack-heap e di blocco del bridge per esaurimento memoria. Usare il comando di menu &apos;Avatar/Salute avatar/Ricrea LSL bridge&apos; per riavviarlo. Se il messaggio ricompare, riprovare in un&apos;altra regione.

@@ -3777,15 +3777,15 @@ Masz [RECLAIM_PERIOD] godzin na odzyskanie jej za 0L$ zanim zostanie wystawiona 
 Jest teraz dostępna do kupienia dla każdego.
 	</notification>
 	<notification name="AvatarRezNotification">
-		( [EXISTENCE] sekund w Second Life)
+		( [EXISTENCE] sekund w ForMe.World)
 Awatar &apos;[NAME]&apos; przestał/a być chmurą po [TIME] sekundach.
 	</notification>
 	<notification name="AvatarRezSelfBakedDoneNotification">
-		( [EXISTENCE] sekund w Second Life)
+		( [EXISTENCE] sekund w ForMe.World)
 Skończono wstępne przetwarzanie stroju po [TIME] sekundach.
 	</notification>
 	<notification name="AvatarRezSelfBakedUpdateNotification">
-		( [EXISTENCE] sekund w Second Life )
+		( [EXISTENCE] sekund w ForMe.World )
 Wysłano aktualizację wyglądu po [TIME] sekundach.
 [STATUS]
 	</notification>
@@ -3793,23 +3793,23 @@ Wysłano aktualizację wyglądu po [TIME] sekundach.
 		Przeglądarka wykryła, że możesz wyglądać jak chmurka i próbuje to automatycznie naprawić.
 	</notification>
 	<notification name="AvatarRezCloudNotification">
-		( [EXISTENCE] sekund w Second Life )
+		( [EXISTENCE] sekund w ForMe.World )
 Awatar &apos;[NAME]&apos; stał się chmurą.
 	</notification>
 	<notification name="AvatarRezArrivedNotification">
-		( [EXISTENCE] sekund w Second Life)
+		( [EXISTENCE] sekund w ForMe.World)
 Awatar &apos;[NAME]&apos; pojawił się.
 	</notification>
 	<notification name="AvatarRezLeftCloudNotification">
-		( [EXISTENCE] sekund w Second Life )
+		( [EXISTENCE] sekund w ForMe.World )
 Awatar &apos;[NAME]&apos; pozostał [TIME] sekund chmurą.
 	</notification>
 	<notification name="AvatarRezEnteredAppearanceNotification">
-		( [EXISTENCE] sekund w Second Life )
+		( [EXISTENCE] sekund w ForMe.World )
 Awatar &apos;[NAME]&apos; rozpoczął edycję wyglądu.
 	</notification>
 	<notification name="AvatarRezLeftAppearanceNotification">
-		( [EXISTENCE] sekund w Second Life )
+		( [EXISTENCE] sekund w ForMe.World )
 Awatar &apos;[NAME]&apos; opuścił edycję wyglądu.
 	</notification>
 	<notification name="NoConnect">
@@ -3840,15 +3840,15 @@ Proszę sprawdź swoją sieć i ustawienia firewall.
 [https://wiki.firestormviewer.org/fs_voice]
 	</notification>
 	<notification name="AvatarRezLeftNotification">
-		( [EXISTENCE] sekund w Second Life)
+		( [EXISTENCE] sekund w ForMe.World)
 Awatar &apos;[NAME]&apos; pozostał w pełni załadowany.
 	</notification>
 	<notification name="AvatarRezSelfBakedTextureUploadNotification">
-		( [EXISTENCE] sekund w Second Life )
+		( [EXISTENCE] sekund w ForMe.World )
 Wstępnie przetworzone tekstury [RESOLUTION] dla &apos;[BODYREGION]&apos; zostały przesłane po [TIME] sekundach.
 	</notification>
 	<notification name="AvatarRezSelfBakedTextureUpdateNotification">
-		( [EXISTENCE] sekund w Second Life )
+		( [EXISTENCE] sekund w ForMe.World )
 Wstępnie przetworzone tekstury [RESOLUTION] zostały lokalnie zaktualizowane dla &apos;[BODYREGION]&apos; po [TIME] sekundach.
 	</notification>
 	<notification name="CannotUploadTexture">
@@ -4323,7 +4323,7 @@ Na pewno chcesz zresetować wszystkie ustawienia?
 		</form>
 	</notification>
 	<notification name="DebugSettingsWarning">
-		Uwaga! Używanie ustawień debugowania nie jest obsługiwane przez grupę wsparcia! Zmienianie ich może prowadzić do utraty danych, funkcjonalności albo w ogóle dostępu do całego świata Second Life. Nie zmieniaj żadnych wartości jeśli nie wiesz, do czego służą.
+		Uwaga! Używanie ustawień debugowania nie jest obsługiwane przez grupę wsparcia! Zmienianie ich może prowadzić do utraty danych, funkcjonalności albo w ogóle dostępu do całego świata ForMe.World. Nie zmieniaj żadnych wartości jeśli nie wiesz, do czego służą.
 		<form name="form">
 			<ignore name="ignore" text="Ostrzeżenie ustawień debugowania"/>
 		</form>
@@ -4376,7 +4376,7 @@ Chcesz włączyć automatyczne prezentowanie wersji Przeglądarki?
 		<form name="form">
 			<button name="OK_okcancelignore" text="Tak" />
 			<button name="Cancel_okcancelignore" text="Nie" />
-			<ignore name="ignore" text="Dołączenie do grupy wsparcia Phoenix/Firestorm" />
+			<ignore name="ignore" text="Dołączenie do grupy wsparcia Phoenix/ForMe.World" />
 		</form>
 	</notification>
 	<notification name="ConfirmScriptModify">

@@ -598,7 +598,7 @@ http://secondlife.com/download.
 		<usetemplate name="okbutton" yestext="Afslut"/>
 	</notification>
 	<notification name="UpdaterServiceNotRunning">
-		Dette er en påkrævet opdatering af din Second Life installation.
+		Dette er en påkrævet opdatering af din ForMe.World installation.
 
 Du kan downloade opdateringen fra http://www.secondlife.com/downloads
 eller du kan installere den nu.

@@ -5569,7 +5569,7 @@ A exibição automática da versão do visualizador deve ser ativada?
 		<form name="form">
 			<button name="OK_okcancelignore" text="Sim"/>
 			<button name="Cancel_okcancelignore" text="Não"/>
-			<ignore name="ignore" text="Ao entrar no chat do grupo de suporte Phoenix/Firestorm."/>
+			<ignore name="ignore" text="Ao entrar no chat do grupo de suporte Phoenix/ForMe.World."/>
 		</form>
 	</notification>
 
@@ -6231,7 +6231,7 @@ Gostaria de salvá-las primeiro?
 		<usetemplate name="okcancelbuttons" notext="Não" yestext="Sim"/>
 	</notification>
 	<notification name="FSAOScriptedNotification">
-		Firestorm Animation Overrider: [AO_MESSAGE]
+		ForMe.World Animation Overrider: [AO_MESSAGE]
 		<usetemplate ignoretext="Avisar quando o Firestorm Animation Overrider for acessado por um objeto com script" name="notifyignore"/>
 	</notification>
 	<notification name="OmniFilterNewRuleSet">

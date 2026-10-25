@@ -118,7 +118,7 @@ public:
             {
                 FSCommon::report_cmdline_result("Packager finished, you may now pick up the prim that contains the objects.");
                 FSCommon::report_cmdline_result(llformat("Packaged what you had selected in world into the folder \"%s\" in your inventory and into the prim with the UUID of \"%s\"", mFolderName.c_str(), mDropUUID.c_str()));
-                FSCommon::report_cmdline_result("Don't worry if you look at the contents of package right now, it may show as empty, it isn't, it's just a bug with Second Life itself.");
+                FSCommon::report_cmdline_result("Don't worry if you look at the contents of package right now, it may show as empty, it isn't, it's just a bug with ForMe.World itself.");
                 FSCommon::report_cmdline_result("If you take it into your inventory then rez it back out, all the contents will be there.");
             }
             else

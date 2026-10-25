@@ -233,7 +233,7 @@ La inicialización del mercado ha fallado por un error del sistema o de la red. 
 		<usetemplate name="okbutton" yestext="Aceptar"/>
 	</notification>
 	<notification name="AllowMultipleViewers">
-		No es posible ejecutar varios visores Second Life ya que esta funcionalidad no es compatible. Puede provocar problemas de caché en la textura, imágenes degradadas o alteradas y un bajo rendimiento.
+		No es posible ejecutar varios visores ForMe.World ya que esta funcionalidad no es compatible. Puede provocar problemas de caché en la textura, imágenes degradadas o alteradas y un bajo rendimiento.
 		<usetemplate name="okbutton" yestext="OK"/>
 	</notification>
 	<notification name="GrantModifyRights">
@@ -2562,7 +2562,7 @@ Publícala en una página web para que otros puedan acceder fácilmente a esta p
 		La cadena [STRING_NAME] Ha desaparecido de strings.xml
 	</notification>
 	<notification name="EnableMediaFilter">
-		Reproducir medios o música puede exponer tu identidad a sitios ajenos a Second Life. Puedes activar un filtro que te permitirá seleccionar qué sitios recibirán peticiones de medios desde tu equipo, y obtener así mayor control sobre tu privacidad.
+		Reproducir medios o música puede exponer tu identidad a sitios ajenos a ForMe.World. Puedes activar un filtro que te permitirá seleccionar qué sitios recibirán peticiones de medios desde tu equipo, y obtener así mayor control sobre tu privacidad.
 		
 		¿Deseas activar el filtro de medios?
 		(Puedes cambiar esta opción más tarde en Preferencias &gt; Sonido y medios).
@@ -3750,7 +3750,7 @@ Al ocultar el botón Hablar se desactiva la función de voz.
 		</form>
 	</notification>
 	<notification name="ModeChange">
-		Cambiar entre los diferentes modos requiere que cierres y reinicies Firestorm.
+		Cambiar entre los diferentes modos requiere que cierres y reinicies ForMe.World.
 		<usetemplate name="okcancelbuttons" yestext="Cerrar" notext="No cerrar"/>
 	</notification>
 	<notification label="" name="NoClassifieds">
@@ -4872,7 +4872,7 @@ Puedes activar y desactivar esta función en cualquier momento usando la casilla
 		<form name="form">
 			<button name="OK_okcancelignore" text="Sí"/>
 			<button name="Cancel_okcancelignore" text="No"/>
-			<ignore name="ignore" text="Te has unido al Grupo de Soporte de Phoenix/Firestorm"/>
+			<ignore name="ignore" text="Te has unido al Grupo de Soporte de Phoenix/ForMe.World"/>
 		</form>
 	</notification>
 	<notification name="ConfirmScriptModify">
@@ -4923,7 +4923,7 @@ Simulador anterior: [OLDVERSION]
 [EWHAT]
 	</notification>
 	<notification name="NoHavok">
-		Algunas funciones como [FEATURE] no están incluídas en [APP_NAME] para OpenSimulator. Si quieres usar [FEATURE], por favor descarga [APP_NAME] para Second Life de
+		Algunas funciones como [FEATURE] no están incluídas en [APP_NAME] para ForMe.World. Si quieres usar [FEATURE], por favor descarga [APP_NAME] para ForMe.World de
 [DOWNLOAD_URL]
 		<form name="form">
 			<ignore name="ignore" text="Alerta de No Havok"/>

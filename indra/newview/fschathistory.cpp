@@ -27,6 +27,8 @@
 // Original file: LLChatHistory.cpp
 
 #include "llviewerprecompiledheaders.h"
+#include "formeviewbranding.h"
+#include "fsavatarbadges.h" // <FS:ForMe> Authoritative server badges.
 
 #include "fschathistory.h"
 
@@ -752,6 +754,9 @@ public:
 
     void setup(const LLChat& chat, const LLStyle::Params& style_params, const LLSD& args)
     {
+        mForMeBadgeEligible = chat.mSourceType == CHAT_SOURCE_AGENT && !chat.mRlvNamesFiltered && !chat.mMuted
+            && chat.mChatStyle != CHAT_STYLE_HISTORY && chat.mChatStyle != CHAT_STYLE_SERVER_HISTORY;
+
         mAvatarID = chat.mFromID;
         mSessionID = chat.mSessionID;
         mSourceType = chat.mSourceType;
@@ -822,7 +827,7 @@ public:
             else
             {
                 mFrom = LLTrans::getString("SECOND_LIFE"); // Will automatically be substituted!
-                if (!chat.mFromName.empty() && (mFrom != chat.mFromName))
+                if (!chat.mFromName.empty() && !ForMeBranding::legacyName(chat.mFromName) && (mFrom != chat.mFromName))
                 {
                     mFrom += " (" + chat.mFromName + ")";
                 }
@@ -1217,8 +1222,15 @@ private:
     {
         mAvatarNameCacheConnection.disconnect();
 
-        mFrom = av_name.getDisplayName();
+        const ForMeBadge::Data forme_badge = mForMeBadgeEligible && RlvActions::canShowName(RlvActions::SNC_DEFAULT, agent_id)
+            ? ForMeAvatarBadges::get(agent_id) : ForMeBadge::Data();
+        mFrom = ForMeBadge::decorate(forme_badge, av_name.getDisplayName());
 
+        if (forme_badge.valid)
+        {
+            mUserNameTextBox->setColor(ForMeAvatarBadges::color(forme_badge.badgeColor));
+            mUserNameTextBox->setReadOnlyColor(ForMeAvatarBadges::color(forme_badge.badgeColor));
+        }
         mUserNameTextBox->setValue( LLSD(mFrom) );
         mUserNameTextBox->setToolTip( av_name.getUserName() );
 
@@ -1228,6 +1240,7 @@ private:
         {
             LLStyle::Params style_params_name;
             LLUIColor userNameColor = LLUIColorTable::instance().getColor("EmphasisColor");
+            if (forme_badge.valid) userNameColor = ForMeAvatarBadges::color(forme_badge.badgeColor);
             style_params_name.color(userNameColor);
             style_params_name.font.name("SansSerifSmall");
             style_params_name.font.style(mNameStyleParams.font.style);
@@ -1245,6 +1258,7 @@ protected:
 
     LLUICtrl*           mInfoCtrl;
 
+    bool                mForMeBadgeEligible = false; // <FS:ForMe> Per-message provenance.
     LLUUID              mAvatarID;
     LLSD                mObjectData;
     EChatSourceType     mSourceType;
@@ -1406,6 +1420,7 @@ LLView* FSChatHistory::getHeader(const LLChat& chat,const LLStyle::Params& style
 void FSChatHistory::clear()
 {
     mLastFromName.clear();
+    mForMeLastBadge.clear();
     // workaround: Setting the text to an empty line before clear() gets rid of
     // the scrollbar, if present, which otherwise would get stuck until the next
     // line was appended. -Zi
@@ -1493,6 +1508,9 @@ void FSChatHistory::appendMessage(const LLChat& chat, const LLSD &args, const LL
     LLFontGL* fontp = LLViewerChat::getChatFont();
     std::string font_name = LLFontGL::nameFromFont(fontp);
     std::string font_size = LLFontGL::sizeFromFont(fontp);
+
+    const ForMeBadge::Data forme_badge = ForMeAvatarBadges::forChat(chat);
+    if (forme_badge.valid) name_color = ForMeAvatarBadges::color(forme_badge.badgeColor);
 
     LLStyle::Params body_message_params;
     body_message_params.color(txt_color);
@@ -1724,7 +1742,15 @@ void FSChatHistory::appendMessage(const LLChat& chat, const LLSD &args, const LL
                 name_params.link_href = LLSLURL(from_me ? "agentself" : "agent", chat.mFromID, "inspect").getSLURLString();
 
                 // Add link to avatar's inspector and delimiter to message.
+                if (forme_badge.valid)
+                {
+                    name_params.is_link = true;
+                    appendText(ForMeBadge::decorate(forme_badge, chat.mFromName), prependNewLineState, name_params);
+                }
+                else
+                {
                 appendText(std::string(name_params.link_href), prependNewLineState, name_params);
+                }
 
                 prependNewLineState = false;
 
@@ -1773,6 +1799,7 @@ void FSChatHistory::appendMessage(const LLChat& chat, const LLSD &args, const LL
 
         if (!teleport_separator
             && mLastFromName == chat.mFromName
+            && mForMeLastBadge == forme_badge.stamp
             && mLastFromID == chat.mFromID
             && mLastMessageTime.notNull()
             && (new_message_time.secondsSinceEpoch() - mLastMessageTime.secondsSinceEpoch()) < 60.0
@@ -1833,6 +1860,7 @@ void FSChatHistory::appendMessage(const LLChat& chat, const LLSD &args, const LL
         appendWidget(p, widget_associated_text, false); // <FS:Zi> FIRE-8600: TAB out of chat history
 
         mLastFromName = chat.mFromName;
+        mForMeLastBadge = forme_badge.stamp;
         mLastFromID = chat.mFromID;
         mLastMessageTime = new_message_time;
         mIsLastMessageFromLog = message_from_log;

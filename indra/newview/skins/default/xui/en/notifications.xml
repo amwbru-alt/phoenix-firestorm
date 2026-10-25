@@ -11721,7 +11721,7 @@ Do you want to enable the automatic viewer version display?
        text="No"/>
       <ignore
 	   name="ignore"
-       text="The Phoenix/Firestorm Support Group was joined"
+       text="The Phoenix/ForMe.World Support Group was joined"
        save_option="true" />
     </form>
 
@@ -14947,7 +14947,7 @@ Bulk import of Windlights has finished.
    <unique combine = "cancel_old">
      <context>FSAOScriptedNotification</context>
    </unique>
-Firestorm Animation Overrider: [AO_MESSAGE]
+ForMe.World Animation Overrider: [AO_MESSAGE]
    <usetemplate
     ignoretext="Warn me when the Firestorm Animation Overrider gets accessed by a scripted object"
     name="notifyignore"/>

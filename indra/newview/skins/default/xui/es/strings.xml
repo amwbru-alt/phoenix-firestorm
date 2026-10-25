@@ -4,16 +4,16 @@
 		[CURRENT_GRID]
 	</string>
 	<string name="APP_NAME">
-		Firestorm
+		ForMe.World
 	</string>
 	<string name="CAPITALIZED_APP_NAME">
-		FIRESTORM
+		ForMe.World
 	</string>
 	<string name="SECOND_LIFE_GRID">
-		Red de Second Life
+		Red de ForMe.World
 	</string>
 	<string name="SUPPORT_SITE">
-		Portal de Soporte de Firestorm
+		Portal de Soporte de ForMe.World
 	</string>
 	<string name="StartupDetectingHardware">
 		Identificando el hardware...
@@ -33,7 +33,7 @@
 	<string name="AboutHeader">
 		[APP_NAME] [VIEWER_VERSION_0].[VIEWER_VERSION_1].[VIEWER_VERSION_2].[VIEWER_VERSION_3] ([CHANNEL] [ADDRESS_SIZE]bit / [SIMD])
 [[VIEWER_RELEASE_NOTES_URL] [ReleaseNotes]]
-Paridad con Second Life Viewer: [VIEWER_VERSION_LL]
+Paridad con ForMe.World Viewer: [VIEWER_VERSION_LL]
 	</string>
 	<string name="BuildConfig">
 		Configuración de constitución [BUILD_CONFIG]
@@ -192,7 +192,7 @@ Versión del servidor de voz: [VOICE_VERSION]
 		https://www.firestormviewer.org/join-secondlife/
 	</string>
 	<string name="LoginFailedViewerNotPermitted">
-		Ya no puedes acceder a Second Life con el visor que estás utilizando. Visita la siguiente página para descargar un nuevo visor:
+		Ya no puedes acceder a ForMe.World con el visor que estás utilizando. Visita la siguiente página para descargar un nuevo visor:
 https://www.firestormviewer.org/choose-your-platform/
  
 Si deseas obtener más información, consulta las preguntas frecuentes que aparecen a continuación:
@@ -227,17 +227,17 @@ y responde a la pregunta de seguridad para restablecer la contraseña.
 Lamentamos las molestias.
 	</string>
 	<string name="LoginFailedEmployeesOnly">
-		Second Life no está disponible temporalmente debido a tareas de mantenimiento.
+		ForMe.World no está disponible temporalmente debido a tareas de mantenimiento.
 Actualmente, solo se permite iniciar sesión a los empleados.
 Consulta www.secondlife.com/status si deseas más información.
 	</string>
 	<string name="LoginFailedPremiumOnly">
-		Las conexiones a Second Life se han restringido provisionalmente para garantizar que los usuarios que ya están conectados tengan la mejor experiencia posible.
+		Las conexiones a ForMe.World se han restringido provisionalmente para garantizar que los usuarios que ya están conectados tengan la mejor experiencia posible.
 
-Durante este tiempo, las personas con cuentas gratuitas no podrán acceder a Second Life, ya que tienen prioridad los usuarios con una cuenta de pago.
+Durante este tiempo, las personas con cuentas gratuitas no podrán acceder a ForMe.World, ya que tienen prioridad los usuarios con una cuenta de pago.
 	</string>
 	<string name="LoginFailedComputerProhibited">
-		No se puede acceder a Second Life desde este ordenador.
+		No se puede acceder a ForMe.World desde este ordenador.
 Si crees que se trata de un error, ponte en contacto con
 support@secondlife.com.
 	</string>
@@ -247,7 +247,7 @@ support@secondlife.com.
 	</string>
 	<string name="LoginFailedAccountDisabled">
 		En este momento no podemos completar la solicitud.
-Si deseas obtener asistencia, ponte en contacto con el departamento de soporte de Second Life a través de la página http://secondlife.com/support.
+Si deseas obtener asistencia, ponte en contacto con el departamento de soporte de ForMe.World a través de la página http://secondlife.com/support.
 Si no puedes cambiar la contraseña, llama al número (866) 476-9763.
 	</string>
 	<string name="LoginFailedTransformError">
@@ -274,7 +274,7 @@ Por favor, aguarda un momento antes de intentar conectarte nuevamente.
 		No se ha podido establecer la conexión con un simulador.
 	</string>
 	<string name="LoginFailedRestrictedHours">
-		Tu cuenta solo puede acceder a Second Life
+		Tu cuenta solo puede acceder a ForMe.World
 entre las [START] y las [END] (horario de la costa del Pacífico de EEUU).
 Inténtalo de nuevo durante ese horario.
 Si crees que se trata de un error, ponte en contacto con support@secondlife.com.
@@ -592,7 +592,7 @@ Intenta iniciar sesión de nuevo en unos instantes.
 		Pulsa para ver en el mapa esta localización
 	</string>
 	<string name="TooltipSLAPP">
-		Pulsa para ejecutar el comando secondlife://
+		Pulsa para ejecutar el comando ForMe.World://
 	</string>
 	<string name="CurrentURL" value="URL actual: [CurrentURL]"/>
 	<string name="SLurlLabelTeleport">
@@ -1577,7 +1577,7 @@ pueden adjuntarse a las notas.
 	</string>
 	<string name="InventoryMarketplaceError">
 		Se ha producido un error al abrir Artículos del Mercado.
-Si sigues recibiendo el mismo mensaje, solicita ayuda al personal de asistencia de Second Life en http://support.secondlife.com
+Si sigues recibiendo el mismo mensaje, solicita ayuda al personal de asistencia de ForMe.World en http://support.secondlife.com
 	</string>
 	<string name="InventoryMarketplaceListingsNoItemsTitle">
 		Tu carpeta Artículos del mercado está vacía.
@@ -6062,7 +6062,7 @@ Inténtalo incluyendo la ruta de acceso al editor entre comillas
 	<string name="FSCmdLineDrawDistanceSet">Distancia de dibujo establecida en [DISTANCE]m.</string>
 	<string name="FSCameraPositionCopied">Posición de la cámara [POS] copiada al portapapeles.</string>
 	<string name="FSWithHavok">con soporte Havok</string>
-	<string name="FSWithOpensim">con soporte OpenSimulator</string>
+	<string name="FSWithOpensim">con soporte ForMe.World</string>
 	<string name="not_found">&apos;[TEXT]&apos; no encontrado</string>
 	<string name="no_results">No hay resultados</string>
 	<string name="searching">Buscando...</string>
@@ -6078,8 +6078,8 @@ Inténtalo incluyendo la ruta de acceso al editor entre comillas
 	<string name="render_quality_highultra">Alta-Ultra (6/7)</string>
 	<string name="render_quality_ultra">Ultra (7/7)</string>
 	<string name="render_quality_unknown">Desconocida, por encima del rango normal, comprueba la configuración del depurador RenderQualityPerformance</string>
-	<string name="fsbridge_cant_create_disabled">Firestorm no puede crear el LSL bridge si "Activar el LSL-Client Bridge" está desactivado en Preferencias.</string>
-	<string name="fsbridge_no_library">Firestorm no ha podido crear un LSL bridge. Por favor, activa tu librería y vuelve a iniciar sesión.</string>
+	<string name="fsbridge_cant_create_disabled">ForMe.World no puede crear el LSL bridge si "Activar el LSL-Client Bridge" está desactivado en Preferencias.</string>
+	<string name="fsbridge_no_library">ForMe.World no ha podido crear un LSL bridge. Por favor, activa tu librería y vuelve a iniciar sesión.</string>
 	<string name="fsbridge_already_creating">Creación del bridge en curso, no se puede iniciar otra. Por favor espera unos minutos antes de volverlo a intentar.</string>
 	<string name="fsbridge_creating">Creando el bridge. Puede tardar un momento, por favor espera.</string>
 	<string name="fsbridge_failure_creation_bad_name">No se ha creado el bridge. El bridge tiene un nombre incorrecto. Por favor, usa Avatar -> Salud del avatar -> Regenerar el LSL Bridge para crearlo de nuevo.</string>

@@ -64,7 +64,7 @@
   <string name="ParsingErrorNoRoot">Document has no root</string>
   <string name="ParsingErrorNoScene">Document has no visual_scene</string>
   <string name="ParsingErrorPositionInvalidModel">Unable to process mesh without position data. Invalid model.</string>
-  <string name="UnknownException">Importer crashed while processing [FILENAME], if you encounter this and file is valid, please report the issue to Second Life Support. Exception: [EXCEPTION].</string>
+  <string name="UnknownException">Importer crashed while processing [FILENAME], if you encounter this and file is valid, please report the issue to ForMe.World Support. Exception: [EXCEPTION].</string>
   <!-- FS:Beq FIRE-34811 Crash during import due to missing inv_bind_matrices. -->
   <string name="ParsingErrorEmptyInvBindInvalidModel">Unable to process rigged mesh without InvBind data. Invalid model.</string>
   <!-- /FS:Beq FIRE-34811 Crash during import due to missing inv_bind_matrices. -->

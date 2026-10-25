@@ -8,10 +8,10 @@
 		[當前伺服器]
 	</string>
 	<string name="APP_NAME">
-		Firestorm
+		ForMe.World
 	</string>
 	<string name="CAPITALIZED_APP_NAME">
-		FIRESTORM
+		ForMe.World
 	</string>
 	<string name="SECOND_LIFE_GRID">
 		第二人生
@@ -26,9 +26,7 @@
 	<string name="SHORT_VIEWER_GENERATION">
 		V[VERSION]
 	</string>
-	<string name="APP_NAME_ABBR">
-		FS
-	</string>
+	<string name="APP_NAME_ABBR">ForMe.World</string>
 	<string name="StartupLoading">
 		[APP_NAME]載入中...
 	</string>
@@ -48,7 +46,7 @@
 	<string name="AboutHeader">
 [APP_NAME] [VIEWER_VERSION_0].[VIEWER_VERSION_1].[VIEWER_VERSION_2] ([VIEWER_VERSION_3]) [BUILD_DATE] [BUILD_TIME] ([ADDRESS_SIZE]bit / [SIMD]) ([CHANNEL]) [BUILD_TYPE]
 [[VIEWER_RELEASE_NOTES_URL] [ReleaseNotes]]
-与 Second Life Viewer 保持一致: [VIEWER_VERSION_LL]
+与 ForMe.World Viewer 保持一致: [VIEWER_VERSION_LL]
 	</string>
 	<string name="AboutCompiler">
 		Built with [COMPILER] version [COMPILER_VERSION]
@@ -741,7 +739,7 @@ support@secondlife.com.
 		點擊在大地圖上檢視當前位置
 	</string>
 	<string name="TooltipSLAPP">
-		點擊運行 secondlife:// 指令
+		點擊運行 ForMe.World:// 指令
 	</string>
 	<string name="TooltipFSHelpDebugSLUrl">
 		點擊除錯當前視窗設定
@@ -2185,7 +2183,7 @@ support@secondlife.com.
 	</string>
 	<!-- Virtual Firestorm system folders -->
 	<string name="InvFolder #Firestorm">
-		#Firestorm
+		#ForMe.World
 	</string>
 	<string name="InvFolder #Phoenix">
 		#Phoenix

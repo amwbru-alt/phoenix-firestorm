@@ -25,6 +25,8 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "llvoavatar.h"
+#include "fsavatarbadges.h" // <FS:ForMe> Authoritative server badges.
 #include "formegridpolicy.h" // <FS:ForMe> Fixed-grid policy.
 
 #include "llviewerregion.h"
@@ -2633,6 +2635,7 @@ void LLViewerRegion::setSimulatorFeatures(const LLSD& sim_features)
 
     auto work = [=]()
         {
+            LLVOAvatar::invalidateNameTags(); // <FS:ForMe> Enable/disable the versioned badge contract.
             // if region has MaxTextureResolution, set max_texture_dimension settings, otherwise use default
             if (features.has("MaxTextureResolution"))
             {
@@ -2742,6 +2745,7 @@ void LLViewerRegion::setSimulatorFeatures(const LLSD& sim_features)
     }
     mMinSimHeight = mSimulatorFeatures.has("OpenSimExtras") && mSimulatorFeatures["OpenSimExtras"].has("MinSimHeight") ? (F32)mSimulatorFeatures["OpenSimExtras"]["MinSimHeight"].asReal() : 0.0f;
 // </FS>
+
 }
 
 //this is called when the parent is not cacheable.

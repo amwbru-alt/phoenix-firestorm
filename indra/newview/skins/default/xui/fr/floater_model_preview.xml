@@ -48,7 +48,7 @@
 <string name="ParsingErrorNoRoot">Le document n'a pas de racine</string>
 <string name="ParsingErrorNoScene">Le document n'a pas de visual_scene</string>
 <string name="ParsingErrorPositionInvalidModel">Impossible de traiter le maillage sans données de position. Modèle invalide.</string>
-<string name="UnknownException">L'importateur s'est planté lors du traitement de [FILENAME], si vous rencontrez ce problème et que le fichier est valide, veuillez le signaler au service d'assistance de Second Life. Exception : [EXCEPTION].</string>
+<string name="UnknownException">L'importateur s'est planté lors du traitement de [FILENAME], si vous rencontrez ce problème et que le fichier est valide, veuillez le signaler au service d'assistance de ForMe.World. Exception : [EXCEPTION].</string>
 <string name="ParsingErrorEmptyInvBindInvalidModel">Impossible de traiter le maillage riggé sans les données InvBind. Modèle non valide.</string>
 <string name="NoScenesFound">Aucune scène n'est définie dans le fichier GLTF</string>
 <string name="InvalidMeshReference">Le nœud [NODE_NAME] fait référence à un maillage invalide [MESH_INDEX] (nombre total de maillages : [TOTAL_MESHES]).</string>

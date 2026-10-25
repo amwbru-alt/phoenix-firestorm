@@ -112,6 +112,8 @@ set(llcommon_SOURCE_FILES
     )
     
 set(llcommon_HEADER_FILES
+    formeavatarbadge.h
+    formeviewbranding.h
     CMakeLists.txt
 
     always_return.h

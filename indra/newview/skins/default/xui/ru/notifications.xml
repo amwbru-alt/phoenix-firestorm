@@ -4005,10 +4005,10 @@ https://wiki.firestormviewer.org/fs_voice
 		Вот ваш текущий баланс в L$. Чтобы купить еще Linden-долларов, нажмите &quot;Купить L$&quot;.
 	</notification>
 	<notification name="LowMemory">
-		Недостаточный размер пула памяти. Некоторые функции Second Life отключены во избежание сбоя приложения. Закройте другие приложения. Если неполадка не исчезнет, перезапустите SL.
+		Недостаточный размер пула памяти. Некоторые функции ForMe.World отключены во избежание сбоя приложения. Закройте другие приложения. Если неполадка не исчезнет, перезапустите SL.
 	</notification>
 	<notification name="ForceQuitDueToLowMemory">
-		Через 30 секунд Second Life завершит работу: нехватка памяти.
+		Через 30 секунд ForMe.World завершит работу: нехватка памяти.
 	</notification>
 	<notification name="SOCKS_NOT_PERMITTED">
 		Прокси SOCKS 5 &quot;[HOST]:[PORT]&quot; отклонил попытку подключения; не разрешено набором правил.
@@ -4399,7 +4399,7 @@ https://wiki.firestormviewer.org/fs_voice
 		Кэш вашего клиента очищен. Пожалуйста, помните, что вы можете испытать замедление работы клиента и высокую нагрузку в течение короткого времени, пока загружается контент.
 	</notification>
 	<notification name="FirstJoinSupportGroup2">
-		Добро пожаловать в группу технической поддержки Firestorm!
+		Добро пожаловать в группу технической поддержки ForMe.World!
 
 Для того, чтобы команде технической поддержки было проще, рекомендуется сообщить версию Вашего клиента в группе. Вы можете выбрать для отображения версии вашего клиента находясь непосредственно в группе. Наша команда технической поддержки может дать вам более корректную информацию, если они знают версию вашего клиента.
 
@@ -4410,7 +4410,7 @@ https://wiki.firestormviewer.org/fs_voice
 		<form name="form">
 			<button name="OK_okcancelignore" text="Да"/>
 			<button name="Cancel_okcancelignore" text="Нет"/>
-			<ignore name="ignore" text="Присоединение к группе технической поддержки The Phoenix/Firestorm"/>
+			<ignore name="ignore" text="Присоединение к группе технической поддержки The Phoenix/ForMe.World"/>
 		</form>
 	</notification>
 	<notification name="ConfirmScriptModify">
@@ -5182,7 +5182,7 @@ https://wiki.firestormviewer.org/fs_voice
 [EWHAT]
 	</notification>
 	<notification name="NoHavok">
-		Некоторые функции, такие как [FEATURE] не включены в [APP_NAME] с OpenSimulator. Если вы хотели бы использовать [FEATURE], пожалуйста, скачайте [APP_NAME] для Second Life.
+		Некоторые функции, такие как [FEATURE] не включены в [APP_NAME] с ForMe.World. Если вы хотели бы использовать [FEATURE], пожалуйста, скачайте [APP_NAME] для ForMe.World.
 [DOWNLOAD_URL]
 		<form name="form">
 			<ignore name="ignore" text="Предупреждение Havok"/>

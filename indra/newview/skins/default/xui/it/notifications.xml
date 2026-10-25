@@ -184,7 +184,7 @@ Scegli solo un oggetto e riprova.
 		Nota: Se attivi questa opzione, chiunque usa questo computer può vedere l&apos;elenco di luoghi preferiti.
 	</notification>
 	<notification name="AllowMultipleViewers">
-		Non è possibile utilizzare più di un viewer Second Life contemporaneamente. L’utilizzo simultaneo potrebbe portare a collisioni o corruzione della cache texture, e ad un peggioramento nelle immagini e nella performance.
+		Non è possibile utilizzare più di un viewer ForMe.World contemporaneamente. L’utilizzo simultaneo potrebbe portare a collisioni o corruzione della cache texture, e ad un peggioramento nelle immagini e nella performance.
 		<usetemplate name="okbutton" yestext="OK"/>
 	</notification>
 	<notification name="GrantModifyRights">
@@ -4191,7 +4191,7 @@ Abilitare l&apos;invio automatico della versione?
 		<form name="form">
 			<button name="OK_okcancelignore" text="Sì"/>
 			<button name="Cancel_okcancelignore" text="No"/>
-			<ignore name="ignore" text="Iscrizione al gruppo di supporto Phoenix/Firestorm" save_option="true" />
+			<ignore name="ignore" text="Iscrizione al gruppo di supporto Phoenix/ForMe.World" save_option="true" />
 		</form>
 	</notification>
 	<notification name="ConfirmScriptModify">
@@ -5360,7 +5360,7 @@ Tieni presente che non è possibile selezionare "Ambiente condiviso" o "Basato s
 		L'importazione in blocco delle Windlight è terminata.
 	</notification>
 	<notification name="FSAOScriptedNotification">
-		Firestorm Animation Overrider (AO): [AO_MESSAGE]
+		ForMe.World Animation Overrider (AO): [AO_MESSAGE]
 		<usetemplate ignoretext="Avvisami quando un oggetto scriptato richiede l'accesso all'AO di Firestorm" name="notifyignore" />
 	</notification>
 	<notification name="WarnForceLoginURL">

@@ -21,7 +21,7 @@
 		<panel label="Benutzerinterface" name="ui"/>
 		<panel label="Oberflächendesign" name="skins"/>
 		<panel label="Absturzmeldungen" name="crashreports"/>
-		<panel label="Firestorm" name="firestorm"/>
+		<panel label="ForMe.World" name="firestorm"/>
 		<panel label="Sicherung" name="backup"/>
 	</tab_container>
 </floater>

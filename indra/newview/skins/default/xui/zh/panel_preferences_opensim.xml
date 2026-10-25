@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<panel label="OpenSim" name="opensim_panel">
-	<tab_container label="OpenSim" name="tabs">
+<panel label="ForMe.World" name="opensim_panel">
+	<tab_container label="ForMe.World" name="tabs">
 		<panel label="類比網路管理" name="grid_management_panel">
 			<text name="add_grid_text">管理模擬網路</text>
 			<line_editor name="add_grid" label="連線位址" />

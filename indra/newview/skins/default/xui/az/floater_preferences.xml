@@ -21,7 +21,7 @@
 		<panel label="İstifadəçi interfeysi" name="ui"/>
 		<panel label="Mövzular" name="skins"/>
 		<panel label="Səhv raportları" name="crashreports"/>
-		<panel label="Firestorm" name="firestorm"/>
+		<panel label="ForMe.World" name="firestorm"/>
 		<panel label="Yedekləmə" name="backup"/>
 	</tab_container>
 </floater>

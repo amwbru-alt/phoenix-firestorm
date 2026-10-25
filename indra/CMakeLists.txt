@@ -57,6 +57,8 @@ set(OPENSIM ON)
 set(HAVOK_TPV OFF)
 set(SINGLEGRID ON)
 set(SINGLEGRID_URI "185.173.93.200:8002")
+set(VIEWER_CHANNEL "ForMe.World" CACHE STRING "ForMe.World product name" FORCE)
+set(VIEWER_CHANNEL "ForMe.World")
 # </FS:ForMe>
 include(Variables)
 include(BuildVersion)

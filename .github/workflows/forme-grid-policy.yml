@@ -1,4 +1,4 @@
-name: ForMe fixed-grid policy
+name: ForMe viewer policy and badges
 on:
   push:
   pull_request:
@@ -16,3 +16,13 @@ jobs:
           "$RUNNER_TEMP/grid-policy-test"
       - name: Check grid boundaries and all shipped preference skins
         run: python3 tests/forme/check_grid_integration.py
+      - name: Compile and execute production badge parser tests
+        run: |
+          g++ -std=c++20 -Wall -Wextra -Werror -pedantic -Iindra/llcommon tests/forme/avatar_badge_test.cpp -o "$RUNNER_TEMP/avatar-badge-test"
+          "$RUNNER_TEMP/avatar-badge-test"
+      - name: Check badge integration and interface branding
+        run: |
+          python3 tests/forme/check_badge_integration.py
+          python3 tests/forme/test_branding.py
+          python3 tests/forme/test_packaging_branding.py
+          python3 tests/forme/branding.py --check

@@ -7,15 +7,15 @@
 
 	<!-- Default Args - these arguments will be replaced in all strings -->
 	<string name="SECOND_LIFE">[CURRENT_GRID]</string>
-	<string name="APP_NAME">Firestorm</string>
-	<string name="CAPITALIZED_APP_NAME">FIRESTORM</string>
-	<string name="SECOND_LIFE_GRID">Second Life Grid</string>
-	<string name="SUPPORT_SITE">Firestorm Support Portal</string>
+	<string name="APP_NAME">ForMe.World</string>
+	<string name="CAPITALIZED_APP_NAME">ForMe.World</string>
+	<string name="SECOND_LIFE_GRID">ForMe.World Grid</string>
+	<string name="SUPPORT_SITE">ForMe.World Support Portal</string>
 	<string name="DOWNLOAD_URL">https://www.firestormviewer.org/choose-your-platform/</string>
 	<string name="CURRENT_GRID"/> <!-- Will be set in fsgridhandler.cpp / llviewernetwork.cpp -->
 	<string name="VIEWER_GENERATION">Viewer [VERSION]</string>
 	<string name="SHORT_VIEWER_GENERATION">V[VERSION]</string>
-	<string name="APP_NAME_ABBR">FS</string>
+	<string name="APP_NAME_ABBR">ForMe.World</string>
 
 	<!-- starting up -->
 	<string name="StartupLoading">Loading [APP_NAME]...</string>
@@ -28,7 +28,7 @@
 	<string name="AboutHeader">
 [APP_NAME] [VIEWER_VERSION_0].[VIEWER_VERSION_1].[VIEWER_VERSION_2] ([VIEWER_VERSION_3]) [BUILD_DATE] [BUILD_TIME] ([ADDRESS_SIZE]bit / [SIMD]) ([CHANNEL]) [BUILD_TYPE]
 [[VIEWER_RELEASE_NOTES_URL] [ReleaseNotes]]
-Parity with Second Life Viewer: [VIEWER_VERSION_LL]
+Parity with ForMe.World Viewer: [VIEWER_VERSION_LL]
 	</string>
 	<string name="AboutCompiler">Built with [COMPILER] version [COMPILER_VERSION]</string>
     <string name="BuildConfig">Build Configuration [BUILD_CONFIG]</string>
@@ -137,14 +137,14 @@ Voice Server Version: [VOICE_VERSION]
 	<string name="Quit">Quit</string>
 	<string name="create_account_url">https://www.firestormviewer.org/join-secondlife/</string>
 	
-	<string name="AgniGridLabel">Second Life Main Grid (Agni)</string>
-	<string name="AditiGridLabel">Second Life Beta Test Grid (Aditi)</string>
+	<string name="AgniGridLabel">ForMe.World Main Grid (Agni)</string>
+	<string name="AditiGridLabel">ForMe.World Beta Test Grid (Aditi)</string>
     <string name="AgniGridLabelShort">Agni (production)</string>
     <string name="AditiGridLabelShort">Aditi (beta)</string>
 	
 	<string name="ViewerDownloadURL">https://www.firestormviewer.org/choose-your-platform/</string>
 	<string name="LoginFailedViewerNotPermitted">
-The viewer you are using can no longer access Second Life. Please visit the following page to download a new viewer:
+The viewer you are using can no longer access ForMe.World. Please visit the following page to download a new viewer:
 https://www.firestormviewer.org/choose-your-platform/
 
 For more information, see our FAQ below:
@@ -169,13 +169,13 @@ We are very sorry for the inconvenience.</string>
 Please go to your account page at http://secondlife.com/password
 and answer the security question to reset your password.
 We are very sorry for the inconvenience.</string>
-	<string name="LoginFailedEmployeesOnly">Second Life is temporarily closed for maintenance.
+	<string name="LoginFailedEmployeesOnly">ForMe.World is temporarily closed for maintenance.
 Logins are currently restricted to employees only.
 Check www.secondlife.com/status for updates.</string>
-	<string name="LoginFailedPremiumOnly">Second Life logins are temporarily restricted in order to make sure that those in-world have the best possible experience.
+	<string name="LoginFailedPremiumOnly">ForMe.World logins are temporarily restricted in order to make sure that those in-world have the best possible experience.
 
-People with free accounts will not be able to access Second Life during this time, to make room for those who have paid for Second Life.</string>
-	<string name="LoginFailedComputerProhibited">Second Life cannot be accessed from this computer.
+People with free accounts will not be able to access ForMe.World during this time, to make room for those who have paid for ForMe.World.</string>
+	<string name="LoginFailedComputerProhibited">ForMe.World cannot be accessed from this computer.
 If you feel this is an error, please contact
 support@secondlife.com.</string>
   <!--'Pacific time' placeholder for [TIME] in case time from server can't be decoded-->
@@ -184,7 +184,7 @@ support@secondlife.com.</string>
 [TIME].
 If you feel this is an error, please contact support@secondlife.com.</string>
 	<string name="LoginFailedAccountDisabled">We are unable to complete your request at this time.
-Please contact Second Life support for assistance at http://support.secondlife.com.</string>
+Please contact ForMe.World support for assistance at http://support.secondlife.com.</string>
 	<string name="LoginFailedTransformError">Data inconsistency found during login.
 Please contact support@secondlife.com.</string>
 	<string name="LoginFailedAccountMaintenance">Your account is undergoing minor maintenance.
@@ -196,7 +196,7 @@ If you feel this is an error, please contact support@secondlife.com.</string>
 Please wait a minute before you try logging in again.</string>
 	<string name="LoginFailedUnableToCreateSession">Unable to create valid session.</string>
 	<string name="LoginFailedUnableToConnectToSimulator">Unable to connect to a simulator.</string>
-	<string name="LoginFailedRestrictedHours">Your account can only access Second Life
+	<string name="LoginFailedRestrictedHours">Your account can only access ForMe.World
 between [START] and [END] Pacific Time.
 Please come back during those hours.
 If you feel this is an error, please contact support@secondlife.com.</string>
@@ -353,7 +353,7 @@ If you feel this is an error, please contact support@secondlife.com</string>
 	<string name="TooltipTeleportUrl">Click to teleport to this location</string>
 	<string name="TooltipObjectIMUrl">Click to view this object's description</string>
 	<string name="TooltipMapUrl">Click to view this location on a map</string>
-	<string name="TooltipSLAPP">Click to run the secondlife:// command</string>
+	<string name="TooltipSLAPP">Click to run the ForMe.World:// command</string>
 	<string name="TooltipFSHelpDebugSLUrl">Click to open the debug settings window for this setting</string>
 	<string name="TooltipFSUrlEntryWear">Click to wear the contents of an inventory folder</string>
 	<string name="CurrentURL" value=" CurrentURL: [CurrentURL]" />
@@ -845,15 +845,15 @@ The [[MARKETPLACE_CREATE_STORE_URL] Marketplace store] is returning errors.
 	</string>
 	<string name="InventoryMarketplaceError">
 An error occurred while opening Marketplace Listings.
-If you continue to receive this message, please contact Second Life support for assistance at http://support.secondlife.com
+If you continue to receive this message, please contact ForMe.World support for assistance at http://support.secondlife.com
 	</string>
 	<string name="InventoryMarketplaceConnectionError">
 Marketplace Listings failed to connect.
-If you continue to receive this message, please contact Second Life support for assistance at http://support.secondlife.com
+If you continue to receive this message, please contact ForMe.World support for assistance at http://support.secondlife.com
 	</string>
 	<string name="InventoryMarketplaceConnectionErrorReason">
 Marketplace Listings failed to connect. Reason: [REASON]
-If you continue to receive this message, please contact Second Life support for assistance at http://support.secondlife.com
+If you continue to receive this message, please contact ForMe.World support for assistance at http://support.secondlife.com
 	</string>
 	<string name="InventoryMarketplaceListingsNoItemsTitle">Your Marketplace Listings folder is empty.</string>
 	<string name="InventoryMarketplaceListingsNoItemsTooltip"></string>
@@ -1002,7 +1002,7 @@ If you continue to receive this message, please contact Second Life support for 
 	<string name="InvFolder All">All</string>
 
 	<!-- Virtual Firestorm system folders -->
-	<string name="InvFolder #Firestorm">#Firestorm</string>
+	<string name="InvFolder #Firestorm">#ForMe.World</string>
 	<string name="InvFolder #Phoenix">#Phoenix</string>
 	<string name="InvFolder #RLV">#RLV</string>
 
@@ -3100,7 +3100,7 @@ and report the problem.
   
   <!-- Build types for about floater -->
   <string name="FSWithHavok">with Havok support</string>
-  <string name="FSWithOpensim">with OpenSimulator support</string>
+  <string name="FSWithOpensim">with ForMe.World support</string>
     
   <!-- Firestorm search -->
   <string name="not_found">&apos;[TEXT]&apos; not found</string>

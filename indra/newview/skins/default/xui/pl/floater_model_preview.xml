@@ -48,7 +48,7 @@
 <string name="ParsingErrorNoRoot">Dokument nie ma elementu głównego</string>
 <string name="ParsingErrorNoScene">Dokument nie zawiera visual_scene</string>
 <string name="ParsingErrorPositionInvalidModel">Nie można przetworzyć meszu bez danych pozycji. Nieprawidłowy model.</string>
-<string name="UnknownException">Importer uległ awarii podczas przetwarzania pliku [FILENAME]. Jeśli plik jest prawidłowy, to zgłoś to wsparciu Second Life. Wyjątek: [EXCEPTION].</string>
+<string name="UnknownException">Importer uległ awarii podczas przetwarzania pliku [FILENAME]. Jeśli plik jest prawidłowy, to zgłoś to wsparciu ForMe.World. Wyjątek: [EXCEPTION].</string>
 <string name="ParsingErrorEmptyInvBindInvalidModel">Nie można przetworzyć meszu bez danych InvBind. Nieprawidłowy model.</string>
 <string name="NoScenesFound">Brak zdefiniowanych scen w pliku GLTF</string>
 <string name="InvalidMeshReference">Węzeł [NODE_NAME] odwołuje się do nieprawidłowego meszu [MESH_INDEX] (łącznie meszy: [TOTAL_MESHES])</string>

@@ -54,7 +54,7 @@
 				<string>application/x-grid-location-info</string>
 			</array>
 			<key>CFBundleTypeName</key>
-			<string>Secondlife SLURL</string>
+			<string>ForMe.World SLURL</string>
 			<key>CFBundleTypeOSTypes</key>
 			<array>
 				<string>SLRL</string>
@@ -71,7 +71,7 @@
 	<array>
 		<dict>
 			<key>CFBundleURLName</key>
-			<string>Second Life URL</string>
+			<string>ForMe.World URL</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>secondlife</string>

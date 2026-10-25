@@ -21,7 +21,7 @@
 		<panel label="Интерфейс" name="ui"/>
 		<panel label="Темы" name="skins"/>
 		<panel label="Ошибки" name="crashreports"/>
-		<panel label="Firestorm" name="firestorm"/>
+		<panel label="ForMe.World" name="firestorm"/>
 		<panel label="Резервная копия" name="backup"/>
 	</tab_container>
 </floater>

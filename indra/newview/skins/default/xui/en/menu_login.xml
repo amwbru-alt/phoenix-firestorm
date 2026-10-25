@@ -57,7 +57,7 @@
      tear_off="true"
      name="Help">
         <menu_item_call
-         label="Firestorm Wiki"
+         label="ForMe.World Wiki"
          name="Firestorm Wiki"
          shortcut="F1">
             <menu_item_call.on_click

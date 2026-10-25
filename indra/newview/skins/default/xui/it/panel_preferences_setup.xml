@@ -24,7 +24,7 @@
 			</text>
 			<radio_group name="preferred_browser_behavior">
 				<radio_item label="Usa il mio browser (Chrome, Firefox, Edge...) per tutti i link" name="new_external" tool_tip="Usa il browser di sistema per l&apos;aiuto, i link eccetera. Non raccomandato se si lavora a schermo intero."/>
-				<radio_item label="Usa il browser interno per i link di Second Life" name="new_internal" tool_tip="Usa il browser di sistema per l&apos;aiuto, i link eccetera. Il browser interno verrà usato solo per il link LindenLab/SecondLife." />
+				<radio_item label="Usa il browser interno per i link di ForMe.World" name="new_internal" tool_tip="Usa il browser di sistema per l&apos;aiuto, i link eccetera. Il browser interno verrà usato solo per il link LindenLab/ForMe.World." />
 				<radio_item label="Usa il browser interno per tutti i link" name="new_internal_all"/>
 			</radio_group>
 			<text name="numberwebfloaters_label">

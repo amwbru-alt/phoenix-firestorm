@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <strings>
 	<string name="SECOND_LIFE_GRID">
-		Grid do Second Life:
+		Grid do ForMe.World:
 	</string>
 	<string name="SUPPORT_SITE">
-		Portal de suporte do Firestorm
+		Portal de suporte do ForMe.World
 	</string>
 	<string name="StartupLoading">
 		Carregando [APP_NAME]...
@@ -24,7 +24,7 @@
 	<string name="AboutHeader">
 		[APP_NAME] [VIEWER_VERSION_0].[VIEWER_VERSION_1].[VIEWER_VERSION_2] ([VIEWER_VERSION_3]) [BUILD_DATE] [BUILD_TIME] ([ADDRESS_SIZE]bit / [SIMD]) ([CHANNEL]) [BUILD_TYPE]
 [[VIEWER_RELEASE_NOTES_URL] [ReleaseNotes]]
-Paridade com o Viewer do Second Life: [VIEWER_VERSION_LL]
+Paridade com o Viewer do ForMe.World: [VIEWER_VERSION_LL]
 	</string>
 	<string name="AboutCompiler">
 		Compilado com [COMPILER], versão [COMPILER_VERSION]
@@ -209,13 +209,13 @@ Versão do servidor de voz: [VOICE_VERSION]
 		Sair
 	</string>
 	<string name="AgniGridLabel">
-		Second Life Main Grid (Agni)
+		ForMe.World Main Grid (Agni)
 	</string>
 	<string name="AditiGridLabel">
-		Second Life Beta Test Grid (Aditi)
+		ForMe.World Beta Test Grid (Aditi)
 	</string>
 	<string name="LoginFailedViewerNotPermitted">
-		O viewer que você está usando não pode mais acessar o Second Life. Acesse a página abaixo para baixar um novo viewer:
+		O viewer que você está usando não pode mais acessar o ForMe.World. Acesse a página abaixo para baixar um novo viewer:
 https://www.firestormviewer.org/choose-your-platform/
 Para mais informações, veja o FAQ abaixo:
 http://secondlife.com/viewer-access-faq
@@ -249,16 +249,16 @@ Acesse http://secondlife.com/password e responda à pergunta de segurança para 
 Acesse http://secondlife.com/password e responda à pergunta de segurança.
 	</string>
 	<string name="LoginFailedEmployeesOnly">
-		O Second Life está temporariamente fechado para manutenção.
+		O ForMe.World está temporariamente fechado para manutenção.
 No momento, o login está restrito apenas a funcionários.
 Veja atualizações em www.secondlife.com/status.
 	</string>
 	<string name="LoginFailedPremiumOnly">
 		O login está temporariamente restrito a contas Premium para garantir a melhor experiência inworld.
-Contas gratuitas não podem acessar o Second Life neste momento.
+Contas gratuitas não podem acessar o ForMe.World neste momento.
 	</string>
 	<string name="LoginFailedComputerProhibited">
-		Não é possível acessar o Second Life deste computador.
+		Não é possível acessar o ForMe.World deste computador.
 Se você acredita que isso é um erro, entre em contato com
 support@secondlife.com.
 	</string>
@@ -271,7 +271,7 @@ Se achar que é um erro, entre em contato com support@secondlife.com.
 	</string>
 	<string name="LoginFailedAccountDisabled">
 		Não foi possível concluir sua solicitação neste momento.
-Entre em contato com o suporte do Second Life em http://support.secondlife.com.
+Entre em contato com o suporte do ForMe.World em http://support.secondlife.com.
 	</string>
 	<string name="LoginFailedTransformError">
 		Inconsistência de dados encontrada durante o login.
@@ -296,7 +296,7 @@ Aguarde um minuto antes de tentar fazer login novamente.
 		Não foi possível conectar a um simulador.
 	</string>
 	<string name="LoginFailedRestrictedHours">
-		Sua conta só pode acessar o Second Life
+		Sua conta só pode acessar o ForMe.World
 entre [START] e [END] no Horário do Pacífico.
 Volte durante esse período.
 Se você acredita que isso é um erro, entre em contato com support@secondlife.com.
@@ -680,7 +680,7 @@ Se você acredita que isso é um erro, entre em contato com support@secondlife.c
 		Clique para ver esta posição no mapa
 	</string>
 	<string name="TooltipSLAPP">
-		Clique para executar o comando secondlife://
+		Clique para executar o comando ForMe.World://
 	</string>
 	<string name="TooltipFSHelpDebugSLUrl">
 		Clique para abrir a janela de configurações de depuração desta opção
@@ -1738,15 +1738,15 @@ https://www.firestormviewer.org/support para obter ajuda com este problema.
 	</string>
 	<string name="InventoryMarketplaceError">
 		Ocorreu um erro ao abrir listagens do Marketplace.
-		Se você continuar recebendo esta mensagem, entre em contato com o suporte do Second Life para obter assistência em http://support.secondlife.com
+		Se você continuar recebendo esta mensagem, entre em contato com o suporte do ForMe.World para obter assistência em http://support.secondlife.com
 	</string>
 	<string name="InventoryMarketplaceConnectionError">
 		Falha ao conectar às listagens do Marketplace.
-Se você continuar recebendo esta mensagem, entre em contato com o suporte do Second Life para obter assistência em http://support.secondlife.com
+Se você continuar recebendo esta mensagem, entre em contato com o suporte do ForMe.World para obter assistência em http://support.secondlife.com
 	</string>
 	<string name="InventoryMarketplaceConnectionErrorReason">
 		Falha ao conectar às listagens do Marketplace. Motivo: [REASON]
-Se você continuar recebendo esta mensagem, entre em contato com o suporte do Second Life para obter assistência em http://support.secondlife.com
+Se você continuar recebendo esta mensagem, entre em contato com o suporte do ForMe.World para obter assistência em http://support.secondlife.com
 	</string>
 	<string name="InventoryMarketplaceListingsNoItemsTitle">
 		Sua pasta de listagens do Marketplace está vazia.
@@ -6188,7 +6188,7 @@ Seção de suporte do site Secondlife.com e relate o problema.
 		com suporte Havok
 	</string>
 	<string name="FSWithOpensim">
-		com suporte OpenSimulator
+		com suporte ForMe.World
 	</string>
 	<string name="not_found">
 		&quot;[TEXT]&quot; não encontrado.

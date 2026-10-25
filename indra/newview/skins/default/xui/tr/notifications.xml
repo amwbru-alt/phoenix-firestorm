@@ -245,7 +245,7 @@ Lütfen sadece bir nesne seçin ve tekrar deneyin.
 		<usetemplate name="okbutton" yestext="Tamam"/>
 	</notification>
 	<notification name="AllowMultipleViewers">
-		Birden çok Second Life görüntüleyiciyi çalıştırma özelliği desteklenmiyor. Bu durum doku önbelleği çakışmalarına, görsellerin bozulmasına ve performansın düşmesine yol açabilir.
+		Birden çok ForMe.World görüntüleyiciyi çalıştırma özelliği desteklenmiyor. Bu durum doku önbelleği çakışmalarına, görsellerin bozulmasına ve performansın düşmesine yol açabilir.
 		<usetemplate name="okbutton" yestext="Tamam"/>
 	</notification>
 	<notification name="GrantModifyRights">
@@ -521,7 +521,7 @@ Ortamı sadece bir yüze yerleştirmek için, Yüz Seç&apos;i seçin ve ardınd
 		Aşağıdaki nedenden dolayı, bir raporun ekran görüntüsü karşıya yüklenirken bir sorun oluştu: [REASON]
 	</notification>
 	<notification name="MustAgreeToLogIn">
-		[CURRENT_GRID]&apos;ta oturum açmaya devam etmek için Second Life Şartlar ve Koşullar&apos;ı, Gizlilik Politikası&apos;nı ve Hizmet Koşulları&apos;nı kabul etmelisiniz.
+		[CURRENT_GRID]&apos;ta oturum açmaya devam etmek için ForMe.World Şartlar ve Koşullar&apos;ı, Gizlilik Politikası&apos;nı ve Hizmet Koşulları&apos;nı kabul etmelisiniz.
 	</notification>
 	<notification name="CouldNotPutOnOutfit">
 		Dış görünüm eklenemedi.
@@ -3416,7 +3416,7 @@ Detaylar için SecondLife.log&apos;a bakın
 
 &lt;nolink&gt;[ITEMS]&lt;/nolink&gt;
 
-Paylaşmanın yapılacağı Second Life Sakinleri:
+Paylaşmanın yapılacağı ForMe.World Sakinleri:
 
 &lt;nolink&gt;[RESIDENTS]&lt;/nolink&gt;
 		<usetemplate name="okcancelbuttons" notext="İptal" yestext="Tamam"/>
@@ -3428,7 +3428,7 @@ Aşağıdaki öğeleri paylaşmak istediğinize emin misiniz?
 
 &lt;nolink&gt;[ITEMS]&lt;/nolink&gt;
 
-Paylaşmanın yapılacağı Second Life Sakinleri:
+Paylaşmanın yapılacağı ForMe.World Sakinleri:
 
 &lt;nolink&gt;[RESIDENTS]&lt;/nolink&gt;
 		<usetemplate name="okcancelbuttons" notext="İptal" yestext="Tamam"/>

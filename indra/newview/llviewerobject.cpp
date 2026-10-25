@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fsavatarbadges.h" // <FS:ForMe> Authoritative server badges.
 
 #include "llviewerobject.h"
 
@@ -766,6 +767,7 @@ U32 LLViewerObject::unpackParentID(LLDataPackerBinaryBuffer* dp, U32& parent_id)
 // Does not update server
 void LLViewerObject::setNameValueList(const std::string& name_value_list)
 {
+    const std::string forme_previous_badge = isAvatar() ? ForMeAvatarBadges::get(getID()).stamp : "";
     // Clear out the old
     for_each(mNameValuePairs.begin(), mNameValuePairs.end(), DeletePairedPointer()) ;
     mNameValuePairs.clear();
@@ -784,6 +786,8 @@ void LLViewerObject::setNameValueList(const std::string& name_value_list)
         }
         start = end+1;
     }
+    if (isAvatar() && forme_previous_badge != ForMeAvatarBadges::get(getID()).stamp)
+        LLVOAvatar::invalidateNameTag(getID()); // <FS:ForMe> Refresh only changed/revoked roles, not every object update.
 }
 
 bool LLViewerObject::isAnySelected() const

@@ -13,7 +13,7 @@
 			<text name="Web:">Navigateur Web :</text>
 			<radio_group name="preferred_browser_behavior">
 				<radio_item label="Utiliser mon navigateur (Chrome, Firefox, Edge) pour tous les liens" name="new_external" tool_tip="Utiliser le navigateur par défaut du système pour tous les liens et l'aide. Non-recommandé si vous êtes en plein écran."/>
-				<radio_item label="Utiliser le navigateur intégré pour les liens Second Life uniquement" name="new_internal" tool_tip="Utiliser le navigateur par défaut pour l'aide et les liens Web. Le navigateur intégré ne sera utilisé que pour les liens LindenLab/SecondLife."/>
+				<radio_item label="Utiliser le navigateur intégré pour les liens ForMe.World uniquement" name="new_internal" tool_tip="Utiliser le navigateur par défaut pour l'aide et les liens Web. Le navigateur intégré ne sera utilisé que pour les liens LindenLab/ForMe.World."/>
 				<radio_item label="Utiliser le navigateur intégré pour tous les liens" name="new_internal_all"/>
 			</radio_group>
 			<text name="numberwebfloaters_label">Nombre maximum de fenêtres de navigation :</text>

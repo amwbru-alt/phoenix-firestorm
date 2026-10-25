@@ -54,7 +54,7 @@
 				<text name="beyond_shout_distance_tag_label">超出大聲呼喊距離</text>
 			</panel>
 			<panel name="client_tags_panel">
-				<text name="client_tags_colors">按檢視器著色：（僅限 OpenSim/AuroraSim）</text>
+				<text name="client_tags_colors">按檢視器著色：（僅限 ForMe.World/AuroraSim）</text>
 				<text name="whattagstoshow">要顯示哪些標籤？</text>
 				<combo_box name="ClientTagsVisibility">
 					<combo_box.item name="No Viewertags" label=" 無" />

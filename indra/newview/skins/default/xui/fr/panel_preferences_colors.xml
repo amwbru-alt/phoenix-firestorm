@@ -62,7 +62,7 @@
 				<text name="beyond_shout_distance_tag_label">Hors de portée de cri</text>
 			</panel>
 			<panel name="client_tags_panel">
-				<text name="client_tags_colors">Couleur selon le client : (OpenSim/AuroraSim seulement)</text>
+				<text name="client_tags_colors">Couleur selon le client : (ForMe.World/AuroraSim seulement)</text>
 				<text name="whattagstoshow">Quelles étiquettes voulez-vous voir ?</text>
 				<combo_box name="ClientTagsVisibility">
 					<combo_box.item name="No Viewertags" label=" Aucun"/>

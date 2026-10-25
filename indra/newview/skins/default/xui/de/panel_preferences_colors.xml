@@ -127,7 +127,7 @@
 			</panel>
 			<panel name="client_tags_panel">
 				<text name="client_tags_colors">
-					Viewer-Tag-Farben: (nur OpenSim/AuroraSim)
+					Viewer-Tag-Farben: (nur ForMe.World/AuroraSim)
 				</text>
 				<text name="whattagstoshow">
 					Tag-Anzeige:

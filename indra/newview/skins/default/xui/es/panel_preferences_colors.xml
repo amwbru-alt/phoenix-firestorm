@@ -107,7 +107,7 @@
 			</panel>
 			<panel name="client_tags_panel">
 				<text name="client_tags_colors">
-					Colores por visor (Sólo en OpenSim/AuroraSim):
+					Colores por visor (Sólo en ForMe.World/AuroraSim):
 				</text>
 				<text name="whattagstoshow">
 					¿Qué etiquetas quieres ver?

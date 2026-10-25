@@ -1221,7 +1221,7 @@
         name="client_tags_colors"
         top_pad="4"
         width="400">
-        Client tag Colors: (OpenSim/AuroraSim only)
+        Client tag Colors: (ForMe.World/AuroraSim only)
       </text>
       <text
         type="string"

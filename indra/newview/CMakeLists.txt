@@ -1017,6 +1017,7 @@ set(viewer_HEADER_FILES
     fsfloaterwearablefavorites.h
     fsfloaterwhitelisthelper.h
     fsjointpose.h
+    fsavatarbadges.h
     fsgridhandler.h
     fskeywords.h
     fslslbridge.h
@@ -2831,11 +2832,11 @@ if (DARWIN)
   #set(product "${VIEWER_CHANNEL}")
   set(product "Firestorm")
   set(MACOSX_EXECUTABLE_NAME "Firestorm")
-  set(MACOSX_BUNDLE_INFO_STRING "Firestorm Viewer")
+  set(MACOSX_BUNDLE_INFO_STRING "ForMe.World")
   set(MACOSX_BUNDLE_ICON_FILE "firestorm_icon.icns")
   set(MACOSX_BUNDLE_GUI_IDENTIFIER "org.firestormviewer.firestorm")
   set(MACOSX_BUNDLE_LONG_VERSION_STRING "${VIEWER_CHANNEL} ${VIEWER_SHORT_VERSION}.${VIEWER_VERSION_REVISION}")
-  set(MACOSX_BUNDLE_BUNDLE_NAME "Firestorm")
+  set(MACOSX_BUNDLE_BUNDLE_NAME "ForMe.World")
   set(MACOSX_BUNDLE_SHORT_VERSION_STRING "${VIEWER_SHORT_VERSION}.${VIEWER_VERSION_REVISION}")
   set(MACOSX_BUNDLE_BUNDLE_VERSION "${VIEWER_SHORT_VERSION}${VIEWER_MACOSX_PHASE}${VIEWER_REVISION}")
   set(MACOSX_BUNDLE_COPYRIGHT "Copyright 2010-2026 The Phoenix Firestorm Project, Inc.")

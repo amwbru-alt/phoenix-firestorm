@@ -210,7 +210,7 @@
 				<combo_box.item label="Ignorer l'objet" name="Ignoreobject"/>
 				<combo_box.item label="Aucun" name="None"/>
 			</combo_box>
-			<check_box label="À vendre :" name="checkbox for sale" tool_tip="Permet aux gens d&apos;acheter cet objet, son contenu ou de le copier dans Second Life à un prix donné."/>
+			<check_box label="À vendre :" name="checkbox for sale" tool_tip="Permet aux gens d&apos;acheter cet objet, son contenu ou de le copier dans ForMe.World à un prix donné."/>
 			<spinner label="L$" name="Edit Cost" tool_tip="Coût de l&apos;objet."/>
 			<combo_box name="sale type" tool_tip="Indiquez si l’acheteur recevra une copie, une copie du contenu ou l’article lui-même.">
 				<combo_box.item label="Copie" name="Copy"/>

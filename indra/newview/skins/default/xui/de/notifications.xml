@@ -5607,7 +5607,7 @@ Soll die automatische Anzeige der Viewer-Version aktiviert werden?
 		<form name="form">
 			<button name="OK_okcancelignore" text="Ja"/>
 			<button name="Cancel_okcancelignore" text="Nein"/>
-			<ignore name="ignore" text="Wenn dem Phoenix/Firestorm Support-Gruppenchat beigetreten wird."/>
+			<ignore name="ignore" text="Wenn dem Phoenix/ForMe.World Support-Gruppenchat beigetreten wird."/>
 		</form>
 	</notification>
 
