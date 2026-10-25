@@ -20,7 +20,7 @@
 							<text name="grid_text">
 								Świat
 							</text>
-							<combo_box label="Wybierz świat" name="server_combo" / enabled="false">
+							<combo_box label="Wybierz świat" name="server_combo"  enabled="false" />
 						</layout_panel>
 						<layout_panel name="login_panel">
 							<button label="Zaloguj" name="connect_btn" />

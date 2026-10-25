@@ -41,6 +41,11 @@ assert 'ForMeGrid::allowedServiceURI(url)' in source('indra/newview/llviewerregi
 for path in ROOT.glob('indra/newview/skins/*/xui/*/floater_preferences.xml'):
     root=ET.parse(path).getroot()
     assert not root.findall('.//panel[@name="opensim"]'),path
+for path in ROOT.glob('indra/newview/skins/*/xui/*/panel_login*.xml'):
+    root=ET.parse(path).getroot()
+    for control in root.iter():
+        if control.get('name')=='server_combo': assert control.get('enabled')=='false',path
+        if control.get('name')=='grid_panel': assert control.get('visible')=='false',path
 catalog=ET.parse(ROOT/'indra/newview/app_settings/grids.xml').getroot().find('map')
 assert [e.text for e in catalog.findall('key')]==['185.173.93.200:8002']
 cmake=source('indra/CMakeLists.txt')

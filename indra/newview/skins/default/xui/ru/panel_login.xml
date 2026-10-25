@@ -12,7 +12,7 @@
 			<text name="forgot_password_text">
 				Забыли пароль?
 			</text>
-			<combo_box label="Выберите сетку" name="server_combo"enabled="false" />
+			<combo_box label="Выберите сетку" name="server_combo" enabled="false" />
 			<text name="sign_up_text">
 				Регистрация
 			</text>

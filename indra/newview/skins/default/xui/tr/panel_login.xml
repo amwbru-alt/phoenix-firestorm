@@ -19,7 +19,7 @@
 			<text name="forgot_password_text">
 				Parolamı unuttum
 			</text>
-			<combo_box label="Ağ seç" name="server_combo"/ enabled="false">
+			<combo_box label="Ağ seç" name="server_combo" enabled="false" />
 			<text name="sign_up_text">
 				Kaydol
 			</text>
