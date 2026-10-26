@@ -424,7 +424,7 @@ bool LLFloaterMarketplaceListings::postBuild()
 
 
     // Fetch aggressively so we can interact with listings as soon as possible
-    if (!fetchContents())
+    if (ForMeMarketplace::available() && !fetchContents())
     {
         const LLUUID& marketplacelistings_id = gInventory.getMarketplaceListingsUUID();
         LLInventoryModelBackgroundFetch::instance().start(marketplacelistings_id, true);
@@ -440,7 +440,8 @@ void LLFloaterMarketplaceListings::onClose(bool app_quitting)
 
 void LLFloaterMarketplaceListings::onOpen(const LLSD& key)
 {
-    if (!ForMeMarketplace::available()) { closeFloater(); return; }
+    if (!ForMeCreatorAccess::allowed()) { closeFloater(); return; }
+    if (!ForMeMarketplace::available()) { updateView(); return; }
     //
     // Initialize the Market Place or go update the marketplace listings
     //
@@ -606,6 +607,16 @@ void LLFloaterMarketplaceListings::setStatusString(const std::string& statusStri
 
 void LLFloaterMarketplaceListings::updateView()
 {
+    if (!ForMeMarketplace::available())
+    {
+        mInventoryInitializationInProgress->setVisible(false);
+        mPanelListings->setVisible(false);
+        mInventoryPlaceholder->setVisible(true);
+        mInventoryTitle->setValue(LLTrans::getString("ForMeMarketplaceUnavailableTitle"));
+        mInventoryText->setValue(LLTrans::getString("ForMeMarketplaceUnavailable"));
+        mInventoryPlaceholder->getParent()->setToolTip("");
+        return;
+    }
     U32 mkt_status = LLMarketplaceData::instance().getSLMStatus();
     bool is_merchant = (mkt_status == MarketplaceStatusCodes::MARKET_PLACE_MERCHANT) || (mkt_status == MarketplaceStatusCodes::MARKET_PLACE_MIGRATED_MERCHANT);
     U32 data_fetched = LLMarketplaceData::instance().getSLMDataFetched();

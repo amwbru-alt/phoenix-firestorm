@@ -32,3 +32,20 @@ for path in (ROOT/'indra/newview/skins').glob('*/xui/*/menu_viewer.xml'):
 for path in (ROOT/'indra/newview/skins').glob('*/xui/*/floater_marketplace_listings.xml'):
     assert ET.parse(path).getroot().get('forme_creator_only') == 'true', path
 print('PASS native marketplace principal/capability gates, region/role response binding, links and translated UI')
+
+# A missing/failed merchant service must not hide the creator's menu entry.
+menu_gate = menu[menu.index('void LLSLMMenuUpdater::setMerchantMenu()'):end]
+assert 'setVisible(false)' not in menu_gate
+assert 'setVisible(ForMeCreatorAccess::allowed())' in menu_gate
+assert 'enableCommand(command->id(), ForMeCreatorAccess::allowed())' in menu_gate
+floater = read('indra/newview/llfloatermarketplacelistings.cpp')
+assert 'if (!ForMeCreatorAccess::allowed()) { closeFloater(); return; }' in floater
+assert 'if (!ForMeMarketplace::available()) { updateView(); return; }' in floater
+assert 'ForMeMarketplaceUnavailable' in floater
+for language in ('en', 'ru'):
+    strings = ET.parse(ROOT/f'indra/newview/skins/default/xui/{language}/strings.xml').getroot()
+    for name in ('ForMeMarketplaceUnavailableTitle', 'ForMeMarketplaceUnavailable'):
+        assert strings.find(f"./string[@name='{name}']") is not None
+print('PASS creator marketplace entry survives missing service and merchant failures')
+
+assert 'forme_creator != forme_listing_creator' in app

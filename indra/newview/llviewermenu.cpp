@@ -519,14 +519,14 @@ void LLSLMMenuUpdater::setMerchantMenu()
 {
     const bool forme_merchant = ForMeMarketplace::available()
         && LLMarketplaceData::instance().getSLMStatus() == MarketplaceStatusCodes::MARKET_PLACE_MERCHANT;
-    if (!forme_merchant) return;
     // All other cases (new merchant, not merchant, migrated merchant): show the new Marketplace Listings menu and enable the tool
     if(!mMarketplaceListingsItem.isDead())
     {
-        mMarketplaceListingsItem.get()->setVisible(true);
+        mMarketplaceListingsItem.get()->setVisible(ForMeCreatorAccess::allowed());
     }
     LLCommand* command = LLCommandManager::instance().getCommand("marketplacelistings");
-    gToolBarView->enableCommand(command->id(), true);
+    gToolBarView->enableCommand(command->id(), ForMeCreatorAccess::allowed());
+    if (!forme_merchant) return;
 
     const LLUUID marketplacelistings_id = gInventory.getMarketplaceListingsUUID();
     if (marketplacelistings_id.isNull())
@@ -543,34 +543,19 @@ void LLSLMMenuUpdater::setMerchantMenu()
 
 void LLSLMMenuUpdater::checkMerchantStatus(bool force)
 {
-    // <FS:Ansariel> Don't show merchant outbox or SL Marketplace stuff outside SL
+    // Discovery failures must not silently remove the creator's entry point.
+    // The floater explains missing service/merchant access; mutations retain
+    // their capability, role and server-side permission checks.
+    setMerchantMenu();
     if (!ForMeMarketplace::available())
     {
-        gMenuHolder->getChild<LLView>("MarketplaceListings")->setVisible(false);
-        if (LLCommand* command = LLCommandManager::instance().getCommand("marketplacelistings"))
-            gToolBarView->enableCommand(command->id(), false);
-        LLFloaterReg::hideInstance("marketplace_listings");
+        if (!ForMeCreatorAccess::allowed())
+            LLFloaterReg::hideInstance("marketplace_listings");
         LLMarketplaceData::instance().setSLMStatus(MarketplaceStatusCodes::MARKET_PLACE_NOT_MERCHANT);
         return;
     }
-    // </FS:Ansariel>
-
     if (force)
-    {
-        // Reset the SLM status: we actually want to check again, that's the point of calling check_merchant_status()
         LLMarketplaceData::instance().setSLMStatus(MarketplaceStatusCodes::MARKET_PLACE_NOT_INITIALIZED);
-    }
-    // Hide SLM related menu item
-    if(!mMarketplaceListingsItem.isDead())
-    {
-        mMarketplaceListingsItem.get()->setVisible(false);
-    }
-
-    // Also disable the toolbar button for Marketplace Listings
-    LLCommand* command = LLCommandManager::instance().getCommand("marketplacelistings");
-    gToolBarView->enableCommand(command->id(), false);
-
-    // Launch an SLM test connection to get the merchant status
     LLMarketplaceData::instance().initializeSLM(boost::bind(&set_merchant_SLM_menu));
 }
 

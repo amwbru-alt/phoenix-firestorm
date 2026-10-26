@@ -3385,4 +3385,6 @@ Your current position: [AVATAR_POS]
 
   <!-- <FS:TJ> Launch new instance option from macOS dock> -->
   <string name="FSMacOSNewViewerInstance">New Viewer Instance</string>
+    <string name="ForMeMarketplaceUnavailableTitle">Marketplace service unavailable</string>
+    <string name="ForMeMarketplaceUnavailable">This region did not provide the ForMe.World listings service. Check that MarketplaceListings is enabled and the server is up to date, then log in again.</string>
 </strings>

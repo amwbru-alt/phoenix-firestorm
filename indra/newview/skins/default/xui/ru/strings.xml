@@ -6892,4 +6892,6 @@ ID объекта: [INSPECTING_KEY]
     <string name="Very High">Очень высокое</string>
     <string name="Maximum">Максимум</string>
     <string name="FSAvatarAlignToggleFull">Полная</string>
+    <string name="ForMeMarketplaceUnavailableTitle">Торговый сервис недоступен</string>
+    <string name="ForMeMarketplaceUnavailable">Регион не предоставил сервис торговых листингов ForMe.World. Проверьте, что модуль MarketplaceListings включён и сервер обновлён. После обновления сервера войдите заново.</string>
 </strings>

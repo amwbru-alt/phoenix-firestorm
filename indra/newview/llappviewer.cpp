@@ -5860,10 +5860,12 @@ void LLAppViewer::idle()
     const bool forme_creator = !gDisconnected && ForMeCreatorAccess::allowed();
     LLView::setForMeCreatorAccess(forme_creator);
     static std::string forme_listing_cap;
+    static bool forme_listing_creator = false;
     const std::string current_listing_cap = forme_creator ? ForMeMarketplace::capability() : "";
-    if (current_listing_cap != forme_listing_cap)
+    if (current_listing_cap != forme_listing_cap || forme_creator != forme_listing_creator)
     {
         forme_listing_cap = current_listing_cap;
+        forme_listing_creator = forme_creator;
         LLMarketplaceData::instance().resetForMeSession();
         LLFloaterReg::destroyInstance("marketplace_listings");
         LLFloaterReg::destroyInstance("associate_listing");
