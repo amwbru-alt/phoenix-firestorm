@@ -5178,18 +5178,8 @@ bool process_login_success_response(U32 &first_sim_size_x, U32 &first_sim_size_y
     // </COLOSI opensim multi-currency support>
 
 // <FS:AW opensim currency support>
-    std::string currency = "L$";
-#ifdef OPENSIM // <FS:AW optional opensim support>
-    if(response.has("currency"))
-    {
-        currency = response["currency"].asString();
-        LL_DEBUGS("OS_SETTINGS") << "currency " << currency << LL_ENDL;
-    }
-    else if (LLGridManager::getInstance()->isInOpenSim())
-    {
-        currency = "OS$";
-        LL_DEBUGS("OS_SETTINGS") << "no currency in login response" << LL_ENDL;
-    }
+    std::string currency = "₽";
+#ifdef OPENSIM // Fixed ForMe.World balance: one unit is one ruble.
     Tea::setCurrency(currency);
 // </FS:AW opensim currency support>
 

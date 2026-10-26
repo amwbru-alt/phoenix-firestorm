@@ -46,3 +46,5 @@ jobs:
           g++ -std=c++20 -Wall -Wextra -Werror -pedantic -Iindra/llcommon tests/forme/viewer_data_test.cpp -o "$RUNNER_TEMP/viewer-data-test"
           "$RUNNER_TEMP/viewer-data-test"
           python3 tests/forme/check_viewer_data.py
+      - name: Check own Premium entry point and currency
+        run: python3 tests/forme/check_premium_bridge.py

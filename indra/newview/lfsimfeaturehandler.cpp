@@ -318,7 +318,7 @@ void LFSimFeatureHandler::setSupportedFeatures()
 
         // <COLOSI opensim multi-currency support>
         std::string prev_currency_symbol = Tea::getCurrency();
-        Tea::setRegionCurrency(mCurrencySymbolOverride);
+        Tea::setRegionCurrency("₽");
         std::string new_currency_symbol = Tea::getCurrency();
         // If currency symbol has changed, then update things
         if (new_currency_symbol != prev_currency_symbol)

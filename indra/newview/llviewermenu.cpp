@@ -12351,21 +12351,6 @@ public:
     }
 };
 
-class LLUpdateMembershipLabel : public view_listener_t
-{
-    bool handleEvent(const LLSD& userdata)
-    {
-        const std::string label_str =  LLAgentBenefitsMgr::isCurrent("Base") ? LLTrans::getString("MembershipUpgradeText") : LLTrans::getString("MembershipPremiumText");
-        gMenuHolder->childSetLabelArg("Membership", "[Membership]", label_str);
-
-        // <FS:Ansariel> OpenSim check
-        //return true;
-        return LLGridManager::instance().isInSecondLife();
-        // </FS:Ansariel>
-    }
-};
-
-
 class LLToggleUIHints : public view_listener_t
 {
     bool handleEvent(const LLSD& userdata)
@@ -12755,7 +12740,6 @@ void initialize_menus()
 
     view_listener_t::addEnable(new LLUploadCostCalculator(), "Upload.CalculateCosts");
 
-    view_listener_t::addEnable(new LLUpdateMembershipLabel(), "Membership.UpdateLabel");
 
     // <FS:Ansariel> [FS communication UI]
     //enable.add("Conversation.IsConversationLoggingAllowed", boost::bind(&LLFloaterIMContainer::isConversationLoggingAllowed));

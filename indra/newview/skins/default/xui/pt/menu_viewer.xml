@@ -6,7 +6,7 @@
 		</menu_item_call>
 		<menu_item_call label="Listagens do Marketplace..." name="MarketplaceListings" forme_creator_only="true"/>
 		<menu_item_call label="Comprar L$" name="Buy and Sell L$"/>
-		<menu_item_call label="[Membership]" name="Membership">
+		<menu_item_call label="Premium ForMe.World" name="Membership">
 			<menu_item_call.on_click function="Advanced.ShowURL" parameter="https://accounts.secondlife.com/change_membership/?lang=pt-BR"/>
 		</menu_item_call>
 
