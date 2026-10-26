@@ -1683,21 +1683,11 @@ etmək haqqında kömək almaq üçün http://secondlife.com/support ünvanına 
 	<string name="InventoryInboxNoItems">
 		Alış-veriş mərkəzindən alışlarınız burada göstəriləcək. Onları istifadə etmək üçün avadanlıq siyahınıza daşıya bilərsiniz.
 	</string>
-	<string name="MarketplaceURL">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/
-	</string>
-	<string name="MarketplaceURL_CreateStore">
-		http://community.secondlife.com/t5/English-Knowledge-Base/Selling-in-the-Marketplace/ta-p/700193#Section_.3
-	</string>
-	<string name="MarketplaceURL_Dashboard">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/merchants/store/dashboard
-	</string>
-	<string name="MarketplaceURL_Imports">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/merchants/store/imports
-	</string>
-	<string name="MarketplaceURL_LearnMore">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/learn_more
-	</string>
+	<string name="MarketplaceURL">http://185.173.93.200:8002/web/marketplace.html</string>
+	<string name="MarketplaceURL_CreateStore">http://185.173.93.200:8002/web/seller.html</string>
+	<string name="MarketplaceURL_Dashboard">http://185.173.93.200:8002/web/seller.html</string>
+	<string name="MarketplaceURL_Imports">http://185.173.93.200:8002/web/seller.html</string>
+	<string name="MarketplaceURL_LearnMore">http://185.173.93.200:8002/web/terms.html</string>
 	<string name="InventoryPlayAnimationTooltip">
 		Oynatma seçimləri pəncərəsini açın.
 	</string>
@@ -1733,10 +1723,7 @@ etmək haqqında kömək almaq üçün http://secondlife.com/support ünvanına 
 	<string name="InventoryOutboxError">
 		[[MARKETPLACE_CREATE_STORE_URL] Dükan] xətaları qaytarır.
 	</string>
-	<string name="InventoryMarketplaceError">
-		Ticarət mərkəzinin məhsul siyahılarını açarkən xəta.
-Bu mesaj yenidən baş verərsə, kömək üçün http://support.secondlife.com ünvanında ForMe.World Dəstək ilə əlaqə saxlayın
-	</string>
+	<string name="InventoryMarketplaceError">Ticarət mərkəzinin məhsul siyahılarını açarkən xəta.</string>
 	<string name="InventoryMarketplaceListingsNoItemsTitle">
 		Ticarət mərkəzi element siyahısı qovluğu boşdur.
 	</string>

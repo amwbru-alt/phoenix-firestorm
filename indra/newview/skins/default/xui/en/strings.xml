@@ -815,19 +815,17 @@ https://www.firestormviewer.org/support for help fixing this problem.
 	<string name="InventoryNoTexture">You do not have a copy of this texture in your inventory</string>
 	<string name="InventoryNoMaterial">You do not have a copy of this material in your inventory</string>
 	<string name="InventoryInboxNoItems">Your Marketplace purchases will appear here. You may then drag them into your inventory to use them.</string>
-	<string name="MarketplaceURL">https://marketplace.[MARKETPLACE_DOMAIN_NAME]/</string>
-	<string name="MarketplaceURL_CreateStore">http://community.secondlife.com/t5/English-Knowledge-Base/Selling-in-the-Marketplace/ta-p/700193#Section_.3</string>
-	<string name="MarketplaceURL_Dashboard">https://marketplace.[MARKETPLACE_DOMAIN_NAME]/merchants/store/dashboard</string>
-	<string name="MarketplaceURL_Imports">https://marketplace.[MARKETPLACE_DOMAIN_NAME]/merchants/store/imports</string>
-	<string name="MarketplaceURL_LearnMore">https://marketplace.[MARKETPLACE_DOMAIN_NAME]/learn_more</string>
+	<string name="MarketplaceURL">http://185.173.93.200:8002/web/marketplace.html</string>
+	<string name="MarketplaceURL_CreateStore">http://185.173.93.200:8002/web/seller.html</string>
+	<string name="MarketplaceURL_Dashboard">http://185.173.93.200:8002/web/seller.html</string>
+	<string name="MarketplaceURL_Imports">http://185.173.93.200:8002/web/seller.html</string>
+	<string name="MarketplaceURL_LearnMore">http://185.173.93.200:8002/web/terms.html</string>
 	<string name="InventoryPlayAnimationTooltip">Open window with Play options.</string>
 	<string name="InventoryPlayGestureTooltip">Execute selected gesture in-world.</string>
 	<string name="InventoryPlaySoundTooltip">Open window with Play options.</string>
-	<string name="InventoryOutboxNotMerchantTitle">Anyone can sell items on the Marketplace.</string>
-	<string name="InventoryOutboxNotMerchantTooltip"></string>
-	<string name="InventoryOutboxNotMerchant">
-If you'd like to become a merchant, you'll need to [[MARKETPLACE_CREATE_STORE_URL] create a Marketplace store].
-	</string>
+	<string name="InventoryOutboxNotMerchantTitle">Selling is unavailable</string>
+	<string name="InventoryOutboxNotMerchantTooltip">Check the server role and seller permission.</string>
+	<string name="InventoryOutboxNotMerchant">Selling requires the server-assigned Owner or Designer badge and seller permission. [[MARKETPLACE_CREATE_STORE_URL] Open your store dashboard].</string>
 	<string name="InventoryOutboxNoItemsTitle">Your outbox is empty.</string>
 	<string name="InventoryOutboxNoItemsTooltip"></string>
 	<string name="InventoryOutboxNoItems">
@@ -843,18 +841,9 @@ We are accessing your account on the [[MARKETPLACE_CREATE_STORE_URL] Marketplace
 	<string name="InventoryOutboxError">
 The [[MARKETPLACE_CREATE_STORE_URL] Marketplace store] is returning errors.
 	</string>
-	<string name="InventoryMarketplaceError">
-An error occurred while opening Marketplace Listings.
-If you continue to receive this message, please contact ForMe.World support for assistance at http://support.secondlife.com
-	</string>
-	<string name="InventoryMarketplaceConnectionError">
-Marketplace Listings failed to connect.
-If you continue to receive this message, please contact ForMe.World support for assistance at http://support.secondlife.com
-	</string>
-	<string name="InventoryMarketplaceConnectionErrorReason">
-Marketplace Listings failed to connect. Reason: [REASON]
-If you continue to receive this message, please contact ForMe.World support for assistance at http://support.secondlife.com
-	</string>
+	<string name="InventoryMarketplaceError">Unable to open ForMe.World listings. Try again; if the error persists, contact the server administrator.</string>
+	<string name="InventoryMarketplaceConnectionError">Unable to connect to the ForMe.World marketplace. Check your connection and try again.</string>
+	<string name="InventoryMarketplaceConnectionErrorReason">Unable to connect to the ForMe.World marketplace. Reason: [REASON]</string>
 	<string name="InventoryMarketplaceListingsNoItemsTitle">Your Marketplace Listings folder is empty.</string>
 	<string name="InventoryMarketplaceListingsNoItemsTooltip"></string>
 	<string name="InventoryMarketplaceListingsNoItems">
@@ -881,7 +870,7 @@ If you continue to receive this message, please contact ForMe.World support for 
     <string name="Marketplace Validation No Error">No errors or warnings to report</string>
 	<string name="Marketplace Error None">No errors</string>
 	<string name="Marketplace Error Prefix">Error: </string>
-	<string name="Marketplace Error Not Merchant">Before sending items to the Marketplace you will need to set yourself up as a merchant (free of charge).</string>
+	<string name="Marketplace Error Not Merchant">Selling requires the server-assigned Owner or Designer badge and seller permission.</string>
 	<string name="Marketplace Error Not Accepted">Cannot move item in that folder.</string>
 	<string name="Marketplace Error Unsellable Item">This item cannot be sold on the Marketplace.</string>
 

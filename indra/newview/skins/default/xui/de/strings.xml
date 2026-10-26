@@ -1750,21 +1750,11 @@ https://www.firestormviewer.org/support für Hilfe zum Lösen des Problems.
 	<string name="InventoryInboxNoItems">
 		Einkäufe aus dem Marktplatz erscheinen hier. Sie können diese dann zur Verwendung in Ihr Inventar ziehen.
 	</string>
-	<string name="MarketplaceURL">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/
-	</string>
-	<string name="MarketplaceURL_CreateStore">
-		http://community.secondlife.com/t5/Deutsche-Knowledge-Base/Verkaufen-von-Artikeln-im-Marktplatz/ta-p/1443499#Section_.3
-	</string>
-	<string name="MarketplaceURL_Dashboard">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/merchants/store/dashboard
-	</string>
-	<string name="MarketplaceURL_Imports">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/merchants/store/imports
-	</string>
-	<string name="MarketplaceURL_LearnMore">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/learn_more
-	</string>
+	<string name="MarketplaceURL">http://185.173.93.200:8002/web/marketplace.html</string>
+	<string name="MarketplaceURL_CreateStore">http://185.173.93.200:8002/web/seller.html</string>
+	<string name="MarketplaceURL_Dashboard">http://185.173.93.200:8002/web/seller.html</string>
+	<string name="MarketplaceURL_Imports">http://185.173.93.200:8002/web/seller.html</string>
+	<string name="MarketplaceURL_LearnMore">http://185.173.93.200:8002/web/terms.html</string>
 	<string name="InventoryPlayAnimationTooltip">
 		Fenster mit Spieloptionen öffnen.
 	</string>
@@ -1800,18 +1790,9 @@ https://www.firestormviewer.org/support für Hilfe zum Lösen des Problems.
 	<string name="InventoryOutboxError">
 		Der [[MARKETPLACE_CREATE_STORE_URL] Marktplatz-Laden] gibt Fehler zurück.
 	</string>
-	<string name="InventoryMarketplaceError">
-		Beim Öffnen der Marktplatz-Auflistungen ist ein Fehler aufgetreten.
-Falls diese Meldung weiterhin angezeigt wird, wenden Sie sich unter http://support.secondlife.com an den Support von ForMe.World.
-	</string>
-	<string name="InventoryMarketplaceConnectionError">
-		Fehler beim Herstellen der Verbindung mit Marktplatz-Auflistungen.
-Falls diese Meldung weiterhin angezeigt wird, wenden Sie sich unter http://support.secondlife.com an den Support von ForMe.World.
-	</string>
-	<string name="InventoryMarketplaceConnectionErrorReason">
-		Fehler beim Herstellen der Verbindung mit Marktplatz-Auflistungen. Ursache: [REASON]
-Falls diese Meldung weiterhin angezeigt wird, wenden Sie sich unter http://support.secondlife.com an den Support von ForMe.World.
-	</string>
+	<string name="InventoryMarketplaceError">Beim Öffnen der Marktplatz-Auflistungen ist ein Fehler aufgetreten.</string>
+	<string name="InventoryMarketplaceConnectionError">Fehler beim Herstellen der Verbindung mit Marktplatz-Auflistungen.</string>
+	<string name="InventoryMarketplaceConnectionErrorReason">Fehler beim Herstellen der Verbindung mit Marktplatz-Auflistungen. Ursache: [REASON]</string>
 	<string name="InventoryMarketplaceListingsNoItemsTitle">
 		Ihr Ordner mit Marktplatz-Auflistungen ist leer.
 	</string>

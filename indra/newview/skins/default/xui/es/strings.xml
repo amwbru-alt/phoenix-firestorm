@@ -1525,21 +1525,11 @@ pueden adjuntarse a las notas.
 	<string name="InventoryInboxNoItems">
 		Aquí aparecerán algunos de los objetos que recibas, como los regalos Premium. Después puedes arrastrarlos a tu inventario.
 	</string>
-	<string name="MarketplaceURL">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/
-	</string>
-	<string name="MarketplaceURL_CreateStore">
-		http://community.secondlife.com/t5/English-Knowledge-Base/Selling-in-the-Marketplace/ta-p/700193#Section_.3
-	</string>
-	<string name="MarketplaceURL_Dashboard">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/merchants/store/dashboard
-	</string>
-	<string name="MarketplaceURL_Imports">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/merchants/store/imports
-	</string>
-	<string name="MarketplaceURL_LearnMore">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/learn_more
-	</string>
+	<string name="MarketplaceURL">http://185.173.93.200:8002/web/marketplace.html</string>
+	<string name="MarketplaceURL_CreateStore">http://185.173.93.200:8002/web/seller.html</string>
+	<string name="MarketplaceURL_Dashboard">http://185.173.93.200:8002/web/seller.html</string>
+	<string name="MarketplaceURL_Imports">http://185.173.93.200:8002/web/seller.html</string>
+	<string name="MarketplaceURL_LearnMore">http://185.173.93.200:8002/web/terms.html</string>
 	<string name="InventoryPlayAnimationTooltip">
 		Abrir la ventana con las opciones del Juego
 	</string>
@@ -1575,10 +1565,7 @@ pueden adjuntarse a las notas.
 	<string name="InventoryOutboxError">
 		La [[MARKETPLACE_CREATE_STORE_URL] tienda del Mercado] devuelve errores.
 	</string>
-	<string name="InventoryMarketplaceError">
-		Se ha producido un error al abrir Artículos del Mercado.
-Si sigues recibiendo el mismo mensaje, solicita ayuda al personal de asistencia de ForMe.World en http://support.secondlife.com
-	</string>
+	<string name="InventoryMarketplaceError">Se ha producido un error al abrir Artículos del Mercado.</string>
 	<string name="InventoryMarketplaceListingsNoItemsTitle">
 		Tu carpeta Artículos del mercado está vacía.
 	</string>

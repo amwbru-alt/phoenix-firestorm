@@ -1679,21 +1679,11 @@ http://secondlife.com/support pour vous aider à résoudre ce problème.
 	<string name="InventoryInboxNoItems">
 		Les achats que vous avez effectués sur Marketplace s&apos;affichent ici. Vous pouvez alors les faire glisser vers votre inventaire afin de les utiliser.
 	</string>
-	<string name="MarketplaceURL">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/
-	</string>
-	<string name="MarketplaceURL_CreateStore">
-		http://community.secondlife.com/t5/English-Knowledge-Base/Selling-in-the-Marketplace/ta-p/700193#Section_.3
-	</string>
-	<string name="MarketplaceURL_Dashboard">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/merchants/store/dashboard
-	</string>
-	<string name="MarketplaceURL_Imports">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/merchants/store/imports
-	</string>
-	<string name="MarketplaceURL_LearnMore">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/learn_more
-	</string>
+	<string name="MarketplaceURL">http://185.173.93.200:8002/web/marketplace.html</string>
+	<string name="MarketplaceURL_CreateStore">http://185.173.93.200:8002/web/seller.html</string>
+	<string name="MarketplaceURL_Dashboard">http://185.173.93.200:8002/web/seller.html</string>
+	<string name="MarketplaceURL_Imports">http://185.173.93.200:8002/web/seller.html</string>
+	<string name="MarketplaceURL_LearnMore">http://185.173.93.200:8002/web/terms.html</string>
 	<string name="InventoryPlayAnimationTooltip">
 		Ouvrir la fenêtre avec les options Jeu
 	</string>
@@ -1729,18 +1719,9 @@ http://secondlife.com/support pour vous aider à résoudre ce problème.
 	<string name="InventoryOutboxError">
 		La [[MARKETPLACE_CREATE_STORE_URL] boutique de Marketplace] renvoie des erreurs.
 	</string>
-	<string name="InventoryMarketplaceError">
-		Une erreur est survenue lors de l’ouverture des annonces de Marketplace.
-Si vous continuez de recevoir ce message, contactez l’assistance ForMe.World à http://support.secondlife.com pour obtenir de l’aide.
-	</string>
-	<string name="InventoryMarketplaceConnectionError">
-		La connexion au listing de Marketplace a échoué.
-Si vous continuez à recevoir ce message, veuillez contacter l'assistance de ForMe.World à l'adresse suivante http://support.secondlife.com
-	</string>
-	<string name="InventoryMarketplaceConnectionErrorReason">
-		La connexion au listing de Marketplace a échoué. Raison :: [REASON]
-Si vous continuez à recevoir ce message, veuillez contacter l'assistance de ForMe.World à l'adresse suivante http://support.secondlife.com
-	</string>
+	<string name="InventoryMarketplaceError">Une erreur est survenue lors de l’ouverture des annonces de Marketplace.</string>
+	<string name="InventoryMarketplaceConnectionError">La connexion au listing de Marketplace a échoué.</string>
+	<string name="InventoryMarketplaceConnectionErrorReason">La connexion au listing de Marketplace a échoué. Raison :: [REASON]</string>
 	<string name="InventoryMarketplaceListingsNoItemsTitle">
 		Votre dossier Annonces de Marketplace est vide.
 	</string>

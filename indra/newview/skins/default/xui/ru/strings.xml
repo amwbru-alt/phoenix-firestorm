@@ -604,48 +604,20 @@ support@secondlife.com.
     <string name="TooltipPosition">
 		Позиция: [POSITION]
 	</string>
-    <string name="TooltipOutboxDragToWorld">
-		Вы не можете выкладывать объекты из папки списков Торгового центра
-	</string>
-    <string name="TooltipOutboxWorn">
-		Вы не можете поместить надетые элементы в папку списков Торгового центра
-	</string>
-    <string name="TooltipOutboxFolderLevels">
-		Глубина вложенных папок превышает [AMOUNT]. Уменьшите глубину папок внутри папок; при необходимости поместите предметы в коробку.
-	</string>
-    <string name="TooltipOutboxTooManyFolders">
-		Количество подпапок превышает [СУММА]. Уменьшите количество папок в вашем списке; при необходимости поместите предметы в коробку.
-	</string>
-    <string name="TooltipOutboxTooManyObjects">
-		Количество предметов превышает [СУММА]. Чтобы продать больше, чем [СУММА] предметов в одном списке, вы должны поместите в коробку некоторые из них.
-	</string>
-    <string name="TooltipOutboxTooManyStockItems">
-		Количество на складе превышает [AMOUNT].
-	</string>
-    <string name="TooltipOutboxCannotDropOnRoot">
-		Вы можете перетаскивать предметы или папки только на вкладку ВСЕ или НЕ СВЯЗАННЫЕ. Выберите одну из этих вкладок и переместите предмет(ы) или папки снова.
-	</string>
-    <string name="TooltipOutboxNoTransfer">
-		Один или более из этих объектов не могут быть проданы или переданы.
-	</string>
-    <string name="TooltipOutboxNotInInventory">
-		Вы можете размещать на продажу только предметы из своего инвентаря
-	</string>
-    <string name="TooltipOutboxLinked">
-		Имеющие ссылки предметы или папки нельзя размещать на продажу
-	</string>
-    <string name="TooltipOutboxCallingCard">
-		Вы не можете размещать на продажу визитные карточки
-	</string>
-    <string name="TooltipOutboxDragActive">
-		Опубликованный список нельзя переместить
-	</string>
-    <string name="TooltipOutboxCannotMoveRoot">
-		Нельзя перемещать корневую папку списков товаров торгового центра
-	</string>
-    <string name="TooltipOutboxMixedStock">
-		Все предметы в папке магазина должны иметь одинаковые тип и разрешение
-	</string>
+    <string name="TooltipOutboxDragToWorld">Из папки товаров магазина нельзя размещать предметы в мире.</string>
+    <string name="TooltipOutboxWorn">Сначала снимите предмет с аватара. Надетые вещи нельзя добавлять в товары магазина.</string>
+    <string name="TooltipOutboxFolderLevels">Вложенность папок превышает [AMOUNT]. Уменьшите число уровней.</string>
+    <string name="TooltipOutboxTooManyFolders">Число вложенных папок превышает [AMOUNT]. Упростите папку товара.</string>
+    <string name="TooltipOutboxTooManyObjects">Число предметов превышает [AMOUNT]. Уменьшите состав товара или объедините предметы в набор.</string>
+    <string name="TooltipOutboxTooManyStockItems">Число складских предметов превышает [AMOUNT].</string>
+    <string name="TooltipOutboxCannotDropOnRoot">Перетащите папку на вкладку «Все» или «Без карточки».</string>
+    <string name="TooltipOutboxNoTransfer">У одного или нескольких предметов нет права передачи.</string>
+    <string name="TooltipOutboxNotInInventory">Добавлять товары можно только из собственного инвентаря.</string>
+    <string name="TooltipOutboxLinked">Ссылки на предметы и папки нельзя продавать. Добавьте сами предметы.</string>
+    <string name="TooltipOutboxCallingCard">Визитные карточки нельзя выставлять на продажу.</string>
+    <string name="TooltipOutboxDragActive">Сначала снимите товар с публикации, затем переместите его папку.</string>
+    <string name="TooltipOutboxCannotMoveRoot">Системную папку товаров магазина нельзя перемещать.</string>
+    <string name="TooltipOutboxMixedStock">Предметы в складской папке должны иметь одинаковые тип и права.</string>
     <string name="TooltipOutfitNotInInventory">
 		Вы можете помещать в "Комплекты" предметы или комплекты только из своего личного инвентаря.
 	</string>
@@ -1719,12 +1691,8 @@ https://www.firestormviewer.org/support за помощь в решении эт
     <string name="FavoritesNoMatchingItems">
 		Перетащите закладку сюда, чтобы добавить ее в список избранного.
 	</string>
-    <string name="MarketplaceNoListing">
-		У вас еще нет товаров в Торговом центре.
-	</string>
-    <string name="MarketplaceNoMatchingItems">
-		Предметы не найдены. Проверьте правильность строки поиска и повторите попытку.
-	</string>
+    <string name="MarketplaceNoListing">Товаров пока нет. Добавьте папку товара из своего инвентаря.</string>
+    <string name="MarketplaceNoMatchingItems">Товары не найдены. Измените строку поиска.</string>
     <string name="InventorySingleFolderEmpty">
 		Папка пустая.
 	</string>
@@ -1737,21 +1705,11 @@ https://www.firestormviewer.org/support за помощь в решении эт
     <string name="InventoryInboxNoItems">
 		Здесь будут показаны ваши покупки из Торгового центра. Их можно будет перетащить в ваш инвентарь для использования.
 	</string>
-    <string name="MarketplaceURL">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/
-	</string>
-    <string name="MarketplaceURL_CreateStore">
-		http://community.secondlife.com/t5/English-Knowledge-Base/Selling-in-the-Marketplace/ta-p/700193#Section_.3
-	</string>
-    <string name="MarketplaceURL_Dashboard">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/merchants/store/dashboard
-	</string>
-    <string name="MarketplaceURL_Imports">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/merchants/store/imports
-	</string>
-    <string name="MarketplaceURL_LearnMore">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/learn_more
-	</string>
+    <string name="MarketplaceURL">http://185.173.93.200:8002/web/marketplace.html</string>
+    <string name="MarketplaceURL_CreateStore">http://185.173.93.200:8002/web/seller.html</string>
+    <string name="MarketplaceURL_Dashboard">http://185.173.93.200:8002/web/seller.html</string>
+    <string name="MarketplaceURL_Imports">http://185.173.93.200:8002/web/seller.html</string>
+    <string name="MarketplaceURL_LearnMore">http://185.173.93.200:8002/web/terms.html</string>
     <string name="InventoryPlayAnimationTooltip">
 		Откройте окно с настройками Воспроизведения.
 	</string>
@@ -1761,140 +1719,53 @@ https://www.firestormviewer.org/support за помощь в решении эт
     <string name="InventoryPlaySoundTooltip">
 		Откройте окно с настройками Воспроизведения.
 	</string>
-    <string name="InventoryOutboxNotMerchantTitle">
-		Любой желающий может продавать товары в Торговом центре.
-	</string>
-    <string name="InventoryOutboxNotMerchantTooltip">
-	</string>
-    <string name="InventoryOutboxNotMerchant">
-		Если вы хотите стать продавцом, вам нужно будет создать магазин в [[MARKETPLACE_CREATE_STORE_URL] Торговом центре].
-	</string>
-    <string name="InventoryOutboxNoItemsTitle">
-		Ваша папка 'Исходящие' пуста.
-	</string>
-    <string name="InventoryOutboxNoItemsTooltip">
-	</string>
-    <string name="InventoryOutboxNoItems">
-		Перетащите папки в эту область и щелкните 'Отправить в Торговую площадку', чтобы выставить их на продажу в [[MARKETPLACE_DASHBOARD_URL] Торговом центре].
-	</string>
-    <string name="InventoryOutboxInitializingTitle">
-		Инициализация Торговой площадки
-	</string>
-    <string name="InventoryOutboxInitializingTooltip">
-	</string>
-    <string name="InventoryOutboxInitializing">
-		Мы обращаемся к вашей учетной записи магазина [[MARKETPLACE_CREATE_STORE_URL] Торгового центра].
-	</string>
-    <string name="InventoryOutboxErrorTitle">
-		Ошибки Торговой площадки.
-	</string>
-    <string name="InventoryOutboxErrorTooltip">
-	</string>
-    <string name="InventoryOutboxError">
-		[[MARKETPLACE_CREATE_STORE_URL] Магазин Торговой площадки] вернул ошибки.
-	</string>
-    <string name="InventoryMarketplaceError">
-		Произошла ошибка при открытии списков Торговой площадки.
-Если вы продолжаете получать это сообщение, обратитесь за помощью в службу поддержки ForMe.World по адресу http://support.secondlife.com.
-	</string>
-    <string name="InventoryMarketplaceConnectionError">
-Не удалось подключиться к спискам на Торговой площадке.
-Если вы продолжаете получать это сообщение, обратитесь за помощью в службу поддержки ForMe.World по адресу http://support.secondlife.com.
-	</string>
-    <string name="InventoryMarketplaceConnectionErrorReason">
-Не удалось подключиться к спискам на Торговой площадке. Причина: [REASON]
-Если вы продолжаете получать это сообщение, обратитесь за помощью в службу поддержки ForMe.World по адресу http://support.secondlife.com.
-	</string>
-    <string name="InventoryMarketplaceListingsNoItemsTitle">
-		Папка списков товаров торгового центра пуста.
-	</string>
-    <string name="InventoryMarketplaceListingsNoItems">
-		Перетащите папки в эту область, чтобы выставить их на продажу в [[MARKETPLACE_DASHBOARD_URL] Торговом центре].
-	</string>
+    <string name="InventoryOutboxNotMerchantTitle">Продажа товаров недоступна</string>
+    <string name="InventoryOutboxNotMerchantTooltip">Проверьте роль и разрешение продавца на сервере.</string>
+    <string name="InventoryOutboxNotMerchant">Нужны серверный бейдж «Владелец» или «Дизайнер» и отдельное разрешение продавца. Управление магазином: [[MARKETPLACE_CREATE_STORE_URL] открыть кабинет].</string>
+    <string name="InventoryOutboxNoItemsTitle">Папка товаров пуста</string>
+    <string name="InventoryOutboxNoItemsTooltip">Добавьте папку товара из своего инвентаря.</string>
+    <string name="InventoryOutboxNoItems">Добавьте папку товара. Цену и описание можно изменить в [[MARKETPLACE_DASHBOARD_URL] кабинете продавца].</string>
+    <string name="InventoryOutboxInitializingTitle">Подключение к магазину</string>
+    <string name="InventoryOutboxInitializingTooltip">Проверяется доступ к торговому сервису ForMe.World.</string>
+    <string name="InventoryOutboxInitializing">Проверяем доступ к [[MARKETPLACE_CREATE_STORE_URL] вашему магазину].</string>
+    <string name="InventoryOutboxErrorTitle">Ошибка магазина</string>
+    <string name="InventoryOutboxErrorTooltip">Повторите подключение после проверки торгового сервиса.</string>
+    <string name="InventoryOutboxError">Не удалось получить данные [[MARKETPLACE_CREATE_STORE_URL] магазина ForMe.World].</string>
+    <string name="InventoryMarketplaceError">Не удалось открыть товары магазина ForMe.World. Повторите попытку; если ошибка сохраняется, сообщите администратору сервера.</string>
+    <string name="InventoryMarketplaceConnectionError">Не удалось подключиться к магазину ForMe.World. Проверьте соединение и повторите попытку.</string>
+    <string name="InventoryMarketplaceConnectionErrorReason">Не удалось подключиться к магазину ForMe.World. Причина: [REASON]</string>
+    <string name="InventoryMarketplaceListingsNoItemsTitle">Папка товаров магазина пуста</string>
+    <string name="InventoryMarketplaceListingsNoItems">Добавьте папку товара, а внутри неё — папку версии с предметами. Карточки товаров редактируются в [[MARKETPLACE_DASHBOARD_URL] кабинете продавца].</string>
     <string name="InventoryItemsCount">
 		([ITEMS]/[CATEGORIES] предметов)
 	</string>
-    <string name="Marketplace Validation Warning Stock">
-		В папке версии должна быть папка запасов
-	</string>
-    <string name="Marketplace Validation Error Mixed Stock">
-		: Ошибка: все предметы в папке запасов должны быть некопируемыми и одного типа
-	</string>
-    <string name="Marketplace Validation Error Subfolder In Stock">
-		: Ошибка: папка запасов не может содержать подпапки
-	</string>
-    <string name="Marketplace Validation Warning Empty">
-		: Предупреждение: папка не содержит предметов
-	</string>
-    <string name="Marketplace Validation Warning Create Stock">
-		: Предупреждение: создается папка запасов
-	</string>
-    <string name="Marketplace Validation Warning Create Version">
-		: Предупреждение: создается папка версии
-	</string>
-    <string name="Marketplace Validation Warning Move">
-		: Предупреждение: перемещаются предметы
-	</string>
-    <string name="Marketplace Validation Warning Delete">
-		: Предупреждение: содержимое папки переносится в папку запасов, пустая папка удаляется
-	</string>
-    <string name="Marketplace Validation Error Stock Item">
-		: Ошибка: в папке запасов должны содержаться некопируемые предметы
-	</string>
-    <string name="Marketplace Validation Warning Unwrapped Item">
-		: Предупреждение: в папке версии должны быть предметы
-	</string>
-    <string name="Marketplace Validation Error">
-		: Ошибка:
-	</string>
-    <string name="Marketplace Validation Warning">
-		: Предупреждение:
-	</string>
-    <string name="Marketplace Validation Error Empty Version">
-		: Предупреждение: папка версии должна содержать хотя бы 1 предмет
-	</string>
-    <string name="Marketplace Validation Error Empty Stock">
-		: Предупреждение: папка запасов должна содержать хотя бы 1 предмет
-	</string>
-    <string name="Marketplace Validation No Error">
-		Нет ошибок и предупреждений
-	</string>
-    <string name="Marketplace Error None">
-		Ошибок нет
-	</string>
-    <string name="Marketplace Error Prefix">
-		Ошибка:
-	</string>
-    <string name="Marketplace Error Not Merchant">
-		Ошибка: Перед отправкой товаров для Торговой площадки вам нужно будет настроить себя, как продавец (бесплатно).
-	</string>
-    <string name="Marketplace Error Not Accepted">
-		Невозможно переместить предмет в эту папку.
-	</string>
-    <string name="Marketplace Error Unsellable Item">
-		Ошибка: Этот предмет не может быть продан в Торговом центре.
-	</string>
-    <string name="MarketplaceNoID">
-		нет ID торг. центра
-	</string>
-    <string name="MarketplaceLive">
-		опубликовано
-	</string>
-    <string name="MarketplaceActive">
-		активно
-	</string>
-    <string name="MarketplaceMax">
-		макс.
-	</string>
-    <string name="MarketplaceStock">
-		запас
-	</string>
-    <string name="MarketplaceNoStock">
-		нет в запасе
-	</string>
-    <string name="MarketplaceUpdating">
-		обновление...
-	</string>
+    <string name="Marketplace Validation Warning Stock">: Предупреждение: складская папка должна находиться внутри папки версии</string>
+    <string name="Marketplace Validation Error Mixed Stock">: Ошибка: в складской папке должны быть предметы одного типа без права копирования</string>
+    <string name="Marketplace Validation Error Subfolder In Stock">: Ошибка: складская папка не должна содержать вложенные папки</string>
+    <string name="Marketplace Validation Warning Empty">: Предупреждение: папка пуста</string>
+    <string name="Marketplace Validation Warning Create Stock">: Предупреждение: создаётся складская папка</string>
+    <string name="Marketplace Validation Warning Create Version">: Предупреждение: создаётся папка версии</string>
+    <string name="Marketplace Validation Warning Move">: Предупреждение: предметы перемещаются</string>
+    <string name="Marketplace Validation Warning Delete">: Предупреждение: содержимое перенесено на склад, пустая папка удаляется</string>
+    <string name="Marketplace Validation Error Stock Item">: Ошибка: предмет без права копирования должен находиться в складской папке</string>
+    <string name="Marketplace Validation Warning Unwrapped Item">: Предупреждение: предметы должны находиться внутри папки версии</string>
+    <string name="Marketplace Validation Error">: Ошибка:</string>
+    <string name="Marketplace Validation Warning">: Предупреждение:</string>
+    <string name="Marketplace Validation Error Empty Version">: Предупреждение: добавьте хотя бы один предмет в папку версии</string>
+    <string name="Marketplace Validation Error Empty Stock">: Предупреждение: добавьте хотя бы один предмет в складскую папку</string>
+    <string name="Marketplace Validation No Error">Ошибок и предупреждений нет.</string>
+    <string name="Marketplace Error None">Ошибок нет</string>
+    <string name="Marketplace Error Prefix">Ошибка:</string>
+    <string name="Marketplace Error Not Merchant">Для продажи нужны серверный бейдж «Владелец» или «Дизайнер» и разрешение продавца.</string>
+    <string name="Marketplace Error Not Accepted">В эту папку нельзя переместить выбранный предмет.</string>
+    <string name="Marketplace Error Unsellable Item">У предмета нет необходимых прав или этот тип продажи пока не поддерживается сервером.</string>
+    <string name="MarketplaceNoID">нет ID карточки</string>
+    <string name="MarketplaceLive">опубликован</string>
+    <string name="MarketplaceActive">активен</string>
+    <string name="MarketplaceMax">макс.</string>
+    <string name="MarketplaceStock">на складе</string>
+    <string name="MarketplaceNoStock">нет в наличии</string>
+    <string name="MarketplaceUpdating">обновление…</string>
     <string name="UploadFeeInfo">
 		Плата зависит от вашего уровня подписки. С подписок более высокого уровня взимаются более низкие сборы. [https://secondlife.com/my/account/membership.php? Узнать больше]
 	</string>
@@ -2049,9 +1920,7 @@ https://www.firestormviewer.org/support за помощь в решении эт
     <string name="InvFolder Received Items">
 		Полученные предметы
 	</string>
-    <string name="InvFolder Merchant Outbox">
-		Исходящие продавца
-	</string>
+    <string name="InvFolder Merchant Outbox">Товары магазина</string>
     <string name="InvFolder Settings">
 		Настройки
 	</string>
@@ -5619,12 +5488,8 @@ https://www.firestormviewer.org/support за помощь в решении эт
     <string name="Command_Map_Label">
 		Карта
 	</string>
-    <string name="Command_Marketplace_Label">
-		Торговый центр
-	</string>
-    <string name="Command_MarketplaceListings_Label">
-		Торговый центр
-	</string>
+    <string name="Command_Marketplace_Label">Маркет</string>
+    <string name="Command_MarketplaceListings_Label">Мои товары</string>
     <string name="Command_MiniMap_Label">
 		Мини-карта
 	</string>
@@ -5817,12 +5682,8 @@ https://www.firestormviewer.org/support за помощь в решении эт
     <string name="Command_Map_Tooltip">
 		Карта мира (CTRL+M)
 	</string>
-    <string name="Command_Marketplace_Tooltip">
-		Покупки
-	</string>
-    <string name="Command_MarketplaceListings_Tooltip">
-		Продайте свои творения
-	</string>
+    <string name="Command_Marketplace_Tooltip">Открыть маркет ForMe.World</string>
+    <string name="Command_MarketplaceListings_Tooltip">Управлять товарами своего магазина</string>
     <string name="Command_MiniMap_Tooltip">
 		Показать людей поблизости (CTRL+SHIFT+M)
 	</string>
@@ -6894,4 +6755,6 @@ ID объекта: [INSPECTING_KEY]
     <string name="FSAvatarAlignToggleFull">Полная</string>
     <string name="ForMeMarketplaceUnavailableTitle">Торговый сервис недоступен</string>
     <string name="ForMeMarketplaceUnavailable">Регион не предоставил сервис торговых листингов ForMe.World. Проверьте, что модуль MarketplaceListings включён и сервер обновлён. После обновления сервера войдите заново.</string>
+    <string name="InventoryMarketplaceListingsNoItemsTooltip">Добавьте папку товара, затем выберите её версию.</string>
+    <string name="Marketplace Validation Log"></string>
 </strings>

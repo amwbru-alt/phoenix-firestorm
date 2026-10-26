@@ -49,3 +49,26 @@ for language in ('en', 'ru'):
 print('PASS creator marketplace entry survives missing service and merchant failures')
 
 assert 'forme_creator != forme_listing_creator' in app
+
+# Marketplace translations preserve executable substitutions and never send a
+# resident to a vendor marketplace/support service from a translated resource.
+import re
+base_strings = ET.parse(ROOT/'indra/newview/skins/default/xui/en/strings.xml').getroot()
+ru_strings = ET.parse(ROOT/'indra/newview/skins/default/xui/ru/strings.xml').getroot()
+market_keys = [node.get('name') for node in base_strings if any(word in node.get('name','').lower() for word in ('marketplace','outbox','merchant'))]
+for key in market_keys:
+    original = base_strings.find(f"./string[@name='{key}']")
+    translated = ru_strings.find(f"./string[@name='{key}']")
+    assert translated is not None, key
+    tokens = lambda value: set(re.findall(r'\[[A-Z][A-Z0-9_]*\]', value or ''))
+    assert tokens(original.text) == tokens(translated.text), key
+for path in (ROOT/'indra/newview/skins').glob('*/xui/*/strings.xml'):
+    strings = ET.parse(path).getroot()
+    for node in strings:
+        if node.get('name','').startswith('MarketplaceURL'):
+            assert (node.text or '').strip().startswith('http://185.173.93.200:8002/web/'), path
+        if node.get('name') in ('InventoryMarketplaceError','InventoryMarketplaceConnectionError','InventoryMarketplaceConnectionErrorReason'):
+            assert 'secondlife.com' not in (node.text or '').lower(), path
+assert ru_strings.find("./string[@name='TooltipOutboxTooManyFolders']").text.count('[AMOUNT]') == 1
+assert '[СУММА]' not in ru_strings.find("./string[@name='TooltipOutboxTooManyObjects']").text
+print('PASS Russian marketplace substitutions, complete messages and own-service links in all locales')

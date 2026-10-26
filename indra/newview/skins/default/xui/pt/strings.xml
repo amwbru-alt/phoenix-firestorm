@@ -1736,18 +1736,9 @@ https://www.firestormviewer.org/support para obter ajuda com este problema.
 	<string name="InventoryOutboxError">
 		A [[MARKETPLACE_CREATE_STORE_URL] loja do Marketplace] está retornando erros.
 	</string>
-	<string name="InventoryMarketplaceError">
-		Ocorreu um erro ao abrir listagens do Marketplace.
-		Se você continuar recebendo esta mensagem, entre em contato com o suporte do ForMe.World para obter assistência em http://support.secondlife.com
-	</string>
-	<string name="InventoryMarketplaceConnectionError">
-		Falha ao conectar às listagens do Marketplace.
-Se você continuar recebendo esta mensagem, entre em contato com o suporte do ForMe.World para obter assistência em http://support.secondlife.com
-	</string>
-	<string name="InventoryMarketplaceConnectionErrorReason">
-		Falha ao conectar às listagens do Marketplace. Motivo: [REASON]
-Se você continuar recebendo esta mensagem, entre em contato com o suporte do ForMe.World para obter assistência em http://support.secondlife.com
-	</string>
+	<string name="InventoryMarketplaceError">Ocorreu um erro ao abrir listagens do Marketplace.</string>
+	<string name="InventoryMarketplaceConnectionError">Falha ao conectar às listagens do Marketplace.</string>
+	<string name="InventoryMarketplaceConnectionErrorReason">Falha ao conectar às listagens do Marketplace. Motivo: [REASON]</string>
 	<string name="InventoryMarketplaceListingsNoItemsTitle">
 		Sua pasta de listagens do Marketplace está vazia.
 	</string>
@@ -6741,4 +6732,9 @@ Sua posição atual: [AVATAR_POS]
 	<string name="FSMacOSNewViewerInstance">
 		Nova instância do viewer
 	</string>
+    <string name="MarketplaceURL">http://185.173.93.200:8002/web/marketplace.html</string>
+    <string name="MarketplaceURL_CreateStore">http://185.173.93.200:8002/web/seller.html</string>
+    <string name="MarketplaceURL_Dashboard">http://185.173.93.200:8002/web/seller.html</string>
+    <string name="MarketplaceURL_Imports">http://185.173.93.200:8002/web/seller.html</string>
+    <string name="MarketplaceURL_LearnMore">http://185.173.93.200:8002/web/terms.html</string>
 </strings>

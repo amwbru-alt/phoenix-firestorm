@@ -1714,10 +1714,7 @@ https://www.firestormviewer.org/support per avere aiuto nella soluzione.
 	<string name="InventoryOutboxError">
 		Il [[MARKETPLACE_CREATE_STORE_URL] negozio nel Marketplace] ha riportato errori.
 	</string>
-	<string name="InventoryMarketplaceError">
-		Si è verificato un errore durante l&apos;apertura degli elenchi Marketplace.
-Se il messaggio persiste, contattare il supporto ForMe.World per assistenza http://support.secondlife.com
-	</string>
+	<string name="InventoryMarketplaceError">Si è verificato un errore durante l&apos;apertura degli elenchi Marketplace.</string>
 	<string name="InventoryMarketplaceListingsNoItemsTitle">
 		La cartella degli annunci di Marketplace è vuota.
 	</string>
