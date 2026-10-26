@@ -3060,16 +3060,7 @@ bool LLAppViewer::initConfiguration()
         return false;
     }
 
-    //<FS:Techwolf Lupindo>
-    // load defaults overide here. Can not use settings_files.xml as path is different then above loading of defaults.
-    std::string fsdata_defaults = gDirUtilp->getExpandedFilename(LL_PATH_USER_SETTINGS, llformat("fsdata_defaults.%s.xml", LLVersionInfo::getInstance()->getShortVersion().c_str()));
-    std::string fsdata_global = "Global";
-    std::shared_ptr<LLControlGroup> settings_group = LLControlGroup::getInstance(fsdata_global);
-    if(settings_group && settings_group->loadFromFile(fsdata_defaults, set_defaults))
-    {
-        LL_INFOS() << "Loaded settings file " << fsdata_defaults << LL_ENDL;
-    }
-    //</FS:Techwolf Lupindo>
+    // Defaults are shipped with ForMe.World; do not load legacy vendor overrides.
 
     initStrings(); // setup paths for LLTrans based on settings files only
     // - set procedural settings
