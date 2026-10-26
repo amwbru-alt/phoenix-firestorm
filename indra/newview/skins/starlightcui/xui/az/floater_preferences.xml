@@ -9,8 +9,8 @@
 	<tab_container name="pref core">
 		<panel label="Ümumi" name="general"/>
 		<panel label="Söhbət" name="chat"/>
-		<panel label="Rənglər" name="colors"/>
-		<panel label="Fərdi rənglər" name="custom_colors"/>
+		
+		
 		<panel label="Qrafik" name="display"/>
 		<panel label="Səs və media" name="audio"/>
 		<panel label="Şəbəkə və keş" name="input"/>

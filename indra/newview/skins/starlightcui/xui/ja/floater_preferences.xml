@@ -13,8 +13,8 @@
 	<tab_container name="pref core">
 		<panel label="一般" name="general"/>
 		<panel label="チャット" name="chat"/>
-		<panel label="カラー" name="colors"/>
-		<panel label="カスタムカラー" name="custom_colors"/>
+		
+		
 		<panel label="グラフィック" name="display"/>
 		<panel label="サウンドとメディア" name="audio"/>
 		<panel label="セットアップ" name="input"/>

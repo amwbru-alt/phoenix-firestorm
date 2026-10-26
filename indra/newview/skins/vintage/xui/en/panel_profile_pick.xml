@@ -7,7 +7,7 @@
   width="314"
   follows="all"
   layout="topleft"
-  help_topic="profile_pick_info">
+ >
 
   <panel.string
     name="location_notice">

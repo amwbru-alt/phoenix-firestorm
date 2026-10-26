@@ -24,8 +24,8 @@ Sahibi [OWNER]
 		Otur
 	</string>
 	<text name="object_creator">
-		müəllif secondlife:///app/agent/0e346d8b-4433-4d66-a6b0-fd37083abc4c/about
-sahibi secondlife:///app/agent/0e346d8b-4433-4d66-a6b0-fd37083abc4c/about
+		müəllif fmw:///app/agent/0e346d8b-4433-4d66-a6b0-fd37083abc4c/about
+sahibi fmw:///app/agent/0e346d8b-4433-4d66-a6b0-fd37083abc4c/about
 	</text>
 	<text name="price_text">
 		L$30,000

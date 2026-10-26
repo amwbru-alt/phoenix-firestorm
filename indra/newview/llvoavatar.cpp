@@ -3899,9 +3899,10 @@ void LLVOAvatar::idleUpdateNameTag(const LLVector3& root_pos_last)
     {
         static LLCachedControl<bool> render_name_show_self(gSavedSettings, "RenderNameShowSelf");
         static LLCachedControl<S32> name_tag_mode(gSavedSettings, "AvatarNameTagMode");
-        render_name = render_name
+        const bool server_badge = ForMeAvatarBadges::get(getID()).valid;
+        render_name = (server_badge || render_name)
             && !gAgentCamera.cameraMouselook()
-            && (visible_chat || (render_name_show_self && name_tag_mode));
+            && (server_badge || visible_chat || (render_name_show_self && name_tag_mode));
     }
 
     if ( !render_name )

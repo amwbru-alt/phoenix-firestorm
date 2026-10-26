@@ -84,7 +84,6 @@
 #include "llviewerobjectlist.h"
 #include "llworldmap.h"
 #include "llmutelist.h"
-#include "llviewerhelp.h"
 #include "lluicolortable.h"
 #include "llurldispatcher.h"
 #include "llurlhistory.h"
@@ -889,7 +888,7 @@ bool LLAppViewer::init()
     // set skin search path to default, will be overridden later
     // this allows simple skinned file lookups to work
 // [SL:KB] - Patch: Viewer-Skins | Checked: 2012-12-26 (Catznip-3.4)
-    gDirUtilp->setSkinFolder("default", "", "en");
+    gDirUtilp->setSkinFolder("default", "", "ru");
 // [/SL:KB]
 //  gDirUtilp->setSkinFolder("default", "en");
 
@@ -1053,6 +1052,7 @@ bool LLAppViewer::init()
 
     LL_INFOS("InitInfo") << "UI initialized." << LL_ENDL ;
 
+    gSavedSettings.setString("Language", "ru");
     // NOW LLUI::getLanguage() should work. gDirUtilp must know the language
     // for this session ASAP so all the file-loading commands that follow,
     // that use findSkinnedFilenames(), will include the localized files.
@@ -1110,7 +1110,7 @@ bool LLAppViewer::init()
     LLUrlAction::setExecuteSLURLCallback(&LLURLDispatcher::dispatchFromTextEditor);
 
     // Let code in llui access the viewer help floater
-    LLUI::getInstance()->mHelpImpl = LLViewerHelp::getInstance();
+    LLUI::getInstance()->mHelpImpl = nullptr;
 
     LL_INFOS("InitInfo") << "UI initialization is done." << LL_ENDL ;
 
@@ -3364,6 +3364,7 @@ bool LLAppViewer::initConfiguration()
         gSavedSettings.setBOOL("RenderDebugGLSession", false);
     }
 
+    gSavedSettings.setString("Language", "ru");
     // <FS:TT> Hacking to save the skin and theme for future use.
     mCurrentSkin = gSavedSettings.getString("SkinCurrent");
     mCurrentSkinTheme = gSavedSettings.getString("SkinCurrentTheme");
@@ -5864,6 +5865,7 @@ void LLAppViewer::idle()
     LL_PROFILE_ZONE_SCOPED_CATEGORY_APP;
     pingMainloopTimeout("Main:Idle");
     // UI visibility is derived in memory, never from an editable debug setting.
+    ForMeAvatarBadges::updateSelf();
     const bool forme_creator = !gDisconnected && ForMeCreatorAccess::allowed();
     LLView::setForMeCreatorAccess(forme_creator);
     static std::string forme_listing_cap;

@@ -1662,10 +1662,10 @@ https://www.firestormviewer.org/support para obter ajuda com este problema.
 		Pressione ESC para sair do Mouselook
 	</string>
 	<string name="InventoryNoMatchingItems">
-		Não encontrou o que procura? Tente [secondlife:///app/search/all/[SEARCH_TERM] Buscar].
+		Não encontrou o que procura? Tente [fmw:///app/search/all/[SEARCH_TERM] Buscar].
 	</string>
 	<string name="InventoryNoMatchingRecentItems">
-		Não encontrou o que procura? [secondlife:///app/inventory/filters Mostrar filtros].
+		Não encontrou o que procura? [fmw:///app/inventory/filters Mostrar filtros].
 	</string>
 	<string name="InventoryNoMatchingFavorites">
 		Você não marcou nenhum item como favorito.
@@ -1677,7 +1677,7 @@ https://www.firestormviewer.org/support para obter ajuda com este problema.
 		Mostrar abas ocultas
 	</string>
 	<string name="PlacesNoMatchingItems">
-		Não encontrou o que procura? Tente [secondlife:///app/search/places/[SEARCH_TERM] Buscar].
+		Não encontrou o que procura? Tente [fmw:///app/search/places/[SEARCH_TERM] Buscar].
 	</string>
 	<string name="FavoritesNoMatchingItems">
 		Arraste um Landmark aqui para adicioná-lo aos seus favoritos.

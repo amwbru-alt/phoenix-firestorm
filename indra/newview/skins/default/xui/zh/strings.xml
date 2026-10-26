@@ -758,7 +758,7 @@ support@secondlife.com.
 	<string name="SLurlLabelShowOnMap">
 		顯示到地圖
 	</string>
-	<!-- label strings for secondlife:///app/agent SLapps -->
+	<!-- label strings for fmw:///app/agent SLapps -->
 	<string name="SLappAgentMute">
 		封鎖
 	</string>
@@ -1799,10 +1799,10 @@ support@secondlife.com.
 	</string>
 	<!-- inventory -->
 	<string name="InventoryNoMatchingItems">
-		未找到你想要的？ 嘗試 [secondlife:///app/search/all/[SEARCH_TERM] 搜尋].
+		未找到你想要的？ 嘗試 [fmw:///app/search/all/[SEARCH_TERM] 搜尋].
 	</string>
 	<string name="InventoryNoMatchingRecentItems">
-		未找到你想要的？ 嘗試 [secondlife:///app/inventory/filters 更改過濾器].
+		未找到你想要的？ 嘗試 [fmw:///app/inventory/filters 更改過濾器].
 	</string>
 	<string name="InventoryNoMatchingFavorites">
 		您尚未將任何物件標記為收藏。

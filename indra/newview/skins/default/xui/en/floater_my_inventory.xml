@@ -4,7 +4,7 @@
  can_close="true"
  can_resize="true"
  height="570"
- help_topic="sidebar_inventory"
+
  min_width="200"
  min_height="200"
  name="floater_my_inventory"

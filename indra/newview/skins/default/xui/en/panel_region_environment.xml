@@ -6,7 +6,7 @@
         height="375"
         label="Environment"
         layout="topleft"
-        help_topic="panel_region_environment_tab"
+       
         name="panel_env_info"
         width="530"> 
     <string name="str_label_use_default">Use Default Settings</string>

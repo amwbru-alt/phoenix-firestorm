@@ -5,7 +5,7 @@
  height="495"
  layout="topleft"
  name="Image Preview"
- help_topic="image_preview"
+
  width="300" forme_creator_only="true">
 
     <string

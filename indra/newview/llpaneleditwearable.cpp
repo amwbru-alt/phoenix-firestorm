@@ -671,7 +671,7 @@ void LLPanelEditWearable::updateMetricLayout(bool new_value)
         current_metric = new_value ? mMeters : mFeet;
         replacment_metric = new_value ? mFeet : mMeters;
         mHeightValue.setArg( "[METRIC1]", current_metric.getString() );
-        mReplacementMetricUrl.setArg( "[URL_METRIC2]", std::string("[secondlife:///app/metricsystem ") + replacment_metric.getString() + std::string("]"));
+        mReplacementMetricUrl.setArg( "[URL_METRIC2]", std::string("[fmw:///app/metricsystem ") + replacment_metric.getString() + std::string("]"));
 }
 
 void LLPanelEditWearable::updateAvatarHeightLabel()
@@ -1894,7 +1894,7 @@ void LLPanelEditWearable::onClickedImportBtnCallback(const std::vector<std::stri
 }
 // [/FS:CR] FIRE-10986
 
-// handle secondlife:///app/metricsystem
+// handle fmw:///app/metricsystem
 class LLMetricSystemHandler : public LLCommandHandler
 {
 public:

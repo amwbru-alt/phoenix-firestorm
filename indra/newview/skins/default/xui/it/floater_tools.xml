@@ -139,7 +139,7 @@
 		Nessuna selezione.
 	</text>
 	<text name="remaining_capacity">
-		[CAPACITY_STRING] [secondlife:///app/openfloater/object_weights Maggiori informazioni]
+		[CAPACITY_STRING] [fmw:///app/openfloater/object_weights Maggiori informazioni]
 	</text>
 	<tab_container name="Object Info Tabs">
 		<panel label="Gener." name="General">

@@ -1715,10 +1715,10 @@ https://www.firestormviewer.org/support für Hilfe zum Lösen des Problems.
 		ESC drücken, um zur Normalansicht zurückzukehren
 	</string>
 	<string name="InventoryNoMatchingItems">
-		Sie haben nicht das Richtige gefunden? Versuchen Sie es mit der [secondlife:///app/search/all/[SEARCH_TERM] Suche].
+		Sie haben nicht das Richtige gefunden? Versuchen Sie es mit der [fmw:///app/search/all/[SEARCH_TERM] Suche].
 	</string>
 	<string name="InventoryNoMatchingRecentItems">
-		Sie haben nicht das Richtige gefunden? [secondlife:///app/inventory/filters Filter] anzeigen.
+		Sie haben nicht das Richtige gefunden? [fmw:///app/inventory/filters Filter] anzeigen.
 	</string>
 	<string name="FSInventoryCustomTabDefaultName">
 		Eigene
@@ -1727,7 +1727,7 @@ https://www.firestormviewer.org/support für Hilfe zum Lösen des Problems.
 		Ausgeblendete Reiter anzeigen
 	</string>
 	<string name="PlacesNoMatchingItems">
-		Sie haben nicht das Richtige gefunden? Versuchen Sie es mit der [secondlife:///app/search/places/[SEARCH_TERM] Suche].
+		Sie haben nicht das Richtige gefunden? Versuchen Sie es mit der [fmw:///app/search/places/[SEARCH_TERM] Suche].
 	</string>
 	<string name="FavoritesNoMatchingItems">
 		Landmarke hier hin ziehen, um diese hinzuzufügen.

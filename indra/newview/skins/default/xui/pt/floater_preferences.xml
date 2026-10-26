@@ -8,7 +8,7 @@
 	<tab_container name="pref core">
 		<panel label="Geral" name="general"/> 
 		<panel label="Chat" name="chat"/> 
-		<panel label="Cores" name="colors"/> 
+		 
 		<panel label="Gráficos" name="display"/> 
 		<panel label="Som e mídia" name="audio"/> 
 		<panel label="Rede e arquivos" name="input"/> 

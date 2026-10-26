@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <panel name="Teleport History">
 	<accordion name="history_accordion">
-		<no_matched_tabs_text name="no_matched_teleports_msg" value="Fandt du ikke hvad du søgte? Prøv [secondlife:///app/search/places/[SEARCH_TERM] Search]."/>
-		<no_visible_tabs_text name="no_teleports_msg" value="Teleport historik er tom. Prøv [secondlife:///app/search/places/ Search]."/>
+		<no_matched_tabs_text name="no_matched_teleports_msg" value="Fandt du ikke hvad du søgte? Prøv [fmw:///app/search/places/[SEARCH_TERM] Search]."/>
+		<no_visible_tabs_text name="no_teleports_msg" value="Teleport historik er tom. Prøv [fmw:///app/search/places/ Search]."/>
 		<accordion_tab name="today" title="I dag"/>
 		<accordion_tab name="yesterday" title="I går"/>
 		<accordion_tab name="2_days_ago" title="2 dage siden"/>

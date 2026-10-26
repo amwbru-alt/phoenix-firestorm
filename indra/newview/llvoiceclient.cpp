@@ -60,7 +60,7 @@ const F32 LLVoiceClient::VOLUME_MIN = 0.f;
 const F32 LLVoiceClient::VOLUME_DEFAULT = 0.5f;
 const F32 LLVoiceClient::VOLUME_MAX = 1.0f;
 
-// Support for secondlife:///app/voice SLapps
+// Support for fmw:///app/voice SLapps
 class LLVoiceHandler : public LLCommandHandler
 {
 public:
@@ -78,7 +78,7 @@ public:
                 return false;
             }
 
-            // Support secondlife:///app/voice/effects/refresh to update the voice effect list with new effects
+            // Support fmw:///app/voice/effects/refresh to update the voice effect list with new effects
             if (params[1].asString() == "refresh")
             {
                 effect_interface->refreshVoiceEffectLists(false);

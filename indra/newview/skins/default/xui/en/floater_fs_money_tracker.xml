@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <floater
  name="money_tracker"
- help_topic="fs_tip_tracker"
+
  title="Money Tracker"
  width="200"
  height="220"

@@ -5,7 +5,7 @@
  height="400"
  layout="topleft"
  name="queue"
- help_topic="script_queue"
+
  save_rect="true"
  title="Reset Progress"
  width="300" forme_creator_only="true">

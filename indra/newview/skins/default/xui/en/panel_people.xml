@@ -15,13 +15,13 @@
      value="No recent people." />
     <string
      name="no_filtered_recent_people"
-     value="Didn't find what you're looking for? Try [secondlife:///app/search/people/[SEARCH_TERM] Search]." />
+     value="Didn't find what you're looking for? Try [fmw:///app/search/people/[SEARCH_TERM] Search]." />
     <string
      name="no_one_near"
-     value="No one nearby. Looking for people to hang out with? Try [secondlife:///app/search/people Search] or the [secondlife:///app/worldmap World Map]." />
+     value="No one nearby. Looking for people to hang out with? Try [fmw:///app/search/people Search] or the [fmw:///app/worldmap World Map]." />
     <string
      name="no_one_filtered_near"
-     value="Didn't find what you're looking for? Try [secondlife:///app/search/people/[SEARCH_TERM] Search]." />
+     value="Didn't find what you're looking for? Try [fmw:///app/search/people/[SEARCH_TERM] Search]." />
     <string
      name="no_friends_online"
      value="No friends online" />
@@ -34,13 +34,13 @@
 
 Looking for places with more people?
 
-[secondlife:///app/floater/destinations Destination Guide] has locations chosen by the grid operator staff.
+[fmw:///app/floater/destinations Destination Guide] has locations chosen by the grid operator staff.
 
-[secondlife:///app/search/ Search] lets you search all the grid for certain keywords.
+[fmw:///app/search/ Search] lets you search all the grid for certain keywords.
     </string>
     <string
      name="no_filtered_friends_msg">
-         Didn't find what you're looking for? Try [secondlife:///app/search/people/[SEARCH_TERM] Search].
+         Didn't find what you're looking for? Try [fmw:///app/search/people/[SEARCH_TERM] Search].
     </string>
      <!--
      *WORKAROUND: for group_list.no_items_msg & group_list.no_filtered_items_msg attributes.
@@ -48,7 +48,7 @@ Looking for places with more people?
      -->
     <string
      name="no_filtered_groups_msg"
-     value="Didn't find what you're looking for? Try [secondlife:///app/search/groups/[SEARCH_TERM] Search]." />
+     value="Didn't find what you're looking for? Try [fmw:///app/search/groups/[SEARCH_TERM] Search]." />
     <string
      name="no_groups_msg">
 You are not a member of any groups.
@@ -63,7 +63,7 @@ Learn about [https://community.secondlife.com/knowledgebase/joining-and-particip
 	 value="[REGION] (Double-click to teleport, shift-drag to pan)"/>
 	<string
 	 name="GroupCountWithInfo"
-	 value="You belong to [COUNT] groups, and can join [REMAINING] more.  [secondlife:/// Raise your limit]"/>
+	 value="You belong to [COUNT] groups, and can join [REMAINING] more.  [fmw:/// Raise your limit]"/>
     <panel.string
      name="empty_list">
     This contact set is empty.
@@ -112,7 +112,7 @@ Learn about [https://community.secondlife.com/knowledgebase/joining-and-particip
          label="Nearby"
          layout="topleft"
          left="0"
-         help_topic="people_nearby_tab"
+        
          name="nearby_panel"
          right="-1"
          top="0">
@@ -293,7 +293,7 @@ Learn about [https://community.secondlife.com/knowledgebase/joining-and-particip
          label="Friends"
          layout="topleft"
          left="0"
-         help_topic="people_friends_tab"
+        
          name="friends_panel"
          right="-1"
          top="0">
@@ -463,7 +463,7 @@ Learn about [https://community.secondlife.com/knowledgebase/joining-and-particip
          label="Groups"
          layout="topleft"
          left="0"
-         help_topic="people_groups_tab"
+        
          name="groups_panel"
          right="-1"
          top="0">
@@ -589,7 +589,7 @@ Learn about [https://community.secondlife.com/knowledgebase/joining-and-particip
          label="Recent"
          layout="topleft"
          left="0"
-         help_topic="people_recent_tab"
+        
          name="recent_panel"
          right="-1"
          top="0">
@@ -699,7 +699,7 @@ Learn about [https://community.secondlife.com/knowledgebase/joining-and-particip
          label="Blocked"
          layout="topleft"
          left="0"
-         help_topic="people_blocked_tab"
+        
          name="blocked_panel"
          right="-1"
          top="0">
@@ -727,7 +727,7 @@ Learn about [https://community.secondlife.com/knowledgebase/joining-and-particip
          label="Contact Sets"
          layout="topleft"
          left="0"
-         help_topic="people_contact_sets_tab"
+        
          name="contact_sets_panel"
          right="-1"
          top="0">

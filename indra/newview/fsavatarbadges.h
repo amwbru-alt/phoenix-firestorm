@@ -29,6 +29,7 @@
 #define FS_AVATAR_BADGES_H
 #include "formeavatarbadge.h"
 #include "formegridpolicy.h"
+#include "llagent.h"
 #include "llchat.h"
 #include "llnamevalue.h"
 #include "llviewerobject.h"
@@ -39,9 +40,17 @@
 
 namespace ForMeAvatarBadges
 {
+ForMeBadge::Data self();
+void updateSelf();
 inline LLColor4 color(const std::array<float, 4>& value) { return LLColor4(value[0], value[1], value[2], value[3]); }
 inline ForMeBadge::Data get(const LLUUID& id)
 {
+    // A region advertising the self capability is authoritative, including revocation.
+    // Older updated grids can still supply trusted avatar NameValue fields while
+    // their region module is being upgraded; do not disable creator access there.
+    LLViewerRegion* current = gAgent.getRegion();
+    if (id.notNull() && id == gAgent.getID() && current
+        && !current->getCapability("ForMeAvatarBadge").empty()) return self();
     LLViewerObject* object = gObjectList.findObject(id);
     if (!object || !object->isAvatar() || !object->getRegion()) return {};
     LLViewerRegion* region = object->getRegion();

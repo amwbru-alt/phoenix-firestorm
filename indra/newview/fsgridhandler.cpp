@@ -153,13 +153,13 @@ void gridDownloadComplete(const LLSD& aData, LLGridManager* mOwner, GridEntry* m
 
 const char* DEFAULT_LOGIN_PAGE = "https://phoenixviewer.com/app/loginV3/";
 
-const char* SYSTEM_GRID_SLURL_BASE     = "secondlife://%s/secondlife/";
-const char* MAIN_GRID_SLURL_BASE       = "https://maps.secondlife.com/secondlife/";
-const char* SYSTEM_GRID_APP_SLURL_BASE = "secondlife:///app";
+const char* SYSTEM_GRID_SLURL_BASE     = "fmw://%s/";
+const char* MAIN_GRID_SLURL_BASE       = "fmw://185.173.93.200:8002/";
+const char* SYSTEM_GRID_APP_SLURL_BASE = "fmw:///app";
 
-const char* DEFAULT_HOP_BASE       = "hop://%s/"; // <AW: hop:// protocol>
+const char* DEFAULT_HOP_BASE       = "fmw://%s/"; // <AW: fmw:// protocol>
 const char* DEFAULT_SLURL_BASE     = "https://%s/region/";
-const char* DEFAULT_APP_SLURL_BASE = "x-grid-location-info://%s/app";
+const char* DEFAULT_APP_SLURL_BASE = "fmw://%s/app";
 
 // <AW opensim>
 LLGridManager::LLGridManager() : EGridPlatform(GP_NOTSET), mReadyToLogin(false), mCommandLineDone(false), mResponderCount(0), mClassifiedFee(0), mDirectoryFee(0)
@@ -188,8 +188,8 @@ void LLGridManager::initGrids()
     grid[GRID_LOGIN_IDENTIFIER_TYPES] = LLSD::emptyArray();
     grid[GRID_LOGIN_IDENTIFIER_TYPES].append(CRED_IDENTIFIER_TYPE_AGENT);
     grid[GRID_LOGIN_PAGE_VALUE] = "http://185.173.93.200:8002/web/index.html";
-    grid[GRID_SLURL_BASE] = "hop://185.173.93.200:8002/";
-    grid[GRID_APP_SLURL_BASE] = "x-grid-location-info://185.173.93.200:8002/app";
+    grid[GRID_SLURL_BASE] = "fmw://185.173.93.200:8002/";
+    grid[GRID_APP_SLURL_BASE] = "fmw:///app";
     grid[GRID_IS_SYSTEM_GRID_VALUE] = true;
     grid[GRID_IS_FAVORITE_VALUE] = true;
     mGridList[ForMeGrid::GridID] = grid;
@@ -200,6 +200,7 @@ void LLGridManager::initGrids()
     mCommandLineDone = true;
     mReadyToLogin = true;
     EGridPlatform = GP_OPENSIM;
+    gSavedSettings.setString("MarketplaceURL", std::string(ForMeGrid::LoginURI) + "web/marketplace.html");
     gSavedSettings.setString("CurrentGrid", ForMeGrid::GridID);
     gSavedSettings.setString("CmdLineGridChoice", "");
     gSavedSettings.setBOOL("ForceShowGrid", false);
@@ -377,7 +378,7 @@ void LLGridManager::gridInfoResponderCB(GridEntry* grid_entry)
     }
 
     std::string grid = grid_entry->grid[GRID_VALUE].asString();
-    std::string slurl_base(llformat(DEFAULT_HOP_BASE, grid.c_str())); // <AW: hop:// protocol>
+    std::string slurl_base(llformat(DEFAULT_HOP_BASE, grid.c_str())); // <AW: fmw:// protocol>
     grid_entry->grid[GRID_SLURL_BASE] = slurl_base;
 
     LLDate now                       = LLDate::now();
@@ -738,7 +739,7 @@ std::string LLGridManager::getSLURLBase(const std::string& grid)
                 grid_norm.erase(pos);
         }
 
-        ret = llformat(DEFAULT_HOP_BASE, grid_norm.c_str());                // <AW: hop:// protocol>
+        ret = llformat(DEFAULT_HOP_BASE, grid_norm.c_str());                // <AW: fmw:// protocol>
         LL_DEBUGS("GridManager") << "DEFAULT_HOP_BASE: " << ret << LL_ENDL; // <AW opensim>
                                                                             // </AW opensim>
     }
@@ -768,7 +769,7 @@ std::string LLGridManager::getAppSLURLBase(const std::string& grid)
         if (mGridList.has(grid) && mGridList[grid].has(GRID_SLURL_BASE))
         {
             std::string grid_slurl_base = mGridList[grid][GRID_SLURL_BASE].asString();
-            if (0 == grid_slurl_base.find("hop://"))
+            if (0 == grid_slurl_base.find("fmw://"))
             {
                 app_base = DEFAULT_HOP_BASE;
                 app_base.append("app");
@@ -817,8 +818,8 @@ public:
             return false;
         }
 
-        // Automatically add and select grid via secondlife:///app/gridmanager/addgrid/<URL-encoded login URI>
-        // Example: secondlife:///app/gridmanager/addgrid/http%3A%2F%2Fgrid.avatarlife.com%3A8002
+        // Automatically add and select grid via fmw:///app/gridmanager/addgrid/<URL-encoded login URI>
+        // Example: fmw:///app/gridmanager/addgrid/http%3A%2F%2Fgrid.avatarlife.com%3A8002
         if (params[0].asString() == "addgrid")
         {
             std::string login_uri = LLURI::unescape(params[1].asString());

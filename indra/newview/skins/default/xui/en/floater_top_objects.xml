@@ -7,7 +7,7 @@
  min_height="300"
  min_width="545"
  name="top_objects"
- help_topic="top_objects"
+
  title="Top Objects"
  width="800">
     <floater.string

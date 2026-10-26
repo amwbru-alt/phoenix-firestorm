@@ -7,7 +7,7 @@
   min_height="175"
   min_width="500"
   name="contents"
-  help_topic="contents"
+ 
   title="Inventory Thumbnails Helper"
   width="800">
     <scroll_list

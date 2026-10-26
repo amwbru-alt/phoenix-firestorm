@@ -3,7 +3,7 @@
 	 height="570"
 	 layout="topleft"
 	 name="object properties"
-	 help_topic="object_properties"
+	
 	 title="Object Profile"
 	 width="333">
 	 <panel.string
@@ -99,7 +99,7 @@
          label=""
          layout="topleft"
          left="0"
-         help_topic=""
+        
          name="properties_panel"
          top="0"
          width="295"

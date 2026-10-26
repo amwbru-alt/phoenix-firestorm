@@ -10,7 +10,7 @@
  min_width="960"
  name="Model Preview"
  title="Upload Model"
- help_topic="upload_model" forme_creator_only="true">
+ forme_creator_only="true">
   <string name="status_idle"></string>
   <string name="status_parse_error">Error: Model parsing issue - see log for details.</string>
   <string name="status_bind_shape_orientation">Warning: bind shape matrix is not in standard X-forward orientation.</string>
@@ -139,7 +139,7 @@
         tab_top_image_flash="TabTop_Right_Flashing"/> <!-- for log tab -->
       <!-- LOD PANEL -->
         <panel
-         help_topic="upload_model_lod"
+        
          label="Level of Detail"
          layout="topleft"
          name="lod_panel"
@@ -825,7 +825,7 @@
         </panel>
       <!-- PHYSYCS PANEL -->
         <panel
-          help_topic="upload_model_physics"
+         
           label="Physics"
           name="physics_panel">
 
@@ -1334,7 +1334,7 @@
      <panel
        label="Upload options"
        name="modifiers_panel"
-       help_topic="upload_model_modifiers">
+      >
          <view_border
           bevel_style="none"
           follows="top|left"
@@ -1395,7 +1395,7 @@
        layout="topleft"
        name="rigging_panel"
        title="Rigging"
-       help_topic="upload_model_rigging">
+      >
         <view_border
          bevel_style="none"
          follows="top|left"
@@ -1549,7 +1549,7 @@
        label="Log"
        layout="topleft"
        name="logs_panel"
-       help_topic="upload_model_log">
+      >
         <view_border
          bevel_style="none"
          follows="top|left"
@@ -1594,7 +1594,7 @@
        label="Preview Settings"
        layout="topleft"
        name="mesh_preview_settings_panel"
-       help_topic="upload_model_settings">
+      >
         <view_border
          bevel_style="none"
          follows="top|left"

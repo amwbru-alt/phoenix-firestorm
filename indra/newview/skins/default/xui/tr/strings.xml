@@ -1488,13 +1488,13 @@ http://secondlife.com/support adresini ziyaret edin.
 		Dünya Görünümüne dönmek için ESC&apos;e basın
 	</string>
 	<string name="InventoryNoMatchingItems">
-		Aradığınızı bulamadınız mı? [secondlife:///app/search/all/[SEARCH_TERM] Arama] ile bulmayı deneyin.
+		Aradığınızı bulamadınız mı? [fmw:///app/search/all/[SEARCH_TERM] Arama] ile bulmayı deneyin.
 	</string>
 	<string name="InventoryNoMatchingRecentItems">
-		Aradığınızı bulamadınız mı? [secondlife:///app/inventory/filters Show filters] seçeneğini deneyin.
+		Aradığınızı bulamadınız mı? [fmw:///app/inventory/filters Show filters] seçeneğini deneyin.
 	</string>
 	<string name="PlacesNoMatchingItems">
-		Aradığınızı bulamadınız mı? [secondlife:///app/search/places/[SEARCH_TERM] Arama] ile bulmayı deneyin.
+		Aradığınızı bulamadınız mı? [fmw:///app/search/places/[SEARCH_TERM] Arama] ile bulmayı deneyin.
 	</string>
 	<string name="FavoritesNoMatchingItems">
 		Bir yer imini favorilerinize eklemek için buraya sürükleyin.

@@ -371,10 +371,7 @@ set(viewer_SOURCE_FILES
     llfloatergroupinvite.cpp
     llfloatergroups.cpp
     llfloaterhandler.cpp
-    llfloaterhelpbrowser.cpp
     llfloaterhoverheight.cpp
-    llfloaterhowto.cpp
-    llfloaterhud.cpp
     llfloaterimagepreview.cpp
     llfloaterimsessiontab.cpp
     llfloaterimsession.cpp
@@ -810,8 +807,6 @@ set(viewer_SOURCE_FILES
     llviewerfoldertype.cpp
     llviewergenericmessage.cpp
     llviewergesture.cpp
-    llviewerhelp.cpp
-    llviewerhelputil.cpp
     llviewerhome.cpp
     llviewerinventory.cpp
     llviewerjoint.cpp
@@ -935,6 +930,7 @@ list(APPEND viewer_SOURCE_FILES ${viewer_GLTF_SOURCE_FILES})
 
 if (OPENSIM)
     list(APPEND viewer_SOURCE_FILES
+                fsavatarbadges.cpp
                 fsgridhandler.cpp
                 fsslurl.cpp
         )
@@ -1246,10 +1242,7 @@ set(viewer_HEADER_FILES
     llfloatergroupinvite.h
     llfloatergroups.h
     llfloaterhandler.h
-    llfloaterhelpbrowser.h
     llfloaterhoverheight.h
-    llfloaterhowto.h
-    llfloaterhud.h
     llfloaterimagepreview.h
     llfloaterimnearbychat.h
     llfloaterimnearbychathandler.h
@@ -1678,7 +1671,6 @@ set(viewer_HEADER_FILES
     llviewerfoldertype.h
     llviewergenericmessage.h
     llviewergesture.h
-    llviewerhelp.h
     llviewerhome.h
     llviewerinventory.h
     llviewerjoint.h
@@ -3038,7 +3030,6 @@ if (LL_TESTS)
 #    llmediadataclient.cpp
     lllogininstance.cpp
 #    llremoteparcelrequest.cpp
-    llviewerhelputil.cpp
     llversioninfo.cpp
 #    llvocache.cpp
     llworldmap.cpp

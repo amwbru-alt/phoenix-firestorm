@@ -1638,10 +1638,10 @@ http://secondlife.com/support pour vous aider à résoudre ce problème.
 		Appuyez sur ESC pour quitter la vue subjective
 	</string>
 	<string name="InventoryNoMatchingItems">
-		Vous n&apos;avez pas trouvé ce que vous cherchiez ? Essayez [secondlife:///app/search/all/[SEARCH_TERM] Rechercher].
+		Vous n&apos;avez pas trouvé ce que vous cherchiez ? Essayez [fmw:///app/search/all/[SEARCH_TERM] Rechercher].
 	</string>
 	<string name="InventoryNoMatchingRecentItems">
-		Avez-vous trouvé ce que vous cherchiez ? Essayez [secondlife:///app/inventory/filters Show filters].
+		Avez-vous trouvé ce que vous cherchiez ? Essayez [fmw:///app/inventory/filters Show filters].
 	</string>
 	<string name="InventoryNoMatchingFavorites">
 		Vous n'avez ajouté aucun article à vos favoris.
@@ -1653,7 +1653,7 @@ http://secondlife.com/support pour vous aider à résoudre ce problème.
 		Afficher les onglets masqués
 	</string>
 	<string name="PlacesNoMatchingItems">
-		Vous n&apos;avez pas trouvé ce que vous cherchiez ? Essayez [secondlife:///app/search/places/[SEARCH_TERM] Rechercher].
+		Vous n&apos;avez pas trouvé ce que vous cherchiez ? Essayez [fmw:///app/search/places/[SEARCH_TERM] Rechercher].
 	</string>
 	<string name="FavoritesNoMatchingItems">
 		Faites glisser un repère ici pour l&apos;ajouter à vos Favoris.

@@ -3,7 +3,7 @@
     height="652"
     layout="topleft"
     name="performance"
-    help_topic="fs_performance_floater"
+   
     save_rect="true"
     title="Improve Graphics Speed"
     can_resize="false"

@@ -4,7 +4,7 @@
  height="180"
  layout="topleft"
  name="Sound Preview"
- help_topic="sound_preview"
+
  title="Sound.Wav"
  width="300" forme_creator_only="true">
     <text

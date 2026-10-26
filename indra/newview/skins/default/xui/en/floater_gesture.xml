@@ -6,7 +6,7 @@
  can_resize="true"
  height="485"
  name="gestures"
- help_topic="gestures"
+
  title="Gestures"
  background_visible="true"
  label="Places"

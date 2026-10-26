@@ -35,7 +35,7 @@
 #include "llfloaterworldmap.h"
 #include "llfloaterevent.h"
 #include "llagent.h"
-#include "llcommandhandler.h"   // secondlife:///app/... support
+#include "llcommandhandler.h"   // fmw:///app/... support
 #include "lltrans.h"
 
 class LLEventHandler : public LLCommandHandler

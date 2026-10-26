@@ -6,7 +6,7 @@
  height="215"
  layout="topleft"
  name="Display Name"
- help_topic="display_name"
+
  save_rect="false"
  title="Change Display Name"
  width="445">

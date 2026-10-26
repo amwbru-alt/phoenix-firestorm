@@ -281,32 +281,8 @@
 		<menu_item_call label="Wiederholen" name="Redo"/>
 		<menu_item_call label="Lokaler Bitmap-Browser" name="Local Bitmap Browser"/>
 	</menu>
-	<menu label="Inhalt" name="Content">
-		<menu_item_check label="Suchen" name="Search"/>
-		<menu_item_check label="SL-Marktplatz" name="SL Marketplace"/>
-		<menu_item_check label="L$-Markt-Kurse" name="LindenXchange"/>
-		<menu_item_check label="Skript-Datenbank" name="Script Library"/>
-		<menu_item_call label="SL-Community (Blogs, Foren, News)" name="SL Community Pages"/>
-		<menu_item_call label="Nachricht des Tages" name="Firestorm MoTD"/>
-	</menu>
-	<menu label="Hilfe" name="Help">
-		<menu_item_check label="Hinweise aktivieren" name="Enable Hints"/>
-		<menu_item_call label="ForMe.World-Wiki" name="Firestorm Wiki"/>
-		<menu_item_call label="Fehlerbehebung" name="Troubleshooting"/>
-		<menu_item_call label="ForMe.World Support-Gruppe beitreten" name="firestorm_support_group"/>
-		<menu_item_call label="Stundenplan ForMe.World-Klassen" name="Firestorm Classes Schedule"/>
-		<menu_item_call label="ForMe.World-Eventkalender" name="Firestorm Events Calendar"/>
-		<menu_item_check label="Anweisungen..." name="How To"/>
-		<menu_item_call label="[CURRENT_GRID]-Hilfe" name="current_grid_help"/>
-		<menu_item_call label="Über [CURRENT_GRID]" name="current_grid_about"/>
-		<menu_item_call label="Whitelist-Unterstützung" name="whitelist_folders"/>
-		<menu_item_call label="Grid-Status prüfen" name="Grid Status"/>
-		<menu_item_call label="Missbrauch melden" name="Report Abuse"/>
-		<menu_item_call label="Problem melden" name="Report Bug"/>
-		<menu_item_call label="Rempler, Stöße &amp; Schläge" name="Bumps, Pushes &amp;amp; Hits"/>
-		<menu_item_check label="Sysinfo-Button aktivieren" name="Enable Sysinfo Button"/>
-		<menu_item_call label="Info über [APP_NAME]" name="About Second Life"/>
-	</menu>
+	
+	
 	<menu label="RLVa" name="RLVa Main">
 		<menu label="Debug" name="Debug">
 			<menu_item_check label="RLVa-Menü in Menüleiste anzeigen" name="Show Top-level RLVa Menu"/>

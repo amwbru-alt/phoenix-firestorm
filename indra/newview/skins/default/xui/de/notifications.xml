@@ -3516,13 +3516,13 @@ Ist das OK?
 		Die folgenden Elemente verhinderten die Aktualisierung des Namens und/oder der Beschreibung im Erlebnisprofil: [extra_info]
 	</notification>
 	<notification name="TeleportedHomeExperienceRemoved">
-		Sie wurden aus der Region [region_name] teleportiert, weil Sie das Erlebnis secondlife:///app/experience/[public_id]/profile entfernt haben und nicht mehr berechtigt sind, sich in dieser Region aufzuhalten.
+		Sie wurden aus der Region [region_name] teleportiert, weil Sie das Erlebnis fmw:///app/experience/[public_id]/profile entfernt haben und nicht mehr berechtigt sind, sich in dieser Region aufzuhalten.
 		<form name="form">
 			<ignore name="ignore" text="Wegen Entfernen eines Erlebnisses aus Region hinausgeworfen"/>
 		</form>
 	</notification>
 	<notification name="TrustedExperienceEntry">
-		Sie durften die Region [region_name] betreten, weil Sie am Schlüsselerlebnis secondlife:///app/experience/[public_id]/profile teilgenommen haben. Wenn Sie dieses Erlebnis entfernen, werden Sie u. U. aus der Region hinausgeworfen.
+		Sie durften die Region [region_name] betreten, weil Sie am Schlüsselerlebnis fmw:///app/experience/[public_id]/profile teilgenommen haben. Wenn Sie dieses Erlebnis entfernen, werden Sie u. U. aus der Region hinausgeworfen.
 		<form name="form">
 			<ignore name="ignore" text="Betreten der Region durch ein Erlebnis gestattet"/>
 		</form>
@@ -3535,14 +3535,14 @@ Ist das OK?
 Möglicherweise sind noch weitere Schlüsselerlebnisse verfügbar.
 	</notification>
 	<notification name="ExperienceEvent">
-		Ein Objekt erhielt vom Erlebnis secondlife:///app/experience/[public_id]/profile die Erlaubnis zum Durchführen der folgenden Aktion: [EventType].
-    Eigentümer: secondlife:///app/agent/[OwnerID]/inspect
+		Ein Objekt erhielt vom Erlebnis fmw:///app/experience/[public_id]/profile die Erlaubnis zum Durchführen der folgenden Aktion: [EventType].
+    Eigentümer: fmw:///app/agent/[OwnerID]/inspect
     Objektname: [ObjectName]
     Parzellenname: [ParcelName]
 	</notification>
 	<notification name="ExperienceEventAttachment">
-		Ein Anhang erhielt vom Erlebnis secondlife:///app/experience/[public_id]/profile die Erlaubnis zum Durchführen der folgenden Aktion: [EventType].
-    Eigentümer: secondlife:///app/agent/[OwnerID]/inspect
+		Ein Anhang erhielt vom Erlebnis fmw:///app/experience/[public_id]/profile die Erlaubnis zum Durchführen der folgenden Aktion: [EventType].
+    Eigentümer: fmw:///app/agent/[OwnerID]/inspect
 	</notification>
 	<notification name="ScriptQuestionExperience">
 		„&lt;nolink&gt;[OBJECTNAME]&lt;/nolink&gt;“, ein Objekt, das „[NAME]“ gehört, lädt Sie zur Teilnahme an diesem Erlebnis mit [GRID_WIDE] ein:

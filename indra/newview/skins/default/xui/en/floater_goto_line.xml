@@ -5,7 +5,7 @@
  height="90"
  layout="topleft"
  name="script goto"
- help_topic="script_goto"
+
  title="Go to Line"
  width="200">
     <button

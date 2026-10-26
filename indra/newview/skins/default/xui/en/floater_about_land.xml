@@ -5,7 +5,7 @@
  height="425"
  layout="topleft"
  name="floaterland"
- help_topic="floaterland"
+
  save_rect="true"
  title="About Land"
  width="490">
@@ -65,7 +65,7 @@
          label="General"
          layout="topleft"
          left="0"
-         help_topic="land_general_tab"
+        
          name="land_general_panel"
          top="0">
             <panel.string
@@ -607,7 +607,7 @@ Loading...
          layout="topleft"
          left="0"
          top="0"
-         help_topic="land_covenant_tab"
+        
          name="land_covenant_panel">
             <panel.string
              name="can_resell"
@@ -841,7 +841,7 @@ Loading...
          layout="topleft"
          left="0"
          top="0"
-         help_topic="land_objects_tab"
+        
          name="land_objects_panel">
             <panel.string
              name="objects_available_text">
@@ -1200,7 +1200,7 @@ Loading...
          follows="all"
          label="Options"
          layout="topleft"
-         help_topic="land_options_tab"
+        
          name="land_options_panel"
          left="0"
          top="0">
@@ -1654,7 +1654,7 @@ Only large parcels can be listed in search.
          layout="topleft"
          left="0"
          top="0"
-         help_topic="land_media_tab"
+        
          name="land_media_panel">
             <text
              type="string"
@@ -1867,7 +1867,7 @@ Only large parcels can be listed in search.
          layout="topleft"
          left="0"
          top="0"
-         help_topic="land_audio_tab"
+        
          name="land_audio_panel">
             <text
              type="string"
@@ -2036,7 +2036,7 @@ Only large parcels can be listed in search.
          layout="topleft"
          left="0"
          top="0"
-         help_topic="land_access_tab"
+        
          name="land_access_panel">
 			<panel.string
 			 name="access_estate_defined">
@@ -2317,7 +2317,7 @@ Only large parcels can be listed in search.
           layout="topleft"
           left="0"
           top="0"
-          help_topic="land_experiences_tab"
+         
           name="land_experiences_panel"
           filename="panel_region_experiences.xml">
        </panel>
@@ -2328,7 +2328,7 @@ Only large parcels can be listed in search.
           layout="topleft"
           left="0"
           top="0"
-          help_topic="land_environment_tab"
+         
           name="land_environment_panel"
           filename="panel_region_environment.xml">
        </panel>

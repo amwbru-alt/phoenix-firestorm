@@ -123,7 +123,6 @@
 #include "lltrans.h"
 #include "llviewerdisplay.h" //for gWindowResized
 #include "llviewergenericmessage.h"
-#include "llviewerhelp.h"
 #include "llviewermenufile.h"   // init_menu_file()
 #include "llviewermessage.h"
 #include "llviewernetwork.h"
@@ -8823,133 +8822,13 @@ class LLFloaterVisible : public view_listener_t
     }
 };
 
-class LLShowHelp : public view_listener_t
-{
-    bool handleEvent(const LLSD& userdata)
-    {
-        std::string help_topic = userdata.asString();
-#ifdef OPENSIM
-        if (help_topic.find("grid_") != std::string::npos)
-        {
-            help_topic.erase(0,5);
 
-            std::string url;
-            LLSD grid_info;
-            LLGridManager::getInstance()->getGridData(grid_info);
-            if (grid_info.has(help_topic))
-            {
-                url = grid_info[help_topic].asString();
-            }
-
-            if(!url.empty())
-            {
-                LLWeb::loadURLInternal(url);
-            }
-            LL_DEBUGS() << "grid_help " <<  help_topic << " url " << url << LL_ENDL;
-
-            return true;
-        }
-#endif // OPENSIM
-        LLViewerHelp* vhelp = LLViewerHelp::getInstance();
-        vhelp->showTopic(help_topic);
-
-        return true;
-    }
-};
 
 // <AW: OpenSim>
-bool update_grid_help()
-{
-// <FS:AW  grid management>
-    if (!gMenuHolder) //defend crash on shutdown
-    {
-        return false;
-    }
-// </FS:AW  grid management>
 
-    bool needs_seperator = false;
-
-#ifdef OPENSIM // <FS:AW optional opensim support>
-    LLSD grid_info;
-    LLGridManager::getInstance()->getGridData(grid_info);
-    std::string grid_label = LLGridManager::getInstance()->getGridLabel();
-    bool is_opensim = LLGridManager::getInstance()->isInOpenSim();
-    if (is_opensim && grid_info.has("help"))
-    {
-        needs_seperator = true;
-        gMenuHolder->childSetVisible("current_grid_help",true);
-        gMenuHolder->childSetLabelArg("current_grid_help", "[CURRENT_GRID]", grid_label);
-        gMenuHolder->childSetVisible("current_grid_help_login",true);
-        gMenuHolder->childSetLabelArg("current_grid_help_login", "[CURRENT_GRID]", grid_label);
-    }
-    else
-#endif // OPENSIM // <FS:AW optional opensim support>
-    {
-        gMenuHolder->childSetVisible("current_grid_help",false);
-        gMenuHolder->childSetVisible("current_grid_help_login",false);
-    }
-#ifdef OPENSIM // <FS:AW optional opensim support>
-    if (is_opensim && grid_info.has("about"))
-    {
-        needs_seperator = true;
-        gMenuHolder->childSetVisible("current_grid_about",true);
-        gMenuHolder->childSetLabelArg("current_grid_about", "[CURRENT_GRID]", grid_label);
-        gMenuHolder->childSetVisible("current_grid_about_login",true);
-        gMenuHolder->childSetLabelArg("current_grid_about_login", "[CURRENT_GRID]", grid_label);
-    }
-    else
-#endif // OPENSIM // <FS:AW optional opensim support>
-    {
-        gMenuHolder->childSetVisible("current_grid_about",false);
-        gMenuHolder->childSetVisible("current_grid_about_login",false);
-    }
-    //FIXME: this does nothing
-    gMenuHolder->childSetVisible("grid_help_seperator",needs_seperator);
-    gMenuHolder->childSetVisible("grid_help_seperator_login",needs_seperator);
-
-// <FS:AW  opensim destinations and avatar picker>
-#ifdef OPENSIM // <FS:AW optional opensim support>
-    if (is_opensim)
-    {
-        if (!LLLoginInstance::getInstance()->hasResponse("destination_guide_url")
-        ||LLLoginInstance::getInstance()->getResponse("destination_guide_url").asString().empty()
-        )
-        {
-            gMenuHolder->childSetVisible("Avatar Picker", false);
-        }
-
-        if (!LLLoginInstance::getInstance()->hasResponse("avatar_picker_url")
-        ||LLLoginInstance::getInstance()->getResponse("avatar_picker_url").asString().empty()
-        )
-        {
-            gMenuHolder->childSetVisible("Destinations", false);
-        }
-    }
-#endif // OPENSIM // <FS:AW optional opensim support>
-// </FS:AW  opensim destinations and avatar picker>
-
-    return true;
-}
 // </AW: OpenSim>
 
-class LLToggleHelp : public view_listener_t
-{
-    bool handleEvent(const LLSD& userdata)
-    {
-        LLFloater* help_browser = (LLFloaterReg::findInstance("help_browser"));
-        if (help_browser && help_browser->isInVisibleChain())
-        {
-            help_browser->closeFloater();
-        }
-        else
-        {
-            std::string help_topic = userdata.asString();
-            LLViewerHelp* vhelp = LLViewerHelp::getInstance();
-            vhelp->showTopic(help_topic);
-        }
-        return true;
-    }
-};
+
 
 class LLToggleSpeak : public view_listener_t
 {
@@ -10844,14 +10723,7 @@ class LLToolsEnableSaveToObjectInventory : public view_listener_t
     }
 };
 
-class LLToggleHowTo : public view_listener_t
-{
-    bool handleEvent(const LLSD& userdata)
-    {
-        LLFloaterReg::toggleInstanceOrBringToFront("guidebook");
-        return true;
-    }
-};
+
 
 class LLViewEnableMouselook : public view_listener_t
 {
@@ -13065,7 +12937,6 @@ void initialize_menus()
 
     // Help menu
     // most items use the ShowFloater method
-    view_listener_t::addMenu(new LLToggleHowTo(), "Help.ToggleHowTo");
 
     // Advanced menu
     view_listener_t::addMenu(new LLAdvancedToggleConsole(), "Advanced.ToggleConsole");
@@ -13476,8 +13347,6 @@ void initialize_menus()
     // Generic actions
     commit.add("ReportAbuse", boost::bind(&handle_report_abuse));
     commit.add("BuyCurrency", boost::bind(&handle_buy_currency));
-    view_listener_t::addMenu(new LLShowHelp(), "ShowHelp");
-    view_listener_t::addMenu(new LLToggleHelp(), "ToggleHelp");
     view_listener_t::addMenu(new LLToggleSpeak(), "ToggleSpeak");
     view_listener_t::addMenu(new LLPromptShowURL(), "PromptShowURL");
     view_listener_t::addMenu(new LLShowAgentProfile(), "ShowAgentProfile");

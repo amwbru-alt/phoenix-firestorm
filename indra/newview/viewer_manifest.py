@@ -1109,7 +1109,7 @@ class Windows_x86_64_Manifest(ViewerManifest):
             !define INSTNAME   "%(app_name_oneword)s"
             !define SHORTCUT   "%(app_name)s"
             !define DL_URL   "%(dl_url)s"
-            !define URLNAME   "secondlife"
+            !define URLNAME   "fmw"
             !define IS64BIT   "%(is64bit)d"
             !define ISAVX2   "%(isavx2)d"
             !define ISOPENSIM   "%(is_opensim)d"
@@ -2125,8 +2125,8 @@ class LinuxManifest(ViewerManifest):
             self.path("client-readme-joystick.txt","README-linux-joystick.txt")
             self.path("wrapper.sh","firestorm")
             with self.prefix(dst="etc"):
-                self.path("handle_secondlifeprotocol.sh")
-                self.path("register_secondlifeprotocol.sh")
+                self.path("handle_fmwprotocol.sh")
+                self.path("register_fmwprotocol.sh")
                 self.path("refresh_desktop_app_entry.sh")
                 self.path("launch_url.sh")
             self.path("install.sh")

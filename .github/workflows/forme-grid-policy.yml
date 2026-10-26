@@ -36,3 +36,8 @@ jobs:
           python3 tests/forme/creator_ui.py --check
       - name: Check native ForMe marketplace integration
         run: python3 tests/forme/check_marketplace_listings.py
+      - name: Verify fmw links and removed client features
+        run: |
+          g++ -std=c++20 -Wall -Wextra -Werror -pedantic -Iindra/llcommon tests/forme/url_policy_test.cpp -o "$RUNNER_TEMP/fmw-url-test"
+          "$RUNNER_TEMP/fmw-url-test"
+          python3 tests/forme/check_removed_features.py

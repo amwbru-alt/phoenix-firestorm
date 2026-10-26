@@ -93,7 +93,7 @@ static const std::string LANDMARK_TAB_INFO_TYPE     = "open_landmark_tab";
 // <FS:Ansariel> Toggle teleport history panel directly
 static const std::string TELEPORT_HISTORY_TAB_INFO_TYPE = "open_teleport_history_tab";
 
-// Support for secondlife:///app/parcel/{UUID}/about SLapps
+// Support for fmw:///app/parcel/{UUID}/about SLapps
 class LLParcelHandler : public LLCommandHandler
 {
 public:

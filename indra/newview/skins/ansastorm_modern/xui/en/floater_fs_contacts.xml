@@ -23,7 +23,7 @@
      value="No groups containing &quot;[SEARCH_TERM]&quot; found." />
 	<string
      name="no_groups_msg"
-     value="Looking for Groups to join? Try [secondlife:///app/search/groups Search]." />
+     value="Looking for Groups to join? Try [fmw:///app/search/groups Search]." />
     <string
      name="favorite_label"
      value="Pin" />

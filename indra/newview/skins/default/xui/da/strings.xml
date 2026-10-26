@@ -1154,10 +1154,10 @@ Prøv venligst om lidt igen.
 		Tryk ESC for at skift til normalt udsyn
 	</string>
 	<string name="InventoryNoMatchingItems">
-		Fandt du ikke hvad du søgte? Prøv [secondlife:///app/search/all/[SEARCH_TERM] Search].
+		Fandt du ikke hvad du søgte? Prøv [fmw:///app/search/all/[SEARCH_TERM] Search].
 	</string>
 	<string name="PlacesNoMatchingItems">
-		Fandt du ikke hvad du søgte? Prøv [secondlife:///app/search/places/[SEARCH_TERM] Search].
+		Fandt du ikke hvad du søgte? Prøv [fmw:///app/search/places/[SEARCH_TERM] Search].
 	</string>
 	<string name="FavoritesNoMatchingItems">
 		Træk et landemærke hertil for at tilføje den som favorit.

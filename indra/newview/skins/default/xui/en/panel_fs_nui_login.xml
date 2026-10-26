@@ -276,17 +276,7 @@
       width="342"
       height="66"
       visible="true">
-    <text
-      follows="left|bottom"
-      font="SansSerifLarge"
-      height="32"
-      name="grid_login_text"
-      valign="center"
-      top_pad="5"
-      left="5"
-      width="35">
-        Grid:
-    </text>
+    
     <combo_box
       allow_text_entry="true"
       font="SansSerifLarge"

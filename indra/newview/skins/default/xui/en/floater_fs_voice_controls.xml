@@ -10,7 +10,7 @@
  min_height="124"
  min_width="190"
  name="floater_voice_controls"
- help_topic="floater_voice_controls"
+
  title="Voice Controls"
  save_visibility="true"
  save_rect="true"

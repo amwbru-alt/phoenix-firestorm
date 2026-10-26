@@ -1,7 +1,7 @@
 /**
  * @file llloginhandler.h
  * @brief Handles filling in the login panel information from a SLURL
- * such as secondlife:///app/login?first=Bob&last=Dobbs
+ * such as fmw:///app/login?first=Bob&last=Dobbs
  *
  * $LicenseInfo:firstyear=2008&license=viewerlgpl$
  * Second Life Viewer Source Code
@@ -38,7 +38,7 @@ class LLLoginHandler : public LLCommandHandler
     /*virtual*/ bool handle(const LLSD& tokens, const LLSD& query_map, const std::string& grid, LLMediaCtrl* web);
 
     // Fill in our internal fields from a SLURL like
-    // secondlife:///app/login?first=Bob&last=Dobbs
+    // fmw:///app/login?first=Bob&last=Dobbs
     bool parseDirectLogin(std::string url);
 
     // Web-based login unsupported

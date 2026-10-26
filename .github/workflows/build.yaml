@@ -525,7 +525,10 @@ jobs:
   # The existing Build workflow is registered in the fork. Manual dispatches
   # select this branch's source and run only this public macOS build job.
   forme-macos:
-    if: github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request' && github.head_ref == 'forme-single-grid-20261025')
+    concurrency:
+      group: forme-macos-${{ github.event.pull_request.number || github.ref }}
+      cancel-in-progress: true
     runs-on: macos-15-intel
     timeout-minutes: 330
     permissions:

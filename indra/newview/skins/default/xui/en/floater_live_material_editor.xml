@@ -9,7 +9,7 @@
  min_width="267"
  layout="topleft"
  name="material editor"
- help_topic="material_editor"
+
  single_instance="true"
  title="Editing Material" forme_creator_only="true">
   <scroll_container

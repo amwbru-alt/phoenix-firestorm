@@ -24,8 +24,8 @@
 		Сесть
 	</string>
 	<text name="object_creator">
-		от secondlife:///app/agent/0e346d8b-4433-4d66-a6b0-fd37083abc4c/about
-владелец secondlife:///app/agent/0e346d8b-4433-4d66-a6b0-fd37083abc4c/about
+		от fmw:///app/agent/0e346d8b-4433-4d66-a6b0-fd37083abc4c/about
+владелец fmw:///app/agent/0e346d8b-4433-4d66-a6b0-fd37083abc4c/about
 	</text>
 	<text name="price_text">
 		L$30,000

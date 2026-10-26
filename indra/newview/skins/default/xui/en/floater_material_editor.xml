@@ -9,7 +9,7 @@
  min_width="267"
  layout="topleft"
  name="material editor"
- help_topic="material_editor"
+
  title="[MATERIAL_NAME]" forme_creator_only="true">
   <string name="no_upload_fee_string">no upload fee</string>
   <string name="upload_fee_string">L$[FEE] upload fee</string>

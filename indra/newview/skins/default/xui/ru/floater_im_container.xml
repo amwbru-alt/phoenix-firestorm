@@ -20,7 +20,7 @@
 				<panel name="stub_panel">
 					<button name="stub_collapse_btn" tool_tip="Свернуть эту панель"/>
 					<text name="stub_textbox">
-						Разговор отображается в отдельном окне.   [secondlife:/// Вернуть.]
+						Разговор отображается в отдельном окне.   [fmw:/// Вернуть.]
 					</text>
 				</panel>
 			</panel_container>

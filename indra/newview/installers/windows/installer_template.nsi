@@ -624,15 +624,6 @@ CreateShortCut	"$SMPROGRAMS\$INSTSHORTCUT\$INSTSHORTCUT.lnk" \
 				#"$INSTDIR\$VIEWER_EXE" "$SHORTCUT_LANG_PARAM" "$INSTDIR\$VIEWER_EXE"
 
 
-WriteINIStr		"$SMPROGRAMS\$INSTSHORTCUT\SL Create Account.url" \
-				"InternetShortcut" "URL" \
-				"https://www.firestormviewer.org/join-secondlife/"
-WriteINIStr		"$SMPROGRAMS\$INSTSHORTCUT\SL Your Account.url" \
-				"InternetShortcut" "URL" \
-				"https://www.secondlife.com/account/"
-WriteINIStr		"$SMPROGRAMS\$INSTSHORTCUT\LSL Scripting Language Help.url" \
-				"InternetShortcut" "URL" \
-                "http://wiki.secondlife.com/wiki/LSL_Portal"
 CreateShortCut	"$SMPROGRAMS\$INSTSHORTCUT\Uninstall $INSTSHORTCUT.lnk" \
 				'"$INSTDIR\uninst.exe"' ''
 
@@ -704,7 +695,7 @@ WriteRegDWORD SHELL_CONTEXT "${MSUNINSTALL_KEY}" "NoRepair" 1
 MessageBox MB_YESNO|MB_ICONQUESTION $(CreateUrlRegistryEntries) IDNO skip_create_url_registry_entries
 
 # Write URL registry info
-WriteRegStr HKEY_CLASSES_ROOT "${URLNAME}" "(default)" "URL:Second Life"
+WriteRegStr HKEY_CLASSES_ROOT "${URLNAME}" "(default)" "URL:ForMe.World"
 WriteRegStr HKEY_CLASSES_ROOT "${URLNAME}" "URL Protocol" ""
 WriteRegStr HKEY_CLASSES_ROOT "${URLNAME}\DefaultIcon" "" '"$INSTDIR\$VIEWER_EXE"'
 
@@ -714,29 +705,14 @@ WriteRegExpandStr HKEY_CLASSES_ROOT "${URLNAME}\shell\open\command" "" '"$INSTDI
 # <FS:Ansariel> FIRE-30446: Set FriendlyAppName for protocols
 WriteRegStr HKEY_CLASSES_ROOT "${URLNAME}\shell\open" "FriendlyAppName" "$FRIENDLY_APP_NAME"
 
-WriteRegStr HKEY_CLASSES_ROOT "x-grid-location-info" "(default)" "URL:Hypergrid"
-WriteRegStr HKEY_CLASSES_ROOT "x-grid-location-info" "URL Protocol" ""
-WriteRegStr HKEY_CLASSES_ROOT "x-grid-location-info\DefaultIcon" "" '"$INSTDIR\$VIEWER_EXE"'
 
 # URL param must be last item passed to viewer, it ignores subsequent params to avoid parameter injection attacks.
-WriteRegExpandStr HKEY_CLASSES_ROOT "x-grid-location-info\shell\open\command" "" '"$INSTDIR\$VIEWER_EXE" -url "%1"'
 # <FS:Ansariel> FIRE-30446: Set FriendlyAppName for protocols
-WriteRegStr HKEY_CLASSES_ROOT "x-grid-location-info\shell\open" "FriendlyAppName" "$FRIENDLY_APP_NAME"
 
 # <FS:Ansariel> FIRE-30446: Register x-grid-info hypergrid protocol
-WriteRegStr HKEY_CLASSES_ROOT "x-grid-info" "(default)" "URL:Hypergrid"
-WriteRegStr HKEY_CLASSES_ROOT "x-grid-info" "URL Protocol" ""
-WriteRegStr HKEY_CLASSES_ROOT "x-grid-info\DefaultIcon" "" '"$INSTDIR\$VIEWER_EXE"'
-WriteRegExpandStr HKEY_CLASSES_ROOT "x-grid-info\shell\open\command" "" '"$INSTDIR\$VIEWER_EXE" -url "%1"'
-WriteRegStr HKEY_CLASSES_ROOT "x-grid-info\shell\open" "FriendlyAppName" "$FRIENDLY_APP_NAME"
 
 # <FS:CR> Register hop:// protocol registry info
 ${If} ${ISOPENSIM} == "1"
-  WriteRegStr HKEY_CLASSES_ROOT "hop" "(default)" "URL:Hypergrid"
-  WriteRegStr HKEY_CLASSES_ROOT "hop" "URL Protocol" ""
-  WriteRegStr HKEY_CLASSES_ROOT "hop\DefaultIcon" "" '"$INSTDIR\$VIEWER_EXE"'
-  WriteRegExpandStr HKEY_CLASSES_ROOT "hop\shell\open\command" "" '"$INSTDIR\$VIEWER_EXE" -url "%1"'
-  WriteRegStr HKEY_CLASSES_ROOT "hop\shell\open" "FriendlyAppName" "$FRIENDLY_APP_NAME"
 ${EndIf}
 # </FS:CR>
 
@@ -1125,16 +1101,10 @@ ifSilent NoDelete 0
 	MessageBox MB_YESNO $(DeleteRegistryKeysMB) IDYES DeleteKeys IDNO NoDelete
 
 DeleteKeys:
-  DeleteRegKey SHELL_CONTEXT "SOFTWARE\Classes\x-grid-info" # <FS:Ansariel> FIRE-30446: Register x-grid-info hypergrid protocol
-  DeleteRegKey SHELL_CONTEXT "SOFTWARE\Classes\x-grid-location-info"
-  DeleteRegKey SHELL_CONTEXT "SOFTWARE\Classes\secondlife"
-  DeleteRegKey HKEY_CLASSES_ROOT "x-grid-info" # <FS:Ansariel> FIRE-30446: Register x-grid-info hypergrid protocol
-  DeleteRegKey HKEY_CLASSES_ROOT "x-grid-location-info"
-  DeleteRegKey HKEY_CLASSES_ROOT "secondlife"
+  DeleteRegKey SHELL_CONTEXT "SOFTWARE\Classes\fmw"
+  DeleteRegKey HKEY_CLASSES_ROOT "fmw"
   # <FS:Ansariel> Unregister hop:// protocol registry info
   ${If} ${ISOPENSIM} == "1"
-    DeleteRegKey SHELL_CONTEXT "SOFTWARE\Classes\hop"
-    DeleteRegKey HKEY_CLASSES_ROOT "hop"
   ${EndIf}
   # </FS:Ansariel>
 
@@ -1263,3 +1233,4 @@ FunctionEnd
 ;FunctionEnd
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; EOF  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+

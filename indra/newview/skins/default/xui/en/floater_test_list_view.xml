@@ -5,7 +5,7 @@
  height="400"
  layout="topleft"
  name="floater_test_list_view"
- help_topic="floater_test_list_view"
+
  translate="false"
  width="400">
  <!-- intentionally empty -->

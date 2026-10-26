@@ -78,10 +78,10 @@ static LLDefaultChildRegistry::Register<FSChatHistory> r("fs_chat_history");
 
 const static std::string NEW_LINE(rawstr_to_utf8("\n"));
 
-const static std::string SLURL_APP_AGENT = "secondlife:///app/agent/";
+const static std::string SLURL_APP_AGENT = "fmw:///app/agent/";
 const static std::string SLURL_ABOUT = "/about";
 
-// support for secondlife:///app/objectim/{UUID}/ SLapps
+// support for fmw:///app/objectim/{UUID}/ SLapps
 class LLObjectIMHandler : public LLCommandHandler
 {
 public:
@@ -182,14 +182,14 @@ public:
 
     void copyURLToClipboard()
     {
-        LLUrlAction::copyURLToClipboard("secondlife:///app/agent/" + mAvatarID.asString() + "/mention");
+        LLUrlAction::copyURLToClipboard("fmw:///app/agent/" + mAvatarID.asString() + "/mention");
     }
 
     void insertMentionAtCursor()
     {
         if (mInsertMentionCallback)
         {
-            mInsertMentionCallback("secondlife:///app/agent/" + mAvatarID.asString() + "/mention");
+            mInsertMentionCallback("fmw:///app/agent/" + mAvatarID.asString() + "/mention");
         }
     }
 
@@ -217,12 +217,12 @@ public:
         }
         else if (level == "map")
         {
-            std::string url = "secondlife://" + mObjectData["slurl"].asString();
+            std::string url = "fmw://" + mObjectData["slurl"].asString();
             LLUrlAction::showLocationOnMap(url);
         }
         else if (level == "teleport")
         {
-            std::string url = "secondlife://" + mObjectData["slurl"].asString();
+            std::string url = "fmw://" + mObjectData["slurl"].asString();
             LLUrlAction::teleportToLocation(url);
         }
         else if (level == "obj_zoom_in")
@@ -1693,7 +1693,7 @@ void FSChatHistory::appendMessage(const LLChat& chat, const LLSD &args, const LL
                 if ( (url.empty()) || (std::string::npos == url.find("objectim")) )
                 {
 // [/RLVa:KB]
-                    // for object IMs, create a secondlife:///app/objectim SLapp
+                    // for object IMs, create a fmw:///app/objectim SLapp
                     /*std::string*/ url = LLViewerChat::getSenderSLURL(chat, args);
 // [RLVa:KB] - Checked: 2010-04-22 (RLVa-1.2.0f) | Added: RLVa-1.2.0f
                 }

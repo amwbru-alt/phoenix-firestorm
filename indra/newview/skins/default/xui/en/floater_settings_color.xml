@@ -6,7 +6,7 @@
     min_height="367"
     layout="topleft"
     name="settings_color"
-    help_topic="settings_color"
+   
     title="Color Settings"
     reuse_instance="true"
     can_resize="true"

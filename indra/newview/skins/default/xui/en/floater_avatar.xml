@@ -11,7 +11,7 @@
  layout="topleft"
  name="Avatar"
  single_instance="true"
- help_topic="avatar"
+
  save_rect="true"
  save_visibility="true"
  title="Choose an Avatar"

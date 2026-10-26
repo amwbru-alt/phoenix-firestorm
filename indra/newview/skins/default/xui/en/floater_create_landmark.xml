@@ -67,7 +67,7 @@
      parse_urls="true"
      skip_link_underline="true"
      wrap="true">
-        [secondlife:/// Create new folder]
+        [fmw:/// Create new folder]
     </text>
     <text
      follows="left|top"

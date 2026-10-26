@@ -2,7 +2,7 @@
 <floater
     name="emojipicker"
     title="Choose Emoji"
-    help_topic="emojipicker"
+   
     single_instance="true"
     can_minimize="false"
     can_tear_off="false"

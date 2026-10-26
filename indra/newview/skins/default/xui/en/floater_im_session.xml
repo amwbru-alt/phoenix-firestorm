@@ -2,7 +2,7 @@
 <floater
  background_visible="true"
  height="355"
- help_topic="floater_im_box"
+
  layout="topleft"
  name="panel_im"
  can_dock="false"

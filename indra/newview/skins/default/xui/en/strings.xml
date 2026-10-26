@@ -363,7 +363,7 @@ If you feel this is an error, please contact support@secondlife.com</string>
 	<string name="SLurlLabelTeleport">Teleport to</string>
 	<string name="SLurlLabelShowOnMap">Show Map for</string>
 
-	<!-- label strings for secondlife:///app/agent SLapps -->
+	<!-- label strings for fmw:///app/agent SLapps -->
 	<string name="SLappAgentMute">Mute</string>
 	<string name="SLappAgentUnmute">Unmute</string>
 	<string name="SLappAgentIM">IM</string>
@@ -801,8 +801,8 @@ https://www.firestormviewer.org/support for help fixing this problem.
 	<string name="LeaveMouselook">Press ESC to return to World View</string>
 
 	<!-- inventory -->
-	<string name="InventoryNoMatchingItems">Didn't find what you're looking for? Try [secondlife:///app/search/all/[SEARCH_TERM] Search].</string>
-	<string name="InventoryNoMatchingRecentItems">Didn't find what you're looking for? Try [secondlife:///app/inventory/filters Show filters].</string>	
+	<string name="InventoryNoMatchingItems">Didn't find what you're looking for? Try [fmw:///app/search/all/[SEARCH_TERM] Search].</string>
+	<string name="InventoryNoMatchingRecentItems">Didn't find what you're looking for? Try [fmw:///app/inventory/filters Show filters].</string>	
 	<string name="InventoryNoMatchingFavorites">You haven't marked any items as favorites.</string>
 	<string name="FSInventoryCustomTabDefaultName">Custom</string>
 	<string name="FSInventoryCustomTabShowHidden">Show hidden tabs</string>

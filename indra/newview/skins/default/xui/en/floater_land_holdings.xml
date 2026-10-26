@@ -5,7 +5,7 @@
  height="430"
  layout="topleft"
  name="land holdings floater"
- help_topic="land_holdings_floater"
+
  title="Owned Land"
  width="600">
     <floater.string

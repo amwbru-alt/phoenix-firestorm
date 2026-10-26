@@ -178,16 +178,7 @@ tool_tip="The account name you chose when you registered, like bobsmith420 or St
         width="145"
         height="80"
         visible="false">
-      <text
-        follows="left|bottom"
-        font="SansSerifSmall"
-        height="16"
-        name="grid_login_text"
-        top="35"
-        left="10"
-        width="128">
-        Log into Grid:
-      </text>
+      
       <combo_box
           allow_text_entry="true"
           font="SansSerifSmall"

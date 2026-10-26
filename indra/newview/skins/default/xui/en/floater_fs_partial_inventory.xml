@@ -5,7 +5,7 @@
  can_resize="true"
  height="463"
  name="fs_partial_inventory"
- help_topic="fs_partial_inventory"
+
  title="Inventory"
  background_visible="true"
  layout="topleft"

@@ -6,7 +6,7 @@
  left="30"
  layout="topleft"
  name="Animation Preview"
- help_topic="animation_preview"
+
  width="280" forme_creator_only="true">
     <floater.string
      name="failed_to_initialize">

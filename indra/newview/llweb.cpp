@@ -26,6 +26,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "formeurlpolicy.h"
 
 #include "llweb.h"
 
@@ -58,6 +59,7 @@ bool on_load_url_external_response(const LLSD& notification, const LLSD& respons
 // static
 void LLWeb::loadURL(const std::string& url, const std::string& target, const std::string& uuid)
 {
+    if (ForMeURL::blockedWeb(url)) return;
     if(target == "_internal")
     {
         // Force load in the internal browser, as if with a blank target.
@@ -78,6 +80,7 @@ void LLWeb::loadURL(const std::string& url, const std::string& target, const std
 // Explicitly open a Web URL using the Web content floater or Marketplace floater
 void LLWeb::loadURLInternal(const std::string &url, const std::string& target, const std::string& uuid, bool dev_mode)
 {
+    if (ForMeURL::blockedWeb(url)) return;
     LLFloaterWebContent::Params p;
     p.url(url).target(target).id(uuid).dev_mode(dev_mode);
 
@@ -94,12 +97,14 @@ void LLWeb::loadURLInternal(const std::string &url, const std::string& target, c
 // static
 void LLWeb::loadURLExternal(const std::string& url, const std::string& uuid)
 {
+    if (ForMeURL::blockedWeb(url)) return;
     loadURLExternal(url, true, uuid);
 }
 
 // static
 void LLWeb::loadURLExternal(const std::string& url, bool async, const std::string& uuid)
 {
+    if (ForMeURL::blockedWeb(url)) return;
     // Act like the proxy window was closed, since we won't be able to track targeted windows in the external browser.
     LLViewerMedia::getInstance()->proxyWindowClosed(uuid);
 
@@ -207,7 +212,7 @@ std::string LLWeb::expandURLSubstitutions(const std::string &url,
     substitution["PARCEL_ID"] = llformat("%d", parcel_id);
 
 #ifdef OPENSIM // <FS:AW optional opensim support>
-    substitution["SLURL_TYPE"] = "hop"; // <FS:AW  provide SLURL_TYPE url substitution>
+    substitution["SLURL_TYPE"] = "fmw"; // <FS:AW  provide SLURL_TYPE url substitution>
 #endif // </FS:AW optional opensim support>
 
     // find the grid

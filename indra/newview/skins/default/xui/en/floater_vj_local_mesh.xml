@@ -14,7 +14,7 @@
   save_visibility="true"
   single_instance="false"
   save_dock_state="false"
-  help_topic="floater_local_mesh"
+ 
   title="Local Mesh">
 
   <tab_container name="local_mesh_tabs"
@@ -29,7 +29,7 @@
     <last_tab tab_top_image_flash="TabTop_Right_Flashing" />
     <panel name="local_mesh_assets_panel"
       follows="top|left|right|bottom"
-      help_topic="local_mesh_assets"
+     
       label="Local Mesh Assets"
       layout="topleft"
       title="Local Mesh Assets">
@@ -65,7 +65,7 @@
     follows="top|left|right|bottom"
     label="Log"
     layout="topleft"
-    help_topic="local_mesh_log">
+   >
       <view_border name="local_mesh_log_tab_border"
         bevel_style="none"
         follows="top|left|right|bottom"
@@ -95,7 +95,7 @@
       follows="top|left|right|bottom"
       layout="topleft"
       label="Settings"
-      help_topic="local_mesh_settings">
+     >
       <view_border name="local_mesh_settings_tab_border"
         bevel_style="none"
         follows="top|left|right|bottom"

@@ -104,12 +104,10 @@ private:
     static void onClickNewAccount(void*);
     static void onClickVersion(void*);
     static void onClickForgotPassword(void*);
-    static void onClickHelp(void*);
     static void onPassKey(LLLineEditor* caller, void* user_data);
     static void updateServerCombo();
     static void onClickRemove(void*);
     static void onRemoveCallback(const LLSD& notification, const LLSD& response);
-    static void onClickGridMgrHelp(void*);
     static void onClickGridBuilder(void*);
     static void onShowHidePasswordClick(void*);
     static std::string credentialName();

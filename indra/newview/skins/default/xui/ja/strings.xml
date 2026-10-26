@@ -614,7 +614,7 @@ https://secondlife.com/viewer-access-faq
 		クリックしてこの場所をマップに表示します。
 	</string>
 	<string name="TooltipSLAPP">
-		クリックしてsecondlife://コマンドを出します。
+		クリックしてfmw://コマンドを出します。
 	</string>
 	<string name="TooltipFSHelpDebugSLUrl">クリックするとこの設定のデバッグ設定ウィンドウが開きます。</string>
 	<string name="TooltipFSUrlEntryWear">クリックするとインベントリフォルダの内容が表示されます。</string>
@@ -629,7 +629,7 @@ https://secondlife.com/viewer-access-faq
 	<string name="SLurlLabelShowOnMap">
 		マップ上に表示
 	</string>
-	<!-- label strings for secondlife:///app/agent SLapps -->
+	<!-- label strings for fmw:///app/agent SLapps -->
 	<string name="SLappAgentMute">
 		無視
 	</string>
@@ -1645,7 +1645,7 @@ https://secondlife.com/viewer-access-faq
 	</string>
 	<!-- inventory -->
 	<string name="InventoryNoMatchingItems">
-		お探しのものは見つかりましたか？[secondlife:///app/search/all/[SEARCH_TERM] 検索]をお試しください。
+		お探しのものは見つかりましたか？[fmw:///app/search/all/[SEARCH_TERM] 検索]をお試しください。
 	</string>
 	<string name="InventoryNoMatchingFavorites">
 		お気に入りとしてマークしたアイテムはありません。
@@ -1657,7 +1657,7 @@ https://secondlife.com/viewer-access-faq
 		隠されたタブを表示
 	</string>
 	<string name="InventoryNoMatchingRecentItems">
-		お探しのものは見つかりましたか？[secondlife:///app/inventory/filters フィルタを表示]をお試しください。
+		お探しのものは見つかりましたか？[fmw:///app/inventory/filters フィルタを表示]をお試しください。
 	</string>
 	<string name="InventoryNoMatchingFavorites">
 		お気に入りに登録されたアイテムがありません。
@@ -1666,7 +1666,7 @@ https://secondlife.com/viewer-access-faq
 		カスタム
 	</string>
 	<string name="PlacesNoMatchingItems">
-		お探しのものは見つかりましたか？[secondlife:///app/search/places/[SEARCH_TERM] 検索]をお試しください。
+		お探しのものは見つかりましたか？[fmw:///app/search/places/[SEARCH_TERM] 検索]をお試しください。
 	</string>
 	<string name="FavoritesNoMatchingItems">
 		ここにランドマークをドラッグしてお気に入りに追加します。

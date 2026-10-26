@@ -4,7 +4,7 @@
  bevel_style="in"
  layout="topleft"
  name="sys_well_window"
- help_topic="notification_chiclet"
+
  save_rect="true"
  title="Notifications"
  width="320"

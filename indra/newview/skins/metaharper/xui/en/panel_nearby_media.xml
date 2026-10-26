@@ -7,7 +7,7 @@
 	width="328"
 	height="230"
 	name="nearby_media"
-	help_topic="nearby_media">
+>
   <string name="media_item_count_format">(%ld media items)</string>
   <string name="empty_item_text">&lt;empty&gt;</string>
   <string name="parcel_media_name">Parcel Streaming Media</string>

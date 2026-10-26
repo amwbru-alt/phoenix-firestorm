@@ -5,7 +5,7 @@
  can_close="true"
  can_minimize="true"
  height="540"
- help_topic="phototools_menu_floater"
+
  layout="topleft"
  name="phototools"
  positioning="topright"

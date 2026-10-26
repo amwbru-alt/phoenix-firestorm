@@ -12,7 +12,7 @@
 		<panel label="Sohbet" name="chat"/>
 		<panel label="Hareket ve Görünümler" name="move"/>
 		<panel label="Bildirimler" name="msgs"/>
-		<panel label="Renkler" name="colors"/>
+		
 		<panel label="Gizlilik" name="im"/>
 		<panel label="Ayarlar" name="input"/>
 		<panel label="Gelişmiş" name="advanced1"/>

@@ -6,7 +6,6 @@ height="390"
 label="Sun &amp; Moon"
 layout="topleft"
 left="0"
-help_topic="fs_skies"
 name="panel_fs_settings_sky_hbodies"
 top="0">
 		<panel

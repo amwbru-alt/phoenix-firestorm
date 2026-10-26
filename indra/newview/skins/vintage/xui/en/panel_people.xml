@@ -19,13 +19,13 @@
 		value="No recent people. Looking for people to hang out with? Use the search box to find topics or content you might be interested in, then visit those places to meet people with similar interests." />
     <string
 		name="no_filtered_recent_people"
-		value="Didn't find what you're looking for? Try [secondlife:///app/search/people/[SEARCH_TERM] Search]." />
+		value="Didn't find what you're looking for? Try [fmw:///app/search/people/[SEARCH_TERM] Search]." />
     <string
 		name="no_one_near"
 		value="No one nearby. Looking for people to hang out with? Use the search box to find topics or content you might be interested in, then visit those places to meet people with similar interests." />
     <string
 		name="no_one_filtered_near"
-		value="Didn't find what you're looking for? Try [secondlife:///app/search/people/[SEARCH_TERM] Search]." />
+		value="Didn't find what you're looking for? Try [fmw:///app/search/people/[SEARCH_TERM] Search]." />
     <string
 		name="no_friends_online"
 		value="No friends online" />
@@ -34,12 +34,12 @@
 		value="No friends" />
     <string
 		name="no_friends_msg">
-		Find friends using [secondlife:///app/search/people Search] or right-click on a Resident to add them as a friend.
+		Find friends using [fmw:///app/search/people Search] or right-click on a Resident to add them as a friend.
 Looking for people to hang out with? Use the search box to find topics or content you might be interested in, then visit those places to meet people with similar interests.
 	</string>
     <string
 		name="no_filtered_friends_msg">
-		Didn't find what you're looking for? Try [secondlife:///app/search/people/[SEARCH_TERM] Search].
+		Didn't find what you're looking for? Try [fmw:///app/search/people/[SEARCH_TERM] Search].
 	</string>
 	<string
 		name="people_filter_label"
@@ -53,10 +53,10 @@ Looking for people to hang out with? Use the search box to find topics or conten
 		-->
 	<string
 		name="no_filtered_groups_msg"
-		value="Didn't find what you're looking for? Try [secondlife:///app/search/groups/[SEARCH_TERM] Search]." />
+		value="Didn't find what you're looking for? Try [fmw:///app/search/groups/[SEARCH_TERM] Search]." />
 	<string
 		name="no_groups_msg"
-		value="Looking for Groups to join? Try [secondlife:///app/search/groups Search]." />
+		value="Looking for Groups to join? Try [fmw:///app/search/groups Search]." />
 	<string
 		name="MiniMapToolTipMsg"
 		value="[REGION](Double-click to open Map, shift-drag to pan)"/>
@@ -102,7 +102,7 @@ Looking for people to hang out with? Use the search box to find topics or conten
 			label="Nearby"
 			layout="topleft"
 			left="0"
-			help_topic="people_nearby_tab"
+		
 			name="nearby_panel"
 			top="0"
 			width="313">
@@ -518,7 +518,7 @@ Looking for people to hang out with? Use the search box to find topics or conten
 			label="Recent"
 			layout="topleft"
 			left="0"
-			help_topic="people_recent_tab"
+		
 			name="recent_panel"
 			top="0"
 			width="313">

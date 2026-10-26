@@ -1660,13 +1660,13 @@ etmək haqqında kömək almaq üçün http://secondlife.com/support ünvanına 
 		Normal görünüşə qayıtmaq üçün ESC düyməsini basın
 	</string>
 	<string name="InventoryNoMatchingItems">
-		Sizə lazım olanı tapmadınız? [secondlife:///app/search/all/[SEARCH_TERM] Axtarışdan] istifadə edin.
+		Sizə lazım olanı tapmadınız? [fmw:///app/search/all/[SEARCH_TERM] Axtarışdan] istifadə edin.
 	</string>
 	<string name="InventoryNoMatchingRecentItems">
-		Axtardığınızı tapmadınız? [secondlife:///app/inventory/filters Filtrləri] cəhd edin.
+		Axtardığınızı tapmadınız? [fmw:///app/inventory/filters Filtrləri] cəhd edin.
 	</string>
 	<string name="PlacesNoMatchingItems">
-		Sizə lazım olanı tapmadınız? [secondlife:///app/search/places/[SEARCH_TERM] Axtarışdan] istifadə edin.
+		Sizə lazım olanı tapmadınız? [fmw:///app/search/places/[SEARCH_TERM] Axtarışdan] istifadə edin.
 	</string>
 	<string name="FavoritesNoMatchingItems">
 		Sevimlilər siyahısına əlavə etmək üçün əlfəcini bura dartın.

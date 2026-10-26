@@ -131,12 +131,12 @@ void newRegionEntry(LLViewerRegion& region)
 
 } // anonymous namespace
 
-// support for secondlife:///app/region/{REGION} SLapps
-// N.B. this is defined to work exactly like the classic secondlife://{REGION}
+// support for fmw:///app/region/{REGION} SLapps
+// N.B. this is defined to work exactly like the classic fmw://{REGION}
 // However, the later syntax cannot support spaces in the region name because
 // spaces (and %20 chars) are illegal in the hostname of an http URL. Some
 // browsers let you get away with this, but some do not (such as Qt's Webkit).
-// Hence we introduced the newer secondlife:///app/region alternative.
+// Hence we introduced the newer fmw:///app/region alternative.
 class LLRegionHandler : public LLCommandHandler
 {
 public:
@@ -152,8 +152,8 @@ public:
             return false;
         }
 
-        // build a secondlife://{PLACE} SLurl from this SLapp
-        std::string url = "secondlife://";
+        // build a fmw://{PLACE} SLurl from this SLapp
+        std::string url = "fmw://";
         if (!grid.empty())
         {
             url += grid + "/secondlife/";
@@ -174,7 +174,7 @@ public:
             url += params[i].asString();
         }
 
-        // Process the SLapp as if it was a secondlife://{PLACE} SLurl
+        // Process the SLapp as if it was a fmw://{PLACE} SLurl
         LLURLDispatcher::dispatch(url, LLCommandHandler::NAV_TYPE_CLICKED, web, true);
         return true;
     }
@@ -3483,6 +3483,7 @@ void LLViewerRegionImpl::buildCapabilityNames(LLSD& capabilityNames)
     capabilityNames.append("DeclineGroupInvite"); // ReadOfflineMsgs recieved messages only!!!
     capabilityNames.append("DispatchRegionInfo");
     capabilityNames.append("DirectDelivery");
+    capabilityNames.append("ForMeAvatarBadge");
     capabilityNames.append("EnvironmentSettings");
     capabilityNames.append("EstateAccess");
 // <FS:CR> Aurora Sim

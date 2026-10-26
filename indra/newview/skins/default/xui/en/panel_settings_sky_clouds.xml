@@ -5,7 +5,7 @@
         label="Clouds"
         layout="topleft"
         left="0"
-        help_topic="land_general_tab"
+       
         name="panel_settings_sky_clouds"
         top="0">
     <layout_stack 

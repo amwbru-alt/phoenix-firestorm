@@ -9,7 +9,7 @@
       <key>loginuri</key><array><string>http://185.173.93.200:8002/</string></array>
       <key>loginpage</key><string>http://185.173.93.200:8002/web/index.html</string>
       <key>login_identifier_types</key><array><string>agent</string></array>
-      <key>slurl_base</key><string>hop://185.173.93.200:8002/</string>
+      <key>slurl_base</key><string>fmw://185.173.93.200:8002/</string>
     </map>
   </map>
 </llsd>

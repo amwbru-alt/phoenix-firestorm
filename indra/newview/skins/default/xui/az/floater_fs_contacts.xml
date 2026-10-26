@@ -2,7 +2,7 @@
 <floater name="imcontacts" title="Kontaktlar">
 	<string name="no_friends" value="Dost yoxdur" />
 	<string name="no_filtered_groups_msg" value="&quot;[SEARCH_TERM]&quot; tərkibində olan qrup tapılmadı." />
-	<string name="no_groups_msg" value="Üzvlüyə qoşula biləcəyiniz qruplar axtarırsınız? [secondlife:///app/search/groups Axtarışı] sınayın." />
+	<string name="no_groups_msg" value="Üzvlüyə qoşula biləcəyiniz qruplar axtarırsınız? [fmw:///app/search/groups Axtarışı] sınayın." />
 	<tab_container name="friends_and_groups">
 		<panel label="Dostlar" name="friends_panel" />
 		<panel label="Qruplar" name="groups_panel" />

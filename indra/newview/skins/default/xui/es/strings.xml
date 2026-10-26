@@ -1502,16 +1502,16 @@ pueden adjuntarse a las notas.
 		Pulsa ESC para salir de la vista subjetiva
 	</string>
 	<string name="InventoryNoMatchingItems">
-		¿No encuentras lo que buscas? Prueba con la [secondlife:///app/search/all/[SEARCH_TERM] Búsqueda].
+		¿No encuentras lo que buscas? Prueba con la [fmw:///app/search/all/[SEARCH_TERM] Búsqueda].
 	</string>
 	<string name="InventoryNoMatchingRecentItems">
-		¿No encuentras lo que buscas? Intenta [secondlife:///app/inventory/filters Show filters].
+		¿No encuentras lo que buscas? Intenta [fmw:///app/inventory/filters Show filters].
 	</string>
 	<string name="FSInventoryCustomTabDefaultName">
 		Filtro
 	</string>
 	<string name="PlacesNoMatchingItems">
-		¿No encuentras lo que buscas? Prueba con la [secondlife:///app/search/places/[SEARCH_TERM] Búsqueda].
+		¿No encuentras lo que buscas? Prueba con la [fmw:///app/search/places/[SEARCH_TERM] Búsqueda].
 	</string>
 	<string name="FavoritesNoMatchingItems">
 		Arrastra aquí un hito para añadirlo a tus favoritos.

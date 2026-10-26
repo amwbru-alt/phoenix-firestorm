@@ -137,7 +137,7 @@
 		Heç nə seçilməyib.
 	</text>
 	<text name="remaining_capacity">
-		[CAPACITY_STRING] [secondlife:///app/openfloater/object_weights Ətraflı]
+		[CAPACITY_STRING] [fmw:///app/openfloater/object_weights Ətraflı]
 	</text>
 	<tab_container name="Object Info Tabs">
 		<panel label="Ümumi" name="General">

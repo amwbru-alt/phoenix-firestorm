@@ -9,7 +9,7 @@
     min_width="990"
     layout="topleft"
     name="floater_pathfinding_linksets"
-    help_topic="floater_pathfinding_linksets"
+   
     reuse_instance="true"
     save_rect="false"
     single_instance="true"

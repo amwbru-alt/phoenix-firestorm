@@ -37,7 +37,7 @@
 
 #include "tea.h"    //<COLOSI opensim multi-currency support />
 
-// support for secondlife:///app/buycurrencyhtml/{ACTION}/{NEXT_ACTION}/{RETURN_CODE} SLapps
+// support for fmw:///app/buycurrencyhtml/{ACTION}/{NEXT_ACTION}/{RETURN_CODE} SLapps
 class LLBuyCurrencyHTMLHandler :
     public LLCommandHandler
 {

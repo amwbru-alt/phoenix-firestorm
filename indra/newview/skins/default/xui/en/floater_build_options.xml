@@ -4,7 +4,7 @@
  height="205"
  layout="topleft"
  name="build options floater"
- help_topic="build_options_floater"
+
  save_rect="true"
  title="Grid Options"
  width="264" forme_creator_only="true">

@@ -13,7 +13,7 @@
 		<panel label="チャット" name="chat"/>
 		<panel label="移動と視界" name="move"/>
 		<panel label="通知" name="msgs"/>
-		<panel label="カラー" name="colors"/>
+		
 		<panel label="プライバシー" name="im"/>
 		<!--字数制限のため「ネットワークとファイル」から変更-->
 		<panel label="セットアップ" name="input"/>

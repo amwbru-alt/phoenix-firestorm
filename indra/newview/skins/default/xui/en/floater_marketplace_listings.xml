@@ -2,7 +2,7 @@
 <floater
   title="Marketplace Listings"
   name="floater_marketplace_listings"
-  help_topic="floater_marketplace_listings"
+ 
   positioning="cascading"
   width="333"
   height="445"

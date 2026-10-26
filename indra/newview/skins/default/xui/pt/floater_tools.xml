@@ -148,7 +148,7 @@
 		Faces selecionadas: [FACES_STRING]
 	</text>
 	<text name="more info label">
-		[CAPACITY_STRING] [secondlife:///app/openfloater/object_weights Mais informações]
+		[CAPACITY_STRING] [fmw:///app/openfloater/object_weights Mais informações]
 	</text>
 	<text name="selection_weight">
 		Peso de física [PHYS_WEIGHT], custo de renderização [DISP_WEIGHT].

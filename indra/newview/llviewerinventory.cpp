@@ -279,7 +279,7 @@ public:
                 return true;
         }
 
-        // support secondlife:///app/inventory/show
+        // support fmw:///app/inventory/show
         if (params[0].asString() == "show")
         {
             LLFloaterSidePanelContainer::showPanel("inventory", LLSD());

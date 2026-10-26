@@ -173,7 +173,7 @@
     <key>Type</key>
     <string>String</string>
     <key>Value</key>
-    <string>xAcXYt8SBius3Lor4wHle8L96PDHYlAZuWYXIYQUdW4b09mjhQUAwiqmWp5UNYXLpq5GSUtuKHuDYLwaueACPkew93l6MRY8jfBKSH09kv0zyGglpky07X7X7Sp4Rzin</string>
+    <string></string>
   </map>
   <key>FSGridBuilderURL</key>
   <map>
@@ -6310,7 +6310,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>default</string>
+      <string>ru</string>
     </map>
     <key>InventoryAutoOpenDelay</key>
     <map>
@@ -6903,7 +6903,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>default</string>
+      <string>ru</string>
     </map>
     <key>LanguageIsPublic</key>
         <map>
@@ -15632,7 +15632,7 @@ Change of this parameter will affect the layout of buttons in notification toast
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>en</string>
+      <string>ru</string>
     </map>
     <key>TabToTextFieldsOnly</key>
     <map>

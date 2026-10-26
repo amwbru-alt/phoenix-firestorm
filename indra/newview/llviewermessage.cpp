@@ -7000,11 +7000,11 @@ void process_mean_collision_alert_message(LLMessageSystem *msgsystem, void **use
             LLStringUtil::format_map_t args;
             if (!gRlvHandler.hasBehaviour(RLV_BHVR_SHOWNAMES))
             {
-                args["NAME"] = llformat("secondlife:///app/agent/%s/inspect", perp.asString().c_str());
+                args["NAME"] = llformat("fmw:///app/agent/%s/inspect", perp.asString().c_str());
             }
             else
             {
-                args["NAME"] = llformat("secondlife:///app/agent/%s/rlvanonym", perp.asString().c_str());
+                args["NAME"] = llformat("fmw:///app/agent/%s/rlvanonym", perp.asString().c_str());
             }
 
             switch (type)

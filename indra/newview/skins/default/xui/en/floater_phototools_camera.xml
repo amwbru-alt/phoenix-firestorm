@@ -15,7 +15,7 @@
  title="Cameratools"
  border_thickness="0"
  name="phototools_camera_floater"
- help_topic="phototools_camera_floater">
+>
 	<floater.string name="rotate_tooltip">
 		Rotate Camera Around Focus
 	</floater.string>

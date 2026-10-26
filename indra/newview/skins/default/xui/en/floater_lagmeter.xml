@@ -4,7 +4,7 @@
  height="170"
  layout="topleft"
  name="floater_lagmeter"
- help_topic="floater_lagmeter"
+
  save_rect="true"
  title="Lag Meter"
  width="350">

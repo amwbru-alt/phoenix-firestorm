@@ -44,7 +44,7 @@
 #include "llvelopack.h"
 #endif
 #include "llcheckboxctrl.h"
-#include "llcommandhandler.h"       // for secondlife:///app/login/
+#include "llcommandhandler.h"       // for fmw:///app/login/
 #include "llcombobox.h"
 #include "llviewercontrol.h"
 #include "llfloaterpreference.h"
@@ -58,7 +58,6 @@
 #include "lluiconstants.h"
 #include "llslurl.h"
 #include "llversioninfo.h"
-#include "llviewerhelp.h"
 #include "llviewertexturelist.h"
 #include "llviewermenu.h"           // for handle_preferences()
 #include "llviewernetwork.h"
@@ -252,8 +251,6 @@ FSPanelLogin::FSPanelLogin(const LLRect &rect,
     LLTextBox* create_new_account_text = getChild<LLTextBox>("create_new_account_text");
     create_new_account_text->setClickedCallback(onClickNewAccount, NULL);
 
-    LLTextBox* grid_mgr_help_text = getChild<LLTextBox>("grid_login_text");
-    grid_mgr_help_text->setClickedCallback(onClickGridMgrHelp, NULL);
 
 #ifdef OPENSIM
     LLTextBox* grid_builder_text = getChild<LLTextBox>("grid_builder_text");
@@ -1119,14 +1116,7 @@ void FSPanelLogin::syncShowHidePasswordButton()
 
 
 //static
-void FSPanelLogin::onClickHelp(void*)
-{
-    if (sInstance)
-    {
-        LLViewerHelp* vhelp = LLViewerHelp::getInstance();
-        vhelp->showTopic(vhelp->preLoginTopic());
-    }
-}
+
 
 // static
 void FSPanelLogin::onPassKey(LLLineEditor* caller, void* user_data)
@@ -1414,14 +1404,7 @@ void FSPanelLogin::onRemoveCallback(const LLSD& notification, const LLSD& respon
 }
 
 //static
-void FSPanelLogin::onClickGridMgrHelp(void*)
-{
-    if (sInstance)
-    {
-        LLViewerHelp* vhelp = LLViewerHelp::getInstance();
-        vhelp->showTopic(vhelp->gridMgrHelpTopic());
-    }
-}
+
 
 //static
 void FSPanelLogin::onClickGridBuilder(void*)
@@ -1537,7 +1520,6 @@ void FSPanelLogin::updateServerCombo()
                              current_grid,
                              ADD_TOP);
     server_choice_combo->selectFirstItem();
-    update_grid_help();
 }
 
 // static

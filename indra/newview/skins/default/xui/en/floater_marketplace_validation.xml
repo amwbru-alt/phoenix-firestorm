@@ -2,7 +2,7 @@
 <floater
     title="Audit Marketplace Listings"
     name="floater_marketplace_validation"
-    help_topic="floater_marketplace_validation"
+   
     layout="topleft"
     positioning="cascading"
     legacy_header_height="18"

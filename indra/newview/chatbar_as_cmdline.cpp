@@ -1214,7 +1214,7 @@ bool cmd_line_chat(std::string_view revised_text, EChatType type, bool from_gest
                     }
                     std::string url;
 
-                    url = llformat("secondlife:///app/teleport/%s/%d/%d/%d", region_name.c_str(), agent_x, agent_y, agent_z);
+                    url = llformat("fmw:///app/teleport/%s/%d/%d/%d", region_name.c_str(), agent_x, agent_y, agent_z);
                     LLURLDispatcher::dispatch(url, "clicked", NULL, true);
                 }
                 return false;

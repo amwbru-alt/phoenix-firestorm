@@ -15,7 +15,7 @@
  min_height="77"
  layout="topleft"
  name="fs_camera_floater_small"
- help_topic="camera_floater_small"
+
  save_rect="true"
  save_visibility="true"
  save_dock_state="false"

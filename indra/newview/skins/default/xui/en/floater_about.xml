@@ -5,7 +5,7 @@
  height="600"
  layout="topleft"
  name="floater_about"
- help_topic="floater_about"
+
  save_rect="true"
  title="About [APP_NAME]"
  width="515">
@@ -21,7 +21,7 @@
     <panel
       border="true" 
       label="Info"
-      help_topic="about_support_tab"
+     
       name="support_panel">
       <text
         follows="top|left|right"
@@ -60,7 +60,7 @@ https://www.firestormviewer.org
     <panel
       border="true"
       label="Linden Lab Credits"
-      help_topic="about_credits_tab"
+     
       name="credits_panel">
       <text
         follows="top|left|right"
@@ -94,7 +94,7 @@ Dummy Name replaced at run time
       height="1250"
       border="true"
       label="ForMe.World Credits"
-      help_topic="about_fscredits_tab"
+     
       name="fs_credits_panel">
         <scroll_container
          follows="all"
@@ -225,7 +225,7 @@ Adam Frisby, Alexandrea Fride, DarkAgent Baphomet, David Rowe, Digital Scribe, D
     <panel
       border="true"
       label="Licenses"
-      help_topic="about_licenses_tab"
+     
       name="licenses_panel">
       <text_editor
        enabled="false"

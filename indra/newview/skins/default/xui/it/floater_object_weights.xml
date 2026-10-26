@@ -13,5 +13,5 @@
 	<text name="rezzed_on_land_label" value="Posati sul terreno"/>
 	<text name="remaining_capacity_label" value="Capacità restante"/>
 	<text name="total_capacity_label" value="Capacità totale"/>
-	<text name="help_SLURL" value="[secondlife:///app/help/object_weights Di cosa si tratta?...]"/>
+	<text name="help_SLURL" value="[fmw:///app/help/object_weights Di cosa si tratta?...]"/>
 </floater>

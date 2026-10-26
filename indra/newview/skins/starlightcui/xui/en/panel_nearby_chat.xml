@@ -2,7 +2,7 @@
 <panel
  follows="all"
  height="300"
- help_topic="nearby_chat"
+
  layout="topleft"
  name="nearby_chat"
  width="380">

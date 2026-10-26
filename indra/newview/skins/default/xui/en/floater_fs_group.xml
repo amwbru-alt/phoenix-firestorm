@@ -3,7 +3,7 @@
  positioning="centered"
  name="group_info"
  height="565"
- help_topic="group_info"
+
  layout="topleft"
  min_height="565"
  width="470"

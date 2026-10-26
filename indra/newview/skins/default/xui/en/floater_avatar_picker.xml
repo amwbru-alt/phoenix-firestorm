@@ -8,7 +8,7 @@
  min_height="200"
  min_width="400"
  name="avatarpicker"
- help_topic="avatarpicker"
+
  save_rect="true"
  title="Choose Resident"
  width="500">
@@ -52,7 +52,7 @@
          label="Search"
          layout="topleft"
          left="6"
-         help_topic="avatarpicker"
+        
          name="SearchPanel"
          top="150"
          width="132">
@@ -111,7 +111,7 @@
          label="Friends"
          layout="topleft"
          left="6"
-         help_topic="avatarpicker"
+        
          name="FriendsPanel"
          top="150"
          width="132">
@@ -165,7 +165,7 @@
          label="Near Me"
          layout="topleft"
          left="6"
-         help_topic="avatarpicker"
+        
          name="NearMePanel"
          top="150"
          width="132">
@@ -241,7 +241,7 @@
          label="Search by UUID"
          layout="topleft"
          left="6"
-         help_topic="avatarpicker"
+        
          name="SearchPanelUUID"
          top="150"
          width="132">
@@ -301,7 +301,7 @@
          label="Contact Sets"
          layout="topleft"
          left="6"
-         help_topic="avatarpicker"
+        
          name="ContactSetsPanel"
          top="150"
          width="132">

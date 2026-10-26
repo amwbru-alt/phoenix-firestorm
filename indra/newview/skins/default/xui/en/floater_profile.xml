@@ -6,7 +6,7 @@
  layout="topleft"
  can_close="true"
  can_resize="true"
- help_topic="panel_my_profile_tab"
+
  min_height="510"
  min_width="480"
  positioning="centered"
@@ -39,7 +39,7 @@
              layout="topleft"
              class="panel_profile_secondlife"
              filename="panel_profile_secondlife.xml"
-             help_topic="profile_secondlife_tab"
+            
             />
             <panel
              name="panel_profile_web"
@@ -47,7 +47,7 @@
              layout="topleft"
              class="panel_profile_web"
              filename="panel_profile_web.xml"
-             help_topic="profile_web_tab"
+            
             />
             <panel
              name="panel_profile_picks"
@@ -55,7 +55,7 @@
              layout="topleft"
              class="panel_profile_picks"
              filename="panel_profile_picks.xml"
-             help_topic="profile_picks_tab"
+            
             />
             <panel
              name="panel_profile_classifieds"
@@ -63,7 +63,7 @@
              layout="topleft"
              class="panel_profile_classifieds"
              filename="panel_profile_classifieds.xml"
-             help_topic="profile_classified_tab"
+            
             />
             <panel
              name="panel_profile_firstlife"
@@ -71,7 +71,7 @@
              layout="topleft"
              class="panel_profile_firstlife"
              filename="panel_profile_firstlife.xml"
-             help_topic="profile_firstlife_tab"
+            
             />
             <panel
              name="panel_profile_notes"
@@ -79,7 +79,7 @@
              layout="topleft"
              class="panel_profile_notes"
              filename="panel_profile_notes.xml"
-             help_topic="profile_notes_tab"
+            
             />
         </tab_container>
     </panel>

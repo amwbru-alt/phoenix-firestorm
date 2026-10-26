@@ -9,7 +9,7 @@
 	<tab_container name="pref core">
 		<panel label="General" name="general"/>
 		<panel label="Chat" name="chat"/>
-		<panel label="Colores" name="colors"/>
+		
 		<panel label="Gráficos" name="display"/>
 		<panel label="Sonido y medios" name="audio"/>
 		<panel label="Red y caché" name="input"/>

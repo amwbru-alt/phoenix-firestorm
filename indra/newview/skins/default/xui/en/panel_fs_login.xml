@@ -191,16 +191,7 @@
         visible="false">
       + Click to add more grids
       </text>
-      <text
-        follows="left|bottom"
-        font="SansSerifSmall"
-        height="16"
-        name="grid_login_text"
-        top="35"
-        left="10"
-        width="128">
-        Log into Grid:
-      </text>
+      
       <combo_box
         allow_text_entry="true"
         follows="left|bottom"

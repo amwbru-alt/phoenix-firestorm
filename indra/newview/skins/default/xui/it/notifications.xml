@@ -3280,13 +3280,13 @@ Accettare?
 		I termini seguenti hanno impedito l&apos;aggiornamento del nome o della descrizione del profilo dell&apos;esperienza: [extra_info]
 	</notification>
 	<notification name="TeleportedHomeExperienceRemoved">
-		Sei stato teleportato dalla regione [region_name] per aver rimosso l&apos;esperienza secondlife:///app/experience/[public_id]/profile e non puoi più accedere alla regione.
+		Sei stato teleportato dalla regione [region_name] per aver rimosso l&apos;esperienza fmw:///app/experience/[public_id]/profile e non puoi più accedere alla regione.
 		<form name="form">
 			<ignore name="ignore" text="Espulso dalla regione per aver rimosso un&apos;esperienza"/>
 		</form>
 	</notification>
 	<notification name="TrustedExperienceEntry">
-		Ti è stato consentito l&apos;accesso alla regione [region_name] grazie alla partecipazione all&apos;esperienza chiave secondlife:///app/experience/[public_id]/profile. Se rimuovi l&apos;esperienza, sarai passibile di espulsione dalla regione.
+		Ti è stato consentito l&apos;accesso alla regione [region_name] grazie alla partecipazione all&apos;esperienza chiave fmw:///app/experience/[public_id]/profile. Se rimuovi l&apos;esperienza, sarai passibile di espulsione dalla regione.
 		<form name="form">
 			<ignore name="ignore" text="Può accedere a una regione grazie a un&apos;esperienza"/>
 		</form>
@@ -3299,14 +3299,14 @@ Accettare?
 Potrebbero essere disponibili altre esperienze chiave.
 	</notification>
 	<notification name="ExperienceEvent">
-		L&apos;esperienza secondlife:///app/experience/[public_id]/profile ha consentito ad un oggetto la seguente azione: [EventType].
-    Proprietario: secondlife:///app/agent/[OwnerID]/inspect
+		L&apos;esperienza fmw:///app/experience/[public_id]/profile ha consentito ad un oggetto la seguente azione: [EventType].
+    Proprietario: fmw:///app/agent/[OwnerID]/inspect
     Nome oggetto: [ObjectName]
     Nome lotto: [ParcelName]
 	</notification>
 	<notification name="ExperienceEventAttachment">
-		L&apos;esperienza secondlife:///app/experience/[public_id]/profile ha consentito a un elemento attaccato la seguente azione: [EventType].
-    Proprietario: secondlife:///app/agent/[OwnerID]/inspect
+		L&apos;esperienza fmw:///app/experience/[public_id]/profile ha consentito a un elemento attaccato la seguente azione: [EventType].
+    Proprietario: fmw:///app/agent/[OwnerID]/inspect
 	</notification>
 	<notification name="ScriptQuestionExperience">
 		&apos;&lt;nolink&gt;[OBJECTNAME]&lt;/nolink&gt;&apos;, un oggetto posseduto da &apos;[NAME]&apos;, richiede la tua partecipazione all&apos;esperienza [GRID_WIDE]:

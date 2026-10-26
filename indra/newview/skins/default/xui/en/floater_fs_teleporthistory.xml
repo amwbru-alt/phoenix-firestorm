@@ -6,7 +6,7 @@
  height="475"
  layout="topleft"
  name="floater_tphistory"
- help_topic="floater_tphistory"
+
  save_rect="true"
  reuse_instance="true"
  title="Teleport History"

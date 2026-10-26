@@ -888,7 +888,7 @@
 			bevel_style="in"
 			follows="all"
 			label="All Items"
-			help_topic="my_inventory_tab"
+		
 			layout="topleft"
 			name="All Items"
 			sort_order_setting="InventorySortOrder"
@@ -901,7 +901,7 @@
 			follows="all"
 			label="Recent Items"
 			sort_order_setting="RecentItemsSortOrder"
-			help_topic="recent_inventory_tab"
+		
 			layout="topleft"
 			name="Recent Items"
 			show_item_link_overlays="true" >
@@ -912,7 +912,7 @@
 			bevel_style="in"
 			follows="all"
 			label="Worn Items"
-			help_topic="worn_inventory_tab"
+		
 			layout="topleft"
 			name="Worn Items"
 			show_item_link_overlays="true" >
@@ -923,7 +923,7 @@
 			bevel_style="in"
 			follows="all"
 			label="Favorites"
-			help_topic="favorites_inventory_tab"
+		
 			layout="topleft"
 			name="Favorites"
 			show_item_link_overlays="true">
