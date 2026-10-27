@@ -99,26 +99,38 @@ namespace {
             LLSD subs;
             // We do show long descriptions in the alert (unlikely to be readable). The description string will be in the log though.
             std::string description;
-            if (result.has(LLCoreHttpUtil::HttpCoroutineAdapter::HTTP_RESULTS_CONTENT))
+            const LLSD content = result.has(LLCoreHttpUtil::HttpCoroutineAdapter::HTTP_RESULTS_CONTENT)
+                ? result[LLCoreHttpUtil::HttpCoroutineAdapter::HTTP_RESULTS_CONTENT] : result;
+            if (content.isMap())
             {
-                LLSD content = result[LLCoreHttpUtil::HttpCoroutineAdapter::HTTP_RESULTS_CONTENT];
-                if (content.isArray())
+                // Our marketplace returns JSON objects, not VMM's string arrays.
+                // LLSD::asString() on a map discards the actual server error.
+                const LLSD error = content["error"];
+                if (error.isString())
+                    description = error.asString();
+                else if (error.isMap() && error["message"].isString())
+                    description = error["message"].asString();
+                if (description.empty() && content["message"].isString())
+                    description = content["message"].asString();
+            }
+            else if (content.isArray())
+            {
+                for (LLSD::array_const_iterator it = content.beginArray(); it != content.endArray(); ++it)
                 {
-                    for (LLSD::array_iterator it = content.beginArray(); it != content.endArray(); ++it)
-                    {
-                        if (!description.empty())
-                            description += "\n";
-                        description += (*it).asString();
-                    }
-                }
-                else
-                {
-                    description = content.asString();
+                    if (!description.empty())
+                        description += "\n";
+                    description += (*it).asString();
                 }
             }
             else
             {
-                description = result.asString();
+                description = content.asString();
+            }
+            if (status >= 100 && status <= 599)
+            {
+                if (!description.empty())
+                    description += "\n";
+                description += "HTTP " + std::to_string(status);
             }
             std::string reason_lc = reason;
             LLStringUtil::toLower(reason_lc);
