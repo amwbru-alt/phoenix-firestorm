@@ -614,7 +614,7 @@ void LLFloaterMarketplaceListings::updateView()
         mInventoryPlaceholder->setVisible(true);
         mInventoryTitle->setValue(LLTrans::getString("ForMeMarketplaceUnavailableTitle"));
         mInventoryText->setValue(LLTrans::getString("ForMeMarketplaceUnavailable"));
-        mInventoryPlaceholder->getParent()->setToolTip("");
+        mInventoryPlaceholder->getParent()->setToolTip(LLStringUtil::null);
         return;
     }
     U32 mkt_status = LLMarketplaceData::instance().getSLMStatus();
