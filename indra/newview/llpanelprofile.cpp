@@ -1449,7 +1449,7 @@ void LLPanelProfileSecondLife::fillCommonData(const LLAvatarData* avatar_data)
 
     fillAgeData(avatar_data);
 
-    setDescriptionText(avatar_data->about_text);
+    if (!mHasUnsavedDescriptionChanges) setDescriptionText(avatar_data->about_text);
 
     if (avatar_data->image_id.notNull())
     {
@@ -1515,6 +1515,21 @@ void LLPanelProfileSecondLife::fillPartnerData(const LLAvatarData* avatar_data)
 
 void LLPanelProfileSecondLife::fillAccountStatus(const LLAvatarData* avatar_data)
 {
+    if (avatar_data->forme_premium.isMap() && !gAgent.getRegionCapability("ForMePremium").empty())
+    {
+        const LLSD& premium = avatar_data->forme_premium;
+        LLStringUtil::format_map_t values;
+        values["[DATE]"] = premium["expires_at"].asString().substr(0,10);
+        values["[BUYER_DISCOUNT]"] = premium["buyer_discount_percent"].asString();
+        values["[SELLER_SHARE]"] = premium["seller_percent"].asString();
+        values["[SERVER_SHARE]"] = premium["server_percent"].asString();
+        const bool own = avatar_data->avatar_id == gAgent.getID();
+        const std::string label = !premium["enabled"].asBoolean() ? "ForMePremiumUnavailable" : premium["active"].asBoolean() ? (own ? "ForMePremiumActive" : "ForMePremiumPublicActive") : "ForMePremiumInactive";
+        getChild<LLUICtrl>("account_info")->setValue(LLTrans::getString(label, values));
+        getChild<LLUICtrl>("account_info")->setToolTip(own && premium["enabled"].asBoolean() ? LLTrans::getString("ForMePremiumBenefits", values) : "");
+        return;
+    }
+
     LLStringUtil::format_map_t args;
     args["[ACCTTYPE]"] = LLAvatarPropertiesProcessor::accountType(avatar_data);
     args["[PAYMENTINFO]"] = LLAvatarPropertiesProcessor::paymentInfo(avatar_data);
@@ -3206,7 +3221,7 @@ void LLPanelProfileFirstLife::processProperties(void * data, EAvatarProcessorTyp
 
 void LLPanelProfileFirstLife::processProperties(const LLAvatarData* avatar_data)
 {
-    setDescriptionText(avatar_data->fl_about_text);
+    if (!mHasUnsavedChanges) setDescriptionText(avatar_data->fl_about_text);
 
     mImageId = avatar_data->fl_image_id;
 

@@ -28,6 +28,7 @@
 #define LL_LLAVATARPROPERTIESPROCESSOR_H
 
 #include "lluuid.h"
+#include "llsd.h"
 #include "llsingleton.h"
 #include "v3dmath.h"    // LLVector3d
 #include <list>
@@ -101,6 +102,7 @@ struct LLAvatarData
     U8          caption_index;
     std::string caption_text;
     std::string customer_type;
+    LLSD forme_premium;
     U32         flags;
     bool        hide_age;
     std::string notes;

@@ -359,6 +359,7 @@ void LLAvatarPropertiesProcessor::requestAvatarPropertiesCoro(std::string cap_ur
     avatar_data.hide_age = inst.isHideAgeSupportedByServer() && result["hide_age"].asBoolean();
     avatar_data.profile_url = getProfileURL(avatar_id.asString());
     avatar_data.customer_type = result["customer_type"].asString();
+    avatar_data.forme_premium = result["premium"];
     avatar_data.notes = result["notes"].asString();
 
     avatar_data.flags = 0;

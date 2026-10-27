@@ -6757,4 +6757,9 @@ ID объекта: [INSPECTING_KEY]
     <string name="ForMeMarketplaceUnavailable">Регион не предоставил сервис торговых листингов ForMe.World. Проверьте, что модуль MarketplaceListings включён и сервер обновлён. После обновления сервера войдите заново.</string>
     <string name="InventoryMarketplaceListingsNoItemsTooltip">Добавьте папку товара, затем выберите её версию.</string>
     <string name="Marketplace Validation Log"></string>
+    <string name="ForMePremiumActive">Premium действует до [DATE]</string>
+    <string name="ForMePremiumInactive">Обычный аккаунт</string>
+    <string name="ForMePremiumPublicActive">Premium</string>
+    <string name="ForMePremiumUnavailable">Статус Premium временно недоступен</string>
+    <string name="ForMePremiumBenefits">При Premium у покупателя и продавца: покупателю скидка [BUYER_DISCOUNT]%, продавцу [SELLER_SHARE]%, серверу [SERVER_SHARE]%.</string>
 </strings>

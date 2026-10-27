@@ -3376,4 +3376,9 @@ Your current position: [AVATAR_POS]
   <string name="FSMacOSNewViewerInstance">New Viewer Instance</string>
     <string name="ForMeMarketplaceUnavailableTitle">Marketplace service unavailable</string>
     <string name="ForMeMarketplaceUnavailable">This region did not provide the ForMe.World listings service. Check that MarketplaceListings is enabled and the server is up to date, then log in again.</string>
+    <string name="ForMePremiumActive">Premium active until [DATE]</string>
+    <string name="ForMePremiumInactive">Standard account</string>
+    <string name="ForMePremiumPublicActive">Premium</string>
+    <string name="ForMePremiumUnavailable">Premium status is temporarily unavailable</string>
+    <string name="ForMePremiumBenefits">When both buyer and seller have Premium: buyer discount [BUYER_DISCOUNT]%, seller share [SELLER_SHARE]%, server share [SERVER_SHARE]%.</string>
 </strings>

@@ -3484,6 +3484,9 @@ void LLViewerRegionImpl::buildCapabilityNames(LLSD& capabilityNames)
     capabilityNames.append("DispatchRegionInfo");
     capabilityNames.append("DirectDelivery");
     capabilityNames.append("ForMeAvatarBadge");
+    capabilityNames.append("ForMeState");
+    capabilityNames.append("ForMePremium");
+    capabilityNames.append("ForMeChanges");
     capabilityNames.append("EnvironmentSettings");
     capabilityNames.append("EstateAccess");
 // <FS:CR> Aurora Sim

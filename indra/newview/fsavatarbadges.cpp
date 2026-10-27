@@ -6,6 +6,12 @@
 #include "llstartup.h"
 #include "llvoavatar.h"
 #include <chrono>
+#include "llhttpnode.h"
+#include "llstatusbar.h"
+#include "llavatarpropertiesprocessor.h"
+#include "llinventorymodel.h"
+#include "llviewerinventory.h"
+#include "llcallingcard.h"
 
 namespace ForMeAvatarBadges
 {
@@ -67,4 +73,43 @@ void updateSelf()
     s_next = now + std::chrono::seconds(10); s_pending = true;
     LLCoros::instance().launch("ForMeSelfBadge", [agent = s_agent, uri = s_cap, generation = s_generation]() { fetch(agent, uri, generation); });
 }
+}
+
+
+namespace {
+class LLForMeState final : public LLHTTPNode
+{
+    void post(ResponsePtr response, const LLSD& context, const LLSD& input) const override
+    {
+        const LLSD& body = input["body"];
+        LLViewerRegion* region = gAgent.getRegion();
+        if (!region || LLStartUp::getStartupState() != STATE_STARTED
+            || !ForMeGrid::allowedServiceURI(region->getCapability("ForMeState"))
+            || body["user_id"].asUUID() != gAgent.getID() || body["session_id"].asUUID() != gAgent.getSessionID()
+            || body["region_id"].asUUID() != region->getRegionID() || !body["versions"].isMap()) return;
+        static LLUUID agent, session, previous_region;
+        static LLSD previous;
+        if (agent != gAgent.getID() || session != gAgent.getSessionID() || previous_region != region->getRegionID())
+        { agent = gAgent.getID(); session = gAgent.getSessionID(); previous_region = region->getRegionID(); previous = LLSD(); }
+        const LLSD versions = body["versions"];
+        const auto changed = [&](const char* key) { return versions[key].isString() && versions[key].asString().size() == 64 && versions[key].asString() != previous[key].asString(); };
+        if (changed("balance")) LLStatusBar::sendMoneyBalanceRequest();
+        if (changed("profile") || changed("premium")) LLAvatarPropertiesProcessor::getInstance()->sendAvatarPropertiesRequest(gAgent.getID());
+        if (changed("friends") && body["friendships_complete"].asBoolean()) LLAvatarTracker::instance().syncForMeRelationships(body["friendships"]);
+        if (changed("inventory"))
+        {
+            if (body["inventory_folders"].isArray() && body["inventory_folders"].size() <= 10000)
+                for (auto it = body["inventory_folders"].beginArray(); it != body["inventory_folders"].endArray(); ++it)
+                {
+                    const LLSD& row = *it;
+                    LLUUID id = row["id"].asUUID(); auto* category = gInventory.getCategory(id);
+                    if (category && category->getOwnerID() == gAgent.getID() && category->getVersion() != row["version"].asInteger())
+                    { category->setVersion(LLViewerInventoryCategory::VERSION_UNKNOWN); gInventory.fetchDescendentsOf(id); }
+                }
+            gInventory.fetchDescendentsOf(gInventory.getRootFolderID());
+        }
+        previous = versions;
+    }
+};
+LLHTTPRegistration<LLForMeState> gForMeStateRegistration("/message/ForMeState");
 }
