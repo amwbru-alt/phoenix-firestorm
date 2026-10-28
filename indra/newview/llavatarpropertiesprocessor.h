@@ -266,6 +266,7 @@ public:
     void addObserver(const LLUUID& avatar_id, LLAvatarPropertiesObserver* observer);
 
     void removeObserver(const LLUUID& avatar_id, LLAvatarPropertiesObserver* observer);
+    bool hasObservers(const LLUUID& avatar_id) const;
 
     // Request various types of avatar data.  Duplicate requests will be
     // suppressed while waiting for a response from the network.

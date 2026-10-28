@@ -12,6 +12,8 @@
 #include "llinventorymodel.h"
 #include "llviewerinventory.h"
 #include "llcallingcard.h"
+#include "llaisapi.h"
+#include "llmarketplacefunctions.h"
 
 namespace ForMeAvatarBadges
 {
@@ -108,6 +110,27 @@ class LLForMeState final : public LLHTTPNode
                 }
             gInventory.fetchDescendentsOf(gInventory.getRootFolderID());
         }
+        if (changed("listings") && previous.isMap()) LLMarketplaceData::instance().getSLMListings();
+        const LLSD& events = body["changes"]["events"];
+        if (events.isArray() && events.size() <= 100)
+            for (auto it = events.beginArray(); it != events.endArray(); ++it)
+            {
+                const LLUUID id = (*it)["entity_id"].asUUID();
+                if (id.isNull()) continue;
+                const std::string topic = (*it)["topic"].asString();
+                if (topic == "profile" || topic == "premium")
+                {
+                    auto* profiles = LLAvatarPropertiesProcessor::getInstance();
+                    if (id == gAgent.getID() || profiles->hasObservers(id)) profiles->sendAvatarPropertiesRequest(id);
+                }
+                else if ((topic == "thumbnail" || topic == "favorite") && AISAPI::isAvailable())
+                {
+                    if (auto* category = gInventory.getCategory(id); category && category->getOwnerID() == gAgent.getID())
+                        AISAPI::FetchCategoryChildren(id);
+                    else if (auto* item = gInventory.getItem(id); item && item->getPermissions().getOwner() == gAgent.getID())
+                        AISAPI::FetchItem(id, AISAPI::INVENTORY);
+                }
+            }
         previous = versions;
     }
 };

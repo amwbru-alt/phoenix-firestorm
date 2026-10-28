@@ -72,6 +72,11 @@ void LLAvatarPropertiesProcessor::addObserver(const LLUUID& avatar_id, LLAvatarP
     }
 }
 
+bool LLAvatarPropertiesProcessor::hasObservers(const LLUUID& avatar_id) const
+{
+    return mObservers.find(avatar_id) != mObservers.end();
+}
+
 void LLAvatarPropertiesProcessor::removeObserver(const LLUUID& avatar_id, LLAvatarPropertiesObserver* observer)
 {
     if (!observer)
