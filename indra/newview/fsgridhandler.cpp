@@ -203,6 +203,8 @@ void LLGridManager::initGrids()
     gSavedSettings.setString("MarketplaceURL", std::string(ForMeGrid::LoginURI) + "web/marketplace.html");
     gSavedSettings.setString("CurrentGrid", ForMeGrid::GridID);
     gSavedSettings.setString("CmdLineGridChoice", "");
+    // Use the original native search panels, including for existing installations.
+    gSavedSettings.setBOOL("FSUseFSLegacySearch", true);
     gSavedSettings.setBOOL("ForceShowGrid", false);
     gSavedSettings.setBOOL("FSOpenSimAlwaysForceShowGrid", false);
     LLTrans::setDefaultArg("CURRENT_GRID", ForMeGrid::Label);
