@@ -6,12 +6,12 @@
 	min_height="359"
 	min_width="506"
 	name="particle_editor_floater"
-	help_topic="particle_editor"
+
 	save_rect="true"
 	save_visibility="false"
 	single_instance="false"
 	title="Particle Editor"
-	width="506">
+	width="506" forme_creator_only="true">
 
 <panel
 	follows="all"

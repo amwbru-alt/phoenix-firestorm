@@ -9,7 +9,7 @@
  layout="topleft"
  name="simple_snapshot"
  single_instance="false"
- help_topic="snapshot"
+
  save_rect="true"
  save_visibility="false"
  title="Item Snapshot"

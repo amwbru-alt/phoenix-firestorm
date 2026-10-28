@@ -11,8 +11,8 @@
 			<pie_slice label="Blacklist" name="DerenderPermanent"/>
 		</pie_menu>
 		<pie_menu label="Speichern als &gt;" name="ExportMenu">
-			<pie_slice label="Backup" name="Backup"/>
-			<pie_slice label="Collada" name="Collada"/>
+			<pie_slice label="Backup" name="Backup" forme_creator_only="true"/>
+			<pie_slice label="Collada" name="Collada" forme_creator_only="true"/>
 		</pie_menu>
 		<pie_menu label="Inventar &gt;" name="Inventory">
 			<pie_slice label="Favorit hinz." name="Add to favorites"/>
@@ -37,5 +37,5 @@
 		<pie_slice label="XML ausg." name="Dump XML"/>
 		<pie_slice label="Schwebehöhe" name="Hover Height"/>
 	</pie_menu>
-	<pie_slice label="Bearbeiten" name="Edit..."/>
+	<pie_slice label="Bearbeiten" name="Edit..." forme_creator_only="true"/>
 </pie_menu>

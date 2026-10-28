@@ -2,7 +2,7 @@
 <floater
  height="162"
  width="500"
- help_topic="fs_export"
+
  layout="topleft"
  legacy_header_height="18"
  name="floater_fs_export"
@@ -10,7 +10,7 @@
  min_height="168"
  save_rect="true"
  can_resize="true"
- title="Backup objects...">
+ title="Backup objects..." forme_creator_only="true">
 	<floater.string name="title_floater">
 		Backup [OBJECT] to Hard Disk...
 	</floater.string>

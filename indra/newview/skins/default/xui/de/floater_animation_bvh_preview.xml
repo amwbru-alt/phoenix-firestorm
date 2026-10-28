@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="Animation Preview">
+<floater name="Animation Preview" forme_creator_only="true">
 	<floater.string name="failed_to_initialize">
 		Bewegung konnte nicht initialisiert werden
 	</floater.string>

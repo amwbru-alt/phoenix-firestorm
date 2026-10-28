@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<floater name="toolbox floater" short_title="HERRAMIENTAS DE CONSTRUCCIÓN">
+<floater name="toolbox floater" short_title="HERRAMIENTAS DE CONSTRUCCIÓN" forme_creator_only="true">
 	<floater.string name="grid_screen_text">
 		Pantalla
 	</floater.string>
@@ -135,7 +135,7 @@
 		Nada seleccionado.
 	</text>
 	<text name="remaining_capacity">
-		[CAPACITY_STRING] [secondlife:///app/openfloater/object_weights Más información]
+		[CAPACITY_STRING] [fmw:///app/openfloater/object_weights Más información]
 	</text>
 	<tab_container name="Object Info Tabs">
 		<panel label="General" name="General">

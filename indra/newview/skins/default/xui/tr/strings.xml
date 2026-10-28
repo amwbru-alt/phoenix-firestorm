@@ -5,19 +5,19 @@
      that are returned from one component and may appear in many places-->
 <strings>
 	<string name="SECOND_LIFE">
-		Second Life
+		ForMe.World
 	</string>
 	<string name="APP_NAME">
-		Second Life
+		ForMe.World
 	</string>
 	<string name="CAPITALIZED_APP_NAME">
-		SECOND LIFE
+		ForMe.World
 	</string>
 	<string name="SECOND_LIFE_GRID">
-		Second Life Ağı
+		ForMe.World Ağı
 	</string>
 	<string name="SUPPORT_SITE">
-		Firestorm Destek Portalı
+		ForMe.World Destek Portalı
 	</string>
 	<string name="StartupDetectingHardware">
 		Donanım saptanıyor...
@@ -37,7 +37,7 @@
 	<string name="AboutHeader">
 		[APP_NAME] [VIEWER_VERSION_0].[VIEWER_VERSION_1].[VIEWER_VERSION_2].[VIEWER_VERSION_3] ([ADDRESS_SIZE]bit / [SIMD]) ([CHANNEL])
 [[VIEWER_RELEASE_NOTES_URL] [ReleaseNotes]]
-Second Life Viewer ile uyumluluk: [VIEWER_VERSION_LL]
+ForMe.World Viewer ile uyumluluk: [VIEWER_VERSION_LL]
 	</string>
 	<string name="BuildConfig">
 		Yapı Konfigürasyonu [BUILD_CONFIG]
@@ -195,16 +195,16 @@ Ses Sunucusu Sürümü: [VOICE_VERSION]
 		https://www.firestormviewer.org/join-secondlife/
 	</string>
 	<string name="AgniGridLabel">
-		Second Life Ana Ağı (Agni)
+		ForMe.World Ana Ağı (Agni)
 	</string>
 	<string name="AditiGridLabel">
-		Second Life Beta Test Ağı (Aditi)
+		ForMe.World Beta Test Ağı (Aditi)
 	</string>
 	<string name="ViewerDownloadURL">
 		http://secondlife.com/download
 	</string>
 	<string name="LoginFailedViewerNotPermitted">
-		Kullandığınız görüntüleyici ile artık Second Life&apos;a erişemezsiniz. Yeni bir görüntüleyiciyi karşıdan yüklemek için lütfen şu sayfayı ziyaret edin:
+		Kullandığınız görüntüleyici ile artık ForMe.World&apos;a erişemezsiniz. Yeni bir görüntüleyiciyi karşıdan yüklemek için lütfen şu sayfayı ziyaret edin:
 http://secondlife.com/download
 
 Daha fazla bilgi edinmek için asağıdaki SSS sayfamızı ziyaret edin:
@@ -239,17 +239,17 @@ ve parolanızı sıfırlamak için güvenlik sorusunu yanıtlayın.
 Bu sorun için özür dileriz.
 	</string>
 	<string name="LoginFailedEmployeesOnly">
-		Second Life bakım amacıyla geçici olarak kapatıldı.
+		ForMe.World bakım amacıyla geçici olarak kapatıldı.
 Şu anda sadece çalışanlar oturum açabilir.
 Güncelleştirmeler için www.secondlife.com/status adresini kontrol edin.
 	</string>
 	<string name="LoginFailedPremiumOnly">
-		Second Life üzerindeki aktif kullanıcıların olası en iyi deneyimi yaşamasını sağlamak için, oturum açılması geçici olarak kısıtlanmıştır.
+		ForMe.World üzerindeki aktif kullanıcıların olası en iyi deneyimi yaşamasını sağlamak için, oturum açılması geçici olarak kısıtlanmıştır.
 
-Second Life için ödeme yapmış olan kişilere öncelik tanımak amacıyla, ücretsiz hesaplara sahip kişiler bu süre içerisinde Second Life&apos;a erişemeyecekler.
+ForMe.World için ödeme yapmış olan kişilere öncelik tanımak amacıyla, ücretsiz hesaplara sahip kişiler bu süre içerisinde ForMe.World&apos;a erişemeyecekler.
 	</string>
 	<string name="LoginFailedComputerProhibited">
-		Second Life&apos;a bu bilgisayardan erişemezsiniz.
+		ForMe.World&apos;a bu bilgisayardan erişemezsiniz.
 Bunun bir hata olduğunu düşünüyorsanız, lütfen şu adrese başvurun:
 support@secondlife.com.
 	</string>
@@ -259,7 +259,7 @@ Pasifik Saati ile [TIME].
 	</string>
 	<string name="LoginFailedAccountDisabled">
 		Talebinizi şu anda tamamlayamıyoruz. 
-Lütfen yardım almak için http://support.secondlife.com adresinden Second Life destek bölümüyle iletişime geçin.
+Lütfen yardım almak için http://support.secondlife.com adresinden ForMe.World destek bölümüyle iletişime geçin.
 	</string>
 	<string name="LoginFailedTransformError">
 		Oturum açılması sırasında veri tutarsızlığı saptandı.
@@ -285,7 +285,7 @@ Lütfen yeniden oturum açmayı denemeden önce bir dakika bekleyin.
 		Bir simülatöre bağlanılamadı.
 	</string>
 	<string name="LoginFailedRestrictedHours">
-		Hesabınız Second Life&apos;a sadece
+		Hesabınız ForMe.World&apos;a sadece
 Pasifik Saati ile [START] ve [END] arasında erişebilir.
 Lütfen bu saatler arasında tekrar uğrayın.
 Bunun bir hata olduğunu düşünüyorsanız, lütfen şu adrese başvurun: support@secondlife.com
@@ -594,7 +594,7 @@ Lütfen bir dakika içerisinde tekrar oturum açmayı deneyin.
 		Bu konumu bir haritada görmek için tıklayın
 	</string>
 	<string name="TooltipSLAPP">
-		secondlife:// komutunu çalıştırmak için tıklayın
+		ForMe.World:// komutunu çalıştırmak için tıklayın
 	</string>
 	<string name="CurrentURL" value="Geçerli URL: [CurrentURL]"/>
 	<string name="TooltipEmail">
@@ -1488,13 +1488,13 @@ http://secondlife.com/support adresini ziyaret edin.
 		Dünya Görünümüne dönmek için ESC&apos;e basın
 	</string>
 	<string name="InventoryNoMatchingItems">
-		Aradığınızı bulamadınız mı? [secondlife:///app/search/all/[SEARCH_TERM] Arama] ile bulmayı deneyin.
+		Aradığınızı bulamadınız mı? [fmw:///app/search/all/[SEARCH_TERM] Arama] ile bulmayı deneyin.
 	</string>
 	<string name="InventoryNoMatchingRecentItems">
-		Aradığınızı bulamadınız mı? [secondlife:///app/inventory/filters Show filters] seçeneğini deneyin.
+		Aradığınızı bulamadınız mı? [fmw:///app/inventory/filters Show filters] seçeneğini deneyin.
 	</string>
 	<string name="PlacesNoMatchingItems">
-		Aradığınızı bulamadınız mı? [secondlife:///app/search/places/[SEARCH_TERM] Arama] ile bulmayı deneyin.
+		Aradığınızı bulamadınız mı? [fmw:///app/search/places/[SEARCH_TERM] Arama] ile bulmayı deneyin.
 	</string>
 	<string name="FavoritesNoMatchingItems">
 		Bir yer imini favorilerinize eklemek için buraya sürükleyin.
@@ -1508,21 +1508,11 @@ http://secondlife.com/support adresini ziyaret edin.
 	<string name="InventoryInboxNoItems">
 		Pazaryerinda satın aldıklarınız burada görünecektir. Bunları kullanmak için envanterinize sürükleyebilirsiniz.
 	</string>
-	<string name="MarketplaceURL">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/
-	</string>
-	<string name="MarketplaceURL_CreateStore">
-		http://community.secondlife.com/t5/English-Knowledge-Base/Selling-in-the-Marketplace/ta-p/700193#Section_.3
-	</string>
-	<string name="MarketplaceURL_Dashboard">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/merchants/store/dashboard
-	</string>
-	<string name="MarketplaceURL_Imports">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/merchants/store/imports
-	</string>
-	<string name="MarketplaceURL_LearnMore">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/learn_more
-	</string>
+	<string name="MarketplaceURL">http://185.173.93.200:8002/web/marketplace.html</string>
+	<string name="MarketplaceURL_CreateStore">http://185.173.93.200:8002/web/seller.html</string>
+	<string name="MarketplaceURL_Dashboard">http://185.173.93.200:8002/web/seller.html</string>
+	<string name="MarketplaceURL_Imports">http://185.173.93.200:8002/web/seller.html</string>
+	<string name="MarketplaceURL_LearnMore">http://185.173.93.200:8002/web/terms.html</string>
 	<string name="InventoryPlayAnimationTooltip">
 		Pencereyi Oyun seçenekleri ile birlikte açın.
 	</string>
@@ -1558,10 +1548,7 @@ http://secondlife.com/support adresini ziyaret edin.
 	<string name="InventoryOutboxError">
 		[[MARKETPLACE_CREATE_STORE_URL] Mağazası] hata döndürüyor.
 	</string>
-	<string name="InventoryMarketplaceError">
-		Pazaryeri İlanları açılırken bir hata meydana geldi.
-Bu mesaj size gelmeye devam ederse lütfen http://support.secondlife.com adresinden Second Life destek ekibine başvurun.
-	</string>
+	<string name="InventoryMarketplaceError">Pazaryeri İlanları açılırken bir hata meydana geldi.</string>
 	<string name="InventoryMarketplaceListingsNoItemsTitle">
 		Pazaryeri İlanları klasörünüz boş.
 	</string>

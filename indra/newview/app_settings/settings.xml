@@ -16,7 +16,7 @@
   <key>FSEnforceStrictObjectCheck</key>
   <map>
     <key>Comment</key>
-    <string>Force malformed prims to be treated as invalid. This setting derenders all malformed prims, even those that might not cause obvious issues. Setting to false will allow bad prims to render but can cause crashes. (Disabled on OpenSim)</string>
+    <string>Force malformed prims to be treated as invalid. This setting derenders all malformed prims, even those that might not cause obvious issues. Setting to false will allow bad prims to render but can cause crashes. (Disabled on ForMe.World)</string>
     <key>Persist</key>
     <integer>1</integer>
     <key>Type</key>
@@ -173,7 +173,7 @@
     <key>Type</key>
     <string>String</string>
     <key>Value</key>
-    <string>xAcXYt8SBius3Lor4wHle8L96PDHYlAZuWYXIYQUdW4b09mjhQUAwiqmWp5UNYXLpq5GSUtuKHuDYLwaueACPkew93l6MRY8jfBKSH09kv0zyGglpky07X7X7Sp4Rzin</string>
+    <string></string>
   </map>
   <key>FSGridBuilderURL</key>
   <map>
@@ -391,7 +391,7 @@
   <key>FSTPHistoryTZ</key>
   <map>
     <key>Comment</key>
-    <string>Select the timezone to be used with Teleport History. ('utc' = default, 'slt' = Second Life Time, 'local' = the local timezone of the client)</string>
+    <string>Select the timezone to be used with Teleport History. ('utc' = default, 'slt' = ForMe.World Time, 'local' = the local timezone of the client)</string>
     <key>Persist</key>
     <integer>1</integer>
     <key>Type</key>
@@ -3772,7 +3772,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string></string>
+      <string>185.173.93.200:8002</string>
       <key>Backup</key>
       <integer>0</integer>
     </map>
@@ -5925,13 +5925,13 @@
     <key>FSOpenSimAlwaysForceShowGrid</key>
     <map>
       <key>Comment</key>
-      <string>Soft enable/disable the startup behaviour of OpenSim builds to allow gridlist access</string>
+      <string>Soft enable/disable the startup behaviour of ForMe.World builds to allow gridlist access</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
       <string>Boolean</string>
       <key>Value</key>
-      <integer>1</integer>
+      <integer>0</integer>
     </map>
     <key>ForceMissingType</key>
     <map>
@@ -6182,7 +6182,7 @@
     <key>HostID</key>
     <map>
       <key>Comment</key>
-      <string>Machine identifier for hosted Second Life instances</string>
+      <string>Machine identifier for hosted ForMe.World instances</string>
       <key>Persist</key>
       <integer>0</integer>
       <key>Type</key>
@@ -6310,7 +6310,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>default</string>
+      <string>ru</string>
     </map>
     <key>InventoryAutoOpenDelay</key>
     <map>
@@ -6903,7 +6903,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>default</string>
+      <string>ru</string>
     </map>
     <key>LanguageIsPublic</key>
         <map>
@@ -9436,7 +9436,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>NumSessions</key>
     <map>
       <key>Comment</key>
-      <string>Number of successful logins to Second Life</string>
+      <string>Number of successful logins to ForMe.World</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -14659,7 +14659,7 @@ Change of this parameter will affect the layout of buttons in notification toast
   <key>FSUseLegacyUnsupportedHardwareChecks</key>
     <map>
       <key>Comment</key>
-      <string>If enabled, Firestorm will perform utterly pointless checks that probably made sense in 2004.</string>
+      <string>If enabled, ForMe.World will perform utterly pointless checks that probably made sense in 2004.</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -14670,7 +14670,7 @@ Change of this parameter will affect the layout of buttons in notification toast
   <key>FSUseStandaloneGroupFloater</key>
     <map>
       <key>Comment</key>
-      <string>If enabled, Firestorm will use a standalone floater for each group profile.</string>
+      <string>If enabled, ForMe.World will use a standalone floater for each group profile.</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -15632,7 +15632,7 @@ Change of this parameter will affect the layout of buttons in notification toast
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>en</string>
+      <string>ru</string>
     </map>
     <key>TabToTextFieldsOnly</key>
     <map>
@@ -16934,7 +16934,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>UISndRestart</key>
     <map>
       <key>Comment</key>
-      <string>Sound file for region restarting, Second Life grid (uuid for sound asset)</string>
+      <string>Sound file for region restarting, ForMe.World grid (uuid for sound asset)</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -16945,7 +16945,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>UISndRestartOpenSim</key>
     <map>
       <key>Comment</key>
-      <string>Sound file for region restarting, OpenSim grid (uuid for sound asset)</string>
+      <string>Sound file for region restarting, ForMe.World grid (uuid for sound asset)</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -17937,7 +17937,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>VivoxLogDirectory</key>
     <map>
         <key>Comment</key>
-        <string>Default log path is Application Support/SecondLife/logs specify alternate absolute path here.</string>
+        <string>Default log path is Application Support/ForMe.World/logs specify alternate absolute path here.</string>
         <key>Persist</key>
         <integer>1</integer>
         <key>Type</key>
@@ -20032,7 +20032,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>NearbyListShowMap</key>
     <map>
       <key>Comment</key>
-      <string>Show/hide map above nearby people list (unused by firestorm)</string>
+      <string>Show/hide map above nearby people list (unused by ForMe.World)</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -22033,7 +22033,7 @@ Change of this parameter will affect the layout of buttons in notification toast
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>Firestorm</string>
+      <string>ForMe.World</string>
     </map>
   <key>FSSkinCurrentThemeReadableName</key>
     <map>
@@ -23456,7 +23456,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>FSUseStandalonePlaceDetailsFloater</key>
     <map>
       <key>Comment</key>
-      <string>If enabled, Firestorm will use a standalone floater for each landmark details, teleport history details and parcel details view.</string>
+      <string>If enabled, ForMe.World will use a standalone floater for each landmark details, teleport history details and parcel details view.</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -23467,7 +23467,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>FSUseStandaloneTeleportHistoryFloater</key>
     <map>
       <key>Comment</key>
-      <string>If enabled, Firestorm will use a standalone floater for the teleport history view.</string>
+      <string>If enabled, ForMe.World will use a standalone floater for the teleport history view.</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -23478,7 +23478,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>FSUseStandaloneBlocklistFloater</key>
     <map>
       <key>Comment</key>
-      <string>If enabled, Firestorm will use a standalone floater for the blocklist.</string>
+      <string>If enabled, ForMe.World will use a standalone floater for the blocklist.</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -23489,7 +23489,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>FSDisableIMChiclets</key>
     <map>
       <key>Comment</key>
-      <string>If enabled, Firestorm will not show any group / IM chat chiclets (notifications envelope and sum of IMs will remain on the screen).</string>
+      <string>If enabled, ForMe.World will not show any group / IM chat chiclets (notifications envelope and sum of IMs will remain on the screen).</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -23511,7 +23511,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>FSDisableMouseWheelCameraZoom</key>
     <map>
       <key>Comment</key>
-      <string>If true, Firestorm will not use mouse wheel to zoom in/out the camera.</string>
+      <string>If true, ForMe.World will not use mouse wheel to zoom in/out the camera.</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -23533,7 +23533,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>FSEnableVolumeControls</key>
     <map>
         <key>Comment</key>
-        <string>If true, Firestorm will show volume controls (sounds, media, stream) in upper right corner of the screen. Useful, if skin already has its own controls.</string>
+        <string>If true, ForMe.World will show volume controls (sounds, media, stream) in upper right corner of the screen. Useful, if skin already has its own controls.</string>
         <key>Persist</key>
         <integer>1</integer>
         <key>Type</key>
@@ -23544,7 +23544,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>FSResetCameraOnMovement</key>
     <map>
         <key>Comment</key>
-        <string>If true, Firestorm will reset camera on avatar movement.</string>
+        <string>If true, ForMe.World will reset camera on avatar movement.</string>
         <key>Persist</key>
         <integer>1</integer>
         <key>Type</key>
@@ -23555,7 +23555,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>FSShowInterfaceInMouselook</key>
     <map>
         <key>Comment</key>
-        <string>If true, Firestorm will show user interface in mouselook mode.</string>
+        <string>If true, ForMe.World will show user interface in mouselook mode.</string>
         <key>Persist</key>
         <integer>1</integer>
         <key>Type</key>
@@ -24784,7 +24784,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>FSFlashOnScriptDialog</key>
     <map>
       <key>Comment</key>
-      <string>Flash/Bounce the app icon when a script dialog is received and Firestorm is not in focus</string>
+      <string>Flash/Bounce the app icon when a script dialog is received and ForMe.World is not in focus</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -24795,7 +24795,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>FSFlashOnMessage</key>
     <map>
       <key>Comment</key>
-      <string>Flash/Bounce the app icon when a new message is received and Firestorm is not in focus</string>
+      <string>Flash/Bounce the app icon when a new message is received and ForMe.World is not in focus</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -24806,7 +24806,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>FSFlashOnObjectIM</key>
     <map>
       <key>Comment</key>
-      <string>Flash/Bounce the app icon when a new instant message from an object is received and Firestorm is not in focus.</string>
+      <string>Flash/Bounce the app icon when a new instant message from an object is received and ForMe.World is not in focus.</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -25145,7 +25145,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>AllowNoCopyRezRestoreToWorld</key>
     <map>
       <key>Comment</key>
-      <string>Allow Restore to Last Position for no-copy objects on Second Life grids. This can lead to content loss, and is only meant to be used for testing a potential server side fix.</string>
+      <string>Allow Restore to Last Position for no-copy objects on ForMe.World grids. This can lead to content loss, and is only meant to be used for testing a potential server side fix.</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -25616,7 +25616,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>FSUseAis3Api</key>
     <map>
       <key>Comment</key>
-      <string>Option to disable the use of the AISv3 inventory API. NOTE: This setting has NO EFFECT in Second Life!</string>
+      <string>Option to disable the use of the AISv3 inventory API. NOTE: This setting has NO EFFECT in ForMe.World!</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -25859,7 +25859,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>FSNoVersionPopup</key>
     <map>
       <key>Comment</key>
-      <string>Disables version popup on the Firestorm Login page</string>
+      <string>Disables version popup on the ForMe.World Login page</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -27713,7 +27713,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>OmnifilterControls</key>
     <map>
         <key>Comment</key>
-        <string>If true, Firestorm will show the omnifilter controls (enable, drop down) in upper right corner of the screen. Useful, if multiple omnifilter rule sets are being used.</string>
+        <string>If true, ForMe.World will show the omnifilter controls (enable, drop down) in upper right corner of the screen. Useful, if multiple omnifilter rule sets are being used.</string>
         <key>Persist</key>
         <integer>1</integer>
         <key>Type</key>
@@ -27758,7 +27758,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>FSUseFSLegacySearch</key>
     <map>
       <key>Comment</key>
-      <string>Uses Firestorm&apos;s legacy search if enabled - the Linden Lab version instead if disabled</string>
+      <string>Uses ForMe.World&apos;s legacy search if enabled - the Linden Lab version instead if disabled</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>

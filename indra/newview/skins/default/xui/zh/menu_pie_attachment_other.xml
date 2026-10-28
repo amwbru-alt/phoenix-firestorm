@@ -30,8 +30,8 @@
 				<pie_slice label="網格細節層次" name="Reset Mesh LOD" />
 			</pie_menu>
 			<pie_menu name="ExportMenu" label="另存為 &gt;">
-				<pie_slice label="備份" name="Backup" />
-				<pie_slice label="Collada" name="Collada" />
+				<pie_slice label="備份" name="Backup"  forme_creator_only="true"/>
+				<pie_slice label="Collada" name="Collada"  forme_creator_only="true"/>
 				<pie_slice label="轉儲 XML" name="Dump XML" />
 			</pie_menu>
 			<pie_menu name="RenderMenu" label="彩現 &gt;">

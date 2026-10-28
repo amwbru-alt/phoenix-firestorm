@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="script ed float" title="KOMUT DOSYASI: YENİ KOMUT DOSYASI">
+<floater name="script ed float" title="KOMUT DOSYASI: YENİ KOMUT DOSYASI" forme_creator_only="true">
 	<floater.string name="not_allowed">
 		Bu komut dosyasını görüntüleyemez veya düzenleyemezsiniz, çünkü &quot;kopyalanamaz&quot; olarak ayarlanmıştır. Bir nesnenin içerisindeki bir komut dosyasını görüntülemek veya düzenlemek için tam izinlere ihtiyacınız var.
 	</floater.string>

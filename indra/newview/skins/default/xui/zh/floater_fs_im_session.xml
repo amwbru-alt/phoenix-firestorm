@@ -16,7 +16,7 @@
 			<menu_button name="teleport_btn" tool_tip="提供或請求瞬間傳送" />
 		</layout_panel>
 		<layout_panel name="share_panel">
-			<button name="share_btn" tool_tip="向居民傳送物件" />
+			<button name="share_btn" tool_tip="向居民傳送物件"  forme_creator_only="true"/>
 		</layout_panel>
 		<layout_panel name="pay_panel">
 			<button name="pay_btn" tool_tip="向居民傳送貨幣" />

@@ -23,6 +23,8 @@
  * $/LicenseInfo$
  */
 
+#include "formegridpolicy.h" // <FS:ForMe> Fixed-grid policy.
+
 #include "llwin32headers.h"
 #include "linden_common.h"
 #include "llsd.h"
@@ -134,6 +136,12 @@ void LLLogin::Impl::connect(const std::string& uri, const LLSD& login_params)
 
 void LLLogin::Impl::loginCoro(std::string uri, LLSD login_params)
 {
+    // <FS:ForMe> Check before any authentication event/request, including direct callers.
+    if (!ForMeGrid::allowedLoginURI(uri))
+    {
+        sendProgressEvent("offline", "fail.login", LLSDMap("reason", "grid_blocked")("message", "This viewer connects only to ForMe.World."));
+        return;
+    }
     LLSD printable_params = hidePasswd(login_params);
 
     try
@@ -158,6 +166,13 @@ void LLLogin::Impl::loginCoro(std::string uri, LLSD login_params)
         // request["uri"]
         for (;;)
         {
+            // <FS:ForMe> Login-server redirects cannot forward credentials off-grid.
+            if (!ForMeGrid::allowedLoginURI(request["uri"].asString()) || attempts >= 3
+                || request["method"].asString() != "login_to_simulator")
+            {
+                sendProgressEvent("offline", "fail.login", LLSDMap("reason", "grid_blocked")("message", "ForMe.World blocked a login redirect."));
+                return;
+            }
             ++attempts;
             LLSD progress_data;
             progress_data["attempt"] = attempts;
@@ -210,6 +225,14 @@ void LLLogin::Impl::loginCoro(std::string uri, LLSD login_params)
             // "indeterminate" case in the loop above.
             if (mAuthResponse["responses"]["login"].asString() == "true")
             {
+                // <FS:ForMe> A successful response must still identify our simulator host.
+                const LLSD& response = mAuthResponse["responses"];
+                if (!ForMeGrid::allowedSimulator(response["sim_ip"].asString())
+                    || !ForMeGrid::allowedServiceURI(response["seed_capability"].asString()))
+                {
+                    sendProgressEvent("offline", "fail.login", LLSDMap("reason", "grid_blocked")("message", "ForMe.World returned an unauthorized simulator address."));
+                    return;
+                }
                 sendProgressEvent("online", "connect", mAuthResponse["responses"]);
             }
             else

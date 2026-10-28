@@ -3320,13 +3320,13 @@ Bu düzgündür?
 		Aşağıdakı şərtlər macəra profilinin adının və/və ya təsvirinin yenilənməsinə mane oldu: [extra_info]
 	</notification>
 	<notification name="TeleportedHomeExperienceRemoved">
-		secondlife:///app/experience/[public_id]/profile macərasını sildiyiniz üçün [region_name] regionundan teleportasiya olunmusunuz və artıq regionda qalmağınıza icazə verilmir.
+		fmw:///app/experience/[public_id]/profile macərasını sildiyiniz üçün [region_name] regionundan teleportasiya olunmusunuz və artıq regionda qalmağınıza icazə verilmir.
 		<form name="form">
 			<ignore name="ignore" text="Macəranı sildiyi üçün regiondan təpiklənib"/>
 		</form>
 	</notification>
 	<notification name="TrustedExperienceEntry">
-		secondlife:///app/experience/[public_id]/profile əsas macərasında iştirak etməklə sizə [region_name] regionuna daxil olmağa icazə verildi. Bu macəranı silsəniz, regiondan təpiklənə bilərsiniz.
+		fmw:///app/experience/[public_id]/profile əsas macərasında iştirak etməklə sizə [region_name] regionuna daxil olmağa icazə verildi. Bu macəranı silsəniz, regiondan təpiklənə bilərsiniz.
 		<form name="form">
 			<ignore name="ignore" text="Macəra regiona girişə icazə verdi"/>
 		</form>
@@ -3339,14 +3339,14 @@ Bu düzgündür?
 Aşağıdakı Açar Macəralar mövcud ola bilər.
 	</notification>
 	<notification name="ExperienceEvent">
-		secondlife:///app/experience/[public_id]/profile macərası ilə obyektə [EventType] icazə verildi.
-    Sahibi: secondlife:///app/agent/[OwnerID]/inspect
+		fmw:///app/experience/[public_id]/profile macərası ilə obyektə [EventType] icazə verildi.
+    Sahibi: fmw:///app/agent/[OwnerID]/inspect
     Obyektin adı: [ObjectName]
     Sahənin adı: [ParcelName]
 	</notification>
 	<notification name="ExperienceEventAttachment">
-		secondlife:///app/experience/[public_id]/profile macərası tərəfindən [EventType] üçün birləşdirmə icazə verildi.
-    Sahibi: secondlife:///app/agent/[OwnerID]/inspect
+		fmw:///app/experience/[public_id]/profile macərası tərəfindən [EventType] üçün birləşdirmə icazə verildi.
+    Sahibi: fmw:///app/agent/[OwnerID]/inspect
 	</notification>
 	<notification name="ScriptQuestionExperience">
 		&quot;[NAME]&quot; adlı sakinə məxsus &quot;&lt;nolink&gt;[OBJECTNAME]&lt;/nolink&gt;&quot; obyekti [GRID_WIDE] macərasında iştrakınızı sorğulayır:
@@ -3794,7 +3794,7 @@ Görünüş sahəsini fırlatmaq üçün dünyanın istənilən yerinə basın v
 		Yaddaş hovuzunuz azdır. Çökmənin qarşısını almaq üçün SL-in bəzi funksiyaları deaktiv edilib. Digər proqramları bağlayın. Bu davam edərsə, SL-i yenidən başladın.
 	</notification>
 	<notification name="ForceQuitDueToLowMemory">
-		Second Life 30 saniyədən sonra çıxacaq: yaddaş tükəndi.
+		ForMe.World 30 saniyədən sonra çıxacaq: yaddaş tükəndi.
 	</notification>
 	<notification name="SOCKS_NOT_PERMITTED">
 		SOCKS 5 proksi "[HOST]:[PORT]" bağlantıdan imtina etdi, qayda dəsti ilə icazə verilmir.
@@ -4190,7 +4190,7 @@ Avtomatik izləyici versiyası göstərməsini aktiv etmək istəyirsiniz?
 		<form name="form">
 			<button name="OK_okcancelignore" text="Bəli"/>
 			<button name="Cancel_okcancelignore" text="Xeyr"/>
-			<ignore name="ignore" text="Phoenix/Firestorm Dəstək Qrupuna qoşulmaq"/>
+			<ignore name="ignore" text="Phoenix/ForMe.World Dəstək Qrupuna qoşulmaq"/>
 		</form>
 	</notification>
 	<notification name="ConfirmScriptModify">

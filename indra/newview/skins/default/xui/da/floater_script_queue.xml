@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="queue" title="NULSTIL FREMSKRIDT">
+<floater name="queue" title="NULSTIL FREMSKRIDT" forme_creator_only="true">
 	<floater.string name="Starting">
 		Starter [START] af [COUNT] genstande.
 	</floater.string>

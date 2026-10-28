@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="script ed float" title="Skript: Yeni skript">
+<floater name="script ed float" title="Skript: Yeni skript" forme_creator_only="true">
 	<floater.string name="not_allowed">
 		Siz bu skripti dəyişə və baxa bilməzsiniz, çünki onun üçün "köçürtmək" icazəsi yoxdur. Skripti obyektdə baxmaq və dəyişdirmək üçün tam icazə lazımdır.
 	</floater.string>

@@ -56,28 +56,28 @@
 	<check_box label="編集" name="CheckOwnerModify"/>
 	<check_box label="コピー" name="CheckOwnerCopy"/>
 	<check_box label="再販・譲渡" name="CheckOwnerTransfer"/>
-	<check_box label="エクスポート" name="CheckOwnerExport" />
+	<check_box label="エクスポート" name="CheckOwnerExport"  forme_creator_only="true"/>
 	<text name="AnyoneLabel">
 		全員：
 	</text>
-	<check_box label="コピー" name="CheckEveryoneCopy"/>
+	<check_box label="コピー" name="CheckEveryoneCopy" forme_creator_only="true"/>
 	<text name="GroupLabel">
 		グループ：
 	</text>
-	<check_box label="共有" name="CheckShareWithGroup"/>
+	<check_box label="共有" name="CheckShareWithGroup" forme_creator_only="true"/>
 	<text name="NextOwnerLabel">
 		次の所有者：
 	</text>
-	<check_box label="編集" name="CheckNextOwnerModify"/>
-	<check_box label="コピー" name="CheckNextOwnerCopy"/>
-	<check_box label="再販・譲渡" name="CheckNextOwnerTransfer"/>
-	<check_box label="売り出し中" name="CheckPurchase"/>
-	<combo_box name="ComboBoxSaleType">
+	<check_box label="編集" name="CheckNextOwnerModify" forme_creator_only="true"/>
+	<check_box label="コピー" name="CheckNextOwnerCopy" forme_creator_only="true"/>
+	<check_box label="再販・譲渡" name="CheckNextOwnerTransfer" forme_creator_only="true"/>
+	<check_box label="売り出し中" name="CheckPurchase" forme_creator_only="true"/>
+	<combo_box name="ComboBoxSaleType" forme_creator_only="true">
 		<combo_box.item label="コピー" name="Copy"/>
 		<combo_box.item label="中身" name="Contents"/>
 		<combo_box.item label="そのもの" name="Original"/>
 	</combo_box>
-	<spinner label="価格：" name="Edit Cost"/>
+	<spinner label="価格：" name="Edit Cost" forme_creator_only="true"/>
 	<text name="BaseMaskDebug">
 		Ｂ：
 	</text>

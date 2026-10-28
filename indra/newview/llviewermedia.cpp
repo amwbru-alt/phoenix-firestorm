@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "formeurlpolicy.h"
 
 #include "llviewermedia.h"
 
@@ -2610,6 +2611,7 @@ void LLViewerMediaImpl::unload()
 //////////////////////////////////////////////////////////////////////////////////////////
 void LLViewerMediaImpl::navigateTo(const std::string& url, const std::string& mime_type,  bool rediscover_type, bool server_request, bool clean_browser)
 {
+    if (ForMeURL::blockedWeb(url)) return;
     cancelMimeTypeProbe();
 
     if(mMediaURL != url)

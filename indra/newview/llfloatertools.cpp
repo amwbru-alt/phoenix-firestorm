@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fscreatoraccess.h"
 
 #include "llfloatertools.h"
 
@@ -1158,6 +1159,8 @@ bool LLFloaterTools::canClose()
 // virtual
 void LLFloaterTools::onOpen(const LLSD& key)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     mParcelSelection = LLViewerParcelMgr::getInstance()->getFloatingParcelSelection();
     mObjectSelection = LLSelectMgr::getInstance()->getEditSelection();
 

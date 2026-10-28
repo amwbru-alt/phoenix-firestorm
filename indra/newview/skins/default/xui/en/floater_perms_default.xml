@@ -4,7 +4,7 @@
  height="266"
  layout="topleft"
  name="perms default"
- help_topic="perms_default"
+
  save_rect="true"
  title="Default Creation Permissions"
  width="700">

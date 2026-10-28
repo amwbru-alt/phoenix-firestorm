@@ -82,7 +82,7 @@
 		(Exige reinício)
 	</text>
 	<text name="time_format_clock_note">
-		Formato do relógio da barra superior em [secondlife:///app/openfloater/preferences?tab=ui&amp;subtab=UI-interface-top-bars Interface - Barras superiores].
+		Formato do relógio da barra superior em [fmw:///app/openfloater/preferences?tab=ui&amp;subtab=UI-interface-top-bars Interface - Barras superiores].
 	</text>
 
 	<text name="title_afk_text" width="300">
@@ -108,7 +108,7 @@
 	</combo_box>
 	<check_box name="AvatarSitOnAway" label="Sentar quando estiver ausente" width="175"/>
 	<text name="text_box3" height="30">
-		Configure mensagens de Não Perturbe e Ausente em [secondlife:///app/openfloater/preferences?tab=im&amp;subtab=tab-autoresponse-1 Privacidade / Resposta automática].
+		Configure mensagens de Não Perturbe e Ausente em [fmw:///app/openfloater/preferences?tab=im&amp;subtab=tab-autoresponse-1 Privacidade / Resposta automática].
 	</text>
 
 </panel>

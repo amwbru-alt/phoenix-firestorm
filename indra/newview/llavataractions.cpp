@@ -26,6 +26,7 @@
 
 
 #include "llviewerprecompiledheaders.h"
+#include "fscreatoraccess.h"
 
 #include "llavataractions.h"
 
@@ -833,6 +834,8 @@ void LLAvatarActions::csr(const LLUUID& id, std::string name)
 //static
 void LLAvatarActions::share(const LLUUID& id)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
 // [RLVa:KB] - @share
     if ( (RlvActions::isRlvEnabled()) && (!RlvActions::canGiveInventory(id)) )
     {
@@ -1282,6 +1285,8 @@ std::set<LLUUID> LLAvatarActions::getInventorySelectedUUIDs(LLInventoryPanel* ac
 //static
 void LLAvatarActions::shareWithAvatars(LLView * panel)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
 // [RLVa:KB] - @share
     if ( (RlvActions::isRlvEnabled()) && (!RlvActions::canGiveInventory()) )
     {
@@ -1316,6 +1321,8 @@ void LLAvatarActions::shareWithAvatars(LLView * panel)
 //static
 void LLAvatarActions::shareWithAvatars(const uuid_set_t inventory_selected_uuids, LLFloater* root_floater)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     using namespace action_give_inventory;
 
     LLFloaterAvatarPicker* picker =
@@ -1338,6 +1345,8 @@ void LLAvatarActions::shareWithAvatars(const uuid_set_t inventory_selected_uuids
 // static
 bool LLAvatarActions::canShareSelectedItems(LLInventoryPanel* inv_panel /* = NULL*/)
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     using namespace action_give_inventory;
 
     if (!inv_panel)

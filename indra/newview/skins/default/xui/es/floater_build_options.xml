@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<floater name="build options floater" title="Opciones de rejilla">
+<floater name="build options floater" title="Opciones de rejilla" forme_creator_only="true">
 	<spinner label="Unidades (metros)" name="GridResolution"/>
 	<spinner label="Alcance (metros)" name="GridDrawSize"/>
 	<spinner label="Precisión decimal" name="DecimalPrecision"/>   

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="Model Preview" title="モデルのアップロード">
+<floater name="Model Preview" title="モデルのアップロード" forme_creator_only="true">
 	<string name="status_parse_error">
 		エラー：DAEファイルに問題が見つかりました。－詳細につきましてはログをご確認ください。
 	</string>

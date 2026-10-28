@@ -32,8 +32,8 @@
 	<icon tool_tip="L'amico non può vedere il mio stato online" name="cant_see_online" />
 	<icon tool_tip="L'amico può vedermi sulla mappa" name="can_see_on_map" />
 	<icon tool_tip="L'amico non può vedermi sulla mappa" name="cant_see_on_map" />
-	<icon tool_tip="L'amico può modificare i miei oggetti" name="can_edit_objects" />
-	<icon tool_tip="L'amico non può modificare i miei oggetti" name="cant_edit_objects" />
+	<icon tool_tip="L'amico può modificare i miei oggetti" name="can_edit_objects"  forme_creator_only="true"/>
+	<icon tool_tip="L'amico non può modificare i miei oggetti" name="cant_edit_objects"  forme_creator_only="true"/>
 	<text name="Key:" value="UUID:" />
 	<text_editor name="user_key" value="(caricamento...)" />
 	<layout_stack name="imagepositioner">

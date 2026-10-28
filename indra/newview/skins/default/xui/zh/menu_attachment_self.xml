@@ -2,12 +2,12 @@
 <context_menu name="Attachment Pie">
 	<menu_item_call label="觸碰" name="Attachment Object Touch" />
 	<menu_item_call label="在庫存中顯示" name="Show original" />
-	<menu_item_call label="編輯" name="Edit..." />
-	<menu_item_call label="編輯PBR材質" name="EditGLTFMaterial" />
+	<menu_item_call label="編輯" name="Edit..."  forme_creator_only="true"/>
+	<menu_item_call label="編輯PBR材質" name="EditGLTFMaterial"  forme_creator_only="true"/>
 	<menu_item_call label="卸下" name="Detach" />
-	<context_menu label="另存為" name="Export Menu">
-		<menu_item_call label="備份" name="Backup" />
-		<menu_item_call label="Collada" name="Collada" />
+	<context_menu label="另存為" name="Export Menu" forme_creator_only="true">
+		<menu_item_call label="備份" name="Backup"  forme_creator_only="true"/>
+		<menu_item_call label="Collada" name="Collada"  forme_creator_only="true"/>
 	</context_menu>
 	<menu_item_call label="坐下" name="Sit Down Here" />
 	<menu_item_call label="起立" name="Stand Up" />

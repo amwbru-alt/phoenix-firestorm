@@ -378,7 +378,7 @@
         interactable="true"
         height="24"
         width="24"
-        left_pad="0" />
+        left_pad="0"  forme_creator_only="true"/>
 
       <icon
         tool_tip="Friend can not edit my objects"
@@ -390,7 +390,7 @@
         interactable="true"
         height="24"
         width="24"
-        left_delta="0" />
+        left_delta="0"  forme_creator_only="true"/>
 
       <text_editor
         name="user_age"

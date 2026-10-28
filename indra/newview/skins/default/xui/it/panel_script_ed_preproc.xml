@@ -34,11 +34,7 @@
 			<menu_item_call label="Cerca/sostituisci..." name="Search / Replace..."/>
 			<menu_item_call label="Vai a riga..." name="Go to line..."/>
 		</menu>
-		<menu label="Aiuto" name="Help">
-			<menu_item_call label="Aiuto..." name="Help..."/>
-			<menu_item_call label="Parole chiave..." name="Keyword Help..."/>
-			<menu_item_call label="Biblioteca script..." name="Script Library"/>
-		</menu>
+		
 	</menu_bar>
 	<layout_stack name="script_editor_button_bar">
 		<layout_panel name="script_editor_buttons_panel">

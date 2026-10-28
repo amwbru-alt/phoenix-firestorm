@@ -67,7 +67,7 @@
 	<spinner label="Alto" name="height_range_spin_0"/>
 	<spinner label="Alto" name="height_range_spin_2"/>
 	<button label="Baixar terreno RAW..." name="download_raw_btn" tool_tip="Disponível apenas para proprietários da propriedade, não para administradores"/>
-	<button label="Enviar terreno RAW..." name="upload_raw_btn" tool_tip="Disponível apenas para proprietários da propriedade, não para administradores"/>
-	<button label="Aplicar forma do terreno" name="bake_terrain_btn" tool_tip="Torna o terreno atual o ponto central dos limites superior/inferior do terreno"/>
+	<button label="Enviar terreno RAW..." name="upload_raw_btn" tool_tip="Disponível apenas para proprietários da propriedade, não para administradores" forme_creator_only="true"/>
+	<button label="Aplicar forma do terreno" name="bake_terrain_btn" tool_tip="Torna o terreno atual o ponto central dos limites superior/inferior do terreno" forme_creator_only="true"/>
 	<button label="Aplicar" name="apply_btn"/>
 </panel>

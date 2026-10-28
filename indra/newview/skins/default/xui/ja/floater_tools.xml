@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="toolbox floater" short_title="ビルド">
+<floater name="toolbox floater" short_title="ビルド" forme_creator_only="true">
 	<floater.string name="grid_screen_text">
 		スクリーン
 	</floater.string>
@@ -144,7 +144,7 @@
   </text>
 	-->
 	<text name="more info label">
-		[CAPACITY_STRING]　[secondlife:///app/openfloater/object_weights 詳細情報]
+		[CAPACITY_STRING]　[fmw:///app/openfloater/object_weights 詳細情報]
 	</text>
 	<tab_container name="Object Info Tabs">
 		<panel label="一般" name="General">
@@ -205,19 +205,19 @@
 				制作者：
 			</text>
 			<text name="Creator Name">
-				secondlife:///app/agent/00000000-0000-0000-0000-000000000000/inspect テスト文字列です。（無視してください）
+				fmw:///app/agent/00000000-0000-0000-0000-000000000000/inspect テスト文字列です。（無視してください）
 			</text>
 			<text name="Owner:">
 				所有者：
 			</text>
 			<text name="Owner Name">
-				secondlife:///app/agent/00000000-0000-0000-0000-000000000000/inspect テスト文字列です。（無視してください）
+				fmw:///app/agent/00000000-0000-0000-0000-000000000000/inspect テスト文字列です。（無視してください）
 			</text>
 			<text name="Last Owner:">
 				最後の所有者：
 			</text>
 			<text name="Last Owner Name">
-				secondlife:///app/agent/00000000-0000-0000-0000-000000000000/inspect TestString PleaseIgnore (please.ignore)
+				fmw:///app/agent/00000000-0000-0000-0000-000000000000/inspect TestString PleaseIgnore (please.ignore)
 			</text>
 			<text name="Group:">
 				グループ：
@@ -466,7 +466,7 @@
 			</string>
 			<text name="LOD_swap_ll_default" value="公式"/>
 			<string name="fs_lod_tooltip_msg">
-				"Firestorm のデフォルト値 ([FACTOR])"
+				"ForMe.World のデフォルト値 ([FACTOR])"
 			</string>
 			<text name="LOD_swap_usr_current" tool_tip="現在のＬｏＤ要素"/>
 			<text name="LOD_swap_LOD_Change_label">

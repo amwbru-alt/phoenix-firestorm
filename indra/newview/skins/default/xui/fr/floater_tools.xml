@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="toolbox floater" short_title="OUTILS POUR LA CONSTRUCTION" title="">
+<floater name="toolbox floater" short_title="OUTILS POUR LA CONSTRUCTION" title="" forme_creator_only="true">
 	<floater.string name="grid_screen_text">
 		Écran
 	</floater.string>
@@ -127,7 +127,7 @@
 		Aucune sélection effectuée.
 	</text>
 	<text name="more info label">
-		[CAPACITY_STRING] [secondlife:///app/openfloater/object_weights Plus d&apos;infos]
+		[CAPACITY_STRING] [fmw:///app/openfloater/object_weights Plus d&apos;infos]
 	</text>
 	<tab_container name="Object Info Tabs">
 		<panel label="Général" name="General">
@@ -210,7 +210,7 @@
 				<combo_box.item label="Ignorer l'objet" name="Ignoreobject"/>
 				<combo_box.item label="Aucun" name="None"/>
 			</combo_box>
-			<check_box label="À vendre :" name="checkbox for sale" tool_tip="Permet aux gens d&apos;acheter cet objet, son contenu ou de le copier dans Second Life à un prix donné."/>
+			<check_box label="À vendre :" name="checkbox for sale" tool_tip="Permet aux gens d&apos;acheter cet objet, son contenu ou de le copier dans ForMe.World à un prix donné."/>
 			<spinner label="L$" name="Edit Cost" tool_tip="Coût de l&apos;objet."/>
 			<combo_box name="sale type" tool_tip="Indiquez si l’acheteur recevra une copie, une copie du contenu ou l’article lui-même.">
 				<combo_box.item label="Copie" name="Copy"/>

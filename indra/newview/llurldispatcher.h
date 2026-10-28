@@ -39,8 +39,8 @@ public:
         // At startup time and on clicks in internal web browsers,
         // teleport, open map, or run requested command.
         // @param url
-        //   secondlife://RegionName/123/45/67/
-        //   secondlife:///app/agent/3d6181b0-6a4b-97ef-18d8-722652995cf1/show
+        //   fmw://RegionName/123/45/67/
+        //   fmw:///app/agent/3d6181b0-6a4b-97ef-18d8-722652995cf1/show
         //   sl://app/foo/bar
         // @param nav_type
         //   type of navigation type (see LLQtWebKit::LLWebPage::acceptNavigationRequest)

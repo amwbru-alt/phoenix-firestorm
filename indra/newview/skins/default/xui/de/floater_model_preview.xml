@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="Model Preview" title="Modell hochladen">
+<floater name="Model Preview" title="Modell hochladen" forme_creator_only="true">
 	<string name="status_idle"/>
 	<string name="status_parse_error">
 		Fehler: Fehler beim Modell-Parsen – Details siehe Protokoll.

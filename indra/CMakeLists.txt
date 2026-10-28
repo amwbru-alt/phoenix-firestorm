@@ -48,6 +48,18 @@ set(CMAKE_COLOR_DIAGNOSTICS ON)
 # Speeds up cmake generation significantly in some cases
 set(CMAKE_XCODE_GENERATE_TOP_LEVEL_PROJECT_ONLY ON)
 
+# <FS:ForMe> This fork ships only the fixed ForMe.World OpenSim client.
+set(OPENSIM ON CACHE BOOL "ForMe.World requires OpenSim" FORCE)
+set(HAVOK_TPV OFF CACHE BOOL "ForMe.World uses OpenSim-compatible physics" FORCE)
+set(SINGLEGRID ON CACHE BOOL "ForMe.World single-grid distribution" FORCE)
+set(SINGLEGRID_URI "185.173.93.200:8002" CACHE STRING "Fixed ForMe.World grid identity" FORCE)
+set(OPENSIM ON)
+set(HAVOK_TPV OFF)
+set(SINGLEGRID ON)
+set(SINGLEGRID_URI "185.173.93.200:8002")
+set(VIEWER_CHANNEL "ForMe.World" CACHE STRING "ForMe.World product name" FORCE)
+set(VIEWER_CHANNEL "ForMe.World")
+# </FS:ForMe>
 include(Variables)
 include(BuildVersion)
 

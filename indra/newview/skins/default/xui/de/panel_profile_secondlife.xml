@@ -53,8 +53,8 @@
 	<icon tool_tip="Freund kann meinen Online-Status nicht sehen" name="cant_see_online"/>
 	<icon tool_tip="Freund kann mich auf der Weltkarte finden" name="can_see_on_map"/>
 	<icon tool_tip="Freund kann mich nicht auf der Weltkarte finden" name="cant_see_on_map"/>
-	<icon tool_tip="Freund kann meine Objekte bearbeiten" name="can_edit_objects"/>
-	<icon tool_tip="Freund kann meine Objekte nicht bearbeiten" name="cant_edit_objects"/>
+	<icon tool_tip="Freund kann meine Objekte bearbeiten" name="can_edit_objects" forme_creator_only="true"/>
+	<icon tool_tip="Freund kann meine Objekte nicht bearbeiten" name="cant_edit_objects" forme_creator_only="true"/>
 	<text name="Key:" value="UUID:"/>
 	<text_editor name="user_key" value="(wird geladen...)"/>
 	<layout_stack name="imagepositioner">

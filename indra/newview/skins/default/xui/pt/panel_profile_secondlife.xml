@@ -53,8 +53,8 @@
 	<icon tool_tip="Amigo não pode ver meu status online" name="cant_see_online"/>
 	<icon tool_tip="Amigo pode me encontrar no mapa-múndi" name="can_see_on_map"/>
 	<icon tool_tip="Amigo não pode me encontrar no mapa-múndi" name="cant_see_on_map"/>
-	<icon tool_tip="Amigo pode editar meus objetos" name="can_edit_objects"/>
-	<icon tool_tip="Amigo não pode editar meus objetos" name="cant_edit_objects"/>
+	<icon tool_tip="Amigo pode editar meus objetos" name="can_edit_objects" forme_creator_only="true"/>
+	<icon tool_tip="Amigo não pode editar meus objetos" name="cant_edit_objects" forme_creator_only="true"/>
 	<text name="Key:" value="UUID:"/>
 	<text_editor name="user_key" value="(carregando...)"/>
 	<layout_stack name="imagepositioner">

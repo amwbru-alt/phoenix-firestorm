@@ -175,7 +175,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 endif (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 
 # Default deploy grid
-set(GRID agni CACHE STRING "Target Grid")
+set(GRID forme CACHE STRING "ForMe.World target grid" FORCE)
 
 #set(VIEWER_CHANNEL "Second Life Test" CACHE STRING "Viewer Channel Name")
 

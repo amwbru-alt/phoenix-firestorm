@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "formegridpolicy.h" // <FS:ForMe> Fixed-grid policy.
 
 #include "llappviewer.h"
 #include "llstartup.h"
@@ -88,7 +89,6 @@
 #include "lluserrelations.h"
 #include "llversioninfo.h"
 #include "llviewercontrol.h"
-#include "llviewerhelp.h"
 #include "llxorcipher.h"    // saved password, MAC address
 #include "llwindow.h"
 #include "message.h"
@@ -113,7 +113,6 @@
 #include "llface.h"
 #include "llfeaturemanager.h"
 //#include "llfirstuse.h"
-#include "llfloaterhud.h"
 #include "llfloaterland.h"
 #include "llfloatertopobjects.h"
 #include "llfloaterworldmap.h"
@@ -1712,7 +1711,6 @@ bool idle_startup()
         //           in by autologin or on SL it would show
         //           the non-functional "About [CURRENT_GRID]"
         //           and "[CURRENT_GRID] Help" menu entries
-        update_grid_help();
 
         // <FS:Techwolf Lupindo> fsdata agents support
         //LLStartUp::setStartupState( STATE_LOGIN_AUTH_INIT );
@@ -2761,42 +2759,6 @@ bool idle_startup()
 
         FSGroupTitleRegionMgr::getInstance()->loadFromDisk(); // <FS:PP> Region-based group titles
 
-        bool show_hud = false;
-        LLSD tutorial_setting = response["tutorial_setting"];
-        if(tutorial_setting.isDefined())
-        {
-            for(LLSD::array_const_iterator it = tutorial_setting.beginArray(),
-                end = tutorial_setting.endArray(); it != end; ++it)
-            {
-                LLSD tutorial_url = (*it)["tutorial_url"];
-                if(tutorial_url.isDefined())
-                {
-                    // Tutorial floater will append language code
-                    gSavedSettings.setString("TutorialURL", tutorial_url.asString());
-                }
-
-                // For Viewer 2.0 we are not using the web-based tutorial
-                // If we reverse that decision, put this code back and use
-                // login.cgi to send a different URL with content that matches
-                // the Viewer 2.0 UI.
-                //LLSD use_tutorial = (*it)["use_tutorial"];
-                //if(use_tutorial.asString() == "true")
-                //{
-                //  show_hud = true;
-                //}
-            }
-        }
-        do_startup_frame();
-
-        // Either we want to show tutorial because this is the first login
-        // to a Linden Help Island or the user quit with the tutorial
-        // visible.  JC
-        if (show_hud || gSavedSettings.getBOOL("ShowTutorial"))
-        {
-            LLFloaterReg::showInstance("hud", LLSD(), false);
-        }
-        do_startup_frame();
-
         LLSD event_notifications = response["event_notifications"];
         if(event_notifications.isDefined())
         {
@@ -2936,10 +2898,6 @@ bool idle_startup()
                 gViewerThrottle.setMaxBandwidth(FAST_RATE_BPS / 1024.f);
             }
 
-            if (gSavedSettings.getBOOL("ShowHelpOnFirstLogin"))
-            {
-                gSavedSettings.setBOOL("HelpFloaterOpen", true);
-            }
 
             // Set the show start location to true, now that the user has logged
             // on with this install.
@@ -2978,11 +2936,6 @@ bool idle_startup()
         do_startup_frame();
         // </FS:CR>
 
-        if (gSavedSettings.getBOOL("HelpFloaterOpen"))
-        {
-            // show default topic
-            LLViewerHelp::instance().showTopic("");
-        }
 
         do_startup_frame();
 
@@ -4383,6 +4336,10 @@ bool LLStartUp::dispatchURL()
 
 void LLStartUp::setStartSLURL(const LLSLURL& slurl)
 {
+    // <FS:ForMe> Keep local home/last locations; reject explicit foreign/HG destinations.
+    if ((!slurl.getGrid().empty() && !ForMeGrid::allowedGrid(slurl.getGrid()))
+        || slurl.getHypergrid() || !ForMeGrid::localRegion(slurl.getRegion())) return;
+
   sStartSLURL = slurl;
   switch(slurl.getType())
     {
@@ -4980,14 +4937,6 @@ bool process_login_success_response(U32 &first_sim_size_x, U32 &first_sim_size_y
         }
     }
 
-    // this is the base used to construct help URLs
-    text = response["help_url_format"].asString();
-    if (!text.empty())
-    {
-        // replace the default help URL format
-        gSavedSettings.setString("HelpURLFormat",text);
-    }
-
     std::string home_location = response["home"];
     if(!home_location.empty())
     {
@@ -5229,18 +5178,8 @@ bool process_login_success_response(U32 &first_sim_size_x, U32 &first_sim_size_y
     // </COLOSI opensim multi-currency support>
 
 // <FS:AW opensim currency support>
-    std::string currency = "L$";
-#ifdef OPENSIM // <FS:AW optional opensim support>
-    if(response.has("currency"))
-    {
-        currency = response["currency"].asString();
-        LL_DEBUGS("OS_SETTINGS") << "currency " << currency << LL_ENDL;
-    }
-    else if (LLGridManager::getInstance()->isInOpenSim())
-    {
-        currency = "OS$";
-        LL_DEBUGS("OS_SETTINGS") << "no currency in login response" << LL_ENDL;
-    }
+    std::string currency = "₽";
+#ifdef OPENSIM // Fixed ForMe.World balance: one unit is one ruble.
     Tea::setCurrency(currency);
 // </FS:AW opensim currency support>
 

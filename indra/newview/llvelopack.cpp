@@ -297,23 +297,7 @@ static std::wstring get_app_name()
 {
     // Match viewer_manifest.py app_name() logic: release channel uses "Viewer"
     // suffix instead of "Release" for display purposes (shortcuts, uninstall, etc.)
-    std::wstring channel = LL_TO_WSTRING(LL_VIEWER_CHANNEL);
-    // <FS:TJ> Get correct Firestorm app name
-    //std::wstring release_suffix = L" Release";
-    //if (channel.size() >= release_suffix.size() &&
-    //    channel.compare(channel.size() - release_suffix.size(), release_suffix.size(), release_suffix) == 0)
-    //{
-    //    channel.replace(channel.size() - release_suffix.size(), release_suffix.size(), L" Viewer");
-    //}
-    //return channel;
-    std::wstring prefix = L"Firestorm";
-    if (channel.starts_with(prefix))
-        channel.erase(0, prefix.size());
-#ifdef OPENSIM
-    prefix.append(L"OS");
-#endif
-    return prefix + channel;
-    // </FS:TJ>
+    return L"ForMe.World";
 }
 
 static std::wstring get_app_name_oneword()
@@ -423,7 +407,7 @@ static void register_protocol_handler(const std::wstring& protocol,
                         REG_OPTION_NON_VOLATILE, KEY_WRITE, NULL, &hkey, NULL) == ERROR_SUCCESS)
     {
     #ifdef OPENSIM
-        std::wstring friendlyappname_value = get_app_name_oneword() + L" for OpenSimulator";
+        std::wstring friendlyappname_value = L"ForMe.World";
     #else
         std::wstring friendlyappname_value = get_app_name_oneword();
     #endif
@@ -913,10 +897,10 @@ static void on_after_install(void* user_data, const char* app_version)
     std::wstring app_name = get_app_name();
     std::wstring exe_path = install_dir + L"\\" + get_viewer_exe_name();
 
-    register_protocol_handler(PROTOCOL_SECONDLIFE, L"URL:Second Life", exe_path);
+    register_protocol_handler(PROTOCOL_SECONDLIFE, L"URL:ForMe.World", exe_path);
     // <FS:TJ> Support for OpenSim protocols
 #ifndef OPENSIM
-    register_protocol_handler(PROTOCOL_GRID_INFO, L"URL:Second Life", exe_path);
+    register_protocol_handler(PROTOCOL_GRID_INFO, L"URL:ForMe.World", exe_path);
 #else
     register_protocol_handler(PROTOCOL_GRID_INFO, L"URL:Hypergrid", exe_path);
 #endif

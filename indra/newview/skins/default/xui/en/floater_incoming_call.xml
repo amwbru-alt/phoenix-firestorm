@@ -7,7 +7,7 @@
  height="125"
  layout="topleft"
  name="incoming call"
- help_topic="incoming_call"
+
  sound_flags="0"
  width="550">
     <floater.string

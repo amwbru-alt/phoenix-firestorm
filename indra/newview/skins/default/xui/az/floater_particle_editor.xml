@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <floater name="particle_editor_floater" title="Hissəcik Dəyişdiricisi"
-  height="370" min_height="370" min_width="530" width="530">
+  height="370" min_height="370" min_width="530" width="530" forme_creator_only="true">
 
   <panel name="particle_editor_panel" height="343">
     <panel name="top_left_panel">

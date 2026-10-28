@@ -1069,6 +1069,8 @@ std::optional<std::string> llstring_getoptenv(const std::string& key)
 
 long LLStringOps::sPacificTimeOffset = 0;
 long LLStringOps::sLocalTimeOffset = 0;
+long LLStringOps::sForMeTimeOffset = 0;
+bool LLStringOps::sHasForMeTime = false;
 bool LLStringOps::sPacificDaylightTime = 0;
 bool LLStringOps::sUsingPacificTime = false; // <FS:TJ/> [FIRE-34775] Use PST/PDT when logged into OpenSim
 std::map<std::string, std::string> LLStringOps::datetimeToCodes;
@@ -1602,20 +1604,15 @@ template<>
 bool LLStringUtil::formatDatetime(std::string& replacement, std::string token,
                                   std::string param, S32 secFromEpoch)
 {
-    if (param == "local")   // local
-    {
-        secFromEpoch -= LLStringOps::getLocalTimeOffset();
-    }
-    else if (param != "utc") // slt
-    {
-        secFromEpoch -= LLStringOps::getPacificTimeOffset();
-    }
+    S64 display_seconds = secFromEpoch;
+    if (param != "utc") display_seconds += LLStringOps::getForMeTimeOffset();
+    if (display_seconds < 0) display_seconds = 0;
 
-    // if never fell into those two ifs above, param must be utc
-    if (secFromEpoch < 0) secFromEpoch = 0;
-
-    LLDate datetime((F64)secFromEpoch);
+    LLDate datetime((F64)display_seconds);
     std::string code = LLStringOps::getDatetimeCode (token);
+    // ForMe.World uses a 24-hour clock in every language, including migrated preferences.
+    if (code == "%I") code = "%H";
+    if (code == "%p") { replacement.clear(); return true; }
 
     // special case to handle timezone
     if (code == "%Z") {
@@ -1623,32 +1620,11 @@ bool LLStringUtil::formatDatetime(std::string& replacement, std::string token,
         {
             replacement = "GMT";
         }
-        else if (param == "local")
-        {
-            replacement = "";       // user knows their own timezone
-        }
         else
         {
-// <FS:TJ> [FIRE-34775] Use PST/PDT when logged into OpenSim
-#ifdef OPENSIM
-            // EXT-1565 : Zai Lynch, James Linden : 15/Oct/09
-            // [BSI] Feedback: Viewer clock mentions SLT, but would prefer it to show PST/PDT
-            // "slt" = Second Life Time, which is deprecated.
-            // If not utc or user local time, fallback to Pacific time
-            if (LLStringOps::getUsingPacificTime())
-            {
-                replacement = LLStringOps::getPacificDaylightTime() ? "PDT" : "PST";
-            }
-            else
-            {
-                replacement = "SLT";
-            }
-// </FS:TJ>
-#else
-            // SL-20370 : Steeltoe Linden : 29/Sep/23
-            // Change "PDT" to "SLT" on menu bar
-            replacement = "SLT";
-#endif
+            const long offset = LLStringOps::getForMeTimeOffset();
+            const long minutes = std::abs(offset) / 60;
+            replacement = llformat("UTC%c%02ld:%02ld", offset < 0 ? '-' : '+', minutes / 60, minutes % 60);
         }
         return true;
     }
@@ -1659,7 +1635,7 @@ bool LLStringUtil::formatDatetime(std::string& replacement, std::string token,
 
     //if sWeekDayList is not empty than current locale doesn't support
         //weekday name.
-    time_t loc_seconds = (time_t) secFromEpoch;
+    time_t loc_seconds = (time_t) display_seconds;
     if(LLStringOps::sWeekDayList.size() == 7 && code == "%A")
     {
         struct tm * gmt = gmtime (&loc_seconds);
@@ -1972,3 +1948,4 @@ void LLStringUtilBase<T>::testHarness()
 
 
 #endif  // _DEBUG
+

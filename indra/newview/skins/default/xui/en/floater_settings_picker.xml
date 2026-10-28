@@ -8,7 +8,7 @@
         min_height="330"
         min_width="225"
         name="settings picker"
-        help_topic="settings_picker"
+       
         title="Select Settings"
         width="225">
 

@@ -30,7 +30,7 @@
 
 #include "llsd.h"
 
-/* Example:  secondlife:///app/foo/<uuid>
+/* Example:  fmw:///app/foo/<uuid>
    Command "foo" that takes one parameter, a UUID.
 
 class LLFooHandler : public LLCommandHandler
@@ -92,7 +92,7 @@ public:
                         const LLSD& query_map,
                         const std::string& grid,
                         LLMediaCtrl* web) = 0;
-        // For URL secondlife:///app/foo/bar/baz?cat=1&dog=2
+        // For URL fmw:///app/foo/bar/baz?cat=1&dog=2
         // @params - array of "bar", "baz", possibly empty
         // @query_map - map of "cat" -> 1, "dog" -> 2, possibly empty
         // @web - pointer to web browser control, possibly NULL

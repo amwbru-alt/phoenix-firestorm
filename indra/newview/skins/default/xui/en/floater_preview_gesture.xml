@@ -4,7 +4,7 @@
  height="475"
  layout="topleft"
  name="gesture_preview"
- help_topic="gesture_preview"
+
  positioning="centered"
  save_rect="true"
  width="280">

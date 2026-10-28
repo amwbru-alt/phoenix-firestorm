@@ -10,7 +10,7 @@
  layout="topleft"
  name="Destinations"
  single_instance="true"
- help_topic="destinations"
+
  save_rect="true"
  save_visibility="true"
  title="Destinations"

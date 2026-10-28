@@ -5,7 +5,7 @@
  layout="topleft"
  save_rect="true"
  name="change_item_thumbnail"
- help_topic="change_item_thumbnail"
+
  title="Change Item Image"
  width="319">
 

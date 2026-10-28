@@ -11,7 +11,7 @@
 	<menu_item_call label="Rimuovi dagli amici" name="remove_friend"/>
 	<menu_item_call label="Invita al gruppo" name="Invite"/>
 	<menu_item_call label="Mappa" name="Map"/>
-	<menu_item_call label="Condividi" name="Share"/>
+	<menu_item_call label="Condividi" name="Share" forme_creator_only="true"/>
 	<menu_item_call label="Paga" name="Pay"/>
 	<menu_item_check label="Blocca / Sblocca" name="Block/Unblock"/>
 </toggleable_menu>

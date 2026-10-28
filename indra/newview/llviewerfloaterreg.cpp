@@ -83,10 +83,7 @@
 #include "llfloatergodtools.h"
 #include "llfloatergridstatus.h"
 #include "llfloatergroups.h"
-#include "llfloaterhelpbrowser.h"
 #include "llfloaterhoverheight.h"
-#include "llfloaterhowto.h"
-#include "llfloaterhud.h"
 #include "llfloaterimagepreview.h"
 #include "llfloaterimsession.h"
 #include "llfloaterinspect.h"
@@ -241,7 +238,7 @@
 #include "omnifilter.h"               // Omnifilter support
 #include "fsfloateravataralign.h" // <FS:Chanayane> Compass floater
 
-// handle secondlife:///app/openfloater/{NAME} URLs
+// handle fmw:///app/openfloater/{NAME} URLs
 const std::string FLOATER_PROFILE("profile");
 class LLFloaterOpenHandler : public LLCommandHandler
 {
@@ -365,7 +362,7 @@ public:
         }
 
         const std::string floater_name = LLURI::unescape(params[0].asString());
-        // <FS:Zi> Support passing arguments to opened floater like secondlife:///app/openfloater/{NAME}?tab=msg&subtab=xyz
+        // <FS:Zi> Support passing arguments to opened floater like fmw:///app/openfloater/{NAME}?tab=msg&subtab=xyz
         //LLSD key;
         //if (floater_name == FLOATER_PROFILE)
         //{
@@ -470,9 +467,7 @@ void LLViewerFloaterReg::registerFloaters()
     LLFloaterReg::add("grid_status", "floater_grid_status.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<LLFloaterGridStatus>);
     LLFloaterReg::add("group_picker", "floater_choose_group.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<LLFloaterGroupPicker>);
 
-    LLFloaterReg::add("help_browser", "floater_help_browser.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<LLFloaterHelpBrowser>);
     LLFloaterReg::add("edit_hover_height", "floater_edit_hover_height.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<LLFloaterHoverHeight>);
-    LLFloaterReg::add("hud", "floater_hud.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<LLFloaterHUD>);
 
     // <FS:Ansariel> [FS communication UI]
     //LLFloaterReg::add("impanel", "floater_im_session.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<LLFloaterIMSession>);
@@ -610,7 +605,6 @@ void LLViewerFloaterReg::registerFloaters()
     //LLFloaterReg::add("search", "floater_search.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<LLFloaterSearch>);
     LLFloaterReg::add("legacy_search", "floater_directory.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<LLFloaterDirectory>);
     LLFloaterReg::add("profile", "floater_profile.xml",(LLFloaterBuildFunc)&LLFloaterReg::build<LLFloaterProfile>);
-    LLFloaterReg::add("guidebook", "floater_how_to.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<LLFloaterHowTo>);
     LLFloaterReg::add("slapp_test", "floater_test_slapp.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<LLFloaterSLappTest>);
 
     LLFloaterUIPreviewUtil::registerFloater();

@@ -6,7 +6,6 @@ height="390"
 label="Clouds"
 layout="topleft"
 left="0"
-help_topic="fs_skies"
 name="panel_fs_settings_sky_clouds"
 top="0">
 

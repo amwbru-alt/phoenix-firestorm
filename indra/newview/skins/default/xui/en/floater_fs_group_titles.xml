@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <floater
  name="group_titles"
- help_topic="fs_group_titles"
+
  title="Group Titles"
  width="505"
  height="340"

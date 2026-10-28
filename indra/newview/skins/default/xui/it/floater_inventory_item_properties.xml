@@ -41,26 +41,26 @@
 	<check_box label="Modificare" name="CheckOwnerModify"/>
 	<check_box label="Copiare" name="CheckOwnerCopy"/>
 	<check_box label="Trasferire" name="CheckOwnerTransfer"/>
-	<check_box label="Esportare" name="CheckOwnerExport"/>
+	<check_box label="Esportare" name="CheckOwnerExport" forme_creator_only="true"/>
 	<text name="AnyoneLabel">
 		Chiunque:
 	</text>
-	<check_box label="Copiare" name="CheckEveryoneCopy"/>
+	<check_box label="Copiare" name="CheckEveryoneCopy" forme_creator_only="true"/>
 	<text name="GroupLabel">
 		Gruppo:
 	</text>
-	<check_box label="Condividere" name="CheckShareWithGroup"/>
+	<check_box label="Condividere" name="CheckShareWithGroup" forme_creator_only="true"/>
 	<text name="NextOwnerLabel" width="230">
 		Proprietario successivo:
 	</text>
-	<check_box label="Modificare" name="CheckNextOwnerModify"/>
-	<check_box label="Copiare" name="CheckNextOwnerCopy"/>
-	<check_box label="Trasferire" name="CheckNextOwnerTransfer"/>
-	<check_box label="In vendita" name="CheckPurchase"/>
-	<combo_box name="ComboBoxSaleType">
+	<check_box label="Modificare" name="CheckNextOwnerModify" forme_creator_only="true"/>
+	<check_box label="Copiare" name="CheckNextOwnerCopy" forme_creator_only="true"/>
+	<check_box label="Trasferire" name="CheckNextOwnerTransfer" forme_creator_only="true"/>
+	<check_box label="In vendita" name="CheckPurchase" forme_creator_only="true"/>
+	<combo_box name="ComboBoxSaleType" forme_creator_only="true">
 		<combo_box.item label="Copia" name="Copy"/>
 		<combo_box.item label="Contenuti" name="Contents"/>
 		<combo_box.item label="Originale" name="Original"/>
 	</combo_box>
-	<spinner label="Prezzo:" name="Edit Cost"/>
+	<spinner label="Prezzo:" name="Edit Cost" forme_creator_only="true"/>
 </floater>

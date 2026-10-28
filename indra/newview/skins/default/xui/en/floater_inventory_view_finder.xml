@@ -8,7 +8,7 @@
  height="606"
  layout="topleft"
  name="Inventory Finder"
- help_topic="inventory_finder"
+
  title="Inventory Recent Items"
  width="170">
     <!-- </FS:minerjr> [FIRE-35042] -->

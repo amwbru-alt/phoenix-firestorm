@@ -8,7 +8,7 @@
      label="Share"
      layout="topleft"
      name="Share"
-     visible="true">
+     visible="true" forme_creator_only="true">
         <menu_item_call.on_click
          function="Inventory.Share" />
     </menu_item_call>
@@ -103,7 +103,7 @@
     <menu_item_call
      label="New Script"
      layout="topleft"
-     name="New Script">
+     name="New Script" forme_creator_only="true">
         <menu_item_call.on_click
          function="Inventory.DoCreate"
          parameter="lsl" />
@@ -111,7 +111,7 @@
     <menu_item_call
      label="New Notecard"
      layout="topleft"
-     name="New Note">
+     name="New Note" forme_creator_only="true">
         <menu_item_call.on_click
          function="Inventory.DoCreate"
          parameter="notecard" />
@@ -119,7 +119,7 @@
     <menu_item_call
      label="New Gesture"
      layout="topleft"
-     name="New Gesture">
+     name="New Gesture" forme_creator_only="true">
         <menu_item_call.on_click
          function="Inventory.DoCreate"
          parameter="gesture" />
@@ -127,7 +127,7 @@
     <menu_item_call
        label="New Material"
        layout="topleft"
-       name="New Material">
+       name="New Material" forme_creator_only="true">
       <menu_item_call.on_click
        function="Inventory.DoCreate"
        parameter="material" />
@@ -318,7 +318,7 @@
     <menu
      label="Use as default for"
      layout="topleft"
-     name="upload_def">
+     name="upload_def" forme_creator_only="true">
       <menu_item_check
        label="Image uploads"
        layout="topleft"
@@ -1057,7 +1057,7 @@
 	<menu_item_call
         label="Create listing"
         layout="topleft"
-        name="Marketplace Create Listing">
+        name="Marketplace Create Listing" forme_creator_only="true">
 		<menu_item_call.on_click
         function="Inventory.DoToSelected"
         parameter="marketplace_create_listing" />
@@ -1065,7 +1065,7 @@
 	<menu_item_call
         label="Associate listing"
         layout="topleft"
-        name="Marketplace Associate Listing">
+        name="Marketplace Associate Listing" forme_creator_only="true">
 		<menu_item_call.on_click
         function="Inventory.DoToSelected"
         parameter="marketplace_associate_listing" />
@@ -1073,7 +1073,7 @@
 	<menu_item_call
         label="Get (Refresh) listing"
         layout="topleft"
-        name="Marketplace Get Listing">
+        name="Marketplace Get Listing" forme_creator_only="true">
 		<menu_item_call.on_click
         function="Inventory.DoToSelected"
         parameter="marketplace_get_listing" />
@@ -1081,7 +1081,7 @@
 	<menu_item_call
         label="Check for errors"
         layout="topleft"
-        name="Marketplace Check Listing">
+        name="Marketplace Check Listing" forme_creator_only="true">
 		<menu_item_call.on_click
         function="Inventory.DoToSelected"
         parameter="marketplace_check_listing" />
@@ -1089,7 +1089,7 @@
 	<menu_item_call
         label="Edit listing"
         layout="topleft"
-        name="Marketplace Edit Listing">
+        name="Marketplace Edit Listing" forme_creator_only="true">
 		<menu_item_call.on_click
         function="Inventory.DoToSelected"
         parameter="marketplace_edit_listing" />
@@ -1097,7 +1097,7 @@
 	<menu_item_call
         label="List"
         layout="topleft"
-        name="Marketplace List">
+        name="Marketplace List" forme_creator_only="true">
 		<menu_item_call.on_click
         function="Inventory.DoToSelected"
         parameter="marketplace_list" />
@@ -1105,7 +1105,7 @@
 	<menu_item_call
         label="Unlist"
         layout="topleft"
-        name="Marketplace Unlist">
+        name="Marketplace Unlist" forme_creator_only="true">
 		<menu_item_call.on_click
         function="Inventory.DoToSelected"
         parameter="marketplace_unlist" />
@@ -1113,7 +1113,7 @@
 	<menu_item_call
         label="Activate"
         layout="topleft"
-        name="Marketplace Activate">
+        name="Marketplace Activate" forme_creator_only="true">
 		<menu_item_call.on_click
         function="Inventory.DoToSelected"
         parameter="marketplace_activate" />
@@ -1121,7 +1121,7 @@
 	<menu_item_call
         label="Deactivate"
         layout="topleft"
-        name="Marketplace Deactivate">
+        name="Marketplace Deactivate" forme_creator_only="true">
 		<menu_item_call.on_click
         function="Inventory.DoToSelected"
         parameter="marketplace_deactivate" />
@@ -1129,7 +1129,7 @@
 	<menu_item_call
         label="Copy to Marketplace Listings"
         layout="topleft"
-        name="Marketplace Copy">
+        name="Marketplace Copy" forme_creator_only="true">
 		<menu_item_call.on_click
         function="Inventory.DoToSelected"
         parameter="copy_to_marketplace_listings" />
@@ -1137,7 +1137,7 @@
 	<menu_item_call
         label="Move to Marketplace Listings"
         layout="topleft"
-        name="Marketplace Move">
+        name="Marketplace Move" forme_creator_only="true">
 		<menu_item_call.on_click
         function="Inventory.DoToSelected"
         parameter="move_to_marketplace_listings" />

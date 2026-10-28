@@ -8,7 +8,7 @@
  layout="topleft"
  name="floater_combo"
  title="floater_combo"
- help_topic="floater_combo"
+
  can_resize="false"
  can_minimize="false">
     <text

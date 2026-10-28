@@ -173,7 +173,7 @@
      height="533"
      left="0"
      top="4"
-     help_topic="place_profile"
+    
      name="panel_place_profile"
      visible="false"
      width="313" />
@@ -185,7 +185,7 @@
      height="533"
      left="0"
      top="4"
-     help_topic="landmark"
+    
      name="panel_landmark_info"
      visible="false"
      width="313" />

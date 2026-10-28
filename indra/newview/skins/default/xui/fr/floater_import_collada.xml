@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="Import Collada" title="Importer une scène">
+<floater name="Import Collada" title="Importer une scène" forme_creator_only="true">
 	<text name="mesh count">Maillages : [COUNT]</text>
 	<text name="texture count">Textures : [COUNT]</text>
 	<text name="status">État : [STATUS]</text>

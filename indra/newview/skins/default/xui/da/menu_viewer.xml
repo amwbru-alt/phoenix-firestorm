@@ -62,18 +62,18 @@
 			<menu_item_call label="Redigering af omgivelser" name="Environment Editor"/>
 		</menu>
 	</menu>
-	<menu label="Byg" name="BuildTools">
-		<menu_item_check label="Byg" name="Show Build Tools"/>
+	<menu label="Byg" name="BuildTools" forme_creator_only="true">
+		<menu_item_check label="Byg" name="Show Build Tools" forme_creator_only="true"/>
 		<menu label="Vælg byggerværktøj" name="Select Tool">
-			<menu_item_call label="Fokus værktøj" name="Focus"/>
-			<menu_item_call label="Flyt værktøj" name="Move"/>
-			<menu_item_call label="Redigeringsværktøj" name="Edit"/>
-			<menu_item_call label="Byg værktøj" name="Create"/>
-			<menu_item_call label="Land værktøj" name="Land"/>
+			<menu_item_call label="Fokus værktøj" name="Focus" forme_creator_only="true"/>
+			<menu_item_call label="Flyt værktøj" name="Move" forme_creator_only="true"/>
+			<menu_item_call label="Redigeringsværktøj" name="Edit" forme_creator_only="true"/>
+			<menu_item_call label="Byg værktøj" name="Create" forme_creator_only="true"/>
+			<menu_item_call label="Land værktøj" name="Land" forme_creator_only="true"/>
 		</menu>
-		<menu_item_call label="Sammenkæd" name="Link"/>
-		<menu_item_call label="Adskil" name="Unlink"/>
-		<menu_item_check label="Redigér sammekædede objekter" name="Edit Linked Parts"/>
+		<menu_item_call label="Sammenkæd" name="Link" forme_creator_only="true"/>
+		<menu_item_call label="Adskil" name="Unlink" forme_creator_only="true"/>
+		<menu_item_check label="Redigér sammekædede objekter" name="Edit Linked Parts" forme_creator_only="true"/>
 		<menu label="Vis lænkede dele" name="Select Linked Parts">
 			<menu_item_call label="Vælg næste del" name="Select Next Part"/>
 			<menu_item_call label="Vælg forrige del" name="Select Previous Part"/>
@@ -85,17 +85,17 @@
 		<menu label="Objekt" name="Object">
 			<menu_item_call label="Køb" name="Menu Object Buy"/>
 			<menu_item_call label="Tag" name="Menu Object Take"/>
-			<menu_item_call label="Tag kopi" name="Take Copy"/>
+			<menu_item_call label="Tag kopi" name="Take Copy" forme_creator_only="true"/>
 			<menu_item_call label="Opdatér ændringer til beholdning" name="Save Object Back to My Inventory"/>
-			<menu_item_call label="Opdater ændringer i indhold til objekt" name="Save Object Back to Object Contents"/>
-			<menu_item_call label="Returnér objekt" name="Return Object back to Owner"/>
+			<menu_item_call label="Opdater ændringer i indhold til objekt" name="Save Object Back to Object Contents" forme_creator_only="true"/>
+			<menu_item_call label="Returnér objekt" name="Return Object back to Owner" forme_creator_only="true"/>
 		</menu>
 		<menu label="Scripts" name="Scripts">
-			<menu_item_call label="Genoversæt scripts (Mono)" name="Mono"/>
-			<menu_item_call label="Genoversæt scripts (LSL)" name="LSL"/>
-			<menu_item_call label="Genstart scripts" name="Reset Scripts"/>
-			<menu_item_call label="Sæt scripts til &quot;Running&quot;" name="Set Scripts to Running"/>
-			<menu_item_call label="Sæt scripts til &quot;Not Running&quot;" name="Set Scripts to Not Running"/>
+			<menu_item_call label="Genoversæt scripts (Mono)" name="Mono" forme_creator_only="true"/>
+			<menu_item_call label="Genoversæt scripts (LSL)" name="LSL" forme_creator_only="true"/>
+			<menu_item_call label="Genstart scripts" name="Reset Scripts" forme_creator_only="true"/>
+			<menu_item_call label="Sæt scripts til &quot;Running&quot;" name="Set Scripts to Running" forme_creator_only="true"/>
+			<menu_item_call label="Sæt scripts til &quot;Not Running&quot;" name="Set Scripts to Not Running" forme_creator_only="true"/>
 		</menu>
 		<menu label="Valg" name="Options">
 			<menu_item_check label="Vis avancerede rettigheder" name="DebugPermissions"/>
@@ -108,30 +108,23 @@
 			<menu_item_check label="Vis pejlelys for valgte" name="Show Selection Beam"/>
 			<menu_item_check label="Fremhæv gennemsigtigt" name="Highlight Transparent"/>
 			<menu_item_check label="Ret ind til gitter" name="Snap to Grid"/>
-			<menu_item_call label="Ret XY for objekt ind til gitter" name="Snap Object XY to Grid"/>
+			<menu_item_call label="Ret XY for objekt ind til gitter" name="Snap Object XY to Grid" forme_creator_only="true"/>
 			<menu_item_call label="Benyt valgte som grundlag for gitter" name="Use Selection for Grid"/>
-			<menu_item_call label="Gitter indstillinger..." name="Grid Options"/>
+			<menu_item_call label="Gitter indstillinger..." name="Grid Options" forme_creator_only="true"/>
 			<menu_item_call label="Sæt standardværdier for rettigheder..." name="Set default permissions"/>
 		</menu>
-		<menu label="Send" name="Upload">
-			<menu_item_call label="Billede..." name="Upload Image"/>
-			<menu_item_call label="Lyd (L$[COST])..." name="Upload Sound"/>
-			<menu_item_call label="Animation (L$[COST])..." name="Upload Animation"/>
-			<menu_item_call label="Model..." name="Upload Model"/>
+		<menu label="Send" name="Upload" forme_creator_only="true">
+			<menu_item_call label="Billede..." name="Upload Image" forme_creator_only="true"/>
+			<menu_item_call label="Lyd (L$[COST])..." name="Upload Sound" forme_creator_only="true"/>
+			<menu_item_call label="Animation (L$[COST])..." name="Upload Animation" forme_creator_only="true"/>
+			<menu_item_call label="Model..." name="Upload Model" forme_creator_only="true"/>
 			<menu_item_call label="Model Wizard..." name="Upload Model Wizard"/>
-			<menu_item_call label="Mange..." name="Bulk Upload"/>
+			<menu_item_call label="Mange..." name="Bulk Upload" forme_creator_only="true"/>
 		</menu>
 		<menu_item_call label="Fortyd" name="Undo"/>
 		<menu_item_call label="Gendan" name="Redo"/>
 	</menu>
-	<menu label="Hjælp" name="Help">
-		<menu_item_call label="[CURRENT_GRID] Help" name="current_grid_help"/>
-		<menu_item_check label="Aktiver tips" name="Enable Hints"/>
-		<menu_item_call label="Rapporter misbrug" name="Report Abuse"/>
-		<menu_item_call label="Rapportér fejl" name="Report Bug"/>
-		<menu_item_call label="Stød, skub &amp; slag" name="Bumps, Pushes &amp;amp; Hits"/>
-		<menu_item_call label="Om [APP_NAME]" name="About Second Life"/>
-	</menu>
+	
 	<menu label="Avanceret" name="Advanced">
 		<menu_item_call label="Gendan teksturer" name="Rebake Texture"/>
 		<menu_item_call label="Sæt UI størrelse til standard" name="Set UI Size to Default"/>
@@ -312,11 +305,11 @@
 	</menu>
 	<menu label="Administrér" name="Admin">
 		<menu label="Object" name="AdminObject">
-			<menu_item_call label="Tag kopi" name="Admin Take Copy"/>
-			<menu_item_call label="Gennemtving ejer til mig" name="Force Owner To Me"/>
-			<menu_item_call label="Gennemtving ejer tolerance" name="Force Owner Permissive"/>
-			<menu_item_call label="Slet" name="Delete"/>
-			<menu_item_call label="Lås" name="Lock"/>
+			<menu_item_call label="Tag kopi" name="Admin Take Copy" forme_creator_only="true"/>
+			<menu_item_call label="Gennemtving ejer til mig" name="Force Owner To Me" forme_creator_only="true"/>
+			<menu_item_call label="Gennemtving ejer tolerance" name="Force Owner Permissive" forme_creator_only="true"/>
+			<menu_item_call label="Slet" name="Delete" forme_creator_only="true"/>
+			<menu_item_call label="Lås" name="Lock" forme_creator_only="true"/>
 		</menu>
 		<menu label="Parcel" name="Parcel">
 			<menu_item_call label="Sæt ejer til &quot;mig&quot;" name="Owner To Me"/>

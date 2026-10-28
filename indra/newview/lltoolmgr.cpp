@@ -25,6 +25,8 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fsmarketplacelistings.h"
+#include "fscreatoraccess.h"
 
 #include "lltoolmgr.h"
 
@@ -282,6 +284,19 @@ LLTool* LLToolMgr::getCurrentTool()
         cur_tool = mOverrideTool ? mOverrideTool : mBaseTool;
     }
 
+    // Revoke active manipulation tools without interrupting camera, movement,
+    // ordinary touch, inspection or avatar appearance editing.
+    if (!ForMeCreatorAccess::allowed() &&
+        ((LLToolCompCreate::instanceExists() && cur_tool == LLToolCompCreate::getInstance()) || (LLToolCompTranslate::instanceExists() && cur_tool == LLToolCompTranslate::getInstance()) ||
+         (LLToolCompRotate::instanceExists() && cur_tool == LLToolCompRotate::getInstance()) || (LLToolCompScale::instanceExists() && cur_tool == LLToolCompScale::getInstance()) ||
+         (LLToolBrushLand::instanceExists() && cur_tool == LLToolBrushLand::getInstance()) || (LLToolFace::instanceExists() && cur_tool == LLToolFace::getInstance())))
+    {
+        cur_tool = LLToolPie::getInstance();
+        mBaseTool = cur_tool;
+        mTransientTool = nullptr;
+        mOverrideTool = nullptr;
+    }
+
     LLTool* prev_tool = mSelectedTool;
     // Set the selected tool to avoid infinite recursion
     mSelectedTool = cur_tool;
@@ -334,6 +349,8 @@ bool LLToolMgr::inEdit()
 
 bool LLToolMgr::canEdit()
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
 // [RLVa:KB] - Patch: RLVa-2.1.0
     return LLViewerParcelMgr::getInstance()->allowAgentBuild() && RlvActions::canBuild();
 // [/RLVa:KB]
@@ -342,11 +359,15 @@ bool LLToolMgr::canEdit()
 
 bool LLToolMgr::buildEnabledOrActive()
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     return LLFloaterReg::instanceVisible("build") || canEdit();
 }
 
 void LLToolMgr::toggleBuildMode(const LLSD& sdname)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
 //  const std::string& param = sdname.asString();
 //
 //  LLFloaterReg::toggleInstanceOrBringToFront("build");
@@ -469,7 +490,8 @@ bool LLToolMgr::inBuildMode()
 
 bool LLToolMgr::canAccessMarketplace()
 {
-    return (LLMarketplaceData::instance().getSLMStatus() != MarketplaceStatusCodes::MARKET_PLACE_NOT_MIGRATED_MERCHANT);
+    return ForMeMarketplace::available()
+        && LLMarketplaceData::instance().getSLMStatus() == MarketplaceStatusCodes::MARKET_PLACE_MERCHANT;
 }
 
 void LLToolMgr::toggleMarketplace(const LLSD& sdname)

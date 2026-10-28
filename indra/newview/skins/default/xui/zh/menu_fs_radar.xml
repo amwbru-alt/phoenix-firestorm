@@ -18,7 +18,7 @@
 		<menu_item_call label="清除標記" name="Clear Mark" />
 		<menu_item_call label="清除所有標記" name="Clear Marks" />
 	</menu>
-	<menu_item_call label="分享" name="Share" />
+	<menu_item_call label="分享" name="Share"  forme_creator_only="true"/>
 	<menu_item_call label="支付" name="Pay" />
 	<menu_item_call label="傳送瞬間傳送邀請" name="teleport" />
 	<menu_item_call label="請求瞬間傳送" name="request_teleport" />

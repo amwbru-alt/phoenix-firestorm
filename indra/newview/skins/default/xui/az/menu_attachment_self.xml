@@ -2,11 +2,11 @@
 <context_menu name="Attachment Pie">
 	<menu_item_call label="Toxun" name="Attachment Object Touch"/>
 	<menu_item_call label="Avadanlıq siyahısında göstər" name="Show original"/>
-	<menu_item_call label="Dəyişdir" name="Edit..."/>
+	<menu_item_call label="Dəyişdir" name="Edit..." forme_creator_only="true"/>
 	<menu_item_call label="Ayır" name="Detach"/>
-	<context_menu label="Ayrı saxla" name="Export Menu">
-		<menu_item_call label="Backup" name="Backup"/>
-		<menu_item_call label="Collada" name="Collada"/>
+	<context_menu label="Ayrı saxla" name="Export Menu" forme_creator_only="true">
+		<menu_item_call label="Backup" name="Backup" forme_creator_only="true"/>
+		<menu_item_call label="Collada" name="Collada" forme_creator_only="true"/>
 	</context_menu>
 	<menu_item_call label="Otur" name="Sit Down Here"/>
 	<menu_item_call label="Dur" name="Stand Up"/>

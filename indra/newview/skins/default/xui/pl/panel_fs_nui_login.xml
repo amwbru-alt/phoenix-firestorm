@@ -33,9 +33,7 @@
 				<layout_panel name="2nd_row">
 					<layout_stack name="2nd_row_stack">
 						<layout_panel name="grid_panel">
-							<text name="grid_login_text" width="55">
-								Świat:
-							</text>
+							
 							<text name="grid_builder_text">
 								+ Kliknij, by dodać światy
 							</text>
@@ -44,7 +42,7 @@
 							<text name="mode_selection_text">
 								Tryb:
 							</text>
-							<combo_box tool_tip="Wybierz ten tryb ustawień, z którym jesteś najbardziej obeznany/a, aby Firestorm mógł dobrać odpowiednie ustawienia domyślne." name="mode_combo">
+							<combo_box tool_tip="Wybierz ten tryb ustawień, z którym jesteś najbardziej obeznany/a, aby ForMe.World mógł dobrać odpowiednie ustawienia domyślne." name="mode_combo">
 								<combo_box.item label="Nowoczesny" name="Modern" />
 								<combo_box.item label="Hybrydowy" name="Hybrid" />
 								<combo_box.item label="Tekstowy" name="Text" />

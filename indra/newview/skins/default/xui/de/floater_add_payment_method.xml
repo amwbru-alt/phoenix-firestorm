@@ -7,7 +7,7 @@
 		<button label="Loslegen" name="continue_btn"/>
 		<button label="Später" name="close_btn"/>
 		<text name="image_left_desc">
-			Erstellen Sie einen Avatar, den Sie lieben. Wählen Sie von Millionen von Gegenständen in Geschäften und dem Second Life Marktplatz. Ihr Style ist hier.
+			Erstellen Sie einen Avatar, den Sie lieben. Wählen Sie von Millionen von Gegenständen in Geschäften und dem ForMe.World Marktplatz. Ihr Style ist hier.
 		</text>
 		<text name="image_center_desc">
 			Spenden Sie an Ihre favorisierten Künstler und Gastgeber. Ihre Unterstützung hilft ihnen, großartige Erlebnisse zu gestalten.

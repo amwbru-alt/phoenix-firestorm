@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fscreatoraccess.h"
 #include "lltooldraganddrop.h"
 
 // library headers
@@ -1177,6 +1178,8 @@ void LLToolDragAndDrop::dropTextureAllFaces(LLViewerObject* hit_obj,
                                             const LLUUID& src_id,
                                             bool remove_pbr)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     if (!item)
     {
         LL_WARNS() << "LLToolDragAndDrop::dropTextureAllFaces no texture item." << LL_ENDL;
@@ -1242,6 +1245,8 @@ void LLToolDragAndDrop::dropMaterial(LLViewerObject* hit_obj,
                                      const LLUUID& src_id,
                                      bool all_faces)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     LLSelectNode* nodep = nullptr;
     if (hit_obj->isSelected())
     {
@@ -1291,6 +1296,8 @@ void LLToolDragAndDrop::dropMaterialOneFace(LLViewerObject* hit_obj,
     LLToolDragAndDrop::ESource source,
     const LLUUID& src_id)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     if (hit_face == -1) return;
     if (!item || item->getInventoryType() != LLInventoryType::IT_MATERIAL)
     {
@@ -1409,6 +1416,8 @@ void LLToolDragAndDrop::dropMaterialAllFaces(LLViewerObject* hit_obj,
     LLToolDragAndDrop::ESource source,
     const LLUUID& src_id)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     if (!item || item->getInventoryType() != LLInventoryType::IT_MATERIAL)
     {
         LL_WARNS() << "LLToolDragAndDrop::dropTextureAllFaces no material item." << LL_ENDL;
@@ -1570,6 +1579,8 @@ void LLToolDragAndDrop::dropMesh(LLViewerObject* hit_obj,
                                  LLToolDragAndDrop::ESource source,
                                  const LLUUID& src_id)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     if (!item)
     {
         LL_WARNS() << "no inventory item." << LL_ENDL;
@@ -1598,6 +1609,8 @@ void LLToolDragAndDrop::dropTexture(LLViewerObject* hit_obj,
                                     bool remove_pbr,
                                     S32 tex_channel)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     LLSelectNode* nodep = nullptr;
     if (hit_obj->isSelected())
     {
@@ -1707,6 +1720,8 @@ void LLToolDragAndDrop::dropTextureOneFace(LLViewerObject* hit_obj,
                                            bool remove_pbr,
                                            S32 tex_channel)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     if (hit_face == -1) return;
     if (!item)
     {
@@ -1831,6 +1846,8 @@ void LLToolDragAndDrop::dropScript(LLViewerObject* hit_obj,
                                    ESource source,
                                    const LLUUID& src_id)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     // *HACK: In order to resolve SL-22177, we need to block drags
     // from notecards and objects onto other objects.
     if ((SOURCE_WORLD == LLToolDragAndDrop::getInstance()->mSource)
@@ -1889,6 +1906,8 @@ void LLToolDragAndDrop::dropObject(LLViewerObject* raycast_target,
                    bool from_task_inventory,
                    bool remove_from_inventory)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     LLViewerRegion* regionp = LLWorld::getInstance()->getRegionFromPosGlobal(mLastHitPos);
     if (!regionp)
     {
@@ -2066,6 +2085,8 @@ void LLToolDragAndDrop::dropInventory(LLViewerObject* hit_obj,
                                       LLToolDragAndDrop::ESource source,
                                       const LLUUID& src_id)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     // *HACK: In order to resolve SL-22177, we need to block drags
     // from notecards and objects onto other objects.
     if ((SOURCE_WORLD == LLToolDragAndDrop::getInstance()->mSource)
@@ -2130,6 +2151,8 @@ void LLToolDragAndDrop::dropInventory(LLViewerObject* hit_obj,
 // inventory items to determine if a drop would be ok.
 EAcceptance LLToolDragAndDrop::willObjectAcceptInventory(LLViewerObject* obj, LLInventoryItem* item, EDragAndDropType type)
 {
+    if (!ForMeCreatorAccess::allowed()) return ACCEPT_NO; // <FS:ForMe> Owner/designer only.
+
     // check the basics
     if (!item || !obj)
         return ACCEPT_NO;
@@ -2311,6 +2334,8 @@ bool LLToolDragAndDrop::handleGiveDragAndDrop(LLUUID dest_agent, LLUUID session_
                                               EAcceptance* accept,
                                               const LLSD& dest)
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
 // [RLVa:KB] - @share
     if ( (RlvActions::isRlvEnabled()) && (!RlvActions::canGiveInventory(dest_agent)) )
     {
@@ -2485,6 +2510,8 @@ EAcceptance LLToolDragAndDrop::dad3dRezAttachmentFromInv(
 EAcceptance LLToolDragAndDrop::dad3dRezObjectOnLand(
     LLViewerObject* obj, S32 face, MASK mask, bool drop)
 {
+    if (!ForMeCreatorAccess::allowed()) return ACCEPT_NO; // <FS:ForMe> Owner/designer only.
+
 // [RLVa:KB] - Checked: 2010-03-23 (RLVa-1.2.0e) | Modified: RLVa-1.1.0l
     // RELEASE-RLVa: [SL-2.2.0] Make sure the code below is the only code path to LLToolDragAndDrop::dad3dRezFromObjectOnLand()
     if ( (rlv_handler_t::isEnabled()) && ((gRlvHandler.hasBehaviour(RLV_BHVR_REZ)) || (gRlvHandler.hasBehaviour(RLV_BHVR_INTERACT))) )
@@ -2554,6 +2581,8 @@ EAcceptance LLToolDragAndDrop::dad3dRezObjectOnLand(
 EAcceptance LLToolDragAndDrop::dad3dRezObjectOnObject(
     LLViewerObject* obj, S32 face, MASK mask, bool drop)
 {
+    if (!ForMeCreatorAccess::allowed()) return ACCEPT_NO; // <FS:ForMe> Owner/designer only.
+
 // [RLVa:KB] - Checked: 2010-03-23 (RLVa-1.2.0e) | Modified: RLVa-1.1.0l
     // NOTE: if (mask & MASK_CONTROL) then it's a drop rather than a rez, so we let that pass through when @rez=n restricted
     // (but not when @interact=n restricted unless the drop target is a HUD attachment)
@@ -2644,6 +2673,8 @@ EAcceptance LLToolDragAndDrop::dad3dRezObjectOnObject(
 EAcceptance LLToolDragAndDrop::dad3dRezScript(
     LLViewerObject* obj, S32 face, MASK mask, bool drop)
 {
+    if (!ForMeCreatorAccess::allowed()) return ACCEPT_NO; // <FS:ForMe> Owner/designer only.
+
     LL_DEBUGS() << "LLToolDragAndDrop::dad3dRezScript()" << LL_ENDL;
 
     // *HACK: In order to resolve SL-22177, we need to block drags
@@ -2723,6 +2754,8 @@ bool is_water_exclusion_surface(LLViewerObject* obj, S32 face, bool all_faces)
 EAcceptance LLToolDragAndDrop::dad3dApplyToObject(
     LLViewerObject* obj, S32 face, MASK mask, bool drop, EDragAndDropType cargo_type)
 {
+    if (!ForMeCreatorAccess::allowed()) return ACCEPT_NO; // <FS:ForMe> Owner/designer only.
+
     LL_DEBUGS() << "LLToolDragAndDrop::dad3dApplyToObject()" << LL_ENDL;
 
     // *HACK: In order to resolve SL-22177, we need to block drags
@@ -3041,6 +3074,8 @@ EAcceptance LLToolDragAndDrop::dad3dWearCategory(
 EAcceptance LLToolDragAndDrop::dad3dUpdateInventory(
     LLViewerObject* obj, S32 face, MASK mask, bool drop)
 {
+    if (!ForMeCreatorAccess::allowed()) return ACCEPT_NO; // <FS:ForMe> Owner/designer only.
+
     LL_DEBUGS() << "LLToolDragAndDrop::dadUpdateInventory()" << LL_ENDL;
 
     // *HACK: In order to resolve SL-22177, we need to block drags
@@ -3084,6 +3119,8 @@ bool LLToolDragAndDrop::dadUpdateInventory(LLViewerObject* obj, bool drop)
 EAcceptance LLToolDragAndDrop::dad3dUpdateInventoryCategory(
     LLViewerObject* obj, S32 face, MASK mask, bool drop)
 {
+    if (!ForMeCreatorAccess::allowed()) return ACCEPT_NO; // <FS:ForMe> Owner/designer only.
+
     LL_DEBUGS() << "LLToolDragAndDrop::dad3dUpdateInventoryCategory()" << LL_ENDL;
     if (obj == NULL)
     {
@@ -3200,6 +3237,8 @@ EAcceptance LLToolDragAndDrop::dad3dUpdateInventoryCategory(
 EAcceptance LLToolDragAndDrop::dad3dRezCategoryOnObject(
     LLViewerObject* obj, S32 face, MASK mask, bool drop)
 {
+    if (!ForMeCreatorAccess::allowed()) return ACCEPT_NO; // <FS:ForMe> Owner/designer only.
+
     if ((mask & MASK_CONTROL))
     {
         return dad3dUpdateInventoryCategory(obj, face, mask, drop);
@@ -3221,6 +3260,8 @@ bool LLToolDragAndDrop::dadUpdateInventoryCategory(LLViewerObject* obj,
 EAcceptance LLToolDragAndDrop::dad3dGiveInventoryObject(
     LLViewerObject* obj, S32 face, MASK mask, bool drop)
 {
+    if (!ForMeCreatorAccess::allowed()) return ACCEPT_NO; // <FS:ForMe> Owner/designer only.
+
     LL_DEBUGS() << "LLToolDragAndDrop::dad3dGiveInventoryObject()" << LL_ENDL;
 
     // item has to be in agent inventory.
@@ -3265,6 +3306,8 @@ EAcceptance LLToolDragAndDrop::dad3dGiveInventoryObject(
 EAcceptance LLToolDragAndDrop::dad3dGiveInventory(
     LLViewerObject* obj, S32 face, MASK mask, bool drop)
 {
+    if (!ForMeCreatorAccess::allowed()) return ACCEPT_NO; // <FS:ForMe> Owner/designer only.
+
     LL_DEBUGS() << "LLToolDragAndDrop::dad3dGiveInventory()" << LL_ENDL;
     // item has to be in agent inventory.
     if(mSource != SOURCE_AGENT) return ACCEPT_NO;
@@ -3294,6 +3337,8 @@ EAcceptance LLToolDragAndDrop::dad3dGiveInventory(
 EAcceptance LLToolDragAndDrop::dad3dGiveInventoryCategory(
     LLViewerObject* obj, S32 face, MASK mask, bool drop)
 {
+    if (!ForMeCreatorAccess::allowed()) return ACCEPT_NO; // <FS:ForMe> Owner/designer only.
+
     LL_DEBUGS() << "LLToolDragAndDrop::dad3dGiveInventoryCategory()" << LL_ENDL;
 // [RLVa:KB] - @share
     if ( (obj) && (RlvActions::isRlvEnabled()) && (!RlvActions::canGiveInventory(obj->getID())) )
@@ -3318,6 +3363,8 @@ EAcceptance LLToolDragAndDrop::dad3dGiveInventoryCategory(
 EAcceptance LLToolDragAndDrop::dad3dRezFromObjectOnLand(
     LLViewerObject* obj, S32 face, MASK mask, bool drop)
 {
+    if (!ForMeCreatorAccess::allowed()) return ACCEPT_NO; // <FS:ForMe> Owner/designer only.
+
     LL_DEBUGS() << "LLToolDragAndDrop::dad3dRezFromObjectOnLand()" << LL_ENDL;
     LLViewerInventoryItem* item = NULL;
     LLViewerInventoryCategory* cat = NULL;
@@ -3339,6 +3386,8 @@ EAcceptance LLToolDragAndDrop::dad3dRezFromObjectOnLand(
 EAcceptance LLToolDragAndDrop::dad3dRezFromObjectOnObject(
     LLViewerObject* obj, S32 face, MASK mask, bool drop)
 {
+    if (!ForMeCreatorAccess::allowed()) return ACCEPT_NO; // <FS:ForMe> Owner/designer only.
+
     LL_DEBUGS() << "LLToolDragAndDrop::dad3dRezFromObjectOnObject()" << LL_ENDL;
     LLViewerInventoryItem* item;
     LLViewerInventoryCategory* cat;
@@ -3374,6 +3423,8 @@ EAcceptance LLToolDragAndDrop::dad3dRezFromObjectOnObject(
 EAcceptance LLToolDragAndDrop::dad3dCategoryOnLand(
     LLViewerObject *obj, S32 face, MASK mask, bool drop)
 {
+    if (!ForMeCreatorAccess::allowed()) return ACCEPT_NO; // <FS:ForMe> Owner/designer only.
+
     return ACCEPT_NO;
     /*
     LL_DEBUGS() << "LLToolDragAndDrop::dad3dCategoryOnLand()" << LL_ENDL;
@@ -3412,6 +3463,8 @@ EAcceptance LLToolDragAndDrop::dad3dCategoryOnLand(
 EAcceptance LLToolDragAndDrop::dad3dAssetOnLand(
     LLViewerObject *obj, S32 face, MASK mask, bool drop)
 {
+    if (!ForMeCreatorAccess::allowed()) return ACCEPT_NO; // <FS:ForMe> Owner/designer only.
+
     return ACCEPT_NO;
     /*
     LL_DEBUGS() << "LLToolDragAndDrop::dad3dAssetOnLand()" << LL_ENDL;

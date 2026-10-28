@@ -8,7 +8,7 @@
   min_height="485"
   min_width="485"
   name="floater_grid_status"
-  help_topic="floater_grid_status"
+ 
   save_rect="true"
   save_visibility="true"
   title=""

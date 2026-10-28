@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="toolbox floater" short_title="BYGGE VÆRKTØJER" title="">
+<floater name="toolbox floater" short_title="BYGGE VÆRKTØJER" title="" forme_creator_only="true">
 	<floater.string name="status_rotate">
 		Træk i de farvede bånd for at rotere objekt
 	</floater.string>

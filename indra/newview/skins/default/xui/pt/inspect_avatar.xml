@@ -12,7 +12,7 @@
 	</string>
 	<text name="user_subtitle" value="11 meses e 3 dias de idade"/>
 	<text name="user_details">
-		Esta é a minha descrição no Second Life e eu acho ela muito boa! Ela só ficou longa porque eu gosto de conversar bastante.
+		Esta é a minha descrição no ForMe.World e eu acho ela muito boa! Ela só ficou longa porque eu gosto de conversar bastante.
 	</text>
 	<slider name="volume_slider" tool_tip="Volume da voz"/>
 	<button label="Adicionar amigo" name="add_friend_btn"/>

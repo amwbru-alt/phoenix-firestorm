@@ -25,6 +25,9 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fscreatoraccess.h"
+#include "llview.h"
+#include "fsavatarbadges.h" // <FS:ForMe> Authoritative server badges.
 
 #include "llviewerobject.h"
 
@@ -766,6 +769,7 @@ U32 LLViewerObject::unpackParentID(LLDataPackerBinaryBuffer* dp, U32& parent_id)
 // Does not update server
 void LLViewerObject::setNameValueList(const std::string& name_value_list)
 {
+    const std::string forme_previous_badge = isAvatar() ? ForMeAvatarBadges::get(getID()).stamp : "";
     // Clear out the old
     for_each(mNameValuePairs.begin(), mNameValuePairs.end(), DeletePairedPointer()) ;
     mNameValuePairs.clear();
@@ -784,6 +788,9 @@ void LLViewerObject::setNameValueList(const std::string& name_value_list)
         }
         start = end+1;
     }
+    if (getID() == gAgent.getID()) LLView::setForMeCreatorAccess(ForMeCreatorAccess::allowed());
+    if (isAvatar() && forme_previous_badge != ForMeAvatarBadges::get(getID()).stamp)
+        LLVOAvatar::invalidateNameTag(getID()); // <FS:ForMe> Refresh only changed/revoked roles, not every object update.
 }
 
 bool LLViewerObject::isAnySelected() const
@@ -2890,6 +2897,8 @@ void LLViewerObject::saveScript(
     bool active,
     bool is_new)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     /*
      * XXXPAM Investigate not making this copy.  Seems unecessary, but I'm unsure about the
      * interaction with doUpdateInventory() called below.
@@ -2926,6 +2935,8 @@ void LLViewerObject::saveScript(
 void LLViewerObject::moveInventory(const LLUUID& folder_id,
                                    const LLUUID& item_id)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     LL_DEBUGS() << "LLViewerObject::moveInventory " << item_id << LL_ENDL;
     LLMessageSystem* msg = gMessageSystem;
     msg->newMessageFast(_PREHASH_MoveTaskInventory);
@@ -3661,6 +3672,8 @@ void LLViewerObject::doInventoryCallback()
 
 void LLViewerObject::removeInventory(const LLUUID& item_id)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     // close associated floater properties
     LLSD params;
     params["id"] = item_id;
@@ -3738,6 +3751,8 @@ void LLViewerObject::updateInventory(
     U8 key,
     bool is_new)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     // This slices the object into what we're concerned about on the
     // viewer. The simulator will take the permissions and transfer
     // ownership.
@@ -5296,6 +5311,8 @@ void LLViewerObject::setNumTEs(const U8 num_tes)
 
 void LLViewerObject::sendMaterialUpdate() const
 {
+    if (!isAvatar() && !ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Object editing only.
+
     LLViewerRegion* regionp = getRegion();
     if(!regionp) return;
     gMessageSystem->newMessageFast(_PREHASH_ObjectMaterial);
@@ -5312,6 +5329,8 @@ void LLViewerObject::sendMaterialUpdate() const
 //formerly send_object_shape(LLViewerObject *object)
 void LLViewerObject::sendShapeUpdate()
 {
+    if (!isAvatar() && !ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Object editing only.
+
     // <FS:Ansariel> FIRE-22268: Crash fix
     LLViewerRegion *regionp = getRegion();
     if (!regionp) return;
@@ -5333,6 +5352,8 @@ void LLViewerObject::sendShapeUpdate()
 
 void LLViewerObject::sendTEUpdate() const
 {
+    if (!isAvatar() && !ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Object editing only.
+
     // <FS:Ansariel> FIRE-22268: Crash fix
     LLViewerRegion *regionp = getRegion();
     if (!regionp) return;

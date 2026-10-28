@@ -58,7 +58,7 @@
 	<spinner label="Wys." name="height_range_spin_0" />
 	<spinner label="Wys." name="height_range_spin_2" />
 	<button label="Pobierz surowy teren..." name="download_raw_btn" tool_tip="Dostępne tylko dla właścicieli Majątku, nie dla zarządców" />
-	<button label="Prześlij surowy teren..." name="upload_raw_btn" tool_tip="Dostępne tylko dla właścicieli Majątku, nie dla zarządców" />
-	<button label="Ustal teren" name="bake_terrain_btn" tool_tip="(Bake Terrain) Zapamiętaj obecny teren jako punkt odniesienia dla limitów podnoszenia i opuszczania" />
+	<button label="Prześlij surowy teren..." name="upload_raw_btn" tool_tip="Dostępne tylko dla właścicieli Majątku, nie dla zarządców"  forme_creator_only="true"/>
+	<button label="Ustal teren" name="bake_terrain_btn" tool_tip="(Bake Terrain) Zapamiętaj obecny teren jako punkt odniesienia dla limitów podnoszenia i opuszczania"  forme_creator_only="true"/>
 	<button label="Zastosuj" name="apply_btn" />
 </panel>

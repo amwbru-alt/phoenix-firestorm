@@ -9,7 +9,7 @@
     width="260"
     layout="topleft"
     name="quickprefs"
-    help_topic="fs_quick_preferences"
+   
     save_rect="true"
     save_visibility="true"
     single_instance="true"

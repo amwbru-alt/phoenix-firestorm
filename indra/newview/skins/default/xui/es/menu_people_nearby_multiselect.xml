@@ -4,7 +4,7 @@
 	<menu_item_call label="Disolver amistad" name="remove_friends"/>
 	<menu_item_call label="MI" name="im"/>
 	<menu_item_call label="Llamar" name="call"/>
-	<menu_item_call label="Compartir" name="share"/>
+	<menu_item_call label="Compartir" name="share" forme_creator_only="true"/>
 	<menu_item_call label="Pagar" name="pay"/>
 	<menu_item_call label="Ofrecer teleporte" name="offer_teleport"/>
 </context_menu>

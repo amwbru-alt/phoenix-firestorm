@@ -26,6 +26,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fscreatoraccess.h"
 
 #include "fscommon.h"
 #include "fslslbridge.h"
@@ -770,6 +771,8 @@ void FSLSLBridge::initBridge()
 // Gets called by the Init, when inventory loaded (FSLSLBridgeInventoryObserver::done()).
 void FSLSLBridge::startCreation()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     LL_INFOS("FSLSLBridge") << "Entering startCreation" << LL_ENDL;
 
     if (getBridgeCreating())
@@ -838,6 +841,8 @@ void FSLSLBridge::startCreation()
 
 void FSLSLBridge::createNewBridge()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     //check if user has a bridge
     const LLUUID catID = getBridgeFolder();
 
@@ -1039,6 +1044,8 @@ void FSLSLBridge::inventoryChanged(LLViewerObject* object,
 
 void FSLSLBridge::configureBridgePrim(LLViewerObject* object)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     if (!isBridgeValid())
     {
         LL_WARNS("FSLSLBridge") << "Bridge not valid" << LL_ENDL;
@@ -1134,6 +1141,8 @@ void FSLSLBridge::processDetach(LLViewerObject* object, const LLViewerJointAttac
 
 void FSLSLBridge::setupBridgePrim(LLViewerObject* object)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     LL_DEBUGS("FSLSLBridge") << "Entering bridge container setup..." << LL_ENDL;
 
     if (!object->getRegion())
@@ -1190,6 +1199,8 @@ void FSLSLBridge::setupBridgePrim(LLViewerObject* object)
 
 void FSLSLBridge::create_script_inner()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     if (!isBridgeValid())
     {
         LL_WARNS("FSLSLBridge") << "Bridge no valid" << LL_ENDL;

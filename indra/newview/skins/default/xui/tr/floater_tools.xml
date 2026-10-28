@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="toolbox floater" short_title="İNŞA ET ARAÇLARI">
+<floater name="toolbox floater" short_title="İNŞA ET ARAÇLARI" forme_creator_only="true">
 	<floater.string name="grid_screen_text">
 		Ekran
 	</floater.string>
@@ -126,7 +126,7 @@
 		Seçilen bir şey yok.
 	</text>
 	<text name="remaining_capacity">
-		[CAPACITY_STRING] [secondlife:///app/openfloater/object_weights Ek bilgi]
+		[CAPACITY_STRING] [fmw:///app/openfloater/object_weights Ek bilgi]
 	</text>
 	<tab_container name="Object Info Tabs">
 		<panel label="Genel" name="General">

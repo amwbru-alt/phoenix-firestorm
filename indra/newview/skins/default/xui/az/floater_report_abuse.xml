@@ -32,15 +32,15 @@
 	<combo_box name="category_combo" tool_tip="Kateqoriya - cinayət növünə ən uyğun olan kateqoriyanı seçin">
 		<combo_box.item label="Kateqoriya seçin" name="Select_category"/>
 		<combo_box.item label="Yaş &gt; Oyun yaşı" name="Age__Age_play"/>
-		<combo_box.item label="Yaş &gt; Yeniyetmələr üçün Second Life-da Yetkin sakin" name="Age__Adult_resident_on_Teen_Second_Life"/>
-		<combo_box.item label="Yaş &gt; Yeniyetmələr üçün Second Life-da yetkinlik yaşına çatmayan sakin" name="Age__Underage_resident_outside_of_Teen_Second_Life"/>
+		<combo_box.item label="Yaş &gt; Yeniyetmələr üçün ForMe.World-da Yetkin sakin" name="Age__Adult_resident_on_Teen_Second_Life"/>
+		<combo_box.item label="Yaş &gt; Yeniyetmələr üçün ForMe.World-da yetkinlik yaşına çatmayan sakin" name="Age__Underage_resident_outside_of_Teen_Second_Life"/>
 		<combo_box.item label="Hücum &gt; Hərbi qum qutusu/təhlükəsiz ərazi" name="Assault__Combat_sandbox___unsafe_area"/>
 		<combo_box.item label="Hücum &gt; Təhlükəsiz ərazidə başqa bir sakini güllələmək, vurmaq və ya itələmək" name="Assault__Safe_area"/>
 		<combo_box.item label="Hücum &gt; Qum qutusunda silah sınağı" name="Assault__Weapons_testing_sandbox"/>
 		<combo_box.item label="Ticarət &gt; Məhsul və ya xidməti çatdırmaq mümkün deyil" name="Commerce__Failure_to_deliver_product_or_service"/>
 		<combo_box.item label="Açıqlama &gt; Real dünya haqqında məlumat" name="Disclosure__Real_world_information"/>
 		<combo_box.item label="Açıqlama &gt; Uzaqdan Söhbət İdarəsi" name="Disclosure__Remotely_monitoring chat"/>
-		<combo_box.item label="Açıqlama &gt; Məlumat/Söhbət/Second Life ani mesajlar" name="Disclosure__Second_Life_information_chat_IMs"/>
+		<combo_box.item label="Açıqlama &gt; Məlumat/Söhbət/ForMe.World ani mesajlar" name="Disclosure__Second_Life_information_chat_IMs"/>
 		<combo_box.item label="Pozğunluq &gt; Regionun resurslarından ədalətsiz istifadəsi" name="Disturbing_the_peace__Unfair_use_of_region_resources"/>
 		<combo_box.item label="Pozğunluq &gt; Lazımsız skript obyektləri" name="Disturbing_the_peace__Excessive_scripted_objects"/>
 		<combo_box.item label="Pozğunluq &gt; Obyektlərin tullanması" name="Disturbing_the_peace__Object_littering"/>

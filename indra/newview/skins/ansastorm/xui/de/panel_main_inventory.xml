@@ -13,7 +13,7 @@
 	<menu_bar name="inventory_menu_bar">
 		<menu label="Inventar" name="inventory_inventory_menu">
 			<menu_item_call name="inventory_open" label="Öffnen"/>
-			<menu_item_call name="inventory_share" label="Teilen"/>
+			<menu_item_call name="inventory_share" label="Teilen" forme_creator_only="true"/>
 			<menu_item_call name="replace_links" label="Links ersetzen"/>
 			<menu_item_call name="inventory_new_window" label="Neues Inventar-Fenster"/>
 			<menu_item_check name="Protected Folders" label="Geschützte Ordner"/>
@@ -34,10 +34,10 @@
 		</menu>
 		<menu label="Erstellen" name="inventory_create_menu">
 			<menu_item_call name="inventory_new_folder" label="Neuer Ordner"/>
-			<menu_item_call name="inventory_new_script" label="Neues Skript"/>
-			<menu_item_call name="inventory_new_note" label="Neue Notizkarte"/>
-			<menu_item_call name="inventory_new_gesture" label="Neue Geste"/>
-			<menu_item_call name="inventory_new_material" label="Neues Material"/>
+			<menu_item_call name="inventory_new_script" label="Neues Skript" forme_creator_only="true"/>
+			<menu_item_call name="inventory_new_note" label="Neue Notizkarte" forme_creator_only="true"/>
+			<menu_item_call name="inventory_new_gesture" label="Neue Geste" forme_creator_only="true"/>
+			<menu_item_call name="inventory_new_material" label="Neues Material" forme_creator_only="true"/>
 			<menu name="inventory_new_clothes" label="Neue Kleider">
 				<menu_item_call name="inventory_new_shirt" label="Neues Hemd"/>
 				<menu_item_call name="inventory_new_pants" label="Neue Hose"/>

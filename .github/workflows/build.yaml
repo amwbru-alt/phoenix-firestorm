@@ -2,14 +2,6 @@ name: Build
 
 on:
   workflow_dispatch:
-    inputs:
-      installer_type:
-        description: 'Windows installer type'
-        type: choice
-        options:
-          - velopack
-          - nsis
-        default: 'velopack'
   pull_request:
   push:
     branches: ["main", "release/*", "project/*"]
@@ -19,6 +11,7 @@ jobs:
   # The whole point of the setup job is that we want to set variables once
   # that will be consumed by multiple subsequent jobs.
   setup:
+    if: github.event_name != 'workflow_dispatch' && (github.event_name != 'pull_request' || github.head_ref != 'forme-single-grid-20261025')
     runs-on: ubuntu-latest
     outputs:
       release_run: ${{ steps.setvar.outputs.release_run }}
@@ -528,3 +521,98 @@ jobs:
       - name: post release URL
         run: |
           echo "::notice::Release ${{ steps.release.outputs.url }}"
+
+  # The existing Build workflow is registered in the fork. Manual dispatches
+  # select this branch's source and run only this public macOS build job.
+  forme-macos:
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request' && github.head_ref == 'forme-single-grid-20261025')
+    concurrency:
+      group: forme-macos-${{ github.event.pull_request.number || github.ref }}
+      cancel-in-progress: true
+    runs-on: macos-15-intel
+    timeout-minutes: 330
+    permissions:
+      contents: read
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_16.4.app/Contents/Developer
+      AUTOBUILD_ADDRSIZE: "64"
+      AUTOBUILD_BUILD_ID: ${{ github.run_id }}
+      AUTOBUILD_VARIABLES_FILE: ${{ github.workspace }}/build-variables/variables
+      AUTOBUILD_INSTALLABLE_CACHE: ${{ github.workspace }}/.autobuild-installables
+      AUTOBUILD_GITHUB_TOKEN: ${{ github.token }}
+    steps:
+      - name: Checkout requested branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Checkout public build variables
+        uses: actions/checkout@v4
+        with:
+          repository: FirestormViewer/fs-build-variables
+          path: build-variables
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install public build tools
+        shell: bash
+        run: |
+          set -euo pipefail
+          brew install bash gnu-sed pkg-config
+          echo "$(brew --prefix)/bin" >> "$GITHUB_PATH"
+          echo "$(brew --prefix)/opt/gnu-sed/libexec/gnubin" >> "$GITHUB_PATH"
+          python -m pip install -r requirements.txt "cmake>=3.28,<4"
+          echo "PYTHON=$(command -v python)" >> "$GITHUB_ENV"
+          mkdir -p forme-macos-logs
+          xcodebuild -version
+      - name: Configure public ForMe.World build
+        shell: bash
+        run: |
+          set -euo pipefail
+          autobuild configure -c ReleaseFS_open -A64 -- \
+            --chan ForMe.World --opensim --singlegrid http://185.173.93.200:8002/ --no-package \
+            -DINSTALL_PROPRIETARY:BOOL=OFF \
+            -DUSE_OPENAL:BOOL=ON -DUSE_BUGSPLAT:BOOL=OFF \
+            -DBUGSPLAT_DB:STRING= -DUSE_DISCORD:BOOL=OFF \
+            2>&1 | tee forme-macos-logs/configure.log
+      - name: Compile universal macOS application
+        shell: bash
+        run: |
+          set -euo pipefail
+          cmake --build build-darwin-universal --config Release --parallel 3 \
+            2>&1 | tee forme-macos-logs/build.log
+      - name: Archive application bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          app_path="build-darwin-universal/newview/Release/Firestorm.app"
+          test -x "$app_path/Contents/MacOS/Firestorm"
+          test -f "$app_path/Contents/Resources/app_settings/settings.xml"
+          stage_app="$RUNNER_TEMP/forme-app/ForMe.World.app"
+          mkdir -p "$(dirname "$stage_app")" dist
+          ditto "$app_path" "$stage_app"
+          # Local test signature, no Apple certificate or notarization secrets.
+          codesign --force --deep --sign - "$stage_app"
+          codesign --verify --deep "$stage_app"
+          ditto -c -k --sequesterRsrc --keepParent "$stage_app" \
+            dist/ForMe.World-macOS-universal.zip
+      - name: Upload macOS application
+        uses: actions/upload-artifact@v4
+        with:
+          name: ForMe.World-macOS
+          path: dist/ForMe.World-macOS-universal.zip
+          if-no-files-found: error
+          retention-days: 14
+          compression-level: 0
+      - name: Upload configure and build logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ForMe.World-macOS-logs
+          path: |
+            forme-macos-logs/
+            build-darwin-universal/CMakeFiles/CMakeConfigureLog.yaml
+          if-no-files-found: warn
+          retention-days: 14

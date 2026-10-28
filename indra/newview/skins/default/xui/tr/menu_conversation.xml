@@ -15,7 +15,7 @@
 	<menu_item_call label="Gruba davet et..." name="invite_to_group"/>
 	<menu_item_call label="Yakınlaştır" name="zoom_in"/>
 	<menu_item_call label="Harita" name="map"/>
-	<menu_item_call label="Paylaş" name="share"/>
+	<menu_item_call label="Paylaş" name="share" forme_creator_only="true"/>
 	<menu_item_call label="Öde" name="pay"/>
 	<menu_item_check label="Sesi Engelle" name="block_unblock"/>
 	<menu_item_check label="Metni Engelle" name="MuteText"/>

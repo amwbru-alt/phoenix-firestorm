@@ -371,10 +371,7 @@ set(viewer_SOURCE_FILES
     llfloatergroupinvite.cpp
     llfloatergroups.cpp
     llfloaterhandler.cpp
-    llfloaterhelpbrowser.cpp
     llfloaterhoverheight.cpp
-    llfloaterhowto.cpp
-    llfloaterhud.cpp
     llfloaterimagepreview.cpp
     llfloaterimsessiontab.cpp
     llfloaterimsession.cpp
@@ -810,8 +807,6 @@ set(viewer_SOURCE_FILES
     llviewerfoldertype.cpp
     llviewergenericmessage.cpp
     llviewergesture.cpp
-    llviewerhelp.cpp
-    llviewerhelputil.cpp
     llviewerhome.cpp
     llviewerinventory.cpp
     llviewerjoint.cpp
@@ -935,6 +930,7 @@ list(APPEND viewer_SOURCE_FILES ${viewer_GLTF_SOURCE_FILES})
 
 if (OPENSIM)
     list(APPEND viewer_SOURCE_FILES
+                fsavatarbadges.cpp
                 fsgridhandler.cpp
                 fsslurl.cpp
         )
@@ -1017,6 +1013,9 @@ set(viewer_HEADER_FILES
     fsfloaterwearablefavorites.h
     fsfloaterwhitelisthelper.h
     fsjointpose.h
+    fsmarketplacelistings.h
+    fscreatoraccess.h
+    fsavatarbadges.h
     fsgridhandler.h
     fskeywords.h
     fslslbridge.h
@@ -1243,10 +1242,7 @@ set(viewer_HEADER_FILES
     llfloatergroupinvite.h
     llfloatergroups.h
     llfloaterhandler.h
-    llfloaterhelpbrowser.h
     llfloaterhoverheight.h
-    llfloaterhowto.h
-    llfloaterhud.h
     llfloaterimagepreview.h
     llfloaterimnearbychat.h
     llfloaterimnearbychathandler.h
@@ -1675,7 +1671,6 @@ set(viewer_HEADER_FILES
     llviewerfoldertype.h
     llviewergenericmessage.h
     llviewergesture.h
-    llviewerhelp.h
     llviewerhome.h
     llviewerinventory.h
     llviewerjoint.h
@@ -2831,11 +2826,11 @@ if (DARWIN)
   #set(product "${VIEWER_CHANNEL}")
   set(product "Firestorm")
   set(MACOSX_EXECUTABLE_NAME "Firestorm")
-  set(MACOSX_BUNDLE_INFO_STRING "Firestorm Viewer")
+  set(MACOSX_BUNDLE_INFO_STRING "ForMe.World")
   set(MACOSX_BUNDLE_ICON_FILE "firestorm_icon.icns")
   set(MACOSX_BUNDLE_GUI_IDENTIFIER "org.firestormviewer.firestorm")
   set(MACOSX_BUNDLE_LONG_VERSION_STRING "${VIEWER_CHANNEL} ${VIEWER_SHORT_VERSION}.${VIEWER_VERSION_REVISION}")
-  set(MACOSX_BUNDLE_BUNDLE_NAME "Firestorm")
+  set(MACOSX_BUNDLE_BUNDLE_NAME "ForMe.World")
   set(MACOSX_BUNDLE_SHORT_VERSION_STRING "${VIEWER_SHORT_VERSION}.${VIEWER_VERSION_REVISION}")
   set(MACOSX_BUNDLE_BUNDLE_VERSION "${VIEWER_SHORT_VERSION}${VIEWER_MACOSX_PHASE}${VIEWER_REVISION}")
   set(MACOSX_BUNDLE_COPYRIGHT "Copyright 2010-2026 The Phoenix Firestorm Project, Inc.")
@@ -3035,7 +3030,6 @@ if (LL_TESTS)
 #    llmediadataclient.cpp
     lllogininstance.cpp
 #    llremoteparcelrequest.cpp
-    llviewerhelputil.cpp
     llversioninfo.cpp
 #    llvocache.cpp
     llworldmap.cpp

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="toolbox floater" short_title="Strumenti di costruzione">
+<floater name="toolbox floater" short_title="Strumenti di costruzione" forme_creator_only="true">
 	<floater.string name="status_rotate">
 		Sposta le fasce colorate per ruotare l&apos;oggetto
 	</floater.string>
@@ -139,7 +139,7 @@
 		Nessuna selezione.
 	</text>
 	<text name="remaining_capacity">
-		[CAPACITY_STRING] [secondlife:///app/openfloater/object_weights Maggiori informazioni]
+		[CAPACITY_STRING] [fmw:///app/openfloater/object_weights Maggiori informazioni]
 	</text>
 	<tab_container name="Object Info Tabs">
 		<panel label="Gener." name="General">

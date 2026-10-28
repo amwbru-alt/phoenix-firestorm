@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="script ed float" title="指令碼：新指令碼">
+<floater name="script ed float" title="指令碼：新指令碼" forme_creator_only="true">
 	<floater.string name="not_allowed">
 		你無法檢視或編輯這指令碼，它被設為「禁止複製」。 你需要完整權限去檢視或編輯物件內的指令碼。
 	</floater.string>

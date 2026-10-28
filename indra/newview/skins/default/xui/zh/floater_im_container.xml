@@ -18,7 +18,7 @@
 				<panel name="stub_panel">
 					<button name="stub_collapse_btn" tool_tip="收起這個視窗" />
 					<text name="stub_textbox">
-						這個聊天另開了新視窗。   [secondlife:/// 把它收回來]
+						這個聊天另開了新視窗。   [fmw:/// 把它收回來]
 					</text>
 				</panel>
 			</panel_container>

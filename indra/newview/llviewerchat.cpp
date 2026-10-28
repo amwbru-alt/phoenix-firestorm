@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fsavatarbadges.h" // <FS:ForMe> Authoritative server badges.
 #include "llviewerchat.h"
 
 // newview includes
@@ -149,6 +150,9 @@ void LLViewerChat::getChatColor(const LLChat& chat, LLUIColor& r_color, F32& r_c
             r_color = sFSKeywordColor();
         }
         // </FS:KC>
+
+        const ForMeBadge::Data forme_badge = ForMeAvatarBadges::forChat(chat);
+        if (forme_badge.valid) r_color = ForMeAvatarBadges::color(forme_badge.chatColor); // <FS:ForMe>
 
         if (!chat.mPosAgent.isExactlyZero())
         {

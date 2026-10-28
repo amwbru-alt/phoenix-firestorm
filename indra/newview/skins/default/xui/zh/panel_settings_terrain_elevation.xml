@@ -51,6 +51,6 @@
 	<spinner label="高" name="height_range_spin_2" />
 	<!-- Terrain Download/Upload/Bake buttons -->
 	<button label="下載RAW地形..." name="download_raw_btn" tool_tip="僅對領地所有者開放，管理者不可用" />
-	<button label="上傳RAW地形..." name="upload_raw_btn" tool_tip="僅對領地所有者開放，管理者不可用" />
-	<button label="烘焙地形" name="bake_terrain_btn" tool_tip="將當前地形設為高度/深度限制的中間點" />
+	<button label="上傳RAW地形..." name="upload_raw_btn" tool_tip="僅對領地所有者開放，管理者不可用"  forme_creator_only="true"/>
+	<button label="烘焙地形" name="bake_terrain_btn" tool_tip="將當前地形設為高度/深度限制的中間點"  forme_creator_only="true"/>
 </panel>

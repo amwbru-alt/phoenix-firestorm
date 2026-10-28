@@ -8,7 +8,7 @@
         can_resize="true"
         height="465"
         name="my_environments"
-        help_topic="my_environments"
+       
         title="My Environments"
         background_visible="true"
         layout="topleft"

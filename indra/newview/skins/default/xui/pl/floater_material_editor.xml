@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<floater name="material editor">
+<floater name="material editor" forme_creator_only="true">
 	<string name="no_upload_fee_string">
 		brak opłaty
 	</string>

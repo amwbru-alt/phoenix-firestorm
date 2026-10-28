@@ -27,6 +27,7 @@
 // Original file: llpanellogin.cpp
 
 #include "llviewerprecompiledheaders.h"
+#include "formegridpolicy.h" // <FS:ForMe> Fixed-grid policy.
 
 #include "fspanellogin.h"
 #include "lllayoutstack.h"
@@ -43,7 +44,7 @@
 #include "llvelopack.h"
 #endif
 #include "llcheckboxctrl.h"
-#include "llcommandhandler.h"       // for secondlife:///app/login/
+#include "llcommandhandler.h"       // for fmw:///app/login/
 #include "llcombobox.h"
 #include "llviewercontrol.h"
 #include "llfloaterpreference.h"
@@ -57,7 +58,6 @@
 #include "lluiconstants.h"
 #include "llslurl.h"
 #include "llversioninfo.h"
-#include "llviewerhelp.h"
 #include "llviewertexturelist.h"
 #include "llviewermenu.h"           // for handle_preferences()
 #include "llviewernetwork.h"
@@ -251,8 +251,6 @@ FSPanelLogin::FSPanelLogin(const LLRect &rect,
     LLTextBox* create_new_account_text = getChild<LLTextBox>("create_new_account_text");
     create_new_account_text->setClickedCallback(onClickNewAccount, NULL);
 
-    LLTextBox* grid_mgr_help_text = getChild<LLTextBox>("grid_login_text");
-    grid_mgr_help_text->setClickedCallback(onClickGridMgrHelp, NULL);
 
 #ifdef OPENSIM
     LLTextBox* grid_builder_text = getChild<LLTextBox>("grid_builder_text");
@@ -750,8 +748,9 @@ void FSPanelLogin::updateLocationSelectorsVisibility()
         bool show_start = gSavedSettings.getBOOL("ShowStartLocation");
         sInstance->getChild<LLLayoutPanel>("start_location_panel")->setVisible(show_start);
 
-        bool show_server = gSavedSettings.getBOOL("ForceShowGrid");
-        sInstance->getChild<LLLayoutPanel>("grid_panel")->setVisible(show_server);
+        bool show_server = false; // <FS:ForMe> Cannot be re-enabled through debug settings.
+        sInstance->getChild<LLLayoutPanel>("grid_panel")->setVisible(false);
+        sInstance->getChild<LLComboBox>("server_combo")->setEnabled(false);
         sInstance->addUsersToCombo(show_server);
     }
 }
@@ -1064,21 +1063,7 @@ void FSPanelLogin::onClickConnect(void *)
 // static
 void FSPanelLogin::onClickNewAccount(void*)
 {
-    if (sInstance)
-    {
-#ifdef OPENSIM
-        LLSD grid_info;
-        LLGridManager::getInstance()->getGridData(grid_info);
-
-        if (LLGridManager::getInstance()->isInOpenSim() && grid_info.has(GRID_REGISTER_NEW_ACCOUNT))
-            LLWeb::loadURLInternal(grid_info[GRID_REGISTER_NEW_ACCOUNT]);
-        else
-#endif // OPENSIM
-            // <FS:PP> Load Firestorm's registration page from within the viewer itself
-            // LLWeb::loadURLExternal(LLTrans::getString("create_account_url"));
-            LLWeb::loadURLInternal(LLTrans::getString("create_account_url"));
-            // </FS:PP>
-    }
+    if (sInstance) LLWeb::loadURLInternal("http://185.173.93.200:8002/web/register.html"); // <FS:ForMe> No upstream account registration.
 }
 
 
@@ -1091,18 +1076,12 @@ void FSPanelLogin::onClickVersion(void*)
 //static
 void FSPanelLogin::onClickForgotPassword(void*)
 {
-    if (sInstance)
-    {
-#ifdef OPENSIM
-        LLSD grid_info;
-        LLGridManager::getInstance()->getGridData(grid_info);
-
-        if (LLGridManager::getInstance()->isInOpenSim() && grid_info.has(GRID_FORGOT_PASSWORD))
-            LLWeb::loadURLInternal(grid_info[GRID_FORGOT_PASSWORD]);
-        else
-#endif // OPENSIM
-        LLWeb::loadURLExternal(sInstance->getString( "forgot_password_url" ));
-    }
+    if (!sInstance) return;
+    LLSD grid_info;
+    LLGridManager::getInstance()->getGridData(grid_info);
+    const std::string url = grid_info[GRID_FORGOT_PASSWORD].asString();
+    if (ForMeGrid::allowedServiceURI(url)) LLWeb::loadURLInternal(url);
+    // <FS:ForMe> No Second Life password-reset fallback.
 }
 
 // static
@@ -1137,14 +1116,7 @@ void FSPanelLogin::syncShowHidePasswordButton()
 
 
 //static
-void FSPanelLogin::onClickHelp(void*)
-{
-    if (sInstance)
-    {
-        LLViewerHelp* vhelp = LLViewerHelp::getInstance();
-        vhelp->showTopic(vhelp->preLoginTopic());
-    }
-}
+
 
 // static
 void FSPanelLogin::onPassKey(LLLineEditor* caller, void* user_data)
@@ -1345,7 +1317,8 @@ void FSPanelLogin::addUsersToCombo(bool show_server)
 
             const std::string grid_label = LLGridManager::getInstance()->getGridLabel(gridname);
 
-            bool add_grid = false;
+            if (!ForMeGrid::allowedGrid(gridname)) continue; // <FS:ForMe> Never import other-grid credentials.
+            bool add_grid = true;
             /// We only want to append a grid label when the user has enabled logging into other grids, or
             /// they are using the OpenSim build. That way users who only want Second Life Agni can remain
             /// blissfully ignorant. We will also not show them any saved credential that isn't Agni because
@@ -1357,7 +1330,7 @@ void FSPanelLogin::addUsersToCombo(bool show_server)
                 add_grid = true;
             }
 #ifdef OPENSIM
-            else if (!grid_label.empty() && show_server)
+            else if (!grid_label.empty())
             {
                 name.append(" @ " + grid_label);
                 add_grid = true;
@@ -1431,14 +1404,7 @@ void FSPanelLogin::onRemoveCallback(const LLSD& notification, const LLSD& respon
 }
 
 //static
-void FSPanelLogin::onClickGridMgrHelp(void*)
-{
-    if (sInstance)
-    {
-        LLViewerHelp* vhelp = LLViewerHelp::getInstance();
-        vhelp->showTopic(vhelp->gridMgrHelpTopic());
-    }
-}
+
 
 //static
 void FSPanelLogin::onClickGridBuilder(void*)
@@ -1481,6 +1447,7 @@ void FSPanelLogin::onSelectUser()
 
     // Saved username was either selected or entered; continue...
     const std::string cred_name = combo_val.asString();
+    if (!ForMeGrid::allowedCredential(cred_name)) return; // <FS:ForMe>
 
     LLPointer<LLCredential> credential = gSecAPIHandler->loadCredential(cred_name);
     sInstance->setFields(credential);
@@ -1553,7 +1520,6 @@ void FSPanelLogin::updateServerCombo()
                              current_grid,
                              ADD_TOP);
     server_choice_combo->selectFirstItem();
-    update_grid_help();
 }
 
 // static

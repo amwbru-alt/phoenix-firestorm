@@ -16,8 +16,8 @@ https://accounts.secondlife.com/change_email/
 	<tab_container name="pref core">
 		<panel label="Generale" name="general"/>
 		<panel label="Chat" name="chat"/>
-		<panel label="Colori" name="colors"/>
-		<panel label="Colori Interfaccia" name="custom_colors"/>
+		
+		
 		<panel label="Grafica" name="display"/>
 		<panel label="Audio e Media" name="audio"/>
 		<panel label="Rete e Cartelle" name="input"/>
@@ -29,8 +29,7 @@ https://accounts.secondlife.com/change_email/
 		<panel label="Interfaccia" name="ui"/>
 		<panel label="Skin del Viewer" name="skins" />
 		<panel label="Segnala Crash" name="crashreports" />
-		<panel label="Firestorm" name="firestorm" />
-		<panel label="OpenSim" name="opensim" />
+		<panel label="ForMe.World" name="firestorm" />
 		<panel label="Backup e Ripristino" name="backup" />
 	</tab_container>
 </floater>

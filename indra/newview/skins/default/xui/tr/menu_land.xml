@@ -4,7 +4,7 @@
 	<menu_item_call label="Buraya Otur" name="Sit Here"/>
 	<menu_item_call label="Bu Araziyi Satın Al" name="Land Buy"/>
 	<menu_item_call label="Geçiş Hakkı Satın Al" name="Land Buy Pass"/>
-	<menu_item_call label="İnşa Et" name="Create"/>
-	<menu_item_call label="Yüzeyi Düzenle" name="Edit Terrain"/>
+	<menu_item_call label="İnşa Et" name="Create" forme_creator_only="true"/>
+	<menu_item_call label="Yüzeyi Düzenle" name="Edit Terrain" forme_creator_only="true"/>
 	<menu_item_call label="Parçacık Sahibini Engelle" name="Mute Particle"/>
 </context_menu>

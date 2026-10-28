@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fscreatoraccess.h"
 
 #include "lltoolgrab.h"
 
@@ -504,6 +505,8 @@ const F32 GRAB_SENSITIVITY_Y = 0.0075f;
 // Dragging.
 void LLToolGrabBase::handleHoverActive(S32 x, S32 y, MASK mask)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     LLViewerObject* objectp = mGrabPick.getObject();
     if (!objectp || !hasMouseCapture() ) return;
     if (objectp->isDead())

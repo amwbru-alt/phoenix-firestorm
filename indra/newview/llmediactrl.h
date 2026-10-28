@@ -107,7 +107,7 @@ public:
         bool canNavigateForward();
         std::string getCurrentNavUrl();
 
-        // By default, we do not handle "secondlife:///app/" SLURLs, because
+        // By default, we do not handle "fmw:///app/" SLURLs, because
         // those can cause teleports, open windows, etc.  We cannot be sure
         // that each "click" is actually due to a user action, versus
         // Javascript or some other mechanism.  However, we need the search

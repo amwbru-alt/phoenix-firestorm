@@ -9216,7 +9216,7 @@ Unable to acquire a new experience:
     name="TeleportedHomeExperienceRemoved"
     persist="false"
     type="notify">
-    You have been teleported from the region [region_name] for removing the experience secondlife:///app/experience/[public_id]/profile and are no longer permitted in the region.
+    You have been teleported from the region [region_name] for removing the experience fmw:///app/experience/[public_id]/profile and are no longer permitted in the region.
     <form name="form">
       <ignore name="ignore"
               text="Kicked from region for removing an experience"/>
@@ -9228,7 +9228,7 @@ Unable to acquire a new experience:
     name="TrustedExperienceEntry"
     persist="false"
     type="notify">
-    You have been allowed into the region [region_name] by participating in the key experience secondlife:///app/experience/[public_id]/profile removing this experience may kick you from the region.
+    You have been allowed into the region [region_name] by participating in the key experience fmw:///app/experience/[public_id]/profile removing this experience may kick you from the region.
     <form name="form">
       <ignore name="ignore"
               text="Allowed into a region by an experience"/>
@@ -9253,8 +9253,8 @@ Other Key Experiences may be available.
     name="ExperienceEvent"
     persist="false"
     type="notifytip">
-    An object was allowed to [EventType] by the secondlife:///app/experience/[public_id]/profile experience.
-    Owner: secondlife:///app/agent/[OwnerID]/inspect
+    An object was allowed to [EventType] by the fmw:///app/experience/[public_id]/profile experience.
+    Owner: fmw:///app/agent/[OwnerID]/inspect
     Object Name: [ObjectName]
     Parcel Name: [ParcelName]
   </notification>
@@ -9264,8 +9264,8 @@ Other Key Experiences may be available.
     name="ExperienceEventAttachment"
     persist="false"
     type="notifytip">
-    An attachment was allowed to [EventType] by the secondlife:///app/experience/[public_id]/profile experience.
-    Owner: secondlife:///app/agent/[OwnerID]/inspect
+    An attachment was allowed to [EventType] by the fmw:///app/experience/[public_id]/profile experience.
+    Owner: fmw:///app/agent/[OwnerID]/inspect
   </notification>
   
   <notification
@@ -11721,7 +11721,7 @@ Do you want to enable the automatic viewer version display?
        text="No"/>
       <ignore
 	   name="ignore"
-       text="The Phoenix/Firestorm Support Group was joined"
+       text="The Phoenix/ForMe.World Support Group was joined"
        save_option="true" />
     </form>
 
@@ -14947,7 +14947,7 @@ Bulk import of Windlights has finished.
    <unique combine = "cancel_old">
      <context>FSAOScriptedNotification</context>
    </unique>
-Firestorm Animation Overrider: [AO_MESSAGE]
+ForMe.World Animation Overrider: [AO_MESSAGE]
    <usetemplate
     ignoretext="Warn me when the Firestorm Animation Overrider gets accessed by a scripted object"
     name="notifyignore"/>

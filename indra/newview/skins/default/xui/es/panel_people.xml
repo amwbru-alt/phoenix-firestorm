@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!-- Side tray panel -->
 <panel label="Gente" name="people_panel">
-	<string name="no_recent_people" value="No hay nadie reciente. ¿Buscas gente con la que pasar el rato? Prueba la [secondlife:///app/search/people Búsqueda] o el [secondlife:///app/worldmap Mapa del mundo]."/>
-	<string name="no_filtered_recent_people" value="¿No encuentras lo que buscas? Prueba con [secondlife:///app/search/people/[SEARCH_TERM] Buscar]."/>
-	<string name="no_one_near" value="No hay nadie cerca. ¿Buscas gente con la que pasar el rato? Prueba la [secondlife:///app/search/people Búsqueda] o el [secondlife:///app/worldmap Mapa del mundo]."/>
-	<string name="no_one_filtered_near" value="¿No encuentras lo que buscas? Prueba con [secondlife:///app/search/people/[SEARCH_TERM] Buscar]."/>
+	<string name="no_recent_people" value="No hay nadie reciente. ¿Buscas gente con la que pasar el rato? Prueba la [fmw:///app/search/people Búsqueda] o el [fmw:///app/worldmap Mapa del mundo]."/>
+	<string name="no_filtered_recent_people" value="¿No encuentras lo que buscas? Prueba con [fmw:///app/search/people/[SEARCH_TERM] Buscar]."/>
+	<string name="no_one_near" value="No hay nadie cerca. ¿Buscas gente con la que pasar el rato? Prueba la [fmw:///app/search/people Búsqueda] o el [fmw:///app/worldmap Mapa del mundo]."/>
+	<string name="no_one_filtered_near" value="¿No encuentras lo que buscas? Prueba con [fmw:///app/search/people/[SEARCH_TERM] Buscar]."/>
 	<string name="no_friends_online" value="No hay amigos conectados"/>
 	<string name="no_friends" value="No hay amigos"/>
 	<string name="no_friends_msg">
-		Busca amigos usando la [secondlife:///app/search/people Búsqueda] o pulsa con el botón derecho del ratón en un Residente para añadirle como amigo.
-¿Buscas gente con la que pasar el rato? Prueba el [secondlife:///app/worldmap Mapa del mundo].
+		Busca amigos usando la [fmw:///app/search/people Búsqueda] o pulsa con el botón derecho del ratón en un Residente para añadirle como amigo.
+¿Buscas gente con la que pasar el rato? Prueba el [fmw:///app/worldmap Mapa del mundo].
 	</string>
 	<string name="no_filtered_friends_msg">
-		¿No encuentras lo que buscas? Prueba con [secondlife:///app/search/people/[SEARCH_TERM] Buscar].
+		¿No encuentras lo que buscas? Prueba con [fmw:///app/search/people/[SEARCH_TERM] Buscar].
 	</string>
-	<string name="no_filtered_groups_msg" value="¿No encuentras lo que buscas? Prueba con [secondlife:///app/search/groups/[SEARCH_TERM] Buscar]."/>
-	<string name="no_groups_msg" value="¿Buscas grupos en que participar? Prueba la [secondlife:///app/search/groups Búsqueda]."/>
+	<string name="no_filtered_groups_msg" value="¿No encuentras lo que buscas? Prueba con [fmw:///app/search/groups/[SEARCH_TERM] Buscar]."/>
+	<string name="no_groups_msg" value="¿Buscas grupos en que participar? Prueba la [fmw:///app/search/groups Búsqueda]."/>
 	<string name="MiniMapToolTipMsg" value="[REGION](Pulsa dos veces para abrir el mapa, pulsa mayús y arrastra para obtener una panorámica)"/>
 	<string name="AltMiniMapToolTipMsg" value="[REGION](Pulsa dos veces para teleportarte, pulsa mayús y arrastra para obtener una panorámica)"/>
-	<string name="GroupCountWithInfo" value="Perteneces a [COUNT] grupos y puedes unirte a [REMAINING] más. [secondlife:/// Incrementa tu límite]"/>
+	<string name="GroupCountWithInfo" value="Perteneces a [COUNT] grupos y puedes unirte a [REMAINING] más. [fmw:/// Incrementa tu límite]"/>
 	<string name="AllFriendsTitle">
 		Todos ([ALL])
 	</string>

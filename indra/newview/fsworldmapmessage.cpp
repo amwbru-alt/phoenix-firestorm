@@ -25,7 +25,7 @@
  * $/LicenseInfo$
  * 
  */
-// potential workaround for hop://grid:port/Partial/x/y/z resolution
+// potential workaround for fmw://grid:port/Partial/x/y/z resolution
 // 2024.04.30 humbletim
 
 // notes:
@@ -180,7 +180,7 @@ bool hypergrid::processExactNamedRegionResponse(LLMessageSystem* msg, U32 agent_
         htxhop_log("#%02d key='%s' block.name='%s' block.region_handle=%llu", block.index, extract_region(block.name).c_str(), block.name.c_str(), block.region_handle());
     }
     // special case: handle singular result w/empty name tho valid region handle AND singular pending query as a match
-    // (might be that a landing area / redirect hop URL is coming back: "^hop://grid:port/$", which extract_region's into "")
+    // (might be that a landing area / redirect hop URL is coming back: "^fmw://grid:port/$", which extract_region's into "")
     bool solo_result = blocks.size() == 2 && blocks[0].region_handle() && extract_region(blocks[0].name).empty() && !blocks[1].region_handle();
     if (solo_result && region_name_queries.size() == 1)
     {

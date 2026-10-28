@@ -17,7 +17,7 @@
 		<menu_item_call label="Nişanı sil" name="Clear Mark"/>
 		<menu_item_call label="Nişanları sil" name="Clear Marks"/>
 	</menu>
-	<menu_item_call label="Paylaş" name="Share"/>
+	<menu_item_call label="Paylaş" name="Share" forme_creator_only="true"/>
 	<menu_item_call label="Ödə" name="Pay"/>
 	<menu_item_call label="Teleport təklif et" name="teleport"/>
 	<menu_item_call label="Teleport tələb et" name="request_teleport"/>

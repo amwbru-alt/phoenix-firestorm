@@ -19,7 +19,7 @@
 			<text name="forgot_password_text">
 				Contraseña olvidada
 			</text>
-			<combo_box label="Seleccionar cuadrícula" name="server_combo"/>
+			<combo_box label="Seleccionar cuadrícula" name="server_combo" enabled="false" />
 			<text name="sign_up_text">
 				Regístrate
 			</text>

@@ -7,7 +7,7 @@
          layout="topleft"
          left="0"
          mouse_opaque="false"
-         help_topic="toolbox_texture_tab"
+        
          name="Texture"
          top="0"
          width="295">

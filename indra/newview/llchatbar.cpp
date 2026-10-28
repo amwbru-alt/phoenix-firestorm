@@ -40,7 +40,7 @@
 #include "llagent.h"
 #include "llbutton.h"
 #include "llcombobox.h"
-#include "llcommandhandler.h"   // secondlife:///app/chat/ support
+#include "llcommandhandler.h"   // fmw:///app/chat/ support
 #include "llviewercontrol.h"
 #include "llgesturemgr.h"
 #include "llkeyboard.h"

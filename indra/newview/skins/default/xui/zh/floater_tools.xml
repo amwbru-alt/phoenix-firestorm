@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="toolbox floater" short_title="建造工具">
+<floater name="toolbox floater" short_title="建造工具" forme_creator_only="true">
 	<floater.string name="grid_screen_text">
 		螢幕
 	</floater.string>
@@ -141,7 +141,7 @@
 		選擇的面: [FACES_STRING]
 	</text>-->
 	<text name="more info label">
-		[CAPACITY_STRING] [secondlife:///app/openfloater/object_weights 更多資訊]
+		[CAPACITY_STRING] [fmw:///app/openfloater/object_weights 更多資訊]
 	</text>
 	<tab_container name="Object Info Tabs">
 		<panel label="一般" name="General">

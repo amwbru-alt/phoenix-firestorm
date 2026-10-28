@@ -4,7 +4,7 @@
 	<menu_item_call label="S'asseoir ici" name="Sit Here"/>
 	<menu_item_call label="Acheter ce terrain" name="Land Buy"/>
 	<menu_item_call label="Acheter un droit d'entrée" name="Land Buy Pass"/>
-	<menu_item_call label="Construire" name="Create"/>
-	<menu_item_call label="Modifier le terrain" name="Edit Terrain"/>
+	<menu_item_call label="Construire" name="Create" forme_creator_only="true"/>
+	<menu_item_call label="Modifier le terrain" name="Edit Terrain" forme_creator_only="true"/>
 	<menu_item_call label="Ignorer le propriétaire des particules" name="Mute Particle"/>
 </context_menu>

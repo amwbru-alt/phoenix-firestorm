@@ -2,7 +2,7 @@
 <floater
  legacy_header_height="18"
 	name="floater_activeim"
-	help_topic="floater_activeim"
+
 	title="Active IM"
 	height="22"
 	width="320"

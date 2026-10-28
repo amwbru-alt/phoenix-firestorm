@@ -17,7 +17,7 @@
     layout="topleft"
     name="camera_floater"
     title="Camera Controls"
-    help_topic="camera_floater"
+   
     save_rect="true"
     save_visibility="true"
     show_title="false"

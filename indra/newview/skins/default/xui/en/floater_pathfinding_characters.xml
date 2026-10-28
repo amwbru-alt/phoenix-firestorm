@@ -9,7 +9,7 @@
     min_width="635"
     layout="topleft"
     name="floater_pathfinding_characters"
-    help_topic="floater_pathfinding_characters"
+   
     reuse_instance="true"
     save_rect="false"
     single_instance="true"

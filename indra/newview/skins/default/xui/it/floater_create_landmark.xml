@@ -7,7 +7,7 @@
 	<text name="name_label" value="Nome:" />
 	<text name="folder_label" value="Salva segnaposto in:" />
 	<text name="new_folder_textbox">
-		[secondlife:/// Crea nuova cartella]
+		[fmw:/// Crea nuova cartella]
 	</text>
 	<text name="notes_label" value="Note:" />
 	<button label="Annulla" name="cancel_btn" />

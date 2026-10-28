@@ -11,7 +11,7 @@
  layout="topleft"
  name="HoverHeight"
  single_instance="true"
- help_topic="hover_height"
+
  save_rect="true"
  save_visibility="true"
  title="Set Hover Height"

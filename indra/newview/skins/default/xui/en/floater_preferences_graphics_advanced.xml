@@ -3,7 +3,7 @@
   height="452"
   layout="topleft"
   name="prefs_graphics_advanced"
-  help_topic="Preferences_Graphics_Advanced"
+ 
   single_instance="true"
   save_rect="true"
   title="Advanced Graphics Preferences"

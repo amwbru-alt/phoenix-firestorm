@@ -13,7 +13,7 @@
  height="85"
  layout="topleft"
  name="camera_floater"
- help_topic="camera_floater"
+
  save_visibility="true"
  show_title="false"
  single_instance="true"

@@ -67,7 +67,7 @@
 	<spinner label="Haut" name="height_range_spin_0"/>
 	<spinner label="Haut" name="height_range_spin_2"/>
 	<button label="Télécharger les données" name="download_raw_btn" tool_tip="Disponible uniquement aux propriétaires du domaine"/>
-	<button label="Uploader les données" name="upload_raw_btn" tool_tip="Disponible uniquement aux propriétaires du domaine"/>
-	<button label="Figer le terrain" name="bake_terrain_btn" tool_tip="Définir le terrain actuel comme point central pour les limites d'altitude"/>
+	<button label="Uploader les données" name="upload_raw_btn" tool_tip="Disponible uniquement aux propriétaires du domaine" forme_creator_only="true"/>
+	<button label="Figer le terrain" name="bake_terrain_btn" tool_tip="Définir le terrain actuel comme point central pour les limites d'altitude" forme_creator_only="true"/>
 	<button label="Appliquer" name="apply_btn"/>
 </panel>

@@ -26,6 +26,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fscreatoraccess.h"
 #include "fsfloaterimport.h"
 
 #include "fscommon.h"
@@ -221,6 +222,8 @@ void FSFloaterImport::onIdle()
 
 void FSFloaterImport::loadFile()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     mFilePath = gDirUtilp->getDirName(mFilename);
     mFilename = gDirUtilp->getBaseFileName(mFileFullName);
 
@@ -490,6 +493,8 @@ void FSFloaterImport::addAsset(LLUUID asset_id, LLAssetType::EType asset_type)
 
 void FSFloaterImport::onClickBtnImport()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     mPrimObjectMap.clear();
     mLinkset = 0;
     mObject = 0;
@@ -619,6 +624,8 @@ void FSFloaterImport::onClickCheckBoxTempAsset()
 
 void FSFloaterImport::importPrims()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     mObjectSize = 0;
     LLSD& objectsd = mManifest["linkset"][mLinkset];
     for (LLSD::array_iterator iter = objectsd.beginArray();
@@ -642,6 +649,8 @@ void FSFloaterImport::importPrims()
 
 void FSFloaterImport::createPrim()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     LLUIString status = getString("file_status_running");
     status.setArg("[LINKSET]", llformat("%u", mLinkset + 1));
     status.setArg("[LINKSETS]", llformat("%u", mLinksetSize));
@@ -1152,6 +1161,8 @@ void FSFloaterImport::postLink()
 
 void FSFloaterImport::setPrimPosition(U8 type, LLViewerObject* object, LLVector3 position, LLQuaternion rotation, LLVector3 scale)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     gMessageSystem->newMessage(_PREHASH_MultipleObjectUpdate);
     gMessageSystem->nextBlockFast(_PREHASH_AgentData);
     gMessageSystem->addUUIDFast(_PREHASH_AgentID, gAgentID);
@@ -1184,6 +1195,8 @@ void FSFloaterImport::setPrimPosition(U8 type, LLViewerObject* object, LLVector3
 
 void FSFloaterImport::uploadAsset(LLUUID asset_id, LLUUID inventory_item)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     bool temporary = false;
     std::vector<U8> asset_data = mManifest["asset"][asset_id.asString()]["data"].asBinary();
     std::string name = mManifest["asset"][asset_id.asString()]["name"].asString();

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="toolbox floater" short_title="Tikinti alətləri">
+<floater name="toolbox floater" short_title="Tikinti alətləri" forme_creator_only="true">
 	<floater.string name="grid_screen_text">
 		Erkan
 	</floater.string>
@@ -137,7 +137,7 @@
 		Heç nə seçilməyib.
 	</text>
 	<text name="remaining_capacity">
-		[CAPACITY_STRING] [secondlife:///app/openfloater/object_weights Ətraflı]
+		[CAPACITY_STRING] [fmw:///app/openfloater/object_weights Ətraflı]
 	</text>
 	<tab_container name="Object Info Tabs">
 		<panel label="Ümumi" name="General">

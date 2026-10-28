@@ -52,7 +52,7 @@
     <menu_item_call
      label="Share"
      layout="topleft"
-     name="Share">
+     name="Share" forme_creator_only="true">
         <on_click
          function="Avatar.Share" />
         <on_enable

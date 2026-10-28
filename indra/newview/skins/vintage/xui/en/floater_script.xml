@@ -18,5 +18,5 @@
 	width="350"
 	can_resize="false"
 	min_width="350"
-	min_height="200">
+	min_height="200" forme_creator_only="true">
 </floater>

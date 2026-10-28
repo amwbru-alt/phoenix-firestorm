@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <context_menu name="Gallery">
-	<menu_item_call label="Compartilhar" name="Share"/>
+	<menu_item_call label="Compartilhar" name="Share" forme_creator_only="true"/>
 	<menu_item_call label="Esvaziar lixeira" name="Empty Trash"/>
 	<menu_item_call label="Esvaziar perdidos e achados" name="Empty Lost And Found"/>
 	<menu_item_call label="Teleportar" name="Landmark Open"/>
@@ -51,10 +51,10 @@
 	<menu_item_call label="Aplicar à parcela" name="Settings Apply Parcel"/>
 	<menu label="Criar novo" name="create_new">
 		<menu_item_call label="Nova pasta" name="New Folder"/>
-		<menu_item_call label="Novo script" name="New Script"/>
-		<menu_item_call label="Novo notecard" name="New Note"/>
-		<menu_item_call label="Novo gesto" name="New Gesture"/>
-		<menu_item_call label="Novo material" name="New Material"/>
+		<menu_item_call label="Novo script" name="New Script" forme_creator_only="true"/>
+		<menu_item_call label="Novo notecard" name="New Note" forme_creator_only="true"/>
+		<menu_item_call label="Novo gesto" name="New Gesture" forme_creator_only="true"/>
+		<menu_item_call label="Novo material" name="New Material" forme_creator_only="true"/>
 		<menu label="Novas roupas" name="New Clothes">
 			<menu_item_call label="Nova camisa" name="New Shirt"/>
 			<menu_item_call label="Nova calça" name="New Pants"/>
@@ -86,15 +86,15 @@
 	<menu_item_call label="Desagrupar itens da pasta" name="Ungroup folder items"/>
 	<menu_item_call label="Adicionar aos favoritos" name="Add to Favorites"/>
 	<menu_item_call label="Remover dos favoritos" name="Remove from Favorites"/>
-	<menu label="Enviar para pasta" name="upload_options">
-		<menu_item_call label="Imagem..." name="Upload Image"/>
-		<menu_item_call label="Som ([COST] L$)..." name="Upload Sound"/>
-		<menu_item_call label="Animação ([COST] L$)..." name="Upload Animation"/>
-		<menu_item_call label="Modelo..." name="Upload Model"/>
-		<menu_item_call label="Material..." name="Upload Material"/>
-		<menu_item_call label="Em lote..." name="Bulk Upload"/>
+	<menu label="Enviar para pasta" name="upload_options" forme_creator_only="true">
+		<menu_item_call label="Imagem..." name="Upload Image" forme_creator_only="true"/>
+		<menu_item_call label="Som ([COST] L$)..." name="Upload Sound" forme_creator_only="true"/>
+		<menu_item_call label="Animação ([COST] L$)..." name="Upload Animation" forme_creator_only="true"/>
+		<menu_item_call label="Modelo..." name="Upload Model" forme_creator_only="true"/>
+		<menu_item_call label="Material..." name="Upload Material" forme_creator_only="true"/>
+		<menu_item_call label="Em lote..." name="Bulk Upload" forme_creator_only="true"/>
 	</menu>
-	<menu label="Usar como padrão para" name="upload_def">
+	<menu label="Usar como padrão para" name="upload_def" forme_creator_only="true">
 		<menu_item_check label="Uploads de imagens" name="Image uploads"/>
 		<menu_item_check label="Uploads de sons" name="Sound uploads"/>
 		<menu_item_check label="Uploads de animações" name="Animation uploads"/>
@@ -102,8 +102,8 @@
 		<menu_item_check label="Uploads de material PBR" name="PBR uploads"/>
 	</menu>
 	<menu label="Marketplace" name="Marketplace">
-		<menu_item_call label="Copiar para listagens do Marketplace" name="Marketplace Copy"/>
-		<menu_item_call label="Mover para listagens do Marketplace" name="Marketplace Move"/>
+		<menu_item_call label="Copiar para listagens do Marketplace" name="Marketplace Copy" forme_creator_only="true"/>
+		<menu_item_call label="Mover para listagens do Marketplace" name="Marketplace Move" forme_creator_only="true"/>
 	</menu>
 	<menu_item_call label="--sem opções--" name="--no options--"/>
 </context_menu>

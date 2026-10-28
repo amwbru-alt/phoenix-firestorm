@@ -39,8 +39,8 @@ Urodziny: [REG_DATE]
 			<icon tool_tip="Znajomy nie może zobaczyć mojego statusu online" name="cant_see_online" />
 			<icon tool_tip="Znajomy może mnie zobaczyć na mapie" name="can_see_on_map" />
 			<icon tool_tip="Znajomy nie może mnie zobaczyć na mapie" name="cant_see_on_map" />
-			<icon tool_tip="Znajomy może edytować moje obiekty" name="can_edit_objects" />
-			<icon tool_tip="Znajomy nie może edytować moich obiektów" name="cant_edit_objects" />
+			<icon tool_tip="Znajomy może edytować moje obiekty" name="can_edit_objects"  forme_creator_only="true"/>
+			<icon tool_tip="Znajomy nie może edytować moich obiektów" name="cant_edit_objects"  forme_creator_only="true"/>
 			<text_editor name="user_age" value="(ładowanie...)" />
 			<text name="label2" value="Konto:" />
 			<panel name="badge_layout">

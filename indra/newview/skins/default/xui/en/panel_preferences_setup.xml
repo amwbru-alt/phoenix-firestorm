@@ -234,12 +234,12 @@
 		  width="480" />
 		<radio_item
 		  height="20"
-		  label="Use the built-in browser for Second Life links only"
+		  label="Use the built-in browser for ForMe.World links only"
 		  layout="topleft"
 		  left_delta="0"
 		  name="new_internal"
 		  value="1"      
-		  tool_tip="Use the default system web browser for help, web links, etc. The built-in browser will be used only for LindenLab/SecondLife links."
+		  tool_tip="Use the default system web browser for help, web links, etc. The built-in browser will be used only for LindenLab/ForMe.World links."
 		  top_delta="15"
 		  width="480" />
 		<radio_item

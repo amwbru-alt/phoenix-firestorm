@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <panel label="人群" name="people_panel">
-	<string name="no_recent_people" value="沒有最近的人。 想找人見面聊天？ 請試試[secondlife:///app/search/people 搜尋]或[secondlife:///app/worldmap 世界地圖]。" />
-	<string name="no_filtered_recent_people" value="找不到你要找的嗎？ 請試試[secondlife:///app/search/people/[SEARCH_TERM] 搜尋]。" />
-	<string name="no_one_near" value="附近無人。 想找人見面聊天？ 請試試[secondlife:///app/search/people 搜尋]或[secondlife:///app/worldmap 世界地圖]。" />
-	<string name="no_one_filtered_near" value="找不到你要找的嗎？ 請試試[secondlife:///app/search/people/[SEARCH_TERM] 搜尋]。" />
+	<string name="no_recent_people" value="沒有最近的人。 想找人見面聊天？ 請試試[fmw:///app/search/people 搜尋]或[fmw:///app/worldmap 世界地圖]。" />
+	<string name="no_filtered_recent_people" value="找不到你要找的嗎？ 請試試[fmw:///app/search/people/[SEARCH_TERM] 搜尋]。" />
+	<string name="no_one_near" value="附近無人。 想找人見面聊天？ 請試試[fmw:///app/search/people 搜尋]或[fmw:///app/worldmap 世界地圖]。" />
+	<string name="no_one_filtered_near" value="找不到你要找的嗎？ 請試試[fmw:///app/search/people/[SEARCH_TERM] 搜尋]。" />
 	<string name="no_friends_online" value="無朋友上線" />
 	<string name="no_friends" value="無朋友" />
 	<string name="no_friends_msg">
-		通過 [secondlife:///app/search/people 朋友] 搜尋好友，或右鍵單擊居民並列送好友申請。
-想認識新朋友？請嘗試使用 [secondlife:///app/worldmap 世界地圖]。
+		通過 [fmw:///app/search/people 朋友] 搜尋好友，或右鍵單擊居民並列送好友申請。
+想認識新朋友？請嘗試使用 [fmw:///app/worldmap 世界地圖]。
 	</string>
 	<string name="no_filtered_friends_msg">
-		找不到你要找的嗎？ 請試試[secondlife:///app/search/people/[SEARCH_TERM] 搜尋]。
+		找不到你要找的嗎？ 請試試[fmw:///app/search/people/[SEARCH_TERM] 搜尋]。
 	</string>
 	<string name="people_filter_label" value="過濾人員" />
 	<string name="groups_filter_label" value="過濾群組" />
-	<string name="no_filtered_groups_msg" value="沒有找到合適的內容？嘗試使用 [secondlife:///app/search/groups/[SEARCH_TERM] 搜尋]。" />
-	<string name="no_groups_msg" value="正在尋找群組？嘗試使用 [secondlife:///app/search/groups 搜尋]。" />
+	<string name="no_filtered_groups_msg" value="沒有找到合適的內容？嘗試使用 [fmw:///app/search/groups/[SEARCH_TERM] 搜尋]。" />
+	<string name="no_groups_msg" value="正在尋找群組？嘗試使用 [fmw:///app/search/groups 搜尋]。" />
 	<string name="MiniMapToolTipMsg" value="[REGION]（雙擊打開地圖；按住Shift並拖動以平移）" />
 	<string name="AltMiniMapToolTipMsg" value="[REGION]（雙擊以傳送；按住Shift並拖動以平移）" />
-	<string name="GroupCountWithInfo" value="你已加入 [COUNT] 個群組，還可以加入 [REMAINING] 個。[secondlife:/// 想查看更多？]"/>
+	<string name="GroupCountWithInfo" value="你已加入 [COUNT] 個群組，還可以加入 [REMAINING] 個。[fmw:/// 想查看更多？]"/>
 	<string name="avatar_name_count" value="名稱 [[TOTAL] / [IN_REGION] / [IN_CHAT_RANGE]]" />
 	<string name="empty_list">
 		此聯絡人分組為空。

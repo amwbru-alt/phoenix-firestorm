@@ -6,7 +6,7 @@
  layout="topleft"
  name="whitelist_entry"
  single_instance="true"
- help_topic="whitelist_entry"
+
  title="Whitelist Entry"
  width="390">
 

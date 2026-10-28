@@ -24,13 +24,13 @@
  * $/LicenseInfo$
  */
 #include "llviewerprecompiledheaders.h"
+#include "formegridpolicy.h" // <FS:ForMe> Fixed-grid policy.
 
 #include "llurldispatcher.h"
 
 // viewer includes
 #include "llagent.h"            // teleportViaLocation()
 #include "llcommandhandler.h"
-#include "llfloaterhelpbrowser.h"
 #include "llfloaterreg.h"
 #include "llfloatersidepanelcontainer.h"
 #include "llfloaterworldmap.h"
@@ -85,12 +85,12 @@ private:
                             bool right_mouse,
                             LLMediaCtrl* web,
                             bool trusted_browser);
-        // Handles secondlife:///app/agent/<agent_id>/about and similar
+        // Handles fmw:///app/agent/<agent_id>/about and similar
         // by showing panel in Search floater.
         // Returns true if handled or explicitly blocked.
 
     static bool dispatchRegion(const LLSLURL& slurl, const std::string& nav_type, bool right_mouse);
-        // handles secondlife://Ahern/123/45/67/
+        // handles fmw://Ahern/123/45/67/
         // Returns true if handled.
 
     static void regionHandleCallback(U64 handle, const LLSLURL& slurl,
@@ -141,7 +141,7 @@ bool LLURLDispatcherImpl::dispatch(const LLSLURL& slurl,
                                    bool trusted_browser)
 {
     // SL-20422 : Clicking the "Bring it back" link on Aditi displays a teleport alert
-    // Stop further processing empty urls like [secondlife:/// Bring it back.]
+    // Stop further processing empty urls like [fmw:/// Bring it back.]
     if (slurl.getType() == LLSLURL::EMPTY)
         return true;
 
@@ -196,7 +196,7 @@ bool LLURLDispatcherImpl::dispatchApp(const LLSLURL& slurl,
             slurl.getAppCmd(), path, query_map, slurl.getGrid(), web, nav_type, trusted_browser);
 // </FS:AW handle hop app teleports properly>
 
-    // alert if we didn't handle this secondlife:///app/ SLURL
+    // alert if we didn't handle this fmw:///app/ SLURL
     // (but still return true because it is a valid app SLURL)
     if (! handled)
     {
@@ -208,6 +208,10 @@ bool LLURLDispatcherImpl::dispatchApp(const LLSLURL& slurl,
 // static
 bool LLURLDispatcherImpl::dispatchRegion(const LLSLURL& slurl, const std::string& nav_type, bool right_mouse)
 {
+    // <FS:ForMe> Block external grid links before UI changes, map lookup or teleport.
+    if ((!slurl.getGrid().empty() && !ForMeGrid::allowedGrid(slurl.getGrid()))
+        || slurl.getHypergrid() || !ForMeGrid::localRegion(slurl.getRegion())) return true;
+
     if(slurl.getType() != LLSLURL::LOCATION)
     {
         return false;
@@ -389,6 +393,8 @@ public:
 #ifdef OPENSIM
         LLSLURL slurl(tokens, true);
 
+        if ((!slurl.getGrid().empty() && !ForMeGrid::allowedGrid(slurl.getGrid()))
+            || slurl.getHypergrid() || !ForMeGrid::localRegion(slurl.getRegion())) return true; // <FS:ForMe>
         std::string url_grid = slurl.getGrid();
         std::string gatekeeper = LLGridManager::getInstance()->getGatekeeper(url_grid);
         std::string region_name = slurl.getRegion();
@@ -412,7 +418,7 @@ public:
             region_name = gatekeeper + ":" + region_name;
         }
 
-        dest = "hop://" + current + "/" + region_name;
+        dest = "fmw://" + current + "/" + region_name;
 
         for (S32 i = 2; tokens.size() > i; i++)
         {

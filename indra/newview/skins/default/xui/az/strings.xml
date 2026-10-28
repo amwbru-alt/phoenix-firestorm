@@ -5,10 +5,10 @@
      that are returned from one component and may appear in many places-->
 <strings>
 	<string name="SECOND_LIFE_GRID">
-		Second Life şəbəkəsi
+		ForMe.World şəbəkəsi
 	</string>
 	<string name="SUPPORT_SITE">
-		Firestorm texniki dəstək portalı
+		ForMe.World texniki dəstək portalı
 	</string>
 	<string name="StartupDetectingHardware">
 		Avadanlıq təyin olunur...
@@ -31,7 +31,7 @@
 	<string name="AboutHeader">
 [APP_NAME] [VIEWER_VERSION_0].[VIEWER_VERSION_1].[VIEWER_VERSION_2] ([VIEWER_VERSION_3]) [BUILD_DATE] [BUILD_TIME] ([ADDRESS_SIZE] bit / [SIMD]) ([CHANNEL]) [BUILD_TYPE]
 [[VIEWER_RELEASE_NOTES_URL] [ReleaseNotes]]
-Second Life Viewer ilə uyğunluq: [VIEWER_VERSION_LL]
+ForMe.World Viewer ilə uyğunluq: [VIEWER_VERSION_LL]
 	</string>
 	<string name="AboutCompiler">
 		İstifadə olunan kompilyator [COMPILER], versiya [COMPILER_VERSION]
@@ -219,13 +219,13 @@ Səs serveri versiyası: [VOICE_VERSION]
 		https://www.firestormviewer.org/join-secondlife/
 	</string>
 	<string name="AgniGridLabel">
-		Second Life Əsas Şəbəkəsi (Agni)
+		ForMe.World Əsas Şəbəkəsi (Agni)
 	</string>
 	<string name="AditiGridLabel">
-		Second Life Beta Test Şəbəkəsi (Aditi)
+		ForMe.World Beta Test Şəbəkəsi (Aditi)
 	</string>
 	<string name="LoginFailedViewerNotPermitted">
-		İstifadə etdiyiniz klientin artıq Second Life oyununa girişi yoxdur. Siz müştərinin yeni versiyasını bu ünvandan yükləyə bilərsiniz:
+		İstifadə etdiyiniz klientin artıq ForMe.World oyununa girişi yoxdur. Siz müştərinin yeni versiyasını bu ünvandan yükləyə bilərsiniz:
 https://www.firestormviewer.org/choose-your-platform/
 
 Ətraflı məlumat üçün FAQ bölməsinə baxın:
@@ -265,17 +265,17 @@ və şifrənizi bərpa etmək üçün nəzarət sualına cavab verin.
 Narahatçılıq üçün üzr istəyirik.
 	</string>
 	<string name="LoginFailedEmployeesOnly">
-		Second Life müvəqqəti olaraq texniki xidmətdədir.
+		ForMe.World müvəqqəti olaraq texniki xidmətdədir.
 Yalnız işçilər giriş edə bilər.
 Status yeniliklərini www.secondlife.com/status saytında izləyə bilərsiniz.
 	</string>
 	<string name="LoginFailedPremiumOnly">
-		Cari istifadəçilər üçün oyun dünyasının ən yüksək keyfiyyətini qorumaq üçün Second Life-a giriş müvəqqəti olaraq məhdudlaşdırılıb.
+		Cari istifadəçilər üçün oyun dünyasının ən yüksək keyfiyyətini qorumaq üçün ForMe.World-a giriş müvəqqəti olaraq məhdudlaşdırılıb.
 
-Bu müddət ərzində pulsuz hesabları olan istifadəçilər Second Life-a daxil ola bilməyəcəklər ki, ödəniş edənlər daha çox yerə sahib olsunlar.
+Bu müddət ərzində pulsuz hesabları olan istifadəçilər ForMe.World-a daxil ola bilməyəcəklər ki, ödəniş edənlər daha çox yerə sahib olsunlar.
 	</string>
 	<string name="LoginFailedComputerProhibited">
-		Siz bu kompüterdə Second Life-a daxil ola bilməzsiniz.
+		Siz bu kompüterdə ForMe.World-a daxil ola bilməzsiniz.
 Bunun səhv olduğunu düşünürsünüzsə, buraya məktub göndərin:
 support@secondlife.com.
 	</string>
@@ -288,7 +288,7 @@ support@secondlife.com.
 	</string>
 	<string name="LoginFailedAccountDisabled">
 		Hazırda sorğunuzu tamamlaya bilmirik. 
-Yardım üçün http://support.secondlife.com ünvanında Second Life Dəstək ilə əlaqə saxlayın.
+Yardım üçün http://support.secondlife.com ünvanında ForMe.World Dəstək ilə əlaqə saxlayın.
 	</string>
 	<string name="LoginFailedTransformError">
 		Giriş zamanı məlumat uyğunsuzluğu aşkar edildi.
@@ -314,7 +314,7 @@ Bunun səhv olduğunu düşünürsünüzsə, buraya məktub göndərin: support@
 		Simulatora qoşulmaq mümkün deyil.
 	</string>
 	<string name="LoginFailedRestrictedHours">
-		Sizin Second Life hesabınız yalnız
+		Sizin ForMe.World hesabınız yalnız
 	[START]-[END] saatları arasında Sakit Okean vaxtı (PST) ilə giriş etməyə icazə verilir.
 	Bu vaxtda giriş edin.
 	Bu bir xəta olduğunu düşünürsəniz, support@secondlife.com ünvanına məktub göndərin.																												   
@@ -691,7 +691,7 @@ Bunun səhv olduğunu düşünürsünüzsə, buraya məktub göndərin: support@
 		Xəritədə bu yeri görmək üçün klikləyin
 	</string>
 	<string name="TooltipSLAPP">
-		secondlife:// əmrini yerinə yetirmək üçün klikləyin
+		ForMe.World:// əmrini yerinə yetirmək üçün klikləyin
 	</string>
 	<string name="TooltipFSHelpDebugSLUrl">
 		Bu seçim üçün sazlayıcı pəncərəsini açmaq üçün basın.
@@ -1660,13 +1660,13 @@ etmək haqqında kömək almaq üçün http://secondlife.com/support ünvanına 
 		Normal görünüşə qayıtmaq üçün ESC düyməsini basın
 	</string>
 	<string name="InventoryNoMatchingItems">
-		Sizə lazım olanı tapmadınız? [secondlife:///app/search/all/[SEARCH_TERM] Axtarışdan] istifadə edin.
+		Sizə lazım olanı tapmadınız? [fmw:///app/search/all/[SEARCH_TERM] Axtarışdan] istifadə edin.
 	</string>
 	<string name="InventoryNoMatchingRecentItems">
-		Axtardığınızı tapmadınız? [secondlife:///app/inventory/filters Filtrləri] cəhd edin.
+		Axtardığınızı tapmadınız? [fmw:///app/inventory/filters Filtrləri] cəhd edin.
 	</string>
 	<string name="PlacesNoMatchingItems">
-		Sizə lazım olanı tapmadınız? [secondlife:///app/search/places/[SEARCH_TERM] Axtarışdan] istifadə edin.
+		Sizə lazım olanı tapmadınız? [fmw:///app/search/places/[SEARCH_TERM] Axtarışdan] istifadə edin.
 	</string>
 	<string name="FavoritesNoMatchingItems">
 		Sevimlilər siyahısına əlavə etmək üçün əlfəcini bura dartın.
@@ -1683,21 +1683,11 @@ etmək haqqında kömək almaq üçün http://secondlife.com/support ünvanına 
 	<string name="InventoryInboxNoItems">
 		Alış-veriş mərkəzindən alışlarınız burada göstəriləcək. Onları istifadə etmək üçün avadanlıq siyahınıza daşıya bilərsiniz.
 	</string>
-	<string name="MarketplaceURL">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/
-	</string>
-	<string name="MarketplaceURL_CreateStore">
-		http://community.secondlife.com/t5/English-Knowledge-Base/Selling-in-the-Marketplace/ta-p/700193#Section_.3
-	</string>
-	<string name="MarketplaceURL_Dashboard">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/merchants/store/dashboard
-	</string>
-	<string name="MarketplaceURL_Imports">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/merchants/store/imports
-	</string>
-	<string name="MarketplaceURL_LearnMore">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/learn_more
-	</string>
+	<string name="MarketplaceURL">http://185.173.93.200:8002/web/marketplace.html</string>
+	<string name="MarketplaceURL_CreateStore">http://185.173.93.200:8002/web/seller.html</string>
+	<string name="MarketplaceURL_Dashboard">http://185.173.93.200:8002/web/seller.html</string>
+	<string name="MarketplaceURL_Imports">http://185.173.93.200:8002/web/seller.html</string>
+	<string name="MarketplaceURL_LearnMore">http://185.173.93.200:8002/web/terms.html</string>
 	<string name="InventoryPlayAnimationTooltip">
 		Oynatma seçimləri pəncərəsini açın.
 	</string>
@@ -1733,10 +1723,7 @@ etmək haqqında kömək almaq üçün http://secondlife.com/support ünvanına 
 	<string name="InventoryOutboxError">
 		[[MARKETPLACE_CREATE_STORE_URL] Dükan] xətaları qaytarır.
 	</string>
-	<string name="InventoryMarketplaceError">
-		Ticarət mərkəzinin məhsul siyahılarını açarkən xəta.
-Bu mesaj yenidən baş verərsə, kömək üçün http://support.secondlife.com ünvanında Second Life Dəstək ilə əlaqə saxlayın
-	</string>
+	<string name="InventoryMarketplaceError">Ticarət mərkəzinin məhsul siyahılarını açarkən xəta.</string>
 	<string name="InventoryMarketplaceListingsNoItemsTitle">
 		Ticarət mərkəzi element siyahısı qovluğu boşdur.
 	</string>
@@ -6256,7 +6243,7 @@ və xəta xaqqında bildirin.
 		Havok dəstəyi ilə
 	</string>
 	<string name="FSWithOpensim">
-		OpenSimulator dəstəyi ilə
+		ForMe.World dəstəyi ilə
 	</string>
 	<string name="not_found">
 		'[TEXT]' tapılmadı

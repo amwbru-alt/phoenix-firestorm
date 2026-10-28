@@ -6,7 +6,7 @@
  layout="topleft"
  title="Buy L$"
  name="buy currency"
- help_topic="buy_linden_dollars"
+
  single_instance="true"
  width="350">
     <floater.string

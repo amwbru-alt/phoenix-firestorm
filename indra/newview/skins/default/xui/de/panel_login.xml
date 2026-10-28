@@ -19,7 +19,7 @@
 			<text name="forgot_password_text">
 				Kennwort vergessen
 			</text>
-			<combo_box label="Grid auswählen" name="server_combo"/>
+			<combo_box label="Grid auswählen" name="server_combo" enabled="false" />
 			<text name="sign_up_text">
 				Registrieren
 			</text>

@@ -2,7 +2,7 @@
 <floater
   title="Marketplace Listings"
   name="floater_marketplace_listings"
-  help_topic="floater_marketplace_listings"
+ 
   positioning="cascading"
   width="333"
   height="445"
@@ -12,7 +12,7 @@
   can_resize="true"
   save_rect="true"
   save_visibility="false"
-  reuse_instance="true">
+  reuse_instance="true" forme_creator_only="true">
   <panel
     name="marketplace_listings_panel"
     follows="all"

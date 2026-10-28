@@ -3,7 +3,7 @@
   positioning="cascading"
   can_close="true"
   can_resize="false"
-  help_topic="floater_primfeed"
+ 
   layout="topleft"
   name="floater_primfeed"
   save_rect="true"

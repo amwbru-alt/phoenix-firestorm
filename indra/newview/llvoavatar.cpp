@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fsavatarbadges.h" // <FS:ForMe> Authoritative server badges.
 
 #include "llvoavatar.h"
 
@@ -3898,9 +3899,10 @@ void LLVOAvatar::idleUpdateNameTag(const LLVector3& root_pos_last)
     {
         static LLCachedControl<bool> render_name_show_self(gSavedSettings, "RenderNameShowSelf");
         static LLCachedControl<S32> name_tag_mode(gSavedSettings, "AvatarNameTagMode");
-        render_name = render_name
+        const bool server_badge = ForMeAvatarBadges::get(getID()).valid;
+        render_name = (server_badge || render_name)
             && !gAgentCamera.cameraMouselook()
-            && (visible_chat || (render_name_show_self && name_tag_mode));
+            && (server_badge || visible_chat || (render_name_show_self && name_tag_mode));
     }
 
     if ( !render_name )
@@ -4148,6 +4150,10 @@ void LLVOAvatar::idleUpdateNameTagText(bool new_name)
     }
     // </FS:Ansariel>
 
+    // <FS:ForMe> The authoritative badge/name color takes priority over optional client/friend colors.
+    const ForMeBadge::Data forme_badge = (fRlvShowAvName || isSelf()) ? ForMeAvatarBadges::get(getID()) : ForMeBadge::Data();
+    if (forme_badge.valid) name_tag_color = ForMeAvatarBadges::color(forme_badge.badgeColor);
+
     // Rebuild name tag if state change detected
     if (!mNameIsSet
         || new_name
@@ -4303,6 +4309,7 @@ void LLVOAvatar::idleUpdateNameTagText(bool new_name)
                     }
                     // </FS:CR>
 
+                    if (forme_badge.valid) username_color = ForMeAvatarBadges::color(forme_badge.badgeColor); // <FS:ForMe>
                     // <FS:CR> Show user name as legacy name if selected
                     std::string username( show_legacynames ? av_name.getUserNameForDisplay() : av_name.getAccountName() );
 
@@ -4431,6 +4438,8 @@ void LLVOAvatar::idleUpdateNameTagText(bool new_name)
         LGGContactSets::getInstance()->hasFriendColorThatShouldShow(getID(), ContactSetType::CHAT, new_chat);
         // </FS:CR>
 
+        if (forme_badge.valid) new_chat = ForMeAvatarBadges::color(forme_badge.chatColor); // <FS:ForMe>
+
         if (mVisibleChat)
         {
         LLColor4 normal_chat = lerp(new_chat, LLColor4(0.8f, 0.8f, 0.8f, 1.f), 0.7f);
@@ -4507,15 +4516,21 @@ void LLVOAvatar::idleUpdateNameTagText(bool new_name)
 void LLVOAvatar::addNameTagLine(const std::string& line, const LLColor4& color, S32 style, const LLFontGL* font, const bool use_ellipses, bool is_name /* = false */)
 // </FS:Ansariel>
 {
+    const ForMeBadge::Data forme_badge = is_name && (isSelf() || RlvActions::canShowName(RlvActions::SNC_DEFAULT, getID()))
+        ? ForMeAvatarBadges::get(getID()) : ForMeBadge::Data();
+    const std::string forme_line = ForMeBadge::decorate(forme_badge, line);
+    const LLColor4 forme_color = forme_badge.valid ? ForMeAvatarBadges::color(forme_badge.badgeColor) : color;
+    if (is_name && mNameText) mNameText->setColor(forme_color);
+
     // extra width (NAMETAG_MAX_WIDTH) is for names only, not for chat
     llassert(mNameText);
     if (mVisibleChat || mVisibleTyping)
     {
-        mNameText->addLabel(line, LLHUDNameTag::NAMETAG_MAX_WIDTH);
+        mNameText->addLabel(forme_line, LLHUDNameTag::NAMETAG_MAX_WIDTH);
     }
     else
     {
-        mNameText->addLine(line, color, (LLFontGL::StyleFlags)style, font, use_ellipses, LLHUDNameTag::NAMETAG_MAX_WIDTH);
+        mNameText->addLine(forme_line, forme_color, (LLFontGL::StyleFlags)style, font, use_ellipses, LLHUDNameTag::NAMETAG_MAX_WIDTH);
     }
     // <FS:Ansariel> Fix nametag not properly updating when display name arrives
     //mNameIsSet |= !line.empty();

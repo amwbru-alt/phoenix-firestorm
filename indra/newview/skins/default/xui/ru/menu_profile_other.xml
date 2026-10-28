@@ -10,7 +10,7 @@
 	<menu_item_call label="Пригласить в группу..." name="invite_to_group"/>
 	<menu_item_call label="Разрешения" name="agent_permissions"/>
 	<menu_item_call label="Карта" name="map"/>
-	<menu_item_call label="Поделиться" name="share"/>
+	<menu_item_call label="Поделиться" name="share" forme_creator_only="true"/>
 	<menu_item_call label="Платить" name="pay"/>
 	<menu_item_check label="Блокировать/Разблокировать" name="block_unblock"/>
 	<menu_item_call label="Копировать Отображаемое Имя" name="copy_display_name"/>

@@ -14,10 +14,10 @@
     Photo of "[OUTFIT_NAME]" outfit
   </string>
   <string name="no_outfits_msg">
-    You don't have any outfits yet. Try [secondlife:///app/search/all/ Search]
+    You don't have any outfits yet. Try [fmw:///app/search/all/ Search]
   </string>
   <string name="no_matched_outfits_msg">
-    Didn't find what you're looking for? Try [secondlife:///app/search/all/[SEARCH_TERM] Search].
+    Didn't find what you're looking for? Try [fmw:///app/search/all/[SEARCH_TERM] Search].
   </string>
   <text
     type="string"

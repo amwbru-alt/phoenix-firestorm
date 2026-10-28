@@ -21,7 +21,7 @@
 	<string name="AboutHeader">
 [APP_NAME] [VIEWER_VERSION_0].[VIEWER_VERSION_1].[VIEWER_VERSION_2] ([VIEWER_VERSION_3]) [BUILD_DATE] [BUILD_TIME] ([ADDRESS_SIZE]bit / [SIMD]) ([CHANNEL]) [BUILD_TYPE]
 [[VIEWER_RELEASE_NOTES_URL] [ReleaseNotes]]
-Second Life Viewer との互換性: [VIEWER_VERSION_LL]
+ForMe.World Viewer との互換性: [VIEWER_VERSION_LL]
 	</string>
 	<string name="AboutCompiler">
 		コンパイラのバージョン：[COMPILER] [COMPILER_VERSION]
@@ -614,7 +614,7 @@ https://secondlife.com/viewer-access-faq
 		クリックしてこの場所をマップに表示します。
 	</string>
 	<string name="TooltipSLAPP">
-		クリックしてsecondlife://コマンドを出します。
+		クリックしてfmw://コマンドを出します。
 	</string>
 	<string name="TooltipFSHelpDebugSLUrl">クリックするとこの設定のデバッグ設定ウィンドウが開きます。</string>
 	<string name="TooltipFSUrlEntryWear">クリックするとインベントリフォルダの内容が表示されます。</string>
@@ -629,7 +629,7 @@ https://secondlife.com/viewer-access-faq
 	<string name="SLurlLabelShowOnMap">
 		マップ上に表示
 	</string>
-	<!-- label strings for secondlife:///app/agent SLapps -->
+	<!-- label strings for fmw:///app/agent SLapps -->
 	<string name="SLappAgentMute">
 		無視
 	</string>
@@ -1645,7 +1645,7 @@ https://secondlife.com/viewer-access-faq
 	</string>
 	<!-- inventory -->
 	<string name="InventoryNoMatchingItems">
-		お探しのものは見つかりましたか？[secondlife:///app/search/all/[SEARCH_TERM] 検索]をお試しください。
+		お探しのものは見つかりましたか？[fmw:///app/search/all/[SEARCH_TERM] 検索]をお試しください。
 	</string>
 	<string name="InventoryNoMatchingFavorites">
 		お気に入りとしてマークしたアイテムはありません。
@@ -1657,7 +1657,7 @@ https://secondlife.com/viewer-access-faq
 		隠されたタブを表示
 	</string>
 	<string name="InventoryNoMatchingRecentItems">
-		お探しのものは見つかりましたか？[secondlife:///app/inventory/filters フィルタを表示]をお試しください。
+		お探しのものは見つかりましたか？[fmw:///app/inventory/filters フィルタを表示]をお試しください。
 	</string>
 	<string name="InventoryNoMatchingFavorites">
 		お気に入りに登録されたアイテムがありません。
@@ -1666,7 +1666,7 @@ https://secondlife.com/viewer-access-faq
 		カスタム
 	</string>
 	<string name="PlacesNoMatchingItems">
-		お探しのものは見つかりましたか？[secondlife:///app/search/places/[SEARCH_TERM] 検索]をお試しください。
+		お探しのものは見つかりましたか？[fmw:///app/search/places/[SEARCH_TERM] 検索]をお試しください。
 	</string>
 	<string name="FavoritesNoMatchingItems">
 		ここにランドマークをドラッグしてお気に入りに追加します。
@@ -1692,13 +1692,11 @@ https://secondlife.com/viewer-access-faq
 	<string name="InventoryInboxNoItems">
 		マーケットプレイスで購入した商品はここに表示されます。その後、アイテムをインベントリにドラッグすれば、それらのアイテムを使用できます。
 	</string>
-	<string name="MarketplaceURL">https://marketplace.[MARKETPLACE_DOMAIN_NAME]/?lang=ja-JP</string>
-	<string name="MarketplaceURL_CreateStore">
-		https://community.secondlife.com/knowledgebase/%E6%97%A5%E6%9C%AC%E8%AA%9E%E3%83%8A%E3%83%AC%E3%83%83%E3%82%B8%E3%83%99%E3%83%BC%E3%82%B9/%E3%83%9E%E3%83%BC%E3%82%B1%E3%83%83%E3%83%88%E3%83%97%E3%83%AC%E3%82%A4%E3%82%B9%E3%81%A7%E8%B2%A9%E5%A3%B2%E3%81%99%E3%82%8B-r769/
-	</string>
-	<string name="MarketplaceURL_Dashboard">https://marketplace.[MARKETPLACE_DOMAIN_NAME]/merchants/store/dashboard?lang=ja-JP</string>
-	<string name="MarketplaceURL_Imports">https://marketplace.[MARKETPLACE_DOMAIN_NAME]/merchants/store/imports?lang=ja-JP</string>
-	<string name="MarketplaceURL_LearnMore">https://marketplace.[MARKETPLACE_DOMAIN_NAME]/learn_more?lang=ja-JP</string>
+	<string name="MarketplaceURL">http://185.173.93.200:8002/web/marketplace.html</string>
+	<string name="MarketplaceURL_CreateStore">http://185.173.93.200:8002/web/seller.html</string>
+	<string name="MarketplaceURL_Dashboard">http://185.173.93.200:8002/web/seller.html</string>
+	<string name="MarketplaceURL_Imports">http://185.173.93.200:8002/web/seller.html</string>
+	<string name="MarketplaceURL_LearnMore">http://185.173.93.200:8002/web/terms.html</string>
 	<string name="InventoryPlayAnimationTooltip">
 		「再生」オプションでウィンドウを開きます。
 	</string>
@@ -1732,19 +1730,9 @@ https://secondlife.com/viewer-access-faq
 	<string name="InventoryOutboxError">
 		[[MARKETPLACE_CREATE_STORE_URL] マーケットプレイスストア]がエラーを返しています。
 	</string>
-	<string name="InventoryMarketplaceError">
-		マーケットプレイスの出品リストを開くときにエラーが発生しました。引き続きこのメッセージを受信するには、Second Lifeのサポート（http://support.secondlife.com）にお問い合わせください
-	</string>
-	<string name="InventoryMarketplaceConnectionError">
-		マーケットプレイス出品時の接続に失敗しました。
-このメッセージが続けて表示される場合は、
-https://support.secondlife.com よりSecond Lifeのサポートまでお問い合わせください。
-	</string>
-	<string name="InventoryMarketplaceConnectionErrorReason">
-		マーケットプレイス出品時の接続に失敗しました：[REASON]
-このメッセージが続けて表示される場合は、
-https://support.secondlife.com よりSecond Lifeのサポートまでお問い合わせください。
-	</string>
+	<string name="InventoryMarketplaceError">Unable to open ForMe.World listings. Try again; if the error persists, contact the server administrator.</string>
+	<string name="InventoryMarketplaceConnectionError">マーケットプレイス出品時の接続に失敗しました。 このメッセージが続けて表示される場合は、</string>
+	<string name="InventoryMarketplaceConnectionErrorReason">マーケットプレイス出品時の接続に失敗しました：[REASON] このメッセージが続けて表示される場合は、</string>
 	<string name="InventoryMarketplaceListingsNoItemsTitle">
 		マーケットプレイスの出品リストフォルダが空です。
 	</string>
@@ -2026,7 +2014,7 @@ https://support.secondlife.com よりSecond Lifeのサポートまでお問い�
 		全員
 	</string>
 	<!-- Virtual Firestorm system folders -->
-	<string name="InvFolder #Firestorm">#Firestorm</string>
+	<string name="InvFolder #Firestorm">#ForMe.World</string>
 	<string name="InvFolder #Phoenix">#Phoenix</string>
 	<string name="InvFolder #RLV">#RLV</string>
 	<string name="InvFolder My Suitcase">

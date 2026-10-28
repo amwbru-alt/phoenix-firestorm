@@ -193,7 +193,7 @@
 					Resolución
 				</text>
 				<button name="Reset_Resolution" label="R" tool_tip="Restablecer valor por defecto."/>
-				<text name="T_Aspect_Ratio" tool_tip="Esto supone ser la relación de aspecto de la cámara que estás usando. Por ejemplo, una cámara de 35mm tiene una relación de aspecto de 3:2 (1.5). Second Life lo usará como marco de referencia para cómo se ajustará el campo de visión y la longitud focal en función del tamaño de la ventana. ¡AL PARECER, ESTE AJUSTE NO TIENE EFECTO ALGUNO!">
+				<text name="T_Aspect_Ratio" tool_tip="Esto supone ser la relación de aspecto de la cámara que estás usando. Por ejemplo, una cámara de 35mm tiene una relación de aspecto de 3:2 (1.5). ForMe.World lo usará como marco de referencia para cómo se ajustará el campo de visión y la longitud focal en función del tamaño de la ventana. ¡AL PARECER, ESTE AJUSTE NO TIENE EFECTO ALGUNO!">
 					Aspecto
 				</text>
 				<button name="Reset_Aspect_Ratio" label="R" tool_tip="Restablecer valor por defecto."/>

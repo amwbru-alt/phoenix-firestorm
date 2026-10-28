@@ -4,7 +4,7 @@
  width="290"
  layout="topleft"
  name="region_restarting"
- help_topic="floater_region_restarting"
+
  single_instance="true"
  reuse_instance="false"
  title="Region Restart">

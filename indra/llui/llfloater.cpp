@@ -332,8 +332,8 @@ void LLFloater::initFloater(const Params& p)
     // Help button: '?'
     //SL-14050 Disable all Help question marks
     // <FS:TJ> Disable the help button only if the debug setting is on
-    static LLUICachedControl<bool> hide_help_buttons ("FSHideHelpButtons", false);
-    mButtonsEnabled[BUTTON_HELP] = !mHelpTopic.empty() && !hide_help_buttons;// false;
+    
+    mButtonsEnabled[BUTTON_HELP] = false;// false;
     // </FS:TJ>
 
     // Minimize button only for top draggers
@@ -4102,3 +4102,4 @@ void LL_COORD_FLOATER::convertFromCommon(const LLCoordCommon& from)
         self.mY = rescale((F32)from_y, (F32)snap_rect.mBottom, (F32)(snap_rect.mTop - floater_height), -0.5f, 0.5f);
     }
 }
+

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <floater
  name="fs_asset_blacklist"
- help_topic="fs_asset_blacklist"
+
  title="Asset Blacklist"
  min_width="650"
  min_height="320"

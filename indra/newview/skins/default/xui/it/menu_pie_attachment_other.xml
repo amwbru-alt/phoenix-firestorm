@@ -29,8 +29,8 @@
                 <pie_slice label="LOD mesh" name="Reset Mesh LOD"/>
             </pie_menu>
             <pie_menu name="ExportMenu" label="Esporta &gt;">
-                <pie_slice label="Salva copia" name="Backup"/>
-                <pie_slice label="Collada" name="Collada"/>
+                <pie_slice label="Salva copia" name="Backup" forme_creator_only="true"/>
+                <pie_slice label="Collada" name="Collada" forme_creator_only="true"/>
                 <pie_slice label="Scarica XML" name="Dump XML"/>
             </pie_menu>
             <pie_menu name="RenderMenu" label="Renderizza &gt;">

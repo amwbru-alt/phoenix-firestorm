@@ -13,7 +13,7 @@
    </pie_slice>
    <pie_slice
         label="Create"
-        name="Build">
+        name="Build" forme_creator_only="true">
         <pie_slice.on_click
             function="Object.Build" />
         <pie_slice.on_enable
@@ -66,7 +66,7 @@
         <pie_slice
          enabled="false"
          label="Copies: Separately"
-         name="Take Copy Separate">
+         name="Take Copy Separate" forme_creator_only="true">
             <pie_slice.on_click
              function="Object.TakeSeparateCopy"/>
             <pie_slice.on_enable
@@ -79,7 +79,7 @@
         <pie_slice
          enabled="false"
          label="Take copy"
-         name="Take Copy">
+         name="Take Copy" forme_creator_only="true">
             <pie_slice.on_click
              function="Tools.TakeCopy"/>
             <pie_slice.on_enable
@@ -90,7 +90,7 @@
         <pie_slice
          enabled="false"
          label="Take"
-         name="Take">
+         name="Take" forme_creator_only="true">
             <pie_slice.on_click
              function="Object.Take"/>
             <pie_slice.on_enable
@@ -101,7 +101,7 @@
         <pie_slice
          enabled="false"
          label="Take: Combined"
-         name="Take combined">
+         name="Take combined" forme_creator_only="true">
             <pie_slice.on_click
              function="Object.Take"/>
             <pie_slice.on_enable
@@ -112,7 +112,7 @@
         <pie_slice
          enabled="false"
          label="Copy: Combined"
-         name="Take Copy combined">
+         name="Take Copy combined" forme_creator_only="true">
             <pie_slice.on_click
              function="Tools.TakeCopy"/>
             <pie_slice.on_enable
@@ -123,7 +123,7 @@
         <pie_slice
          enabled="false"
          label="Take: Separately"
-         name="Take Separate">
+         name="Take Separate" forme_creator_only="true">
             <pie_slice.on_click
              function="Object.TakeSeparate"/>
             <pie_slice.on_enable
@@ -150,7 +150,7 @@
     <pie_slice
         enabled="false"
         label="Delete"
-        name="Delete">
+        name="Delete" forme_creator_only="true">
         <pie_slice.on_click
             function="Object.Delete" />
         <pie_slice.on_enable
@@ -168,7 +168,7 @@
     <pie_slice
         enabled="false"
         label="Take Copy"
-        name="Take Copy">
+        name="Take Copy" forme_creator_only="true">
         <pie_slice.on_click
             function="Tools.TakeCopy" />
         <pie_slice.on_enable
@@ -342,7 +342,7 @@
     <pie_slice
         enabled="false"
         label="Return"
-        name="Return...">
+        name="Return..." forme_creator_only="true">
         <pie_slice.on_click
             function="Object.Return" />
         <pie_slice.on_enable
@@ -403,7 +403,7 @@
             <pie_slice
                 enabled="false"
                 label="Backup"
-                name="Backup">
+                name="Backup" forme_creator_only="true">
                 <pie_slice.on_click
                     function="Object.Export" />
                 <pie_slice.on_enable
@@ -412,7 +412,7 @@
             <pie_slice
                 enabled="false"
                 label="Collada"
-                name="Collada">
+                name="Collada" forme_creator_only="true">
                 <pie_slice.on_click
                     function="Object.ExportCollada" />
                 <pie_slice.on_enable
@@ -487,7 +487,7 @@
             <pie_slice
                 enabled="false"
                 label="Compile (Mono)"
-                name="CompileMono">
+                name="CompileMono" forme_creator_only="true">
                 <pie_slice.on_click
                     function="Tools.SelectedScriptAction"
                     parameter="compile mono" />
@@ -498,7 +498,7 @@
             <pie_slice
                 enabled="false"
                 label="Compile (LSL)"
-                name="CompileLSL">
+                name="CompileLSL" forme_creator_only="true">
                 <pie_slice.on_click
                     function="Tools.SelectedScriptAction"
                     parameter="compile lsl" />
@@ -509,7 +509,7 @@
             <pie_slice
                 enabled="false"
                 label="Reset Scripts"
-                name="Object Reset Scripts">
+                name="Object Reset Scripts" forme_creator_only="true">
                 <pie_slice.on_click
                     function="Tools.SelectedScriptAction"
                     parameter="reset" />
@@ -520,7 +520,7 @@
             <pie_slice
                 enabled="false"
                 label="Run Scripts"
-                name="Object Set Scripts to Running">
+                name="Object Set Scripts to Running" forme_creator_only="true">
                 <pie_slice.on_click
                     function="Tools.SelectedScriptAction"
                     parameter="start" />
@@ -531,7 +531,7 @@
             <pie_slice
                 enabled="false"
                 label="Stop Scripts"
-                name="Object Set Scripts to Not Running">
+                name="Object Set Scripts to Not Running" forme_creator_only="true">
                 <pie_slice.on_click
                     function="Tools.SelectedScriptAction"
                     parameter="stop" />
@@ -542,7 +542,7 @@
             <pie_slice
                 enabled="false"
                 label="Remove Scripts"
-                name="Remove Scripts From Selection">
+                name="Remove Scripts From Selection" forme_creator_only="true">
                 <pie_slice.on_click
                     function="Tools.SelectedScriptAction"
                     parameter="delete" />
@@ -586,7 +586,7 @@
 
     <pie_slice
         label="Edit"
-        name="Edit...">
+        name="Edit..." forme_creator_only="true">
         <pie_slice.on_click
             function="Object.Edit" />
         <pie_slice.on_enable

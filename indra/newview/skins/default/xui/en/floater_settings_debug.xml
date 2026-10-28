@@ -9,7 +9,7 @@
 	min_height="160"
 	min_width="430"
 	name="settings_debug"
-	help_topic="settings_debug"
+
 	title="Debug Settings"
 	width="450">
 

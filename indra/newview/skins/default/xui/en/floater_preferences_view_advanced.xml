@@ -3,7 +3,7 @@
  height="190"
  layout="topleft"
  name="floaterpreferencesviewadvanced"
- help_topic="floaterviewadvanced"
+
  title="Camera Position"
  save_rect="true"
  width="280">

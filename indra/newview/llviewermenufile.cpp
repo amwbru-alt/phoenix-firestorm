@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fscreatoraccess.h"
 
 #include "llviewermenufile.h"
 
@@ -492,6 +493,8 @@ void upload_single_file(
     LLFilePicker::ELoadFilter type,
     const LLUUID& dest)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     std::string filename = filenames[0];
     if (!check_file_extension(filename, type)) return;
 
@@ -851,6 +854,8 @@ bool get_bulk_upload_expected_cost(
 
 void upload_bulk(const std::vector<std::string>& filtered_filenames, bool allow_2k, const LLUUID& dest)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     S32 expected_upload_cost;
     S32 expected_upload_count;
     S32 bvh_count;
@@ -910,6 +915,8 @@ void upload_bulk(const std::vector<std::string>& filtered_filenames, bool allow_
 
 void upload_bulk(const std::vector<std::string>& filenames, LLFilePicker::ELoadFilter type, bool allow_2k, const LLUUID& dest)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     // TODO:
     // Check user balance for entire cost
     // Charge user entire cost
@@ -937,6 +944,8 @@ class LLFileUploadImage : public view_listener_t
 {
     bool handleEvent(const LLSD& userdata)
     {
+        if (!ForMeCreatorAccess::allowed()) return true; // <FS:ForMe>
+
         if (gAgentCamera.cameraMouselook())
         {
             gAgentCamera.changeCameraToDefault();
@@ -950,6 +959,8 @@ class LLFileUploadModel : public view_listener_t
 {
     bool handleEvent(const LLSD& userdata)
     {
+        if (!ForMeCreatorAccess::allowed()) return true; // <FS:ForMe>
+
         if (LLConvexDecomposition::isFunctional())
         {
             LLFloaterModelPreview::showModelPreview();
@@ -975,6 +986,8 @@ class LLFileUploadMaterial : public view_listener_t
 {
     bool handleEvent(const LLSD& userdata)
     {
+        if (!ForMeCreatorAccess::allowed()) return true; // <FS:ForMe>
+
         LLMaterialEditor::importMaterial();
         return true;
     }
@@ -984,6 +997,8 @@ class LLFileUploadSound : public view_listener_t
 {
     bool handleEvent(const LLSD& userdata)
     {
+        if (!ForMeCreatorAccess::allowed()) return true; // <FS:ForMe>
+
         if (gAgentCamera.cameraMouselook())
         {
             gAgentCamera.changeCameraToDefault();
@@ -997,6 +1012,8 @@ class LLFileUploadAnim : public view_listener_t
 {
     bool handleEvent(const LLSD& userdata)
     {
+        if (!ForMeCreatorAccess::allowed()) return true; // <FS:ForMe>
+
         if (gAgentCamera.cameraMouselook())
         {
             gAgentCamera.changeCameraToDefault();
@@ -1010,6 +1027,8 @@ class LLFileUploadBulk : public view_listener_t
 {
     bool handleEvent(const LLSD& userdata)
     {
+        if (!ForMeCreatorAccess::allowed()) return true; // <FS:ForMe>
+
         if (gAgentCamera.cameraMouselook())
         {
             gAgentCamera.changeCameraToDefault();
@@ -1024,6 +1043,8 @@ class FSFileImportLinkset : public view_listener_t
 {
     bool handleEvent(const LLSD& userdata)
     {
+        if (!ForMeCreatorAccess::allowed()) return true; // <FS:ForMe>
+
         if (gAgentCamera.cameraMouselook())
         {
             gAgentCamera.changeCameraToDefault();
@@ -1354,6 +1375,8 @@ LLUUID upload_new_resource(
     void *userdata,
     bool show_inventory)
 {
+    if (!ForMeCreatorAccess::allowed()) return LLUUID::null; // <FS:ForMe> Owner/designer only.
+
 
     LLResourceUploadInfo::ptr_t uploadInfo(std::make_shared<LLNewFileResourceUploadInfo>(
         src_filename,
@@ -1495,6 +1518,8 @@ void upload_new_resource(
     LLAssetStorage::LLStoreAssetCallback callback,
     void *userdata)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     if(gDisconnected)
     {
         return ;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="particle_editor_floater" title="粒子編輯器">
+<floater name="particle_editor_floater" title="粒子編輯器" forme_creator_only="true">
 	<panel name="particle_editor_panel">
 		<panel name="top_left_panel">
 			<text name="Pattern_Label">

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<panel label="OpenSim" name="opensim_panel">
-	<tab_container label="Opensim" name="tabs">
+<panel label="ForMe.World" name="opensim_panel">
+	<tab_container label="ForMe.World" name="tabs">
 		<panel name="grid_management_panel" label="Grid-Manager">
 			<text name="add_grid_text">
 				Neues Grid hinzufügen

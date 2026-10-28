@@ -5,7 +5,7 @@
  height="500"
  layout="topleft"
  name="floater_test_button"
- help_topic="floater_test_button"
+
  translate="false"
  width="500">
     <button

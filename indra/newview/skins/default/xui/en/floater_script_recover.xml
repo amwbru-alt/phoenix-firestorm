@@ -8,7 +8,7 @@
   name="script_recover"
   single_instance="true"
   title="Script Recovery"
-  width="350">
+  width="350" forme_creator_only="true">
 
   <text
    follows="top|left|right"

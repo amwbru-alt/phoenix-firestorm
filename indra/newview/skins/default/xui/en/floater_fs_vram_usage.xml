@@ -9,7 +9,7 @@
  min_height="160"
  min_width="270"
  name="object_vram_usage"
- help_topic=""
+
  save_rect="true"
  title="Object impact on VRAM"
  width="400">

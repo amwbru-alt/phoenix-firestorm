@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fscreatoraccess.h"
 #include "llfloaterproperties.h"
 
 #include <algorithm>
@@ -775,6 +776,8 @@ void LLFloaterProperties::onCommitDescription()
 // static
 void LLFloaterProperties::onCommitPermissions()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     //LL_INFOS() << "LLFloaterProperties::onCommitPermissions()" << LL_ENDL;
     LLViewerInventoryItem* item = (LLViewerInventoryItem*)findItem();
     if(!item) return;
@@ -881,6 +884,8 @@ void LLFloaterProperties::onCommitPermissions()
 // static
 void LLFloaterProperties::onCommitSaleInfo()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     //LL_INFOS() << "LLFloaterProperties::onCommitSaleInfo()" << LL_ENDL;
     updateSaleInfo();
 }
@@ -888,12 +893,16 @@ void LLFloaterProperties::onCommitSaleInfo()
 // static
 void LLFloaterProperties::onCommitSaleType()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     //LL_INFOS() << "LLFloaterProperties::onCommitSaleType()" << LL_ENDL;
     updateSaleInfo();
 }
 
 void LLFloaterProperties::updateSaleInfo()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     LLViewerInventoryItem* item = (LLViewerInventoryItem*)findItem();
     if(!item) return;
     LLSaleInfo sale_info(item->getSaleInfo());

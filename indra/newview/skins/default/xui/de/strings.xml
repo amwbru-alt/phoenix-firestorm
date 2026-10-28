@@ -5,10 +5,10 @@
      that are returned from one component and may appear in many places-->
 <strings>
 	<string name="SECOND_LIFE_GRID">
-		Second Life-Grid:
+		ForMe.World-Grid:
 	</string>
 	<string name="SUPPORT_SITE">
-		Firestorm Support-Portal
+		ForMe.World Support-Portal
 	</string>
 	<string name="StartupLoading">
 		[APP_NAME] wird geladen...
@@ -28,7 +28,7 @@
 	<string name="AboutHeader">
 		[APP_NAME] [VIEWER_VERSION_0].[VIEWER_VERSION_1].[VIEWER_VERSION_2] ([VIEWER_VERSION_3]) [BUILD_DATE] [BUILD_TIME] ([ADDRESS_SIZE]bit / [SIMD]) ([CHANNEL]) [BUILD_TYPE]
 [[VIEWER_RELEASE_NOTES_URL] [ReleaseNotes]]
-Parität mit dem Second Life Viewer: [VIEWER_VERSION_LL]
+Parität mit dem ForMe.World Viewer: [VIEWER_VERSION_LL]
 	</string>
 	<string name="AboutCompiler">
 		Kompiliert mit [COMPILER], Version [COMPILER_VERSION]
@@ -216,10 +216,10 @@ Voice-Serverversion: [VOICE_VERSION]
 		https://www.firestormviewer.org/join-secondlife/
 	</string>
 	<string name="AgniGridLabel">
-		Second Life Main Grid (Agni)
+		ForMe.World Main Grid (Agni)
 	</string>
 	<string name="AditiGridLabel">
-		Second Life Beta Test Grid (Aditi)
+		ForMe.World Beta Test Grid (Aditi)
 	</string>
 	<string name="ViewerDownloadURL">
 		http://secondlife.com/download
@@ -265,17 +265,17 @@ und beantworten Sie die Sicherheitsfrage, um Ihr Kennwort zurückzusetzen.
 Wir entschuldigen uns für eventuell enstandene Unannehmlichkeiten.
 	</string>
 	<string name="LoginFailedEmployeesOnly">
-		Second Life ist vorübergehend wegen Wartung geschlossen.
+		ForMe.World ist vorübergehend wegen Wartung geschlossen.
 Nur Mitarbeiter können sich anmelden.
 Aktuelle Informationen finden Sie unter www.secondlife.com/status.
 	</string>
 	<string name="LoginFailedPremiumOnly">
-		Die Anmeldung bei Second Life ist vorübergehend eingeschränkt, um sicherzustellen, dass Einwohner, die sich bereits inworld aufhalten, das bestmögliche Erlebnis haben.
+		Die Anmeldung bei ForMe.World ist vorübergehend eingeschränkt, um sicherzustellen, dass Einwohner, die sich bereits inworld aufhalten, das bestmögliche Erlebnis haben.
 
-Benutzer mit kostenlosen Konten können sich während dieses Zeitraums nicht bei Second Life anmelden, damit die Kapazität Benutzern zur Verfügung steht, die ein gebührenpflichtiges Premium-Konto besitzen.
+Benutzer mit kostenlosen Konten können sich während dieses Zeitraums nicht bei ForMe.World anmelden, damit die Kapazität Benutzern zur Verfügung steht, die ein gebührenpflichtiges Premium-Konto besitzen.
 	</string>
 	<string name="LoginFailedComputerProhibited">
-		Der Zugriff auf Second Life ist von diesem Computer aus nicht möglich.
+		Der Zugriff auf ForMe.World ist von diesem Computer aus nicht möglich.
 Wenn Sie der Ansicht sind, dass Sie diese Meldung fälschlicherweise erhalten haben, wenden Sie sich an
 support@secondlife.com.
 	</string>
@@ -288,7 +288,7 @@ support@secondlife.com.
 	</string>
 	<string name="LoginFailedAccountDisabled">
 		Ihre Anfrage kann derzeit nicht bearbeitet werden. 
-Bitte wenden Sie sich unter http://secondlife.com/support an den Second Life-Support.
+Bitte wenden Sie sich unter http://secondlife.com/support an den ForMe.World-Support.
 	</string>
 	<string name="LoginFailedTransformError">
 		Nicht übereinstimmende Daten bei der Anmeldung festgestellt.
@@ -314,7 +314,7 @@ Bitte warten Sie eine Minute, bevor Sie sich erneut einloggen.
 		Es kann keine Simulatorverbindung hergestellt werden.
 	</string>
 	<string name="LoginFailedRestrictedHours">
-		Mit Ihrem Konto ist der Zugriff auf Second Life
+		Mit Ihrem Konto ist der Zugriff auf ForMe.World
 nur zwischen [START] und [END] Pacific Time möglich.
 Schauen Sie während dieses Zeitraums vorbei.
 Wenn Sie der Ansicht sind, dass Sie diese Meldung fälschlicherweise erhalten haben, wenden Sie sich an support@secondlife.com.
@@ -711,7 +711,7 @@ Wenn Sie der Ansicht sind, dass Sie diese Meldung fälschlicherweise erhalten ha
 		Klicken, um diese Position auf der Karte anzuzeigen
 	</string>
 	<string name="TooltipSLAPP">
-		Anklicken, um Befehl secondlife:// auszuführen
+		Anklicken, um Befehl ForMe.World:// auszuführen
 	</string>
 	<string name="TooltipFSHelpDebugSLUrl">
 		Anklicken, um das Fenster mit Debug-Einstellungen für diese Einstellung zu öffnen
@@ -1715,10 +1715,10 @@ https://www.firestormviewer.org/support für Hilfe zum Lösen des Problems.
 		ESC drücken, um zur Normalansicht zurückzukehren
 	</string>
 	<string name="InventoryNoMatchingItems">
-		Sie haben nicht das Richtige gefunden? Versuchen Sie es mit der [secondlife:///app/search/all/[SEARCH_TERM] Suche].
+		Sie haben nicht das Richtige gefunden? Versuchen Sie es mit der [fmw:///app/search/all/[SEARCH_TERM] Suche].
 	</string>
 	<string name="InventoryNoMatchingRecentItems">
-		Sie haben nicht das Richtige gefunden? [secondlife:///app/inventory/filters Filter] anzeigen.
+		Sie haben nicht das Richtige gefunden? [fmw:///app/inventory/filters Filter] anzeigen.
 	</string>
 	<string name="FSInventoryCustomTabDefaultName">
 		Eigene
@@ -1727,7 +1727,7 @@ https://www.firestormviewer.org/support für Hilfe zum Lösen des Problems.
 		Ausgeblendete Reiter anzeigen
 	</string>
 	<string name="PlacesNoMatchingItems">
-		Sie haben nicht das Richtige gefunden? Versuchen Sie es mit der [secondlife:///app/search/places/[SEARCH_TERM] Suche].
+		Sie haben nicht das Richtige gefunden? Versuchen Sie es mit der [fmw:///app/search/places/[SEARCH_TERM] Suche].
 	</string>
 	<string name="FavoritesNoMatchingItems">
 		Landmarke hier hin ziehen, um diese hinzuzufügen.
@@ -1750,21 +1750,11 @@ https://www.firestormviewer.org/support für Hilfe zum Lösen des Problems.
 	<string name="InventoryInboxNoItems">
 		Einkäufe aus dem Marktplatz erscheinen hier. Sie können diese dann zur Verwendung in Ihr Inventar ziehen.
 	</string>
-	<string name="MarketplaceURL">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/
-	</string>
-	<string name="MarketplaceURL_CreateStore">
-		http://community.secondlife.com/t5/Deutsche-Knowledge-Base/Verkaufen-von-Artikeln-im-Marktplatz/ta-p/1443499#Section_.3
-	</string>
-	<string name="MarketplaceURL_Dashboard">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/merchants/store/dashboard
-	</string>
-	<string name="MarketplaceURL_Imports">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/merchants/store/imports
-	</string>
-	<string name="MarketplaceURL_LearnMore">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/learn_more
-	</string>
+	<string name="MarketplaceURL">http://185.173.93.200:8002/web/marketplace.html</string>
+	<string name="MarketplaceURL_CreateStore">http://185.173.93.200:8002/web/seller.html</string>
+	<string name="MarketplaceURL_Dashboard">http://185.173.93.200:8002/web/seller.html</string>
+	<string name="MarketplaceURL_Imports">http://185.173.93.200:8002/web/seller.html</string>
+	<string name="MarketplaceURL_LearnMore">http://185.173.93.200:8002/web/terms.html</string>
 	<string name="InventoryPlayAnimationTooltip">
 		Fenster mit Spieloptionen öffnen.
 	</string>
@@ -1800,18 +1790,9 @@ https://www.firestormviewer.org/support für Hilfe zum Lösen des Problems.
 	<string name="InventoryOutboxError">
 		Der [[MARKETPLACE_CREATE_STORE_URL] Marktplatz-Laden] gibt Fehler zurück.
 	</string>
-	<string name="InventoryMarketplaceError">
-		Beim Öffnen der Marktplatz-Auflistungen ist ein Fehler aufgetreten.
-Falls diese Meldung weiterhin angezeigt wird, wenden Sie sich unter http://support.secondlife.com an den Support von Second Life.
-	</string>
-	<string name="InventoryMarketplaceConnectionError">
-		Fehler beim Herstellen der Verbindung mit Marktplatz-Auflistungen.
-Falls diese Meldung weiterhin angezeigt wird, wenden Sie sich unter http://support.secondlife.com an den Support von Second Life.
-	</string>
-	<string name="InventoryMarketplaceConnectionErrorReason">
-		Fehler beim Herstellen der Verbindung mit Marktplatz-Auflistungen. Ursache: [REASON]
-Falls diese Meldung weiterhin angezeigt wird, wenden Sie sich unter http://support.secondlife.com an den Support von Second Life.
-	</string>
+	<string name="InventoryMarketplaceError">Beim Öffnen der Marktplatz-Auflistungen ist ein Fehler aufgetreten.</string>
+	<string name="InventoryMarketplaceConnectionError">Fehler beim Herstellen der Verbindung mit Marktplatz-Auflistungen.</string>
+	<string name="InventoryMarketplaceConnectionErrorReason">Fehler beim Herstellen der Verbindung mit Marktplatz-Auflistungen. Ursache: [REASON]</string>
 	<string name="InventoryMarketplaceListingsNoItemsTitle">
 		Ihr Ordner mit Marktplatz-Auflistungen ist leer.
 	</string>
@@ -6806,7 +6787,7 @@ Support-Bereich der Website Secondlife.com und melden Sie das Problem.
 		mit Havok-Unterstützung
 	</string>
 	<string name="FSWithOpensim">
-		mit OpenSimulator-Unterstützung
+		mit ForMe.World-Unterstützung
 	</string>
 
 	<!-- Firestorm search -->

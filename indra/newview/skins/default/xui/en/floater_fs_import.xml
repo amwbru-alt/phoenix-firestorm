@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <floater
   name="fs_import"
-  help_topic="fs_import"
+ 
   title="Object Import"
   width="210"
   height="206"
   save_rect="true"
   can_resize="false"
   can_minimize="true"
-  can_close="true">
+  can_close="true" forme_creator_only="true">
 	<floater.string
 	 name="floater_title">
 		Import [FILENAME]

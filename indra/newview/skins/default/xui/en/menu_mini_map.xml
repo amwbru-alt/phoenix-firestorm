@@ -141,7 +141,7 @@
 		</menu_item_call>
 		<menu_item_call
 			label="Share"
-			name="Share">
+			name="Share" forme_creator_only="true">
 			<menu_item_call.on_click
 				function="Minimap.Share"/>
 			<menu_item_call.on_enable

@@ -4,7 +4,7 @@
 	<text name="title_label" value="Подробности"/>
 	<text name="name_label" value="Название:"/>
 	<text name="folder_label" value="Сохранить закладку в:"/>
-	<text name="new_folder_textbox">[secondlife:/// Создать новую папку]</text>
+	<text name="new_folder_textbox">[fmw:/// Создать новую папку]</text>
 	<text name="notes_label" value="Мои заметки:"/>
 	<button label="OK" name="ok_btn"/>
 	<button label="Отмена" name="cancel_btn"/>

@@ -20,7 +20,7 @@
 				<panel name="stub_panel">
 					<button name="stub_collapse_btn" tool_tip="Bu paneli arxadan bağla"/>
 					<text name="stub_textbox">
-						Söhbət ayrı bir pəncərədə göstərilir.   [secondlife:/// Qaytar.]
+						Söhbət ayrı bir pəncərədə göstərilir.   [fmw:/// Qaytar.]
 					</text>
 				</panel>
 			</panel_container>

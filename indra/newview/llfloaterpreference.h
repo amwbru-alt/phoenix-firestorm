@@ -130,13 +130,10 @@ protected:
     void        onLanguageChange();
     void        onTimeFormatChange();
     void        onNotificationsChange(const std::string& OptionName);
-    void        onNameTagOpacityChange(const LLSD& newvalue);
-    void        onConsoleOpacityChange(const LLSD& newvalue);   // <FS:CR> FIRE-1332 - Sepeate opacity settings for nametag and console chat
 
     // set value of "DoNotDisturbResponseChanged" in account settings depending on whether do not disturb response
     // <FS:Zi> Pie menu
     // make sure controls get greyed out or enabled when pie color override is toggled
-    void onPieColorsOverrideChanged();
     // </FS:Zi> Pie menu
 
     // string differs from default after user changes.
@@ -275,8 +272,6 @@ public:
     void onClickRenderExceptions();
     void onClickAutoAdjustments();
     void onClickAdvanced();
-    void applyUIColor(LLUICtrl* ctrl, const LLSD& param);
-    void getUIColor(LLUICtrl* ctrl, const LLSD& param);
     void onLogChatHistorySaved();
 
     // <FS:Zi> FIRE-19539 - Include the alert messages in Prefs>Notifications>Alerts in preference Search.

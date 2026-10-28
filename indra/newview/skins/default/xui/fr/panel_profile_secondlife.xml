@@ -39,8 +39,8 @@
 	<icon tool_tip="Cet(te) ami(e) ne peut pas voir mon statut en ligne" name="cant_see_online" />
 	<icon tool_tip="Cet(te) ami(e) peut me voir sur la carte" name="can_see_on_map" />
 	<icon tool_tip="Cet(te) ami(e) ne peut pas me voir sur la carte" name="cant_see_on_map" />
-	<icon tool_tip="Cet(te) ami(e) peut modifier mes objets" name="can_edit_objects" />
-	<icon tool_tip="Cet(te) ami(e) ne peut pas modifier mes objets" name="cant_edit_objects" />
+	<icon tool_tip="Cet(te) ami(e) peut modifier mes objets" name="can_edit_objects"  forme_creator_only="true"/>
+	<icon tool_tip="Cet(te) ami(e) ne peut pas modifier mes objets" name="cant_edit_objects"  forme_creator_only="true"/>
 	<text name="Key:" value="Clé :" />
 	<text_editor name="user_key" value="(en cours de chargement...)"/>
 	<layout_stack name="imagepositioner">

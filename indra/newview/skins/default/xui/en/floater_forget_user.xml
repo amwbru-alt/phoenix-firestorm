@@ -4,7 +4,7 @@
  height="258"
  layout="topleft"
  name="groups"
- help_topic="forget_username"
+
  title="REMEMBERED USERNAMES"
  width="280">
     <scroll_list

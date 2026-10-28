@@ -19,7 +19,7 @@
 			<text name="forgot_password_text">
 				Ajuda com senha
 			</text>
-			<combo_box label="Selecionar grid" name="server_combo"/>
+			<combo_box label="Selecionar grid" name="server_combo" enabled="false" />
 			<text name="sign_up_text">
 				Cadastre-se
 			</text>

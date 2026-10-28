@@ -3,7 +3,7 @@
 	<tab_container name="about_tab">
 		<panel label="Info" name="support_panel">
     <text name="support_intro">    
-Aktuelle Informationen über Firestorm finden Sie unter
+Aktuelle Informationen über ForMe.World finden Sie unter
 https://www.firestormviewer.org
     </text>
 			<button label="In Zwischenablage kopieren" name="copy_btn"/>
@@ -21,7 +21,7 @@ mit Open-Source-Beiträgen von:
 			</text_editor>
 		</panel>
 <!-- Firestorm Credits -->
-		<panel label="Firestorm" name="fs_credits_panel">
+		<panel label="ForMe.World" name="fs_credits_panel">
 			<scroll_container name="fs_credits_scroll_container">
 				<panel name="fs_credits_scroll_container_content_panel">
 					<text name="firestorm_intro">
@@ -33,10 +33,10 @@ Das Firestorm Entwickler-Team:
 Zusätzlicher Programmcode von:
 					</text>
 					<text name="fs_support_intro" >
-Besonderer Dank gilt unserem Firestorm-Support-Team sowie den Wiki-Autoren, Schulungsleitern und Übersetzern:
+Besonderer Dank gilt unserem ForMe.World-Support-Team sowie den Wiki-Autoren, Schulungsleitern und Übersetzern:
 					</text>
 					<text name="fs_art_intro" >
-Firestorm enthält Starlight, modifiziert für Firestorm. Es ist von Einwohnern für Einwohner und hat das Ziel, eine alternative, freundlichere und hoffentlich einfacher zu bedienende Oberfläche bereitzustellen. Für weitere Details, siehe &lt;nolink&gt;https://wiki.secondlife.com/wiki/Viewer_Skins/Starlight&lt;/nolink&gt;.
+ForMe.World enthält Starlight, modifiziert für ForMe.World. Es ist von Einwohnern für Einwohner und hat das Ziel, eine alternative, freundlichere und hoffentlich einfacher zu bedienende Oberfläche bereitzustellen. Für weitere Details, siehe &lt;nolink&gt;https://wiki.secondlife.com/wiki/Viewer_Skins/Starlight&lt;/nolink&gt;.
 
 UI-Künstler und Designer:
 					</text>

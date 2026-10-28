@@ -31,8 +31,8 @@
 	<menu_item_call label="De-rendi + lista nera" name="DerenderPermanent"/>
 	<menu_item_call label="Mostra texture" name="Debug..."/>
 	<menu_item_call label="Ricarica texture" name="Texture Refresh"/>
-	<context_menu label="Esporta" name="Export Menu">
-		<menu_item_call label="Salva copia" name="Backup"/>
-		<menu_item_call label="Collada" name="Collada"/>
+	<context_menu label="Esporta" name="Export Menu" forme_creator_only="true">
+		<menu_item_call label="Salva copia" name="Backup" forme_creator_only="true"/>
+		<menu_item_call label="Collada" name="Collada" forme_creator_only="true"/>
 	</context_menu>	
 </context_menu>

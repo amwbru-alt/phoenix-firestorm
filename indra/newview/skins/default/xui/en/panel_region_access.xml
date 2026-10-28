@@ -3,7 +3,7 @@
  border="true"
  follows="top|left"
  height="510"
- help_topic="panel_region_access_tab"
+
  label="Access"
  layout="topleft"
  left="0"
@@ -35,7 +35,7 @@
     label="Estate Managers"
     layout="topleft"
     left="0"
-    help_topic="estate_managers_tab"
+   
     name="estate_managers_panel"
     right="-1"
     top="0">
@@ -125,7 +125,7 @@
     label="Allowed"
     layout="topleft"
     left="0"
-    help_topic="allowed_tab"
+   
     name="allowed_panel"
     right="-1"
     top="0">
@@ -242,7 +242,7 @@
     label="Allowed Groups"
     layout="topleft"
     left="0"
-    help_topic="allowed_groups_tab"
+   
     name="allowed_groups_panel"
     right="-1"
     top="0">
@@ -361,7 +361,7 @@
     label="Banned"
     layout="topleft"
     left="0"
-    help_topic="banned_tab"
+   
     name="banned_panel"
     right="-1"
     top="0">

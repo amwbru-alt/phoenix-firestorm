@@ -4,7 +4,7 @@
  height="470"
  layout="topleft"
  name="floater_translation_settings"
- help_topic="translation_settings"
+
  save_rect="true"
  title="Chat Translation Settings"
  width="485">

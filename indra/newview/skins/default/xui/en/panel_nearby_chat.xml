@@ -3,7 +3,7 @@
  follows="all"
  top="0"
  bottom_delta="10"
- help_topic="nearby_chat"
+
  layout="topleft"
  name="nearby_chat"
  width="242"

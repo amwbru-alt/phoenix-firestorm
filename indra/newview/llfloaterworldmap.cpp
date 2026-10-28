@@ -131,7 +131,7 @@ static const F32 ZOOM_MAX = 128.f;
 // Globals
 //---------------------------------------------------------------------------
 
-// handle secondlife:///app/worldmap/{NAME}/{COORDS} URLs
+// handle fmw:///app/worldmap/{NAME}/{COORDS} URLs
 class LLWorldMapHandler : public LLCommandHandler
 {
 public:
@@ -169,12 +169,12 @@ public:
 
         if (params.size() == 0)
         {
-            // support the secondlife:///app/worldmap SLapp
+            // support the fmw:///app/worldmap SLapp
             LLFloaterReg::showInstance("world_map", "center");
             return true;
         }
 
-        // support the secondlife:///app/worldmap/{LOCATION}/{COORDS} SLapp
+        // support the fmw:///app/worldmap/{LOCATION}/{COORDS} SLapp
         const std::string region_name = LLURI::unescape(params[0].asString());
         S32 x = (params.size() > 1) ? params[1].asInteger() : 128;
         S32 y = (params.size() > 2) ? params[2].asInteger() : 128;
@@ -188,7 +188,7 @@ public:
 };
 LLWorldMapHandler gWorldMapHandler;
 
-// handle secondlife:///app/worldmap_global/{GLOBAL_COORDS} URLs
+// handle fmw:///app/worldmap_global/{GLOBAL_COORDS} URLs
 class LLWorldMapGlobalHandler : public LLCommandHandler
 {
 public:
@@ -234,7 +234,7 @@ public:
 };
 LLWorldMapGlobalHandler gWorldMapGlobalHandler;
 
-// SocialMap handler secondlife:///app/maptrackavatar/id
+// SocialMap handler fmw:///app/maptrackavatar/id
 class LLMapTrackAvatarHandler : public LLCommandHandler
 {
 public:

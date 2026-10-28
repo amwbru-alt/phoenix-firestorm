@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<floater name="floater_combo" help_topic="floater_combo">
+<floater name="floater_combo">
 	<text name="combo_text">
 		Selecione uma opção:
 	</text>

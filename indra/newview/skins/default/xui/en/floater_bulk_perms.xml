@@ -5,7 +5,7 @@
  height="310"
  layout="topleft"
  name="floaterbulkperms"
- help_topic="floaterbulkperms"
+
  title="Adjust Content Permissions"
  width="350">
     <floater.string

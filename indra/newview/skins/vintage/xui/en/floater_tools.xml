@@ -7,13 +7,13 @@
  height="638"
  layout="topleft"
  name="toolbox floater"
- help_topic="toolbox_floater"
+
  save_rect="true"
  short_title="Build Tools"
  single_instance="true"
  save_visibility="true"
  sound_flags="0"
- width="295">
+ width="295" forme_creator_only="true">
   <floater.string
      name="grid_screen_text">
     Screen
@@ -948,7 +948,7 @@
 	  top_pad="-5"
 	  visible="false"
 	  width="280">
-	 [CAPACITY_STRING] [secondlife:///app/openfloater/object_weights More info]
+	 [CAPACITY_STRING] [fmw:///app/openfloater/object_weights More info]
 	</text>
     <view_border
     bevel_style="none"
@@ -981,7 +981,7 @@
 	 label="General"
 	 layout="topleft"
 	 mouse_opaque="false"
-	 help_topic="toolbox_general_tab"
+	
 	 name="General"
 	 top="16"
 	 width="295">
@@ -1116,7 +1116,7 @@
              width="190"
              word_wrap="true"
              use_ellipses="true">
-                secondlife:///app/agent/00000000-0000-0000-0000-000000000000/inspect TestString PleaseIgnore (please.ignore)
+                fmw:///app/agent/00000000-0000-0000-0000-000000000000/inspect TestString PleaseIgnore (please.ignore)
             </text>
             <text
              type="string"
@@ -1148,7 +1148,7 @@
              width="190"
              word_wrap="true"
              use_ellipses="true">
-                secondlife:///app/agent/00000000-0000-0000-0000-000000000000/inspect TestString PleaseIgnore (please.ignore)
+                fmw:///app/agent/00000000-0000-0000-0000-000000000000/inspect TestString PleaseIgnore (please.ignore)
             </text>
             <text
              type="string"
@@ -1178,7 +1178,7 @@
              top_delta="0"
              translate="false"
              width="190">
-                secondlife:///app/agent/00000000-0000-0000-0000-000000000000/inspect TestString PleaseIgnore (please.ignore)
+                fmw:///app/agent/00000000-0000-0000-0000-000000000000/inspect TestString PleaseIgnore (please.ignore)
             </text>
            <text
              type="string"
@@ -1216,7 +1216,7 @@
              translate="false"
              width="170"
              use_ellipses="true">
-                secondlife:///app/agent/00000000-0000-0000-0000-000000000000/inspect Loading...
+                fmw:///app/agent/00000000-0000-0000-0000-000000000000/inspect Loading...
             </text>
             <button
 			 follows="top|right"
@@ -1667,7 +1667,7 @@ even though the user gets a free copy.
          layout="topleft"
          left_delta="0"
          mouse_opaque="false"
-         help_topic="toolbox_object_tab"
+        
          name="Object"
          top="16"
          width="295">
@@ -3062,7 +3062,7 @@ Low ↔ Lwst
          layout="topleft"
          left_delta="0"
          mouse_opaque="false"
-         help_topic="toolbox_features_tab"
+        
          name="Features"
          top_delta="0"
          width="295">
@@ -3663,7 +3663,7 @@ Low ↔ Lwst
 <!--	<FS:Zi> switchable edit texture/materials panel
         <panel
          label="Texture"
-         help_topic="toolbox_texture_tab"
+        
          name="Texture"
          filename="panel_tools_texture.xml">
 	   </panel>
@@ -3675,7 +3675,7 @@ Low ↔ Lwst
          layout="topleft"
          left_delta="0"
          mouse_opaque="false"
-         help_topic="toolbox_contents_tab"
+        
          name="Contents"
          top_delta="0"
          width="295">

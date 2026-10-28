@@ -19,5 +19,5 @@
 	<menu_item_call label="Znajdź na mapie" name="find_on_map"/>
 	<menu_item_call label="Przybliż" name="zoom_in"/>
 	<menu_item_call label="Zapłać" name="pay"/>
-	<menu_item_call label="Udostępnij" name="share"/>
+	<menu_item_call label="Udostępnij" name="share" forme_creator_only="true"/>
 </toggleable_menu>

@@ -15,7 +15,7 @@
  height="141"
  layout="topleft"
  name="preview_anim"
- help_topic="fs_animation_inventory_preview"
+
  positioning="centered"
  save_rect="true"
  width="320">

@@ -2,7 +2,7 @@
 <floater
  height="400"
  can_resize="true"
- help_topic="event_details"
+
  label="Event"
  layout="topleft"
  name="Event"

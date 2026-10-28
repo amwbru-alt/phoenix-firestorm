@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<floater name="particle_editor_floater" title="Editor de partículas" width="591">
+<floater name="particle_editor_floater" title="Editor de partículas" width="591" forme_creator_only="true">
 	<panel name="particle_editor_panel" width="576">
 		<panel name="top_left_panel" width="415">
 			<text name="Pattern_Label">

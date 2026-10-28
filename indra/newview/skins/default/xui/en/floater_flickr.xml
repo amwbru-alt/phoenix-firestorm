@@ -3,7 +3,7 @@
   positioning="cascading"
   can_close="true"
   can_resize="false"
-  help_topic="floater_flickr"
+ 
   layout="topleft"
   name="floater_flickr"
   save_rect="true"

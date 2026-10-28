@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fscreatoraccess.h"
 
 // file include
 #define LLSELECTMGR_CPP
@@ -4303,6 +4304,8 @@ bool LLSelectMgr::selectGetPermissions(LLPermissions& result_perm)
 
 void LLSelectMgr::selectDelete()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
 // [RLVa:KB] - Checked: 2010-03-23 (RLVa-1.2.0e) | Added: RLVa-1.2.0a
     if ( (rlv_handler_t::isEnabled()) && (!rlvCanDeleteOrReturn()) )
     {
@@ -4468,6 +4471,8 @@ bool LLSelectMgr::confirmDelete(const LLSD& notification, const LLSD& response, 
 
 void LLSelectMgr::selectForceDelete()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     sendListToRegions(
         "ObjectDelete",
         packDeleteHeader,
@@ -4695,6 +4700,8 @@ struct LLDuplicateData
 
 void LLSelectMgr::selectDuplicate(const LLVector3& offset, bool select_copy)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
 //  if (mSelectedObjects->isAttachment())
 // [RLVa:KB] - Checked: 2010-03-24 (RLVa-1.2.0e) | Added: RLVa-1.2.0a
     if ( (mSelectedObjects->isAttachment()) || ((rlv_handler_t::isEnabled()) && (!rlvCanDeleteOrReturn())) )
@@ -4835,6 +4842,8 @@ void LLSelectMgr::selectDuplicateOnRay(const LLVector3 &ray_start_region,
                                        bool copy_rotates,
                                        bool select_copy)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     if (mSelectedObjects->isAttachment())
     {
         // do not duplicate attachments
@@ -4891,6 +4900,8 @@ void LLSelectMgr::packDuplicateOnRayHead(void *user_data)
 
 void LLSelectMgr::sendMultipleUpdate(U32 type)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     if (type == UPD_NONE) return;
     // send individual updates when selecting textures or individual objects
     ESendType send_type = (!gSavedSettings.getBOOL("EditLinkedParts") && !getTEMode()) ? SEND_ONLY_ROOTS : SEND_ROOTS_FIRST;
@@ -4962,6 +4973,8 @@ void LLSelectMgr::sendOwner(const LLUUID& owner_id,
                             const LLUUID& group_id,
                             bool override)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     LLOwnerData data;
 
     data.owner_id = owner_id;
@@ -4991,6 +5004,8 @@ void LLSelectMgr::packOwnerHead(void *user_data)
 
 void LLSelectMgr::sendGroup(const LLUUID& group_id)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     LLUUID local_group_id(group_id);
     sendListToRegions("ObjectGroup", packAgentAndSessionAndGroupID, packObjectLocalID, logNoOp, &local_group_id, SEND_ONLY_ROOTS);
 }
@@ -5053,6 +5068,8 @@ void LLSelectMgr::selectionSetObjectPermissions(U8 field,
                                        U32 mask,
                                        bool override)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     LLPermData data;
 
     data.mField = field;
@@ -5244,6 +5261,8 @@ void LLSelectMgr::deselectAllIfTooFar()
 
 void LLSelectMgr::selectionSetObjectName(const std::string& name)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     std::string name_copy(name);
 
     // we only work correctly if 1 object is selected.
@@ -5275,6 +5294,8 @@ void LLSelectMgr::selectionSetObjectName(const std::string& name)
 
 void LLSelectMgr::selectionSetObjectDescription(const std::string& desc)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     std::string desc_copy(desc);
 
     // we only work correctly if 1 object is selected.
@@ -5306,6 +5327,8 @@ void LLSelectMgr::selectionSetObjectDescription(const std::string& desc)
 
 void LLSelectMgr::selectionSetObjectCategory(const LLCategory& category)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     // for now, we only want to be able to set one root category at
     // a time.
     if(mSelectedObjects->getRootObjectCount() != 1) return;
@@ -5319,6 +5342,8 @@ void LLSelectMgr::selectionSetObjectCategory(const LLCategory& category)
 
 void LLSelectMgr::selectionSetObjectSaleInfo(const LLSaleInfo& sale_info)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     sendListToRegions("ObjectSaleInfo",
                       packAgentAndSessionID,
                       packObjectSaleInfo,
@@ -5412,6 +5437,8 @@ void LLSelectMgr::sendDetach()
 
 void LLSelectMgr::sendDropAttachment()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     if (!mSelectedObjects->getNumNodes() || mSelectedObjects->mSelectType == SELECT_TYPE_WORLD)
     {
         return;
@@ -5432,6 +5459,8 @@ void LLSelectMgr::sendDropAttachment()
 
 void LLSelectMgr::sendLink()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     if (!mSelectedObjects->getNumNodes())
     {
         return;
@@ -5448,6 +5477,8 @@ void LLSelectMgr::sendLink()
 
 void LLSelectMgr::sendDelink()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     if (!mSelectedObjects->getNumNodes())
     {
         return;
@@ -5492,6 +5523,8 @@ void LLSelectMgr::sendDelink()
 /*
 void LLSelectMgr::sendHinge(U8 type)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     if (!mSelectedObjects->getNumNodes())
     {
         return;
@@ -5508,6 +5541,8 @@ void LLSelectMgr::sendHinge(U8 type)
 
 void LLSelectMgr::sendDehinge()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     if (!mSelectedObjects->getNumNodes())
     {
         return;
@@ -9139,6 +9174,8 @@ bool LLSelectMgr::selectionMove(const LLVector3& displ,
 
 void LLSelectMgr::sendSelectionMove()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     LLSelectNode *node = mSelectedObjects->getFirstRootNode();
     if (node == NULL)
     {

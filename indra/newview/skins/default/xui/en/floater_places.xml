@@ -8,7 +8,7 @@
   height="588"
   layout="topleft"
   name="floater_places"
-  help_topic="floater_places"
+ 
   save_rect="true"
   reuse_instance="true"
   title="Places"

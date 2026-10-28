@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="floater_fs_export" title="物件備份">
+<floater name="floater_fs_export" title="物件備份" forme_creator_only="true">
 	<floater.string name="title_floater">
 		正在將 [OBJECT] 備份到磁碟...
 	</floater.string>

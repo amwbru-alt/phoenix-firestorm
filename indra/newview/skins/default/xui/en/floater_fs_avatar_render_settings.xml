@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <floater
  name="avatarrendersettings"
- help_topic="fs_avatar_render_settings"
+
  title="Avatar Display Exceptions"
  min_width="350"
  min_height="320"

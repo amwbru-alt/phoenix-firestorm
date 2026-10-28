@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="build options floater" title="Raster-Optionen">
+<floater name="build options floater" title="Raster-Optionen" forme_creator_only="true">
 	<spinner label="Einheiten (m)" name="GridResolution"/>
 	<spinner label="Rastergröße (m)" name="GridDrawSize"/>
 	<spinner label="Nachkommastellen" name="DecimalPrecision"/>

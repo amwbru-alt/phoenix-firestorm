@@ -4,7 +4,7 @@
   height="570"
   layout="topleft"
   name="item properties"
-  help_topic="item_properties"
+ 
   title="Item Profile"
   width="333">
   <panel.string

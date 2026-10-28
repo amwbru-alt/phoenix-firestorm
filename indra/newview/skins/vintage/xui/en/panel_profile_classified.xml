@@ -7,7 +7,7 @@
  width="315"
  follows="all"
  layout="topleft"
- help_topic="panel_profile_classified"
+
  min_height="250"
 >
     <panel.string

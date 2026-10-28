@@ -123,9 +123,8 @@ RUN_PATH=`dirname "${SCRIPTSRC}" || echo .`
 echo "Running from ${RUN_PATH}"
 cd "${RUN_PATH}"
 
-# Re-register hop:// and secondlife:// protocol handler every launch, for now.
-test -x ./etc/register_hopprotocol.sh && ./etc/register_hopprotocol.sh
-test -x ./etc/register_secondlifeprotocol.sh && ./etc/register_secondlifeprotocol.sh
+# Register the ForMe.World URL protocol.
+test -x ./etc/register_fmwprotocol.sh && ./etc/register_fmwprotocol.sh
 
 # Re-register the application with the desktop system every launch, for now.
 # AO: Disabled don't install by default
@@ -185,3 +184,4 @@ if [ $LL_RUN_ERR -ne 0 ]; then
 	# generic error running the binary
 	echo '*** Bad shutdown ($LL_RUN_ERR). ***'
 fi
+

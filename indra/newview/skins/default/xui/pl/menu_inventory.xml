@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <menu name="Popup">
-	<menu_item_call label="Udostępnij" name="Share"/>
+	<menu_item_call label="Udostępnij" name="Share" forme_creator_only="true"/>
 	<menu_item_call label="Otwórz" name="Task Open"/>
 	<menu_item_call label="Odtwarzaj" name="Task Play"/>
 	<menu_item_call label="Właściwości" name="Task Properties"/>
@@ -12,10 +12,10 @@
 	<menu_item_call label="Nowy folder" name="New Listing Folder" />
 	<menu_item_call label="Nowy folder" name="New Outfit Folder" />
 	<menu_item_call label="Nowy strój" name="New Outfit" />
-	<menu_item_call label="Nowy skrypt" name="New Script"/>
-	<menu_item_call label="Nowa nota" name="New Note"/>
-	<menu_item_call label="Nowy gest" name="New Gesture"/>
-	<menu_item_call label="Nowy materiał" name="New Material" />
+	<menu_item_call label="Nowy skrypt" name="New Script" forme_creator_only="true"/>
+	<menu_item_call label="Nowa nota" name="New Note" forme_creator_only="true"/>
+	<menu_item_call label="Nowy gest" name="New Gesture" forme_creator_only="true"/>
+	<menu_item_call label="Nowy materiał" name="New Material"  forme_creator_only="true"/>
 	<menu label="Nowe ubranie" name="New Clothes">
 		<menu_item_call label="Nowa koszula" name="New Shirt"/>
 		<menu_item_call label="Nowe spodnie" name="New Pants"/>
@@ -42,7 +42,7 @@
 		<menu_item_call label="Nowa woda" name="New Water" />
 		<menu_item_call label="Nowy cykl dnia" name="New Day Cycle" />
 	</menu>
-	<menu label="Ustaw jako domyślne" name="upload_def">
+	<menu label="Ustaw jako domyślne" name="upload_def" forme_creator_only="true">
 		<menu_item_check label="Dla nowych obrazów" name="Image uploads" />
 		<menu_item_check label="Dla nowych dźwięków" name="Sound uploads" />
 		<menu_item_check label="Dla nowych animacji" name="Animation uploads" />
@@ -131,17 +131,17 @@
 	<menu_item_call name="Settings Apply Local" label="Stosuj tylko dla mnie" />
 	<menu_item_call name="Settings Apply Parcel" label="Stosuj dla działki" />
 	<menu label="Marketplace" name="Marketplace">
-		<menu_item_call label="Utwórz nową rzecz" name="Marketplace Create Listing"/>
-		<menu_item_call label="Przypisz rzecz" name="Marketplace Associate Listing"/>
-		<menu_item_call label="Pobierz ponownie (odśwież)" name="Marketplace Get Listing"/>
-		<menu_item_call label="Sprawdź pod kątem błędów" name="Marketplace Check Listing"/>
-		<menu_item_call label="Edytuj rzecz" name="Marketplace Edit Listing"/>
-		<menu_item_call label="Dodaj na listę" name="Marketplace List"/>
-		<menu_item_call label="Usuń z listy" name="Marketplace Unlist"/>
-		<menu_item_call label="Aktywuj" name="Marketplace Activate"/>
-		<menu_item_call label="Dezaktywuj" name="Marketplace Deactivate"/>
-		<menu_item_call label="Kopiuj do rzeczy Marketplace" name="Marketplace Copy"/>
-		<menu_item_call label="Przenieś do rzeczy Marketplace" name="Marketplace Move"/>
+		<menu_item_call label="Utwórz nową rzecz" name="Marketplace Create Listing" forme_creator_only="true"/>
+		<menu_item_call label="Przypisz rzecz" name="Marketplace Associate Listing" forme_creator_only="true"/>
+		<menu_item_call label="Pobierz ponownie (odśwież)" name="Marketplace Get Listing" forme_creator_only="true"/>
+		<menu_item_call label="Sprawdź pod kątem błędów" name="Marketplace Check Listing" forme_creator_only="true"/>
+		<menu_item_call label="Edytuj rzecz" name="Marketplace Edit Listing" forme_creator_only="true"/>
+		<menu_item_call label="Dodaj na listę" name="Marketplace List" forme_creator_only="true"/>
+		<menu_item_call label="Usuń z listy" name="Marketplace Unlist" forme_creator_only="true"/>
+		<menu_item_call label="Aktywuj" name="Marketplace Activate" forme_creator_only="true"/>
+		<menu_item_call label="Dezaktywuj" name="Marketplace Deactivate" forme_creator_only="true"/>
+		<menu_item_call label="Kopiuj do rzeczy Marketplace" name="Marketplace Copy" forme_creator_only="true"/>
+		<menu_item_call label="Przenieś do rzeczy Marketplace" name="Marketplace Move" forme_creator_only="true"/>
 	</menu>
 	<menu_item_call label="--brak opcji--" name="--no options--"/>
 </menu>

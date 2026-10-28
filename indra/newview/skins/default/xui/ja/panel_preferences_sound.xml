@@ -149,7 +149,7 @@
 		ＳＩＭの再起動
 	</panel.string>
 	<panel.string name="textFSRestartOpenSim">
-		ＳＩＭ再起動（OpenSim）：
+		ＳＩＭ再起動（ForMe.World）：
 	</panel.string>
 	<panel.string name="textFSScriptFloaterClose">
 		スクリプトダイアログを閉じたとき：
