@@ -864,26 +864,6 @@
 		 tool_tip="Selects the time format used on main menu bar."
 		 width="250">
 			<combo_box.item
-			 label="Language default"
-			 name="Language"
-			 value="Language"/>
-			<combo_box.item
-			 label="12 Hour"
-			 name="12_Hour"
-			 value="12 Hour"/>
-			<combo_box.item
-			 label="12 Hour incl. Seconds"
-			 name="12_Hour_Seconds"
-			 value="12 Hour Seconds"/>
-			<combo_box.item
-			 label="12 Hour incl. Timezone"
-			 name="12_Hour_TZ"
-			 value="12 Hour TZ"/>
-			<combo_box.item
-			 label="12 Hour incl. Seconds &amp; Timezone"
-			 name="12_Hour_TZ_Seconds"
-			 value="12 Hour TZ Seconds"/>
-			<combo_box.item
 			 label="24 Hour"
 			 name="24_Hour"
 			 value="24 Hour"/>
@@ -2032,3 +2012,4 @@ ForMe.World viewer default 20. Viewer 1 default 18.
     </panel>
 </tab_container>
 </panel>
+

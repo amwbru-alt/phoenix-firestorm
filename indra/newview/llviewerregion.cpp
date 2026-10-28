@@ -25,6 +25,8 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "formeworldtime.h"
+#include "formegridpolicy.h"
 #include "llvoavatar.h"
 #include "fsavatarbadges.h" // <FS:ForMe> Authoritative server badges.
 #include "formegridpolicy.h" // <FS:ForMe> Fixed-grid policy.
@@ -2632,9 +2634,14 @@ void LLViewerRegion::setSimulatorFeatures(const LLSD& sim_features)
 
     // copy features to lambda in case the region is deleted before the lambda is executed
     LLSD features = mSimulatorFeatures;
+    const LLUUID clock_region_id = getRegionID();
 
     auto work = [=]()
         {
+            LLViewerRegion* clock_region = gAgent.getRegion();
+            if (clock_region && clock_region->getRegionID() == clock_region_id
+                && ForMeGrid::allowedServiceURI(clock_region->getCapability("SimulatorFeatures")))
+                ForMeWorldTime::apply(features["ForMeSystemClock"]);
             LLVOAvatar::invalidateNameTags(); // <FS:ForMe> Enable/disable the versioned badge contract.
             // if region has MaxTextureResolution, set max_texture_dimension settings, otherwise use default
             if (features.has("MaxTextureResolution"))
@@ -4138,4 +4145,5 @@ void LLViewerRegion::applyCacheMiscExtras(LLViewerObject* obj)
         }
     }
 }
+
 

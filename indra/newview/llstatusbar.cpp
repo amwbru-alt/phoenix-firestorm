@@ -543,19 +543,17 @@ bool LLStatusBar::postBuild()
     // </FS:PP>
 
     // <FS:Zi> FIRE-20390, FIRE-4269 - Option for 12/24 hour clock and seconds display
-    mClockFormatChoices["12 Hour"] = "[hour12, datetime, slt]:[min, datetime, slt] [ampm, datetime, slt]";
-    mClockFormatChoices["12 Hour Seconds"] = "[hour12, datetime, slt]:[min, datetime, slt]:[second, datetime, slt] [ampm, datetime, slt]";
-    mClockFormatChoices["12 Hour TZ"] = "[hour12, datetime, slt]:[min, datetime, slt] [ampm, datetime, slt] [timezone,datetime, slt]";
-    mClockFormatChoices["12 Hour TZ Seconds"] = "[hour12, datetime, slt]:[min, datetime, slt]:[second, datetime, slt] [ampm, datetime, slt] [timezone,datetime, slt]";
     mClockFormatChoices["24 Hour"] = "[hour24, datetime, slt]:[min, datetime, slt]";
     mClockFormatChoices["24 Hour Seconds"] = "[hour24, datetime, slt]:[min, datetime, slt]:[second, datetime, slt]";
     mClockFormatChoices["24 Hour TZ"] = "[hour24, datetime, slt]:[min, datetime, slt] [timezone, datetime, slt]";
     mClockFormatChoices["24 Hour TZ Seconds"] = "[hour24, datetime, slt]:[min, datetime, slt]:[second, datetime, slt] [timezone, datetime, slt]";
 
-    // use the time format defined in the language's panel_status_bar.xml (default)
-    mClockFormatChoices["Language"] = getString("time");
+    // Migrate saved language/12-hour preferences to the common 24-hour clock.
 
     mClockFormat = gSavedSettings.getString("FSStatusBarTimeFormat");
+    LLStringUtil::replaceString(mClockFormat, "12 Hour", "24 Hour");
+    if (mClockFormat == "Language") mClockFormat = "24 Hour TZ";
+    gSavedSettings.setString("FSStatusBarTimeFormat",mClockFormat);
     // </FS:Zi>
 
     return true;
@@ -564,6 +562,14 @@ bool LLStatusBar::postBuild()
 // <FS:Zi> FIRE-20390, FIRE-4269 - Option for 12/24 hour clock and seconds display
 void LLStatusBar::updateClockDisplay()
 {
+    // Refresh host timezone/clock after an OS time or DST change even when the
+    // optional platform journal is disabled. The request runs asynchronously.
+    static LLFrameTimer clock_refresh;
+    if (clock_refresh.getElapsedTimeF32() >= 30.f && gAgent.getRegion())
+    {
+        clock_refresh.reset();
+        gAgent.getRegion()->requestSimulatorFeatures();
+    }
     // Get current UTC time, adjusted for the user's clock
     // being off.
     time_t utc_time;
@@ -1917,6 +1923,8 @@ void LLStatusBar::onPopupRolloverChanged(const LLSD& newvalue)
 void LLStatusBar::onTimeFormatChanged(const std::string& format)
 {
     mClockFormat = format;
+    LLStringUtil::replaceString(mClockFormat, "12 Hour", "24 Hour");
+    if (mClockFormat == "Language") mClockFormat = "24 Hour TZ";
     updateClockDisplay();
 }
 // </FS:Zi>
@@ -1941,3 +1949,4 @@ public:
 };
 // register with command dispatch system
 LLBalanceHandler gBalanceHandler;
+

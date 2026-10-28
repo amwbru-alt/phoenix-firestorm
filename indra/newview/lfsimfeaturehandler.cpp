@@ -32,6 +32,7 @@
 #include "llfloaterbuycurrency.h"
 // </COLOSI opensim multi-currency support>
 #include "llfloatergridstatus.h"
+#include "formegridpolicy.h"
 
 LFSimFeatureHandler::LFSimFeatureHandler()
     : mSupportsExport(false),
@@ -218,11 +219,15 @@ void LFSimFeatureHandler::setSupportedFeatures()
             // <COLOSI opensim multi-currency support>
             if (extras.has("currency-base-uri"))
             {
-                if (mHelperUriOverride != extras["currency-base-uri"].asString())
+                const std::string helper = extras["currency-base-uri"].asString();
+                if (ForMeGrid::allowedServiceURI(helper))
+                    mHelperUriOverride = helper;
+                else
                 {
-                    LLNotificationsUtil::add("CurrencyURIOverrideReceived");
+                    // This single-grid client never sends payments to an external portal.
+                    mHelperUriOverride = LLStringUtil::null;
+                    LL_WARNS("ForMeEconomy") << "Region supplied an unsupported currency service" << LL_ENDL;
                 }
-                mHelperUriOverride = extras["currency-base-uri"].asString();
             }
             else
             {
@@ -378,3 +383,4 @@ boost::signals2::connection LFSimFeatureHandler::setDestinationGuideCallback(con
 {
     return mDestinationGuideURL.connect(slot);
 }
+

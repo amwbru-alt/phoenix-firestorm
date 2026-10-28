@@ -36,6 +36,7 @@
 #include "llcallingcard.h"
 #include "llaisapi.h"
 #include "llmarketplacefunctions.h"
+#include "formeworldtime.h"
 
 namespace ForMeAvatarBadges
 {
@@ -116,6 +117,7 @@ class LLForMeState final : public LLHTTPNode
         if (agent != gAgent.getID() || session != gAgent.getSessionID() || previous_region != region->getRegionID())
         { agent = gAgent.getID(); session = gAgent.getSessionID(); previous_region = region->getRegionID(); previous = LLSD(); }
         const LLSD versions = body["versions"];
+        ForMeWorldTime::apply(body["clock"]);
         const auto changed = [&](const char* key) { return versions[key].isString() && versions[key].asString().size() == 64 && versions[key].asString() != previous[key].asString(); };
         if (changed("balance")) LLStatusBar::sendMoneyBalanceRequest();
         if (changed("profile") || changed("premium")) LLAvatarPropertiesProcessor::getInstance()->sendAvatarPropertiesRequest(gAgent.getID());
@@ -158,3 +160,4 @@ class LLForMeState final : public LLHTTPNode
 };
 LLHTTPRegistration<LLForMeState> gForMeStateRegistration("/message/ForMeState");
 }
+

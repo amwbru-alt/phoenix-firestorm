@@ -152,6 +152,8 @@ class LL_COMMON_API LLStringOps
 private:
     static long sPacificTimeOffset;
     static long sLocalTimeOffset;
+    static long sForMeTimeOffset;
+    static bool sHasForMeTime;
     static bool sPacificDaylightTime;
     static bool sUsingPacificTime; // <FS:TJ/> [FIRE-34775] Use PST/PDT when logged into OpenSim
 
@@ -218,6 +220,8 @@ public:
 
     static long getPacificTimeOffset(void) { return sPacificTimeOffset;}
     static long getLocalTimeOffset(void) { return sLocalTimeOffset;}
+    static void setForMeTimeOffset(long seconds) { if (seconds >= -50400 && seconds <= 50400) { sForMeTimeOffset = seconds; sHasForMeTime = true; } }
+    static long getForMeTimeOffset() { return sHasForMeTime ? sForMeTimeOffset : -sLocalTimeOffset; }
     // Is the Pacific time zone (aka server time zone)
     // currently in daylight savings time?
     static bool getPacificDaylightTime(void) { return sPacificDaylightTime;}
@@ -2073,3 +2077,4 @@ void LLStringUtilBase<T>::truncate(string_type& string, size_type count)
 #undef ll_convert_cp_forms
 
 #endif  // LL_STRING_H
+

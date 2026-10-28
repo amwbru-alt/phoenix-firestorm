@@ -127,11 +127,6 @@
 			Формат часов:
 		</text>
 		<combo_box name="FSStatusBarTimeFormat" tool_tip="Выбирает формат времени, используемый в строке главного меню." width="250">
-			<combo_box.item label="Стандарт выбранного языка" name="Language"/>
-			<combo_box.item label="12 Часов" name="12_Hour"/>
-			<combo_box.item label="12 Часов с Секундами" name="12_Hour_Seconds"/>
-			<combo_box.item label="12 Часов с Часовым поясом" name="12_Hour_TZ"/>
-			<combo_box.item label="12 Часов с Секундами и Часовым поясом" name="12_Hour_TZ_Seconds"/>
 			<combo_box.item label="24 Часа" name="24_Hour"/>
 			<combo_box.item label="24 Часа с Секундами" name="24_Hour_Seconds"/>
 			<combo_box.item label="24 Часа с Часовым поясом" name="24_Hour_TZ"/>
@@ -296,3 +291,4 @@
     </panel>
 </tab_container>
 </panel>
+
