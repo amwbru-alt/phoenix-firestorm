@@ -1,3 +1,5 @@
+set(USE_DISCORD OFF CACHE BOOL "External Discord integration is disabled" FORCE)
+set(USE_BUGSPLAT OFF CACHE BOOL "External crash upload is disabled" FORCE)
 # -*- cmake -*-
 
 project(viewer)
@@ -15,9 +17,6 @@ include(CMakeCopyIfDifferent)
 include(CubemapToEquirectangularJS)
 include(GLIB)
 include(DragDrop)
-if (USE_DISCORD)
-  include(Discord)
-endif ()
 include(EXPAT)
 include(FMODSTUDIO)
 include(GLOD) # <FS:Beq/> restore GLOD
@@ -55,7 +54,6 @@ include(LLPrimitive)
 include(Growl)
 include(ColladaDom)
 include(jemalloc)
-include(Discord)
 
 if (HAVOK)
    # When using HAVOK_TPV, the library is precompiled, so no need for this
@@ -95,9 +93,6 @@ set(viewer_SOURCE_FILES
     chatbar_as_cmdline.cpp
     daeexport.cpp
     dialogstack.cpp
-    exoflickr.cpp
-    exoflickrauth.cpp
-    fsprimfeedauth.cpp
     exogroupmutelist.cpp
     floatermedialists.cpp
     fsareasearch.cpp
@@ -176,7 +171,6 @@ set(viewer_SOURCE_FILES
     fsposeranimator.cpp
     fsposestate.cpp
     fsposingmotion.cpp
-    fsprimfeedauth.cpp
     fsradar.cpp
     fsradarentry.cpp
     fsradarlistctrl.cpp
@@ -193,12 +187,8 @@ set(viewer_SOURCE_FILES
     lggbeamscolors.cpp
     lggcontactsets.cpp
     lfsimfeaturehandler.cpp
-    llflickrconnect.cpp
-    llfloaterflickr.cpp
     omnifilter.cpp
     omnifilterengine.cpp
-    fsprimfeedconnect.cpp
-    fsfloaterprimfeed.cpp
     llpanelopenregionsettings.cpp
     # <FS:Ansariel> [Legacy Bake]
     llagentwearablesfetch.cpp
@@ -443,7 +433,6 @@ set(viewer_SOURCE_FILES
     llfloatertopobjects.cpp
     llfloatertos.cpp
     llfloatertoybox.cpp
-    llfloatertranslationsettings.cpp
     llfloateruipreview.cpp
     llfloaterurlentry.cpp
     llfloatervoicevolume.cpp
@@ -777,7 +766,6 @@ set(viewer_SOURCE_FILES
     lltrackpicker.cpp
     lltransientdockablefloater.cpp
     lltransientfloatermgr.cpp
-    lltranslate.cpp
     lluiavatar.cpp
     lluilistener.cpp
     lluploaddialog.cpp
@@ -907,12 +895,6 @@ set(viewer_SOURCE_FILES
     NACLfloaterexploresounds.cpp
     )
 
-# <FS:TJ> Keep Vivox only for OpenSim viewers
-if (OPENSIM)
-    list(APPEND viewer_SOURCE_FILES
-        llvoicevivox.cpp
-        )
-endif ()
 # </FS:TJ>
 
 # <FS:Ansariel> Group GLTF files into their subfolders
@@ -957,9 +939,6 @@ set(viewer_HEADER_FILES
     chatbar_as_cmdline.h
     daeexport.h
     dialogstack.h
-    exoflickr.h
-    exoflickrauth.h
-    fsprimfeedauth.h
     exogroupmutelist.h
     floatermedialists.h
     fsareasearch.h
@@ -1044,7 +1023,6 @@ set(viewer_HEADER_FILES
     fsposeranimator.h
 	fsposestate.h
     fsposingmotion.h
-    fsprimfeedauth.h
     fsradar.h
     fsradarentry.h
     fsradarlistctrl.h
@@ -1062,10 +1040,6 @@ set(viewer_HEADER_FILES
     lggbeamscolors.h
     lggcontactsets.h
     lfsimfeaturehandler.h
-    llflickrconnect.h
-    llfloaterflickr.h
-    fsprimfeedconnect.h
-    fsfloaterprimfeed.h
     # <FS:Ansariel> [Legacy Bake]
     llagentwearablesfetch.h
     omnifilter.h
@@ -1318,7 +1292,6 @@ set(viewer_HEADER_FILES
     llfloatertopobjects.h
     llfloatertos.h
     llfloatertoybox.h
-    llfloatertranslationsettings.h
     llfloateruipreview.h
     llfloaterurlentry.h
     llfloatervoicevolume.h
@@ -1639,7 +1612,6 @@ set(viewer_HEADER_FILES
     lltrackpicker.h
     lltransientdockablefloater.h
     lltransientfloatermgr.h
-    lltranslate.h
     lluiconstants.h
     lluiavatar.h
     lluilistener.h
@@ -1776,12 +1748,6 @@ set(viewer_HEADER_FILES
     NACLfloaterexploresounds.h
     )
 
-# <FS:TJ> Keep Vivox only for OpenSim viewers
-if (OPENSIM)
-    list(APPEND viewer_HEADER_FILES
-        llvoicevivox.h
-        )
-endif ()
 # </FS:TJ>
 
   list(APPEND viewer_SOURCE_FILES llperfstats.cpp)
@@ -1813,26 +1779,6 @@ endif (USE_BUGSPLAT)
 # <FS:Ansariel> Flickr / Discord keys and fsversionvalues headers are generated in here
 include_directories( ${CMAKE_CURRENT_BINARY_DIR} )
 
-# <exodus>
-# Generate the flickr keys header.
-configure_file(
-    ${CMAKE_CURRENT_SOURCE_DIR}/exoflickrkeys.h.in
-    ${CMAKE_CURRENT_BINARY_DIR}/exoflickrkeys.h
-    @ONLY
-)
-list(APPEND viewer_HEADER_FILES ${CMAKE_CURRENT_BINARY_DIR}/exoflickrkeys.h)
-# </exodus>
-
-#<FS:LO> Discord rich presence
-configure_file(
-    ${CMAKE_CURRENT_SOURCE_DIR}/fsdiscordkey.h.in
-    ${CMAKE_CURRENT_BINARY_DIR}/fsdiscordkey.h
-    @ONLY
-)
-list(APPEND viewer_HEADER_FILES ${CMAKE_CURRENT_BINARY_DIR}/fsdiscordkey.h)
-LIST(APPEND viewer_HEADER_FILES fsfloaterdiscord.h fsdiscordconnect.h)
-LIST(APPEND viewer_SOURCE_FILES fsfloaterdiscord.cpp fsdiscordconnect.cpp)
-#</FS:LO>
 
 # <FS:TS> Generate the version information header file.
 configure_file(
@@ -2650,7 +2596,6 @@ target_link_libraries(${VIEWER_BINARY_NAME}
         ll::tracy
         ll::openxr
         fs::glod # <FS:Beq/> restore GLOD dependencies
-        fs::discord # <FS:Ansariel> Discord  support
         )
 
 if (USE_DISCORD)

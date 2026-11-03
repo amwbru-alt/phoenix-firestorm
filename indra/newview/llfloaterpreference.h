@@ -264,7 +264,6 @@ public:
     void onChangeAnimationFolder();
     void onClickBlockList();
     void onClickProxySettings();
-    void onClickTranslationSettings();
     void onClickPermsDefault();
     void onClickRememberedUsernames();
     void onClickAutoReplace();

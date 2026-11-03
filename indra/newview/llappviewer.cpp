@@ -4514,11 +4514,6 @@ void LLAppViewer::writeSystemInfo()
     // Insert crash host url (url to post crash log to) if configured. This insures
     // that the crash report will go to the proper location in the case of a
     // prior freeze.
-    std::string crashHostUrl = gSavedSettings.get<std::string>("CrashHostUrl");
-    if(crashHostUrl != "")
-    {
-        gDebugInfo["CrashHostUrl"] = crashHostUrl;
-    }
 
     // Dump some debugging info
     LL_INFOS("SystemInfo") << "Application: " << LLTrans::getString("APP_NAME") << LL_ENDL;

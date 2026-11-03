@@ -107,17 +107,8 @@ inline Link parse(const std::string& url)
 }
 inline bool blockedWeb(const std::string& url)
 {
-    const auto split=url.find("://");if(split==std::string::npos)return false;
-    std::string host=url.substr(split+3);host=host.substr(0,host.find_first_of("/?#"));
-    const auto at=host.rfind('@');if(at!=std::string::npos)host.erase(0,at+1);
-    host=host.substr(0,host.find(':'));
-    std::string decodedHost;
-    if (decode(host, decodedHost)) host = decodedHost;
-    for(char& c:host)if(c>='A'&&c<='Z')c=static_cast<char>(c-'A'+'a');
-    while(!host.empty()&&host.back()=='.')host.pop_back();
-    for(const std::string domain:{"secondlife.com","secondlife.io","secondlifegrid.net","lindenlab.com","slurl.com","firestormviewer.org","firestormviewer.com","phoenixviewer.com","phoenixviewer.org","secondlife-staging.com"})
-        if(host==domain || host.ends_with("."+domain))return true;
-    return false;
+    return !url.empty() && url != "about:blank" && !ForMeGrid::allowedServiceURI(url);
 }
+
 }
 #endif

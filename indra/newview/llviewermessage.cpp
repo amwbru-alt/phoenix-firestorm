@@ -94,7 +94,6 @@
 #include "llimview.h"
 #include "llspeakers.h"
 #include "lltrans.h"
-#include "lltranslate.h"
 #include "llviewerfoldertype.h"
 #include "llvoavatar.h"             // IDEVO HACK
 #include "lluri.h"
@@ -2742,31 +2741,6 @@ void process_decline_callingcard(LLMessageSystem* msg, void**)
     LLNotificationsUtil::add("CallingCardDeclined");
 }
 
-void translateSuccess(LLChat chat, LLSD toastArgs, std::string originalMsg, std::string expectLang, std::string translation, const std::string detected_language)
-{
-    // filter out non-interesting responses
-    if (!translation.empty()
-        && ((detected_language.empty()) || (expectLang != detected_language))
-        && (LLStringUtil::compareInsensitive(translation, originalMsg) != 0))
-    {
-        chat.mText += " (" + LLTranslate::removeNoTranslateTags(translation) + ")";
-    }
-
-    LLTranslate::instance().logSuccess(1);
-    LLNotificationsUI::LLNotificationManager::instance().onChat(chat, toastArgs);
-}
-
-void translateFailure(LLChat chat, LLSD toastArgs, int status, const std::string err_msg)
-{
-    std::string msg = LLTrans::getString("TranslationFailed", LLSD().with("[REASON]", err_msg));
-    LLStringUtil::replaceString(msg, "\n", " "); // we want one-line error messages
-    chat.mText += " (" + msg + ")";
-
-    LLTranslate::instance().logFailure(1);
-    LLNotificationsUI::LLNotificationManager::instance().onChat(chat, toastArgs);
-}
-
-
 void process_chat_from_simulator(LLMessageSystem *msg, void **user_data)
 {
     if (gNonInteractive)
@@ -3377,30 +3351,7 @@ void process_chat_from_simulator(LLMessageSystem *msg, void **user_data)
         }
         // </FS:PP>
 
-        LLTranslate::instance().logCharsSeen(mesg.size());
-        // <FS:PP> gSavedSettings to LLCachedControl
-        // if (gSavedSettings.getBOOL("TranslateChat") && chat.mSourceType != CHAT_SOURCE_SYSTEM)
-        static LLCachedControl<bool> TranslateChat(gSavedSettings, "TranslateChat");
-        if (TranslateChat && chat.mSourceType != CHAT_SOURCE_SYSTEM)
-        // </FS:PP>
-        {
-            if (chat.mChatStyle == CHAT_STYLE_IRC)
-            {
-                mesg = mesg.substr(4, std::string::npos);
-            }
-            const std::string from_lang = ""; // leave empty to trigger autodetect
-            const std::string to_lang = LLTranslate::getTranslateLanguage();
-
-            LLTranslate::instance().logCharsSent(mesg.size());
-            LLTranslate::translateMessage(from_lang, to_lang, mesg,
-                boost::bind(&translateSuccess, chat, args, mesg, from_lang, _1, _2),
-                boost::bind(&translateFailure, chat, args, _1, _2));
-
-        }
-        else
-        {
-            LLNotificationsUI::LLNotificationManager::instance().onChat(chat, args);
-        }
+        LLNotificationsUI::LLNotificationManager::instance().onChat(chat, args);
 
         // don't call notification for debug messages from not owned objects
         if (chat.mChatType == CHAT_TYPE_DEBUG_MSG)

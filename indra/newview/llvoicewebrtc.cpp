@@ -25,6 +25,7 @@
  */
 #include <algorithm>
 #include "llvoicewebrtc.h"
+#include "formegridpolicy.h"
 
 #include "llsdutil.h"
 
@@ -2736,6 +2737,7 @@ void LLVoiceWebRTCConnection::processIceUpdatesCoro(connectionPtr_t connection)
         }
 
         std::string url = regionp->getCapability("VoiceSignalingRequest");
+    if (!ForMeGrid::allowedServiceURI(url)) url.clear();
         if (url.empty())
         {
             connection->mOutstandingRequests--;
@@ -2972,6 +2974,7 @@ void LLVoiceWebRTCConnection::breakVoiceConnectionCoro(connectionPtr_t connectio
     }
 
     std::string url = regionp->getCapability("ProvisionVoiceAccountRequest");
+    if (!ForMeGrid::allowedServiceURI(url)) url.clear();
     if (url.empty())
     {
         connection->setVoiceConnectionState(VOICE_STATE_SESSION_RETRY);
@@ -3035,6 +3038,7 @@ void LLVoiceWebRTCSpatialConnection::requestVoiceConnection()
     }
 
     std::string url = regionp->getCapability("ProvisionVoiceAccountRequest");
+    if (!ForMeGrid::allowedServiceURI(url)) url.clear();
     if (url.empty())
     {
         setVoiceConnectionState(VOICE_STATE_SESSION_RETRY);
@@ -3128,30 +3132,19 @@ static llwebrtc::LLWebRTCPeerConnectionInterface::InitOptions getConnectionOptio
     llwebrtc::LLWebRTCPeerConnectionInterface::InitOptions options;
     llwebrtc::LLWebRTCPeerConnectionInterface::InitOptions::IceServers servers;
 
-    // TODO: Pull these from login
-    std::string grid = LLGridManager::getInstance()->getGridLoginID();
-    std::transform(grid.begin(), grid.end(), grid.begin(), [](unsigned char c){ return std::tolower(c); });
-    // <FS:TJ> [FIRE-36421] Add OpenSim STUN server support
-#ifdef OPENSIM
-    if (!LLGridManager::getInstance()->isInSecondLife())
+    if (LLViewerRegion* regionp = gAgent.getRegion())
     {
-        if (LLViewerRegion* regionp = gAgent.getRegion())
+        for (const auto& url : regionp->getStunServers())
         {
-            servers.mUrls = regionp->getStunServers();
+            const auto sep = url.find(':');
+            if (sep == std::string::npos) continue;
+            const auto protocol = url.substr(0, sep);
+            if (protocol != "stun" && protocol != "stuns" && protocol != "turn" && protocol != "turns") continue;
+            const auto endpoint = url.substr(sep + 1);
+            if (endpoint.find_first_of("/#@") != std::string::npos) continue;
+            if (ForMeGrid::allowedServiceURI("http://" + endpoint))
+                servers.mUrls.push_back(url);
         }
-        options.mServers.push_back(servers);
-        return options;
-    }
-#endif
-    // </FS:TJ>
-    int num_servers = 2;
-    if (grid == "agni")
-    {
-        num_servers = 3;
-    }
-    for (int i=1; i <= num_servers; i++)
-    {
-        servers.mUrls.push_back(llformat("stun:stun%d.%s.secondlife.io:3478", i, grid.c_str()));
     }
     options.mServers.push_back(servers);
     return options;
@@ -3851,6 +3844,7 @@ void LLVoiceWebRTCAdHocConnection::requestVoiceConnection()
     }
 
     std::string url = regionp->getCapability("ProvisionVoiceAccountRequest");
+    if (!ForMeGrid::allowedServiceURI(url)) url.clear();
     if (url.empty())
     {
         setVoiceConnectionState(VOICE_STATE_SESSION_RETRY);

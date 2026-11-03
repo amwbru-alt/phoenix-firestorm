@@ -919,27 +919,6 @@
              parameter="gestures" />
         </menu_item_check>
         <menu_item_separator/>
-      <menu_item_call
-        label="Flickr..."
-        name="Flickr">
-        <menu_item_call.on_click
-          function="Floater.Toggle"
-          parameter="flickr"/>
-      </menu_item_call>
-      <menu_item_call
-        label="Primfeed..."
-        name="Primfeed">
-        <menu_item_call.on_click
-          function="Floater.Toggle"
-          parameter="primfeed"/>
-      </menu_item_call>
-      <menu_item_call
-        label="Discord..."
-        name="Discord">
-        <menu_item_call.on_click
-          function="Floater.Toggle"
-          parameter="fs_discord"/>
-      </menu_item_call>
         <menu_item_separator/>
         <menu_item_check
          name="Conversation Log..."
@@ -5524,18 +5503,6 @@
        name="Compress File Test">
         <menu_item_call.on_click
          function="Advanced.CompressFileTest" />
-      </menu_item_call>
-      <menu_item_call
-       label="Primfeed Auth Test"
-       name="primfeed_auth_test">
-        <menu_item_call.on_click
-         function="Advanced.PrimfeedAuth" />
-      </menu_item_call>
-      <menu_item_call
-       label="Primfeed Auth Reset"
-       name="primfeed_auth_clear">
-        <menu_item_call.on_click
-         function="Advanced.PrimfeedAuthReset" />
       </menu_item_call>
 
       <menu_item_call

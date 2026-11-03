@@ -895,16 +895,6 @@
 		 label="Spell Checking..."
 		 width="160">
 		</button>
-		<button
-		 follows="top|left"
-		 height="23"
-		 layout="topleft"
-		 left_pad="5"
-		 name="translation_settings_btn"
-		 width="160"
-		 commit_callback.function="Pref.TranslationSettings"
-		 label="Translation...">
-		</button>
 		<check_box
 		 control_name="PlayTypingAnim"
 		 height="16"

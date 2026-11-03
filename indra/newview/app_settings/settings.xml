@@ -162,17 +162,6 @@
     <key>Type</key>
     <string>String</string>
     <key>Value</key>
-    <string>http://phoenixviewer.com/app/fsdata/grids.xml</string>
-  </map>
-  <key>FSPrimfeedViewerApiKey</key>
-  <map>
-    <key>Comment</key>
-    <string>Viewer key for API login.</string>
-    <key>Persist</key>
-    <integer>1</integer>
-    <key>Type</key>
-    <string>String</string>
-    <key>Value</key>
     <string></string>
   </map>
   <key>FSGridBuilderURL</key>
@@ -184,7 +173,7 @@
     <key>Type</key>
     <string>String</string>
     <key>Value</key>
-    <string>https://phoenixviewer.com/app/fsdata/fs_grid_builder.html</string>
+    <string></string>
   </map>
   <key>LastConnectedGrid</key>
   <map>
@@ -1590,7 +1579,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>http://search.metaverseink.com/opensim/results.jsp?query=[QUERY]&amp;submit=[CATEGORY]</string>
+      <string>http://185.173.93.200:8002/web/</string>
     </map>
 
   <key>ImporterDebugVerboseLogging</key>
@@ -1669,19 +1658,6 @@
       <string>Boolean</string>
       <key>Value</key>
       <integer>1</integer>
-    </map>
-    <key>CrashHostUrl</key>
-    <map>
-      <key>Comment</key>
-      <string>A URL pointing to a crash report handler; overrides cluster negotiation to locate crash handler.</string>
-      <key>Persist</key>
-      <integer>1</integer>
-      <key>Type</key>
-      <string>String</string>
-      <key>Value</key>
-      <string></string>
-      <key>Backup</key>
-      <integer>0</integer>
     </map>
     <key>AFKTimeout</key>
     <map>
@@ -2299,7 +2275,7 @@
         <key>Type</key>
         <string>String</string>
         <key>Value</key>
-        <string>https://lecs-viewer-web-components.s3.amazonaws.com/v3.0/[GRID_LOWERCASE]/vawp/index.html</string>
+        <string></string>
     </map>
     <key>AvatarAlignMini</key>
     <map>
@@ -2859,39 +2835,6 @@
       <string>Boolean</string>
       <key>Value</key>
       <integer>1</integer>
-    </map>
-    <key>EnableDiscord</key>
-    <map>
-      <key>Comment</key>
-      <string>When set, connect to Discord to enable Rich Presence (UNUSED)</string>
-      <key>Persist</key>
-      <integer>1</integer>
-      <key>Type</key>
-      <string>Boolean</string>
-      <key>Value</key>
-      <integer>1</integer>
-    </map>
-    <key>ShowDiscordActivityDetails</key>
-    <map>
-      <key>Comment</key>
-      <string>When set, show avatar name on Discord Rich Presence (UNUSED)</string>
-      <key>Persist</key>
-      <integer>1</integer>
-      <key>Type</key>
-      <string>Boolean</string>
-      <key>Value</key>
-      <integer>0</integer>
-    </map>
-    <key>ShowDiscordActivityState</key>
-    <map>
-      <key>Comment</key>
-      <string>When set, show location on Discord Rich Presence (UNUSED)</string>
-      <key>Persist</key>
-      <integer>1</integer>
-      <key>Type</key>
-      <string>Boolean</string>
-      <key>Value</key>
-      <integer>0</integer>
     </map>
     <key>EnableDiskCacheDebugInfo</key>
     <map>
@@ -4973,7 +4916,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://lecs-viewer-web-components.s3.amazonaws.com/v3.0/[GRID_LOWERCASE]/guide.html</string>
+      <string></string>
       <key>Backup</key>
       <integer>0</integer>
     </map>
@@ -6010,7 +5953,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/products/search?search[category_id]=200&amp;search[maturity][]=General&amp;search[page]=1&amp;search[per_page]=12</string>
+      <string></string>
     </map>
     <key>GridCrossSections</key>
     <map>
@@ -6098,7 +6041,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://wiki.firestormviewer.org/[TOPIC]</string>
+      <string></string>
       <key>Backup</key>
       <integer>0</integer>
     </map>
@@ -6111,7 +6054,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://wiki.firestormviewer.org/start#basic_functions</string>
+      <string></string>
       <key>Backup</key>
       <integer>0</integer>
     </map>    
@@ -6124,7 +6067,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://viewer-sidebar.secondlife.com/sidebar.html</string>
+      <string></string>
       <key>Backup</key>
       <integer>0</integer>
     </map>
@@ -6153,7 +6096,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>http://guidebooks.secondlife.io/welcome/index.html</string>
+      <string></string>
     </map>
     <key>HighResSnapshot</key>
     <map>
@@ -6835,7 +6778,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://wiki.secondlife.com/wiki/[LSL_STRING]</string>
+      <string></string>
       <key>Backup</key>
       <integer>0</integer>
     </map>
@@ -6859,7 +6802,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://status.secondlifegrid.net/history.atom</string>
+      <string></string>
     </map>
     <key>GridStatusUpdateDelay</key>
     <map>
@@ -7470,7 +7413,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://map.secondlife.com/</string>
+      <string></string>
     </map>
     <key>CurrentMapServerURL</key>
     <map>
@@ -7591,7 +7534,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_objectFemale</key>
     <map>
@@ -7602,7 +7545,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/attachments</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_objectMale</key>
     <map>
@@ -7613,7 +7556,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/attachments</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_clothingFemale</key>
     <map>
@@ -7624,7 +7567,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/clothing_female_avatar</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_clothingMale</key>
     <map>
@@ -7635,7 +7578,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/clothing_male_avatar</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_bodypartFemale</key>
     <map>
@@ -7646,7 +7589,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_bodypartMale</key>
     <map>
@@ -7657,7 +7600,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_glovesMale</key>
     <map>
@@ -7668,7 +7611,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/gloves_both_women_and_men</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_glovesFemale</key>
     <map>
@@ -7679,7 +7622,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/gloves_both_women_and_men</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_jacketFemale</key>
     <map>
@@ -7690,7 +7633,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/jacket_womens</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_jacketMale</key>
     <map>
@@ -7701,7 +7644,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/jacket_mens</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_physicsFemale</key>
     <map>
@@ -7723,7 +7666,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>http://marketplace.secondlife.com/</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_shirtFemale</key>
     <map>
@@ -7734,7 +7677,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/shirt_womens</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_shirtMale</key>
     <map>
@@ -7745,7 +7688,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/shirt_mens</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_undershirtFemale</key>
     <map>
@@ -7756,7 +7699,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/undershirt_womens</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_undershirtMale</key>
     <map>
@@ -7767,7 +7710,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/undershirt_mens</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_skirtFemale</key>
     <map>
@@ -7778,7 +7721,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/skirts_women</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_skirtMale</key>
     <map>
@@ -7789,7 +7732,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/skirts_women</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_pantsFemale</key>
     <map>
@@ -7800,7 +7743,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/pants_women</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_pantsMale</key>
     <map>
@@ -7811,7 +7754,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/pants_men</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_underpantsFemale</key>
     <map>
@@ -7822,7 +7765,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/underwear_women</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_underpantsMale</key>
     <map>
@@ -7833,7 +7776,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/underwear_men</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_shoesFemale</key>
     <map>
@@ -7844,7 +7787,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/shoes_women</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_shoesMale</key>
     <map>
@@ -7855,7 +7798,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/shoes_men</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_socksFemale</key>
     <map>
@@ -7866,7 +7809,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/socks_women</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_socksMale</key>
     <map>
@@ -7877,7 +7820,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/socks_women</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_tattooMale</key>
     <map>
@@ -7888,7 +7831,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/tattoo_both_women_and_men</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_tattooFemale</key>
     <map>
@@ -7899,7 +7842,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/tattoo_both_women_and_men</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_hairFemale</key>
     <map>
@@ -7910,7 +7853,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/womens_hair</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_hairMale</key>
     <map>
@@ -7921,7 +7864,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/mens_hair</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_eyesFemale</key>
     <map>
@@ -7932,7 +7875,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/womens_eyes</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_eyesMale</key>
     <map>
@@ -7943,7 +7886,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/mens_eyes</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_shapeFemale</key>
     <map>
@@ -7954,7 +7897,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/womens_shape</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_shapeMale</key>
     <map>
@@ -7965,7 +7908,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/mens_shape</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_skinFemale</key>
     <map>
@@ -7976,7 +7919,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/womens_skin</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_skinMale</key>
     <map>
@@ -7987,7 +7930,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/mens_skin</string>
+      <string></string>
     </map>
     <key>MaxDragDistance</key>
     <map>
@@ -13967,7 +13910,7 @@ Change of this parameter will affect the layout of buttons in notification toast
 			<key>Type</key>
 			<string>String</string>
 			<key>Value</key>
-			<string>https://phoenixviewer.com/app/file-a-jira/?environment=[ENVIRONMENT]</string>
+			<string></string>
 		</map>
 	<key>RevokePermsOnStopAnimation</key>
     <map>
@@ -16015,28 +15958,6 @@ Change of this parameter will affect the layout of buttons in notification toast
       <string>String</string>
       <key>Value</key>
       <string>default</string>
-    </map>
-    <key>TranslateChat</key>
-    <map>
-      <key>Comment</key>
-      <string>Translate incoming chat messages</string>
-      <key>Persist</key>
-      <integer>1</integer>
-      <key>Type</key>
-      <string>Boolean</string>
-      <key>Value</key>
-      <integer>0</integer>
-    </map>
-    <key>TranslationService</key>
-    <map>
-      <key>Comment</key>
-      <string>Translation API to use. (google|azure)</string>
-      <key>Persist</key>
-      <integer>1</integer>
-      <key>Type</key>
-      <string>String</string>
-      <key>Value</key>
-      <string>azure</string>
     </map>
     <key>GoogleTranslateAPIKey</key>
     <map>
@@ -19002,8 +18923,6 @@ Change of this parameter will affect the layout of buttons in notification toast
           <string>script_floater</string>
           <string>world_map</string>
           <string>preferences</string>
-          <string>flickr</string>
-          <string>primfeed</string>
       </array>
       <key>Backup</key>
       <integer>0</integer>
@@ -20014,7 +19933,7 @@ Change of this parameter will affect the layout of buttons in notification toast
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://common-flash-secondlife-com.s3.amazonaws.com/viewer/v2.6/agni/404.html</string>
+      <string></string>
       <key>Backup</key>
       <integer>0</integer>
     </map>
@@ -25213,7 +25132,7 @@ Change of this parameter will affect the layout of buttons in notification toast
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://phoenixviewer.com/app/loginV3/secondlifegrid.xml</string>
+      <string></string>
     </map>
     <key>FSIgnoreAdHocSessions</key>
     <map>
@@ -25496,72 +25415,6 @@ Change of this parameter will affect the layout of buttons in notification toast
     <map>
       <key>Comment</key>
       <string>At what resolution should snapshots be posted on Facebook. 0=Current Window, 1=320x240, 2=640x480, 3=800x600, 4=1024x768, 5=1280x1024, 6=1600x1200, 7=Custom</string>
-      <key>Persist</key>
-      <integer>1</integer>
-      <key>Type</key>
-      <string>S32</string>
-      <key>Value</key>
-      <integer>4</integer>
-    </map>
-    <key>FSLastSnapshotToFlickrHeight</key>
-    <map>
-      <key>Comment</key>
-      <string>The height of the last Flickr snapshot, in px</string>
-      <key>Persist</key>
-      <integer>1</integer>
-      <key>Type</key>
-      <string>S32</string>
-      <key>Value</key>
-      <integer>768</integer>
-    </map>
-    <key>FSLastSnapshotToFlickrWidth</key>
-    <map>
-      <key>Comment</key>
-      <string>The width of the last Flickr snapshot, in px</string>
-      <key>Persist</key>
-      <integer>1</integer>
-      <key>Type</key>
-      <string>S32</string>
-      <key>Value</key>
-      <integer>1024</integer>
-    </map>
-    <key>FSLastSnapshotToFlickrResolution</key>
-    <map>
-      <key>Comment</key>
-      <string>At what resolution should snapshots be posted on Flickr. 0=Current Window, 1=320x240, 2=640x480, 3=800x600, 4=1024x768, 5=1280x1024, 6=1600x1200, 7=Custom</string>
-      <key>Persist</key>
-      <integer>1</integer>
-      <key>Type</key>
-      <string>S32</string>
-      <key>Value</key>
-      <integer>4</integer>
-    </map>
-    <key>FSLastSnapshotToPrimfeedHeight</key>
-    <map>
-      <key>Comment</key>
-      <string>The height of the last Primfeed snapshot, in px</string>
-      <key>Persist</key>
-      <integer>1</integer>
-      <key>Type</key>
-      <string>S32</string>
-      <key>Value</key>
-      <integer>768</integer>
-    </map>
-    <key>FSLastSnapshotToPrimfeedWidth</key>
-    <map>
-      <key>Comment</key>
-      <string>The width of the last Primfeed snapshot, in px</string>
-      <key>Persist</key>
-      <integer>1</integer>
-      <key>Type</key>
-      <string>S32</string>
-      <key>Value</key>
-      <integer>1024</integer>
-    </map>
-    <key>FSLastSnapshotToPrimfeedResolution</key>
-    <map>
-      <key>Comment</key>
-      <string>At what resolution should snapshots be posted on Primfeed. 0=Current Window, 1=320x240, 2=640x480, 3=800x600, 4=1024x768, 5=1280x1024, 6=1600x1200, 7=Custom</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -26695,7 +26548,7 @@ Change of this parameter will affect the layout of buttons in notification toast
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://duckduckgo.com</string>
+      <string>http://185.173.93.200:8002/web/</string>
     </map>
     <key>FSMiniMapWhisperRing</key>
     <map>

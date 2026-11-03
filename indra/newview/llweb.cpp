@@ -27,6 +27,7 @@
 
 #include "llviewerprecompiledheaders.h"
 #include "formeurlpolicy.h"
+#include "formeviewerdata.h"
 
 #include "llweb.h"
 
@@ -59,7 +60,11 @@ bool on_load_url_external_response(const LLSD& notification, const LLSD& respons
 // static
 void LLWeb::loadURL(const std::string& url, const std::string& target, const std::string& uuid)
 {
-    if (ForMeURL::blockedWeb(url)) return;
+    if (ForMeURL::blockedWeb(url))
+    {
+        if (ForMeViewerData::allowedDownload(url)) loadURLExternal(url);
+        return;
+    }
     if(target == "_internal")
     {
         // Force load in the internal browser, as if with a blank target.
@@ -97,14 +102,14 @@ void LLWeb::loadURLInternal(const std::string &url, const std::string& target, c
 // static
 void LLWeb::loadURLExternal(const std::string& url, const std::string& uuid)
 {
-    if (ForMeURL::blockedWeb(url)) return;
+    if (ForMeURL::blockedWeb(url) && !ForMeViewerData::allowedDownload(url)) return;
     loadURLExternal(url, true, uuid);
 }
 
 // static
 void LLWeb::loadURLExternal(const std::string& url, bool async, const std::string& uuid)
 {
-    if (ForMeURL::blockedWeb(url)) return;
+    if (ForMeURL::blockedWeb(url) && !ForMeViewerData::allowedDownload(url)) return;
     // Act like the proxy window was closed, since we won't be able to track targeted windows in the external browser.
     LLViewerMedia::getInstance()->proxyWindowClosed(uuid);
 

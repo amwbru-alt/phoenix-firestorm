@@ -126,7 +126,6 @@
 #include "fsavatarrenderpersistence.h"
 #include "fscommon.h"
 #include "fsdata.h"
-#include "fsdiscordconnect.h" // <FS:LO> tapping a place that happens on landing in world to start up discord
 #include "fslslbridge.h" // <FS:PP> Movelock position refresh
 #include "lfsimfeaturehandler.h"    // <FS:CR> Opensim
 #include "lggcontactsets.h"
@@ -3742,7 +3741,6 @@ void LLVOAvatar::idleUpdateLoadingEffect()
                     AOEngine::instance().onLoginComplete();
 
                     // <FS:LO> tapping a place that happens on landing in world to start up discord
-                    FSDiscordConnect::instance().checkConnectionToDiscord(gSavedPerAccountSettings.getBOOL("FSEnableDiscordIntegration"));
                 }
                 else
                 {

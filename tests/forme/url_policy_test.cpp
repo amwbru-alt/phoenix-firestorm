@@ -12,6 +12,11 @@ int main()
     assert(ForMeURL::blockedWeb("https://SECONDlife.com./account"));
     assert(ForMeURL::blockedWeb("https://www.firestormviewer.org%2e/path"));
     assert(!ForMeURL::blockedWeb("http://185.173.93.200:8002/web/marketplace.html"));
-    assert(!ForMeURL::blockedWeb("https://secondlife.com.example.org/"));
+    assert(ForMeURL::blockedWeb("https://secondlife.com.example.org/"));
+    assert(ForMeURL::blockedWeb("https://api.primfeed.com/"));
+    assert(ForMeURL::blockedWeb("https://lecs-viewer-web-components.s3.amazonaws.com/"));
+    assert(ForMeURL::blockedWeb("file:///etc/passwd"));
+    assert(ForMeURL::blockedWeb("http://185.173.93.200@outside.example/"));
+    assert(!ForMeURL::blockedWeb("about:blank"));
     std::cout<<"PASS fmw-only links, Cyrillic UTF-8, coordinates, grid boundaries and upstream website blocks\n";
 }
