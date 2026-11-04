@@ -217,8 +217,7 @@ static bool sViewerMediaMuteListObserverInitialized = false;
 LLViewerMedia::LLViewerMedia():
 mAnyMediaShowing(false),
 mAnyMediaPlaying(false),
-mMaxIntances(MAX_MEDIA_INSTANCES_DEFAULT),
-mSpareBrowserMediaSource(NULL)
+mMaxIntances(MAX_MEDIA_INSTANCES_DEFAULT)
 {
 }
 
@@ -227,11 +226,6 @@ LLViewerMedia::~LLViewerMedia()
     gIdleCallbacks.deleteFunction(LLViewerMedia::onIdle, NULL);
     mTeleportFinishConnection.disconnect();
     mMaxInstancesConnection.disconnect();
-    if (mSpareBrowserMediaSource != NULL)
-    {
-        delete mSpareBrowserMediaSource;
-        mSpareBrowserMediaSource = NULL;
-    }
 }
 
 // static
@@ -679,7 +673,7 @@ void LLViewerMedia::updateMedia(void *dummy_arg)
     // HACK: we always try to keep a spare running webkit plugin around to improve launch times.
     // 2017-04-19 Removed CP - this doesn't appear to buy us much and consumes a lot of resources so
     // removing it for now.
-    //createSpareBrowserMediaSource();
+
 
     mAnyMediaShowing = false;
     mAnyMediaPlaying = false;
@@ -695,13 +689,6 @@ void LLViewerMedia::updateMedia(void *dummy_arg)
             pimpl->update();
             pimpl->calculateInterest();
         }
-    }
-
-    // Let the spare media source actually launch
-    if(mSpareBrowserMediaSource)
-    {
-        LL_PROFILE_ZONE_NAMED_CATEGORY_MEDIA("media spare idle"); //LL_RECORD_BLOCK_TIME(FTM_MEDIA_SPARE_IDLE);
-        mSpareBrowserMediaSource->idle();
     }
 
     {
@@ -1540,28 +1527,7 @@ void LLViewerMedia::proxyWindowClosed(const std::string &uuid)
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
-void LLViewerMedia::createSpareBrowserMediaSource()
-{
-    // If we don't have a spare browser media source, create one.
-    // However, if PluginAttachDebuggerToPlugins is set then don't spawn a spare
-    // SLPlugin process in order to not be confused by an unrelated gdb terminal
-    // popping up at the moment we start a media plugin.
-    if (!mSpareBrowserMediaSource && !gSavedSettings.getBOOL("PluginAttachDebuggerToPlugins"))
-    {
-        // The null owner will keep the browser plugin from fully initializing
-        // (specifically, it keeps LLPluginClassMedia from negotiating a size change,
-        // which keeps MediaPluginWebkit::initBrowserWindow from doing anything until we have some necessary data, like the background color)
-        mSpareBrowserMediaSource = LLViewerMediaImpl::newSourceFromMediaType(HTTP_CONTENT_TEXT_HTML, NULL, 0, 0, 1.0);
-    }
-}
-
-/////////////////////////////////////////////////////////////////////////////////////////
-LLPluginClassMedia* LLViewerMedia::getSpareBrowserMediaSource()
-{
-    LLPluginClassMedia* result = mSpareBrowserMediaSource;
-    mSpareBrowserMediaSource = NULL;
-    return result;
-};
+;
 
 bool LLViewerMedia::hasInWorldMedia()
 {
@@ -1807,40 +1773,6 @@ LLPluginClassMedia* LLViewerMediaImpl::newSourceFromMediaType(std::string media_
         return nullptr;
     LLPluginClassMedia* media_source = NULL;
 
-#ifdef LL_LINUX
-    if( plugin_basename == "media_plugin_cef" )
-    {
-        std::string strSandbox = gDirUtilp->getExecutableDir() + gDirUtilp->getDirDelimiter() + "chrome-sandbox";
-        llstat st;
-        if( LLFile::stat( strSandbox, &st ) )
-        {
-            LL_WARNS() << strSandbox << " not found, CEF will run without using the sandbox" << LL_ENDL;
-        }
-        else if( st.st_uid != 0 || st.st_gid != 0 || (st.st_mode & S_ISUID ) != S_ISUID )
-        {
-            LL_WARNS() << strSandbox << " is either not owned by root:root or does not have the suid bit set, CEF will run without using the sandbox" << LL_ENDL;
-        }
-    }
-#endif
-
-
-    // HACK: we always try to keep a spare running webkit plugin around to improve launch times.
-    // If a spare was already created before PluginAttachDebuggerToPlugins was set, don't use it.
-    // Do not use a spare if launching with full viewer control (e.g. Twitter and few others)
-    if ((plugin_basename == "media_plugin_cef") &&
-        !gSavedSettings.getBOOL("PluginAttachDebuggerToPlugins") && !clean_browser)
-    {
-        media_source = LLViewerMedia::getInstance()->getSpareBrowserMediaSource();
-        if(media_source)
-        {
-            media_source->setOwner(owner);
-            media_source->setTarget(target);
-            media_source->setSize(default_width, default_height);
-            media_source->setZoomFactor(zoom_factor);
-
-            return media_source;
-        }
-    }
     if(plugin_basename.empty())
     {
         LL_WARNS_ONCE("Media") << "Couldn't find plugin for media type " << media_type << LL_ENDL;

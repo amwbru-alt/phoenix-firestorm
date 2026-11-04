@@ -11443,16 +11443,6 @@ void handle_load_from_xml(void*)
     }
 }
 
-void handle_web_browser_test(const LLSD& param)
-{
-    std::string url = param.asString();
-    if (url.empty())
-    {
-        url = "about:blank";
-    }
-    LLWeb::loadURLInternal(url);
-}
-
 bool callback_clear_cache_immediately(const LLSD& notification, const LLSD& response)
 {
     S32 option = LLNotificationsUtil::getSelectedOption(notification, response);
@@ -11468,18 +11458,6 @@ bool callback_clear_cache_immediately(const LLSD& notification, const LLSD& resp
 void handle_cache_clear_immediately()
 {
     LLNotificationsUtil::add("ConfirmClearCache", LLSD(), LLSD(), callback_clear_cache_immediately);
-}
-
-void handle_web_content_test(const LLSD& param)
-{
-    std::string url = param.asString();
-    // <FS:LO> Add a user settable home page for the built in web browser
-    if (url == "HOME_PAGE")
-    {
-        url = gSavedSettings.getString("FSBrowserHomePage");
-    }
-    // </FS:LO>
-    LLWeb::loadURLInternal(url, LLStringUtil::null, LLStringUtil::null, true);
 }
 
 void handle_show_url(const LLSD& param)
@@ -12962,8 +12940,6 @@ void initialize_menus()
     view_listener_t::addMenu(new LLAdvancedTerrainDeleteLocalPaintMap(), "Advanced.TerrainDeleteLocalPaintMap");
 
     // Advanced > UI
-    commit.add("Advanced.WebBrowserTest", boost::bind(&handle_web_browser_test, _2));   // sigh! this one opens the MEDIA browser
-    commit.add("Advanced.WebContentTest", boost::bind(&handle_web_content_test, _2));   // this one opens the Web Content floater
     commit.add("Advanced.ShowURL", boost::bind(&handle_show_url, _2));
     commit.add("Advanced.ReportBug", boost::bind(&handle_report_bug, _2));
     view_listener_t::addMenu(new LLAdvancedBuyCurrencyTest(), "Advanced.BuyCurrencyTest");

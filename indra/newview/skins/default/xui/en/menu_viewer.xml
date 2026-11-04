@@ -4906,13 +4906,6 @@
          label="UI"
          name="UI"
          tear_off="true">
-            <menu_item_call
-             label="Media Browser Test"
-             name="Web Browser Test">
-                <menu_item_call.on_click
-                 function="Advanced.WebBrowserTest"
-                 parameter="http://secondlife.com/app/search/slurls.html"/>
-            </menu_item_call>
           <menu_item_check
            label="Region Restart Test..."
            name="Region Restart Test">
@@ -4923,14 +4916,6 @@
                function="Floater.Toggle"
                parameter="region_restarting" />
           </menu_item_check>
-          <menu_item_call
-           label="Web Content Browser"
-           name="Web Content Browser"
-           shortcut="control|shift|Z">
-            <menu_item_call.on_click
-             function="Advanced.WebContentTest"
-             parameter="HOME_PAGE"/>
-          </menu_item_call>
             <menu_item_call
              label="Inventory Thumbnails Helper"
              name="Inventory Thumbnails Helper"

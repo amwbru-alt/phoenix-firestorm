@@ -3488,15 +3488,6 @@ bool LLPanelPreference::postBuild()
     //}
     //</FS:HG> FIRE-6340, FIRE-6567 - Setting Bandwidth issues
 
-#ifdef EXTERNAL_TOS
-    LLRadioGroup* ext_browser_settings = getChild<LLRadioGroup>("preferred_browser_behavior");
-    if (ext_browser_settings)
-    {
-        // turn off ability to set external/internal browser
-        ext_browser_settings->setSelectedByValue(LLWeb::BROWSER_EXTERNAL_ONLY, true);
-        ext_browser_settings->setEnabled(false);
-    }
-#endif
 
     ////////////////////// PanelAlerts ///////////////////
     if (hasChild("OnlineOfflinetoNearbyChat", true))

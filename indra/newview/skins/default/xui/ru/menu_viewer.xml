@@ -562,9 +562,7 @@
             <menu_item_call label="Удалить локальный рисунок карты" name="Delete Local Paintmap" />
         </menu>
         <menu label="Интерфейс пользователя" name="UI">
-            <menu_item_call label="Тест браузера для просмотра медиа" name="Web Browser Test" />
             <menu_item_check label="Тест перезапуска региона..." name="Region Restart Test" />
-            <menu_item_call label="Браузер Web содержимого" name="Web Content Browser" />
             <menu_item_call label="Помощник по созданию миниатюр инвентаря" name="Inventory Thumbnails Helper" />
             <menu_item_call label="Дамп шрифтов" name="Dump Fonts" />
             <menu_item_call label="Дамп текстур шрифтов" name="Dump Font Textures" />
