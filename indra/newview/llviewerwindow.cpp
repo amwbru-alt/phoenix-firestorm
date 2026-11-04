@@ -3092,7 +3092,7 @@ void LLViewerWindow::draw()
                 // Draw a bounded screen-space effect before the HUD widgets.
                 const F32 width = static_cast<F32>(world.getWidth());
                 const F32 height = static_cast<F32>(world.getHeight());
-                const F32 time = static_cast<F32>(std::fmod(gFrameTimeSeconds, 3600.0));
+                const F32 time = static_cast<F32>(std::fmod(static_cast<F64>(gFrameTimeSeconds), 3600.0));
                 const S32 count = ll_round(160.f * rain);
                 gGL.getTexUnit(0)->unbind(LLTexUnit::TT_TEXTURE);
                 gGL.setSceneBlendType(LLRender::BT_ALPHA);
