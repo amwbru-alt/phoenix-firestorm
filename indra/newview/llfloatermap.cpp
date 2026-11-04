@@ -28,6 +28,7 @@
 
 // self include
 #include "llfloatermap.h"
+#include "llbutton.h"
 
 // Library includes
 #include "llfloaterreg.h"
@@ -93,6 +94,17 @@ bool LLFloaterMap::postBuild()
     mMap->setToolTipHintMsg(getString("ToolTipHintMsg"));
     mMap->setAltToolTipHintMsg(getString("AltToolTipHintMsg"));
     sendChildToBack(mMap);
+
+    getChild<LLButton>("forme_minimap_zoom_in")->setClickedCallback([this]()
+    {
+        const LLRect& rect = mMap->getLocalRect();
+        mMap->handleScrollWheel(rect.getCenterX(), rect.getCenterY(), -1);
+    });
+    getChild<LLButton>("forme_minimap_zoom_out")->setClickedCallback([this]()
+    {
+        const LLRect& rect = mMap->getLocalRect();
+        mMap->handleScrollWheel(rect.getCenterX(), rect.getCenterY(), 1);
+    });
 
     mTextBoxNorth     = getChild<LLTextBox>("floater_map_north");
     mTextBoxEast      = getChild<LLTextBox>("floater_map_east");

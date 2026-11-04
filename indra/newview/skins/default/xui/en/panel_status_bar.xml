@@ -214,7 +214,7 @@
     <panel
       class="panel_omnifilter_controls"
       height="18"
-      left="-678"
+      left="-722"
       width="190"
       top="0"
       follows="right|top"
@@ -265,7 +265,7 @@
 
 	<panel
 	 height="18"
-	 left="-481"
+	 left="-525"
 	 top="0"
 	 width="120"
 	 follows="right|top"
@@ -306,7 +306,7 @@
 
   <panel
     height="18"
-    left="-349"
+    left="-393"
     width="77"
     top="0"
     follows="right|top"
@@ -448,6 +448,16 @@
         200.0
     </text>
   </panel>
+  <button name="forme_hud_notifications" layout="topleft" follows="right|top"
+          top="1" right="-46" width="20" height="17" chrome="true"
+          image_overlay="Notices_Unread" tool_tip="Notifications">
+    <commit_callback function="Floater.Toggle" parameter="notification_well_window" />
+  </button>
+  <button name="forme_hud_people" layout="topleft" follows="right|top"
+          top="1" right="-24" width="20" height="17" chrome="true"
+          image_overlay="Command_People_Icon" tool_tip="People">
+    <commit_callback function="Floater.Toggle" parameter="people" />
+  </button>
   <menu_button
     name="forme_profile_menu_button"
     follows="right|top"

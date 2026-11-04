@@ -137,4 +137,8 @@
      text_color="1 1 1 0.7">
         NW
     </text>
+    <button name="forme_minimap_zoom_in" layout="topleft" follows="right|top"
+            right="-8" top="48" width="24" height="24" label="+" tool_tip="Zoom in" />
+    <button name="forme_minimap_zoom_out" layout="topleft" follows="right|top"
+            right="-8" top="74" width="24" height="24" label="−" tool_tip="Zoom out" />
 </floater>
