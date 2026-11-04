@@ -46,7 +46,7 @@ public:
                 void *callback_data);
     ~FSPanelLogin();
 
-    virtual void setFocus( bool b );
+    void setFocus(bool b) override;
 
     static void show(const LLRect &rect,
         void (*callback)(S32 option, void* user_data),
