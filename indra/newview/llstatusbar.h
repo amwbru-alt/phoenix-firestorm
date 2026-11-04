@@ -100,6 +100,8 @@ class LLStatusBar
 :   public LLPanel
 {
 public:
+    static F32 updateRegionRainIntensity();
+
     LLStatusBar(const LLRect& rect );
     /*virtual*/ ~LLStatusBar();
 

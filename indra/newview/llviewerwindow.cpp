@@ -148,6 +148,7 @@
 #include "llrendersphere.h"
 #include "llstartup.h"
 #include "llstatusbar.h"
+#include <cmath>
 #include "llstatview.h"
 #include "llsurface.h"
 #include "llsurfacepatch.h"
@@ -3030,6 +3031,35 @@ void LLViewerWindow::draw()
                         0.f);
             gGL.scalef(zoom_factor, zoom_factor, 1.f);
             LLUI::getScaleFactor() *= zoom_factor;
+        }
+
+        if (!gTeleportDisplay)
+        {
+            const F32 rain = LLStatusBar::updateRegionRainIntensity();
+            const LLRect world = getWorldViewRectScaled();
+            if (rain > 0.f && world.getWidth() > 0 && world.getHeight() > 0)
+            {
+                // Draw a bounded screen-space effect before the HUD widgets.
+                const F32 width = static_cast<F32>(world.getWidth());
+                const F32 height = static_cast<F32>(world.getHeight());
+                const F32 time = static_cast<F32>(std::fmod(gFrameTimeSeconds, 3600.0));
+                const S32 count = ll_round(160.f * rain);
+                gGL.getTexUnit(0)->unbind(LLTexUnit::TT_TEXTURE);
+                gGL.setSceneBlendType(LLRender::BT_ALPHA);
+                gGL.color4f(0.76f, 0.84f, 0.96f, 0.18f + 0.19f * rain);
+                gGL.begin(LLRender::LINES);
+                for (S32 drop = 0; drop < count; ++drop)
+                {
+                    const F32 x = world.mLeft + std::fmod(drop * 227.31f + time * 65.f, width);
+                    const F32 y = world.mTop - std::fmod(drop * 137.19f + time * (550.f + 18.f * (drop % 9)), height);
+                    gGL.vertex2f(x, y);
+                    gGL.vertex2f(llmin(x + 5.f, static_cast<F32>(world.mRight)),
+                                 llmax(y - 19.f, static_cast<F32>(world.mBottom)));
+                }
+                gGL.end();
+                gGL.flush();
+                gGL.color4f(1.f, 1.f, 1.f, 1.f);
+            }
         }
 
         // Draw tool specific overlay on world
