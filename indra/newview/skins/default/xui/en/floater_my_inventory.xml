@@ -5,14 +5,14 @@
  can_resize="true"
  height="570"
 
- min_width="200"
+ min_width="280"
  min_height="200"
  name="floater_my_inventory"
  save_rect="true"
  save_visibility="true"
  reuse_instance="true"
  title="Inventory"
- width="333" >
+ width="360" >
    <panel
     class="sidepanel_inventory"
     name="main_panel"
