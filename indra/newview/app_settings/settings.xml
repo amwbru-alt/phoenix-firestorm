@@ -985,7 +985,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>grey</string>
+      <string>forme</string>
     </map>
 
     <key>ShowSearchTopBar</key>
@@ -21965,7 +21965,7 @@ Change of this parameter will affect the layout of buttons in notification toast
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>Grey</string>
+      <string>ForMe.World</string>
     </map>
     <key>FSStatusbarShowSimulatorVersion</key>
     <map>

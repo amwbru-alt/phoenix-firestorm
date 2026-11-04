@@ -59,6 +59,12 @@
       <array>
         <map>
           <key>name</key>
+          <string>ForMe.World</string>
+          <key>folder</key>
+          <string>forme</string>
+        </map>
+        <map>
+          <key>name</key>
           <string>Grey</string>
           <key>folder</key>
           <string/>
