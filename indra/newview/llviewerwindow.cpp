@@ -2960,6 +2960,37 @@ void LLViewerWindow::drawDebugText()
     gUIProgram.unbind();
 }
 
+namespace
+{
+F32 getPrecipitationExposure(const LLVector3& camera_position, const LLViewerRegion& region)
+{
+    static LLUUID region_id;
+    static LLFrameTimer probe_age;
+    static F32 from = 1.f;
+    static F32 target = 1.f;
+    constexpr F32 probe_interval = 0.25f;
+
+    const F32 blend = llclamp(probe_age.getElapsedTimeF32() / probe_interval, 0.f, 1.f);
+    const F32 current = from + (target - from) * blend;
+    const bool changed_region = region_id != region.getRegionID();
+    if (changed_region || blend >= 1.f)
+    {
+        region_id = region.getRegionID();
+        const LLVector3 end = camera_position + LLVector3(0.f, 0.f, 96.f);
+        LLVector4a ray_start, ray_end;
+        ray_start.load3(camera_position.mV);
+        ray_end.load3(end.mV);
+        LLViewerObject* hit = gPipeline.lineSegmentIntersectInWorld(
+            ray_start, ray_end, false, false, true, false, nullptr);
+        target = hit && !hit->isAvatar() ? 0.f : 1.f;
+        from = changed_region ? target : current;
+        probe_age.reset();
+        return from;
+    }
+    return current;
+}
+}
+
 void LLViewerWindow::draw()
 {
 
@@ -3036,10 +3067,26 @@ void LLViewerWindow::draw()
         if (!gTeleportDisplay)
         {
             const auto weather = LLStatusBar::updateRegionWeatherEffects();
-            const F32 rain = weather.rain;
-            const F32 snow = weather.snow;
+            const LLVector3 camera_position = camera.getOrigin();
+            F32 exposure = 0.f;
+            F32 sideways_wind = 0.f;
+            if (LLWorld::instanceExists() && (weather.rain > 0.f || weather.snow > 0.f || weather.lightning > 0.f))
+            {
+                if (LLViewerRegion* region = LLWorld::getInstance()->getRegionFromPosAgent(camera_position))
+                {
+                    if (camera_position.mV[VZ] >= region->getWaterHeight())
+                    {
+                        exposure = getPrecipitationExposure(camera_position, *region);
+                        const LLVector3 wind = region->mWind.getVelocity(region->getPosRegionFromAgent(camera_position));
+                        sideways_wind = llclamp(-(wind * camera.getLeftAxis()), -25.f, 25.f);
+                    }
+                }
+            }
+            const F32 rain = weather.rain * exposure;
+            const F32 snow = weather.snow * exposure;
+            const F32 lightning = weather.lightning * (0.3f + 0.7f * exposure);
             const LLRect world = getWorldViewRectScaled();
-            if ((rain > 0.f || snow > 0.f || weather.lightning > 0.f) &&
+            if ((rain > 0.f || snow > 0.f || lightning > 0.f) &&
                 world.getWidth() > 0 && world.getHeight() > 0)
             {
                 // Draw a bounded screen-space effect before the HUD widgets.
@@ -3049,8 +3096,8 @@ void LLViewerWindow::draw()
                 const S32 count = ll_round(160.f * rain);
                 gGL.getTexUnit(0)->unbind(LLTexUnit::TT_TEXTURE);
                 gGL.setSceneBlendType(LLRender::BT_ALPHA);
-                if (weather.lightning > 0.f)
-                    gl_rect_2d(world, LLColor4(0.78f, 0.86f, 1.f, weather.lightning), true);
+                if (lightning > 0.f)
+                    gl_rect_2d(world, LLColor4(0.78f, 0.86f, 1.f, lightning), true);
                 gGL.color4f(0.76f, 0.84f, 0.96f, 0.18f + 0.19f * rain);
                 gGL.begin(LLRender::LINES);
                 for (S32 drop = 0; drop < count; ++drop)
@@ -3058,7 +3105,8 @@ void LLViewerWindow::draw()
                     const F32 x = world.mLeft + std::fmod(drop * 227.31f + time * 65.f, width);
                     const F32 y = world.mTop - std::fmod(drop * 137.19f + time * (550.f + 18.f * (drop % 9)), height);
                     gGL.vertex2f(x, y);
-                    gGL.vertex2f(llmin(x + 5.f, static_cast<F32>(world.mRight)),
+                    gGL.vertex2f(llclamp(x + 5.f + sideways_wind * 0.55f,
+                                         static_cast<F32>(world.mLeft), static_cast<F32>(world.mRight)),
                                  llmax(y - 19.f, static_cast<F32>(world.mBottom)));
                 }
                 gGL.end();
@@ -3068,8 +3116,8 @@ void LLViewerWindow::draw()
                 const S32 flakes = ll_round(130.f * snow);
                 for (S32 flake = 0; flake < flakes; ++flake)
                 {
-                    const F32 drift = 10.f + 7.f * static_cast<F32>(std::sin(time + flake));
-                    const F32 x = world.mLeft + std::fmod(flake * 211.73f + time * 13.f + drift, width);
+                    const F32 drift = 10.f + 7.f * static_cast<F32>(std::sin(time + flake + sideways_wind * 0.1f));
+                    const F32 x = world.mLeft + std::fmod(flake * 211.73f + time * (13.f + sideways_wind * 0.35f) + drift, width);
                     const F32 y = world.mTop - std::fmod(flake * 127.57f + time * (31.f + flake % 8), height);
                     gGL.vertex2f(llmax(x - 1.5f, static_cast<F32>(world.mLeft)), y);
                     gGL.vertex2f(llmin(x + 1.5f, static_cast<F32>(world.mRight)), y);
