@@ -72,4 +72,22 @@
 	</panel>
 </layout_panel>
 </layout_stack> 
+
+  <string name="forme_regions_loading">Загрузка регионов…</string>
+  <string name="forme_regions_empty">Регионы не найдены</string>
+  <string name="forme_regions_failed">Каталог регионов недоступен</string>
+  <line_editor name="forme_region_query" label="Найти регион" />
+  <button name="forme_region_find" label="Найти" />
+  <button name="forme_region_map" label="Карта" />
+  <button name="forme_region_cards" label="Карточки" />
+  <panel name="forme_regions_panel">
+    <panel name="forme_region_card_0"><button name="forme_region_details_0" label="Подробнее" /></panel>
+    <panel name="forme_region_card_1"><button name="forme_region_details_1" label="Подробнее" /></panel>
+    <panel name="forme_region_card_2"><button name="forme_region_details_2" label="Подробнее" /></panel>
+    <button name="forme_region_prev" label="Назад" />
+    <button name="forme_region_next" label="Далее" />
+    <button name="forme_region_show" label="Показать на карте" />
+    <button name="forme_region_copy" label="Копировать ссылку" />
+    <button name="forme_region_tp" label="Телепорт" />
+  </panel>
 </floater>

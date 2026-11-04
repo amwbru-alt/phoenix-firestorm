@@ -6,7 +6,7 @@
  height="530"
  layout="topleft"
  min_height="386"
- min_width="263"
+ min_width="746"
  name="worldmap"
 
  save_rect="true"
@@ -17,14 +17,58 @@
   <string name="UnnamedParcel">
     (Unnamed Parcel)
   </string>
+  <string name="forme_regions_loading">Loading regions…</string>
+  <string name="forme_regions_empty">No regions found</string>
+  <string name="forme_regions_failed">Region catalog is unavailable</string>
+  <line_editor name="forme_region_query" layout="topleft" follows="top|left|right"
+    left="14" right="-237" top="24" height="27" max_length_chars="128" label="Find a region" />
+  <button name="forme_region_find" layout="topleft" follows="top|right"
+    right="-147" top="24" width="82" height="27" label="Find" />
+  <button name="forme_region_map" layout="topleft" follows="top|right"
+    right="-76" top="24" width="65" height="27" label="Map" />
+  <button name="forme_region_cards" layout="topleft" follows="top|right"
+    right="-8" top="24" width="64" height="27" label="Cards" />
+  <panel name="forme_regions_panel" layout="topleft" follows="all" left="0" top="58" right="-1" bottom="-1">
+    <panel name="forme_region_card_0" layout="topleft" follows="top|left" left="14" top="10"
+      width="225" height="220" background_visible="true" background_opaque="true"
+      bg_opaque_image="Rounded_Rect" bg_opaque_image_overlay="floater_bg_color">
+      <icon name="forme_region_photo_0" layout="topleft" left="8" top="8" width="209" height="145" mouse_opaque="false" />
+      <text name="forme_region_name_0" layout="topleft" left="10" top="161" width="205" height="20"
+        font="SansSerifMedium" use_ellipses="true" />
+      <button name="forme_region_details_0" layout="topleft" left="10" top="187" width="205" height="25" is_toggle="true" label="Details" />
+    </panel>
+    <panel name="forme_region_card_1" layout="topleft" follows="top|left" left="253" top="10"
+      width="225" height="220" background_visible="true" background_opaque="true"
+      bg_opaque_image="Rounded_Rect" bg_opaque_image_overlay="floater_bg_color">
+      <icon name="forme_region_photo_1" layout="topleft" left="8" top="8" width="209" height="145" mouse_opaque="false" />
+      <text name="forme_region_name_1" layout="topleft" left="10" top="161" width="205" height="20"
+        font="SansSerifMedium" use_ellipses="true" />
+      <button name="forme_region_details_1" layout="topleft" left="10" top="187" width="205" height="25" is_toggle="true" label="Details" />
+    </panel>
+    <panel name="forme_region_card_2" layout="topleft" follows="top|left" left="492" top="10"
+      width="225" height="220" background_visible="true" background_opaque="true"
+      bg_opaque_image="Rounded_Rect" bg_opaque_image_overlay="floater_bg_color">
+      <icon name="forme_region_photo_2" layout="topleft" left="8" top="8" width="209" height="145" mouse_opaque="false" />
+      <text name="forme_region_name_2" layout="topleft" left="10" top="161" width="205" height="20"
+        font="SansSerifMedium" use_ellipses="true" />
+      <button name="forme_region_details_2" layout="topleft" left="10" top="187" width="205" height="25" is_toggle="true" label="Details" />
+    </panel>
+    <text name="forme_region_status" layout="topleft" follows="left|top|right" left="14" right="-14"
+      top="240" height="26" font="SansSerifMedium" use_ellipses="true" />
+    <button name="forme_region_prev" layout="topleft" left="14" top="280" width="100" height="27" label="Previous" />
+    <button name="forme_region_next" layout="topleft" left="120" top="280" width="100" height="27" label="Next" />
+    <button name="forme_region_show" layout="topleft" left="253" top="280" width="135" height="27" label="Show on map" />
+    <button name="forme_region_copy" layout="topleft" left="395" top="280" width="145" height="27" label="Copy link" />
+    <button name="forme_region_tp" layout="topleft" left="548" top="280" width="169" height="27" label="Teleport" />
+  </panel>
  <layout_stack
   follows="all"
   layout="topleft"
   width="746"
-  height="512"
+  height="472"
   left="0"
   orientation="horizontal"
-  top="18"
+  top="58"
   name="resizing_stack">
   <layout_panel
    follows="right|left|top|bottom"

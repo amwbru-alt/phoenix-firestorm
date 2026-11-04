@@ -265,6 +265,17 @@ private:
 
     LLPanel*                mTrackCtrlsPanel = nullptr;
 
+    void setRegionCardsMode(bool cards);
+    void loadRegionCards(S32 offset);
+    void showRegionCards(const LLSD& data, U64 request_id);
+    void selectRegionCard(S32 index);
+    void actOnRegionCard(S32 action);
+
+    LLSD mRegionCards;
+    S32 mRegionCardOffset = 0;
+    S32 mSelectedRegionCard = -1;
+    U64 mRegionCardRequest = 0;
+
     boost::signals2::connection mTeleportFinishConnection;
 };
 
