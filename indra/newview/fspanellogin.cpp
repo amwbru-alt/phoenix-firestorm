@@ -483,6 +483,21 @@ void FSPanelLogin::show(const LLRect &rect,
     gFocusMgr.setDefaultKeyboardFocus(sInstance);
 }
 
+void FSPanelLogin::reshape(S32 width, S32 height, bool called_from_parent)
+{
+    LLPanel::reshape(width, height, called_from_parent);
+
+    LLView* card = findChildView("login_widgets");
+    const LLView* header = findChildView("forme_login_header");
+    if (card && header)
+    {
+        const S32 content_top = header->getRect().mBottom;
+        const S32 free_height = llmax(0, content_top - card->getRect().getHeight());
+        const S32 card_top = content_top - free_height / 2;
+        card->translate(0, card_top - card->getRect().mTop);
+    }
+}
+
 //static
 void FSPanelLogin::reshapePanel()
 {

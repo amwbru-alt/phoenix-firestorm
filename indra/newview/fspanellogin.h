@@ -52,6 +52,7 @@ public:
         void (*callback)(S32 option, void* user_data),
         void* callback_data);
     static void reshapePanel();
+    void reshape(S32 width, S32 height, bool called_from_parent = true) override;
 
     static void setFields(LLPointer<LLCredential> credential, bool from_startup = false);
 
