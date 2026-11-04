@@ -136,7 +136,9 @@ namespace
             sWeatherFrom.rain + blend * (sWeatherTo.rain - sWeatherFrom.rain),
             sWeatherFrom.snow + blend * (sWeatherTo.snow - sWeatherFrom.snow),
             sLightningDelay >= 0 && flash_age >= 0.f && flash_age < 0.3f
-                ? 0.14f * (1.f - flash_age / 0.3f) : 0.f
+                ? 0.14f * (1.f - flash_age / 0.3f) : 0.f,
+            sWeatherFrom.fog + blend * (sWeatherTo.fog - sWeatherFrom.fog),
+            sWeatherFrom.cloud + blend * (sWeatherTo.cloud - sWeatherFrom.cloud)
         };
     }
 
@@ -1541,7 +1543,8 @@ LLStatusBar::RegionWeatherEffects LLStatusBar::updateRegionWeatherEffects()
                     return number >= 0.0 && number <= 1.0 ? static_cast<F32>(number) : 0.f;
                 };
                 sWeatherFrom = sampleWeatherEffects();
-                sWeatherTo = { intensity(data["rain"]), intensity(data["snow"]), 0.f };
+                sWeatherTo = { intensity(data["rain"]), intensity(data["snow"]), 0.f,
+                               intensity(data["fog"]), intensity(data["cloud"]) };
                 const S32 delay = data["lightning_in"].isInteger() ? data["lightning_in"].asInteger() : -1;
                 sLightningDelay = delay > 0 && delay <= 75 ? delay : -1;
                 sWeatherSampleAge.reset();

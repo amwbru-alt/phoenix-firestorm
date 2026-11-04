@@ -105,6 +105,8 @@ public:
         F32 rain = 0.f;
         F32 snow = 0.f;
         F32 lightning = 0.f;
+        F32 fog = 0.f;
+        F32 cloud = 0.f;
     };
     static RegionWeatherEffects updateRegionWeatherEffects();
 
