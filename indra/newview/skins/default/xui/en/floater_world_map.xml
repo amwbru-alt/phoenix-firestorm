@@ -13,14 +13,14 @@
  save_visibility="true"
  single_instance="true"
  title="World Map"
- width="650">
+ width="746">
   <string name="UnnamedParcel">
     (Unnamed Parcel)
   </string>
  <layout_stack
   follows="all"
   layout="topleft"
-  width="650"
+  width="746"
   height="512"
   left="0"
   orientation="horizontal"
@@ -31,7 +31,7 @@
    layout="topleft"
    left="0"
    min_width="5"
-   width="390"
+   width="486"
    height="512"
    name="map_panel">
    <panel
@@ -42,11 +42,11 @@
     left="5"
     name="objects_mapview"
     top="5"
-    width="386"/>
+    width="482"/>
    <panel
     follows="right|bottom"
     height="20"
-	left="195"
+	left="291"
     min_height="20"
     bottom="487"
     width="185"
@@ -141,7 +141,7 @@
     top="7"
     left_delta="0"
     background_visible="true"
-    bg_alpha_color="DkGray2">
+    bg_alpha_color="floater_bg_color">
     <text
      text_color="White"
      font="SansSerifLarge"
@@ -484,7 +484,7 @@
    top_pad="0"
    width="248"
    background_visible="true"
-   bg_alpha_color="DkGray2"
+   bg_alpha_color="floater_bg_color"
    name="layout_panel_3">
     <text
      text_color="White"

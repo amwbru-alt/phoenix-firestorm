@@ -13,7 +13,7 @@
  width="673">
     <button
      follows="right|bottom"
-     height="23"
+     height="28"
      label="OK"
      label_selected="OK"
      layout="topleft"
@@ -27,7 +27,7 @@
     </button>
     <button
      follows="right|bottom"
-     height="23"
+     height="28"
      label="Cancel"
      label_selected="Cancel"
      layout="topleft"
@@ -46,12 +46,12 @@
      left="4"
      right="-4"
      top="21"
-     height="18"
+     height="22"
      tab_group="2">
         <search_editor
          clear_button_visible="true"
          follows="left|top|right"
-         height="18"
+         height="22"
          label="Search Settings"
          layout="topleft"
          left="0"
@@ -73,7 +73,7 @@
           rect.bottom="-1" />
         </search_editor>
         <button
-          height="18"
+          height="22"
           image_overlay="Copy"
           layout="topleft"
           left_pad="2"
@@ -97,7 +97,7 @@
      tab_position="left"
      tab_width="125"
      tab_padding_right="4"
-     top="42"
+     top="47"
      width="673">
         <panel
          class="panel_preference"

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <floater
- positioning="none"
- bg_alpha_image_overlay="DkGray"
+ positioning="relative"
+ rel_x="0.48"
+ rel_y="0.46"
+ bg_alpha_image_overlay="floater_bg_color_a"
  legacy_header_height="0"
  can_minimize="true" 
  can_resize="true"
