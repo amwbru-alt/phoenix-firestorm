@@ -95,4 +95,4 @@
     <button name="forme_region_copy" label="Копировать ссылку" />
     <button name="forme_region_tp" label="Телепорт" />
   </panel>
-  <string name="forme_region_grid_coords">Координаты: [X], [Y]</string></floater>
+  <string name="forme_region_grid_coords">Координаты: [X], [Y]  ·  [WIDTH] × [HEIGHT] м</string></floater>

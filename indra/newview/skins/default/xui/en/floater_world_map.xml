@@ -17,7 +17,7 @@
   <string name="UnnamedParcel">
     (Unnamed Parcel)
   </string>
-  <string name="forme_region_grid_coords">Grid: [X], [Y]</string>
+  <string name="forme_region_grid_coords">Grid: [X], [Y]  ·  [WIDTH] × [HEIGHT] m</string>
   <string name="forme_regions_loading">Loading regions…</string>
   <string name="forme_regions_empty">No regions found</string>
   <string name="forme_regions_failed">Region catalog is unavailable</string>

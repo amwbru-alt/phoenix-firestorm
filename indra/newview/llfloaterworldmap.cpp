@@ -438,7 +438,13 @@ bool LLFloaterWorldMap::postBuild()
     };
     bind("forme_region_find", [this] { loadRegionCards(0); });
     bind("forme_region_map", [this] { setRegionCardsMode(false); });
-    bind("forme_region_cards", [this] { setRegionCardsMode(true); });
+    bind("forme_region_cards", [this]
+    {
+        if (mRegionCardRequest == 0)
+            loadRegionCards(0);
+        else
+            setRegionCardsMode(true);
+    });
     bind("forme_region_prev", [this] { loadRegionCards(llmax(0, mRegionCardOffset - 3)); });
     bind("forme_region_next", [this] { loadRegionCards(mRegionCardOffset + 3); });
     bind("forme_region_show", [this] { actOnRegionCard(0); });
@@ -2362,6 +2368,8 @@ void LLFloaterWorldMap::actOnRegionCard(S32 action)
     const std::string name = row["name"].asString();
     if (name.empty() || !ForMeGrid::localRegion(name))
         return;
+    const S32 local_x = row["size_x"].asInteger() > 0 ? row["size_x"].asInteger() / 2 : 128;
+    const S32 local_y = row["size_y"].asInteger() > 0 ? row["size_y"].asInteger() / 2 : 128;
     if (action == 0)
     {
         setRegionCardsMode(false);
@@ -2377,19 +2385,22 @@ void LLFloaterWorldMap::actOnRegionCard(S32 action)
         LLStringUtil::format_map_t coords;
         coords["[X]"] = row["x"].asString();
         coords["[Y]"] = row["y"].asString();
+        coords["[WIDTH]"] = std::to_string(local_x * 2);
+        coords["[HEIGHT]"] = std::to_string(local_y * 2);
         getChild<LLTextBox>("forme_region_detail_coords")->setText(getString("forme_region_grid_coords", coords));
-        trackURL(name, 128, 128, 25);
+        trackURL(name, local_x, local_y, 25);
         centerOnTarget(true);
     }
     else if (action == 1)
     {
-        const std::string link = "fmw://" + LLURI::escape(name) + "/128/128/25";
+        const std::string link = "fmw://" + LLURI::escape(name) + "/" + std::to_string(local_x) + "/" + std::to_string(local_y) + "/25";
         getWindow()->copyTextToClipboard(utf8str_to_wstring(link));
     }
     else if (row["x"].isInteger() && row["y"].isInteger() &&
              row["x"].asInteger() >= 0 && row["y"].asInteger() >= 0)
     {
-        gAgent.teleportViaLocation(LLVector3d(row["x"].asInteger() * 256.0 + 128.0,
-                                              row["y"].asInteger() * 256.0 + 128.0, 25.0));
+        const F64 origin_x = row["origin_x"].isInteger() ? row["origin_x"].asInteger() : row["x"].asInteger() * 256.0;
+        const F64 origin_y = row["origin_y"].isInteger() ? row["origin_y"].asInteger() : row["y"].asInteger() * 256.0;
+        gAgent.teleportViaLocation(LLVector3d(origin_x + local_x, origin_y + local_y, 25.0));
     }
 }
