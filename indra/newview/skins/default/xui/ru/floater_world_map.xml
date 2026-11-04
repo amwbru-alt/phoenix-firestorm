@@ -91,8 +91,8 @@
     <panel name="forme_region_card_2"><button name="forme_region_details_2" label="Подробнее" /></panel>
     <button name="forme_region_prev" label="Назад" />
     <button name="forme_region_next" label="Далее" />
-    <button name="forme_region_show" label="Показать на карте" />
-    <button name="forme_region_copy" label="Копировать ссылку" />
-    <button name="forme_region_tp" label="Телепорт" />
+
+
+
   </panel>
   <string name="forme_region_grid_coords">Координаты: [X], [Y]  ·  [WIDTH] × [HEIGHT] м</string></floater>

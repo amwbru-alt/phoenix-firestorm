@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <floater
  legacy_header_height="18"
+ bg_opaque_image="Forme_Login_Card"
+ bg_alpha_image="Forme_Login_Card"
+ bg_opaque_color="White"
+ bg_alpha_color="White"
  can_resize="true"
  positioning="centered"
  height="530"
@@ -26,13 +30,13 @@
   <button name="forme_region_find" layout="topleft" follows="top|right"
     right="-147" top="24" width="82" height="27" label="Find" />
   <button name="forme_region_map" layout="topleft" follows="top|right"
-    right="-76" top="24" width="65" height="27" label="Map" />
+    right="-76" top="24" width="65" height="27" is_toggle="true" label="Map" />
   <button name="forme_region_cards" layout="topleft" follows="top|right"
-    right="-8" top="24" width="64" height="27" label="Cards" />
+    right="-8" top="24" width="64" height="27" is_toggle="true" label="Cards" />
   <panel name="forme_regions_panel" layout="topleft" follows="all" left="0" top="58" right="-1" bottom="-1">
     <panel name="forme_region_card_0" layout="topleft" follows="top|left" left="14" top="10"
       width="225" height="220" background_visible="true" background_opaque="true"
-      bg_opaque_image="Rounded_Rect" bg_opaque_image_overlay="floater_bg_color">
+      bg_opaque_image="Forme_Login_Card" bg_opaque_image_overlay="White">
       <icon name="forme_region_photo_0" layout="topleft" left="8" top="8" width="209" height="145" mouse_opaque="false" />
       <text name="forme_region_name_0" layout="topleft" left="10" top="161" width="205" height="20"
         font="SansSerifMedium" use_ellipses="true" />
@@ -40,7 +44,7 @@
     </panel>
     <panel name="forme_region_card_1" layout="topleft" follows="top|left" left="253" top="10"
       width="225" height="220" background_visible="true" background_opaque="true"
-      bg_opaque_image="Rounded_Rect" bg_opaque_image_overlay="floater_bg_color">
+      bg_opaque_image="Forme_Login_Card" bg_opaque_image_overlay="White">
       <icon name="forme_region_photo_1" layout="topleft" left="8" top="8" width="209" height="145" mouse_opaque="false" />
       <text name="forme_region_name_1" layout="topleft" left="10" top="161" width="205" height="20"
         font="SansSerifMedium" use_ellipses="true" />
@@ -48,7 +52,7 @@
     </panel>
     <panel name="forme_region_card_2" layout="topleft" follows="top|left" left="492" top="10"
       width="225" height="220" background_visible="true" background_opaque="true"
-      bg_opaque_image="Rounded_Rect" bg_opaque_image_overlay="floater_bg_color">
+      bg_opaque_image="Forme_Login_Card" bg_opaque_image_overlay="White">
       <icon name="forme_region_photo_2" layout="topleft" left="8" top="8" width="209" height="145" mouse_opaque="false" />
       <text name="forme_region_name_2" layout="topleft" left="10" top="161" width="205" height="20"
         font="SansSerifMedium" use_ellipses="true" />
@@ -58,9 +62,9 @@
       top="240" height="26" font="SansSerifMedium" use_ellipses="true" />
     <button name="forme_region_prev" layout="topleft" left="14" top="280" width="100" height="27" label="Previous" />
     <button name="forme_region_next" layout="topleft" left="120" top="280" width="100" height="27" label="Next" />
-    <button name="forme_region_show" layout="topleft" left="253" top="280" width="135" height="27" label="Show on map" />
-    <button name="forme_region_copy" layout="topleft" left="395" top="280" width="145" height="27" label="Copy link" />
-    <button name="forme_region_tp" layout="topleft" left="548" top="280" width="169" height="27" label="Teleport" />
+
+
+
   </panel>
  <layout_stack
   follows="all"
@@ -88,6 +92,10 @@
     name="objects_mapview"
     top="5"
     width="482"/>
+   <button name="forme_region_zoom_in" layout="topleft" follows="top|left"
+     left="14" top="14" width="25" height="25" label="+" tool_tip="Zoom in" />
+   <button name="forme_region_zoom_out" layout="topleft" follows="top|left"
+     left="14" top="41" width="25" height="25" label="−" tool_tip="Zoom out" />
    <panel
     follows="right|bottom"
     height="20"
@@ -96,6 +104,7 @@
     bottom="487"
     width="185"
 	background_visible="false"
+    visible="false"
     name="layout_panel_6">
     <icon
      follows="left|bottom"
@@ -128,6 +137,7 @@
    height="512"
    left_delta="0"
    min_width="8"
+   visible="false"
    name="map_details_splitter"
    width="8">
 
@@ -175,7 +185,7 @@
    left_delta="0"
    min_width="258"
    height="512"
-   visibility_control="StarLightShowMapDetails"
+   visible="false"
    auto_resize="false"
    name="map_details_panel">
    <panel

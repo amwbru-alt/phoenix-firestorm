@@ -447,9 +447,14 @@ bool LLFloaterWorldMap::postBuild()
     });
     bind("forme_region_prev", [this] { loadRegionCards(llmax(0, mRegionCardOffset - 3)); });
     bind("forme_region_next", [this] { loadRegionCards(mRegionCardOffset + 3); });
-    bind("forme_region_show", [this] { actOnRegionCard(0); });
-    bind("forme_region_copy", [this] { actOnRegionCard(1); });
-    bind("forme_region_tp", [this] { actOnRegionCard(2); });
+    bind("forme_region_zoom_in", [this]
+    {
+        mZoomSlider->setValue(mZoomSlider->getValue().asReal() + 0.5);
+    });
+    bind("forme_region_zoom_out", [this]
+    {
+        mZoomSlider->setValue(mZoomSlider->getValue().asReal() - 0.5);
+    });
     bind("forme_region_detail_back", [this] { setRegionCardsMode(true); });
     bind("forme_region_detail_copy", [this] { actOnRegionCard(1); });
     bind("forme_region_detail_tp", [this] { actOnRegionCard(2); });
@@ -2263,8 +2268,8 @@ void LLFloaterWorldMap::setRegionCardsMode(bool cards)
     getChildView("forme_regions_panel")->setVisible(cards);
     getChildView("resizing_stack")->setVisible(!cards);
     getChildView("forme_region_detail_panel")->setVisible(false);
-    getChildView("map_details_splitter")->setVisible(true);
-    getChildView("map_details_panel")->setVisible(gSavedSettings.getBOOL("StarLightShowMapDetails"));
+    getChild<LLButton>("forme_region_map")->setToggleState(!cards);
+    getChild<LLButton>("forme_region_cards")->setToggleState(cards);
 }
 
 void LLFloaterWorldMap::loadRegionCards(S32 offset)
@@ -2353,11 +2358,8 @@ void LLFloaterWorldMap::selectRegionCard(S32 index)
     mSelectedRegionCard = index;
     for (S32 i = 0; i < 3; ++i)
         getChild<LLButton>("forme_region_details_" + std::to_string(i))->setToggleState(i == index);
-    const bool selected = index >= 0 && index < mRegionCards.size();
-    for (const char* name : { "forme_region_show", "forme_region_copy", "forme_region_tp" })
-        getChildView(name)->setEnabled(selected);
-    if (selected)
-        getChild<LLTextBox>("forme_region_status")->setText(mRegionCards[index]["name"].asString());
+    if (index >= 0 && index < mRegionCards.size())
+        getChild<LLTextBox>("forme_region_status")->setText("");
 }
 
 void LLFloaterWorldMap::actOnRegionCard(S32 action)
@@ -2373,8 +2375,6 @@ void LLFloaterWorldMap::actOnRegionCard(S32 action)
     if (action == 0)
     {
         setRegionCardsMode(false);
-        getChildView("map_details_splitter")->setVisible(false);
-        getChildView("map_details_panel")->setVisible(false);
         getChildView("forme_region_detail_panel")->setVisible(true);
 
         getChild<LLTextBox>("forme_region_detail_title")->setText(name);
