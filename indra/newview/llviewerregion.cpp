@@ -3493,6 +3493,7 @@ void LLViewerRegionImpl::buildCapabilityNames(LLSD& capabilityNames)
     capabilityNames.append("ForMeAvatarBadge");
     capabilityNames.append("ForMeState");
     capabilityNames.append("ForMePremium");
+    capabilityNames.append("ForMeWeather");
     capabilityNames.append("ForMeChanges");
     capabilityNames.append("EnvironmentSettings");
     capabilityNames.append("EstateAccess");

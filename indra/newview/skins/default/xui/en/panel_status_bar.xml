@@ -184,6 +184,11 @@
        width="100"/>
    </panel>
 
+        <panel.string name="forme_weather_clear">Clear</panel.string>
+    <panel.string name="forme_weather_cloudy">Cloudy</panel.string>
+    <panel.string name="forme_weather_fog">Fog</panel.string>
+    <panel.string name="forme_weather_rain">Rain</panel.string>
+    <panel.string name="forme_weather_storm">Storm</panel.string>
     <panel.string name="forme_region_connected">Connected</panel.string>
     <panel.string name="forme_region_disconnected">Region connection lost</panel.string>
     <panel.string

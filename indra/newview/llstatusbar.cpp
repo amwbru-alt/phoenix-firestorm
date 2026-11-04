@@ -1466,10 +1466,42 @@ void LLStatusBar::buildLocationString(std::string& loc_str, bool show_coords)
     if (!LLAgentUI::buildLocationString(loc_str, format))
         loc_str.clear();
 
-    const LLViewerRegion* region = gAgent.getRegion();
+    LLViewerRegion* region = gAgent.getRegion();
     const std::string status = getString(region && region->isAlive()
         ? "forme_region_connected" : "forme_region_disconnected");
     loc_str = loc_str.empty() ? status : loc_str + "  ·  " + status;
+
+    // The capability URL belongs to the current region and session.
+    static std::string weather_cap;
+    static std::string weather_condition;
+    static LLFrameTimer weather_refresh;
+    const std::string cap = region && region->isAlive() ? region->getCapability("ForMeWeather") : std::string();
+    const bool region_changed = cap != weather_cap;
+    if (region_changed)
+    {
+        weather_cap = cap;
+        weather_condition.clear();
+    }
+    if (!cap.empty() && (region_changed || weather_refresh.getElapsedTimeF32() >= 15.f))
+    {
+        weather_refresh.reset();
+        region->requestGetCapability("ForMeWeather",
+            [cap](const LLSD& data)
+            {
+                if (cap != weather_cap)
+                    return;
+                const std::string value = data["condition"].asString();
+                if (value == "clear" || value == "cloudy" || value == "fog" || value == "rain" || value == "storm")
+                    weather_condition = value;
+            },
+            [cap](const LLSD&)
+            {
+                if (cap == weather_cap)
+                    weather_condition.clear();
+            });
+    }
+    if (!weather_condition.empty())
+        loc_str += "  ·  " + getString("forme_weather_" + weather_condition);
 }
 
 void LLStatusBar::setParcelInfoText(const std::string& new_text)
