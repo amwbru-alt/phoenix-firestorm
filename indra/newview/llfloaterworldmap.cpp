@@ -444,8 +444,11 @@ bool LLFloaterWorldMap::postBuild()
     bind("forme_region_show", [this] { actOnRegionCard(0); });
     bind("forme_region_copy", [this] { actOnRegionCard(1); });
     bind("forme_region_tp", [this] { actOnRegionCard(2); });
+    bind("forme_region_detail_back", [this] { setRegionCardsMode(true); });
+    bind("forme_region_detail_copy", [this] { actOnRegionCard(1); });
+    bind("forme_region_detail_tp", [this] { actOnRegionCard(2); });
     for (S32 i = 0; i < 3; ++i)
-        bind("forme_region_details_" + std::to_string(i), [this, i] { selectRegionCard(i); });
+        bind("forme_region_details_" + std::to_string(i), [this, i] { selectRegionCard(i); actOnRegionCard(0); });
     auto* query = getChild<LLLineEditor>("forme_region_query");
     query->setCommitOnFocusLost(false);
     query->setCommitCallback([this](LLUICtrl*, const LLSD&) { loadRegionCards(0); });
@@ -2253,6 +2256,9 @@ void LLFloaterWorldMap::setRegionCardsMode(bool cards)
 {
     getChildView("forme_regions_panel")->setVisible(cards);
     getChildView("resizing_stack")->setVisible(!cards);
+    getChildView("forme_region_detail_panel")->setVisible(false);
+    getChildView("map_details_splitter")->setVisible(true);
+    getChildView("map_details_panel")->setVisible(gSavedSettings.getBOOL("StarLightShowMapDetails"));
 }
 
 void LLFloaterWorldMap::loadRegionCards(S32 offset)
@@ -2359,6 +2365,19 @@ void LLFloaterWorldMap::actOnRegionCard(S32 action)
     if (action == 0)
     {
         setRegionCardsMode(false);
+        getChildView("map_details_splitter")->setVisible(false);
+        getChildView("map_details_panel")->setVisible(false);
+        getChildView("forme_region_detail_panel")->setVisible(true);
+
+        getChild<LLTextBox>("forme_region_detail_title")->setText(name);
+        getChild<LLIconCtrl>("forme_region_detail_photo")->setImage(
+            getChild<LLIconCtrl>("forme_region_photo_" + std::to_string(mSelectedRegionCard))->getImage());
+        getChild<LLTextBox>("forme_region_detail_description")->setText(row["description"].asString());
+        getChild<LLTextBox>("forme_region_detail_category")->setText(row["category"].asString());
+        LLStringUtil::format_map_t coords;
+        coords["[X]"] = row["x"].asString();
+        coords["[Y]"] = row["y"].asString();
+        getChild<LLTextBox>("forme_region_detail_coords")->setText(getString("forme_region_grid_coords", coords));
         trackURL(name, 128, 128, 25);
         centerOnTarget(true);
     }

@@ -5,7 +5,7 @@
  positioning="centered"
  height="530"
  layout="topleft"
- min_height="386"
+ min_height="470"
  min_width="746"
  name="worldmap"
 
@@ -17,6 +17,7 @@
   <string name="UnnamedParcel">
     (Unnamed Parcel)
   </string>
+  <string name="forme_region_grid_coords">Grid: [X], [Y]</string>
   <string name="forme_regions_loading">Loading regions…</string>
   <string name="forme_regions_empty">No regions found</string>
   <string name="forme_regions_failed">Region catalog is unavailable</string>
@@ -804,5 +805,24 @@
     </button>
    </panel> 
   </layout_panel> 
+   <layout_panel name="forme_region_detail_panel" layout="topleft"
+    width="272" height="472" min_width="272" auto_resize="false" visible="false">
+    <button name="forme_region_detail_back" layout="topleft" left="12" top="8"
+      width="248" height="25" label="Back to regions" />
+    <icon name="forme_region_detail_photo" layout="topleft" left="12" top="42"
+      width="248" height="140" mouse_opaque="false" />
+    <text name="forme_region_detail_title" layout="topleft" left="12" top="194"
+      width="248" height="25" font="SansSerifLarge" use_ellipses="true" />
+    <text name="forme_region_detail_category" layout="topleft" left="12" top="223"
+      width="248" height="17" use_ellipses="true" />
+    <text name="forme_region_detail_coords" layout="topleft" left="12" top="245"
+      width="248" height="18" />
+    <text name="forme_region_detail_description" layout="topleft" left="12" top="272"
+      width="248" height="56" wrap="true" use_ellipses="true" />
+    <button name="forme_region_detail_tp" layout="topleft" left="12" top="339"
+      width="248" height="29" label="Teleport" />
+    <button name="forme_region_detail_copy" layout="topleft" left="12" top="375"
+      width="248" height="29" label="Copy link" />
+  </layout_panel>
  </layout_stack> 
 </floater>
