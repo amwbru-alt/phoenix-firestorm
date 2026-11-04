@@ -109,6 +109,7 @@ public:
         F32 cloud = 0.f;
     };
     static RegionWeatherEffects updateRegionWeatherEffects();
+    static std::string regionWeatherCondition(const LLUUID& region_id);
 
     LLStatusBar(const LLRect& rect );
     /*virtual*/ ~LLStatusBar();

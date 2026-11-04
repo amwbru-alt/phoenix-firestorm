@@ -2303,7 +2303,7 @@ if (WINDOWS)
       ${ARCH_PREBUILT_DIRS_RELEASE}/growl.dll
       ${SHARED_LIB_STAGING_DIR}/glod.dll # <FS:Beq> Restore GLOD build dependencies
       SLPlugin
-      media_plugin_cef
+
       media_plugin_libvlc
       #media_plugin_example # <FS:Ansariel> Don't package example plugin
       )
@@ -2677,13 +2677,13 @@ if (LINUX)
   set(COPY_INPUT_DEPENDENCIES
     ${VIEWER_BINARY_NAME}
     SLPlugin
-    media_plugin_cef
+
     media_plugin_gstreamer10
     llcommon
     linux-crash-logger
     )
 
-  add_dependencies(${VIEWER_BINARY_NAME} SLPlugin media_plugin_gstreamer10 media_plugin_cef linux-crash-logger)
+  add_dependencies(${VIEWER_BINARY_NAME} SLPlugin media_plugin_gstreamer10 linux-crash-logger)
   
   add_custom_command(
       OUTPUT ${product}.tar.xz
@@ -2834,7 +2834,7 @@ if (DARWIN)
       --viewer_flavor=${ND_VIEWER_FLAVOR}
     )
 
-  add_dependencies(${VIEWER_BINARY_NAME} SLPlugin media_plugin_libvlc media_plugin_cef)
+  add_dependencies(${VIEWER_BINARY_NAME} SLPlugin media_plugin_libvlc)
 
   if (ENABLE_SIGNING)
       set(SIGNING_SETTING "--signature=${SIGNING_IDENTITY}")

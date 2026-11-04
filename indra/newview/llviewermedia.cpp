@@ -1803,6 +1803,8 @@ LLPluginClassMedia* LLViewerMediaImpl::newSourceFromMediaType(std::string media_
     }
 
     std::string plugin_basename = LLMIMETypes::implType(media_type);
+    if (plugin_basename == "media_plugin_cef")
+        return nullptr;
     LLPluginClassMedia* media_source = NULL;
 
 #ifdef LL_LINUX

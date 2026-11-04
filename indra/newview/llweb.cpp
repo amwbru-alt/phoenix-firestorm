@@ -83,20 +83,9 @@ void LLWeb::loadURL(const std::string& url, const std::string& target, const std
 
 // static
 // Explicitly open a Web URL using the Web content floater or Marketplace floater
-void LLWeb::loadURLInternal(const std::string &url, const std::string& target, const std::string& uuid, bool dev_mode)
+void LLWeb::loadURLInternal(const std::string &url, const std::string&, const std::string& uuid, bool)
 {
-    if (ForMeURL::blockedWeb(url)) return;
-    LLFloaterWebContent::Params p;
-    p.url(url).target(target).id(uuid).dev_mode(dev_mode);
-
-    if (LLFloaterMarketplace::isMarketplaceURL(url))
-    {
-        LLFloaterReg::showInstance("marketplace", p);
-    }
-    else
-    {
-        LLFloaterReg::showInstance("web_content", p);
-    }
+    loadURLExternal(url, uuid);
 }
 
 // static

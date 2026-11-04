@@ -47,7 +47,8 @@
 //#include "llfirstuse.h"
 #include "llfloaterreg.h"       // getTypedInstance()
 #include "llfocusmgr.h"
-//#include "lliconctrl.h" // <FS:Ansariel> Use own expand/collapse function
+//#include "lliconctrl.h"
+#include "llstatusbar.h" // <FS:Ansariel> Use own expand/collapse function
 #include "llinventoryfunctions.h"
 #include "llinventorymodel.h"
 #include "llinventorymodelbackgroundfetch.h"
@@ -682,6 +683,20 @@ void LLFloaterWorldMap::reshape( S32 width, S32 height, bool called_from_parent 
 // virtual
 void LLFloaterWorldMap::draw()
 {
+    const auto update_weather = [this](const std::string& control, S32 index)
+    {
+        auto* icon = getChild<LLIconCtrl>(control);
+        const std::string condition = index >= 0 && index < mRegionCards.size()
+            ? LLStatusBar::regionWeatherCondition(mRegionCards[index]["region_id"].asUUID()) : std::string();
+        const auto image = condition.empty() ? LLUIImagePtr() : LLUI::getUIImage("Forme_Weather_" + condition);
+        if (icon->getImage().get() != image.get())
+            icon->setImage(image);
+        icon->setVisible(image.notNull());
+    };
+    for (S32 i = 0; i < 3; ++i)
+        update_weather("forme_region_weather_" + std::to_string(i), i);
+    update_weather("forme_region_detail_weather", mSelectedRegionCard);
+
     // <FS:Ansariel> Performance improvement
     static LLButton* track_region_btn     = getChild<LLButton>("track_region");
 

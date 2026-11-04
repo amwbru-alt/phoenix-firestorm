@@ -79,8 +79,6 @@ class ViewerManifest(LLManifest,FSViewerManifest):
             self.path("dictionaries")
 
         # <FS:Ansariel> Copy 360 snapshot JavaScripts
-        with self.prefix(src=pkgdir, dst="skins/default/html/common/equirectangular"):
-            self.path("js")
         # </FS:Ansariel>
 
         # <FS:Ansariel> Copy 3p fonts to build output
@@ -222,13 +220,6 @@ class ViewerManifest(LLManifest,FSViewerManifest):
                         self.path("*.j2c")
                         self.path("*.png")
                     self.path("*/*.xml")
-
-                    # Update: 2017-11-01 CP Now we store app code in the html folder
-                    #         Initially the HTML/JS code to render equirectangular
-                    #         images for the 360 capture feature but more to follow.
-                    with self.prefix(src="*/html", dst="*/html"):
-                        #self.path("*/*/*/*.js") # <FS:Ansariel> Copied outside packaging and from packages directory already
-                        self.path("*/*/*.html")
 
             #build_data.json.  Standard with exception handling is fine.  If we can't open a new file for writing, we have worse problems
             #platform is computed above with other arg parsing
@@ -705,12 +696,9 @@ class Windows_x86_64_Manifest(ViewerManifest):
         with self.prefix(src=pkgdir):
             self.path("ca-bundle.crt")
 
-        # Media plugins - CEF
+        # Media plugins
         with self.prefix(dst="llplugin"):
             with self.prefix(src=os.path.join(self.args['build'], os.pardir, 'media_plugins')):
-                with self.prefix(src=os.path.join('cef', self.args['configuration'])):
-                    self.path("media_plugin_cef.dll")
-
                 # Media plugins - LibVLC
                 with self.prefix(src=os.path.join('libvlc', self.args['configuration'])):
                     self.path("media_plugin_libvlc.dll")
@@ -721,91 +709,12 @@ class Windows_x86_64_Manifest(ViewerManifest):
                 #    with self.prefix(src=os.path.join('example', self.args['configuration'])):
                 #        self.path("media_plugin_example.dll")
 
-            # CEF runtime files - debug
-            # CEF runtime files - not debug (release, relwithdebinfo etc.)
-            config = 'debug' if self.args['configuration'].lower() == 'debug' else 'release'
-            with self.prefix(src=os.path.join(pkgdir, 'bin', config)):
-                self.path("chrome_elf.dll")
-                self.path("d3dcompiler_47.dll")
-                self.path("dxcompiler.dll")
-                self.path("dxil.dll")
-                self.path("libcef.dll")
-                self.path("libEGL.dll")
-                self.path("libGLESv2.dll")
-                self.path("v8_context_snapshot.bin")
-                self.path("vk_swiftshader.dll")
-                self.path("vk_swiftshader_icd.json")
-                self.path("vulkan-1.dll")
-                self.path("dullahan_host.exe")
-
-            # MSVC DLLs needed for CEF and have to be in same directory as plugin
+            # MSVC runtime for the media plugin
             with self.prefix(src=os.path.join(self.args['build'], os.pardir,
                                               'sharedlibs', self.args['buildtype'])):
                 self.path("msvcp140.dll")
                 self.path("vcruntime140.dll")
                 self.path_optional("vcruntime140_1.dll")
-
-            # CEF files common to all configurations
-            with self.prefix(src=os.path.join(pkgdir, 'resources')):
-                self.path("chrome_100_percent.pak")
-                self.path("chrome_200_percent.pak")
-                self.path("resources.pak")
-                self.path("icudtl.dat")
-
-            with self.prefix(src=os.path.join(pkgdir, 'resources', 'locales'), dst='locales'):
-                self.path("am.pak")
-                self.path("ar.pak")
-                self.path("bg.pak")
-                self.path("bn.pak")
-                self.path("ca.pak")
-                self.path("cs.pak")
-                self.path("da.pak")
-                self.path("de.pak")
-                self.path("el.pak")
-                self.path("en-GB.pak")
-                self.path("en-US.pak")
-                self.path("es-419.pak")
-                self.path("es.pak")
-                self.path("et.pak")
-                self.path("fa.pak")
-                self.path("fi.pak")
-                self.path("fil.pak")
-                self.path("fr.pak")
-                self.path("gu.pak")
-                self.path("he.pak")
-                self.path("hi.pak")
-                self.path("hr.pak")
-                self.path("hu.pak")
-                self.path("id.pak")
-                self.path("it.pak")
-                self.path("ja.pak")
-                self.path("kn.pak")
-                self.path("ko.pak")
-                self.path("lt.pak")
-                self.path("lv.pak")
-                self.path("ml.pak")
-                self.path("mr.pak")
-                self.path("ms.pak")
-                self.path("nb.pak")
-                self.path("nl.pak")
-                self.path("pl.pak")
-                self.path("pt-BR.pak")
-                self.path("pt-PT.pak")
-                self.path("ro.pak")
-                self.path("ru.pak")
-                self.path("sk.pak")
-                self.path("sl.pak")
-                self.path("sr.pak")
-                self.path("sv.pak")
-                self.path("sw.pak")
-                self.path("ta.pak")
-                self.path("te.pak")
-                self.path("th.pak")
-                self.path("tr.pak")
-                self.path("uk.pak")
-                self.path("vi.pak")
-                self.path("zh-CN.pak")
-                self.path("zh-TW.pak")
 
             with self.prefix(src=os.path.join(pkgdir, 'bin', 'release')):
                 self.path("libvlc.dll")
@@ -1650,25 +1559,15 @@ class Darwin_x86_64_Manifest(ViewerManifest):
                     executable_path[app] = \
                         self.dst_path_of(os.path.join(app, "Contents", "MacOS"))
 
-                # Dullahan helper apps go inside SLPlugin.app
+                # Package the audio/video plugin in SLPlugin.app
                 with self.prefix(dst=os.path.join(
                     "SLPlugin.app", "Contents", "Frameworks")):
-                    # copy CEF plugin
-                    self.path2basename("../media_plugins/cef/" + self.args['configuration'],
-                                       "media_plugin_cef.dylib")
-
                     # copy LibVLC plugin
                     self.path2basename("../media_plugins/libvlc/" + self.args['configuration'],
                                        "media_plugin_libvlc.dylib")
 
-                    # CEF framework and vlc libraries goes inside Contents/Frameworks.
+                    # VLC libraries go inside Contents/Frameworks.
                     with self.prefix(src=os.path.join(pkgdir, 'lib', 'release')):
-                        self.path("Chromium Embedded Framework.framework")
-                        self.path("DullahanHelper.app")
-                        self.path("DullahanHelper (Alerts).app")
-                        self.path("DullahanHelper (GPU).app")
-                        self.path("DullahanHelper (Renderer).app")
-                        self.path("DullahanHelper (Plugin).app")
 
                         # Copy libvlc
                         self.path( "libvlc*.dylib*" )
@@ -1858,7 +1757,6 @@ class Darwin_x86_64_Manifest(ViewerManifest):
                         # We could selectively sign those, or repackage them and then sign them. For an easy clean sweet we just resign them al
                         plain_sign += glob.glob(resources + "*.dylib")
                         plain_sign += glob.glob(resources + "llplugin/lib/*.dylib")
-                        plain_sign += glob.glob(resources + "SLPlugin.app/Contents/Frameworks/Chromium Embedded Framework.framework/Libraries/*.dylib")
 
                         deep_sign = [
                             # <FS:ND> Firestorm does not ship SLVersionChecker
@@ -2117,36 +2015,6 @@ class LinuxManifest(ViewerManifest):
         # plugins
         with self.prefix(src=os.path.join(self.args['build'], os.pardir, 'media_plugins'), dst="bin/llplugin"):
             self.path("gstreamer10/libmedia_plugin_gstreamer10.so", "libmedia_plugin_gstreamer.so")
-            self.path("cef/libmedia_plugin_cef.so", "libmedia_plugin_cef.so" )
-
-        # CEF files 
-        with self.prefix(src=os.path.join(pkgdir, 'lib', 'release'), dst="lib"):
-            self.path( "libcef.so" )
-            self.path( "libEGL*" )
-            self.path( "libvulkan*" )
-            self.path( "libvk_swiftshader*" )
-            self.path( "libGLESv2*" )
-
-        with self.prefix(src=os.path.join(pkgdir, 'bin', 'release'), dst="bin"):
-            self.path( "chrome-sandbox" )
-            self.path( "dullahan_host" )
-
-        with self.prefix(src=os.path.join(pkgdir, 'lib', 'release'), dst="bin"):
-            self.path( "v8_context_snapshot.bin" )
-            self.path( "vk_swiftshader_icd.json")
-
-        with self.prefix(src=os.path.join(pkgdir, 'lib', 'release'), dst="lib"):
-            self.path( "v8_context_snapshot.bin" )
-            self.path( "vk_swiftshader_icd.json")
-
-        with self.prefix(src=os.path.join(pkgdir, 'resources'), dst="lib"):
-            self.path( "chrome_100_percent.pak" )
-            self.path( "chrome_200_percent.pak" )
-            self.path( "resources.pak" )
-            self.path( "icudtl.dat" )
-
-        with self.prefix(src=os.path.join(pkgdir, 'resources', 'locales'), dst=os.path.join('lib', 'locales')):
-            self.path("*.pak")
 
         self.path("featuretable_linux.txt")
         self.path("cube.dae")

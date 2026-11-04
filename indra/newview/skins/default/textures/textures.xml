@@ -1242,4 +1242,10 @@ with the same filename but different name
   <texture name="Forme_Map_Minus" file_name="widgets/Forme_Map_Minus.png" preload="false" />
   <texture name="Forme_Map_Previous" file_name="widgets/Forme_Map_Previous.png" preload="false" />
   <texture name="Forme_Map_Next" file_name="widgets/Forme_Map_Next.png" preload="false" />
+  <texture name="Forme_Weather_clear" file_name="widgets/Forme_Weather_clear.png" preload="false" />
+  <texture name="Forme_Weather_cloudy" file_name="widgets/Forme_Weather_cloudy.png" preload="false" />
+  <texture name="Forme_Weather_fog" file_name="widgets/Forme_Weather_fog.png" preload="false" />
+  <texture name="Forme_Weather_rain" file_name="widgets/Forme_Weather_rain.png" preload="false" />
+  <texture name="Forme_Weather_storm" file_name="widgets/Forme_Weather_storm.png" preload="false" />
+  <texture name="Forme_Weather_snow" file_name="widgets/Forme_Weather_snow.png" preload="false" />
 </textures>

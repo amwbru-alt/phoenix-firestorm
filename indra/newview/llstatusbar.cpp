@@ -1514,6 +1514,15 @@ void LLStatusBar::buildLocationString(std::string& loc_str, bool show_coords)
         loc_str += "  ·  " + getString("forme_weather_" + sRegionWeatherCondition);
 }
 
+std::string LLStatusBar::regionWeatherCondition(const LLUUID& region_id)
+{
+    LLViewerRegion* region = gAgent.getRegion();
+    if (!region || !region->isAlive() || region->getRegionID() != region_id ||
+        region->getCapability("ForMeWeather") != sRegionWeatherCap)
+        return {};
+    return sRegionWeatherCondition;
+}
+
 LLStatusBar::RegionWeatherEffects LLStatusBar::updateRegionWeatherEffects()
 {
     LLViewerRegion* region = gAgent.getRegion();

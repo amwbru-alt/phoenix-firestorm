@@ -38,24 +38,30 @@
       width="225" height="220" background_visible="true" background_opaque="true"
       bg_opaque_image="Forme_Login_Card" bg_opaque_image_overlay="White">
       <icon name="forme_region_photo_0" layout="topleft" left="8" top="8" width="209" height="145" mouse_opaque="false" />
-      <text name="forme_region_name_0" layout="topleft" left="10" top="161" width="205" height="20"
+      <text name="forme_region_name_0" layout="topleft" left="10" top="161" width="173" height="20"
         font="SansSerifMedium" use_ellipses="true" />
+      <icon name="forme_region_weather_0" layout="topleft" left="189" top="157"
+        width="24" height="24" mouse_opaque="false" visible="false" />
       <button name="forme_region_details_0" layout="topleft" left="10" top="187" width="205" height="25" is_toggle="true" label="Details" />
     </panel>
     <panel name="forme_region_card_1" layout="topleft" follows="top|left" left="253" top="10"
       width="225" height="220" background_visible="true" background_opaque="true"
       bg_opaque_image="Forme_Login_Card" bg_opaque_image_overlay="White">
       <icon name="forme_region_photo_1" layout="topleft" left="8" top="8" width="209" height="145" mouse_opaque="false" />
-      <text name="forme_region_name_1" layout="topleft" left="10" top="161" width="205" height="20"
+      <text name="forme_region_name_1" layout="topleft" left="10" top="161" width="173" height="20"
         font="SansSerifMedium" use_ellipses="true" />
+      <icon name="forme_region_weather_1" layout="topleft" left="189" top="157"
+        width="24" height="24" mouse_opaque="false" visible="false" />
       <button name="forme_region_details_1" layout="topleft" left="10" top="187" width="205" height="25" is_toggle="true" label="Details" />
     </panel>
     <panel name="forme_region_card_2" layout="topleft" follows="top|left" left="492" top="10"
       width="225" height="220" background_visible="true" background_opaque="true"
       bg_opaque_image="Forme_Login_Card" bg_opaque_image_overlay="White">
       <icon name="forme_region_photo_2" layout="topleft" left="8" top="8" width="209" height="145" mouse_opaque="false" />
-      <text name="forme_region_name_2" layout="topleft" left="10" top="161" width="205" height="20"
+      <text name="forme_region_name_2" layout="topleft" left="10" top="161" width="173" height="20"
         font="SansSerifMedium" use_ellipses="true" />
+      <icon name="forme_region_weather_2" layout="topleft" left="189" top="157"
+        width="24" height="24" mouse_opaque="false" visible="false" />
       <button name="forme_region_details_2" layout="topleft" left="10" top="187" width="205" height="25" is_toggle="true" label="Details" />
     </panel>
     <text name="forme_region_status" layout="topleft" follows="left|top|right" left="14" right="-14"
@@ -822,7 +828,9 @@
     <icon name="forme_region_detail_photo" layout="topleft" left="12" top="42"
       width="248" height="140" mouse_opaque="false" />
     <text name="forme_region_detail_title" layout="topleft" left="12" top="194"
-      width="248" height="25" font="SansSerifLarge" use_ellipses="true" />
+      width="215" height="25" font="SansSerifLarge" use_ellipses="true" />
+    <icon name="forme_region_detail_weather" layout="topleft" left="235" top="194"
+      width="24" height="24" mouse_opaque="false" visible="false" />
     <text name="forme_region_detail_category" layout="topleft" left="12" top="223"
       width="248" height="17" use_ellipses="true" />
     <text name="forme_region_detail_coords" layout="topleft" left="12" top="245"
