@@ -6,9 +6,7 @@
 	<defaultwidget>
 		none
 	</defaultwidget>
-	<defaultimpl>
-		media_plugin_cef
-	</defaultimpl>
+	<defaultimpl />
 	<widgetset name="web">
 		<label name="web_label">
 			Web Content
@@ -151,9 +149,7 @@
 		<widgettype>
 			none
 		</widgettype>
-		<impl>
-			media_plugin_cef
-		</impl>
+		<impl />
 	</mimetype>
 	<mimetype name="audio/*">
 		<label name="audio2_label">
@@ -184,9 +180,7 @@
 		<widgettype>
 			image
 		</widgettype>
-        <impl>
-			media_plugin_cef
-		</impl>
+        <impl />
 	</mimetype>
 	<mimetype menu="1" name="video/vnd.secondlife.qt.legacy">
 		<label name="vnd.secondlife.qt.legacy_label">
@@ -206,9 +200,7 @@
 		<widgettype>
 			web
 		</widgettype>
-		<impl>
-			media_plugin_cef
-		</impl>
+		<impl />
 	</mimetype>
 	<mimetype name="application/ogg">
 		<label name="application/ogg_label">
@@ -228,9 +220,7 @@
 		<widgettype>
 			image
 		</widgettype>
-		<impl>
-			media_plugin_cef
-		</impl>
+		<impl />
 	</mimetype>
 	<mimetype name="application/postscript">
 		<label name="application/postscript_label">
@@ -239,9 +229,7 @@
 		<widgettype>
 			image
 		</widgettype>
-		<impl>
-			media_plugin_cef
-		</impl>
+		<impl />
 	</mimetype>
 	<mimetype name="application/rtf">
 		<label name="application/rtf_label">
@@ -250,9 +238,7 @@
 		<widgettype>
 			image
 		</widgettype>
-		<impl>
-			media_plugin_cef
-		</impl>
+		<impl />
 	</mimetype>
 	<mimetype name="application/smil">
 		<label name="application/smil_label">
@@ -261,9 +247,7 @@
 		<widgettype>
 			movie
 		</widgettype>
-		<impl>
-			media_plugin_cef
-		</impl>
+		<impl />
 	</mimetype>
 	<mimetype name="application/xhtml+xml">
 		<label name="application/xhtml+xml_label">
@@ -272,9 +256,7 @@
 		<widgettype>
 			web
 		</widgettype>
-		<impl>
-			media_plugin_cef
-		</impl>
+		<impl />
 	</mimetype>
 	<mimetype name="application/x-director">
 		<label name="application/x-director_label">
@@ -283,9 +265,7 @@
 		<widgettype>
 			image
 		</widgettype>
-		<impl>
-			media_plugin_cef
-		</impl>
+		<impl />
 	</mimetype>
     <mimetype name="application/octet-stream">
         <label name="application/octet-stream_label">
@@ -349,9 +329,7 @@
 		<widgettype>
 			image
 		</widgettype>
-		<impl>
-			media_plugin_cef
-		</impl>
+		<impl />
 	</mimetype>
 	<mimetype menu="1" name="image/gif">
 		<label name="image/gif_label">
@@ -360,9 +338,7 @@
 		<widgettype>
 			image
 		</widgettype>
-		<impl>
-			media_plugin_cef
-		</impl>
+		<impl />
 	</mimetype>
 	<mimetype menu="1" name="image/jpeg">
 		<label name="image/jpeg_label">
@@ -371,9 +347,7 @@
 		<widgettype>
 			image
 		</widgettype>
-		<impl>
-			media_plugin_cef
-		</impl>
+		<impl />
 	</mimetype>
 	<mimetype menu="1" name="image/png">
 		<label name="image/png_label">
@@ -382,9 +356,7 @@
 		<widgettype>
 			image
 		</widgettype>
-		<impl>
-			media_plugin_cef
-		</impl>
+		<impl />
 	</mimetype>
 	<mimetype name="image/svg+xml">
 		<label name="image/svg+xml_label">
@@ -393,9 +365,7 @@
 		<widgettype>
 			image
 		</widgettype>
-		<impl>
-			media_plugin_cef
-		</impl>
+		<impl />
 	</mimetype>
 	<mimetype menu="1" name="image/tiff">
 		<label name="image/tiff_label">
@@ -404,20 +374,16 @@
 		<widgettype>
 			image
 		</widgettype>
-		<impl>
-			media_plugin_cef
-		</impl>
+		<impl />
 	</mimetype>
-	<mimetype menu="1" name="text/html">
+	<mimetype menu="0" name="text/html">
 		<label name="text/html_label">
 			Web Page
 		</label>
 		<widgettype>
 			web
 		</widgettype>
-		<impl>
-			media_plugin_cef
-		</impl>
+		<impl />
 	</mimetype>
 	<mimetype menu="1" name="text/plain">
 		<label name="text/plain_label">
@@ -426,9 +392,7 @@
 		<widgettype>
 			text
 		</widgettype>
-		<impl>
-			media_plugin_cef
-		</impl>
+		<impl />
 	</mimetype>
 	<mimetype name="text/xml">
 		<label name="text/xml_label">
@@ -437,9 +401,7 @@
 		<widgettype>
 			text
 		</widgettype>
-		<impl>
-			media_plugin_cef
-		</impl>
+		<impl />
 	</mimetype>
 	<mimetype menu="1" name="video/mpeg">
 		<label name="video/mpeg_label">
