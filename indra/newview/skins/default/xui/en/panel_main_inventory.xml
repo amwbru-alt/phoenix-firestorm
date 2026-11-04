@@ -300,7 +300,7 @@
       drag_handle_thickness="6"
       drag_handle_first_indent="18"
       drag_handle_second_indent="18"
-      drag_handle_color="PanelGray"
+      drag_handle_color="InventoryFocusOutlineColor"
       drag_handle_shift="5"
       show_drag_handle="true"
       top="0"
