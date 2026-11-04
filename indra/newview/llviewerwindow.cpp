@@ -3035,9 +3035,12 @@ void LLViewerWindow::draw()
 
         if (!gTeleportDisplay)
         {
-            const F32 rain = LLStatusBar::updateRegionRainIntensity();
+            const auto weather = LLStatusBar::updateRegionWeatherEffects();
+            const F32 rain = weather.rain;
+            const F32 snow = weather.snow;
             const LLRect world = getWorldViewRectScaled();
-            if (rain > 0.f && world.getWidth() > 0 && world.getHeight() > 0)
+            if ((rain > 0.f || snow > 0.f || weather.lightning > 0.f) &&
+                world.getWidth() > 0 && world.getHeight() > 0)
             {
                 // Draw a bounded screen-space effect before the HUD widgets.
                 const F32 width = static_cast<F32>(world.getWidth());
@@ -3046,6 +3049,8 @@ void LLViewerWindow::draw()
                 const S32 count = ll_round(160.f * rain);
                 gGL.getTexUnit(0)->unbind(LLTexUnit::TT_TEXTURE);
                 gGL.setSceneBlendType(LLRender::BT_ALPHA);
+                if (weather.lightning > 0.f)
+                    gl_rect_2d(world, LLColor4(0.78f, 0.86f, 1.f, weather.lightning), true);
                 gGL.color4f(0.76f, 0.84f, 0.96f, 0.18f + 0.19f * rain);
                 gGL.begin(LLRender::LINES);
                 for (S32 drop = 0; drop < count; ++drop)
@@ -3055,6 +3060,21 @@ void LLViewerWindow::draw()
                     gGL.vertex2f(x, y);
                     gGL.vertex2f(llmin(x + 5.f, static_cast<F32>(world.mRight)),
                                  llmax(y - 19.f, static_cast<F32>(world.mBottom)));
+                }
+                gGL.end();
+
+                gGL.color4f(0.91f, 0.95f, 1.f, 0.55f);
+                gGL.begin(LLRender::LINES);
+                const S32 flakes = ll_round(130.f * snow);
+                for (S32 flake = 0; flake < flakes; ++flake)
+                {
+                    const F32 drift = 10.f + 7.f * static_cast<F32>(std::sin(time + flake));
+                    const F32 x = world.mLeft + std::fmod(flake * 211.73f + time * 13.f + drift, width);
+                    const F32 y = world.mTop - std::fmod(flake * 127.57f + time * (31.f + flake % 8), height);
+                    gGL.vertex2f(llmax(x - 1.5f, static_cast<F32>(world.mLeft)), y);
+                    gGL.vertex2f(llmin(x + 1.5f, static_cast<F32>(world.mRight)), y);
+                    gGL.vertex2f(x, llmax(y - 1.5f, static_cast<F32>(world.mBottom)));
+                    gGL.vertex2f(x, llmin(y + 1.5f, static_cast<F32>(world.mTop)));
                 }
                 gGL.end();
                 gGL.flush();

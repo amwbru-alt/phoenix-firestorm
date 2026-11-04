@@ -9,6 +9,7 @@
     <panel.string name="forme_weather_fog">Туман</panel.string>
     <panel.string name="forme_weather_rain">Дождь</panel.string>
     <panel.string name="forme_weather_storm">Шторм</panel.string>
+    <panel.string name="forme_weather_snow">Снег</panel.string>
     <panel.string name="forme_region_connected">Подключено</panel.string>
     <panel.string name="forme_region_disconnected">Нет связи с регионом</panel.string>
     <panel.string name="packet_loss_tooltip">

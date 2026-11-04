@@ -122,7 +122,30 @@ namespace
     std::string sRegionWeatherCondition;
     std::string sRegionWeatherCap;
     U32 sRegionWeatherRequest = 0;
-    F32 sRegionRainIntensity = 0.f;
+    LLStatusBar::RegionWeatherEffects sWeatherFrom;
+    LLStatusBar::RegionWeatherEffects sWeatherTo;
+    LLFrameTimer sWeatherSampleAge;
+    S32 sLightningDelay = -1;
+
+    LLStatusBar::RegionWeatherEffects sampleWeatherEffects()
+    {
+        const F32 age = sWeatherSampleAge.getElapsedTimeF32();
+        const F32 blend = llclamp(age / 3.f, 0.f, 1.f);
+        const F32 flash_age = age - static_cast<F32>(sLightningDelay);
+        return {
+            sWeatherFrom.rain + blend * (sWeatherTo.rain - sWeatherFrom.rain),
+            sWeatherFrom.snow + blend * (sWeatherTo.snow - sWeatherFrom.snow),
+            sLightningDelay >= 0 && flash_age >= 0.f && flash_age < 0.3f
+                ? 0.14f * (1.f - flash_age / 0.3f) : 0.f
+        };
+    }
+
+    void clearWeatherEffects()
+    {
+        sWeatherFrom = {};
+        sWeatherTo = {};
+        sLightningDelay = -1;
+    }
     LLFrameTimer sRegionWeatherRefresh;
 }
 S32 STATUS_BAR_HEIGHT = 26;
@@ -1484,7 +1507,7 @@ void LLStatusBar::buildLocationString(std::string& loc_str, bool show_coords)
         loc_str += "  ·  " + getString("forme_weather_" + sRegionWeatherCondition);
 }
 
-F32 LLStatusBar::updateRegionRainIntensity()
+LLStatusBar::RegionWeatherEffects LLStatusBar::updateRegionWeatherEffects()
 {
     LLViewerRegion* region = gAgent.getRegion();
     const std::string cap = region && region->isAlive() ? region->getCapability("ForMeWeather") : std::string();
@@ -1494,7 +1517,7 @@ F32 LLStatusBar::updateRegionRainIntensity()
         sRegionWeatherCap = cap;
         ++sRegionWeatherRequest;
         sRegionWeatherCondition.clear();
-        sRegionRainIntensity = 0.f;
+        clearWeatherEffects();
     }
     if (!cap.empty() && (region_changed || sRegionWeatherRefresh.getElapsedTimeF32() >= 15.f))
     {
@@ -1507,24 +1530,32 @@ F32 LLStatusBar::updateRegionRainIntensity()
                     return;
 
                 const std::string value = data["condition"].asString();
-                if (value == "clear" || value == "cloudy" || value == "fog" || value == "rain" || value == "storm")
+                if (value == "clear" || value == "cloudy" || value == "fog" || value == "rain" || value == "storm" || value == "snow")
                     sRegionWeatherCondition = value;
                 else
                     sRegionWeatherCondition.clear();
 
-                const F64 rain = data["rain"].asReal();
-                sRegionRainIntensity = rain >= 0.0 && rain <= 1.0 ? static_cast<F32>(rain) : 0.f;
+                const auto intensity = [](const LLSD& value)
+                {
+                    const F64 number = value.asReal();
+                    return number >= 0.0 && number <= 1.0 ? static_cast<F32>(number) : 0.f;
+                };
+                sWeatherFrom = sampleWeatherEffects();
+                sWeatherTo = { intensity(data["rain"]), intensity(data["snow"]), 0.f };
+                const S32 delay = data["lightning_in"].isInteger() ? data["lightning_in"].asInteger() : -1;
+                sLightningDelay = delay > 0 && delay <= 75 ? delay : -1;
+                sWeatherSampleAge.reset();
             },
             [request](const LLSD&)
             {
                 if (request == sRegionWeatherRequest)
                 {
                     sRegionWeatherCondition.clear();
-                    sRegionRainIntensity = 0.f;
+                    clearWeatherEffects();
                 }
             });
     }
-    return sRegionRainIntensity;
+    return sampleWeatherEffects();
 }
 
 void LLStatusBar::setParcelInfoText(const std::string& new_text)

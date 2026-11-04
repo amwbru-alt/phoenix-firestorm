@@ -100,7 +100,13 @@ class LLStatusBar
 :   public LLPanel
 {
 public:
-    static F32 updateRegionRainIntensity();
+    struct RegionWeatherEffects
+    {
+        F32 rain = 0.f;
+        F32 snow = 0.f;
+        F32 lightning = 0.f;
+    };
+    static RegionWeatherEffects updateRegionWeatherEffects();
 
     LLStatusBar(const LLRect& rect );
     /*virtual*/ ~LLStatusBar();
