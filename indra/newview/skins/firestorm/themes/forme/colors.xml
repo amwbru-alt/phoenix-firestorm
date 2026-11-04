@@ -33,4 +33,7 @@
     <color name="InventoryFocusOutlineColor" value="0.80 0.70 0.98 1" />
     <color name="InventoryItemLinkColor" value="0.80 0.70 0.98 1" />
     <color name="ScrollbarThumbColor" value="0.60 0.51 0.72 1" />
+    <color name="FocusColor" value="0.80 0.70 0.98 1" />
+    <color name="ToolTipBgColor" value="0.16 0.15 0.17 0.98" />
+    <color name="ToolTipBorderColor" value="0.48 0.40 0.57 1" />
 </colors>
