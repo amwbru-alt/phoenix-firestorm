@@ -457,8 +457,18 @@
     width="18"
     height="17"
     chrome="true"
-    image_overlay="Generic_Person"
     menu_filename="menu_forme_profile.xml"
     menu_position="bottomright"
     tool_tip="Account menu" />
+  <avatar_icon
+    name="forme_profile_avatar"
+    follows="right|top"
+    layout="topleft"
+    top="2"
+    right="-3"
+    width="16"
+    height="16"
+    mouse_opaque="false"
+    tab_stop="false"
+    default_icon_name="Generic_Person" />
 </panel>

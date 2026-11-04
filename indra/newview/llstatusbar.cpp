@@ -31,6 +31,7 @@
 
 // viewer includes
 #include "llagent.h"
+#include "llavatariconctrl.h"
 #include "llagentcamera.h"
 #include "llbutton.h"
 #include "llcommandhandler.h"
@@ -279,6 +280,13 @@ void LLStatusBar::draw()
     refresh();
     updateParcelInfoText();
     updateHealth();
+    if (auto* icon = findChild<LLAvatarIconCtrl>("forme_profile_avatar"))
+    {
+        if (gAgent.getID().notNull() && icon->getAvatarId() != gAgent.getID())
+        {
+            icon->setValue(LLSD(gAgent.getID()));
+        }
+    }
     LLPanel::draw();
 }
 
