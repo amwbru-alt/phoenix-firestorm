@@ -2,7 +2,7 @@
 <panel
  background_opaque="true"
  background_visible="true"
- bg_opaque_color="0.13,0.12,0.17,1"
+ bg_opaque_color="MenuBarBgColor"
  chrome="true"
  follows="top|right"
  height="19"

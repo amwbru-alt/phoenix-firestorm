@@ -28,9 +28,9 @@
   
   <layout_stack
    follows="left|top|right"
-   height="25"
+   height="31"
    animate="false"
-   top_pad="4"
+   top_pad="8"
    left="10"
    orientation="horizontal"
    name="top_stack">
@@ -39,7 +39,7 @@
      bevel_style="in"
      user_resize="false"
      auto_resize="false"
-     height="25"
+     height="31"
      width="62"
      name="nav_buttons"
      visible="false">
@@ -85,7 +85,7 @@
       border="false"
       bevel_style="in"
       user_resize="false"
-      height="25"
+      height="31"
       width="324"
       name="filter_panel"
       visible="true"
@@ -93,7 +93,7 @@
       <filter_editor
        text_pad_left="10"
        follows="left|top|right"
-       height="23"
+       height="29"
        label="Filter Inventory"
        layout="topleft"
        left="2"
@@ -357,7 +357,7 @@
     </panel>
   <panel
    follows="left|right|bottom"
-   height="25"
+   height="31"
    layout="topleft"
    bottom="-8"
    left="4"
@@ -365,7 +365,7 @@
    right="-4">
       <panel
        follows="top|left"
-       height="25"
+       height="31"
        left="0"
        layout="topleft"
        name="options_gear_btn_panel"
@@ -373,7 +373,7 @@
           <menu_button
            follows="top|left"
            tool_tip="Show additional options"
-           height="25"
+           height="31"
            image_hover_unselected="Toolbar_Left_Over"
            image_overlay="OptionsMenu_Off"
            image_selected="Toolbar_Left_Selected"
@@ -386,14 +386,14 @@
       </panel>
       <panel
        follows="top|left"
-       height="25"
+       height="31"
        layout="topleft"
        left_pad="0"
        name="add_btn_panel"
        width="32">
           <button
            follows="top|left"
-           height="25"
+           height="31"
            image_hover_unselected="Toolbar_Middle_Over"
            image_overlay="AddItem_Off"
            image_selected="Toolbar_Middle_Selected"
@@ -407,14 +407,14 @@
       </panel>
       <panel
        follows="top|left"
-       height="25"
+       height="31"
        layout="topleft"
        left_pad="0"
        name="new_inventory_panel"
        width="32">
           <button
            follows="top|left"
-           height="25"
+           height="31"
            image_hover_unselected="Toolbar_Middle_Over"
            image_overlay="inventory_18"
            image_selected="Toolbar_Middle_Selected"
@@ -432,14 +432,14 @@
       </panel>
       <panel
        follows="top|left"
-       height="25"
+       height="31"
        layout="topleft"
        left_pad="0"
        name="show_filters_panel"
        width="32">
           <button
            follows="top|left"
-           height="25"
+           height="31"
            image_hover_unselected="Toolbar_Middle_Over"
            image_overlay="show_filters_18"
            image_selected="Toolbar_Middle_Selected"
@@ -460,14 +460,14 @@
       </panel>
       <panel
        follows="top|left"
-       height="25"
+       height="31"
        layout="topleft"
        left_pad="0"
        name="view_mode_panel"
        width="32">
           <button
            follows="top|left"
-           height="25"
+           height="31"
            image_hover_unselected="Toolbar_Middle_Over"
            image_overlay="Single_Folder_Mode"
            image_selected="Toolbar_Middle_Selected"
@@ -481,7 +481,7 @@
       </panel>
       <panel
        follows="top|left|right"
-       height="25"
+       height="31"
        left_pad="0"
        right="-33"
        layout="topleft"
@@ -503,7 +503,7 @@
           </text>
           <icon
            follows="top|left|right"
-           height="25"
+           height="31"
            image_name="Toolbar_Middle_Off"
            layout="topleft"
            left="0"
@@ -513,7 +513,7 @@
       </panel>
       <panel
        follows="top|right"
-       height="25"
+       height="31"
        left_pad="0"
        right="-1"
        layout="topleft"
@@ -521,7 +521,7 @@
        width="32">
           <dnd_button
            follows="top|right"
-           height="25"
+           height="31"
            image_hover_unselected="Toolbar_Right_Over"
            image_overlay="TrashItem_Off"
            image_selected="Toolbar_Right_Selected"

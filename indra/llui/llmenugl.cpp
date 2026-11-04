@@ -55,6 +55,8 @@
 #include "llresmgr.h"
 #include "lltrans.h"
 #include "llui.h"
+#include "lldir.h"
+#include "lluiimage.h"
 
 #include "llstl.h"
 
@@ -3284,7 +3286,19 @@ void LLMenuGL::draw( void )
         static LLUICachedControl<F32> menu_bg_alpha("FSMenuBackgroundAlpha");
         LLColor4 bg_color = mBackgroundColor.get();
         bg_color.mV[VALPHA] *= menu_bg_alpha;
-        gl_rect_2d(0, getRect().getHeight(), getRect().getWidth(), 0, bg_color);
+        LLPointer<LLUIImage> popup_background;
+        if (!mHorizontalLayout && !mTornOff && gDirUtilp->getSkinThemeFolder() == "forme")
+        {
+            popup_background = LLUI::getUIImage("Rounded_Rect");
+        }
+        if (popup_background.notNull())
+        {
+            popup_background->draw(0, 0, getRect().getWidth(), getRect().getHeight(), bg_color);
+        }
+        else
+        {
+            gl_rect_2d(0, getRect().getHeight(), getRect().getWidth(), 0, bg_color);
+        }
         // </FS:PP>
     }
     LLView::draw();
