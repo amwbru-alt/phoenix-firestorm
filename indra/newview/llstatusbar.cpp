@@ -1456,9 +1456,12 @@ void LLStatusBar::buildLocationString(std::string& loc_str, bool show_coords)
         (show_coords ? LLAgentUI::LOCATION_FORMAT_V1 : LLAgentUI::LOCATION_FORMAT_V1_NO_COORDS);
 
     if (!LLAgentUI::buildLocationString(loc_str, format))
-    {
-        loc_str = "???";
-    }
+        loc_str.clear();
+
+    const LLViewerRegion* region = gAgent.getRegion();
+    const std::string status = getString(region && region->isAlive()
+        ? "forme_region_connected" : "forme_region_disconnected");
+    loc_str = loc_str.empty() ? status : loc_str + "  ·  " + status;
 }
 
 void LLStatusBar::setParcelInfoText(const std::string& new_text)
