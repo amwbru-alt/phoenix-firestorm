@@ -125,13 +125,16 @@ namespace
     LLStatusBar::RegionWeatherEffects sWeatherFrom;
     LLStatusBar::RegionWeatherEffects sWeatherTo;
     LLFrameTimer sWeatherSampleAge;
-    S32 sLightningDelay = -1;
+    F32 sLightningDelay = -1.f;
+    std::string sLightningEvent;
+    std::string sLastThunderEvent;
+    LLUUID sThunderSound;
 
     LLStatusBar::RegionWeatherEffects sampleWeatherEffects()
     {
         const F32 age = sWeatherSampleAge.getElapsedTimeF32();
         const F32 blend = llclamp(age / 3.f, 0.f, 1.f);
-        const F32 flash_age = age - static_cast<F32>(sLightningDelay);
+        const F32 flash_age = age - sLightningDelay;
         return {
             sWeatherFrom.rain + blend * (sWeatherTo.rain - sWeatherFrom.rain),
             sWeatherFrom.snow + blend * (sWeatherTo.snow - sWeatherFrom.snow),
@@ -146,7 +149,9 @@ namespace
     {
         sWeatherFrom = {};
         sWeatherTo = {};
-        sLightningDelay = -1;
+        sLightningDelay = -1.f;
+        sLightningEvent.clear();
+        sThunderSound.setNull();
     }
     LLFrameTimer sRegionWeatherRefresh;
 }
@@ -1518,6 +1523,7 @@ LLStatusBar::RegionWeatherEffects LLStatusBar::updateRegionWeatherEffects()
     {
         sRegionWeatherCap = cap;
         ++sRegionWeatherRequest;
+        sLastThunderEvent.clear();
         sRegionWeatherCondition.clear();
         clearWeatherEffects();
     }
@@ -1545,8 +1551,14 @@ LLStatusBar::RegionWeatherEffects LLStatusBar::updateRegionWeatherEffects()
                 sWeatherFrom = sampleWeatherEffects();
                 sWeatherTo = { intensity(data["rain"]), intensity(data["snow"]), 0.f,
                                intensity(data["fog"]), intensity(data["cloud"]) };
-                const S32 delay = data["lightning_in"].isInteger() ? data["lightning_in"].asInteger() : -1;
-                sLightningDelay = delay > 0 && delay <= 75 ? delay : -1;
+                const F64 delay = data.has("lightning_delay")
+                    ? data["lightning_delay"].asReal() : data["lightning_in"].asReal();
+                sLightningDelay = delay > 0.0 && delay <= 75.0 ? static_cast<F32>(delay) : -1.f;
+                sLightningEvent = data["lightning_event"].asString();
+                const LLUUID thunder = data["thunder_sound"].asUUID();
+                if (gAudiop && thunder.notNull() && thunder != sThunderSound)
+                    gAudiop->preloadSound(thunder);
+                sThunderSound = thunder;
                 sWeatherSampleAge.reset();
             },
             [request](const LLSD&)
@@ -1557,6 +1569,13 @@ LLStatusBar::RegionWeatherEffects LLStatusBar::updateRegionWeatherEffects()
                     clearWeatherEffects();
                 }
             });
+    }
+    const F32 flash_age = sWeatherSampleAge.getElapsedTimeF32() - sLightningDelay;
+    if (gAudiop && sLightningDelay >= 0.f && flash_age >= 1.2f && flash_age < 3.f &&
+        sThunderSound.notNull() && !sLightningEvent.empty() && sLastThunderEvent != sLightningEvent)
+    {
+        sLastThunderEvent = sLightningEvent;
+        gAudiop->triggerSound(sThunderSound, gAgent.getID(), 0.6f, LLAudioEngine::AUDIO_TYPE_SFX);
     }
     return sampleWeatherEffects();
 }
