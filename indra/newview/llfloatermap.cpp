@@ -95,12 +95,12 @@ bool LLFloaterMap::postBuild()
     mMap->setAltToolTipHintMsg(getString("AltToolTipHintMsg"));
     sendChildToBack(mMap);
 
-    getChild<LLButton>("forme_minimap_zoom_in")->setClickedCallback([this]()
+    getChild<LLButton>("forme_minimap_zoom_in")->setClickedCallback([this](LLUICtrl*, const LLSD&)
     {
         const LLRect& rect = mMap->getLocalRect();
         mMap->handleScrollWheel(rect.getCenterX(), rect.getCenterY(), -1);
     });
-    getChild<LLButton>("forme_minimap_zoom_out")->setClickedCallback([this]()
+    getChild<LLButton>("forme_minimap_zoom_out")->setClickedCallback([this](LLUICtrl*, const LLSD&)
     {
         const LLRect& rect = mMap->getLocalRect();
         mMap->handleScrollWheel(rect.getCenterX(), rect.getCenterY(), 1);
