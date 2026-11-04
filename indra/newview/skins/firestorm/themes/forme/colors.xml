@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <colors>
     <!-- The viewer uses these same tokens for native windows, menus and context menus. -->
-    <color name="floater_bg_color" value="0.13 0.12 0.17 1" />
-    <color name="MenuDefaultBgColor" value="0.13 0.12 0.17 1" />
-    <color name="MenuPopupBgColor" value="0.13 0.12 0.17 1" />
-    <color name="MenuBarBgColor" value="0.13 0.12 0.17 1" />
-    <color name="floater_bg_color_a" value="0.12 0.11 0.16 0.94" />
-    <color name="InventoryBackgroundColor" value="0.10 0.09 0.14 1" />
+    <color name="floater_bg_color" value="0.16 0.15 0.17 0.98" />
+    <color name="MenuDefaultBgColor" value="0.16 0.15 0.18 0.98" />
+    <color name="MenuPopupBgColor" value="0.16 0.15 0.18 0.98" />
+    <color name="MenuBarBgColor" value="0.13 0.12 0.14 0.97" />
+    <color name="floater_bg_color_a" value="0.16 0.15 0.17 0.90" />
+    <color name="InventoryBackgroundColor" value="0.13 0.12 0.15 0.84" />
     <color name="ScrollBgReadOnlyColor" value="0.10 0.09 0.14 1" />
     <color name="ScrollBgWriteableColor" value="0.10 0.09 0.14 1" />
-    <color name="ChatHistoryBgColor" value="0.10 0.09 0.14 1" />
+    <color name="ChatHistoryBgColor" value="0.13 0.12 0.15 0.84" />
     <color name="ScrollbarTrackColor" value="0.10 0.09 0.14 1" />
     <color name="ScrollBGStripeColor" value="0.14 0.13 0.19 1" />
     <color name="ChatHeaderOpaqueBackground" value="0.18 0.16 0.23 1" />
