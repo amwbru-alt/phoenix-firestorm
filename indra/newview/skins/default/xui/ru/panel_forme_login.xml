@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<panel name="panel_login">
+  <panel name="login_widgets">
+    <panel name="login">
+      <text name="forme_login_title">Вход в ForMe.World</text>
+      <text name="username_text">Имя аватара</text>
+      <text name="password_text">Пароль</text>
+      <button name="remove_user_btn" tool_tip="Удалить сохранённое имя"/>
+      <button name="password_show_btn" tool_tip="Показать пароль"/>
+      <button name="password_hide_btn" tool_tip="Скрыть пароль"/>
+      <check_box name="remember_username_check" label="Запомнить имя аватара"/>
+      <check_box name="remember_check" label="Запомнить пароль"/>
+    </panel>
+    <layout_stack name="forme_start_stack">
+      <layout_panel name="start_location_panel">
+        <text name="start_location_text">Начальная локация</text>
+        <combo_box name="start_location_combo">
+          <combo_box.item name="MyLastLocation" label="Последнее место"/>
+          <combo_box.item name="MyHome" label="Дом"/>
+          <combo_box.item name="Typeregionname" label="Введите название региона"/>
+        </combo_box>
+      </layout_panel>
+    </layout_stack>
+    <button name="connect_btn" label="Войти в мир"/>
+    <text name="create_new_account_text">Создать аккаунт</text>
+  </panel>
+  <text name="forme_coast_caption">Лазурный берег</text>
+</panel>

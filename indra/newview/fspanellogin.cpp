@@ -204,14 +204,7 @@ FSPanelLogin::FSPanelLogin(const LLRect &rect,
         login_holder->addChild(this);
     }
 
-    if (!gSavedSettings.getBOOL("FSUseLegacyLoginPanel"))
-    {
-        buildFromFile( "panel_fs_nui_login.xml");
-    }
-    else
-    {
-        buildFromFile( "panel_fs_login.xml");
-    }
+    buildFromFile("panel_forme_login.xml");
 
     reshape(rect.getWidth(), rect.getHeight());
 
@@ -223,9 +216,6 @@ FSPanelLogin::FSPanelLogin(const LLRect &rect,
     password_edit->setKeystrokeCallback(onPassKey, this);
     // STEAM-14: When user presses Enter with this field in focus, initiate login
     password_edit->setCommitCallback(boost::bind(&FSPanelLogin::onClickConnect, this));
-
-    // change z sort of clickable text to be behind buttons
-    sendChildToBack(getChildView("forgot_password_text"));
 
     LLComboBox* favorites_combo = getChild<LLComboBox>("start_location_combo");
     updateLocationSelectorsVisibility(); // separate so that it can be called from preferences
@@ -306,11 +296,6 @@ FSPanelLogin::FSPanelLogin(const LLRect &rect,
     std::string version = llformat("%s (%d)",
                                    LLVersionInfo::getInstance()->getShortVersion().c_str(),
                                    LLVersionInfo::getInstance()->getBuild());
-
-    LLTextBox* forgot_password_text = getChild<LLTextBox>("forgot_password_text");
-    forgot_password_text->setClickedCallback(onClickForgotPassword, NULL);
-
-    loadLoginPage();
 
     LLComboBox* username_combo(getChild<LLComboBox>("username_combo"));
     username_combo->setTextChangedCallback(boost::bind(&FSPanelLogin::onUsernameTextChanged, this));
@@ -472,14 +457,7 @@ void FSPanelLogin::showLoginWidgets()
 {
     if (sInstance)
     {
-        // *NOTE: Mani - This may or may not be obselete code.
-        // It seems to be part of the defunct? reg-in-client project.
-        sInstance->getChildView("login_widgets")->setVisible( true);
-        LLMediaCtrl* web_browser = sInstance->getChild<LLMediaCtrl>("login_html");
-
-        // *TODO: Append all the usual login parameters, like first_login=Y etc.
-        std::string splash_screen_url = LLGridManager::getInstance()->getLoginPage();
-        web_browser->navigateTo( splash_screen_url, HTTP_CONTENT_TEXT_HTML );
+        sInstance->getChildView("login_widgets")->setVisible(true);
         LLUICtrl* username_combo = sInstance->getChild<LLUICtrl>("username_combo");
         username_combo->setFocus(true);
     }
@@ -858,117 +836,6 @@ void FSPanelLogin::closePanel()
 }
 
 // static
-void FSPanelLogin::setAlwaysRefresh(bool refresh)
-{
-    if (sInstance && LLStartUp::getStartupState() < STATE_LOGIN_CLEANUP)
-    {
-        LLMediaCtrl* web_browser = sInstance->getChild<LLMediaCtrl>("login_html");
-
-        if (web_browser)
-        {
-            web_browser->setAlwaysRefresh(refresh);
-        }
-    }
-}
-
-
-
-void FSPanelLogin::loadLoginPage()
-{
-    if (!sInstance) return;
-
-    LLURI login_page = LLURI(LLGridManager::getInstance()->getLoginPage());
-    LLSD params(login_page.queryMap());
-
-    LL_DEBUGS("AppInit") << "login_page: " << login_page << LL_ENDL;
-
-    // allow users (testers really) to specify a different login content URL
-    std::string force_login_url = gSavedSettings.getString("ForceLoginURL");
-    if ( force_login_url.length() > 0 )
-    {
-        LLNotificationsUtil::add("WarnForceLoginURL", LLSD(), LLSD(), [](const LLSD&notif, const LLSD&resp)
-        {
-            S32 opt = LLNotificationsUtil::getSelectedOption(notif, resp);
-            if (opt == 0)
-            {
-                gSavedSettings.setString("ForceLoginURL", "");
-                loadLoginPage();
-            }
-        });
-        login_page = LLURI(force_login_url);
-    }
-
-    // Language
-    params["lang"] = LLUI::getLanguage();
-
-    // First Login?
-    if (gSavedSettings.getBOOL("FirstLoginThisInstall"))
-    {
-        params["firstlogin"] = "TRUE"; // not bool: server expects string TRUE
-    }
-
-    // Channel and Version
-    params["version"] = llformat("%s (%d)",
-                                 LLVersionInfo::getInstance()->getShortVersion().c_str(),
-                                 LLVersionInfo::getInstance()->getBuild());
-    params["channel"] = LLVersionInfo::getInstance()->getChannel();
-
-    // Grid
-    params["grid"] = LLGridManager::getInstance()->getGridId();
-
-    // add OS info
-    params["os"] = LLOSInfo::instance().getOSStringSimple();
-
-    // sourceid
-    params["sourceid"] = gSavedSettings.getString("sourceid");
-
-    // login page (web) content version
-    params["login_content_version"] = gSavedSettings.getString("LoginContentVersion");
-
-    // skin
-    params["skin"] = gSavedSettings.getString("FSInternalSkinCurrent") + " " + gSavedSettings.getString("FSInternalSkinCurrentTheme");
-
-    // No version popup
-    if (gSavedSettings.getBOOL("FSNoVersionPopup"))
-    {
-        params["noversionpopup"] = "true";
-    }
-
-	// Splash screen settings
-	static const std::pair<std::string, std::string> mappings[] = {
-		{"FSSplashScreenHideTopBar", "hidetopbar"},
-		{"FSSplashScreenHideBlogs", "hideblogs"},
-		{"FSSplashScreenHideDestinations", "hidedestinations"},
-		{"FSSplashScreenUseGrayMode", "usegraymode"},
-		{"FSSplashScreenUseHighContrast", "usehighcontrast"},
-		{"FSSplashScreenUseAllCaps", "useallcaps"},
-		{"FSSplashScreenUseLargerFonts", "uselargerfonts"},
-		{"FSSplashScreenNoTransparency", "notransparency"},
-	};
-
-	for (const auto &m : mappings)
-	{
-		params[m.second] = gSavedSettings.getBOOL(m.first) ? "1" : "0";
-	}
-
-    // Make an LLURI with this augmented info
-    std::string url = login_page.scheme().empty()? login_page.authority() : login_page.scheme() + "://" + login_page.authority();
-    LLURI login_uri(LLURI::buildHTTP(url,
-                                     login_page.path(),
-                                     params));
-
-    LLMediaCtrl* web_browser = sInstance->getChild<LLMediaCtrl>("login_html");
-    if (web_browser->getCurrentNavUrl() != login_uri.asString())
-    {
-        LL_DEBUGS("AppInit") << "loading:    " << login_uri << LL_ENDL;
-        web_browser->navigateTo( login_uri.asString(), HTTP_CONTENT_TEXT_HTML );
-    }
-}
-
-void FSPanelLogin::handleMediaEvent(LLPluginClassMedia* /*self*/, EMediaEvent event)
-{
-}
-
 //---------------------------------------------------------------------------
 // Protected methods
 //---------------------------------------------------------------------------
@@ -1063,7 +930,7 @@ void FSPanelLogin::onClickConnect(void *)
 // static
 void FSPanelLogin::onClickNewAccount(void*)
 {
-    if (sInstance) LLWeb::loadURLInternal("http://185.173.93.200:8002/web/register.html"); // <FS:ForMe> No upstream account registration.
+    if (sInstance) LLWeb::loadURLExternal("http://185.173.93.200:8002/web/register.html"); // <FS:ForMe> No upstream account registration.
 }
 
 
@@ -1149,9 +1016,7 @@ void FSPanelLogin::updateServer()
                 sInstance->setFields(credential);
             }
 
-            // grid changed so show new splash screen (possibly)
             updateServerCombo();
-            loadLoginPage();
 
 #ifdef OPENSIM
             sInstance->getChild<LLLineEditor>("password_edit")->setMaxTextChars(LLGridManager::getInstance()->isInSecondLife() ? MAX_PASSWORD_SL : MAX_PASSWORD_OPENSIM);

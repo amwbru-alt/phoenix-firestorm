@@ -120,13 +120,6 @@ bool LLLoginHandler::handle(const LLSD& tokens,
 
     if  (LLStartUp::getStartupState() < STATE_LOGIN_CLEANUP)  //on splash page
     {
-      // as the login page may change from grid to grid, as well as
-      // things like username/password/etc, we simply refresh the
-      // login page to make sure everything is set up correctly
-      // <FS:Ansariel> [FS Login Panel]
-      //LLPanelLogin::loadLoginPage();
-      FSPanelLogin::loadLoginPage();
-      // </FS:Ansariel> [FS Login Panel]
       LLStartUp::setStartupState( STATE_LOGIN_CLEANUP );
     }
     return true;

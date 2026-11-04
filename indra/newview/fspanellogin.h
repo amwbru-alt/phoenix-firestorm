@@ -31,15 +31,13 @@
 
 #include "llpanel.h"
 #include "llpointer.h"          // LLPointer<>
-#include "llmediactrl.h"    // LLMediaCtrlObserver
 
 class LLLineEditor;
 class LLSLURL;
 class LLCredential;
 
 class FSPanelLogin:
-    public LLPanel,
-    public LLViewerMediaObserver
+    public LLPanel
 {
     LOG_CLASS(FSPanelLogin);
 public:
@@ -72,12 +70,8 @@ public:
 
     void showLoginWidgets();
 
-    static void loadLoginPage();
     static void giveFocus();
-    static void setAlwaysRefresh(bool refresh);
 
-    // inherited from LLViewerMediaObserver
-    /*virtual*/ void handleMediaEvent(LLPluginClassMedia* self, EMediaEvent event);
     static void updateServer();  // update the combo box, change the login page to the new server, clear the combo
 
     /// to be called from LLStartUp::setStartSLURL

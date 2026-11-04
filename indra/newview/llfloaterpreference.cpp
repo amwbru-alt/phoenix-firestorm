@@ -1228,10 +1228,6 @@ void LLFloaterPreference::onOpen(const LLSD& key)
     //onNotificationsChange("ObjectIMOptions");
     // </FS:CR>
 
-    // <FS:Ansariel> [FS Login Panel]
-    //LLPanelLogin::setAlwaysRefresh(true);
-    FSPanelLogin::setAlwaysRefresh(true);
-    // </FS:Ansariel> [FS Login Panel]
     refresh();
 
 
@@ -1532,10 +1528,6 @@ void LLFloaterPreference::onClose(bool app_quitting)
         gSavedSettings.setS32("LastPrefTab", getChild<LLTabContainer>("pref core")->getCurrentPanelIndex());
     }
     // </FS:Ansariel>
-    // <FS:Ansariel> [FS Login Panel]
-    //LLPanelLogin::setAlwaysRefresh(false);
-    FSPanelLogin::setAlwaysRefresh(false);
-    // </FS:Ansariel> [FS Login Panel]
     if (!app_quitting)
     {
         cancel();
