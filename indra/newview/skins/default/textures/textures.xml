@@ -1233,4 +1233,13 @@ with the same filename but different name
            scale.left="16" scale.top="32" scale.right="32" scale.bottom="16" />
   <texture name="Forme_Login_Field_Focus" file_name="widgets/Forme_Login_Field_Focus.png" preload="true"
            scale.left="16" scale.top="32" scale.right="32" scale.bottom="16" />
+  <texture name="Forme_Map_Map" file_name="widgets/Forme_Map_Map.png" preload="false" />
+  <texture name="Forme_Map_Cards" file_name="widgets/Forme_Map_Cards.png" preload="false" />
+  <texture name="Forme_Map_Search" file_name="widgets/Forme_Map_Search.png" preload="false" />
+  <texture name="Forme_Map_Link" file_name="widgets/Forme_Map_Link.png" preload="false" />
+  <texture name="Forme_Map_Pin" file_name="widgets/Forme_Map_Pin.png" preload="false" />
+  <texture name="Forme_Map_Plus" file_name="widgets/Forme_Map_Plus.png" preload="false" />
+  <texture name="Forme_Map_Minus" file_name="widgets/Forme_Map_Minus.png" preload="false" />
+  <texture name="Forme_Map_Previous" file_name="widgets/Forme_Map_Previous.png" preload="false" />
+  <texture name="Forme_Map_Next" file_name="widgets/Forme_Map_Next.png" preload="false" />
 </textures>

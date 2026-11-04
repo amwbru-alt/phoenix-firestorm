@@ -28,11 +28,11 @@
   <line_editor name="forme_region_query" layout="topleft" follows="top|left|right"
     left="14" right="-237" top="24" height="27" max_length_chars="128" label="Find a region" />
   <button name="forme_region_find" layout="topleft" follows="top|right"
-    right="-147" top="24" width="82" height="27" label="Find" />
+    right="-147" top="24" width="82" height="27" label="Find" image_overlay="Forme_Map_Search" image_overlay_alignment="left" imgoverlay_label_space="4" />
   <button name="forme_region_map" layout="topleft" follows="top|right"
-    right="-76" top="24" width="65" height="27" is_toggle="true" label="Map" />
+    right="-76" top="24" width="65" height="27" is_toggle="true" label="Map" image_overlay="Forme_Map_Map" image_overlay_alignment="left" imgoverlay_label_space="4" />
   <button name="forme_region_cards" layout="topleft" follows="top|right"
-    right="-8" top="24" width="64" height="27" is_toggle="true" label="Cards" />
+    right="-8" top="24" width="64" height="27" is_toggle="true" label="Cards" image_overlay="Forme_Map_Cards" image_overlay_alignment="left" imgoverlay_label_space="4" />
   <panel name="forme_regions_panel" layout="topleft" follows="all" left="0" top="58" right="-1" bottom="-1">
     <panel name="forme_region_card_0" layout="topleft" follows="top|left" left="14" top="10"
       width="225" height="220" background_visible="true" background_opaque="true"
@@ -60,8 +60,8 @@
     </panel>
     <text name="forme_region_status" layout="topleft" follows="left|top|right" left="14" right="-14"
       top="240" height="26" font="SansSerifMedium" use_ellipses="true" />
-    <button name="forme_region_prev" layout="topleft" left="14" top="280" width="100" height="27" label="Previous" />
-    <button name="forme_region_next" layout="topleft" left="120" top="280" width="100" height="27" label="Next" />
+    <button name="forme_region_prev" layout="topleft" left="14" top="280" width="100" height="27" label="Previous" image_overlay="Forme_Map_Previous" image_overlay_alignment="left" imgoverlay_label_space="4" />
+    <button name="forme_region_next" layout="topleft" left="120" top="280" width="100" height="27" label="Next" image_overlay="Forme_Map_Next" image_overlay_alignment="left" imgoverlay_label_space="4" />
 
 
 
@@ -93,9 +93,9 @@
     top="5"
     width="482"/>
    <button name="forme_region_zoom_in" layout="topleft" follows="top|left"
-     left="14" top="14" width="25" height="25" label="+" tool_tip="Zoom in" />
+     left="14" top="14" width="25" height="25" label="" tool_tip="Zoom in" image_overlay="Forme_Map_Plus" />
    <button name="forme_region_zoom_out" layout="topleft" follows="top|left"
-     left="14" top="41" width="25" height="25" label="−" tool_tip="Zoom out" />
+     left="14" top="41" width="25" height="25" label="" tool_tip="Zoom out" image_overlay="Forme_Map_Minus" />
    <panel
     follows="right|bottom"
     height="20"
@@ -818,7 +818,7 @@
    <layout_panel name="forme_region_detail_panel" layout="topleft"
     width="272" height="472" min_width="272" auto_resize="false" visible="false">
     <button name="forme_region_detail_back" layout="topleft" left="12" top="8"
-      width="248" height="25" label="Back to regions" />
+      width="248" height="25" label="Back to regions" image_overlay="Forme_Map_Previous" image_overlay_alignment="left" imgoverlay_label_space="4" />
     <icon name="forme_region_detail_photo" layout="topleft" left="12" top="42"
       width="248" height="140" mouse_opaque="false" />
     <text name="forme_region_detail_title" layout="topleft" left="12" top="194"
@@ -830,9 +830,9 @@
     <text name="forme_region_detail_description" layout="topleft" left="12" top="272"
       width="248" height="56" wrap="true" use_ellipses="true" />
     <button name="forme_region_detail_tp" layout="topleft" left="12" top="339"
-      width="248" height="29" label="Teleport" />
+      width="248" height="29" label="Teleport" image_overlay="Forme_Map_Pin" image_overlay_alignment="left" imgoverlay_label_space="4" />
     <button name="forme_region_detail_copy" layout="topleft" left="12" top="375"
-      width="248" height="29" label="Copy link" />
+      width="248" height="29" label="Copy link" image_overlay="Forme_Map_Link" image_overlay_alignment="left" imgoverlay_label_space="4" />
   </layout_panel>
  </layout_stack> 
 </floater>
