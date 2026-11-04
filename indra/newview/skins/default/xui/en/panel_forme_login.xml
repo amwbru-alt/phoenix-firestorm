@@ -1,31 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <panel name="panel_login" follows="all" layout="topleft" width="1024" height="768"
-       focus_root="true" background_visible="true" background_opaque="true" bg_opaque_color="0.10,0.09,0.13,1">
+       focus_root="true" background_visible="true" background_opaque="true" bg_opaque_color="FormeLoginBackdrop">
   <string name="ServerComboTooltip">ForMe.World</string>
   <icon name="forme_coast_background" image_name="ForMe_Azure_Coast" layout="topleft"
         left="0" top="0" width="1024" height="768" follows="all" mouse_opaque="false"/>
   <panel name="forme_login_header" layout="topleft" left="0" top="18" width="1024" height="30"
          follows="left|top|right" background_visible="true" background_opaque="true"
-         bg_opaque_color="0.13,0.12,0.17,1" mouse_opaque="false">
+         bg_opaque_color="FormeLoginHeader" mouse_opaque="false">
     <text name="forme_wordmark" layout="topleft" left="22" top="5" width="220" height="20"
           font="SansSerifMedium" font.style="BOLD" text_color="White">ForMe.World</text>
   </panel>
-  <panel name="login_widgets" layout="topleft" left="42" top="68" width="340" height="443"
+  <panel name="login_widgets" layout="topleft" left="60" top="100" width="340" height="443"
          follows="left|top" background_visible="true" background_opaque="true"
-         bg_opaque_image="Rounded_Rect" bg_opaque_image_overlay="0.13,0.12,0.17,0.97">
+         bg_opaque_image="Forme_Login_Card" bg_opaque_image_overlay="White">
     <panel name="login" layout="topleft" left="24" top="20" width="292" height="224" background_visible="false">
       <text name="forme_login_title" layout="topleft" left="0" top="0" width="292" height="32"
             font="SansSerifLarge" font.style="BOLD" text_color="White">Sign in to ForMe.World</text>
       <text name="username_text" layout="topleft" left="0" top="48" width="250" height="18" text_color="White">Avatar name</text>
       <combo_box name="username_combo" layout="topleft" left="0" top="68" width="260" height="34"
                  allow_text_entry="true" max_chars="128" force_disable_fulltext_search="true"
-                 combo_editor.commit_on_focus_lost="false" combo_editor.prevalidator="ascii"/>
+                 combo_editor.commit_on_focus_lost="false" combo_editor.prevalidator="ascii"
+                   combo_editor.background_image="Forme_Login_Field"
+                   combo_editor.background_image_focused="Forme_Login_Field_Focus"
+                   combo_editor.background_image_disabled="Forme_Login_Field"
+                   combo_editor.text_color="White"
+                   combo_editor.text_readonly_color="White"
+                   combo_editor.text_tentative_color="White"
+                   combo_editor.highlight_color="FormeLoginAccent"
+                   combo_editor.highlight_text_color="White"
+                   combo_editor.text_pad_left="10"
+                   combo_button.image_color="FormeLoginControl"/>
       <button name="remove_user_btn" layout="topleft" left="270" top="74" width="20" height="20"
               image_unselected="TrashItem_Off" image_selected="TrashItem_Press"
               tool_tip="Remove this saved username"/>
       <text name="password_text" layout="topleft" left="0" top="118" width="292" height="18" text_color="White">Password</text>
       <line_editor name="password_edit" layout="topleft" left="0" top="138" width="260" height="34"
-                   max_length_chars="16" is_password="true" select_on_focus="true" commit_on_focus_lost="false"/>
+                   max_length_chars="16" is_password="true"
+                   background_image="Forme_Login_Field"
+                   background_image_focused="Forme_Login_Field_Focus"
+                   background_image_disabled="Forme_Login_Field"
+                   text_color="White"
+                   text_readonly_color="White"
+                   text_tentative_color="White"
+                   highlight_color="FormeLoginAccent"
+                   highlight_text_color="White"
+                   text_pad_left="10"
+                   select_on_focus="true" commit_on_focus_lost="false"/>
       <button name="password_show_btn" layout="topleft" left="270" top="145" width="20" height="20"
               image_unselected="Profile_Group_Visibility_Off" image_pressed="Profile_Group_Visibility_Off_Pressed"
               tool_tip="Show password"/>
@@ -43,7 +63,17 @@
         <text name="start_location_text" layout="topleft" left="0" top="0" width="292" height="18"
               text_color="White">Start location</text>
         <combo_box name="start_location_combo" control_name="NextLoginLocation" layout="topleft" left="0" top="22"
-                   width="292" height="34" allow_text_entry="true" max_chars="128">
+                   width="292" height="34" allow_text_entry="true" max_chars="128"
+                   combo_editor.background_image="Forme_Login_Field"
+                   combo_editor.background_image_focused="Forme_Login_Field_Focus"
+                   combo_editor.background_image_disabled="Forme_Login_Field"
+                   combo_editor.text_color="White"
+                   combo_editor.text_readonly_color="White"
+                   combo_editor.text_tentative_color="White"
+                   combo_editor.highlight_color="FormeLoginAccent"
+                   combo_editor.highlight_text_color="White"
+                   combo_editor.text_pad_left="10"
+                   combo_button.image_color="FormeLoginControl">
           <combo_box.item name="MyLastLocation" label="Last location" value="last"/>
           <combo_box.item name="MyHome" label="Home" value="home"/>
           <combo_box.item name="Typeregionname" label="Type a region name" value=""/>
@@ -53,10 +83,10 @@
     <button name="connect_btn" layout="topleft" left="24" top="337" width="292" height="42"
             label="Enter world" font="SansSerifLarge" font.style="BOLD"
             image_unselected="Rounded_Rect" image_pressed="Rounded_Rect" image_disabled="Rounded_Rect"
-            image_color="0.50,0.36,0.68,1" image_color_disabled="0.33,0.28,0.39,1"
+            image_color="FormeLoginAccent" image_color_disabled="FormeLoginDisabled"
             label_color="White" enabled="false"/>
     <text name="create_new_account_text" layout="topleft" left="24" top="393" width="292" height="22"
-          text_color="0.85,0.71,1,1" halign="center">Create account</text>
+          text_color="FormeLoginLink" halign="center">Create account</text>
     <layout_stack name="forme_hidden_grid" orientation="vertical" layout="topleft" left="0" top="0"
                   width="1" height="1" visible="false">
       <layout_panel name="grid_panel" layout="topleft" width="1" height="1" visible="false">

@@ -1227,4 +1227,10 @@ with the same filename but different name
 <texture name="LagStatus_Warning" file_name="icons/yellow_square.png" preload="false" />
 <texture name="LagStatus_Critical" file_name="icons/red_square.png" preload="false" />
   <texture name="ForMe_Azure_Coast" file_name="forme_azure_coast.jpg" preload="true"/>
+  <texture name="Forme_Login_Card" file_name="widgets/Forme_Login_Card.png" preload="true"
+           scale.left="16" scale.top="32" scale.right="32" scale.bottom="16" />
+  <texture name="Forme_Login_Field" file_name="widgets/Forme_Login_Field.png" preload="true"
+           scale.left="16" scale.top="32" scale.right="32" scale.bottom="16" />
+  <texture name="Forme_Login_Field_Focus" file_name="widgets/Forme_Login_Field_Focus.png" preload="true"
+           scale.left="16" scale.top="32" scale.right="32" scale.bottom="16" />
 </textures>
