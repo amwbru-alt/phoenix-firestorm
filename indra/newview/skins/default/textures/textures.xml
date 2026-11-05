@@ -1267,4 +1267,17 @@ with the same filename but different name
   <texture name="Forme_WMap_Map" file_name="widgets/Forme_WMap_Map.png" preload="false" />
   <texture name="Forme_WMap_Cards" file_name="widgets/Forme_WMap_Cards.png" preload="false" />
   <texture name="Forme_WMap_Link" file_name="widgets/Forme_WMap_Link.png" preload="false" />
+  <texture name="Forme_HUD_Map" file_name="forme_hud/Map.png" preload="false" />
+  <texture name="Forme_HUD_People" file_name="forme_hud/People.png" preload="false" />
+  <texture name="Forme_HUD_Inventory" file_name="forme_hud/Inventory.png" preload="false" />
+  <texture name="Forme_HUD_Market" file_name="forme_hud/Market.png" preload="false" />
+  <texture name="Forme_HUD_Smile" file_name="forme_hud/Smile.png" preload="false" />
+  <texture name="Forme_HUD_Send" file_name="forme_hud/Send.png" preload="false" />
+  <texture name="Forme_HUD_Collapse" file_name="forme_hud/Collapse.png" preload="false" />
+  <texture name="Forme_HUD_Expand" file_name="forme_hud/Expand.png" preload="false" />
+  <texture name="Forme_HUD_Chat" file_name="forme_hud/Chat.png" preload="false" />
+  <texture name="Forme_HUD_Surface" file_name="forme_hud/Surface.png" preload="false" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  <texture name="Forme_HUD_Dock" file_name="forme_hud/Dock.png" preload="false" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  <texture name="Forme_HUD_Active" file_name="forme_hud/Active.png" preload="false" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  <texture name="Forme_HUD_Input" file_name="forme_hud/Input.png" preload="false" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
 </textures>

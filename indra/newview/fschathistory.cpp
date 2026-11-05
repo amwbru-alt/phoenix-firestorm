@@ -984,6 +984,18 @@ public:
 
     /*virtual*/ void draw()
     {
+        if (getName() == "forme_chat_message_header")
+        {
+            // Keep the timestamp next to the actual display name, as in the HUD.
+            const S32 time_width = mTimeBoxTextBox->getRect().getWidth();
+            const S32 available = llmax(0, getRect().getWidth() - 64 - time_width);
+            const S32 name_width = llclamp(mMinUserNameWidth - PADDING, 0, available);
+            mHeaderLayoutStack->reshape(52 + name_width, 34);
+            mTimeBoxTextBox->setOrigin(60 + name_width, getRect().getHeight() - mTimeBoxTextBox->getRect().getHeight() - 2);
+            mTimeBoxTextBox->setVisible(mNeedsTimeBox);
+            LLPanel::draw();
+            return;
+        }
         LLRect user_name_rect = mUserNameTextBox->getRect();
         S32 user_name_width = user_name_rect.getWidth();
         S32 time_box_width = mTimeBoxTextBox->getRect().getWidth();

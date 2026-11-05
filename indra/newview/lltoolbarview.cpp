@@ -28,6 +28,10 @@
 #include "llviewerprecompiledheaders.h"
 
 #include "lltoolbarview.h"
+#include "formehudlayout.h"
+#include "llstartup.h"
+#include "lliconctrl.h"
+#include "lltextbox.h"
 
 #include "llappviewer.h"
 #include "llbutton.h"
@@ -679,12 +683,36 @@ void LLToolBarView::draw()
     {
         for (auto* toolbar : mToolbars) if (toolbar) toolbar->setVisible(false);
         dock->setVisible(mShowToolbars);
-        dock->setOrigin((getRect().getWidth() - dock->getRect().getWidth()) / 2, 26);
+        const auto layout = ForMeHUD::layout(getRect().getWidth(), getRect().getHeight(), false);
+        dock->reshape(layout.dockWidth, 76, false);
+        dock->setOrigin(layout.dockLeft, layout.dockBottom);
+        if (mShowToolbars && !mForMeChatShown && LLStartUp::getStartupState() == STATE_STARTED)
+        {
+            mForMeChatShown = true;
+            LLFloaterReg::showInstance("fs_nearby_chat", LLSD(), false);
+        }
         const std::pair<const char*, const char*> actions[] = {
             {"map", "world_map"}, {"people", "people"}, {"inventory", "inventory"}, {"market", ""}};
+        S32 index = 0;
+        const S32 button_width = (layout.dockWidth - 12) / 4;
         for (const auto& action : actions)
-            if (auto* button = dock->findChild<LLButton>(std::string("forme_dock_button_") + action.first))
-                button->setToggleState(*action.second && LLFloaterReg::instanceVisible(action.second));
+        {
+            const bool selected = *action.second && LLFloaterReg::instanceVisible(action.second);
+            const std::string suffix = action.first;
+            auto* cell = dock->getChild<LLPanel>("forme_dock_" + suffix);
+            cell->setShape(LLRect(6 + index * button_width, 71, 6 + (index + 1) * button_width, 5));
+            auto* button = cell->getChild<LLButton>("forme_dock_button_" + suffix);
+            button->setShape(cell->getLocalRect());
+            button->setToggleState(selected);
+            auto* icon = cell->getChild<LLIconCtrl>("forme_dock_icon_" + suffix);
+            icon->setOrigin((button_width - 28) / 2, 32);
+            const LLColor4 color = selected ? LLColor4(.79f,.61f,.94f,1.f) : LLColor4(.93f,.92f,.94f,1.f);
+            icon->setColor(color);
+            auto* label = cell->getChild<LLTextBox>("forme_dock_label_" + suffix);
+            label->setShape(LLRect(0, 25, button_width, 5));
+            label->setColor(color);
+            ++index;
+        }
     }
     LLUICtrl::draw();
 }

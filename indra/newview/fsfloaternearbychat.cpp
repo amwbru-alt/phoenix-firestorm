@@ -36,6 +36,7 @@
 #include "fschathistory.h"
 #include "fschatoptionsmenu.h"
 #include "fscommon.h"
+#include "formehudlayout.h"
 #include "fsfloaterim.h"
 #include "fsfloaterimcontainer.h"
 #include "fsnearbychathub.h"
@@ -144,6 +145,12 @@ void FSFloaterNearbyChat::updateFSUseNearbyChatConsole(const LLSD &data)
 bool FSFloaterNearbyChat::postBuild()
 {
     setIsSingleInstance(true);
+    mForMeChat = findChild<LLButton>("forme_chat_toggle") != nullptr;
+    if (mForMeChat)
+    {
+        gSavedSettings.setBOOL("ChatHistoryTornOff", true);
+        setAutoFocus(false);
+    }
 
     mInputEditor = getChild<LLChatEntry>("chat_box");
     mInputEditor->setAutoreplaceCallback(boost::bind(&LLAutoReplace::autoreplaceCallback, LLAutoReplace::getInstance(), _1, _2, _3, _4, _5));
@@ -158,7 +165,7 @@ bool FSFloaterNearbyChat::postBuild()
         boost::bind(&FSFloaterNearbyChat::updateRlvRestrictions, this, _1));
     mInputEditor->setFont(LLViewerChat::getChatFont());
     mInputEditor->setLabel(getString("chatbox_label"));
-    mInputEditor->enableSingleLineMode(gSavedSettings.getBOOL("FSUseSingleLineChatEntry"));
+    mInputEditor->enableSingleLineMode(mForMeChat || gSavedSettings.getBOOL("FSUseSingleLineChatEntry"));
     // <FS:TJ> [FIRE-35804] Allow the IM floater to have separate transparency
     mInputEditor->setTransparencyOverrideCallback(boost::bind(&FSFloaterNearbyChat::onGetChatBoxOpacityCallback, this, _1, _2));
     // </FS:TJ>
@@ -185,7 +192,12 @@ bool FSFloaterNearbyChat::postBuild()
     static bool usePrettyEmojiButton = gSavedSettings.getBOOL( "FSUsePrettyEmojiButton" );
     static bool useBWEmojis = gSavedSettings.getBOOL( "FSUseBWEmojis" );
     mEmojiPickerToggleBtn = getChild<LLButton>("emoji_picker_toggle_btn");
-    if (usePrettyEmojiButton)
+    if (mForMeChat)
+    {
+        mEmojiPickerToggleBtn->setLabel(LLUIString(""));
+        mEmojiPickerToggleBtn->setImageOverlay("Forme_HUD_Smile");
+    }
+    else if (usePrettyEmojiButton)
     {
         static auto emoji_btn_char = gSavedSettings.getU32("FSPrettyEmojiButtonCode");
         mEmojiPickerToggleBtn->setImageOverlay(LLUUID::null);
@@ -227,7 +239,16 @@ bool FSFloaterNearbyChat::postBuild()
 
     gSavedSettings.getControl("FSShowMutedChatHistory")->getSignal()->connect(boost::bind(&FSFloaterNearbyChat::updateShowMutedChatHistory, this, _2));
 
-    return LLFloater::postBuild();
+    const bool built = LLFloater::postBuild();
+    if (mForMeChat)
+    {
+        getChild<LLButton>("forme_chat_toggle")->setClickedCallback([this](LLUICtrl*, const LLSD&)
+        {
+            setForMeChatCollapsed(!mForMeChatCollapsed);
+        });
+        layoutForMeChat();
+    }
+    return built;
 }
 
 void FSFloaterNearbyChat::updateRlvRestrictions(ERlvBehaviour behavior)
@@ -280,8 +301,8 @@ static std::string appendTime()
 void FSFloaterNearbyChat::addMessage(const LLChat& chat,bool archive,const LLSD &args)
 {
     LLChat& tmp_chat = const_cast<LLChat&>(chat);
-    bool use_plain_text_chat_history = gSavedSettings.getBOOL("PlainTextChatHistory");
-    bool show_timestamps_nearby_chat = gSavedSettings.getBOOL("FSShowTimestampsNearbyChat");
+    bool use_plain_text_chat_history = !mForMeChat && gSavedSettings.getBOOL("PlainTextChatHistory");
+    bool show_timestamps_nearby_chat = mForMeChat || gSavedSettings.getBOOL("FSShowTimestampsNearbyChat");
     // [FIRE-1641 : SJ]: Option to hide timestamps in nearby chat - add Timestamp when show_timestamps_nearby_chat is true
     if (show_timestamps_nearby_chat)
     {
@@ -302,6 +323,9 @@ void FSFloaterNearbyChat::addMessage(const LLChat& chat,bool archive,const LLSD 
     {
         mChatHistory->appendMessage(chat, chat_args, input_append_params);
     }
+
+    if (mForMeChat && mForMeChatCollapsed && archive && !chat.mMuted && chat.mFromID != gAgentID)
+        mForMeChatUnread = llmin(mForMeChatUnread + 1, 9999);
 
     if (archive)
     {
@@ -440,6 +464,11 @@ bool FSFloaterNearbyChat::onChatOptionsEnableContextMenuItem(const LLSD& userdat
 
 void FSFloaterNearbyChat::openFloater(const LLSD& key)
 {
+    if (mForMeChat)
+    {
+        LLFloater::openFloater(key);
+        return;
+    }
     // We override this to put nearbychat in the IM floater. -AO
     if (isChatMultiTab())
     {
@@ -468,6 +497,17 @@ void FSFloaterNearbyChat::removeScreenChat()
 
 void FSFloaterNearbyChat::setVisible(bool visible)
 {
+    if (mForMeChat)
+    {
+        if (visible) removeScreenChat();
+        LLFloater::setVisible(visible);
+        if (gConsole)
+        {
+            if (visible) gConsole->addSession(LLUUID::null);
+            else gConsole->removeSession(LLUUID::null);
+        }
+        return; // Opening the HUD must not steal movement or another editor's focus.
+    }
     if (visible)
     {
         removeScreenChat();
@@ -504,6 +544,7 @@ void FSFloaterNearbyChat::setVisible(bool visible)
 
 void FSFloaterNearbyChat::setMinimized(bool b)
 {
+    if (mForMeChat) { setForMeChatCollapsed(b); return; }
     handleMinimized(b);
 
     LLFloater::setMinimized(b);
@@ -511,6 +552,16 @@ void FSFloaterNearbyChat::setMinimized(bool b)
 
 void FSFloaterNearbyChat::onOpen(const LLSD& key )
 {
+    if (mForMeChat)
+    {
+        if (getHost()) getHost()->removeFloater(this);
+        setHost(nullptr);
+        setCanClose(false);
+        if (gFloaterView && getParent() != gFloaterView) gFloaterView->addChild(this);
+        layoutForMeChat();
+        LLFloater::onOpen(key);
+        return;
+    }
     FSFloaterIMContainer* floater_container = FSFloaterIMContainer::getInstance();
     if (floater_container)
     {
@@ -543,6 +594,57 @@ void FSFloaterNearbyChat::onOpen(const LLSD& key )
     }
 
     LLFloater::onOpen(key);
+}
+
+void FSFloaterNearbyChat::setForMeChatCollapsed(bool collapsed)
+{
+    mForMeChatCollapsed = collapsed;
+    if (!collapsed)
+    {
+        mForMeChatUnread = 0;
+        mChatHistory->setCursorAndScrollToEnd();
+        mChatHistoryMuted->setCursorAndScrollToEnd();
+    }
+    layoutForMeChat();
+}
+
+void FSFloaterNearbyChat::layoutForMeChat()
+{
+    if (!mForMeChat || !getParent()) return;
+    const auto layout = ForMeHUD::layout(getParent()->getRect().getWidth(), getParent()->getRect().getHeight(), mForMeChatCollapsed);
+    const S32 width = layout.chatWidth, height = layout.chatHeight;
+    if (getRect().getWidth() != width || getRect().getHeight() != height)
+        LLFloater::reshape(width, height, false);
+    setOrigin(12, layout.chatBottom);
+    getChildView("forme_chat_input_stack")->setShape(LLRect(14, 56, width - 14, 12));
+    getChildView("forme_chat_icon")->setOrigin(16, height - 35);
+    getChildView("forme_chat_title")->setShape(LLRect(48, height - 14, width - 102, height - 38));
+    getChildView("forme_chat_divider")->setShape(LLRect(16, height - 47, width - 16, height - 48));
+    auto* toggle = getChild<LLButton>("forme_chat_toggle");
+    toggle->setOrigin(width - 42, height - 38);
+    toggle->setImageOverlay(mForMeChatCollapsed ? "Forme_HUD_Expand" : "Forme_HUD_Collapse");
+    toggle->setToolTip(getString(mForMeChatCollapsed ? "forme_chat_expand" : "forme_chat_collapse"));
+    const LLRect history(16, height - 58, width - 16, llmin(66, height - 58));
+    mChatHistory->setShape(history);
+    mChatHistoryMuted->setShape(history);
+    const bool muted = gSavedSettings.getBOOL("FSShowMutedChatHistory");
+    mChatHistory->setVisible(!mForMeChatCollapsed && !muted);
+    mChatHistoryMuted->setVisible(!mForMeChatCollapsed && muted);
+    mUnreadMessagesNotificationPanel->setVisible(false);
+    auto* unread = getChild<LLTextBox>("forme_chat_unread");
+    unread->setOrigin(width - 94, height - 36);
+    unread->setVisible(mForMeChatCollapsed && mForMeChatUnread > 0);
+    unread->setText(mForMeChatUnread >= 999 ? "999+" : std::to_string(mForMeChatUnread));
+    mSendChatButton->setEnabled(!gDisconnected);
+    mInputEditor->setEnabled(!gDisconnected);
+    mSendChatButton->setOrigin(width - 64, 8);
+    mInputEditor->setShape(LLRect(44, 36, width - 70, 6));
+}
+
+void FSFloaterNearbyChat::draw()
+{
+    if (mForMeChat) layoutForMeChat();
+    LLFloater::draw();
 }
 
 // exported here for "clrchat" command line -Zi
@@ -738,6 +840,7 @@ bool FSFloaterNearbyChat::isChatMultiTab()
 
 bool FSFloaterNearbyChat::getVisible()
 {
+    if (mForMeChat) return LLFloater::getVisible();
     FSFloaterIMContainer* im_container = FSFloaterIMContainer::getInstance();
 
     // Treat inactive floater as invisible.
@@ -836,11 +939,12 @@ void FSFloaterNearbyChat::onChatBoxFocusLost()
 
 void FSFloaterNearbyChat::onChatBoxFocusReceived()
 {
-    mInputEditor->setEnabled(!gDisconnected && gSavedSettings.getBOOL("FSNearbyChatbar"));
+    mInputEditor->setEnabled(!gDisconnected && (mForMeChat || gSavedSettings.getBOOL("FSNearbyChatbar")));
 }
 
 void FSFloaterNearbyChat::reshapeChatLayoutPanel()
 {
+    if (mForMeChat) return;
     mChatLayoutPanel->reshape(mChatLayoutPanel->getRect().getWidth(), mInputEditor->getRect().getHeight() + mInputEditorPad, false);
 }
 
@@ -958,7 +1062,7 @@ void FSFloaterNearbyChat::onChatBoxCommit()
 
 void FSFloaterNearbyChat::onChatTypeChanged()
 {
-    mSendChatButton->setLabel(mChatTypeCombo->getSelectedItemLabel());
+    mSendChatButton->setLabel(mForMeChat ? std::string() : mChatTypeCombo->getSelectedItemLabel());
 }
 
 void FSFloaterNearbyChat::sendChatFromViewer(const std::string &utf8text, EChatType type, bool animate)

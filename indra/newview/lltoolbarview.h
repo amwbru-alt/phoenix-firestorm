@@ -116,6 +116,7 @@ protected:
 
 private:
     void    saveToolbars() const;
+    bool mForMeChatShown = false;
     bool    addCommandInternal(const LLCommandId& commandId, LLToolBar* toolbar);
     void    addToToolset(command_id_list_t& command_list, Toolbar& toolbar) const;
 
