@@ -2374,7 +2374,7 @@ void LLFloaterWorldMap::selectRegionCard(S32 index)
     for (S32 i = 0; i < 3; ++i)
         getChild<LLButton>("forme_region_details_" + std::to_string(i))->setToggleState(i == index);
     if (index >= 0 && index < mRegionCards.size())
-        getChild<LLTextBox>("forme_region_status")->setText("");
+        getChild<LLTextBox>("forme_region_status")->setText(std::string());
 }
 
 void LLFloaterWorldMap::actOnRegionCard(S32 action)

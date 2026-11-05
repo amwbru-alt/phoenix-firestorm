@@ -556,6 +556,9 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+      - name: Validate ForMe.World source before build
+        shell: bash
+        run: python scripts/forme_preflight.py
       - name: Install public build tools
         shell: bash
         run: |
