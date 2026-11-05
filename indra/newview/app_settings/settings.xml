@@ -2,6 +2,8 @@
 <llsd xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:noNamespaceSchemaLocation="llsd.xsd">
 <map>
+  <key>ForMeShowFullMenu</key>
+  <map><key>Comment</key><string>Show the complete client menu below the compact ForMe header.</string><key>Persist</key><integer>0</integer><key>Type</key><string>Boolean</string><key>Value</key><integer>0</integer></map>
   <key>FSLandmarkCreatedNotification</key>
   <map>
     <key>Comment</key>

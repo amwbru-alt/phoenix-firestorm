@@ -103,6 +103,8 @@ FSFloaterNearbyChat::FSFloaterNearbyChat(const LLSD& key)
     ,mUnreadMessagesMuted(0)
 {
     //menu
+    mCommitCallbackRegistrar.add("ForMeChat.History", boost::bind(&FSFloaterNearbyChat::onHistoryButtonClicked, this));
+    mCommitCallbackRegistrar.add("ForMeChat.Search", boost::bind(&FSFloaterNearbyChat::onSearchButtonClicked, this));
     mEnableCallbackRegistrar.add("ChatOptions.Check", boost::bind(&FSFloaterNearbyChat::onChatOptionsCheckContextMenuItem, this, _2));
     mCommitCallbackRegistrar.add("ChatOptions.Action", boost::bind(&FSFloaterNearbyChat::onChatOptionsContextMenuItemClicked, this, _2));
     mEnableCallbackRegistrar.add("ChatOptions.Visible", boost::bind(&FSFloaterNearbyChat::onChatOptionsVisibleContextMenuItem, this, _2));
@@ -165,7 +167,7 @@ bool FSFloaterNearbyChat::postBuild()
         boost::bind(&FSFloaterNearbyChat::updateRlvRestrictions, this, _1));
     mInputEditor->setFont(LLViewerChat::getChatFont());
     mInputEditor->setLabel(getString("chatbox_label"));
-    mInputEditor->enableSingleLineMode(mForMeChat || gSavedSettings.getBOOL("FSUseSingleLineChatEntry"));
+    mInputEditor->enableSingleLineMode(gSavedSettings.getBOOL("FSUseSingleLineChatEntry"));
     // <FS:TJ> [FIRE-35804] Allow the IM floater to have separate transparency
     mInputEditor->setTransparencyOverrideCallback(boost::bind(&FSFloaterNearbyChat::onGetChatBoxOpacityCallback, this, _1, _2));
     // </FS:TJ>
@@ -301,8 +303,8 @@ static std::string appendTime()
 void FSFloaterNearbyChat::addMessage(const LLChat& chat,bool archive,const LLSD &args)
 {
     LLChat& tmp_chat = const_cast<LLChat&>(chat);
-    bool use_plain_text_chat_history = !mForMeChat && gSavedSettings.getBOOL("PlainTextChatHistory");
-    bool show_timestamps_nearby_chat = mForMeChat || gSavedSettings.getBOOL("FSShowTimestampsNearbyChat");
+    bool use_plain_text_chat_history = gSavedSettings.getBOOL("PlainTextChatHistory");
+    bool show_timestamps_nearby_chat = gSavedSettings.getBOOL("FSShowTimestampsNearbyChat");
     // [FIRE-1641 : SJ]: Option to hide timestamps in nearby chat - add Timestamp when show_timestamps_nearby_chat is true
     if (show_timestamps_nearby_chat)
     {
@@ -610,21 +612,37 @@ void FSFloaterNearbyChat::setForMeChatCollapsed(bool collapsed)
 
 void FSFloaterNearbyChat::layoutForMeChat()
 {
-    if (!mForMeChat || !getParent()) return;
-    const auto layout = ForMeHUD::layout(getParent()->getRect().getWidth(), getParent()->getRect().getHeight(), mForMeChatCollapsed);
+    if (!mForMeChat || !getParent() || !mChatHistory || !mChatLayoutPanel) return;
+    const bool show_channel = gSavedSettings.getBOOL("FSShowChatChannel");
+    const bool show_type = gSavedSettings.getBOOL("FSShowChatType");
+    const S32 input_extra = mForMeInputHeight - 30;
+    const S32 tools_extra = show_channel || show_type ? 32 : 0;
+    const auto layout = ForMeHUD::layout(getParent()->getRect().getWidth(), getParent()->getRect().getHeight(), mForMeChatCollapsed, input_extra + tools_extra);
     const S32 width = layout.chatWidth, height = layout.chatHeight;
     if (getRect().getWidth() != width || getRect().getHeight() != height)
         LLFloater::reshape(width, height, false);
     setOrigin(12, layout.chatBottom);
-    getChildView("forme_chat_input_stack")->setShape(LLRect(14, 56, width - 14, 12));
+    getChildView("forme_chat_input_stack")->setShape(LLRect(14, 56 + input_extra, width - 14, 12));
+    mChatLayoutPanel->reshape(width - 28, 44 + input_extra, false);
+    getChildView("forme_chat_input_stack")->setVisible(gSavedSettings.getBOOL("FSNearbyChatbar"));
+    getChildView("forme_chat_options")->setOrigin(width - 74, height - 38);
+    auto* tools = getChildView("forme_chat_channel_tools");
+    tools->setShape(LLRect(16, 94 + input_extra, width - 16, 66 + input_extra));
+    tools->setVisible(tools_extra > 0 && gSavedSettings.getBOOL("FSNearbyChatbar"));
+    const S32 half = (width - 40) / 2;
+    mChatTypeCombo->setVisible(show_type);
+    mChatTypeCombo->setShape(LLRect(0, 26, show_channel ? half : width - 32, 2));
+    auto* channel = getChildView("ChatChannel");
+    channel->setVisible(show_channel);
+    channel->setShape(LLRect(show_type ? half + 8 : 0, 26, width - 32, 2));
     getChildView("forme_chat_icon")->setOrigin(16, height - 35);
-    getChildView("forme_chat_title")->setShape(LLRect(48, height - 14, width - 102, height - 38));
+    getChildView("forme_chat_title")->setShape(LLRect(48, height - 14, width - 134, height - 38));
     getChildView("forme_chat_divider")->setShape(LLRect(16, height - 47, width - 16, height - 48));
     auto* toggle = getChild<LLButton>("forme_chat_toggle");
     toggle->setOrigin(width - 42, height - 38);
     toggle->setImageOverlay(mForMeChatCollapsed ? "Forme_HUD_Expand" : "Forme_HUD_Collapse");
     toggle->setToolTip(getString(mForMeChatCollapsed ? "forme_chat_expand" : "forme_chat_collapse"));
-    const LLRect history(16, height - 58, width - 16, llmin(66, height - 58));
+    const LLRect history(16, height - 58, width - 16, llmin(66 + input_extra + tools_extra, height - 58));
     mChatHistory->setShape(history);
     mChatHistoryMuted->setShape(history);
     const bool muted = gSavedSettings.getBOOL("FSShowMutedChatHistory");
@@ -632,13 +650,13 @@ void FSFloaterNearbyChat::layoutForMeChat()
     mChatHistoryMuted->setVisible(!mForMeChatCollapsed && muted);
     mUnreadMessagesNotificationPanel->setVisible(false);
     auto* unread = getChild<LLTextBox>("forme_chat_unread");
-    unread->setOrigin(width - 94, height - 36);
+    unread->setOrigin(width - 126, height - 36);
     unread->setVisible(mForMeChatCollapsed && mForMeChatUnread > 0);
     unread->setText(mForMeChatUnread >= 999 ? "999+" : std::to_string(mForMeChatUnread));
     mSendChatButton->setEnabled(!gDisconnected);
-    mInputEditor->setEnabled(!gDisconnected);
+    mInputEditor->setEnabled(!gDisconnected && gSavedSettings.getBOOL("FSNearbyChatbar"));
     mSendChatButton->setOrigin(width - 64, 8);
-    mInputEditor->setShape(LLRect(44, 36, width - 70, 6));
+    mInputEditor->setShape(LLRect(44, 36 + input_extra, width - 70, 6));
 }
 
 void FSFloaterNearbyChat::draw()
@@ -939,12 +957,21 @@ void FSFloaterNearbyChat::onChatBoxFocusLost()
 
 void FSFloaterNearbyChat::onChatBoxFocusReceived()
 {
-    mInputEditor->setEnabled(!gDisconnected && (mForMeChat || gSavedSettings.getBOOL("FSNearbyChatbar")));
+    mInputEditor->setEnabled(!gDisconnected && gSavedSettings.getBOOL("FSNearbyChatbar"));
 }
 
 void FSFloaterNearbyChat::reshapeChatLayoutPanel()
 {
-    if (mForMeChat) return;
+    if (mForMeChat)
+    {
+        const S32 height = llclamp(mInputEditor->getRect().getHeight(), 30, 110);
+        if (height != mForMeInputHeight)
+        {
+            mForMeInputHeight = height;
+            layoutForMeChat();
+        }
+        return;
+    }
     mChatLayoutPanel->reshape(mChatLayoutPanel->getRect().getWidth(), mInputEditor->getRect().getHeight() + mInputEditorPad, false);
 }
 

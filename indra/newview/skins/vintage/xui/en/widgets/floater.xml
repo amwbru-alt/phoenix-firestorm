@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <!-- See also settings.xml UIFloater* settings for configuration -->
 <floater 
-	bg_opaque_image="floater_background_header"
+	bg_opaque_image="Forme_Round_Window"
 	bg_opaque_image_overlay="White"
-	bg_alpha_image="floater_background"
+	bg_alpha_image="Forme_Round_WindowInactive"
 	bg_alpha_image_overlay="White"
 	background_visible="true"
  name="floater" 
  header_font="SansSerif"
- header_font_shadow="soft"
+ header_font_shadow="none"
  header_height="20"
  close_image="Icon_Close_Foreground"
  snooze_image="Icon_Snooze_Foreground"
@@ -25,5 +25,5 @@
  dock_pressed_image="Icon_Dock_Press"
  help_pressed_image="Icon_Help_Press"
  focus_root="true"
- header_vpad="4"
+ header_vpad="4" bg_opaque_color="White" bg_alpha_color="White"
   />

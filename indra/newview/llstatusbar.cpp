@@ -328,7 +328,18 @@ void LLStatusBar::draw()
     }
     // The ForMe header owns the visible chrome. Native widgets remain available
     // for their commands and state, without overlapping the compact header.
-    if (gMenuBarView) gMenuBarView->setVisible(false);
+    const bool full_menu = gSavedSettings.getBOOL("ForMeShowFullMenu");
+    if (getParent())
+    {
+        const S32 height = full_menu ? 62 : 38;
+        if (getParent()->getRect().getHeight() != height)
+            getParent()->reshape(getParent()->getRect().getWidth(), height, false);
+    }
+    if (gMenuBarView)
+    {
+        gMenuBarView->setVisible(full_menu);
+        if (full_menu) gMenuBarView->setRect(LLRect(8, 24, getRect().getWidth() - 8, 0));
+    }
     for (LLView* child : *getChildList())
         child->setVisible(child->getName().rfind("forme_", 0) == 0);
     if (auto* location = findChild<LLTextBox>("forme_hud_location"))

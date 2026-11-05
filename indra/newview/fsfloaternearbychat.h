@@ -130,6 +130,7 @@ private:
     bool mForMeChat = false;
     bool mForMeChatCollapsed = false;
     S32 mForMeChatUnread = 0;
+    S32 mForMeInputHeight = 30;
 
     void onChatOptionsContextMenuItemClicked(const LLSD& userdata);
     bool onChatOptionsCheckContextMenuItem(const LLSD& userdata);

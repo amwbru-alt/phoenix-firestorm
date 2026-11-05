@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <panel background_visible="false" bevel_style="in" bg_opaque_color="ChatHeaderOpaqueBackground" bg_alpha_color="ChatHeaderAlphaBackground" follows="top|left|right" height="34" label="im_header" layout="topleft" name="forme_chat_message_header" width="310">
   <layout_stack top="0" height="34" right="-80" name="header_ls" layout="topleft" orientation="horizontal" follows="top|left|right" animate="false">
-    <layout_panel name="icon_lp" auto_resize="false" user_resize="false" width="44" height="34">
+    <layout_panel name="icon_lp" visibility_control="ShowChatMiniIcons" auto_resize="false" user_resize="false" width="44" height="34">
       <avatar_icon follows="left" height="34" image_name="Generic_Person" layout="topleft" left="0" mouse_opaque="true" name="avatar_icon" top="0" width="34" />
     </layout_panel>
     <layout_panel name="name_lp" auto_resize="true" user_resize="false" height="24">

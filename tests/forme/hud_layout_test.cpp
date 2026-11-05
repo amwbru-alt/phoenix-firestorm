@@ -35,8 +35,9 @@ int main()
     for (int width = 320; width <= 3840; width += 16)
         for (int height = 360; height <= 2160; height += 24)
             for (bool collapsed : {false, true})
+            for (int extra : {0, 32, 80, 112})
             {
-                const auto value = ForMeHUD::layout(width, height, collapsed);
+                const auto value = ForMeHUD::layout(width, height, collapsed, extra);
                 assert(value.dockLeft >= 12 && value.dockLeft + value.dockWidth <= width - 12);
                 assert(value.chatWidth <= width - 24);
                 assert(value.chatHeight >= 96);

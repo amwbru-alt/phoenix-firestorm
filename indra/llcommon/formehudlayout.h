@@ -34,14 +34,14 @@ struct Layout
 {
     int dockLeft, dockWidth, dockBottom, chatWidth, chatHeight, chatBottom;
 };
-inline Layout layout(int width, int height, bool collapsed)
+inline Layout layout(int width, int height, bool collapsed, int extraHeight = 0)
 {
     const int dockWidth = std::min(496, std::max(0, width - 24));
     const int dockLeft = (width - dockWidth) / 2;
     const int chatWidth = std::min(380, std::max(0, width - 24));
     const int bottom = dockLeft >= 12 + chatWidth + 16 ? 24 : 112;
     return {dockLeft, dockWidth, 24, chatWidth,
-        std::min(collapsed ? 112 : 204, std::max(0, height - bottom - 12)), bottom};
+        std::min((collapsed ? 112 : 204) + std::clamp(extraHeight, 0, 112), std::max(0, height - bottom - 12)), bottom};
 }
 }
 #endif
