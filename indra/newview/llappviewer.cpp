@@ -156,7 +156,6 @@
 #include "stringize.h"
 #include "llcoros.h"
 #include "llexception.h"
-#include "cef/dullahan_version.h"
 #if !LL_LINUX
 #include "vlc/libvlc_version.h"
 #endif // LL_LINUX
@@ -4163,35 +4162,8 @@ LLSD LLAppViewer::getViewerInfo() const
         info["VOICE_VERSION"] = LLTrans::getString("NotConnected");
     }
 
-//#if !LL_LINUX
-    std::ostringstream cef_ver_codec;
-    cef_ver_codec << "Dullahan: ";
-    cef_ver_codec << DULLAHAN_VERSION_MAJOR;
-    cef_ver_codec << ".";
-    cef_ver_codec << DULLAHAN_VERSION_MINOR;
-    cef_ver_codec << ".";
-    cef_ver_codec << DULLAHAN_VERSION_POINT;
-    cef_ver_codec << ".";
-    cef_ver_codec << DULLAHAN_VERSION_BUILD;
-
-    cef_ver_codec << std::endl;
-    cef_ver_codec << "  CEF: ";
-    cef_ver_codec << CEF_VERSION;
-
-    cef_ver_codec << std::endl;
-    cef_ver_codec << "  Chromium: ";
-    cef_ver_codec << CHROME_VERSION_MAJOR;
-    cef_ver_codec << ".";
-    cef_ver_codec << CHROME_VERSION_MINOR;
-    cef_ver_codec << ".";
-    cef_ver_codec << CHROME_VERSION_BUILD;
-    cef_ver_codec << ".";
-    cef_ver_codec << CHROME_VERSION_PATCH;
-
-    info["LIBCEF_VERSION"] = cef_ver_codec.str();
-//#else
-//  info["LIBCEF_VERSION"] = "Undefined";
-//#endif
+    // ForMe.World opens web content in the external browser; CEF is not bundled.
+    info["LIBCEF_VERSION"] = "Not included (external browser)";
 
 #if !LL_LINUX
     std::ostringstream vlc_ver_codec;

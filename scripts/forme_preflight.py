@@ -58,6 +58,22 @@ def main():
             errors.append(f'{path.name}:{line}: use std::string or LLStringExplicit for LLTextBox::setText')
 
     # Do not reintroduce Chromium to repair compilation after browser removal.
+    # CMake/package checks alone miss leftover includes and version macros in
+    # C++ files, which otherwise fail only during the full viewer compilation.
+    browser_header = re.compile(
+        r'^\s*#\s*include\s*[<"](?:cef/|(?:include/)?cef_|dullahan)', re.M)
+    browser_version = re.compile(
+        r'\b(?:DULLAHAN_VERSION_\w+|CEF_VERSION(?:_\w+)?|CHROME_VERSION_\w+)\b')
+    for rel in sorted(tracked):
+        if not rel.startswith('indra/') or pathlib.Path(rel).suffix not in ('.cpp', '.h'):
+            continue
+        path = ROOT / rel
+        if not path.is_file():
+            continue  # Not materialized in a sparse working copy.
+        source = re.sub(r'/\*[\s\S]*?\*/|//[^\n]*', '',
+                        path.read_text(errors='replace'))
+        if browser_header.search(source) or browser_version.search(source):
+            errors.append(f'{rel}: deleted browser header or version dependency')
     for rel in ('indra/CMakeLists.txt', 'indra/media_plugins/CMakeLists.txt',
                 'indra/cmake/CMakeLists.txt', 'indra/newview/CMakeLists.txt'):
         source = re.sub(r'#[^\n]*', '', (ROOT / rel).read_text())
