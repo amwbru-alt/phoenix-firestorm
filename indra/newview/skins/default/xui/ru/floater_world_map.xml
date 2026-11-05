@@ -1,98 +1,34 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8"?>
 <floater name="worldmap" title="Карта мира">
-	 <layout_stack name="resizing_stack">
-    <layout_panel name="forme_region_detail_panel">
-      <button name="forme_region_detail_back" label="Назад к регионам" />
-      <button name="forme_region_detail_tp" label="Телепорт" />
-      <button name="forme_region_detail_copy" label="Копировать ссылку" />
-    </layout_panel>
-	<layout_panel name="map_details_panel">
-	<panel name="layout_panel_1">
-		<text name="events_label">
-			Обозначения
-		</text>
-	</panel>
-	<panel name="layout_panel_2">
-		<button name="Show My Location" tool_tip="Центрировать карту на позиции моего аватара"/>
-		<text name="me_label">
-			Я
-		</text>
-		<text name="person_label">
-			Люди
-		</text>
-		<text name="infohub_label">
-			Инфохаб
-		</text>
-		<text name="land_sale_label">
-			Продажа земли
-		</text>
-		<text name="auction_label">
-			с аукциона
-		</text>
-		<text name="by_owner_label">
-			владельцем
-		</text>
-		<button name="Go Home" tool_tip="Телепортация домой"/>
-		<text name="Home_label">
-			Дом
-		</text>
-		<text name="events_label">
-			События:
-		</text>
-		<text name="pg_label">
-			Общие
-		</text>
-		<check_box initial_value="true" name="events_mature_chk"/>
-		<text name="events_mature_label">
-			Умеренные
-		</text>
-		<text name="events_adult_label">
-			Для взрослых
-		</text>
-	</panel>
-	<panel name="layout_panel_3">
-		<text name="find_on_map_label">
-			Найти на карте
-		</text>
-	</panel>
-	<panel name="layout_panel_4">
-		<combo_box label="Друзья онлайн" name="friend combo" tool_tip="Показать друзей на карте">
-			<combo_box.item label="Мои друзья онлайн" name="item1"/>
-		</combo_box>
-		<combo_box label="Мои закладки" name="landmark combo" tool_tip="Показать на карте мои закладки">
-			<combo_box.item label="Мои закладки" name="item1"/>
-		</combo_box>
-		<search_editor label="Название региона" name="location" tool_tip="Введите название региона"/>
-		<button label="Поиск" name="DoSearch" tool_tip="Поиск региона"/>
-	</panel>
-	<panel name="layout_panel_7">
-		<text name="events_label">
-			Место:
-		</text>
-		<button label="Телепорт" name="Teleport" tool_tip="Телепортация в выбранное место"/>
-		<button label="Копировать" name="copy_slurl" tool_tip="Копировать текущее место в виде URL-адреса SL для использования в интернете."/>
-		<button label="Очистить" name="Clear" tool_tip="Очистить отслеживание и сбросить карту до стандартного вида"/>
-		<button label="Показать место" name="Show Destination" tool_tip="Центрировать карту на выбранном месте"/>
-		<button label="Отследить регион" name="track_region" tool_tip="Добавить регион в отслеживание"/>
-	</panel>
-</layout_panel>
-</layout_stack> 
-
+  <text name="forme_map_title">Карта мира</text>
   <string name="forme_regions_loading">Загрузка регионов…</string>
   <string name="forme_regions_empty">Регионы не найдены</string>
   <string name="forme_regions_failed">Каталог регионов недоступен</string>
+  <string name="forme_region_visitors">[COUNT] в регионе</string>
+  <string name="forme_weather_clear">Ясно</string>
+  <string name="forme_weather_cloudy">Облачно</string>
+  <string name="forme_weather_fog">Туман</string>
+  <string name="forme_weather_rain">Дождь</string>
+  <string name="forme_weather_storm">Шторм</string>
+  <string name="forme_weather_snow">Снег</string>
   <line_editor name="forme_region_query" label="Найти регион" />
-  <button name="forme_region_find" label="Найти" />
   <button name="forme_region_map" label="Карта" />
   <button name="forme_region_cards" label="Карточки" />
   <panel name="forme_regions_panel">
-    <panel name="forme_region_card_0"><button name="forme_region_details_0" label="Подробнее" /></panel>
-    <panel name="forme_region_card_1"><button name="forme_region_details_1" label="Подробнее" /></panel>
-    <panel name="forme_region_card_2"><button name="forme_region_details_2" label="Подробнее" /></panel>
-    <button name="forme_region_prev" label="Назад" />
-    <button name="forme_region_next" label="Далее" />
-
-
-
+    <panel name="forme_region_card_0">
+      <button name="forme_region_details_0" label="Подробнее ›" />
+    </panel>
+    <panel name="forme_region_card_1">
+      <button name="forme_region_details_1" label="Подробнее ›" />
+    </panel>
+    <panel name="forme_region_card_2">
+      <button name="forme_region_details_2" label="Подробнее ›" />
+    </panel>
   </panel>
-  <string name="forme_region_grid_coords">Координаты: [X], [Y]  ·  [WIDTH] × [HEIGHT] м</string></floater>
+  <panel name="resizing_stack">
+    <panel name="forme_region_detail_panel">
+      <button name="forme_region_detail_tp" label="Телепорт" />
+      <button name="forme_region_detail_copy" label="Копировать ссылку" />
+    </panel>
+  </panel>
+</floater>

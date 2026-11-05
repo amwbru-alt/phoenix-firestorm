@@ -33,6 +33,7 @@
 #define LL_LLFLOATERWORLDMAP_H
 
 #include "llfloater.h"
+#include "llframetimer.h"
 #include "llmapimagetype.h"
 #include "llremoteparcelrequest.h"
 #include "llslurl.h"
@@ -266,15 +267,26 @@ private:
     LLPanel*                mTrackCtrlsPanel = nullptr;
 
     void setRegionCardsMode(bool cards);
-    void loadRegionCards(S32 offset);
+    void loadRegionCards(S32 offset, bool refresh = false);
     void showRegionCards(const LLSD& data, U64 request_id);
     void selectRegionCard(S32 index);
     void actOnRegionCard(S32 action);
+    void updateRegionDetails();
+    void requestMapRegion(const std::string& name);
+    static LLUIImagePtr fetchRegionPhoto(const LLSD& row);
 
     LLSD mRegionCards;
     S32 mRegionCardOffset = 0;
     S32 mSelectedRegionCard = -1;
     U64 mRegionCardRequest = 0;
+    bool mRegionCardsMode = true;
+    bool mRegionCardsHaveMore = false;
+    LLFrameTimer mRegionCardRefresh;
+    LLSD mMapRegion;
+    LLUIImagePtr mMapRegionPhoto;
+    std::string mMapRegionName;
+    U64 mMapRegionRequest = 0;
+    LLFrameTimer mMapRegionRefresh;
 
     boost::signals2::connection mTeleportFinishConnection;
 };

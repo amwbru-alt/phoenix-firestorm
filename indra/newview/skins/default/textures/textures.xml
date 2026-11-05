@@ -1248,4 +1248,23 @@ with the same filename but different name
   <texture name="Forme_Weather_rain" file_name="widgets/Forme_Weather_rain.png" preload="false" />
   <texture name="Forme_Weather_storm" file_name="widgets/Forme_Weather_storm.png" preload="false" />
   <texture name="Forme_Weather_snow" file_name="widgets/Forme_Weather_snow.png" preload="false" />
+  <texture name="Forme_WMap_Accent" file_name="widgets/Forme_WMap_Accent.png" preload="false" />
+  <texture name="Forme_WMap_Card" file_name="widgets/Forme_WMap_Card.png" preload="false" />
+  <texture name="Forme_WMap_Clear" file_name="widgets/Forme_WMap_Clear.png" preload="false" />
+  <texture name="Forme_WMap_Close" file_name="widgets/Forme_WMap_Close.png" preload="false" />
+  <texture name="Forme_WMap_Copy" file_name="widgets/Forme_WMap_Copy.png" preload="false" />
+  <texture name="Forme_WMap_Field" file_name="widgets/Forme_WMap_Field.png" preload="false" />
+  <texture name="Forme_WMap_Mask_Card" file_name="widgets/Forme_WMap_Mask_Card.png" preload="false" />
+  <texture name="Forme_WMap_Mask_Map" file_name="widgets/Forme_WMap_Mask_Map.png" preload="false" />
+  <texture name="Forme_WMap_Mask_Photo" file_name="widgets/Forme_WMap_Mask_Photo.png" preload="false" />
+  <texture name="Forme_WMap_People" file_name="widgets/Forme_WMap_People.png" preload="false" />
+  <texture name="Forme_WMap_Pin" file_name="widgets/Forme_WMap_Pin.png" preload="false" />
+  <texture name="Forme_WMap_Selected" file_name="widgets/Forme_WMap_Selected.png" preload="false" />
+  <texture name="Forme_WMap_Switch" file_name="widgets/Forme_WMap_Switch.png" preload="false" />
+  <texture name="Forme_WMap_Teleport" file_name="widgets/Forme_WMap_Teleport.png" preload="false" />
+  <texture name="Forme_WMap_Window" file_name="widgets/Forme_WMap_Window.png" preload="false" />
+  <texture name="Forme_WMap_Zoom" file_name="widgets/Forme_WMap_Zoom.png" preload="false" />
+  <texture name="Forme_WMap_Map" file_name="widgets/Forme_WMap_Map.png" preload="false" />
+  <texture name="Forme_WMap_Cards" file_name="widgets/Forme_WMap_Cards.png" preload="false" />
+  <texture name="Forme_WMap_Link" file_name="widgets/Forme_WMap_Link.png" preload="false" />
 </textures>

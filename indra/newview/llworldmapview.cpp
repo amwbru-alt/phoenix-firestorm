@@ -556,7 +556,7 @@ void LLWorldMapView::draw()
         }
 
         // Draw the region name in the lower left corner
-        if (mMapScale >= DRAW_TEXT_THRESHOLD)
+        if (!mForMeStyle && mMapScale >= DRAW_TEXT_THRESHOLD)
         {
             static LLCachedControl<bool> print_coords(gSavedSettings, "MapShowGridCoords");
             static LLFontGL* font = LLFontGL::getFontSansSerifSmallBold();
@@ -642,7 +642,7 @@ void LLWorldMapView::draw()
     static LLCachedControl<bool> show_adult_events(gSavedSettings, "ShowAdultEvents");
 
     // Draw item infos if we're not zoomed out too much and there's something to draw
-    if ((level <= DRAW_SIMINFO_THRESHOLD) && (show_infohubs ||
+    if (!mForMeStyle && (level <= DRAW_SIMINFO_THRESHOLD) && (show_infohubs ||
                                               show_telehubs ||
                                               show_for_sale ||
                                               show_events ||
@@ -652,6 +652,8 @@ void LLWorldMapView::draw()
         drawItems();
     }
 
+    if (!mForMeStyle)
+    {
     // Draw the Home location (always)
     LLVector3d home;
     if (gAgent.getHomePosGlobal(&home))
@@ -683,6 +685,28 @@ void LLWorldMapView::draw()
     if (mapShowPeople && (level <= DRAW_SIMINFO_THRESHOLD))
     {
         drawAgents();
+    }
+
+    }
+
+    if (mForMeStyle)
+    {
+        const F32 step = llmax(32.f, mMapScale);
+        const LLVector3 origin = globalPosToView(LLVector3d(0.0, 0.0, 0.0));
+        const F32 start_x = fmodf(origin.mV[VX], step);
+        const F32 start_y = fmodf(origin.mV[VY], step);
+        gGL.getTexUnit(0)->unbind(LLTexUnit::TT_TEXTURE);
+        gGL.color4f(0.8f, 0.85f, 0.9f, 0.18f);
+        gGL.begin(LLRender::LINES);
+        for (F32 x = start_x; x < width; x += step)
+        {
+            gGL.vertex2f(x, 0.f); gGL.vertex2f(x, F32(height));
+        }
+        for (F32 y = start_y; y < height; y += step)
+        {
+            gGL.vertex2f(0.f, y); gGL.vertex2f(F32(width), y);
+        }
+        gGL.end();
     }
 
     // Always draw tracking information
@@ -724,7 +748,9 @@ void LLWorldMapView::draw()
     // turn off the scissor
     LLGLDisable no_scissor(GL_SCISSOR_TEST);
 
-    updateDirections();
+    if (!mForMeStyle) updateDirections();
+    for (const auto& direction : {"north", "south", "east", "west", "northeast", "northwest", "southeast", "southwest"})
+        if (auto* label = findChild<LLView>("floater_map_" + std::string(direction))) label->setVisible(!mForMeStyle);
 
     LLView::draw();
 
@@ -1132,6 +1158,14 @@ LLVector3 LLWorldMapView::globalPosToView( const LLVector3d& global_pos )
 void LLWorldMapView::drawTracking(const LLVector3d& pos_global, const LLColor4& color, bool draw_arrow,
                                   const std::string& label, const std::string& tooltip, S32 vert_offset )
 {
+    if (mForMeStyle)
+    {
+        const LLVector3 position = globalPosToView(pos_global);
+        const auto pin = LLUI::getUIImage("Forme_WMap_Pin");
+        if (pin.notNull())
+            pin->draw(ll_round(position.mV[VX]) - 24, ll_round(position.mV[VY]) - 8, 48, 60);
+        return;
+    }
     LLVector3 pos_local = globalPosToView( pos_global );
     S32 x = ll_round( pos_local.mV[VX] );
     S32 y = ll_round( pos_local.mV[VY] );
