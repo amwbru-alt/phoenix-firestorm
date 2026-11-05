@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <panel
  follows="left|right|top|bottom"
  height="768"
@@ -17,7 +17,7 @@
    top="19"
    left="0"
    follows="left|top|right"
-   height="40"
+   height="39"
    layout="topleft"
    name="navigation_bar"
    visible="false"
@@ -34,7 +34,7 @@
               follows="left|right|top"
               name="status_bar_container"
               tab_stop="false"
-              height="19"
+              height="38"
               left="0"
               top="0"
               width="1024"
@@ -46,7 +46,7 @@
             left="0"
             top="0"
             width="1024"
-            height="19"/>
+            height="38"/>
     </layout_panel>
     <layout_panel auto_resize="true"  
                   follows="all"
@@ -65,7 +65,7 @@
             width="1024"/>
       <!-- <FS:Zi> We don't have the mini location bar, so no topinfo_bar required
       <panel follows="left|top|right"
-             height="42"
+             height="37"
              left="0"
              mouse_opaque="false"
              name="topinfo_bar_container"

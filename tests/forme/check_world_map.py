@@ -60,6 +60,8 @@ for skin in ('default', 'starlight', 'starlightcui'):
     for i in range(3):
         card = root.find(f".//*[@name='forme_region_card_{i}']")
         assert card.get('width') == '225' and card.get('height') == '305'
+        selection = card.find(f".//*[@name='forme_region_selection_{i}']")
+        assert int(selection.get('top')) >= 0 and int(selection.get('left')) >= 0, 'negative XUI anchors move the selection outside its card'
         for key in ('photo', 'name', 'weather', 'weather_label', 'visitors', 'selection', 'details'):
             assert card.find(f".//*[@name='forme_region_{key}_{i}']") is not None
     detail = root.find(".//*[@name='forme_region_detail_panel']")

@@ -5031,7 +5031,7 @@ bool process_login_success_response(U32 &first_sim_size_x, U32 &first_sim_size_y
     }
 
     // Request the map server url
-    std::string map_server_url = response["map-server-url"];
+    std::string map_server_url = std::string(ForMeGrid::LoginURI) + "map/";
     if(!map_server_url.empty())
     {
         // We got an answer from the grid -> use that for map for the current session

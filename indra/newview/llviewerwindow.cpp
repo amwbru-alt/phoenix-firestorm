@@ -2460,7 +2460,7 @@ void LLViewerWindow::initWorldUI()
     LLNavigationBar::getInstance();
     // set navbar container visible which is initially hidden on the login screen,
     // the real visibility of navbar and favorites bar is done via visibility control -Zi
-    LLNavigationBar::instance().getView()->setVisible(true);
+    LLNavigationBar::instance().getView()->setVisible(false);
 
     if (!gSavedSettings.getBOOL("ShowMenuBarLocation"))
     {
@@ -7526,8 +7526,8 @@ void LLViewerWindow::setUIVisibility(bool visible)
     static LLCachedControl<bool> show_navbar_favorites_panel(gSavedSettings, "ShowNavbarFavoritesPanel");
     static LLCachedControl<bool> internal_show_group_notices_top_right(gSavedSettings, "InternalShowGroupNoticesTopRight");
     FSNearbyChat::instance().showDefaultChatBar(visible && !autohide_chat_bar());
-    gSavedSettings.setBOOL("FSInternalShowNavbarNavigationPanel", visible && show_navbar_navigation_panel());
-    gSavedSettings.setBOOL("FSInternalShowNavbarFavoritesPanel", visible && show_navbar_favorites_panel());
+    gSavedSettings.setBOOL("FSInternalShowNavbarNavigationPanel", false /* ForMe compact header */);
+    gSavedSettings.setBOOL("FSInternalShowNavbarFavoritesPanel", false /* ForMe compact header */);
     mRootView->getChildView("chiclet_container")->setVisible(visible && internal_show_group_notices_top_right());
     mRootView->getChildView("chiclet_container_bottom")->setVisible(visible && !internal_show_group_notices_top_right());
     // </FS:Ansariel>

@@ -31,7 +31,7 @@
       <icon name="forme_region_people_0" layout="topleft" left="109" top="239" width="19" height="19" image_name="Forme_WMap_People" mouse_opaque="false" />
       <text name="forme_region_visitors_0" layout="topleft" left="136" top="242" width="85" height="18" font="SansSerifSmall" text_color="0.92 0.91 0.90 1" mouse_opaque="false" />
       <button name="forme_region_details_0" layout="topleft" left="16" top="271" width="193" height="28" label="Details ›" font="SansSerif" image_unselected="Forme_WMap_Clear" image_selected="Forme_WMap_Clear" image_pressed="Forme_WMap_Clear" image_pressed_selected="Forme_WMap_Clear" image_disabled="Forme_WMap_Clear" image_disabled_selected="Forme_WMap_Clear" label_color="0.76 0.57 0.91 1" label_color_selected="0.93 0.92 0.91 1" image_color="White" image_color_disabled="White" label_shadow="false" hover_glow_amount="0" font.size="WMapBody" draw_focus_border="false" image_overlay_color="0.93 0.92 0.91 1" display_pressed_state="false" />
-      <icon name="forme_region_selection_0" layout="topleft" left="-4" top="-4" width="233" height="313" image_name="Forme_WMap_Selected" mouse_opaque="false" visible="false" />
+      <icon name="forme_region_selection_0" layout="topleft" left="0" top="0" width="233" height="313" image_name="Forme_WMap_Selected" mouse_opaque="false" visible="false" />
     </panel>
     <panel name="forme_region_card_1" layout="topleft" left="264" top="0" width="225" height="305" background_visible="true" background_opaque="true" bg_opaque_image="Forme_WMap_Card" bg_opaque_image_overlay="White">
       <icon name="forme_region_photo_1" layout="topleft" left="0" top="0" width="225" height="190" image_name="" mouse_opaque="false" />
@@ -43,7 +43,7 @@
       <icon name="forme_region_people_1" layout="topleft" left="109" top="239" width="19" height="19" image_name="Forme_WMap_People" mouse_opaque="false" />
       <text name="forme_region_visitors_1" layout="topleft" left="136" top="242" width="85" height="18" font="SansSerifSmall" text_color="0.92 0.91 0.90 1" mouse_opaque="false" />
       <button name="forme_region_details_1" layout="topleft" left="16" top="271" width="193" height="28" label="Details ›" font="SansSerif" image_unselected="Forme_WMap_Clear" image_selected="Forme_WMap_Clear" image_pressed="Forme_WMap_Clear" image_pressed_selected="Forme_WMap_Clear" image_disabled="Forme_WMap_Clear" image_disabled_selected="Forme_WMap_Clear" label_color="0.76 0.57 0.91 1" label_color_selected="0.93 0.92 0.91 1" image_color="White" image_color_disabled="White" label_shadow="false" hover_glow_amount="0" font.size="WMapBody" draw_focus_border="false" image_overlay_color="0.93 0.92 0.91 1" display_pressed_state="false" />
-      <icon name="forme_region_selection_1" layout="topleft" left="-4" top="-4" width="233" height="313" image_name="Forme_WMap_Selected" mouse_opaque="false" visible="false" />
+      <icon name="forme_region_selection_1" layout="topleft" left="0" top="0" width="233" height="313" image_name="Forme_WMap_Selected" mouse_opaque="false" visible="false" />
     </panel>
     <panel name="forme_region_card_2" layout="topleft" left="504" top="0" width="225" height="305" background_visible="true" background_opaque="true" bg_opaque_image="Forme_WMap_Card" bg_opaque_image_overlay="White">
       <icon name="forme_region_photo_2" layout="topleft" left="0" top="0" width="225" height="190" image_name="" mouse_opaque="false" />
@@ -55,7 +55,7 @@
       <icon name="forme_region_people_2" layout="topleft" left="109" top="239" width="19" height="19" image_name="Forme_WMap_People" mouse_opaque="false" />
       <text name="forme_region_visitors_2" layout="topleft" left="136" top="242" width="85" height="18" font="SansSerifSmall" text_color="0.92 0.91 0.90 1" mouse_opaque="false" />
       <button name="forme_region_details_2" layout="topleft" left="16" top="271" width="193" height="28" label="Details ›" font="SansSerif" image_unselected="Forme_WMap_Clear" image_selected="Forme_WMap_Clear" image_pressed="Forme_WMap_Clear" image_pressed_selected="Forme_WMap_Clear" image_disabled="Forme_WMap_Clear" image_disabled_selected="Forme_WMap_Clear" label_color="0.76 0.57 0.91 1" label_color_selected="0.93 0.92 0.91 1" image_color="White" image_color_disabled="White" label_shadow="false" hover_glow_amount="0" font.size="WMapBody" draw_focus_border="false" image_overlay_color="0.93 0.92 0.91 1" display_pressed_state="false" />
-      <icon name="forme_region_selection_2" layout="topleft" left="-4" top="-4" width="233" height="313" image_name="Forme_WMap_Selected" mouse_opaque="false" visible="false" />
+      <icon name="forme_region_selection_2" layout="topleft" left="0" top="0" width="233" height="313" image_name="Forme_WMap_Selected" mouse_opaque="false" visible="false" />
     </panel>
     <text name="forme_region_status" layout="topleft" left="24" top="112" width="690" height="36" font="SansSerifMedium" text_color="0.92 0.91 0.90 1" mouse_opaque="false" />
   </panel>

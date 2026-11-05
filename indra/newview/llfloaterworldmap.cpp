@@ -739,6 +739,14 @@ void LLFloaterWorldMap::draw()
         auto* photo = getChild<LLIconCtrl>(control);
         auto image = photo->getImage();
         if (image.isNull() || image->getImage().isNull()) return;
+        // LLIconCtrl::setImage does not register the screen size of a fetched image.
+        // Feed it every frame, otherwise an HTTP photo can remain at discard -1.
+        if (auto* texture = dynamic_cast<LLViewerFetchedTexture*>(image->getImage().get()))
+        {
+            texture->setBoostLevel(LLGLTexture::BOOST_UI);
+            texture->setKnownDrawSize(photo->getRect().getWidth(), photo->getRect().getHeight());
+            texture->addTextureStats(F32(photo->getRect().getWidth() * photo->getRect().getHeight()));
+        }
         const F32 width = image->getImage()->getWidth();
         const F32 height = image->getImage()->getHeight();
         if (width <= 0.f || height <= 0.f) return;
@@ -2425,7 +2433,13 @@ void LLFloaterWorldMap::selectRegionCard(S32 index)
 {
     mSelectedRegionCard = index;
     for (S32 i = 0; i < 3; ++i)
-        getChildView("forme_region_selection_" + std::to_string(i))->setVisible(i == index);
+    {
+        auto* card = getChildView("forme_region_card_" + std::to_string(i));
+        auto* selection = getChildView("forme_region_selection_" + std::to_string(i));
+        // XUI negative top/left values are parent-relative anchors, not an outset.
+        selection->setRect(LLRect(-4, card->getRect().getHeight() + 4, card->getRect().getWidth() + 4, -4));
+        selection->setVisible(i == index);
+    }
     if (index >= 0 && index < mRegionCards.size())
     {
         getChild<LLTextBox>("forme_region_status")->setText(std::string());
@@ -2459,7 +2473,12 @@ LLUIImagePtr LLFloaterWorldMap::fetchRegionPhoto(const LLSD& row)
     if (!photo.empty())
     {
         auto* texture = LLViewerTextureManager::getFetchedTextureFromUrl(photo, FTT_DEFAULT, true, LLGLTexture::BOOST_UI);
-        if (texture) return new LLUIImage(photo, texture);
+        if (texture)
+        {
+            texture->setKnownDrawSize(512, 512);
+            texture->addTextureStats(512.f * 512.f);
+            return new LLUIImage(photo, texture);
+        }
     }
     return LLUIImagePtr();
 }

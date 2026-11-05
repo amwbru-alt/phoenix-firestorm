@@ -1,24 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <floater
- positioning="none"
+ positioning="relative"
+ rel_x="0.48"
+ rel_y="0.46"
+ bg_alpha_image_overlay="floater_bg_color_a"
  legacy_header_height="0"
- can_minimize="true" 
- can_resize="true"
- follows="top|right"
- height="200"
+ can_minimize="false"
+ can_resize="false"
+ header_height="0"
+ height="204"
  layout="topleft"
  min_height="64"
  min_width="64"
  name="Map"
  title=""
 
- save_rect="true"
+ save_rect="false"
  save_visibility="true"
  single_instance="true"
- left="0"
- top="0"
- width="200">
-    <!-- RLVa shows the anonymized name on the regular tooltip when @shownames=n restricted (rather than show the avatar inspector) --> 
+ width="204" can_close="false" show_title="false" background_visible="true" background_opaque="true" bg_opaque_image="Rounded_Rect" bg_opaque_color="0.20 0.195 0.20 0.96">
+    <!-- RLVa shows the anonymized name on the regular tooltip when @shownames=n restricted (rather than show the avatar inspector) -->
     <floater.string
      name="ToolTipMsg">
         [AGENT][PARCEL_NAME_MSG][PARCEL_SALE_PRICE_MSG][PARCEL_SALE_AREA_MSG][PARCEL_OWNER_MSG][REGION_NAME_MSG][TOOL_TIP_HINT_MSG]
@@ -43,16 +44,16 @@
      name="RegionNameMsg">
         Region: [REGION_NAME]
     </floater.string>
-	<floater.string
+    <floater.string
      name="ToolTipHintMsg">
         Double-click to open map
-	</floater.string>
-	<floater.string
+    </floater.string>
+    <floater.string
      name="AltToolTipHintMsg">
         Double-click to teleport
-	</floater.string>
+    </floater.string>
     <floater.string name="mini_map_caption">
-	MINIMAP
+        Mini-map
     </floater.string>
     <net_map
      bg_color="Transparent"
@@ -67,105 +68,77 @@
     <text
      type="string"
      length="1"
-     bottom="218"
      label="N"
      layout="topleft"
-     left="0"
      name="floater_map_north"
-     right="10"
-     text_color="SL-White"
-     top="209">
+     text_color="1 1 1 0.7">
         N
     </text>
     <text
      type="string"
      length="1"
-     bottom="218"
      label="E"
      layout="topleft"
-     left="0"
      name="floater_map_east"
-     right="10"
-     text_color="SL-White"
-     top="209">
+     text_color="1 1 1 0.7">
         E
     </text>
     <text
      type="string"
      length="1"
-     bottom="205"
      label="W"
      layout="topleft"
-     left="0"
      name="floater_map_west"
-     right="11"
-     text_color="SL-White"
-     top="195">
+     text_color="1 1 1 0.7">
         W
     </text>
     <text
      type="string"
      length="1"
-     bottom="218"
      label="S"
      layout="topleft"
-     left="0"
      name="floater_map_south"
-     right="10"
-     text_color="SL-White"
-     top="209">
+     text_color="1 1 1 0.7">
         S
     </text>
     <text
      type="string"
      length="1"
-     bottom="218"
      label="SE"
      layout="topleft"
-     left="0"
      name="floater_map_southeast"
-     right="20"
-     text_color="SL-White"
-     top="209">
+     text_color="1 1 1 0.7">
         SE
     </text>
     <text
      type="string"
      length="1"
-     bottom="218"
      label="NE"
      layout="topleft"
-     left="0"
      name="floater_map_northeast"
-     right="20"
-     text_color="SL-White"
-     top="209">
+     text_color="1 1 1 0.7">
         NE
     </text>
     <text
      type="string"
      length="1"
-     bottom="218"
      label="SW"
      layout="topleft"
-     left="0"
      name="floater_map_southwest"
-     right="20"
-     text_color="SL-White"
-     top="209">
+     text_color="1 1 1 0.7">
         SW
     </text>
     <text
      type="string"
      length="1"
-     bottom="218"
      label="NW"
      layout="topleft"
-     left="0"
      name="floater_map_northwest"
-     right="20"
-     text_color="SL-White"
-     top="209">
+     text_color="1 1 1 0.7">
         NW
     </text>
+    <button name="forme_minimap_zoom_in" layout="topleft" follows="right|top"
+            right="-8" top="12" width="24" height="24" label="+" tool_tip="Zoom in" image_unselected="Forme_WMap_Zoom" image_selected="Forme_WMap_Zoom" />
+    <button name="forme_minimap_zoom_out" layout="topleft" follows="right|top"
+            right="-8" top="40" width="24" height="24" label="−" tool_tip="Zoom out" image_unselected="Forme_WMap_Zoom" image_selected="Forme_WMap_Zoom" />
 </floater>

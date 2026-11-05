@@ -673,6 +673,19 @@ void LLToolBarView::draw()
         }
     }
 
+    if (auto* chat_row = findChild<LLView>("forme_chat_row")) chat_row->setVisible(false);
+    // Saved FUI layouts from older viewers must not change the four-action dock.
+    if (auto* dock = findChild<LLPanel>("forme_compact_dock"))
+    {
+        for (auto* toolbar : mToolbars) if (toolbar) toolbar->setVisible(false);
+        dock->setVisible(mShowToolbars);
+        dock->setOrigin((getRect().getWidth() - dock->getRect().getWidth()) / 2, 26);
+        const std::pair<const char*, const char*> actions[] = {
+            {"map", "world_map"}, {"people", "people"}, {"inventory", "inventory"}, {"market", ""}};
+        for (const auto& action : actions)
+            if (auto* button = dock->findChild<LLButton>(std::string("forme_dock_button_") + action.first))
+                button->setToggleState(*action.second && LLFloaterReg::instanceVisible(action.second));
+    }
     LLUICtrl::draw();
 }
 

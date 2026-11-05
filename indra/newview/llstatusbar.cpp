@@ -155,7 +155,7 @@ namespace
     }
     LLFrameTimer sRegionWeatherRefresh;
 }
-S32 STATUS_BAR_HEIGHT = 26;
+S32 STATUS_BAR_HEIGHT = 38;
 extern S32 MENU_BAR_HEIGHT;
 
 // <FS:LO> FIRE-7639 - Stop the blinking after a while
@@ -325,6 +325,26 @@ void LLStatusBar::draw()
         {
             icon->setValue(LLSD(gAgent.getID()));
         }
+    }
+    // The ForMe header owns the visible chrome. Native widgets remain available
+    // for their commands and state, without overlapping the compact header.
+    if (gMenuBarView) gMenuBarView->setVisible(false);
+    for (LLView* child : *getChildList())
+        child->setVisible(child->getName().rfind("forme_", 0) == 0);
+    if (auto* location = findChild<LLTextBox>("forme_hud_location"))
+    {
+        LLViewerRegion* region = gAgent.getRegion();
+        location->setText(region && !gRlvHandler.hasBehaviour(RLV_BHVR_SHOWLOC) ? region->getName() : std::string());
+        LLRect rect = location->getRect();
+        rect.mRight = llmax(rect.mLeft, llmin(420, getRect().getWidth() - 168));
+        location->setRect(rect);
+    }
+    if (auto* connection = findChild<LLTextBox>("forme_hud_connection"))
+    {
+        const bool connected = gAgent.getRegion() && gAgent.getRegion()->isAlive();
+        connection->setText(std::string("● ") + getString(connected ? "forme_region_connected" : "forme_region_disconnected"));
+        connection->setColor(connected ? LLColor4(0.30f, 0.78f, 0.36f, 1.f) : LLColor4(0.85f, 0.55f, 0.35f, 1.f));
+        connection->setVisible(getRect().getWidth() >= 800);
     }
     LLPanel::draw();
 }

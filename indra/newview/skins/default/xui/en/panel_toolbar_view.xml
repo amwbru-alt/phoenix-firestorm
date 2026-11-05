@@ -6,7 +6,7 @@
  height="500"
  width="1024"
  left="0"
- top="0" 
+ top="0"
  mouse_opaque="false"
  tab_stop="false"
  visible="true">
@@ -47,15 +47,15 @@
                  side="left"
                  button_display_mode="icons_only">
 	             <icon layout="topleft"
-	                   height="15"
-	                   width="28"
+	                   height="28"
+	                   width="15"
 	                   follows="left|top"
 	                   top="20"
 	                   left="10"
-	                   tab_stop="false" 
+	                   tab_stop="false"
                        visible="false"
-	                   image_name="Caret_Left_Icon"
-                       name="caret" />
+	                   image_name="Caret_Bottom_Icon"
+                       name="caret" use_draw_context_alpha="false" />
         </toolbar_vertical> <!-- FS:Ansariel: Special vertical toolbar -->
       </layout_panel>
       <layout_panel name="non_toolbar_panel"
@@ -87,7 +87,7 @@
                top="40"
                bg_visible="false"
                width="20">
-        </panel>          
+        </panel>
 		<!-- FS:Ansariel: For chiclets and notices at bottom -->
         <panel follows="left|bottom|right"
                layout="topleft"
@@ -119,15 +119,15 @@
           side="right"
           button_display_mode="icons_only">
 	      <icon layout="topleft"
-	            height="15"
-	            width="28"
+	            height="28"
+	            width="15"
 	            follows="left|top"
 	            top="20"
 	            left="10"
-	            tab_stop="false" 
+	            tab_stop="false"
                 visible="false"
-	            image_name="Caret_Right_Icon"
-	            name="caret" />
+	            image_name="Caret_Bottom_Icon"
+	            name="caret" use_draw_context_alpha="false" />
         </toolbar_vertical> <!-- FS:Ansariel: Special vertical toolbar -->
       </layout_panel>
     </layout_stack>
@@ -177,7 +177,7 @@
 	            follows="left|top"
 	            top="20"
 	            left="10"
-	            tab_stop="false" 
+	            tab_stop="false"
                 visible="false"
                 use_draw_context_alpha="false"
 	            image_name="Caret_Bottom_Icon"
@@ -306,4 +306,35 @@
 
   </layout_panel>
 </layout_stack>
+
+<panel name="forme_compact_dock" layout="topleft" left="313" bottom="-26" width="398" height="68" follows="bottom" background_visible="true" background_opaque="true" bg_opaque_image="Rounded_Rect" bg_opaque_color="0.20 0.195 0.20 0.96">
+    <panel name="forme_dock_map" layout="topleft" left="6" top="5" width="94" height="58">
+      <button name="forme_dock_button_map" layout="topleft" left="0" top="0" width="94" height="58" label="" image_unselected="Forme_WMap_Clear" image_selected="Forme_WMap_Teleport" image_pressed="Forme_WMap_Teleport" draw_focus_border="false" is_toggle="true">
+        <commit_callback function="Floater.Toggle" parameter="world_map" />
+      </button>
+      <icon name="forme_dock_icon_map" layout="topleft" left="36" top="6" width="22" height="22" image_name="Forme_WMap_Map" mouse_opaque="false" color="0.90 0.88 0.91 1" />
+      <text name="forme_dock_label_map" layout="topleft" left="0" top="35" width="94" height="18" font="SansSerifSmall" halign="center" text_color="0.90 0.88 0.91 1" mouse_opaque="false">Карта</text>
+    </panel>
+    <panel name="forme_dock_people" layout="topleft" left="102" top="5" width="94" height="58">
+      <button name="forme_dock_button_people" layout="topleft" left="0" top="0" width="94" height="58" label="" image_unselected="Forme_WMap_Clear" image_selected="Forme_WMap_Teleport" image_pressed="Forme_WMap_Teleport" draw_focus_border="false" is_toggle="true">
+        <commit_callback function="Floater.Toggle" parameter="people" />
+      </button>
+      <icon name="forme_dock_icon_people" layout="topleft" left="36" top="6" width="22" height="22" image_name="Forme_WMap_People" mouse_opaque="false" color="0.90 0.88 0.91 1" />
+      <text name="forme_dock_label_people" layout="topleft" left="0" top="35" width="94" height="18" font="SansSerifSmall" halign="center" text_color="0.90 0.88 0.91 1" mouse_opaque="false">Люди</text>
+    </panel>
+    <panel name="forme_dock_inventory" layout="topleft" left="198" top="5" width="94" height="58">
+      <button name="forme_dock_button_inventory" layout="topleft" left="0" top="0" width="94" height="58" label="" image_unselected="Forme_WMap_Clear" image_selected="Forme_WMap_Teleport" image_pressed="Forme_WMap_Teleport" draw_focus_border="false" is_toggle="true">
+        <commit_callback function="Floater.Toggle" parameter="inventory" />
+      </button>
+      <icon name="forme_dock_icon_inventory" layout="topleft" left="36" top="6" width="22" height="22" image_name="Command_Inventory_Icon" mouse_opaque="false" color="0.90 0.88 0.91 1" />
+      <text name="forme_dock_label_inventory" layout="topleft" left="0" top="35" width="94" height="18" font="SansSerifSmall" halign="center" text_color="0.90 0.88 0.91 1" mouse_opaque="false">Инвентарь</text>
+    </panel>
+    <panel name="forme_dock_market" layout="topleft" left="294" top="5" width="94" height="58">
+      <button name="forme_dock_button_market" layout="topleft" left="0" top="0" width="94" height="58" label="" image_unselected="Forme_WMap_Clear" image_selected="Forme_WMap_Teleport" image_pressed="Forme_WMap_Teleport" draw_focus_border="false" is_toggle="true">
+        <commit_callback function="Avatar.OpenMarketplace" />
+      </button>
+      <icon name="forme_dock_icon_market" layout="topleft" left="36" top="6" width="22" height="22" image_name="Command_Marketplace_Icon" mouse_opaque="false" color="0.90 0.88 0.91 1" />
+      <text name="forme_dock_label_market" layout="topleft" left="0" top="35" width="94" height="18" font="SansSerifSmall" halign="center" text_color="0.90 0.88 0.91 1" mouse_opaque="false">Маркет</text>
+    </panel>
+  </panel>
 </toolbar_view>
