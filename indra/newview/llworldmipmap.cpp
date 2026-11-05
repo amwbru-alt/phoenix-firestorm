@@ -193,7 +193,7 @@ LLPointer<LLViewerFetchedTexture> LLWorldMipmap::loadObjectsTile(U32 grid_x, U32
     // Get the grid coordinates
     // <FS:CR> HG Maps
     //std::string imageurl = gSavedSettings.getString("CurrentMapServerURL") + llformat("map-%d-%d-%d-objects.jpg", level, grid_x, grid_y);
-    std::string imageurl = (std::string(ForMeGrid::LoginURI) + "map/") + llformat("map-%d-%d-%d-objects.jpg", level, grid_x, grid_y);
+    std::string imageurl = std::string(ForMeGrid::LoginURI) + llformat("map-%d-%d-%d-objects.jpg", level, grid_x, grid_y);
     // </FS:CR>
 
     // DO NOT COMMIT!! DEBUG ONLY!!!

@@ -2463,7 +2463,10 @@ LLUIImagePtr LLFloaterWorldMap::fetchRegionPhoto(const LLSD& row)
     {
         if (path.rfind(origin, 0) == 0)
             path = "/" + path.substr(origin.size());
-        if ((path.rfind("/map/", 0) != 0 && path.rfind("/web/", 0) != 0) ||
+        // Accept the portal alias, but use the native root tile endpoint as well
+        // on servers that still run the old two-segment map handler.
+        if (path.rfind("/map/map-", 0) == 0) path = path.substr(4);
+        if ((path.rfind("/map-", 0) != 0 && path.rfind("/web/", 0) != 0) ||
             path.find("..") != std::string::npos || path.find_first_of("\\%\r\n") != std::string::npos)
             return {};
         return origin + path.substr(1);
