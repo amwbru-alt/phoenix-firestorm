@@ -60,3 +60,5 @@ jobs:
           python3 tests/forme/check_window_layouts.py
           g++ -std=c++20 -Wall -Wextra -Werror -pedantic -Iindra/llcommon tests/forme/ui_style_test.cpp -o "$RUNNER_TEMP/ui-style-test"
           "$RUNNER_TEMP/ui-style-test"
+      - name: Check native chat sender names and fmw identity links
+        run: python3 tests/forme/check_chat_names.py

@@ -1753,16 +1753,12 @@ void FSChatHistory::appendMessage(const LLChat& chat, const LLSD &args, const LL
                 name_params.use_default_link_style = false;
                 name_params.link_href = LLSLURL(from_me ? "agentself" : "agent", chat.mFromID, "inspect").getSLURLString();
 
-                // Add link to avatar's inspector and delimiter to message.
-                if (forme_badge.valid)
-                {
-                    name_params.is_link = true;
-                    appendText(ForMeBadge::decorate(forme_badge, chat.mFromName), prependNewLineState, name_params);
-                }
-                else
-                {
-                appendText(std::string(name_params.link_href), prependNewLineState, name_params);
-                }
+                // Show the sender immediately, even while the URL name cache is loading.
+                // The profile address is the link target, never its visible label.
+                name_params.is_link = true;
+                const std::string sender_label = from_me && gSavedSettings.getBOOL("FSChatHistoryShowYou")
+                    ? LLTrans::getString("AgentNameSubst") : chat.mFromName;
+                appendText(ForMeBadge::decorate(forme_badge, sender_label), prependNewLineState, name_params);
 
                 prependNewLineState = false;
 
