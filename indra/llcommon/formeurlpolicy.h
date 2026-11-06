@@ -1,3 +1,5 @@
+// Copyright (C) 2026, ForMe.World contributors.
+// SPDX-License-Identifier: LGPL-2.1-only
 /** ForMe.World region links. Other virtual-world schemes are never accepted. */
 #ifndef FORME_URL_POLICY_H
 #define FORME_URL_POLICY_H

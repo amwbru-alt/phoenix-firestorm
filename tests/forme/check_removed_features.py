@@ -1,3 +1,5 @@
+# Copyright (C) 2026, ForMe.World contributors.
+# SPDX-License-Identifier: LGPL-2.1-only
 """Check packaged UI and protocol boundaries after removal of upstream features."""
 from pathlib import Path
 import plistlib

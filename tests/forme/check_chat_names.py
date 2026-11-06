@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Copyright (C) 2026, ForMe.World contributors.
+# SPDX-License-Identifier: LGPL-2.1-only
 """Regress the reported fmw agentself transcript URL and preserve sender labels."""
 from pathlib import Path
 import re

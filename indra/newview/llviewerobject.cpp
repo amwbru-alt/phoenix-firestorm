@@ -6391,7 +6391,7 @@ void LLViewerObject::setTextIsHighlighted(bool is_highlighted)
                 // If the child is not an avatar, then try to set it's text is highlighed flag, which should recussivly get to all sub children. (Kind of hope not a lot of prims with this setup)
                 if (!child->isAvatar())
                 {
-                    child->setTextIsHighlighted(is_highlighted);                    
+                    child->setTextIsHighlighted(is_highlighted);
                 }
             }
         }

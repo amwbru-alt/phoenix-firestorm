@@ -1178,7 +1178,7 @@ void LLPanelMainInventory::onFilterTypeSelected(const std::string& filter_type_n
 
         return;
     }
-    // <FS:minerjr> [FIRE-35042] Inventory - Only Coalesced Filter - More accessible 
+    // <FS:minerjr> [FIRE-35042] Inventory - Only Coalesced Filter - More accessible
     // Special treatment for "coalesced" filter
     else if (filter_type_name == "filter_type_coalesced")
     {
@@ -2056,7 +2056,7 @@ void LLFloaterInventoryFinder::onOnlyCoalescedFilterCommit()
     if (mOnlyCoalescedFilterCheck && mFilter)
     {
         // Set the mFilter's Filter Coalesced Objects value to the Only Coalesced Filter Checkbox value
-        mFilter->setFilterCoalescedObjects(mOnlyCoalescedFilterCheck->getValue());        
+        mFilter->setFilterCoalescedObjects(mOnlyCoalescedFilterCheck->getValue());
     }
     FSInventoryCustomTabs::notifyFilterStateChanged(mPanelMainInventory); // <FS:PP> FIRE-35598: Custom filters in inventory (feature idea: Catznip)
 }

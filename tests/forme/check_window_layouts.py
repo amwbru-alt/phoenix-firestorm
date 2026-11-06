@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Copyright (C) 2026, ForMe.World contributors.
+# SPDX-License-Identifier: LGPL-2.1-only
 """Check real window navigation, retained native controls and line-icon geometry."""
 from pathlib import Path
 import json

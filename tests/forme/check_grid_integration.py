@@ -22,7 +22,7 @@
 #  * The Phoenix Firestorm Project, Inc., 1831 Oakwood Drive, Fairmont, Minnesota 56031-3225 USA
 #  * http://www.firestormviewer.org
 #  * $/LicenseInfo$
-# 
+#
 """Structural integration contracts; full viewer builds remain a separate check."""
 from pathlib import Path
 import re

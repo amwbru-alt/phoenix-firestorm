@@ -1,3 +1,5 @@
+# Copyright (C) 2026, ForMe.World contributors.
+# SPDX-License-Identifier: LGPL-2.1-only
 from pathlib import Path
 import xml.etree.ElementTree as ET
 ROOT=Path(__file__).resolve().parents[2]

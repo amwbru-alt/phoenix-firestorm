@@ -1677,7 +1677,7 @@ void LLToolDragAndDrop::dropTexture(LLViewerObject* hit_obj,
         //LLPanelFace* panel_face = gFloaterTools ? gFloaterTools->getPanelFace() : nullptr;  // <FS:Zi> switchable edit texture/materials panel
         if (nodep
             // <FS:Zi> switchable edit texture/materials panel
-            //&& panel_face 
+            //&& panel_face
             && gFloaterTools
             // <FS:Zi>
             && gFloaterTools->getVisible()

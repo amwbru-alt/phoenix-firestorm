@@ -89,7 +89,7 @@ void LLURLLineEditor::copyEscapedURLToClipboard()
         || LLStringUtil::startsWith(unescaped_text, "fmw://")) // SLURL
         text_to_copy = utf8str_to_wstring(LLWeb::escapeURL(unescaped_text));
     // <FS:HT> [FIRE-34020] Copy of address bar contents does not URL encode space in region name for OpenSim only
-    else if (LLStringUtil::startsWith(unescaped_text, "fmw://")) 
+    else if (LLStringUtil::startsWith(unescaped_text, "fmw://"))
         text_to_copy = utf8str_to_wstring(LLWeb::escapeURL(unescaped_text));
     // </FS:HT>
     else // human-readable location

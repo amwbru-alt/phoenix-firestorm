@@ -1491,7 +1491,7 @@ void LLFloaterSnapshotBase::ImplBase::updateLivePreview()
     {
         LL_DEBUGS() << "changed" << LL_ENDL;
         updateControls(mFloater);
-    }    
+    }
 }
 
 //static

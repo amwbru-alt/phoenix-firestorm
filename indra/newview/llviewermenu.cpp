@@ -6651,12 +6651,12 @@ void handle_take(bool take_separate)
     // Fix: pass selection to the confirm_take, so that selection doesn't "die" after confirmation dialog is opened
     LLObjectSelectionHandle obj_selection = LLSelectMgr::instance().getSelection();
     params.functor.function([take_separate, obj_selection](const LLSD &notification, const LLSD &response)
-    { 
-        if (take_separate) 
+    {
+        if (take_separate)
         {
             confirm_take_separate(notification, response, obj_selection);
         }
-        else 
+        else
         {
             confirm_take(notification, response, obj_selection);
         }
@@ -7976,7 +7976,7 @@ class LLCommSetShowOnscreenConsole : public view_listener_t
         // This change will propagate to the other controls for this value
         bool show_onscreen_console = !gSavedSettings.getBOOL("FSShowOnscreenConsole");
         gSavedSettings.setBOOL("FSShowOnscreenConsole", show_onscreen_console);
-        
+
         return true;
     }
 };

@@ -2123,7 +2123,7 @@ void LLVOAvatar::renderOnlySelectedBones(const std::vector<std::string> &selecte
 
         gGL.popMatrix();
 
-        
+
         // renderBoxAroundJointAttachments( jointp );
 
     }
@@ -2213,7 +2213,7 @@ void LLVOAvatar::renderOnlySelectedBones(const std::vector<std::string> &selecte
 void LLVOAvatar::renderBoxAroundJointAttachments(LLJoint * joint)
 {
     LLJointRiggingInfo* rig_info = NULL;
-    
+
     if (joint->getJointNum() < mJointRiggingInfoTab.size())
     {
         rig_info = &mJointRiggingInfoTab[joint->getJointNum()];

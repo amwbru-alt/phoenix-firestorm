@@ -3936,7 +3936,7 @@ LLUUID LLIMMgr::addSession(
     if (new_session &&
         ((IM_NOTHING_SPECIAL == dialog) || (IM_SESSION_P2P_INVITE == dialog) || (IM_SESSION_CONFERENCE_START == dialog)) &&
         // <AS:chanayane> [FIRE-34494] fix unable to open an IM with someone who started a group chat
-        //ids.size())   
+        //ids.size())
         !ids.empty())
         // </AS:chanayane>
     {
@@ -3950,9 +3950,9 @@ LLUUID LLIMMgr::addSession(
             // Protect against wrong session type reuse (e.g., conference reused for IM)
             if (session->mType != dialog)
             {
-                LL_WARNS("IMVIEW") << "Discarding mismatched session type reuse: expected " 
-                   << dialog << " but found " << session->mType 
-                   << " for session " << session->mSessionID 
+                LL_WARNS("IMVIEW") << "Discarding mismatched session type reuse: expected "
+                   << dialog << " but found " << session->mType
+                   << " for session " << session->mSessionID
                    << ". This may indicate improper reuse of a session object." << LL_ENDL;
                 session = nullptr;
                 new_session = true;

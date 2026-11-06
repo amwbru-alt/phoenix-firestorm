@@ -3452,7 +3452,7 @@ void login_show()
     // <FS:PP> Whitelist reminder
     if( gSavedSettings.getBOOL("FSShowWhitelistReminder") )
     {
-        LLNotificationsUtil::add("WhitelistReminder"); 
+        LLNotificationsUtil::add("WhitelistReminder");
         gSavedSettings.setBOOL("FSShowWhitelistReminder", false);
     }
     // </FS:PP>

@@ -333,7 +333,7 @@ void LLFloater::initFloater(const Params& p)
     // Help button: '?'
     //SL-14050 Disable all Help question marks
     // <FS:TJ> Disable the help button only if the debug setting is on
-    
+
     mButtonsEnabled[BUTTON_HELP] = false;// false;
     // </FS:TJ>
 

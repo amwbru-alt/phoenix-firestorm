@@ -1,3 +1,5 @@
+// Copyright (C) 2026, ForMe.World contributors.
+// SPDX-License-Identifier: LGPL-2.1-only
 #include "formeurlpolicy.h"
 #include <cassert>
 #include <iostream>

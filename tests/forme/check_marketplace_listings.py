@@ -1,3 +1,5 @@
+# Copyright (C) 2026, ForMe.World contributors.
+# SPDX-License-Identifier: LGPL-2.1-only
 """Native marketplace boundaries; the server's executable tests cover its contract."""
 from pathlib import Path
 import xml.etree.ElementTree as ET

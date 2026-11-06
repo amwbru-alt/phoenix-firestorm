@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Copyright (C) 2026, ForMe.World contributors.
+# SPDX-License-Identifier: LGPL-2.1-only
 """Protect existing forms and validate packaged rounded theme resources."""
 from pathlib import Path
 import hashlib

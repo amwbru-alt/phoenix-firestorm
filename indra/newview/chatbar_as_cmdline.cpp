@@ -751,7 +751,7 @@ void cmdline_track(std::string_view params)
 
     if (auto entry = FSRadar::getInstance()->getEntry(avatar_id))
     {
-		LLAvatarActions::track(avatar_id);
+        LLAvatarActions::track(avatar_id);
         LLStringUtil::format_map_t args;
         args["[NAME]"] = entry->getName();
         FSCommon::report_cmdline_result(LLTrans::getString("FSCmdLineTrackPosAvatar", args));

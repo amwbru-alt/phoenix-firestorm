@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Copyright (C) 2026, ForMe.World contributors.
+# SPDX-License-Identifier: LGPL-2.1-only
 """Render editable ForMe line icons into the viewer's native clipped atlas (requires sharp)."""
 from pathlib import Path
 import json

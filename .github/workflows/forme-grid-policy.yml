@@ -62,3 +62,5 @@ jobs:
           "$RUNNER_TEMP/ui-style-test"
       - name: Check native chat sender names and fmw identity links
         run: python3 tests/forme/check_chat_names.py
+      - name: Check CI license compatibility and complete PR ranges
+        run: python3 tests/forme/test_ci_validation.py

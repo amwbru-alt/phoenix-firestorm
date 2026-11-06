@@ -1593,7 +1593,7 @@ bool FSPanelAreaSearchList::handleKeyHere(KEY key, MASK mask)
             return true;
         }
     }
-    
+
     return LLPanel::handleKeyHere(key, mask);
 }
 

@@ -23,7 +23,7 @@
  * The Phoenix Firestorm Project, Inc., 1831 Oakwood Drive, Fairmont, Minnesota 56031-3225 USA
  * http://www.firestormviewer.org
  * $/LicenseInfo$
- * 
+ *
  */
 // potential workaround for fmw://grid:port/Partial/x/y/z resolution
 // 2024.04.30 humbletim

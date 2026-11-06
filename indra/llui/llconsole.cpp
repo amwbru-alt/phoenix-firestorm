@@ -186,7 +186,7 @@ void LLConsole::draw()
         return;
     }
 
-    // <FS:minerjr> [FIRE-35039] Add flag to show/hide the on-screen console   
+    // <FS:minerjr> [FIRE-35039] Add flag to show/hide the on-screen console
     // Get the Show On-screen Console flag from the Comm menu
     static LLUICachedControl<bool> showOnscreenConsole("FSShowOnscreenConsole");
     // If the Show On-screen Console flag is disabled and the current console is the global console

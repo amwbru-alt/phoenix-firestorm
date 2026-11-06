@@ -1,3 +1,5 @@
+// Copyright (C) 2026, ForMe.World contributors.
+// SPDX-License-Identifier: LGPL-2.1-only
 /** Public ForMe.World metadata. No role, settings or login-policy fields. */
 #ifndef FORME_VIEWER_DATA_H
 #define FORME_VIEWER_DATA_H
