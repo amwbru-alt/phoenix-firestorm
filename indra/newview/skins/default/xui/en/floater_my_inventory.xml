@@ -1,24 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<floater
- positioning="relative"
- rel_x="0.48"
- rel_y="0.08"
- can_close="true"
- can_resize="true"
- height="510"
-
- min_width="280"
- min_height="200"
- name="floater_my_inventory"
- save_rect="true"
- save_visibility="true"
- reuse_instance="true"
- title="Inventory"
- width="360" >
-   <panel
-    class="sidepanel_inventory"
-    name="main_panel"
-    filename="sidepanel_inventory.xml"
-    follows="all"
-    top="0"/>
+<?xml version='1.0' encoding='utf-8'?>
+<floater positioning="relative" rel_x="0.48" rel_y="0.08" can_close="true" can_resize="true" height="680" min_width="660" min_height="480" name="floater_my_inventory" save_rect="true" save_visibility="true" reuse_instance="true" title="Inventory" width="840" header_height="44" header_vpad="10" header_icon="Forme_UI_Inventory" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD" legacy_header_height="0">
+  <panel class="sidepanel_inventory" name="main_panel" filename="sidepanel_inventory.xml" follows="all" left="0" top="0" layout="topleft" width="840" height="680" />
 </floater>

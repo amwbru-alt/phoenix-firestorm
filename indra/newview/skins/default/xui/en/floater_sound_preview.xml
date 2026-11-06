@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <floater
- legacy_header_height="18"
+ legacy_header_height="0"
  height="180"
  layout="topleft"
  name="Sound Preview"
 
  title="Sound.Wav"
- width="300" forme_creator_only="true">
+ width="300" forme_creator_only="true" header_height="44" header_vpad="10" header_icon="Forme_UI_Window" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD">
     <text
      type="string"
      length="1"

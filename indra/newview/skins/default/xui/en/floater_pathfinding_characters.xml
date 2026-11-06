@@ -13,7 +13,7 @@
     reuse_instance="true"
     save_rect="false"
     single_instance="true"
-    title="Pathfinding Characters">
+    title="Pathfinding Characters" header_height="44" header_vpad="10" header_icon="Forme_UI_Window" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD" legacy_header_height="0">
   <floater.string name="messaging_initial"></floater.string>
   <floater.string name="messaging_get_inprogress">Querying for pathfinding characters ...</floater.string>
   <floater.string name="messaging_get_error">Error detected while querying for pathfinding characters.</floater.string>

@@ -42,11 +42,17 @@ with the same filename but different name
 <texture name="Activate_Checkmark" file_name="taskpanel/Activate_Checkmark.png" preload="false" />
 
   <texture name="AddItem_Disabled" file_name="icons/AddItem_Disabled.png" preload="false" />
-  <texture name="AddItem_Off" file_name="icons/AddItem_Off.png" preload="false" />
-  <texture name="AddItem_Press" file_name="icons/AddItem_Press.png" preload="false" />
+  <texture name="AddItem_Off" file_name="forme_ui/Icons.png" preload="true" clip.left="196" clip.right="214" clip.top="572" clip.bottom="554" />
+  
+  <texture name="AddItem_Press" file_name="forme_ui/Icons.png" preload="true" clip.left="196" clip.right="214" clip.top="572" clip.bottom="554" />
 
-  <texture name="Arrow_Left_Off" file_name="navbar/Arrow_Left_Off.png" preload="true" />
-  <texture name="Arrow_Right_Off" file_name="navbar/Arrow_Right_Off.png" preload="true" />
+  
+
+  <texture name="Arrow_Left_Off" file_name="forme_ui/Icons.png" preload="true" clip.left="132" clip.right="148" clip.top="1020" clip.bottom="1004" />
+  
+  <texture name="Arrow_Right_Off" file_name="forme_ui/Icons.png" preload="true" clip.left="324" clip.right="340" clip.top="1020" clip.bottom="1004" />
+
+  
 
 <!--
 -->
@@ -55,8 +61,10 @@ with the same filename but different name
   <texture name="Arrow_Small_Left" file_name="widgets/Arrow_Small_Left.png" preload="true" />
   <texture name="Arrow_Small_Right" file_name="widgets/Arrow_Small_Right.png" preload="true" />
 
-  <texture name="Arrow_Down" file_name="widgets/Arrow_Down.png"	preload="true" />
-  <texture name="Arrow_Up" file_name="widgets/Arrow_Up.png" preload="true" />
+  <texture name="Arrow_Down" file_name="forme_ui/Icons.png" preload="true" clip.left="4" clip.right="20" clip.top="1020" clip.bottom="1004" />
+  
+  <texture name="Arrow_Up" file_name="forme_ui/Icons.png" preload="true" clip.left="516" clip.right="532" clip.top="1020" clip.bottom="1004" />
+  
 
   <texture name="AudioMute_Off" file_name="icons/AudioMute_Off.png" preload="false" />
   <texture name="AudioMute_Over" file_name="icons/AudioMute_Over.png" preload="false" />
@@ -97,21 +105,33 @@ with the same filename but different name
   <texture name="Cam_Tracking_In" file_name="bottomtray/Cam_Tracking_In.png" preload="false" />
   <texture name="Cam_Tracking_Out" file_name="bottomtray/Cam_Tracking_Out.png" preload="false" />
 
-  <texture name="Checkbox_Off_Disabled" file_name="widgets/Checkbox_Disabled.png" preload="true" />
-  <texture name="Checkbox_On_Disabled" file_name="widgets/Checkbox_On_Disabled.png" preload="true" />
-  <texture name="Checkbox_Off" file_name="widgets/Checkbox_Off.png" preload="true" />
-  <texture name="Checkbox_On" file_name="widgets/Checkbox_On.png" preload="true" />
-  <texture name="Checkbox_On_Press" file_name="widgets/Checkbox_On_Press.png" preload="true" />
-  <texture name="Checkbox_Press" file_name="widgets/Checkbox_Press.png" preload="true" />
+  <texture name="Checkbox_Off_Disabled" file_name="forme_round/CheckDisabled.png" preload="true" />
+  
+  <texture name="Checkbox_On_Disabled" file_name="forme_round/CheckOnDisabled.png" preload="true" />
+  
+  <texture name="Checkbox_Off" file_name="forme_round/CheckOff.png" preload="true" />
+  
+  <texture name="Checkbox_On" file_name="forme_round/CheckOn.png" preload="true" />
+  
+  <texture name="Checkbox_On_Press" file_name="forme_round/CheckOn.png" preload="true" />
+  
+  <texture name="Checkbox_Press" file_name="forme_round/CheckOff.png" preload="true" />
+  
 
-  <texture name="ComboButton_Disabled" file_name="widgets/ComboButton_Disabled.png" preload="true" scale.left="2" scale.top="19" scale.right="18" scale.bottom="2" />
-  <texture name="ComboButton_Selected" file_name="widgets/ComboButton_Selected.png" preload="true" scale.left="2" scale.top="19" scale.right="18" scale.bottom="2" />
-  <texture name="ComboButton_UpSelected" file_name="widgets/ComboButton_UpSelected.png" preload="true" scale.left="2" scale.top="19" scale.right="18" scale.bottom="2" />
+  <texture name="ComboButton_Disabled" file_name="forme_round/Disabled.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="ComboButton_Selected" file_name="forme_round/FieldFocus.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="ComboButton_UpSelected" file_name="forme_round/FieldFocus.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
   <texture name="ComboButton_Up_On_Selected" file_name="widgets/ComboButton_Up_On_Selected.png" preload="true" scale.left="2" scale.top="19" scale.right="18" scale.bottom="2" />
-  <texture name="ComboButton_Off" file_name="widgets/ComboButton_Off.png" preload="true" scale.left="2" scale.top="19" scale.right="18" scale.bottom="2" />
-  <texture name="ComboButton_UpOff" file_name="widgets/ComboButton_UpOff.png" preload="true" scale.left="2" scale.top="19" scale.right="18" scale.bottom="2" />
+  <texture name="ComboButton_Off" file_name="forme_round/Field.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="ComboButton_UpOff" file_name="forme_round/Field.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
   <texture name="Container" file_name="containers/Container.png" preload="false" />
-  <texture name="Copy" file_name="icons/Copy.png" preload="false" />
+  <texture name="Copy" file_name="forme_ui/Icons.png" preload="true" clip.left="196" clip.right="214" clip.top="892" clip.bottom="874" />
+  
 
   <texture name="DisclosureArrow_Opened_Off" file_name="widgets/DisclosureArrow_Opened_Off.png" preload="true" />
 
@@ -119,15 +139,22 @@ with the same filename but different name
   <texture name="DownArrow_Off" file_name="icons/DownArrow_Off.png" preload="false" />
   <texture name="Dragbar" file_name="windows/Dragbar.png" preload="false" scale.left="35" scale.top="5" scale.right="29" scale.bottom="5" />
 
-  <texture name="DropDown_Disabled" file_name="widgets/DropDown_Disabled.png" preload="true" scale.left="4" scale.top="19" scale.right="99" scale.bottom="4" />
-  <texture name="DropDown_Press" file_name="widgets/DropDown_Press.png" preload="true" scale.left="4" scale.top="19" scale.right="99" scale.bottom="4" />
-  <texture name="DropDown_On" file_name="widgets/DropDown_On.png" preload="true" scale.left="4" scale.top="19" scale.right="99" scale.bottom="4" />
-  <texture name="DropDown_Off" file_name="widgets/DropDown_Off.png" preload="true" scale.left="4" scale.top="19" scale.right="99" scale.bottom="4" />
+  <texture name="DropDown_Disabled" file_name="forme_round/Disabled.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="DropDown_Press" file_name="forme_round/FieldFocus.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="DropDown_On" file_name="forme_round/FieldFocus.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="DropDown_Off" file_name="forme_round/Field.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+
+  
 
   <texture name="DropTarget" file_name="widgets/DropTarget.png" preload="false" />
 
   <texture name="ExternalBrowser_Off" file_name="icons/ExternalBrowser_Off.png" preload="false" />
-  <texture name="Edit_Wrench" file_name="icons/Edit_Wrench.png" preload="false" />
+  <texture name="Edit_Wrench" file_name="forme_ui/Icons.png" preload="true" clip.left="132" clip.right="148" clip.top="828" clip.bottom="812" />
+
+  
 
   <texture name="Favorite_Star_Active" file_name="navbar/Favorite_Star_Active.png" preload="false" />
   <texture name="Favorite_Star_Off" file_name="navbar/Favorite_Star_Off.png" preload="false" />
@@ -158,12 +185,18 @@ with the same filename but different name
 
   <texture name="Home_Off" file_name="navbar/Home_Off.png" preload="false" />
 
-  <texture name="Icon_Close_Foreground" file_name="windows/Icon_Close_Foreground.png" preload="true" />
-  <texture name="Icon_Close_Press" file_name="windows/Icon_Close_Press.png" preload="true" />
-  <texture name="Icon_Close_Toast" file_name="windows/Icon_Close_Toast.png" preload="true" />
+  <texture name="Icon_Close_Foreground" file_name="forme_ui/Icons.png" preload="true" clip.left="452" clip.right="468" clip.top="956" clip.bottom="940" />
+  
+  <texture name="Icon_Close_Press" file_name="forme_ui/Icons.png" preload="true" clip.left="452" clip.right="468" clip.top="956" clip.bottom="940" />
+  
+  <texture name="Icon_Close_Toast" file_name="forme_ui/Icons.png" preload="true" clip.left="516" clip.right="533" clip.top="956" clip.bottom="939" />
 
-  <texture name="Icon_Dock_Foreground" file_name="windows/Icon_Dock_Foreground.png" preload="true" />
-  <texture name="Icon_Dock_Press" file_name="windows/Icon_Dock_Press.png" preload="true" />
+  
+
+  <texture name="Icon_Dock_Foreground" file_name="forme_ui/Icons.png" preload="true" clip.left="964" clip.right="980" clip.top="892" clip.bottom="876" />
+  
+  <texture name="Icon_Dock_Press" file_name="forme_ui/Icons.png" preload="true" clip.left="964" clip.right="980" clip.top="892" clip.bottom="876" />
+  
 
   <texture name="Icon_For_Sale" file_name="icons/Icon_For_Sale.png" preload="false" />
 
@@ -171,14 +204,23 @@ with the same filename but different name
   <texture name="Icon_Gear_Foreground" file_name="windows/Icon_Gear_Foreground.png" preload="false" />
   <texture name="Icon_Gear_Press" file_name="windows/Icon_Gear_Press.png" preload="false" />
 
-  <texture name="Icon_Help_Foreground" file_name="windows/Icon_Help_Foreground.png" preload="true" />
-  <texture name="Icon_Help_Press" file_name="windows/Icon_Help_Press.png" preload="true" />
+  <texture name="Icon_Help_Foreground" file_name="forme_ui/Icons.png" preload="true" clip.left="324" clip.right="340" clip.top="764" clip.bottom="748" />
+  
+  <texture name="Icon_Help_Press" file_name="forme_ui/Icons.png" preload="true" clip.left="324" clip.right="340" clip.top="764" clip.bottom="748" />
 
-  <texture name="Icon_Minimize_Foreground" file_name="windows/Icon_Minimize_Foreground.png" preload="true" />
-  <texture name="Icon_Minimize_Press" file_name="windows/Icon_Minimize_Press.png" preload="true" />
+  
 
-  <texture name="Icon_Restore_Foreground" file_name="windows/Icon_Restore_Foreground.png" preload="false" />
-  <texture name="Icon_Restore_Press" file_name="windows/Icon_Restore_Press.png" preload="false" />
+  <texture name="Icon_Minimize_Foreground" file_name="forme_ui/Icons.png" preload="true" clip.left="772" clip.right="788" clip.top="700" clip.bottom="684" />
+  
+  <texture name="Icon_Minimize_Press" file_name="forme_ui/Icons.png" preload="true" clip.left="772" clip.right="788" clip.top="700" clip.bottom="684" />
+
+  
+
+  <texture name="Icon_Restore_Foreground" file_name="forme_ui/Icons.png" preload="true" clip.left="580" clip.right="596" clip.top="572" clip.bottom="556" />
+  
+  <texture name="Icon_Restore_Press" file_name="forme_ui/Icons.png" preload="true" clip.left="580" clip.right="596" clip.top="572" clip.bottom="556" />
+
+  
 
   <texture name="Info" file_name="icons/Info.png" preload="false" />
   <texture name="Info_Small" file_name="icons/Info_Small.png" preload="false" />
@@ -191,46 +233,84 @@ with the same filename but different name
   <texture name="Inspector_Hover" file_name="windows/Inspector_Hover.png" preload="false" />
   <texture name="Inspector_I" file_name="windows/Inspector_I.png" preload="false" />
 
-  <texture name="Inv_Alpha" file_name="icons/Inv_Alpha.png" preload="false" />
-  <texture name="Inv_Animation" file_name="icons/Inv_Animation.png" preload="false" />
-  <texture name="Inv_BodyShape" file_name="icons/Inv_BodyShape.png" preload="false" />
-  <texture name="Inv_CallingCard" file_name="icons/Inv_CallingCard.png" preload="false" />
-  <texture name="Inv_Clothing" file_name="icons/Inv_Clothing.png" preload="false" />
-  <texture name="Inv_Eye" file_name="icons/Inv_Eye.png" preload="false" />
-  <texture name="Inv_FolderClosed" file_name="icons/Inv_FolderClosed.png" preload="false" />
-  <texture name="Inv_FolderOpen" file_name="icons/Inv_FolderOpen.png" preload="false" />
-  <texture name="Inv_Gesture" file_name="icons/Inv_Gesture.png" preload="false" />
-  <texture name="Inv_Gloves" file_name="icons/Inv_Gloves.png" preload="false" />
-  <texture name="Inv_Hair" file_name="icons/Inv_Hair.png" preload="false" />
-  <texture name="Inv_LinkItem" file_name="icons/Inv_LinkItem.png" preload="false" />
-  <texture name="Inv_LinkFolder" file_name="icons/Inv_LinkFolder.png" preload="false" />
-  <texture name="Inv_Jacket" file_name="icons/Inv_Jacket.png" preload="false" />
-  <texture name="Inv_LookFolderOpen" file_name="icons/Inv_LookFolderOpen.png" preload="false" />
-  <texture name="Inv_LookFolderClosed" file_name="icons/Inv_LookFolderClosed.png" preload="false" />
-  <texture name="Inv_LostClosed" file_name="icons/Inv_LostClosed.png" preload="false" />
-  <texture name="Inv_LostOpen" file_name="icons/Inv_LostOpen.png" preload="false" />
-  <texture name="Inv_Landmark" file_name="icons/Inv_Landmark.png" preload="false" />
-  <texture name="Inv_Notecard" file_name="icons/Inv_Notecard.png" preload="false" />
-  <texture name="Inv_Object" file_name="icons/Inv_Object.png" preload="false" />
-  <texture name="Inv_Object_Multi" file_name="icons/Inv_Object_Multi.png" preload="false" />
-  <texture name="Inv_Pants" file_name="icons/Inv_Pants.png" preload="false" />
-  <texture name="Inv_Script" file_name="icons/Inv_Script.png" preload="false" />
-  <texture name="Inv_Shirt" file_name="icons/Inv_Shirt.png" preload="false" />
-  <texture name="Inv_Shoe" file_name="icons/Inv_Shoe.png" preload="false" />
-  <texture name="Inv_Skin" file_name="icons/Inv_Skin.png" preload="false" />
-  <texture name="Inv_Skirt" file_name="icons/Inv_Skirt.png" preload="false" />
-  <texture name="Inv_Snapshot" file_name="icons/Inv_Snapshot.png" preload="false" />
-  <texture name="Inv_Socks" file_name="icons/Inv_Socks.png" preload="false" />
-  <texture name="Inv_Sound" file_name="icons/Inv_Sound.png" preload="false" />
-  <texture name="Inv_SysClosed" file_name="icons/Inv_SysClosed.png" preload="false" />
-  <texture name="Inv_SysOpen" file_name="icons/Inv_SysOpen.png" preload="false" />
-  <texture name="Inv_Tattoo" file_name="icons/Inv_Tattoo.png" preload="false" />
-  <texture name="Inv_Texture" file_name="icons/Inv_Texture.png" preload="false" />
-  <texture name="Inv_TrashClosed" file_name="icons/Inv_TrashClosed.png" preload="false" />
-  <texture name="Inv_TrashOpen" file_name="icons/Inv_TrashOpen.png" preload="false" />
+  <texture name="Inv_Alpha" file_name="forme_ui/Icons.png" preload="true" clip.left="708" clip.right="724" clip.top="764" clip.bottom="748" />
+  
+  <texture name="Inv_Animation" file_name="forme_ui/Icons.png" preload="true" clip.left="644" clip.right="660" clip.top="444" clip.bottom="428" />
+  
+  <texture name="Inv_BodyShape" file_name="forme_ui/Icons.png" preload="true" clip.left="324" clip.right="340" clip.top="572" clip.bottom="556" />
+  
+  <texture name="Inv_CallingCard" file_name="forme_ui/Icons.png" preload="true" clip.left="324" clip.right="340" clip.top="572" clip.bottom="556" />
+  
+  <texture name="Inv_Clothing" file_name="forme_ui/Icons.png" preload="true" clip.left="772" clip.right="788" clip.top="956" clip.bottom="940" />
+  
+  <texture name="Inv_Eye" file_name="forme_ui/Icons.png" preload="true" clip.left="324" clip.right="340" clip.top="828" clip.bottom="812" />
+  
+  <texture name="Inv_FolderClosed" file_name="forme_ui/Icons.png" preload="true" clip.left="772" clip.right="788" clip.top="828" clip.bottom="812" />
+  
+  <texture name="Inv_FolderOpen" file_name="forme_ui/Icons.png" preload="true" clip.left="900" clip.right="916" clip.top="828" clip.bottom="812" />
+  
+  <texture name="Inv_Gesture" file_name="forme_ui/Icons.png" preload="true" clip.left="644" clip.right="660" clip.top="444" clip.bottom="428" />
+  
+  <texture name="Inv_Gloves" file_name="forme_ui/Icons.png" preload="true" clip.left="772" clip.right="788" clip.top="956" clip.bottom="940" />
+  
+  <texture name="Inv_Hair" file_name="forme_ui/Icons.png" preload="true" clip.left="324" clip.right="340" clip.top="572" clip.bottom="556" />
+  
+  <texture name="Inv_LinkItem" file_name="forme_ui/Icons.png" preload="true" clip.left="964" clip.right="980" clip.top="764" clip.bottom="748" />
+  
+  <texture name="Inv_LinkFolder" file_name="forme_ui/Icons.png" preload="true" clip.left="68" clip.right="84" clip.top="700" clip.bottom="684" />
+  
+  <texture name="Inv_Jacket" file_name="forme_ui/Icons.png" preload="true" clip.left="772" clip.right="788" clip.top="956" clip.bottom="940" />
+  
+  <texture name="Inv_LookFolderOpen" file_name="forme_ui/Icons.png" preload="true" clip.left="132" clip.right="148" clip.top="764" clip.bottom="748" />
+  
+  <texture name="Inv_LookFolderClosed" file_name="forme_ui/Icons.png" preload="true" clip.left="132" clip.right="148" clip.top="764" clip.bottom="748" />
+  
+  <texture name="Inv_LostClosed" file_name="forme_ui/Icons.png" preload="true" clip.left="772" clip.right="788" clip.top="828" clip.bottom="812" />
+  
+  <texture name="Inv_LostOpen" file_name="forme_ui/Icons.png" preload="true" clip.left="772" clip.right="788" clip.top="828" clip.bottom="812" />
+  
+  <texture name="Inv_Landmark" file_name="forme_ui/Icons.png" preload="true" clip.left="964" clip.right="980" clip.top="636" clip.bottom="620" />
+  
+  <texture name="Inv_Notecard" file_name="forme_ui/Icons.png" preload="true" clip.left="260" clip.right="276" clip.top="636" clip.bottom="620" />
+  
+  <texture name="Inv_Object" file_name="forme_ui/Icons.png" preload="true" clip.left="324" clip.right="340" clip.top="892" clip.bottom="876" />
+  
+  <texture name="Inv_Object_Multi" file_name="forme_ui/Icons.png" preload="true" clip.left="644" clip.right="660" clip.top="892" clip.bottom="876" />
+  
+  <texture name="Inv_Pants" file_name="forme_ui/Icons.png" preload="true" clip.left="388" clip.right="404" clip.top="636" clip.bottom="620" />
+  
+  <texture name="Inv_Script" file_name="forme_ui/Icons.png" preload="true" clip.left="4" clip.right="20" clip.top="892" clip.bottom="876" />
+  
+  <texture name="Inv_Shirt" file_name="forme_ui/Icons.png" preload="true" clip.left="772" clip.right="788" clip.top="956" clip.bottom="940" />
+  
+  <texture name="Inv_Shoe" file_name="forme_ui/Icons.png" preload="true" clip.left="580" clip.right="596" clip.top="508" clip.bottom="492" />
+  
+  <texture name="Inv_Skin" file_name="forme_ui/Icons.png" preload="true" clip.left="324" clip.right="340" clip.top="572" clip.bottom="556" />
+  
+  <texture name="Inv_Skirt" file_name="forme_ui/Icons.png" preload="true" clip.left="772" clip.right="788" clip.top="956" clip.bottom="940" />
+  
+  <texture name="Inv_Snapshot" file_name="forme_ui/Icons.png" preload="true" clip.left="964" clip.right="980" clip.top="1020" clip.bottom="1004" />
+  
+  <texture name="Inv_Socks" file_name="forme_ui/Icons.png" preload="true" clip.left="580" clip.right="596" clip.top="508" clip.bottom="492" />
+  
+  <texture name="Inv_Sound" file_name="forme_ui/Icons.png" preload="true" clip.left="132" clip.right="148" clip.top="636" clip.bottom="620" />
+  
+  <texture name="Inv_SysClosed" file_name="forme_ui/Icons.png" preload="true" clip.left="772" clip.right="788" clip.top="828" clip.bottom="812" />
+  
+  <texture name="Inv_SysOpen" file_name="forme_ui/Icons.png" preload="true" clip.left="772" clip.right="788" clip.top="828" clip.bottom="812" />
+  
+  <texture name="Inv_Tattoo" file_name="forme_ui/Icons.png" preload="true" clip.left="772" clip.right="788" clip.top="1020" clip.bottom="1004" />
+  
+  <texture name="Inv_Texture" file_name="forme_ui/Icons.png" preload="true" clip.left="4" clip.right="20" clip.top="764" clip.bottom="748" />
+  
+  <texture name="Inv_TrashClosed" file_name="forme_ui/Icons.png" preload="true" clip.left="388" clip.right="404" clip.top="444" clip.bottom="428" />
+  
+  <texture name="Inv_TrashOpen" file_name="forme_ui/Icons.png" preload="true" clip.left="388" clip.right="404" clip.top="444" clip.bottom="428" />
+  
   <texture name="Inv_Underpants" file_name="icons/Inv_Underpants.png" preload="false" />
   <texture name="Inv_Undershirt" file_name="icons/Inv_Undershirt.png" preload="false" />
-  <texture name="Inv_Link" file_name="icons/Inv_Link.png" preload="false" />
+  <texture name="Inv_Link" file_name="forme_ui/Icons.png" preload="true" clip.left="900" clip.right="906" clip.top="764" clip.bottom="756" />
+  
   <texture name="Inv_Invalid" file_name="icons/Inv_Invalid.png" preload="false" />
   
   <texture name="Linden_Dollar_Alert" file_name="widgets/Linden_Dollar_Alert.png"/>
@@ -242,7 +322,8 @@ with the same filename but different name
   <texture name="List_View_Disabled" file_name="icons/List_View_Disabled.png" preload="false" />
   <texture name="List_View_On" file_name="icons/List_View_On.png" preload="false" />
 
-  <texture name="Lock" file_name="icons/Lock.png" preload="false" />
+  <texture name="Lock" file_name="forme_ui/Icons.png" preload="true" clip.left="196" clip.right="214" clip.top="700" clip.bottom="682" />
+  
   <texture name="Lock2" file_name="navbar/Lock.png" preload="false" />
 
   <texture name="Locked_Icon" file_name="icons/Locked_Icon.png" preload="false" />
@@ -323,8 +404,11 @@ with the same filename but different name
   <texture name="Object_View_On" file_name="bottomtray/Object_View_On.png" preload="false" />
 
   <texture name="OptionsMenu_Disabled" file_name="icons/OptionsMenu_Disabled.png" preload="false" />
-  <texture name="OptionsMenu_Off" file_name="icons/OptionsMenu_Off.png" preload="false" />
-  <texture name="OptionsMenu_Press" file_name="icons/OptionsMenu_Press.png" preload="false" />
+  <texture name="OptionsMenu_Off" file_name="forme_ui/Icons.png" preload="true" clip.left="324" clip.right="342" clip.top="508" clip.bottom="490" />
+  
+  <texture name="OptionsMenu_Press" file_name="forme_ui/Icons.png" preload="true" clip.left="324" clip.right="342" clip.top="508" clip.bottom="490" />
+
+  
 
   <texture name="PanOrbit_Off" file_name="bottomtray/PanOrbit_Off.png" preload="false" />
 
@@ -376,21 +460,38 @@ with the same filename but different name
   <texture name="ProgressBar" file_name="widgets/ProgressBar.png" preload="true" scale.left="4" scale.top="10" scale.right="48" scale.bottom="2" />
   <texture name="ProgressTrack" file_name="widgets/ProgressTrack.png" preload="true" scale.left="4" scale.top="13" scale.right="148" scale.bottom="2" />
 
-  <texture name="PushButton_Disabled" file_name="widgets/PushButton_Disabled.png" preload="true" scale.left="4" scale.top="19" scale.right="28" scale.bottom="4" />
-  <texture name="PushButton_Off" file_name="widgets/PushButton_Off.png" preload="true" scale.left="4" scale.top="19" scale.right="28" scale.bottom="4" />
-  <texture name="PushButton_On" file_name="widgets/PushButton_On.png" preload="true" scale.left="4" scale.top="19" scale.right="28" scale.bottom="4" />
-  <texture name="PushButton_On_Selected" file_name="widgets/PushButton_On_Selected.png" preload="true" scale.left="4" scale.top="19" scale.right="28" scale.bottom="4" />
-  <texture name="PushButton_Press" file_name="widgets/PushButton_Press.png" preload="true" scale.left="4" scale.top="19" scale.right="28" scale.bottom="4" />
-  <texture name="PushButton_Selected" file_name="widgets/PushButton_Selected.png" preload="true" scale.left="4" scale.top="19" scale.right="28" scale.bottom="4" />
-  <texture name="PushButton_Selected_Press" file_name="widgets/PushButton_Selected_Press.png" preload="true" scale.left="4" scale.top="19" scale.right="28" scale.bottom="4" />
-  <texture name="PushButton_Selected_Disabled" file_name="widgets/PushButton_Selected_Disabled.png" preload="true" scale.left="4" scale.top="19" scale.right="28" scale.bottom="4" />
+  <texture name="PushButton_Disabled" file_name="forme_round/Disabled.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="PushButton_Off" file_name="forme_round/Button.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="PushButton_On" file_name="forme_round/Button.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="PushButton_On_Selected" file_name="forme_round/Accent.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="PushButton_Press" file_name="forme_round/ButtonHover.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="PushButton_Selected" file_name="forme_round/Accent.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="PushButton_Selected_Press" file_name="forme_round/AccentPressed.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="PushButton_Selected_Disabled" file_name="forme_round/AccentDisabled.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
 
-  <texture name="RadioButton_Press" file_name="widgets/RadioButton_Press.png" preload="true" />
-  <texture name="RadioButton_On_Press" file_name="widgets/RadioButton_On_Press.png" preload="true" />
-  <texture name="RadioButton_Off" file_name="widgets/RadioButton_Off.png" preload="true" />
-  <texture name="RadioButton_On" file_name="widgets/RadioButton_On.png" preload="true" />
-  <texture name="RadioButton_Disabled" file_name="widgets/RadioButton_Disabled.png" preload="true" />
-  <texture name="RadioButton_On_Disabled" file_name="widgets/RadioButton_On_Disabled.png" preload="true" />
+  
+
+  <texture name="RadioButton_Press" file_name="forme_round/RadioOff.png" preload="true" />
+  
+  <texture name="RadioButton_On_Press" file_name="forme_round/RadioOn.png" preload="true" />
+  
+  <texture name="RadioButton_Off" file_name="forme_round/RadioOff.png" preload="true" />
+  
+  <texture name="RadioButton_On" file_name="forme_round/RadioOn.png" preload="true" />
+  
+  <texture name="RadioButton_Disabled" file_name="forme_round/RadioDisabled.png" preload="true" />
+  
+  <texture name="RadioButton_On_Disabled" file_name="forme_round/RadioOnDisabled.png" preload="true" />
+
+
+  
 
 
   <texture name="Refresh_Off" file_name="icons/Refresh_Off.png" preload="false" />
@@ -412,31 +513,57 @@ with the same filename but different name
   <texture name="ScrollTrack_Horiz" file_name="widgets/ScrollTrack_Horiz.png" preload="true" scale.left="4" scale.top="0" scale.bottom="0" scale.right="2" />
 
 
-  <texture name="Search" file_name="navbar/Search.png" preload="false" />
+  <texture name="Search" file_name="forme_ui/Icons.png" preload="true" clip.left="900" clip.right="913" clip.top="572" clip.bottom="559" />
 
-  <texture name="Search_Icon" file_name="icons/Search_Icon.png" preload="false" />
+  
 
-  <texture name="SegmentedBtn_Left_Off" file_name="widgets/SegmentedBtn_Left_Off.png" preload="true" scale.left="4" scale.top="19" scale.right="22" scale.bottom="4" />
-  <texture name="SegmentedBtn_Left_Over" file_name="widgets/SegmentedBtn_Left_Over.png" preload="true" scale.left="4" scale.top="19" scale.right="22" scale.bottom="4" />
-  <texture name="SegmentedBtn_Left_Press" file_name="widgets/SegmentedBtn_Left_Press.png" preload="true" scale.left="4" scale.top="19" scale.right="22" scale.bottom="4" />
-  <texture name="SegmentedBtn_Left_Disabled" file_name="widgets/SegmentedBtn_Left_Disabled.png" preload="true" scale.left="4" scale.top="19" scale.right="22" scale.bottom="4" />
-  <texture name="SegmentedBtn_Left_Selected" file_name="widgets/SegmentedBtn_Left_Selected.png" preload="true" scale.left="4" scale.top="19" scale.right="22" scale.bottom="4" />
-  <texture name="SegmentedBtn_Left_Selected_Over" file_name="widgets/SegmentedBtn_Left_Selected_Over.png" preload="true" scale.left="4" scale.top="19" scale.right="22" scale.bottom="4" />
-  <texture name="SegmentedBtn_Left_Selected_Press" file_name="widgets/SegmentedBtn_Left_Selected_Press.png" preload="true" scale.left="4" scale.top="19" scale.right="22" scale.bottom="4" />
-  <texture name="SegmentedBtn_Left_Selected_Disabled" file_name="widgets/SegmentedBtn_Left_Selected_Disabled.png" preload="true" scale.left="4" scale.top="19" scale.right="22" scale.bottom="4" />
+  <texture name="Search_Icon" file_name="forme_ui/Icons.png" preload="true" clip.left="964" clip.right="982" clip.top="572" clip.bottom="555" />
 
-  <texture name="SegmentedBtn_Middle_Disabled" file_name="widgets/SegmentedBtn_Middle_Disabled.png" preload="true" scale.left="4" scale.top="19" scale.right="22" scale.bottom="4" />
-  <texture name="SegmentedBtn_Middle_Selected" file_name="widgets/SegmentedBtn_Middle_Selected.png" preload="true" scale.left="4" scale.top="19" scale.right="22" scale.bottom="4" />
-  <texture name="SegmentedBtn_Middle_Selected_Press" file_name="widgets/SegmentedBtn_Middle_Selected_Press.png" preload="true" scale.left="4" scale.top="19" scale.right="22" scale.bottom="4" />
-  <texture name="SegmentedBtn_Middle_Selected_Disabled" file_name="widgets/SegmentedBtn_Middle_Selected_Disabled.png" preload="true" scale.left="4" scale.top="19" scale.right="22" scale.bottom="4" />
+  
 
-  <texture name="SegmentedBtn_Right_Off" file_name="widgets/SegmentedBtn_Right_Off.png" preload="true" scale.left="4" scale.top="19" scale.right="22" scale.bottom="4" />
-  <texture name="SegmentedBtn_Right_Over" file_name="widgets/SegmentedBtn_Right_Over.png" preload="true" scale.left="4" scale.top="19" scale.right="22" scale.bottom="4" />
-  <texture name="SegmentedBtn_Right_Press" file_name="widgets/SegmentedBtn_Right_Press.png" preload="true" scale.left="4" scale.top="19" scale.right="22" scale.bottom="4" />
-  <texture name="SegmentedBtn_Right_Disabled" file_name="widgets/SegmentedBtn_Right_Disabled.png" preload="true" scale.left="4" scale.top="19" scale.right="22" scale.bottom="4" />
-  <texture name="SegmentedBtn_Right_Selected" file_name="widgets/SegmentedBtn_Right_Selected.png" preload="true" scale.left="4" scale.top="19" scale.right="22" scale.bottom="4" />
-  <texture name="SegmentedBtn_Right_Selected_Press" file_name="widgets/SegmentedBtn_Right_Selected_Press.png" preload="true" scale.left="4" scale.top="19" scale.right="22" scale.bottom="4" />
-  <texture name="SegmentedBtn_Right_Selected_Disabled" file_name="widgets/SegmentedBtn_Right_Selected_Disabled.png" preload="true" scale.left="4" scale.top="19" scale.right="22" scale.bottom="4" />
+  <texture name="SegmentedBtn_Left_Off" file_name="forme_round/Button.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="SegmentedBtn_Left_Over" file_name="forme_round/Button.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="SegmentedBtn_Left_Press" file_name="forme_round/Button.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="SegmentedBtn_Left_Disabled" file_name="forme_round/Button.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="SegmentedBtn_Left_Selected" file_name="forme_round/Accent.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="SegmentedBtn_Left_Selected_Over" file_name="forme_round/Accent.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="SegmentedBtn_Left_Selected_Press" file_name="forme_round/Accent.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="SegmentedBtn_Left_Selected_Disabled" file_name="forme_round/AccentDisabled.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+
+  
+
+  <texture name="SegmentedBtn_Middle_Disabled" file_name="forme_round/Button.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="SegmentedBtn_Middle_Selected" file_name="forme_round/Accent.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="SegmentedBtn_Middle_Selected_Press" file_name="forme_round/Accent.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="SegmentedBtn_Middle_Selected_Disabled" file_name="forme_round/AccentDisabled.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+
+  
+
+  <texture name="SegmentedBtn_Right_Off" file_name="forme_round/Button.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="SegmentedBtn_Right_Over" file_name="forme_round/Button.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="SegmentedBtn_Right_Press" file_name="forme_round/Button.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="SegmentedBtn_Right_Disabled" file_name="forme_round/Button.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="SegmentedBtn_Right_Selected" file_name="forme_round/Accent.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="SegmentedBtn_Right_Selected_Press" file_name="forme_round/Accent.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="SegmentedBtn_Right_Selected_Disabled" file_name="forme_round/AccentDisabled.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+
+  
 
   <texture name="Shirt_Large" file_name="icons/Shirt_Large.png" preload="false" />
 
@@ -475,7 +602,8 @@ with the same filename but different name
 
   <texture name="TabIcon_Appearance_Off" file_name="taskpanel/TabIcon_Appearance_Off.png" preload="false" />
   <texture name="TabIcon_Appearance_Selected" file_name="taskpanel/TabIcon_Appearance_Selected.png" preload="false" />
-  <texture name="TabIcon_Close_Off" file_name="taskpanel/TabIcon_Close_Off.png" preload="false" />
+  <texture name="TabIcon_Close_Off" file_name="forme_ui/Icons.png" preload="true" clip.left="708" clip.right="732" clip.top="956" clip.bottom="932" />
+  
   <texture name="TabIcon_Home_Off" file_name="taskpanel/TabIcon_Home_Off.png" preload="false" />
   <texture name="TabIcon_Home_Selected" file_name="taskpanel/TabIcon_Home_Selected.png" preload="false" />
   <texture name="TabIcon_Me_Off" file_name="taskpanel/TabIcon_Me_Off.png" preload="false" />
@@ -490,22 +618,35 @@ with the same filename but different name
   <texture name="TabIcon_Things_Off" file_name="taskpanel/TabIcon_Things_Off.png" preload="false" />
   <texture name="TabIcon_Things_Selected" file_name="taskpanel/TabIcon_Things_Selected.png" preload="false" />
 
-  <texture name="TabTop_Right_Off" file_name="containers/TabTop_Right_Off.png" preload="false"  scale.left="8" scale.top="8" scale.right="62" scale.bottom="9" />
-  <texture name="TabTop_Right_Selected" file_name="containers/TabTop_Right_Selected.png" preload="false"  scale.left="8" scale.top="8" scale.right="62" scale.bottom="9" />
-  <texture name="TabTop_Middle_Off" file_name="containers/TabTop_Middle_Off.png" preload="false" scale.left="8" scale.top="8" scale.right="120" scale.bottom="9" />
-  <texture name="TabTop_Middle_Selected" file_name="containers/TabTop_Middle_Selected.png" preload="false" scale.left="8" scale.top="8" scale.right="96" scale.bottom="9" />
-  <texture name="TabTop_Left_Off" file_name="containers/TabTop_Left_Off.png" preload="false" scale.left="8" scale.top="8" scale.right="120" scale.bottom="9" />
-  <texture name="TabTop_Left_Selected" file_name="containers/TabTop_Left_Selected.png" preload="false" scale.left="8" scale.top="8" scale.right="96" scale.bottom="9" />
+  <texture name="TabTop_Right_Off" file_name="forme_round/Button.png" preload="false" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="TabTop_Right_Selected" file_name="forme_round/Accent.png" preload="false" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="TabTop_Middle_Off" file_name="forme_round/Button.png" preload="false" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="TabTop_Middle_Selected" file_name="forme_round/Accent.png" preload="false" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="TabTop_Left_Off" file_name="forme_round/Button.png" preload="false" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="TabTop_Left_Selected" file_name="forme_round/Accent.png" preload="false" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+
+  
 
   <texture name="TaskPanel_Tab_Off" file_name="taskpanel/TaskPanel_Tab_Off.png" preload="false" scale.left="4" scale.top="29" scale.right="36" scale.bottom="4" />
   <texture name="TaskPanel_Tab_Selected" file_name="taskpanel/TaskPanel_Tab_Selected.png" preload="false" scale.left="5" scale.top="30" scale.right="36" scale.bottom="5" />
 
-  <texture name="TextField_Search_Disabled" file_name="widgets/TextField_Search_Disabled.png" preload="true" scale.left="9" scale.top="12" scale.right="248" scale.bottom="12" />
-  <texture name="TextField_Off" file_name="widgets/TextField_Off.png" preload="true" scale.left="9" scale.top="12" scale.right="248" scale.bottom="12" />
-  <texture name="TextField_Search_Active" file_name="widgets/TextField_Search_Active.png" preload="true" scale.left="9" scale.top="12" scale.right="248" scale.bottom="12" />
-  <texture name="TextField_Search_Off" file_name="widgets/TextField_Search_Off.png" preload="true" scale.left="9" scale.top="12" scale.right="248" scale.bottom="12" />
-  <texture name="TextField_Disabled" file_name="widgets/TextField_Disabled.png" preload="true" scale.left="9" scale.top="12" scale.right="248" scale.bottom="12" />
-  <texture name="TextField_Active" file_name="widgets/TextField_Active.png" preload="true" scale.left="9" scale.top="12" scale.right="248" scale.bottom="12" />
+  <texture name="TextField_Search_Disabled" file_name="forme_round/Disabled.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="TextField_Off" file_name="forme_round/Field.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="TextField_Search_Active" file_name="forme_round/FieldFocus.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="TextField_Search_Off" file_name="forme_round/Field.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="TextField_Disabled" file_name="forme_round/Disabled.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="TextField_Active" file_name="forme_round/FieldFocus.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
 
 
   <texture name="Toast_CloseBtn" file_name="windows/Toast_CloseBtn.png" preload="true" />
@@ -514,30 +655,64 @@ with the same filename but different name
   <texture name="Toast_Over" file_name="windows/Toast_Over.png" preload="true"
            scale.left="4" scale.top="28" scale.right="60" scale.bottom="4" />
 
-  <texture name="Tool_Create" file_name="build/Tool_Create.png" preload="false" />
-  <texture name="Tool_Dozer" file_name="build/Tool_Dozer.png" preload="false" />
-  <texture name="Tool_Face" file_name="build/Tool_Face.png" preload="false" />
-  <texture name="Tool_Grab" file_name="build/Tool_Grab.png" preload="false" />
-  <texture name="Tool_Zoom" file_name="build/Tool_Zoom.png" preload="false" />
+  <texture name="Tool_Create" file_name="forme_ui/Icons.png" preload="true" clip.left="452" clip.right="472" clip.top="892" clip.bottom="872" />
+  
+  <texture name="Tool_Dozer" file_name="forme_ui/Icons.png" preload="true" clip.left="772" clip.right="792" clip.top="764" clip.bottom="744" />
+  
+  <texture name="Tool_Face" file_name="forme_ui/Icons.png" preload="true" clip.left="196" clip.right="216" clip.top="828" clip.bottom="808" />
+  
+  <texture name="Tool_Grab" file_name="forme_ui/Icons.png" preload="true" clip.left="4" clip.right="24" clip.top="636" clip.bottom="616" />
+  
+  <texture name="Tool_Zoom" file_name="forme_ui/Icons.png" preload="true" clip.left="68" clip.right="88" clip.top="508" clip.bottom="488" />
 
-  <texture name="Toolbar_Left_Flash" file_name="containers/Toolbar_Left_Flash.png" preload="false" scale.left="5" scale.bottom="4" scale.top="24" scale.right="30" />
-  <texture name="Toolbar_Left_Off" file_name="containers/Toolbar_Left_Off.png" preload="false" scale.left="5" scale.bottom="4" scale.top="24" scale.right="30" />
-  <texture name="Toolbar_Left_Over" file_name="containers/Toolbar_Left_Over.png" preload="false" scale.left="5" scale.bottom="4" scale.top="24" scale.right="30" />
-  <texture name="Toolbar_Left_Selected" file_name="containers/Toolbar_Left_Selected.png" preload="false" scale.left="5" scale.bottom="4" scale.top="24" scale.right="30" />
-  <texture name="Toolbar_Middle_Off" file_name="containers/Toolbar_Middle_Off.png" preload="false" scale.left="1" scale.bottom="2" scale.top="24" scale.right="30" />
-  <texture name="Toolbar_Middle_Over" file_name="containers/Toolbar_Middle_Over.png" preload="false" scale.left="1" scale.bottom="2" scale.top="24" scale.right="30" />
-  <texture name="Toolbar_Middle_Selected" file_name="containers/Toolbar_Middle_Selected.png" preload="false" scale.left="1" scale.bottom="2" scale.top="24" scale.right="30" />
-  <texture name="Toolbar_Middle_Flash" file_name="containers/Toolbar_Middle_Flash.png" preload="false" scale.left="5" scale.bottom="4" scale.top="24" scale.right="30" />
-  <texture name="Toolbar_Right_Off" file_name="containers/Toolbar_Right_Off.png" preload="false" scale.left="1" scale.bottom="4" scale.top="24" scale.right="26" />
-  <texture name="Toolbar_Right_Over" file_name="containers/Toolbar_Right_Over.png" preload="false" scale.left="1" scale.bottom="4" scale.top="24" scale.right="26" />
-  <texture name="Toolbar_Right_Selected" file_name="containers/Toolbar_Right_Selected.png" preload="false" scale.left="1" scale.bottom="4" scale.top="24" scale.right="26" />
-  <texture name="Toolbar_Right_Flash" file_name="containers/Toolbar_Right_Flash.png" preload="false" scale.left="1" scale.bottom="4" scale.top="24" scale.right="26" />
+  
+
+  <texture name="Toolbar_Left_Flash" file_name="forme_round/Button.png" preload="false" scale.left="24" scale.right="40" scale.top="40" scale.bottom="24" />
+
+  
+  <texture name="Toolbar_Left_Off" file_name="forme_round/Button.png" preload="false" scale.left="24" scale.right="40" scale.top="40" scale.bottom="24" />
+
+  
+  <texture name="Toolbar_Left_Over" file_name="forme_round/ButtonHover.png" preload="false" scale.left="24" scale.right="40" scale.top="40" scale.bottom="24" />
+
+  
+  <texture name="Toolbar_Left_Selected" file_name="forme_round/Accent.png" preload="false" scale.left="24" scale.right="40" scale.top="40" scale.bottom="24" />
+
+  
+  <texture name="Toolbar_Middle_Off" file_name="forme_round/Button.png" preload="false" scale.left="24" scale.right="40" scale.top="40" scale.bottom="24" />
+
+  
+  <texture name="Toolbar_Middle_Over" file_name="forme_round/ButtonHover.png" preload="false" scale.left="24" scale.right="40" scale.top="40" scale.bottom="24" />
+
+  
+  <texture name="Toolbar_Middle_Selected" file_name="forme_round/Accent.png" preload="false" scale.left="24" scale.right="40" scale.top="40" scale.bottom="24" />
+
+  
+  <texture name="Toolbar_Middle_Flash" file_name="forme_round/Button.png" preload="false" scale.left="24" scale.right="40" scale.top="40" scale.bottom="24" />
+
+  
+  <texture name="Toolbar_Right_Off" file_name="forme_round/Button.png" preload="false" scale.left="24" scale.right="40" scale.top="40" scale.bottom="24" />
+
+  
+  <texture name="Toolbar_Right_Over" file_name="forme_round/ButtonHover.png" preload="false" scale.left="24" scale.right="40" scale.top="40" scale.bottom="24" />
+
+  
+  <texture name="Toolbar_Right_Selected" file_name="forme_round/Accent.png" preload="false" scale.left="24" scale.right="40" scale.top="40" scale.bottom="24" />
+
+  
+  <texture name="Toolbar_Right_Flash" file_name="forme_round/Button.png" preload="false" scale.left="24" scale.right="40" scale.top="40" scale.bottom="24" />
+
+
+
+  
 
   <texture name="Tooltip" file_name="widgets/Tooltip.png" preload="true" scale.left="2" scale.top="16" scale.right="100" scale.bottom="3" />
 
   <texture name="TrashItem_Disabled" file_name="icons/TrashItem_Disabled.png" preload="false" />
-  <texture name="TrashItem_Off" file_name="icons/TrashItem_Off.png" preload="false" />
-  <texture name="TrashItem_Press" file_name="icons/TrashItem_Press.png" preload="false" />
+  <texture name="TrashItem_Off" file_name="forme_ui/Icons.png" preload="true" clip.left="452" clip.right="470" clip.top="444" clip.bottom="426" />
+  
+  <texture name="TrashItem_Press" file_name="forme_ui/Icons.png" preload="true" clip.left="452" clip.right="470" clip.top="444" clip.bottom="426" />
+  
 
   
   <texture name="hammer_18" file_name="bottomtray/hammer_18.png" preload="false" />
@@ -547,7 +722,8 @@ with the same filename but different name
   <texture name="gesture_18" file_name="bottomtray/gesture_18.png" preload="false" />
   <texture name="map_18" file_name="bottomtray/map_18.png" preload="false" />
   <texture name="minimap_18" file_name="bottomtray/minimap_18.png" preload="false" />
-  <texture name="inventory_18" file_name="bottomtray/inventory_18.png" preload="false" />
+  <texture name="inventory_18" file_name="forme_ui/Icons.png" preload="true" clip.left="580" clip.right="598" clip.top="764" clip.bottom="746" />
+  
   
   <texture name="Unread_Chiclet" file_name="bottomtray/Unread_Chiclet.png" preload="false" />
   <texture name="Unread_IM" file_name="bottomtray/Unread_IM.png" preload="false" />
@@ -570,10 +746,10 @@ with the same filename but different name
 
 
 
-  <texture name="Window_Background" file_name="windows/Window_Background.png" preload="true"
-           scale.left="4" scale.top="24" scale.right="26" scale.bottom="4" />
-  <texture name="Window_Foreground" file_name="windows/Window_Foreground.png" preload="true"
-           scale.left="4" scale.top="24" scale.right="26" scale.bottom="4" />
+  <texture name="Window_Background" file_name="forme_round/WindowInactive.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
+  <texture name="Window_Foreground" file_name="forme_round/Window.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
+  
   <texture name="Window_NoTitle_Background" file_name="windows/Window_NoTitle_Background.png" preload="true"
            scale.left="4" scale.top="24" scale.right="26" scale.bottom="4" />
   <texture name="Window_NoTitle_Foreground" file_name="windows/Window_NoTitle_Foreground.png" preload="true"
@@ -616,8 +792,11 @@ with the same filename but different name
   <texture name="down_arrow.tga" file_name="down_arrow.png" />
   <texture name="arrow_down.tga" />
 
-  <texture name="tearoffbox.tga" />
-  <texture name="tearoff_pressed.tga" />
+  <texture name="tearoffbox.tga" file_name="forme_ui/Icons.png" preload="true" clip.left="580" clip.right="596" clip.top="572" clip.bottom="556" />
+  
+  <texture name="tearoff_pressed.tga" file_name="forme_ui/Icons.png" preload="true" clip.left="580" clip.right="596" clip.top="572" clip.bottom="556" />
+
+  
 
   <texture name="color_swatch_alpha.tga" preload="true" />
 

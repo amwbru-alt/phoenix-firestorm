@@ -116,6 +116,7 @@ set(llcommon_HEADER_FILES
     formeavatarbadge.h
     formeviewbranding.h
     formehudlayout.h
+    formeuistyle.h
     CMakeLists.txt
 
     always_return.h

@@ -271,7 +271,7 @@ private:
     LLLayoutStack* mCombinationLayoutStack;
 
     // <FS:Zi> Filter dropdown
-    LLComboBox*                 mFilterComboBox;
+    LLComboBox*                 mFilterComboBox = nullptr;
     std::map<std::string,U64>   mFilterMap;         // contains name-to-number mapping for dropdown filter types
     U64                         mFilterMask;        // contains the cumulated bit filter for all dropdown filter types
     // </FS:Zi> Filter dropdown

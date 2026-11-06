@@ -609,6 +609,16 @@ LLPanelPeople::LLPanelPeople()
     mRecentListUpdater = new LLRecentListUpdater(boost::bind(&LLPanelPeople::updateRecentList,  this));
     mButtonsUpdater = new LLButtonsUpdater(boost::bind(&LLPanelPeople::updateButtons, this));
 
+    mCommitCallbackRegistrar.add("ForMePeople.SelectTab", [this](LLUICtrl*, const LLSD& value)
+    {
+        if (mTabContainer && mTabContainer->selectTabByName(value.asString()))
+            onTabSelected(value);
+    });
+    mEnableCallbackRegistrar.add("ForMePeople.SelectedTab", [this](LLUICtrl*, const LLSD& value)
+    {
+        return mTabContainer && mTabContainer->getCurrentPanel() &&
+            mTabContainer->getCurrentPanel()->getName() == value.asString();
+    });
     mCommitCallbackRegistrar.add("People.AddFriend", boost::bind(&LLPanelPeople::onAddFriendButtonClicked, this));
     mCommitCallbackRegistrar.add("People.AddFriendWizard",  boost::bind(&LLPanelPeople::onAddFriendWizButtonClicked,    this));
     mCommitCallbackRegistrar.add("People.DelFriend",        boost::bind(&LLPanelPeople::onDeleteFriendButtonClicked,    this));

@@ -1,0 +1,2966 @@
+{
+  "AddItem_Off": [
+    "forme_ui/Icons.png",
+    "Plus",
+    18,
+    18,
+    {
+      "left": 196,
+      "right": 214,
+      "top": 572,
+      "bottom": 554
+    }
+  ],
+  "AddItem_Press": [
+    "forme_ui/Icons.png",
+    "Plus",
+    18,
+    18,
+    {
+      "left": 196,
+      "right": 214,
+      "top": 572,
+      "bottom": 554
+    }
+  ],
+  "Arrow_Left_Off": [
+    "forme_ui/Icons.png",
+    "ArrowLeft",
+    16,
+    16,
+    {
+      "left": 132,
+      "right": 148,
+      "top": 1020,
+      "bottom": 1004
+    }
+  ],
+  "Arrow_Right_Off": [
+    "forme_ui/Icons.png",
+    "ArrowRight",
+    16,
+    16,
+    {
+      "left": 324,
+      "right": 340,
+      "top": 1020,
+      "bottom": 1004
+    }
+  ],
+  "Arrow_Down": [
+    "forme_ui/Icons.png",
+    "ArrowDown",
+    16,
+    16,
+    {
+      "left": 4,
+      "right": 20,
+      "top": 1020,
+      "bottom": 1004
+    }
+  ],
+  "Arrow_Up": [
+    "forme_ui/Icons.png",
+    "ArrowUp",
+    16,
+    16,
+    {
+      "left": 516,
+      "right": 532,
+      "top": 1020,
+      "bottom": 1004
+    }
+  ],
+  "Arrow_Left": [
+    "forme_ui/Icons.png",
+    "ArrowLeft",
+    16,
+    16,
+    {
+      "left": 132,
+      "right": 148,
+      "top": 1020,
+      "bottom": 1004
+    }
+  ],
+  "Arrow_Right": [
+    "forme_ui/Icons.png",
+    "ArrowRight",
+    16,
+    16,
+    {
+      "left": 324,
+      "right": 340,
+      "top": 1020,
+      "bottom": 1004
+    }
+  ],
+  "Arrow_Left_Unscaled": [
+    "forme_ui/Icons.png",
+    "ArrowLeft",
+    16,
+    16,
+    {
+      "left": 132,
+      "right": 148,
+      "top": 1020,
+      "bottom": 1004
+    }
+  ],
+  "Arrow_Right_Unscaled": [
+    "forme_ui/Icons.png",
+    "ArrowRight",
+    16,
+    16,
+    {
+      "left": 324,
+      "right": 340,
+      "top": 1020,
+      "bottom": 1004
+    }
+  ],
+  "Command_360_Capture_Icon": [
+    "forme_ui/Icons.png",
+    "Camera",
+    18,
+    18,
+    {
+      "left": 4,
+      "right": 22,
+      "top": 956,
+      "bottom": 938
+    }
+  ],
+  "Command_AboutLand_Icon": [
+    "forme_ui/Icons.png",
+    "Map",
+    18,
+    18,
+    {
+      "left": 324,
+      "right": 342,
+      "top": 700,
+      "bottom": 682
+    }
+  ],
+  "Command_Appearance_Icon": [
+    "forme_ui/Icons.png",
+    "Hanger",
+    18,
+    18,
+    {
+      "left": 196,
+      "right": 214,
+      "top": 764,
+      "bottom": 746
+    }
+  ],
+  "Command_Avatar_Icon": [
+    "forme_ui/Icons.png",
+    "Profile",
+    18,
+    18,
+    {
+      "left": 388,
+      "right": 406,
+      "top": 572,
+      "bottom": 554
+    }
+  ],
+  "Command_Build_Icon": [
+    "forme_ui/Icons.png",
+    "Cube",
+    18,
+    18,
+    {
+      "left": 388,
+      "right": 406,
+      "top": 892,
+      "bottom": 874
+    }
+  ],
+  "Command_Chat_Icon": [
+    "forme_ui/Icons.png",
+    "Chat",
+    18,
+    18,
+    {
+      "left": 132,
+      "right": 150,
+      "top": 956,
+      "bottom": 938
+    }
+  ],
+  "Command_Compass_Icon": [
+    "forme_ui/Icons.png",
+    "Pin",
+    18,
+    18,
+    {
+      "left": 4,
+      "right": 22,
+      "top": 572,
+      "bottom": 554
+    }
+  ],
+  "Command_Destinations_Icon": [
+    "forme_ui/Icons.png",
+    "Pin",
+    18,
+    18,
+    {
+      "left": 4,
+      "right": 22,
+      "top": 572,
+      "bottom": 554
+    }
+  ],
+  "Command_Gestures_Icon": [
+    "forme_ui/Icons.png",
+    "Walk",
+    18,
+    18,
+    {
+      "left": 708,
+      "right": 726,
+      "top": 444,
+      "bottom": 426
+    }
+  ],
+  "Command_Grid_Status_Icon": [
+    "forme_ui/Icons.png",
+    "Cloud",
+    18,
+    18,
+    {
+      "left": 900,
+      "right": 918,
+      "top": 956,
+      "bottom": 938
+    }
+  ],
+  "Command_HowTo_Icon": [
+    "forme_ui/Icons.png",
+    "Info",
+    18,
+    18,
+    {
+      "left": 388,
+      "right": 406,
+      "top": 764,
+      "bottom": 746
+    }
+  ],
+  "Command_Inventory_Icon": [
+    "forme_ui/Icons.png",
+    "Inventory",
+    18,
+    18,
+    {
+      "left": 580,
+      "right": 598,
+      "top": 764,
+      "bottom": 746
+    }
+  ],
+  "Command_Map_Icon": [
+    "forme_ui/Icons.png",
+    "Map",
+    18,
+    18,
+    {
+      "left": 324,
+      "right": 342,
+      "top": 700,
+      "bottom": 682
+    }
+  ],
+  "Command_Marketplace_Icon": [
+    "forme_ui/Icons.png",
+    "Inventory",
+    18,
+    18,
+    {
+      "left": 580,
+      "right": 598,
+      "top": 764,
+      "bottom": 746
+    }
+  ],
+  "Command_MktListings_Icon": [
+    "forme_ui/Icons.png",
+    "Inventory",
+    18,
+    18,
+    {
+      "left": 580,
+      "right": 598,
+      "top": 764,
+      "bottom": 746
+    }
+  ],
+  "Command_MiniCart_Icon": [
+    "forme_ui/Icons.png",
+    "Inventory",
+    13,
+    10,
+    {
+      "left": 516,
+      "right": 529,
+      "top": 764,
+      "bottom": 754
+    }
+  ],
+  "Command_MiniMap_Icon": [
+    "forme_ui/Icons.png",
+    "Map",
+    18,
+    18,
+    {
+      "left": 324,
+      "right": 342,
+      "top": 700,
+      "bottom": 682
+    }
+  ],
+  "Command_Move_Icon": [
+    "forme_ui/Icons.png",
+    "Walk",
+    18,
+    18,
+    {
+      "left": 708,
+      "right": 726,
+      "top": 444,
+      "bottom": 426
+    }
+  ],
+  "Command_Environments_Icon": [
+    "forme_ui/Icons.png",
+    "Cloud",
+    18,
+    18,
+    {
+      "left": 900,
+      "right": 918,
+      "top": 956,
+      "bottom": 938
+    }
+  ],
+  "Command_Omnifilter_Icon": [
+    "forme_ui/Icons.png",
+    "Search",
+    18,
+    18,
+    {
+      "left": 4,
+      "right": 22,
+      "top": 508,
+      "bottom": 490
+    }
+  ],
+  "Command_People_Icon": [
+    "forme_ui/Icons.png",
+    "People",
+    18,
+    18,
+    {
+      "left": 580,
+      "right": 598,
+      "top": 636,
+      "bottom": 618
+    }
+  ],
+  "Command_Performance_Icon": [
+    "forme_ui/Icons.png",
+    "Sliders",
+    18,
+    18,
+    {
+      "left": 708,
+      "right": 726,
+      "top": 508,
+      "bottom": 490
+    }
+  ],
+  "Command_Picks_Icon": [
+    "forme_ui/Icons.png",
+    "Star",
+    18,
+    18,
+    {
+      "left": 132,
+      "right": 150,
+      "top": 444,
+      "bottom": 426
+    }
+  ],
+  "Command_Places_Icon": [
+    "forme_ui/Icons.png",
+    "Pin",
+    18,
+    18,
+    {
+      "left": 4,
+      "right": 22,
+      "top": 572,
+      "bottom": 554
+    }
+  ],
+  "Command_Preferences_Icon": [
+    "forme_ui/Icons.png",
+    "Settings",
+    18,
+    18,
+    {
+      "left": 324,
+      "right": 342,
+      "top": 508,
+      "bottom": 490
+    }
+  ],
+  "Command_Profile_Icon": [
+    "forme_ui/Icons.png",
+    "Profile",
+    18,
+    18,
+    {
+      "left": 388,
+      "right": 406,
+      "top": 572,
+      "bottom": 554
+    }
+  ],
+  "Command_Report_Abuse_Icon": [
+    "forme_ui/Icons.png",
+    "Shield",
+    18,
+    18,
+    {
+      "left": 452,
+      "right": 470,
+      "top": 508,
+      "bottom": 490
+    }
+  ],
+  "Command_Search_Icon": [
+    "forme_ui/Icons.png",
+    "Search",
+    18,
+    18,
+    {
+      "left": 4,
+      "right": 22,
+      "top": 508,
+      "bottom": 490
+    }
+  ],
+  "Command_Snapshot_Icon": [
+    "forme_ui/Icons.png",
+    "Camera",
+    18,
+    18,
+    {
+      "left": 4,
+      "right": 22,
+      "top": 956,
+      "bottom": 938
+    }
+  ],
+  "Command_Speak_Icon": [
+    "forme_ui/Icons.png",
+    "Mic",
+    18,
+    18,
+    {
+      "left": 644,
+      "right": 662,
+      "top": 700,
+      "bottom": 682
+    }
+  ],
+  "Command_View_Icon": [
+    "forme_ui/Icons.png",
+    "Eye",
+    18,
+    18,
+    {
+      "left": 388,
+      "right": 406,
+      "top": 828,
+      "bottom": 810
+    }
+  ],
+  "Command_Voice_Icon": [
+    "forme_ui/Icons.png",
+    "Sound",
+    18,
+    18,
+    {
+      "left": 900,
+      "right": 918,
+      "top": 508,
+      "bottom": 490
+    }
+  ],
+  "Command_RegionTracker_Icon": [
+    "forme_ui/Icons.png",
+    "Map",
+    18,
+    18,
+    {
+      "left": 324,
+      "right": 342,
+      "top": 700,
+      "bottom": 682
+    }
+  ],
+  "Conv_toolbar_add_person": [
+    "forme_ui/Icons.png",
+    "People",
+    23,
+    18,
+    {
+      "left": 708,
+      "right": 731,
+      "top": 636,
+      "bottom": 618
+    }
+  ],
+  "Conv_toolbar_arrow_ne": [
+    "forme_ui/Icons.png",
+    "Restore",
+    18,
+    18,
+    {
+      "left": 644,
+      "right": 662,
+      "top": 572,
+      "bottom": 554
+    }
+  ],
+  "Conv_toolbar_arrow_sw": [
+    "forme_ui/Icons.png",
+    "Download",
+    18,
+    18,
+    {
+      "left": 4,
+      "right": 22,
+      "top": 828,
+      "bottom": 810
+    }
+  ],
+  "Conv_toolbar_call_log": [
+    "forme_ui/Icons.png",
+    "Clock",
+    16,
+    16,
+    {
+      "left": 324,
+      "right": 340,
+      "top": 956,
+      "bottom": 940
+    }
+  ],
+  "Conv_toolbar_close": [
+    "forme_ui/Icons.png",
+    "Close",
+    18,
+    18,
+    {
+      "left": 580,
+      "right": 598,
+      "top": 956,
+      "bottom": 938
+    }
+  ],
+  "Conv_toolbar_collapse": [
+    "forme_ui/Icons.png",
+    "ArrowLeft",
+    18,
+    18,
+    {
+      "left": 196,
+      "right": 214,
+      "top": 1020,
+      "bottom": 1002
+    }
+  ],
+  "Conv_toolbar_expand": [
+    "forme_ui/Icons.png",
+    "ArrowRight",
+    18,
+    18,
+    {
+      "left": 388,
+      "right": 406,
+      "top": 1020,
+      "bottom": 1002
+    }
+  ],
+  "Conv_toolbar_hang_up": [
+    "forme_ui/Icons.png",
+    "Phone",
+    22,
+    18,
+    {
+      "left": 836,
+      "right": 858,
+      "top": 636,
+      "bottom": 618
+    }
+  ],
+  "Conv_toolbar_open_call": [
+    "forme_ui/Icons.png",
+    "Phone",
+    18,
+    18,
+    {
+      "left": 772,
+      "right": 790,
+      "top": 636,
+      "bottom": 618
+    }
+  ],
+  "Conv_toolbar_plus": [
+    "forme_ui/Icons.png",
+    "Plus",
+    18,
+    18,
+    {
+      "left": 196,
+      "right": 214,
+      "top": 572,
+      "bottom": 554
+    }
+  ],
+  "Conv_toolbar_sort": [
+    "forme_ui/Icons.png",
+    "Sliders",
+    22,
+    18,
+    {
+      "left": 772,
+      "right": 794,
+      "top": 508,
+      "bottom": 490
+    }
+  ],
+  "Copy": [
+    "forme_ui/Icons.png",
+    "Copy",
+    18,
+    18,
+    {
+      "left": 196,
+      "right": 214,
+      "top": 892,
+      "bottom": 874
+    }
+  ],
+  "Edit_Wrench": [
+    "forme_ui/Icons.png",
+    "Edit",
+    16,
+    16,
+    {
+      "left": 132,
+      "right": 148,
+      "top": 828,
+      "bottom": 812
+    }
+  ],
+  "Icon_Close_Foreground": [
+    "forme_ui/Icons.png",
+    "Close",
+    16,
+    16,
+    {
+      "left": 452,
+      "right": 468,
+      "top": 956,
+      "bottom": 940
+    }
+  ],
+  "Icon_Close_Press": [
+    "forme_ui/Icons.png",
+    "Close",
+    16,
+    16,
+    {
+      "left": 452,
+      "right": 468,
+      "top": 956,
+      "bottom": 940
+    }
+  ],
+  "Icon_Close_Toast": [
+    "forme_ui/Icons.png",
+    "Close",
+    17,
+    17,
+    {
+      "left": 516,
+      "right": 533,
+      "top": 956,
+      "bottom": 939
+    }
+  ],
+  "Icon_Dock_Foreground": [
+    "forme_ui/Icons.png",
+    "Download",
+    16,
+    16,
+    {
+      "left": 964,
+      "right": 980,
+      "top": 892,
+      "bottom": 876
+    }
+  ],
+  "Icon_Dock_Press": [
+    "forme_ui/Icons.png",
+    "Download",
+    16,
+    16,
+    {
+      "left": 964,
+      "right": 980,
+      "top": 892,
+      "bottom": 876
+    }
+  ],
+  "Icon_Help_Foreground": [
+    "forme_ui/Icons.png",
+    "Info",
+    16,
+    16,
+    {
+      "left": 324,
+      "right": 340,
+      "top": 764,
+      "bottom": 748
+    }
+  ],
+  "Icon_Help_Press": [
+    "forme_ui/Icons.png",
+    "Info",
+    16,
+    16,
+    {
+      "left": 324,
+      "right": 340,
+      "top": 764,
+      "bottom": 748
+    }
+  ],
+  "Icon_Minimize_Foreground": [
+    "forme_ui/Icons.png",
+    "Minus",
+    16,
+    16,
+    {
+      "left": 772,
+      "right": 788,
+      "top": 700,
+      "bottom": 684
+    }
+  ],
+  "Icon_Minimize_Press": [
+    "forme_ui/Icons.png",
+    "Minus",
+    16,
+    16,
+    {
+      "left": 772,
+      "right": 788,
+      "top": 700,
+      "bottom": 684
+    }
+  ],
+  "Icon_Restore_Foreground": [
+    "forme_ui/Icons.png",
+    "Restore",
+    16,
+    16,
+    {
+      "left": 580,
+      "right": 596,
+      "top": 572,
+      "bottom": 556
+    }
+  ],
+  "Icon_Restore_Press": [
+    "forme_ui/Icons.png",
+    "Restore",
+    16,
+    16,
+    {
+      "left": 580,
+      "right": 596,
+      "top": 572,
+      "bottom": 556
+    }
+  ],
+  "Icon_Snooze_Foreground": [
+    "forme_ui/Icons.png",
+    "Clock",
+    16,
+    16,
+    {
+      "left": 324,
+      "right": 340,
+      "top": 956,
+      "bottom": 940
+    }
+  ],
+  "Icon_Snooze_Press": [
+    "forme_ui/Icons.png",
+    "Clock",
+    16,
+    16,
+    {
+      "left": 324,
+      "right": 340,
+      "top": 956,
+      "bottom": 940
+    }
+  ],
+  "Inv_Alpha": [
+    "forme_ui/Icons.png",
+    "Layers",
+    16,
+    16,
+    {
+      "left": 708,
+      "right": 724,
+      "top": 764,
+      "bottom": 748
+    }
+  ],
+  "Inv_Animation": [
+    "forme_ui/Icons.png",
+    "Walk",
+    16,
+    16,
+    {
+      "left": 644,
+      "right": 660,
+      "top": 444,
+      "bottom": 428
+    }
+  ],
+  "Inv_BodyShape": [
+    "forme_ui/Icons.png",
+    "Profile",
+    16,
+    16,
+    {
+      "left": 324,
+      "right": 340,
+      "top": 572,
+      "bottom": 556
+    }
+  ],
+  "Inv_CallingCard": [
+    "forme_ui/Icons.png",
+    "Profile",
+    16,
+    16,
+    {
+      "left": 324,
+      "right": 340,
+      "top": 572,
+      "bottom": 556
+    }
+  ],
+  "Inv_CallingCardOffline": [
+    "forme_ui/Icons.png",
+    "ProfileOff",
+    16,
+    16,
+    {
+      "left": 516,
+      "right": 532,
+      "top": 572,
+      "bottom": 556
+    }
+  ],
+  "Inv_Clothing": [
+    "forme_ui/Icons.png",
+    "Clothes",
+    16,
+    16,
+    {
+      "left": 772,
+      "right": 788,
+      "top": 956,
+      "bottom": 940
+    }
+  ],
+  "Inv_Eye": [
+    "forme_ui/Icons.png",
+    "Eye",
+    16,
+    16,
+    {
+      "left": 324,
+      "right": 340,
+      "top": 828,
+      "bottom": 812
+    }
+  ],
+  "Inv_Favorite_Star_Content": [
+    "forme_ui/Icons.png",
+    "Star",
+    14,
+    14,
+    {
+      "left": 4,
+      "right": 18,
+      "top": 444,
+      "bottom": 430
+    }
+  ],
+  "Inv_Favorite_Star_Full": [
+    "forme_ui/Icons.png",
+    "StarFilled",
+    14,
+    14,
+    {
+      "left": 260,
+      "right": 274,
+      "top": 444,
+      "bottom": 430
+    }
+  ],
+  "Inv_FolderClosed": [
+    "forme_ui/Icons.png",
+    "Folder",
+    16,
+    16,
+    {
+      "left": 772,
+      "right": 788,
+      "top": 828,
+      "bottom": 812
+    }
+  ],
+  "Inv_FolderOpen": [
+    "forme_ui/Icons.png",
+    "FolderOpen",
+    16,
+    16,
+    {
+      "left": 900,
+      "right": 916,
+      "top": 828,
+      "bottom": 812
+    }
+  ],
+  "Inv_Gesture": [
+    "forme_ui/Icons.png",
+    "Walk",
+    16,
+    16,
+    {
+      "left": 644,
+      "right": 660,
+      "top": 444,
+      "bottom": 428
+    }
+  ],
+  "Inv_Gloves": [
+    "forme_ui/Icons.png",
+    "Clothes",
+    16,
+    16,
+    {
+      "left": 772,
+      "right": 788,
+      "top": 956,
+      "bottom": 940
+    }
+  ],
+  "Inv_Hair": [
+    "forme_ui/Icons.png",
+    "Profile",
+    16,
+    16,
+    {
+      "left": 324,
+      "right": 340,
+      "top": 572,
+      "bottom": 556
+    }
+  ],
+  "Inv_LinkItem": [
+    "forme_ui/Icons.png",
+    "Link",
+    16,
+    16,
+    {
+      "left": 964,
+      "right": 980,
+      "top": 764,
+      "bottom": 748
+    }
+  ],
+  "Inv_LinkFolder": [
+    "forme_ui/Icons.png",
+    "LinkFolder",
+    16,
+    16,
+    {
+      "left": 68,
+      "right": 84,
+      "top": 700,
+      "bottom": 684
+    }
+  ],
+  "Inv_Jacket": [
+    "forme_ui/Icons.png",
+    "Clothes",
+    16,
+    16,
+    {
+      "left": 772,
+      "right": 788,
+      "top": 956,
+      "bottom": 940
+    }
+  ],
+  "Inv_LookFolderOpen": [
+    "forme_ui/Icons.png",
+    "Hanger",
+    16,
+    16,
+    {
+      "left": 132,
+      "right": 148,
+      "top": 764,
+      "bottom": 748
+    }
+  ],
+  "Inv_LookFolderClosed": [
+    "forme_ui/Icons.png",
+    "Hanger",
+    16,
+    16,
+    {
+      "left": 132,
+      "right": 148,
+      "top": 764,
+      "bottom": 748
+    }
+  ],
+  "Inv_LostClosed": [
+    "forme_ui/Icons.png",
+    "Folder",
+    16,
+    16,
+    {
+      "left": 772,
+      "right": 788,
+      "top": 828,
+      "bottom": 812
+    }
+  ],
+  "Inv_LostOpen": [
+    "forme_ui/Icons.png",
+    "Folder",
+    16,
+    16,
+    {
+      "left": 772,
+      "right": 788,
+      "top": 828,
+      "bottom": 812
+    }
+  ],
+  "Inv_Landmark": [
+    "forme_ui/Icons.png",
+    "Pin",
+    16,
+    16,
+    {
+      "left": 964,
+      "right": 980,
+      "top": 636,
+      "bottom": 620
+    }
+  ],
+  "Inv_LandmarkVisited": [
+    "forme_ui/Icons.png",
+    "Pin",
+    16,
+    16,
+    {
+      "left": 964,
+      "right": 980,
+      "top": 636,
+      "bottom": 620
+    }
+  ],
+  "Inv_Material": [
+    "forme_ui/Icons.png",
+    "Layers",
+    16,
+    16,
+    {
+      "left": 708,
+      "right": 724,
+      "top": 764,
+      "bottom": 748
+    }
+  ],
+  "Inv_Mesh": [
+    "forme_ui/Icons.png",
+    "Cube",
+    16,
+    16,
+    {
+      "left": 324,
+      "right": 340,
+      "top": 892,
+      "bottom": 876
+    }
+  ],
+  "Inv_Notecard": [
+    "forme_ui/Icons.png",
+    "Note",
+    16,
+    16,
+    {
+      "left": 260,
+      "right": 276,
+      "top": 636,
+      "bottom": 620
+    }
+  ],
+  "Inv_Object": [
+    "forme_ui/Icons.png",
+    "Cube",
+    16,
+    16,
+    {
+      "left": 324,
+      "right": 340,
+      "top": 892,
+      "bottom": 876
+    }
+  ],
+  "Inv_Object_Multi": [
+    "forme_ui/Icons.png",
+    "CubeMulti",
+    16,
+    16,
+    {
+      "left": 644,
+      "right": 660,
+      "top": 892,
+      "bottom": 876
+    }
+  ],
+  "Inv_Pants": [
+    "forme_ui/Icons.png",
+    "Pants",
+    16,
+    16,
+    {
+      "left": 388,
+      "right": 404,
+      "top": 636,
+      "bottom": 620
+    }
+  ],
+  "Inv_Script": [
+    "forme_ui/Icons.png",
+    "Code",
+    16,
+    16,
+    {
+      "left": 4,
+      "right": 20,
+      "top": 892,
+      "bottom": 876
+    }
+  ],
+  "Inv_Shirt": [
+    "forme_ui/Icons.png",
+    "Clothes",
+    16,
+    16,
+    {
+      "left": 772,
+      "right": 788,
+      "top": 956,
+      "bottom": 940
+    }
+  ],
+  "Inv_Shoe": [
+    "forme_ui/Icons.png",
+    "Shoe",
+    16,
+    16,
+    {
+      "left": 580,
+      "right": 596,
+      "top": 508,
+      "bottom": 492
+    }
+  ],
+  "Inv_Skin": [
+    "forme_ui/Icons.png",
+    "Profile",
+    16,
+    16,
+    {
+      "left": 324,
+      "right": 340,
+      "top": 572,
+      "bottom": 556
+    }
+  ],
+  "Inv_Skirt": [
+    "forme_ui/Icons.png",
+    "Clothes",
+    16,
+    16,
+    {
+      "left": 772,
+      "right": 788,
+      "top": 956,
+      "bottom": 940
+    }
+  ],
+  "Inv_Snapshot": [
+    "forme_ui/Icons.png",
+    "Camera",
+    16,
+    16,
+    {
+      "left": 964,
+      "right": 980,
+      "top": 1020,
+      "bottom": 1004
+    }
+  ],
+  "Inv_Socks": [
+    "forme_ui/Icons.png",
+    "Shoe",
+    16,
+    16,
+    {
+      "left": 580,
+      "right": 596,
+      "top": 508,
+      "bottom": 492
+    }
+  ],
+  "Inv_Sound": [
+    "forme_ui/Icons.png",
+    "Music",
+    16,
+    16,
+    {
+      "left": 132,
+      "right": 148,
+      "top": 636,
+      "bottom": 620
+    }
+  ],
+  "Inv_StockFolderClosed": [
+    "forme_ui/Icons.png",
+    "Folder",
+    16,
+    16,
+    {
+      "left": 772,
+      "right": 788,
+      "top": 828,
+      "bottom": 812
+    }
+  ],
+  "Inv_StockFolderOpen": [
+    "forme_ui/Icons.png",
+    "Folder",
+    16,
+    16,
+    {
+      "left": 772,
+      "right": 788,
+      "top": 828,
+      "bottom": 812
+    }
+  ],
+  "Inv_SysClosed": [
+    "forme_ui/Icons.png",
+    "Folder",
+    16,
+    16,
+    {
+      "left": 772,
+      "right": 788,
+      "top": 828,
+      "bottom": 812
+    }
+  ],
+  "Inv_SysOpen": [
+    "forme_ui/Icons.png",
+    "Folder",
+    16,
+    16,
+    {
+      "left": 772,
+      "right": 788,
+      "top": 828,
+      "bottom": 812
+    }
+  ],
+  "Inv_Tattoo": [
+    "forme_ui/Icons.png",
+    "Brush",
+    16,
+    16,
+    {
+      "left": 772,
+      "right": 788,
+      "top": 1020,
+      "bottom": 1004
+    }
+  ],
+  "Inv_Universal": [
+    "forme_ui/Icons.png",
+    "Layers",
+    16,
+    16,
+    {
+      "left": 708,
+      "right": 724,
+      "top": 764,
+      "bottom": 748
+    }
+  ],
+  "Inv_Physics": [
+    "forme_ui/Icons.png",
+    "Move",
+    16,
+    16,
+    {
+      "left": 964,
+      "right": 980,
+      "top": 700,
+      "bottom": 684
+    }
+  ],
+  "Inv_Texture": [
+    "forme_ui/Icons.png",
+    "Graphics",
+    16,
+    16,
+    {
+      "left": 4,
+      "right": 20,
+      "top": 764,
+      "bottom": 748
+    }
+  ],
+  "Inv_TrashClosed": [
+    "forme_ui/Icons.png",
+    "Trash",
+    16,
+    16,
+    {
+      "left": 388,
+      "right": 404,
+      "top": 444,
+      "bottom": 428
+    }
+  ],
+  "Inv_TrashOpen": [
+    "forme_ui/Icons.png",
+    "Trash",
+    16,
+    16,
+    {
+      "left": 388,
+      "right": 404,
+      "top": 444,
+      "bottom": 428
+    }
+  ],
+  "Inv_Link": [
+    "forme_ui/Icons.png",
+    "Link",
+    6,
+    8,
+    {
+      "left": 900,
+      "right": 906,
+      "top": 764,
+      "bottom": 756
+    }
+  ],
+  "Inv_Settings": [
+    "forme_ui/Icons.png",
+    "Settings",
+    16,
+    16,
+    {
+      "left": 260,
+      "right": 276,
+      "top": 508,
+      "bottom": 492
+    }
+  ],
+  "Inv_SettingsSky": [
+    "forme_ui/Icons.png",
+    "Settings",
+    16,
+    16,
+    {
+      "left": 260,
+      "right": 276,
+      "top": 508,
+      "bottom": 492
+    }
+  ],
+  "Inv_SettingsWater": [
+    "forme_ui/Icons.png",
+    "Settings",
+    16,
+    16,
+    {
+      "left": 260,
+      "right": 276,
+      "top": 508,
+      "bottom": 492
+    }
+  ],
+  "Inv_SettingsDay": [
+    "forme_ui/Icons.png",
+    "Settings",
+    16,
+    16,
+    {
+      "left": 260,
+      "right": 276,
+      "top": 508,
+      "bottom": 492
+    }
+  ],
+  "Inv_Toolbar_SearchVisibility": [
+    "forme_ui/Icons.png",
+    "Eye",
+    25,
+    10,
+    {
+      "left": 516,
+      "right": 541,
+      "top": 828,
+      "bottom": 818
+    }
+  ],
+  "Inv_TexturesOpen": [
+    "forme_ui/Icons.png",
+    "Graphics",
+    16,
+    16,
+    {
+      "left": 4,
+      "right": 20,
+      "top": 764,
+      "bottom": 748
+    }
+  ],
+  "Inv_TexturesClosed": [
+    "forme_ui/Icons.png",
+    "Graphics",
+    16,
+    16,
+    {
+      "left": 4,
+      "right": 20,
+      "top": 764,
+      "bottom": 748
+    }
+  ],
+  "Inv_SoundOpen": [
+    "forme_ui/Icons.png",
+    "Music",
+    16,
+    16,
+    {
+      "left": 132,
+      "right": 148,
+      "top": 636,
+      "bottom": 620
+    }
+  ],
+  "Inv_SoundClosed": [
+    "forme_ui/Icons.png",
+    "Music",
+    16,
+    16,
+    {
+      "left": 132,
+      "right": 148,
+      "top": 636,
+      "bottom": 620
+    }
+  ],
+  "Inv_CallingCardOpen": [
+    "forme_ui/Icons.png",
+    "Profile",
+    16,
+    16,
+    {
+      "left": 324,
+      "right": 340,
+      "top": 572,
+      "bottom": 556
+    }
+  ],
+  "Inv_CallingCardClosed": [
+    "forme_ui/Icons.png",
+    "Profile",
+    16,
+    16,
+    {
+      "left": 324,
+      "right": 340,
+      "top": 572,
+      "bottom": 556
+    }
+  ],
+  "Inv_LandmarksOpen": [
+    "forme_ui/Icons.png",
+    "Pin",
+    16,
+    16,
+    {
+      "left": 964,
+      "right": 980,
+      "top": 636,
+      "bottom": 620
+    }
+  ],
+  "Inv_LandmarksClosed": [
+    "forme_ui/Icons.png",
+    "Pin",
+    16,
+    16,
+    {
+      "left": 964,
+      "right": 980,
+      "top": 636,
+      "bottom": 620
+    }
+  ],
+  "Inv_ClothingOpen": [
+    "forme_ui/Icons.png",
+    "Clothes",
+    16,
+    16,
+    {
+      "left": 772,
+      "right": 788,
+      "top": 956,
+      "bottom": 940
+    }
+  ],
+  "Inv_ClothingClosed": [
+    "forme_ui/Icons.png",
+    "Clothes",
+    16,
+    16,
+    {
+      "left": 772,
+      "right": 788,
+      "top": 956,
+      "bottom": 940
+    }
+  ],
+  "Inv_ObjectsOpen": [
+    "forme_ui/Icons.png",
+    "Cube",
+    16,
+    16,
+    {
+      "left": 324,
+      "right": 340,
+      "top": 892,
+      "bottom": 876
+    }
+  ],
+  "Inv_ObjectsClosed": [
+    "forme_ui/Icons.png",
+    "Cube",
+    16,
+    16,
+    {
+      "left": 324,
+      "right": 340,
+      "top": 892,
+      "bottom": 876
+    }
+  ],
+  "Inv_MeshesOpen": [
+    "forme_ui/Icons.png",
+    "Cube",
+    16,
+    16,
+    {
+      "left": 324,
+      "right": 340,
+      "top": 892,
+      "bottom": 876
+    }
+  ],
+  "Inv_MeshesClosed": [
+    "forme_ui/Icons.png",
+    "Cube",
+    16,
+    16,
+    {
+      "left": 324,
+      "right": 340,
+      "top": 892,
+      "bottom": 876
+    }
+  ],
+  "Inv_NotecardsOpen": [
+    "forme_ui/Icons.png",
+    "Note",
+    16,
+    16,
+    {
+      "left": 260,
+      "right": 276,
+      "top": 636,
+      "bottom": 620
+    }
+  ],
+  "Inv_NotecardsClosed": [
+    "forme_ui/Icons.png",
+    "Note",
+    16,
+    16,
+    {
+      "left": 260,
+      "right": 276,
+      "top": 636,
+      "bottom": 620
+    }
+  ],
+  "Inv_ScriptsOpen": [
+    "forme_ui/Icons.png",
+    "Code",
+    16,
+    16,
+    {
+      "left": 4,
+      "right": 20,
+      "top": 892,
+      "bottom": 876
+    }
+  ],
+  "Inv_ScriptsClosed": [
+    "forme_ui/Icons.png",
+    "Code",
+    16,
+    16,
+    {
+      "left": 4,
+      "right": 20,
+      "top": 892,
+      "bottom": 876
+    }
+  ],
+  "Inv_BodyPartsOpen": [
+    "forme_ui/Icons.png",
+    "Profile",
+    16,
+    16,
+    {
+      "left": 324,
+      "right": 340,
+      "top": 572,
+      "bottom": 556
+    }
+  ],
+  "Inv_BodyPartsClosed": [
+    "forme_ui/Icons.png",
+    "Profile",
+    16,
+    16,
+    {
+      "left": 324,
+      "right": 340,
+      "top": 572,
+      "bottom": 556
+    }
+  ],
+  "Inv_SnapshotsOpen": [
+    "forme_ui/Icons.png",
+    "Camera",
+    16,
+    16,
+    {
+      "left": 964,
+      "right": 980,
+      "top": 1020,
+      "bottom": 1004
+    }
+  ],
+  "Inv_SnapshotsClosed": [
+    "forme_ui/Icons.png",
+    "Camera",
+    16,
+    16,
+    {
+      "left": 964,
+      "right": 980,
+      "top": 1020,
+      "bottom": 1004
+    }
+  ],
+  "Inv_AnimationsOpen": [
+    "forme_ui/Icons.png",
+    "Walk",
+    16,
+    16,
+    {
+      "left": 644,
+      "right": 660,
+      "top": 444,
+      "bottom": 428
+    }
+  ],
+  "Inv_AnimationsClosed": [
+    "forme_ui/Icons.png",
+    "Walk",
+    16,
+    16,
+    {
+      "left": 644,
+      "right": 660,
+      "top": 444,
+      "bottom": 428
+    }
+  ],
+  "Inv_GesturesOpen": [
+    "forme_ui/Icons.png",
+    "Walk",
+    16,
+    16,
+    {
+      "left": 644,
+      "right": 660,
+      "top": 444,
+      "bottom": 428
+    }
+  ],
+  "Inv_GesturesClosed": [
+    "forme_ui/Icons.png",
+    "Walk",
+    16,
+    16,
+    {
+      "left": 644,
+      "right": 660,
+      "top": 444,
+      "bottom": 428
+    }
+  ],
+  "Inv_FavoritesOpen": [
+    "forme_ui/Icons.png",
+    "Star",
+    16,
+    16,
+    {
+      "left": 68,
+      "right": 84,
+      "top": 444,
+      "bottom": 428
+    }
+  ],
+  "Inv_FavoritesClosed": [
+    "forme_ui/Icons.png",
+    "Star",
+    16,
+    16,
+    {
+      "left": 68,
+      "right": 84,
+      "top": 444,
+      "bottom": 428
+    }
+  ],
+  "Inv_SettingsOpen": [
+    "forme_ui/Icons.png",
+    "Settings",
+    16,
+    16,
+    {
+      "left": 260,
+      "right": 276,
+      "top": 508,
+      "bottom": 492
+    }
+  ],
+  "Inv_SettingsClosed": [
+    "forme_ui/Icons.png",
+    "Settings",
+    16,
+    16,
+    {
+      "left": 260,
+      "right": 276,
+      "top": 508,
+      "bottom": 492
+    }
+  ],
+  "Inv_MaterialsClosed": [
+    "forme_ui/Icons.png",
+    "Layers",
+    16,
+    16,
+    {
+      "left": 708,
+      "right": 724,
+      "top": 764,
+      "bottom": 748
+    }
+  ],
+  "Inv_MaterialsOpen": [
+    "forme_ui/Icons.png",
+    "Layers",
+    16,
+    16,
+    {
+      "left": 708,
+      "right": 724,
+      "top": 764,
+      "bottom": 748
+    }
+  ],
+  "Lock": [
+    "forme_ui/Icons.png",
+    "Lock",
+    18,
+    18,
+    {
+      "left": 196,
+      "right": 214,
+      "top": 700,
+      "bottom": 682
+    }
+  ],
+  "OptionsMenu_Off": [
+    "forme_ui/Icons.png",
+    "Settings",
+    18,
+    18,
+    {
+      "left": 324,
+      "right": 342,
+      "top": 508,
+      "bottom": 490
+    }
+  ],
+  "OptionsMenu_Press": [
+    "forme_ui/Icons.png",
+    "Settings",
+    18,
+    18,
+    {
+      "left": 324,
+      "right": 342,
+      "top": 508,
+      "bottom": 490
+    }
+  ],
+  "Profile_Perm_Find_Disabled": [
+    "forme_ui/Icons.png",
+    "MapOff",
+    30,
+    30,
+    {
+      "left": 580,
+      "right": 610,
+      "top": 700,
+      "bottom": 670
+    }
+  ],
+  "Profile_Perm_Find_Enabled": [
+    "forme_ui/Icons.png",
+    "Map",
+    30,
+    30,
+    {
+      "left": 452,
+      "right": 482,
+      "top": 700,
+      "bottom": 670
+    }
+  ],
+  "Profile_Perm_Objects_Disabled": [
+    "forme_ui/Icons.png",
+    "CubeOff",
+    30,
+    30,
+    {
+      "left": 836,
+      "right": 866,
+      "top": 892,
+      "bottom": 862
+    }
+  ],
+  "Profile_Perm_Objects_Enabled": [
+    "forme_ui/Icons.png",
+    "Cube",
+    30,
+    30,
+    {
+      "left": 580,
+      "right": 610,
+      "top": 892,
+      "bottom": 862
+    }
+  ],
+  "Profile_Perm_Online_Disabled": [
+    "forme_ui/Icons.png",
+    "EyeOff",
+    30,
+    30,
+    {
+      "left": 708,
+      "right": 738,
+      "top": 828,
+      "bottom": 798
+    }
+  ],
+  "Profile_Perm_Online_Enabled": [
+    "forme_ui/Icons.png",
+    "Eye",
+    30,
+    30,
+    {
+      "left": 580,
+      "right": 610,
+      "top": 828,
+      "bottom": 798
+    }
+  ],
+  "Search": [
+    "forme_ui/Icons.png",
+    "Search",
+    13,
+    13,
+    {
+      "left": 900,
+      "right": 913,
+      "top": 572,
+      "bottom": 559
+    }
+  ],
+  "Search_Icon": [
+    "forme_ui/Icons.png",
+    "Search",
+    18,
+    17,
+    {
+      "left": 964,
+      "right": 982,
+      "top": 572,
+      "bottom": 555
+    }
+  ],
+  "TabIcon_Close_Off": [
+    "forme_ui/Icons.png",
+    "Close",
+    24,
+    24,
+    {
+      "left": 708,
+      "right": 732,
+      "top": 956,
+      "bottom": 932
+    }
+  ],
+  "Tool_Create": [
+    "forme_ui/Icons.png",
+    "Cube",
+    20,
+    20,
+    {
+      "left": 452,
+      "right": 472,
+      "top": 892,
+      "bottom": 872
+    }
+  ],
+  "Tool_Dozer": [
+    "forme_ui/Icons.png",
+    "Layers",
+    20,
+    20,
+    {
+      "left": 772,
+      "right": 792,
+      "top": 764,
+      "bottom": 744
+    }
+  ],
+  "Tool_Face": [
+    "forme_ui/Icons.png",
+    "Edit",
+    20,
+    20,
+    {
+      "left": 196,
+      "right": 216,
+      "top": 828,
+      "bottom": 808
+    }
+  ],
+  "Tool_Grab": [
+    "forme_ui/Icons.png",
+    "Move",
+    20,
+    20,
+    {
+      "left": 4,
+      "right": 24,
+      "top": 636,
+      "bottom": 616
+    }
+  ],
+  "Tool_Zoom": [
+    "forme_ui/Icons.png",
+    "Search",
+    20,
+    20,
+    {
+      "left": 68,
+      "right": 88,
+      "top": 508,
+      "bottom": 488
+    }
+  ],
+  "TrashItem_Off": [
+    "forme_ui/Icons.png",
+    "Trash",
+    18,
+    18,
+    {
+      "left": 452,
+      "right": 470,
+      "top": 444,
+      "bottom": 426
+    }
+  ],
+  "TrashItem_Press": [
+    "forme_ui/Icons.png",
+    "Trash",
+    18,
+    18,
+    {
+      "left": 452,
+      "right": 470,
+      "top": 444,
+      "bottom": 426
+    }
+  ],
+  "show_filters_18": [
+    "forme_ui/Icons.png",
+    "Sliders",
+    18,
+    18,
+    {
+      "left": 708,
+      "right": 726,
+      "top": 508,
+      "bottom": 490
+    }
+  ],
+  "inventory_18": [
+    "forme_ui/Icons.png",
+    "Inventory",
+    18,
+    18,
+    {
+      "left": 580,
+      "right": 598,
+      "top": 764,
+      "bottom": 746
+    }
+  ],
+  "tearoffbox.tga": [
+    "forme_ui/Icons.png",
+    "Restore",
+    16,
+    16,
+    {
+      "left": 580,
+      "right": 596,
+      "top": 572,
+      "bottom": 556
+    }
+  ],
+  "tearoff_pressed.tga": [
+    "forme_ui/Icons.png",
+    "Restore",
+    16,
+    16,
+    {
+      "left": 580,
+      "right": 596,
+      "top": 572,
+      "bottom": 556
+    }
+  ],
+  "Single_Folder_Back": [
+    "forme_ui/Icons.png",
+    "ArrowLeft",
+    18,
+    18,
+    {
+      "left": 196,
+      "right": 214,
+      "top": 1020,
+      "bottom": 1002
+    }
+  ],
+  "Single_Folder_Forward": [
+    "forme_ui/Icons.png",
+    "ArrowRight",
+    18,
+    18,
+    {
+      "left": 388,
+      "right": 406,
+      "top": 1020,
+      "bottom": 1002
+    }
+  ],
+  "Single_Folder_Up": [
+    "forme_ui/Icons.png",
+    "ArrowUp",
+    18,
+    18,
+    {
+      "left": 580,
+      "right": 598,
+      "top": 1020,
+      "bottom": 1002
+    }
+  ],
+  "Forme_UI_Window": [
+    "forme_ui/Icons.png",
+    "Window",
+    22,
+    22,
+    {
+      "left": 836,
+      "right": 858,
+      "top": 444,
+      "bottom": 422
+    }
+  ],
+  "Forme_UI_Inventory": [
+    "forme_ui/Icons.png",
+    "Inventory",
+    22,
+    22,
+    {
+      "left": 644,
+      "right": 666,
+      "top": 764,
+      "bottom": 742
+    }
+  ],
+  "Forme_UI_Folder": [
+    "forme_ui/Icons.png",
+    "Folder",
+    22,
+    22,
+    {
+      "left": 836,
+      "right": 858,
+      "top": 828,
+      "bottom": 806
+    }
+  ],
+  "Forme_UI_FolderOpen": [
+    "forme_ui/Icons.png",
+    "FolderOpen",
+    22,
+    22,
+    {
+      "left": 964,
+      "right": 986,
+      "top": 828,
+      "bottom": 806
+    }
+  ],
+  "Forme_UI_People": [
+    "forme_ui/Icons.png",
+    "People",
+    22,
+    22,
+    {
+      "left": 644,
+      "right": 666,
+      "top": 636,
+      "bottom": 614
+    }
+  ],
+  "Forme_UI_Profile": [
+    "forme_ui/Icons.png",
+    "Profile",
+    22,
+    22,
+    {
+      "left": 452,
+      "right": 474,
+      "top": 572,
+      "bottom": 550
+    }
+  ],
+  "Forme_UI_Chat": [
+    "forme_ui/Icons.png",
+    "Chat",
+    22,
+    22,
+    {
+      "left": 196,
+      "right": 218,
+      "top": 956,
+      "bottom": 934
+    }
+  ],
+  "Forme_UI_Settings": [
+    "forme_ui/Icons.png",
+    "Settings",
+    22,
+    22,
+    {
+      "left": 388,
+      "right": 410,
+      "top": 508,
+      "bottom": 486
+    }
+  ],
+  "Forme_UI_Graphics": [
+    "forme_ui/Icons.png",
+    "Graphics",
+    22,
+    22,
+    {
+      "left": 68,
+      "right": 90,
+      "top": 764,
+      "bottom": 742
+    }
+  ],
+  "Forme_UI_Sound": [
+    "forme_ui/Icons.png",
+    "Sound",
+    22,
+    22,
+    {
+      "left": 964,
+      "right": 986,
+      "top": 508,
+      "bottom": 486
+    }
+  ],
+  "Forme_UI_Cloud": [
+    "forme_ui/Icons.png",
+    "Cloud",
+    22,
+    22,
+    {
+      "left": 964,
+      "right": 986,
+      "top": 956,
+      "bottom": 934
+    }
+  ],
+  "Forme_UI_Move": [
+    "forme_ui/Icons.png",
+    "Move",
+    22,
+    22,
+    {
+      "left": 68,
+      "right": 90,
+      "top": 636,
+      "bottom": 614
+    }
+  ],
+  "Forme_UI_Controls": [
+    "forme_ui/Icons.png",
+    "Controls",
+    22,
+    22,
+    {
+      "left": 132,
+      "right": 154,
+      "top": 892,
+      "bottom": 870
+    }
+  ],
+  "Forme_UI_Bell": [
+    "forme_ui/Icons.png",
+    "Bell",
+    22,
+    22,
+    {
+      "left": 708,
+      "right": 730,
+      "top": 1020,
+      "bottom": 998
+    }
+  ],
+  "Forme_UI_Shield": [
+    "forme_ui/Icons.png",
+    "Shield",
+    22,
+    22,
+    {
+      "left": 516,
+      "right": 538,
+      "top": 508,
+      "bottom": 486
+    }
+  ],
+  "Forme_UI_Sliders": [
+    "forme_ui/Icons.png",
+    "Sliders",
+    22,
+    22,
+    {
+      "left": 836,
+      "right": 858,
+      "top": 508,
+      "bottom": 486
+    }
+  ],
+  "Forme_UI_Brush": [
+    "forme_ui/Icons.png",
+    "Brush",
+    22,
+    22,
+    {
+      "left": 836,
+      "right": 858,
+      "top": 1020,
+      "bottom": 998
+    }
+  ],
+  "Forme_UI_Bug": [
+    "forme_ui/Icons.png",
+    "Bug",
+    22,
+    22,
+    {
+      "left": 900,
+      "right": 922,
+      "top": 1020,
+      "bottom": 998
+    }
+  ],
+  "Forme_UI_Database": [
+    "forme_ui/Icons.png",
+    "Database",
+    22,
+    22,
+    {
+      "left": 900,
+      "right": 922,
+      "top": 892,
+      "bottom": 870
+    }
+  ],
+  "Forme_UI_Cube": [
+    "forme_ui/Icons.png",
+    "Cube",
+    22,
+    22,
+    {
+      "left": 516,
+      "right": 538,
+      "top": 892,
+      "bottom": 870
+    }
+  ],
+  "Forme_UI_Layers": [
+    "forme_ui/Icons.png",
+    "Layers",
+    22,
+    22,
+    {
+      "left": 836,
+      "right": 858,
+      "top": 764,
+      "bottom": 742
+    }
+  ],
+  "Forme_UI_Code": [
+    "forme_ui/Icons.png",
+    "Code",
+    22,
+    22,
+    {
+      "left": 68,
+      "right": 90,
+      "top": 892,
+      "bottom": 870
+    }
+  ],
+  "Forme_UI_Pin": [
+    "forme_ui/Icons.png",
+    "Pin",
+    22,
+    22,
+    {
+      "left": 68,
+      "right": 90,
+      "top": 572,
+      "bottom": 550
+    }
+  ],
+  "Forme_UI_Map": [
+    "forme_ui/Icons.png",
+    "Map",
+    22,
+    22,
+    {
+      "left": 388,
+      "right": 410,
+      "top": 700,
+      "bottom": 678
+    }
+  ],
+  "Forme_UI_Camera": [
+    "forme_ui/Icons.png",
+    "Camera",
+    22,
+    22,
+    {
+      "left": 68,
+      "right": 90,
+      "top": 956,
+      "bottom": 934
+    }
+  ],
+  "Forme_UI_Clothes": [
+    "forme_ui/Icons.png",
+    "Clothes",
+    22,
+    22,
+    {
+      "left": 836,
+      "right": 858,
+      "top": 956,
+      "bottom": 934
+    }
+  ],
+  "Forme_UI_Hanger": [
+    "forme_ui/Icons.png",
+    "Hanger",
+    22,
+    22,
+    {
+      "left": 260,
+      "right": 282,
+      "top": 764,
+      "bottom": 742
+    }
+  ],
+  "Forme_UI_Clock": [
+    "forme_ui/Icons.png",
+    "Clock",
+    22,
+    22,
+    {
+      "left": 388,
+      "right": 410,
+      "top": 956,
+      "bottom": 934
+    }
+  ],
+  "Forme_UI_Star": [
+    "forme_ui/Icons.png",
+    "Star",
+    22,
+    22,
+    {
+      "left": 196,
+      "right": 218,
+      "top": 444,
+      "bottom": 422
+    }
+  ],
+  "Forme_UI_Trash": [
+    "forme_ui/Icons.png",
+    "Trash",
+    22,
+    22,
+    {
+      "left": 516,
+      "right": 538,
+      "top": 444,
+      "bottom": 422
+    }
+  ],
+  "Forme_UI_Note": [
+    "forme_ui/Icons.png",
+    "Note",
+    22,
+    22,
+    {
+      "left": 324,
+      "right": 346,
+      "top": 636,
+      "bottom": 614
+    }
+  ],
+  "Forme_UI_Search": [
+    "forme_ui/Icons.png",
+    "Search",
+    22,
+    22,
+    {
+      "left": 132,
+      "right": 154,
+      "top": 508,
+      "bottom": 486
+    }
+  ],
+  "Forme_UI_Copy": [
+    "forme_ui/Icons.png",
+    "Copy",
+    22,
+    22,
+    {
+      "left": 260,
+      "right": 282,
+      "top": 892,
+      "bottom": 870
+    }
+  ],
+  "Forme_UI_Link": [
+    "forme_ui/Icons.png",
+    "Link",
+    22,
+    22,
+    {
+      "left": 4,
+      "right": 26,
+      "top": 700,
+      "bottom": 678
+    }
+  ],
+  "Forme_UI_Info": [
+    "forme_ui/Icons.png",
+    "Info",
+    22,
+    22,
+    {
+      "left": 452,
+      "right": 474,
+      "top": 764,
+      "bottom": 742
+    }
+  ],
+  "Forme_UI_Edit": [
+    "forme_ui/Icons.png",
+    "Edit",
+    22,
+    22,
+    {
+      "left": 260,
+      "right": 282,
+      "top": 828,
+      "bottom": 806
+    }
+  ],
+  "Forme_UI_Plus": [
+    "forme_ui/Icons.png",
+    "Plus",
+    22,
+    22,
+    {
+      "left": 260,
+      "right": 282,
+      "top": 572,
+      "bottom": 550
+    }
+  ],
+  "Forme_UI_Close": [
+    "forme_ui/Icons.png",
+    "Close",
+    22,
+    22,
+    {
+      "left": 644,
+      "right": 666,
+      "top": 956,
+      "bottom": 934
+    }
+  ],
+  "Forme_UI_Minus": [
+    "forme_ui/Icons.png",
+    "Minus",
+    22,
+    22,
+    {
+      "left": 836,
+      "right": 858,
+      "top": 700,
+      "bottom": 678
+    }
+  ],
+  "Forme_UI_Restore": [
+    "forme_ui/Icons.png",
+    "Restore",
+    22,
+    22,
+    {
+      "left": 708,
+      "right": 730,
+      "top": 572,
+      "bottom": 550
+    }
+  ],
+  "Forme_UI_Check": [
+    "forme_ui/Icons.png",
+    "Check",
+    22,
+    22,
+    {
+      "left": 260,
+      "right": 282,
+      "top": 956,
+      "bottom": 934
+    }
+  ],
+  "Forme_UI_ArrowLeft": [
+    "forme_ui/Icons.png",
+    "ArrowLeft",
+    22,
+    22,
+    {
+      "left": 260,
+      "right": 282,
+      "top": 1020,
+      "bottom": 998
+    }
+  ],
+  "Forme_UI_ArrowRight": [
+    "forme_ui/Icons.png",
+    "ArrowRight",
+    22,
+    22,
+    {
+      "left": 452,
+      "right": 474,
+      "top": 1020,
+      "bottom": 998
+    }
+  ],
+  "Forme_UI_ArrowUp": [
+    "forme_ui/Icons.png",
+    "ArrowUp",
+    22,
+    22,
+    {
+      "left": 644,
+      "right": 666,
+      "top": 1020,
+      "bottom": 998
+    }
+  ],
+  "Forme_UI_ArrowDown": [
+    "forme_ui/Icons.png",
+    "ArrowDown",
+    22,
+    22,
+    {
+      "left": 68,
+      "right": 90,
+      "top": 1020,
+      "bottom": 998
+    }
+  ],
+  "Forme_UI_Rotate": [
+    "forme_ui/Icons.png",
+    "Rotate",
+    22,
+    22,
+    {
+      "left": 772,
+      "right": 794,
+      "top": 572,
+      "bottom": 550
+    }
+  ],
+  "Forme_UI_Lock": [
+    "forme_ui/Icons.png",
+    "Lock",
+    22,
+    22,
+    {
+      "left": 260,
+      "right": 282,
+      "top": 700,
+      "bottom": 678
+    }
+  ],
+  "Forme_UI_Save": [
+    "forme_ui/Icons.png",
+    "Save",
+    22,
+    22,
+    {
+      "left": 836,
+      "right": 858,
+      "top": 572,
+      "bottom": 550
+    }
+  ],
+  "Forme_UI_Upload": [
+    "forme_ui/Icons.png",
+    "Upload",
+    22,
+    22,
+    {
+      "left": 580,
+      "right": 602,
+      "top": 444,
+      "bottom": 422
+    }
+  ],
+  "Forme_UI_Download": [
+    "forme_ui/Icons.png",
+    "Download",
+    22,
+    22,
+    {
+      "left": 68,
+      "right": 90,
+      "top": 828,
+      "bottom": 806
+    }
+  ],
+  "Forme_UI_Phone": [
+    "forme_ui/Icons.png",
+    "Phone",
+    22,
+    22,
+    {
+      "left": 900,
+      "right": 922,
+      "top": 636,
+      "bottom": 614
+    }
+  ],
+  "Forme_UI_Mic": [
+    "forme_ui/Icons.png",
+    "Mic",
+    22,
+    22,
+    {
+      "left": 708,
+      "right": 730,
+      "top": 700,
+      "bottom": 678
+    }
+  ],
+  "Forme_UI_Play": [
+    "forme_ui/Icons.png",
+    "Play",
+    22,
+    22,
+    {
+      "left": 132,
+      "right": 154,
+      "top": 572,
+      "bottom": 550
+    }
+  ],
+  "Forme_UI_Pause": [
+    "forme_ui/Icons.png",
+    "Pause",
+    22,
+    22,
+    {
+      "left": 516,
+      "right": 538,
+      "top": 636,
+      "bottom": 614
+    }
+  ],
+  "Forme_UI_Send": [
+    "forme_ui/Icons.png",
+    "Send",
+    22,
+    22,
+    {
+      "left": 196,
+      "right": 218,
+      "top": 508,
+      "bottom": 486
+    }
+  ],
+  "Forme_UI_Eye": [
+    "forme_ui/Icons.png",
+    "Eye",
+    22,
+    22,
+    {
+      "left": 452,
+      "right": 474,
+      "top": 828,
+      "bottom": 806
+    }
+  ],
+  "Forme_UI_Walk": [
+    "forme_ui/Icons.png",
+    "Walk",
+    22,
+    22,
+    {
+      "left": 772,
+      "right": 794,
+      "top": 444,
+      "bottom": 422
+    }
+  ],
+  "Forme_UI_Shoe": [
+    "forme_ui/Icons.png",
+    "Shoe",
+    22,
+    22,
+    {
+      "left": 644,
+      "right": 666,
+      "top": 508,
+      "bottom": 486
+    }
+  ],
+  "Forme_UI_Pants": [
+    "forme_ui/Icons.png",
+    "Pants",
+    22,
+    22,
+    {
+      "left": 452,
+      "right": 474,
+      "top": 636,
+      "bottom": 614
+    }
+  ],
+  "Forme_UI_Music": [
+    "forme_ui/Icons.png",
+    "Music",
+    22,
+    22,
+    {
+      "left": 196,
+      "right": 218,
+      "top": 636,
+      "bottom": 614
+    }
+  ],
+  "Forme_UI_More": [
+    "forme_ui/Icons.png",
+    "More",
+    22,
+    22,
+    {
+      "left": 900,
+      "right": 922,
+      "top": 700,
+      "bottom": 678
+    }
+  ],
+  "Forme_UI_CubeMulti": [
+    "forme_ui/Icons.png",
+    "CubeMulti",
+    22,
+    22,
+    {
+      "left": 708,
+      "right": 730,
+      "top": 892,
+      "bottom": 870
+    }
+  ],
+  "Forme_UI_StarFilled": [
+    "forme_ui/Icons.png",
+    "StarFilled",
+    22,
+    22,
+    {
+      "left": 324,
+      "right": 346,
+      "top": 444,
+      "bottom": 422
+    }
+  ],
+  "Forme_UI_LinkFolder": [
+    "forme_ui/Icons.png",
+    "LinkFolder",
+    22,
+    22,
+    {
+      "left": 132,
+      "right": 154,
+      "top": 700,
+      "bottom": 678
+    }
+  ],
+  "Forme_UI_EyeOff": [
+    "forme_ui/Icons.png",
+    "EyeOff",
+    22,
+    22,
+    {
+      "left": 644,
+      "right": 666,
+      "top": 828,
+      "bottom": 806
+    }
+  ],
+  "Forme_UI_MapOff": [
+    "forme_ui/Icons.png",
+    "MapOff",
+    22,
+    22,
+    {
+      "left": 516,
+      "right": 538,
+      "top": 700,
+      "bottom": 678
+    }
+  ],
+  "Forme_UI_CubeOff": [
+    "forme_ui/Icons.png",
+    "CubeOff",
+    22,
+    22,
+    {
+      "left": 772,
+      "right": 794,
+      "top": 892,
+      "bottom": 870
+    }
+  ]
+}

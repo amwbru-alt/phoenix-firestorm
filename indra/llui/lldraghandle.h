@@ -30,11 +30,13 @@
 #define LL_DRAGHANDLE_H
 
 #include "llview.h"
+#include "lluiimage.h"
 #include "v4color.h"
 #include "llrect.h"
 #include "llcoord.h"
 
 class LLTextBox;
+class LLUIImage;
 
 class LLDragHandle : public LLView
 {
@@ -47,11 +49,13 @@ public:
         Optional<LLUIColor> drag_highlight_color;
         Optional<LLUIColor> drag_shadow_color;
         Optional<const LLFontGL*> font;
+        Optional<LLUIImage*> title_icon;
         Optional<LLFontGL::ShadowType> font_shadow;     // <FS:Zi> Allow skins to override drag handle font shadow
 
         Params()
         :   label("label"),
             label_vpad("label_vpad", 7),
+            title_icon("title_icon"),
             drag_highlight_color("drag_highlight_color", LLUIColorTable::instance().getColor("DefaultHighlightLight")),
             drag_shadow_color("drag_shadow_color", LLUIColorTable::instance().getColor("DefaultShadowDark")),
             font_shadow("font_shadow", LLFontGL::NO_SHADOW),    // <FS:Zi> Allow skins to override drag handle font shadow
@@ -90,6 +94,7 @@ protected:
     LLTextBox*      mTitleBox;
     const LLFontGL* mFont;
     S32             mLabelVPad;
+    LLUIImage*      mTitleIcon = nullptr;
 
 private:
     LLRect          mButtonsRect;

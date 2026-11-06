@@ -1,20 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater
- legacy_header_height="18"
- height="575"
-
- layout="topleft"
- name="regioninfo"
- save_rect="true"
- title="Region / Estate"
- width="485">
-    <tab_container
-     bottom="575"
-     follows="left|right|top|bottom"
-     layout="topleft"
-     left="1"
-     name="region_panels"
-     right="-1"
-     tab_position="top"
-     top="20"/>
+<?xml version='1.0' encoding='utf-8'?>
+<floater legacy_header_height="0" height="690" layout="topleft" name="regioninfo" save_rect="true" title="Region / Estate" width="794" header_height="44" header_vpad="10" header_icon="Forme_UI_Map" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD" min_width="794" min_height="620">
+  <tab_container follows="left|right|top|bottom" layout="topleft" name="region_panels" tab_position="left" left="16" top="12" width="762" height="662" tab_width="166" tab_height="36" tab_padding_right="12" halign="left" use_ellipses="true" />
 </floater>

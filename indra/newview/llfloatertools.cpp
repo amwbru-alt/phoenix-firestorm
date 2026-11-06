@@ -377,7 +377,7 @@ bool    LLFloaterTools::postBuild()
     if (btnExpand && mTab)
     {
         mExpandedHeight = getRect().getHeight();
-        mCollapsedHeight = mExpandedHeight - mTab->getRect().getHeight() + btnExpand->getRect().getHeight();
+        mCollapsedHeight = llmax(280, mExpandedHeight - mTab->getRect().getHeight() + btnExpand->getRect().getHeight());
         if (!gSavedSettings.getBOOL("FSToolboxExpanded"))
         {
             mTab->setVisible(false);

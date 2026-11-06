@@ -182,6 +182,16 @@ LLPanelMainInventory::LLPanelMainInventory(const LLPanel::Params& p)
     mCommitCallbackRegistrar.add("Inventory.EmptyLostAndFound", boost::bind(&LLInventoryModel::emptyFolderType, &gInventory, "ConfirmEmptyLostAndFound", LLFolderType::FT_LOST_AND_FOUND));
     mCommitCallbackRegistrar.add("Inventory.DoCreate", boost::bind(&LLPanelMainInventory::doCreate, this, _2));
     mCommitCallbackRegistrar.add("Inventory.ShowFilters", boost::bind(&LLPanelMainInventory::toggleFindOptions, this));
+    mEnableCallbackRegistrar.add("ForMeInventory.CategorySelected", [this](LLUICtrl*, const LLSD& value)
+    {
+        return mFilterComboBox && mFilterComboBox->getValue().asString() == value.asString();
+    });
+    mCommitCallbackRegistrar.add("ForMeInventory.Category", [this](LLUICtrl*, const LLSD& value)
+    {
+        if (!mFilterComboBox) return;
+        mFilterComboBox->selectByValue(value.asString());
+        onFilterTypeSelected(value.asString());
+    });
     mCommitCallbackRegistrar.add("Inventory.ResetFilters", boost::bind(&LLPanelMainInventory::resetFilters, this));
     //mCommitCallbackRegistrar.add("Inventory.SetSortBy", boost::bind(&LLPanelMainInventory::setSortBy, this, _2)); // <FS:Zi> Sort By menu handlers
 

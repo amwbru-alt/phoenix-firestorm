@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <floater
- legacy_header_height="18"
+ legacy_header_height="0"
  height="384"
  layout="topleft"
  name="godtools floater"
 
  title="God Tools"
- width="400">
+ width="400" header_height="44" header_vpad="10" header_icon="Forme_UI_Cube" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD">
     <tab_container
      follows="left|top"
      height="364"

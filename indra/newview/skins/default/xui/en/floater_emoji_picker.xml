@@ -12,7 +12,7 @@
     min_width="250"
     chrome="true"
     height="350"
-    width="304">
+    width="304" header_height="44" header_vpad="10" header_icon="Forme_UI_Window" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD" legacy_header_height="0">
   <floater.string name="title_for_frequently_used" value="Frequently used"/>
   <floater.string name="text_no_emoji_for_filter" value="No emoji found for '[FILTER]'"/>
   <scroll_container

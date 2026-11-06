@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <floater
- legacy_header_height="18"
+ legacy_header_height="0"
  can_resize="true"
  height="570"
 
@@ -9,7 +9,7 @@
  save_rect="true"
  title="Scripts"
  min_width="620"
- width="620">
+ width="620" header_height="44" header_vpad="10" header_icon="Forme_UI_Code" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD">
   <panel
    filename="panel_script_limits_my_avatar.xml"
    follows="all"

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <floater
- legacy_header_height="18"
+ legacy_header_height="0"
  can_tear_off="false"
  height="310"
  layout="topleft"
  name="floaterbulkperms"
 
  title="Adjust Content Permissions"
- width="350">
+ width="350" header_height="44" header_vpad="10" header_icon="Forme_UI_Window" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD">
     <floater.string
      name="nothing_to_modify_text">
         Selection contains no editable contents.

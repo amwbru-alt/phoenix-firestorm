@@ -39,6 +39,7 @@
 #include "linden_common.h"
 
 #include "llmenugl.h"
+#include "formeuistyle.h"
 
 #include "llgl.h"
 #include "llmath.h"
@@ -352,7 +353,9 @@ void LLMenuItemGL::setJumpKey(KEY key)
 // virtual
 U32 LLMenuItemGL::getNominalHeight( void ) const
 {
-    return mFont->getLineHeight() + MENU_ITEM_PADDING;
+    const bool forme_popup = gDirUtilp->getSkinThemeFolder() == "forme" &&
+        getMenu() && dynamic_cast<LLMenuBarGL*>(getMenu()) == nullptr;
+    return mFont->getLineHeight() + (forme_popup ? 14 : MENU_ITEM_PADDING);
 }
 
 //virtual
@@ -547,7 +550,12 @@ void LLMenuItemGL::draw( void )
         // Munus are all of the same size, so fixed offset works here,
         // but it won't work if somebody decides to use different font
         // todo: adjust logic to work of rect and font height
-        F32 y = (F32)MENU_ITEM_PADDING / 2.f;
+        F32 y = (F32)(getRect().getHeight() - mFont->getLineHeight()) / 2.f;
+        if (mDrawBoolLabel.empty() && gDirUtilp->getSkinThemeFolder() == "forme")
+        {
+            const auto icon = LLUI::getUIImage(ForMeUI::iconFor(getName()));
+            if (icon.notNull()) icon->draw(LEFT_PAD_PIXELS, (getRect().getHeight() - 16) / 2, 16, 16, color);
+        }
         if( !mDrawBoolLabel.empty() )
         {
             mFont->render( mDrawBoolLabel.getWString(), 0, (F32)LEFT_PAD_PIXELS, y, color,
@@ -577,7 +585,8 @@ void LLMenuItemGL::draw( void )
         {
             S32 x_begin = LEFT_PLAIN_PIXELS + mFont->getWidth(mLabel.getWString().c_str(), 0, static_cast<S32>(offset));
             S32 x_end = LEFT_PLAIN_PIXELS + mFont->getWidth(mLabel.getWString().c_str(), 0, static_cast<S32>(offset) + 1);
-            gl_line_2d(x_begin, (MENU_ITEM_PADDING / 2) + 1, x_end, (MENU_ITEM_PADDING / 2) + 1);
+            const S32 underline_y = (getRect().getHeight() - mFont->getLineHeight()) / 2 + 1;
+            gl_line_2d(x_begin, underline_y, x_end, underline_y);
         }
     }
 }

@@ -195,6 +195,7 @@ LLFloater::Params::Params()
     auto_close("auto_close", false),
     positioning("positioning", LLFloaterEnums::POSITIONING_RELATIVE),
     header_font("header_font", LLFontGL::getFontSansSerif()),
+    header_icon("header_icon"),
     header_font_shadow("header_font_shadow", LLFontGL::NO_SHADOW),      // <FS:Zi> Allow skins to override drag handle font shadow
     header_height("header_height", 0),
     legacy_header_height("legacy_header_height", 0),
@@ -375,6 +376,7 @@ void LLFloater::addDragHandle(const LLFloater::Params& floater_params)
             p.name("drag");
             p.follows.flags(FOLLOWS_ALL);
             p.label(mTitle);
+            p.title_icon(floater_params.header_icon);
             p.font(floater_params.header_font);
             p.font_shadow(floater_params.header_font_shadow);      // <FS:Zi> Allow skins to override drag handle font shadow
             p.label_vpad(floater_params.header_vpad);
@@ -386,6 +388,7 @@ void LLFloater::addDragHandle(const LLFloater::Params& floater_params)
             p.name("Drag Handle");
             p.follows.flags(FOLLOWS_ALL);
             p.label(mTitle);
+            p.title_icon(floater_params.header_icon);
             p.font(floater_params.header_font);
             p.font_shadow(floater_params.header_font_shadow);      // <FS:Zi> Allow skins to override drag handle font shadow
             p.label_vpad(floater_params.header_vpad);
@@ -1387,7 +1390,7 @@ void LLFloater::handleReshape(const LLRect& new_rect, bool by_user)
 void LLFloater::setMinimized(bool minimize)
 {
     const LLFloater::Params& default_params = LLFloater::getDefaultParams();
-    S32 floater_header_size = default_params.header_height;
+    S32 floater_header_size = llmax((S32)default_params.header_height, mHeaderHeight);
     static LLUICachedControl<S32> minimized_width ("UIMinimizedWidth", 0);
 
     if (minimize == mMinimized) return;
@@ -2358,6 +2361,8 @@ void LLFloater::updateTitleButtons()
 {
     static LLUICachedControl<S32> floater_close_box_size ("UIFloaterCloseBoxSize", 0);
     static LLUICachedControl<S32> close_box_from_top ("UICloseBoxFromTop", 0);
+    const S32 title_button_top = mHeaderHeight >= 44 && !mDragOnLeft ? (44 - floater_close_box_size) / 2 : (S32)close_box_from_top;
+    const S32 title_button_right = mHeaderHeight >= 44 && !mDragOnLeft ? 12 : LLPANEL_BORDER_WIDTH;
     LLRect buttons_rect;
     S32 button_count = 0;
     for (S32 i = 0; i < BUTTON_COUNT; i++)
@@ -2402,15 +2407,15 @@ void LLFloater::updateTitleButtons()
             {
                 btn_rect.setLeftTopAndSize(
                     LLPANEL_BORDER_WIDTH,
-                    getRect().getHeight() - close_box_from_top - (floater_close_box_size + 1) * button_count,
+                    getRect().getHeight() - title_button_top - (floater_close_box_size + 1) * button_count,
                     ll_round((F32)floater_close_box_size * mButtonScale),
                     ll_round((F32)floater_close_box_size * mButtonScale));
             }
             else
             {
                 btn_rect.setLeftTopAndSize(
-                    getRect().getWidth() - LLPANEL_BORDER_WIDTH - (floater_close_box_size + 1) * button_count,
-                    getRect().getHeight() - close_box_from_top,
+                    getRect().getWidth() - title_button_right - (floater_close_box_size + 1) * button_count,
+                    getRect().getHeight() - title_button_top,
                     ll_round((F32)floater_close_box_size * mButtonScale),
                     ll_round((F32)floater_close_box_size * mButtonScale));
             }
@@ -2988,7 +2993,7 @@ void LLFloaterView::focusFrontFloater()
 void LLFloaterView::getMinimizePosition(S32 *left, S32 *bottom)
 {
     const LLFloater::Params& default_params = LLFloater::getDefaultParams();
-    S32 floater_header_size = default_params.header_height;
+    S32 floater_header_size = gDirUtilp->getSkinThemeFolder() == "forme" ? llmax(44, (S32)default_params.header_height) : (S32)default_params.header_height;
     static LLUICachedControl<S32> minimized_width ("UIMinimizedWidth", 0);
     LLRect snap_rect_local = getLocalSnapRect();
     snap_rect_local.mTop += mMinimizePositionVOffset;

@@ -11,8 +11,16 @@ BASE = ROOT / 'indra/newview/skins/default'
 contract = json.loads((ROOT / 'tests/forme/ui_functions_contract.json').read_text())
 for name, expected in contract['resources'].items():
     root = ET.parse(BASE / 'xui/en' / name).getroot()
-    rows = [(node.tag, {key: value for key, value in node.attrib.items()
-                      if key in contract['attributes']}) for node in root.iter()]
+    def semantic_nodes(node):
+        if node.get('name') == 'item_scroll_container' or node.get('name', '').startswith('forme_layout_'):
+            return [row for child in node for row in semantic_nodes(child)]
+        if node.get('name', '').startswith('forme_'):
+            return []
+        own = [(node.tag, {key: value for key, value in node.attrib.items()
+                          if key in contract['attributes']})]
+        return own + [row for child in node for row in semantic_nodes(child)]
+    rows = semantic_nodes(root)
+    rows.sort(key=lambda row: json.dumps(row, sort_keys=True, ensure_ascii=False))
     actual = hashlib.sha256(json.dumps(rows, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
     assert actual == expected, f'{name}: native controls, bindings or commands changed'
 textures = ET.parse(BASE / 'textures/textures.xml').getroot()

@@ -17,7 +17,7 @@
  single_instance="true"
  left="0"
  top="0"
- width="200">
+ width="200" header_height="44" header_vpad="10" header_icon="Forme_UI_Window" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD">
     <!-- RLVa shows the anonymized name on the regular tooltip when @shownames=n restricted (rather than show the avatar inspector) --> 
     <floater.string
      name="ToolTipMsg">
