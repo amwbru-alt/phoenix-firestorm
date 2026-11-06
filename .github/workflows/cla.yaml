@@ -8,6 +8,9 @@ on:
 
 jobs:
   cla:
+    # Signatures are maintained by the upstream project; fork PRs have no access.
+    # A PR opened against upstream still runs this job in the upstream repository.
+    if: github.event.repository.fork == false
     name: Check CLA
     runs-on: ubuntu-latest
     steps:
