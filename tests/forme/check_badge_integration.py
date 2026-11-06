@@ -43,7 +43,8 @@ contains('indra/newview/llvoavatar.cpp','ForMeBadge::decorate(forme_badge, line)
 contains('indra/newview/llviewerchat.cpp','ForMeAvatarBadges::forChat(chat)','ForMeAvatarBadges::color(forme_badge.chatColor)')
 for history in ('fschathistory','llchathistory'):
     contains(f'indra/newview/{history}.cpp','mForMeBadgeEligible','RlvActions::canShowName',
-             'ForMeBadge::decorate(forme_badge, chat.mFromName)','ForMeBadge::decorate(forme_badge, av_name.getDisplayName())',
+             ('ForMeBadge::decorate(forme_badge, sender_label)' if history == 'fschathistory' else 'ForMeBadge::decorate(forme_badge, chat.mFromName)'),
+             'ForMeBadge::decorate(forme_badge, av_name.getDisplayName())',
              'mForMeLastBadge == forme_badge.stamp','mForMeLastBadge = forme_badge.stamp','mForMeLastBadge.clear()',
              'ForMeBranding::legacyName(chat.mFromName)')
     contains(f'indra/newview/{history}.h','mForMeLastBadge')
