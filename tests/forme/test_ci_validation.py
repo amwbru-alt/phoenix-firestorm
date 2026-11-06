@@ -46,7 +46,7 @@ class LicenseNotices(unittest.TestCase):
 
 
 class PullRequestRange(unittest.TestCase):
-    def test_shallow_merge_includes_all_feature_changes(self):
+    def test_full_history_includes_event_base_after_target_advances(self):
         with tempfile.TemporaryDirectory() as temp:
             repo = Path(temp) / 'source'
             repo.mkdir()
@@ -65,11 +65,14 @@ class PullRequestRange(unittest.TestCase):
                 git('add', filename)
                 git('commit', '-m', filename)
             git('checkout', 'main')
+            (repo / 'base-update.txt').write_text('target branch advanced\n')
+            git('add', '.')
+            git('commit', '-m', 'advance target after event base')
             git('merge', '--no-ff', 'feature', '-m', 'PR merge')
             clone = Path(temp) / 'checkout'
-            git('clone', '--depth=2', repo.as_uri(), str(clone))
+            git('clone', repo.as_uri(), str(clone))
             changed = git('diff', '--name-only', base + '...HEAD', cwd=clone).splitlines()
-            self.assertEqual(['first.cpp', 'second.cpp'], changed)
+            self.assertEqual(['base-update.txt', 'first.cpp', 'second.cpp'], changed)
 
 
 if __name__ == '__main__':

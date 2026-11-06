@@ -15,8 +15,8 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
-          # A PR merge has the base as its first parent. Push ranges need history.
-          fetch-depth: ${{ github.event_name == 'pull_request' && 2 || 0 }}
+          # Retain event base commits even when the target branch advances.
+          fetch-depth: 0
       - uses: actions/setup-python@v7
         with:
           python-version: '3.11'
