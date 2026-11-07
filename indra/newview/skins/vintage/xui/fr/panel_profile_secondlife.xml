@@ -38,8 +38,8 @@ Anniversaire : [REG_DATE]
 			<icon tool_tip="Mes amis ne peuvent pas voir si je suis connecté" name="cant_see_online" />
 			<icon tool_tip="Mes amis peuvent me voir sur la carte" name="can_see_on_map" />
 			<icon tool_tip="Mes amis ne peuvent pas me voir sur la carte" name="cant_see_on_map" />
-			<icon tool_tip="Mes amis peuvent modifier mes objets" name="can_edit_objects" />
-			<icon tool_tip="Mes amis ne peuvent pas modifier mes objets" name="cant_edit_objects" />
+			<icon tool_tip="Mes amis peuvent modifier mes objets" name="can_edit_objects"  forme_creator_only="true"/>
+			<icon tool_tip="Mes amis ne peuvent pas modifier mes objets" name="cant_edit_objects"  forme_creator_only="true"/>
 			<text_editor name="user_age" value="(chargement en cours...)" />
 			<text name="label2" value="Compte :" />
 			<text name="partner_label" value="Partenaire :"/>

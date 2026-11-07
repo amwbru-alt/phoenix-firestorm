@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <floater
- legacy_header_height="18"
+ legacy_header_height="0"
  can_close="true" 
  can_drag_on_left="false" 
  can_minimize="true"
@@ -14,8 +14,8 @@
  min_width="365"
  mouse_opaque="true" 
  name="media_settings" 
- help_topic="media_settings"
- title="Media Settings">
+
+ title="Media Settings" header_height="44" header_vpad="10" header_icon="Forme_UI_Window" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD">
 	<button 
 	 bottom="525" 
 	 enabled="true" 

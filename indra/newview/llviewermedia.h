@@ -156,8 +156,6 @@ public:
     void proxyWindowOpened(const std::string &target, const std::string &uuid);
     void proxyWindowClosed(const std::string &uuid);
 
-    void createSpareBrowserMediaSource();
-    LLPluginClassMedia* getSpareBrowserMediaSource();
 
     void setOnlyAudibleMediaTextureID(const LLUUID& texture_id);
 
@@ -180,7 +178,6 @@ private:
     S32 mMaxIntances = 8;
     LLURL mOpenIDURL;
     std::string mOpenIDCookie;
-    LLPluginClassMedia* mSpareBrowserMediaSource;
     boost::signals2::connection mTeleportFinishConnection;
     boost::signals2::connection mMaxInstancesConnection;
 };

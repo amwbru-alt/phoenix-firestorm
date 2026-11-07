@@ -2,19 +2,19 @@
 
 <floater
   positioning="cascading"
-  legacy_header_height="18"
+  legacy_header_height="0"
   can_resize="true"
   height="588"
   layout="topleft"
   name="floater_my_appearance"
-  help_topic="appearance"
+ 
   save_rect="true"
   single_instance="true"
   reuse_instance="true"
   title="Appearance"
   min_height="400"
   min_width="415"
-  width="415">
+  width="415" header_height="44" header_vpad="10" header_icon="Forme_UI_Hanger" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD">
     <panel
       top="18"
       class="sidepanel_appearance"

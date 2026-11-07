@@ -39,6 +39,7 @@
 #include "linden_common.h"
 
 #include "llmenugl.h"
+#include "formeuistyle.h"
 
 #include "llgl.h"
 #include "llmath.h"
@@ -55,6 +56,8 @@
 #include "llresmgr.h"
 #include "lltrans.h"
 #include "llui.h"
+#include "lldir.h"
+#include "lluiimage.h"
 
 #include "llstl.h"
 
@@ -350,7 +353,9 @@ void LLMenuItemGL::setJumpKey(KEY key)
 // virtual
 U32 LLMenuItemGL::getNominalHeight( void ) const
 {
-    return mFont->getLineHeight() + MENU_ITEM_PADDING;
+    const bool forme_popup = gDirUtilp->getSkinThemeFolder() == "forme" &&
+        getMenu() && dynamic_cast<LLMenuBarGL*>(getMenu()) == nullptr;
+    return mFont->getLineHeight() + (forme_popup ? 14 : MENU_ITEM_PADDING);
 }
 
 //virtual
@@ -510,7 +515,9 @@ void LLMenuItemGL::draw( void )
     {
         gGL.color4fv( mHighlightBackground.get().mV );
 
-        gl_rect_2d( 0, getRect().getHeight(), getRect().getWidth(), 0 );
+        const auto rounded = gDirUtilp->getSkinThemeFolder() == "forme" ? LLUI::getUIImage("Forme_Round_Selection") : LLUIImagePtr();
+        if (rounded.notNull()) rounded->draw(getLocalRect());
+        else gl_rect_2d(0, getRect().getHeight(), getRect().getWidth(), 0);
     }
 
     LLColor4 color;
@@ -543,7 +550,12 @@ void LLMenuItemGL::draw( void )
         // Munus are all of the same size, so fixed offset works here,
         // but it won't work if somebody decides to use different font
         // todo: adjust logic to work of rect and font height
-        F32 y = (F32)MENU_ITEM_PADDING / 2.f;
+        F32 y = (F32)(getRect().getHeight() - mFont->getLineHeight()) / 2.f;
+        if (mDrawBoolLabel.empty() && gDirUtilp->getSkinThemeFolder() == "forme")
+        {
+            const auto icon = LLUI::getUIImage(ForMeUI::iconFor(getName()));
+            if (icon.notNull()) icon->draw(LEFT_PAD_PIXELS, (getRect().getHeight() - 16) / 2, 16, 16, color);
+        }
         if( !mDrawBoolLabel.empty() )
         {
             mFont->render( mDrawBoolLabel.getWString(), 0, (F32)LEFT_PAD_PIXELS, y, color,
@@ -573,7 +585,8 @@ void LLMenuItemGL::draw( void )
         {
             S32 x_begin = LEFT_PLAIN_PIXELS + mFont->getWidth(mLabel.getWString().c_str(), 0, static_cast<S32>(offset));
             S32 x_end = LEFT_PLAIN_PIXELS + mFont->getWidth(mLabel.getWString().c_str(), 0, static_cast<S32>(offset) + 1);
-            gl_line_2d(x_begin, (MENU_ITEM_PADDING / 2) + 1, x_end, (MENU_ITEM_PADDING / 2) + 1);
+            const S32 underline_y = (getRect().getHeight() - mFont->getLineHeight()) / 2 + 1;
+            gl_line_2d(x_begin, underline_y, x_end, underline_y);
         }
     }
 }
@@ -782,7 +795,9 @@ void LLMenuItemTearOffGL::draw()
     if( getEnabled() && getHighlight() && !isBriefItem())
     {
         gGL.color4fv( mHighlightBackground.get().mV );
-        gl_rect_2d( 0, getRect().getHeight(), getRect().getWidth(), 0 );
+        const auto rounded = gDirUtilp->getSkinThemeFolder() == "forme" ? LLUI::getUIImage("Forme_Round_Selection") : LLUIImagePtr();
+        if (rounded.notNull()) rounded->draw(getLocalRect());
+        else gl_rect_2d(0, getRect().getHeight(), getRect().getWidth(), 0);
     }
 
     if (getEnabled())
@@ -1649,7 +1664,9 @@ void LLMenuItemBranchDownGL::draw( void )
     if( getHighlight() )
     {
         gGL.color4fv( mHighlightBackground.get().mV );
-        gl_rect_2d( 0, getRect().getHeight(), getRect().getWidth(), 0 );
+        const auto rounded = gDirUtilp->getSkinThemeFolder() == "forme" ? LLUI::getUIImage("Forme_Round_Selection") : LLUIImagePtr();
+        if (rounded.notNull()) rounded->draw(getLocalRect());
+        else gl_rect_2d(0, getRect().getHeight(), getRect().getWidth(), 0);
     }
 
     LLColor4 color;
@@ -3284,7 +3301,19 @@ void LLMenuGL::draw( void )
         static LLUICachedControl<F32> menu_bg_alpha("FSMenuBackgroundAlpha");
         LLColor4 bg_color = mBackgroundColor.get();
         bg_color.mV[VALPHA] *= menu_bg_alpha;
-        gl_rect_2d(0, getRect().getHeight(), getRect().getWidth(), 0, bg_color);
+        LLPointer<LLUIImage> popup_background;
+        if (!mHorizontalLayout && !mTornOff && gDirUtilp->getSkinThemeFolder() == "forme")
+        {
+            popup_background = LLUI::getUIImage("Forme_Round_Menu");
+        }
+        if (popup_background.notNull())
+        {
+            popup_background->draw(0, 0, getRect().getWidth(), getRect().getHeight(), LLColor4::white % bg_color.mV[VALPHA]);
+        }
+        else
+        {
+            gl_rect_2d(0, getRect().getHeight(), getRect().getWidth(), 0, bg_color);
+        }
         // </FS:PP>
     }
     LLView::draw();
@@ -3295,7 +3324,9 @@ void LLMenuGL::drawBackground(LLMenuItemGL* itemp, F32 alpha)
     LLColor4 color = itemp->getHighlightBgColor() % alpha;
     gGL.color4fv( color.mV );
     LLRect item_rect = itemp->getRect();
-    gl_rect_2d( 0, item_rect.getHeight(), item_rect.getWidth(), 0);
+    const auto rounded = gDirUtilp->getSkinThemeFolder() == "forme" ? LLUI::getUIImage("Forme_Round_Selection") : LLUIImagePtr();
+    if (rounded.notNull()) rounded->draw(0, 0, item_rect.getWidth(), item_rect.getHeight(), LLColor4::white % alpha);
+    else gl_rect_2d(0, item_rect.getHeight(), item_rect.getWidth(), 0);
 }
 
 void LLMenuGL::setVisible(bool visible)

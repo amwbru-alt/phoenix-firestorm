@@ -11,7 +11,7 @@
     <pie_slice
         enabled="false"
         label="Create"
-        name="Create">
+        name="Create" forme_creator_only="true">
         <pie_slice.on_click
             function="Land.Build" />
         <pie_slice.on_enable
@@ -50,7 +50,7 @@
     <pie_slice
         enabled="false"
         label="Edit Terrain"
-        name="Edit Terrain">
+        name="Edit Terrain" forme_creator_only="true">
         <pie_slice.on_click
             function="Land.Edit" />
         <pie_slice.on_enable

@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fscreatoraccess.h"
 #include "llviewerinventory.h"
 
 #include "llnotificationsutil.h"
@@ -278,7 +279,7 @@ public:
                 return true;
         }
 
-        // support secondlife:///app/inventory/show
+        // support fmw:///app/inventory/show
         if (params[0].asString() == "show")
         {
             LLFloaterSidePanelContainer::showPanel("inventory", LLSD());
@@ -2256,6 +2257,10 @@ void menu_create_inventory_item(LLInventoryPanel* panel, LLFolderBridge *bridge,
 void menu_create_inventory_item(LLInventoryPanel* panel, LLUUID dest_id, const LLSD& userdata, const LLUUID& default_parent_uuid, std::function<void(const LLUUID&)> created_cb)
 {
     std::string type_name = userdata.asString();
+    if (!ForMeCreatorAccess::allowed() &&
+        (type_name == "lsl" || type_name == "script" || type_name == "notecard" ||
+         type_name == "gesture" || type_name == "material" || type_name == "pbr_material")) return;
+
 
     if (("inbox" == type_name) || ("category" == type_name) || ("current" == type_name) || ("outfit" == type_name) || ("my_otfts" == type_name))
     {

@@ -9,7 +9,7 @@
 	<tab_container name="pref core">
 		<panel label="Общие" name="general"/>
 		<panel label="Чат" name="chat"/>
-		<panel label="Цвета" name="colors"/>
+		
 		<panel label="Графика" name="display"/>
 		<panel label="Звук и медиа" name="audio"/>
 		<panel label="Сеть и файлы" name="input"/>
@@ -21,8 +21,7 @@
 		<panel label="Интерфейс" name="ui"/>
 		<panel label="Темы" name="skins"/>
 		<panel label="Ошибки" name="crashreports"/>
-		<panel label="Firestorm" name="firestorm"/>
-		<panel label="OpenSim" name="opensim"/>
+		<panel label="ForMe.World" name="firestorm"/>
 		<panel label="Резервная копия" name="backup"/>
 	</tab_container>
 </floater>

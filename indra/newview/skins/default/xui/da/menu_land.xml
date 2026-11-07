@@ -4,6 +4,6 @@
 	<menu_item_call label="Sid her" name="Sit Here"/>
 	<menu_item_call label="Køb" name="Land Buy"/>
 	<menu_item_call label="Køb adgang" name="Land Buy Pass"/>
-	<menu_item_call label="Byg" name="Create"/>
-	<menu_item_call label="Tilpas terræn" name="Edit Terrain"/>
+	<menu_item_call label="Byg" name="Create" forme_creator_only="true"/>
+	<menu_item_call label="Tilpas terræn" name="Edit Terrain" forme_creator_only="true"/>
 </context_menu>

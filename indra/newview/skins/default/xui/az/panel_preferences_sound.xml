@@ -142,7 +142,7 @@
 		Region yenidən başlayır:
 	</panel.string>
 	<panel.string name="textFSRestartOpenSim">
-		Yenidən başlatma (OpenSim):
+		Yenidən başlatma (ForMe.World):
 	</panel.string>
 	<panel.string name="textFSScriptFloaterClose">
 		Script dialog closes:
@@ -177,7 +177,7 @@
 	<panel.string name="textFSWindowOpen">
 		Pəncərə açılır:
 	</panel.string>
-	<tab_container label="Firestorm Seçimləri" name="tabs">
+	<tab_container label="ForMe.World Seçimləri" name="tabs">
 		<panel label="Səslər" name="Media Sounds Panel">
 			<slider label="Ümumi səs səviyyəsi" name="System Volume"/>
 			<check_box label="Çevirilərkən səssizləşdir" name="mute_when_minimized"/>

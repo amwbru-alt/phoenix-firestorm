@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <menu name="Popup">
-	<menu_item_call label="İlan oluştur" name="Marketplace Create Listing"/>
-	<menu_item_call label="İlanı ilişkilendir" name="Marketplace Associate Listing"/>
-	<menu_item_call label="İlanı al (yenile)" name="Marketplace Get Listing"/>
-	<menu_item_call label="Hata kontrolü yap" name="Marketplace Check Listing"/>
-	<menu_item_call label="İlanı düzenle" name="Marketplace Edit Listing"/>
-	<menu_item_call label="Listele" name="Marketplace List"/>
-	<menu_item_call label="Listeden kaldır" name="Marketplace Unlist"/>
-	<menu_item_call label="Etkinleştir" name="Marketplace Activate"/>
-	<menu_item_call label="Devre Dışı Bırak" name="Marketplace Deactivate"/>
-	<menu_item_call label="Paylaş" name="Share"/>
+	<menu_item_call label="İlan oluştur" name="Marketplace Create Listing" forme_creator_only="true"/>
+	<menu_item_call label="İlanı ilişkilendir" name="Marketplace Associate Listing" forme_creator_only="true"/>
+	<menu_item_call label="İlanı al (yenile)" name="Marketplace Get Listing" forme_creator_only="true"/>
+	<menu_item_call label="Hata kontrolü yap" name="Marketplace Check Listing" forme_creator_only="true"/>
+	<menu_item_call label="İlanı düzenle" name="Marketplace Edit Listing" forme_creator_only="true"/>
+	<menu_item_call label="Listele" name="Marketplace List" forme_creator_only="true"/>
+	<menu_item_call label="Listeden kaldır" name="Marketplace Unlist" forme_creator_only="true"/>
+	<menu_item_call label="Etkinleştir" name="Marketplace Activate" forme_creator_only="true"/>
+	<menu_item_call label="Devre Dışı Bırak" name="Marketplace Deactivate" forme_creator_only="true"/>
+	<menu_item_call label="Paylaş" name="Share" forme_creator_only="true"/>
 	<menu_item_call label="Aç" name="Task Open"/>
 	<menu_item_call label="Oyna" name="Task Play"/>
 	<menu_item_call label="Özellikler" name="Task Properties"/>
@@ -18,9 +18,9 @@
 	<menu_item_call label="Çöpü Boşalt" name="Empty Trash"/>
 	<menu_item_call label="Kaybedip Bulduklarımı Boşalt" name="Empty Lost And Found"/>
 	<menu_item_call label="Yeni Klasör" name="New Folder"/>
-	<menu_item_call label="Yeni Komut Dosyası" name="New Script"/>
-	<menu_item_call label="Yeni Not Kartı" name="New Note"/>
-	<menu_item_call label="Yeni Mimik" name="New Gesture"/>
+	<menu_item_call label="Yeni Komut Dosyası" name="New Script" forme_creator_only="true"/>
+	<menu_item_call label="Yeni Not Kartı" name="New Note" forme_creator_only="true"/>
+	<menu_item_call label="Yeni Mimik" name="New Gesture" forme_creator_only="true"/>
 	<menu label="Yeni Giysiler" name="New Clothes">
 		<menu_item_call label="Yeni Gömlek" name="New Shirt"/>
 		<menu_item_call label="Yeni Pantolon" name="New Pants"/>
@@ -47,7 +47,7 @@
 		<menu_item_call label="Yeni Su" name="New Water"/>
 		<menu_item_call label="Yeni Gün Döngüsü" name="New Day Cycle"/>
 	</menu>
-	<menu label="Şunun için varsayılan olarak kullan" name="upload_def">
+	<menu label="Şunun için varsayılan olarak kullan" name="upload_def" forme_creator_only="true">
 		<menu_item_check label="Karşıya yüklenen görüntüler" name="Image uploads"/>
 		<menu_item_check label="Karşıya yüklenen sesler" name="Sound uploads"/>
 		<menu_item_check label="Karşıya yüklenen animasyonlar" name="Animation uploads"/>
@@ -111,7 +111,7 @@
 	<menu_item_call label="Çıkar" name="Take Off"/>
 	<menu_item_call label="Sadece Kendime Uygula" name="Settings Apply Local"/>
 	<menu_item_call label="Parsele Uygula" name="Settings Apply Parcel"/>
-	<menu_item_call label="Pazaryeri İlanlarına Kopyala" name="Marketplace Copy"/>
-	<menu_item_call label="Pazaryeri İlanlarına Taşı" name="Marketplace Move"/>
+	<menu_item_call label="Pazaryeri İlanlarına Kopyala" name="Marketplace Copy" forme_creator_only="true"/>
+	<menu_item_call label="Pazaryeri İlanlarına Taşı" name="Marketplace Move" forme_creator_only="true"/>
 	<menu_item_call label="--seçenek yok--" name="--no options--"/>
 </menu>

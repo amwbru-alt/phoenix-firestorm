@@ -40,11 +40,11 @@
 	</layout_stack>
 	<panel name="no_add_wearables_button_bar">
 		<text name="avatar_complexity_label">Çətinlik: [WEIGHT]</text>
-		<button name="shop_btn_1" tool_tip="Second Life dükanına baş çəkin. Siz həmçinin geyindiyiniz paltarı seçə və oxşar bir şey tapmaq üçün buraya basa bilərsiniz"/>
+		<button name="shop_btn_1" tool_tip="ForMe.World dükanına baş çəkin. Siz həmçinin geyindiyiniz paltarı seçə və oxşar bir şey tapmaq üçün buraya basa bilərsiniz"/>
 	</panel>
 	<panel name="add_wearables_button_bar">
 		<text name="avatar_complexity_adding_label">Çətinlik: [WEIGHT]</text>
-		<button name="shop_btn_2" tool_tip="Second Life dükanına baş çəkin. Siz həmçinin geyindiyiniz paltarı seçə və oxşar bir şey tapmaq üçün buraya basa bilərsiniz"/>
+		<button name="shop_btn_2" tool_tip="ForMe.World dükanına baş çəkin. Siz həmçinin geyindiyiniz paltarı seçə və oxşar bir şey tapmaq üçün buraya basa bilərsiniz"/>
 	</panel>
 	<panel name="save_revert_button_bar">
 		<layout_stack name="button_bar_ls">

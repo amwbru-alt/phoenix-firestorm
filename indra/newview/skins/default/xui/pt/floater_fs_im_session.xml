@@ -19,7 +19,7 @@
 			<menu_button name="teleport_btn" tool_tip="Oferecer ou solicitar teleporte"/>
 		</layout_panel>
 		<layout_panel name="share_panel">
-			<button name="share_btn" tool_tip="Enviar item para este residente"/>
+			<button name="share_btn" tool_tip="Enviar item para este residente" forme_creator_only="true"/>
 		</layout_panel>
 		<layout_panel name="pay_panel">
 			<button name="pay_btn" tool_tip="Enviar dinheiro para este residente"/>

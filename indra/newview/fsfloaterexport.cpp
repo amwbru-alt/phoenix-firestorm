@@ -27,6 +27,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fscreatoraccess.h"
 
 #include "fsfloaterexport.h"
 
@@ -258,6 +259,8 @@ void FSFloaterObjectExport::dirty()
 
 void FSFloaterObjectExport::onOpen(const LLSD& key)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     LLObjectSelectionHandle object_selection = LLSelectMgr::getInstance()->getSelection();
     if(!(object_selection->getPrimaryObject()))
     {

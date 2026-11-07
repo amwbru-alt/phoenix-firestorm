@@ -4,7 +4,7 @@
 	<menu_item_call label="Tocar" name="touch_object"/>
 	<menu_item_call label="Teleportarme a" name="teleport_to_object"/>
 	<menu_item_call label="Inspeccionar" name="inspect_object"/>
-	<menu_item_call label="Editar" name="edit_object"/>
+	<menu_item_call label="Editar" name="edit_object" forme_creator_only="true"/>
 	<menu_item_call label="Devolver" name="return_object"/>
 	<menu_item_call label="Eliminar" name="delete_object"/>
 	<menu_item_call label="Bloquear" name="blacklist_object"/>

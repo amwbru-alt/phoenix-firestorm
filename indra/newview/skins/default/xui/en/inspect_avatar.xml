@@ -4,9 +4,9 @@
   Single instance - only have one at a time, recycle it each spawn
 -->
 <floater
- legacy_header_height="25"
+ legacy_header_height="0"
  bevel_style="in"
- bg_opaque_image="Inspector_Background"
+ bg_opaque_image="Forme_Round_Window"
  can_close="false"
  can_minimize="false"
  height="164"
@@ -15,7 +15,7 @@
  single_instance="true"
  sound_flags="0"
  visible="true"
- width="245">
+ width="245" header_height="44" header_vpad="10" header_icon="Forme_UI_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD">
   <!-- Allowed fields include:
 	[BORN_ON] ("12/3/2008")
 	[SL_PROFILE] (Second Life profile),
@@ -94,7 +94,7 @@
      word_wrap="true"
      top_pad="4"
      use_ellipses="true"
-     width="220">This is my second life description and I really think it is great. But for some reason my description is super extra long because I like to talk a whole lot
+     width="220">This is my ForMe.World description and I really think it is great. But for some reason my description is super extra long because I like to talk a whole lot
     </text>
     <slider
      follows="top|left"

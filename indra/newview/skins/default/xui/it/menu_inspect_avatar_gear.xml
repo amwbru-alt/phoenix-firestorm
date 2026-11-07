@@ -19,5 +19,5 @@
 	<menu_item_call label="Trova sulla mappa" name="find_on_map"/>
 	<menu_item_call label="Inquadra" name="zoom_in"/>
 	<menu_item_call label="Paga" name="pay"/>
-	<menu_item_call label="Condividi" name="share"/>
+	<menu_item_call label="Condividi" name="share" forme_creator_only="true"/>
 </toggleable_menu>

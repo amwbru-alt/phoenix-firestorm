@@ -378,7 +378,7 @@
         interactable="true"
         height="24"
         width="24"
-        left_pad="0" />
+        left_pad="0"  forme_creator_only="true"/>
 
       <icon
         tool_tip="Friend can not edit my objects"
@@ -390,7 +390,7 @@
         interactable="true"
         height="24"
         width="24"
-        left_delta="0" />
+        left_delta="0"  forme_creator_only="true"/>
 
       <text_editor
         name="user_age"
@@ -808,6 +808,8 @@
 
   </layout_stack>
  
+  <button name="forme_profile_website" label="Change photo on website" tool_tip="Open your ForMe.World profile in a browser" visible="false" height="22" width="195" follows="left|bottom" layout="topleft" left="6" bottom="-1" image_overlay="Forme_UI_Link" image_overlay_alignment="left" imgoverlay_label_space="7" pad_left="6" halign="left" image_unselected="Forme_WMap_Copy" image_selected="Forme_WMap_Copy" />
+
   <check_box
     name="show_in_search"
     label="Show in search"

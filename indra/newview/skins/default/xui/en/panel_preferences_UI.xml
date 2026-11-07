@@ -10,7 +10,7 @@
  label="UI-Pref"
  name="Display panel">
 <tab_container
- label="Firestorm Prefs"
+ label="ForMe.World Prefs"
  layout="topleft"
  follows="all"
  top="5"
@@ -579,7 +579,7 @@
          layout="topleft"
          left="5"
          name="FSDisableIMChiclets"
-         tool_tip="If checked, Firestorm will not show any group / IM chat chiclets (notifications envelope and sum of IMs will remain on the screen)."
+         tool_tip="If checked, ForMe.World will not show any group / IM chat chiclets (notifications envelope and sum of IMs will remain on the screen)."
          top_pad="6"
          width="256" />
         <check_box
@@ -590,7 +590,7 @@
          layout="topleft"
          left="5"
          name="FSLegacyNotificationWell"
-         tool_tip="If checked, Firestorm will use the legacy list view to display stored notifications."
+         tool_tip="If checked, ForMe.World will use the legacy list view to display stored notifications."
          top_pad="3"
          width="285" />
         <text
@@ -613,7 +613,7 @@
          layout="topleft"
          left="5"
          name="FSLegacyNotificationWellAutoResize"
-         tool_tip="If checked, Firestorm will always resize the Conversations and legacy Notifications lists automatically when items get added or removed."
+         tool_tip="If checked, ForMe.World will always resize the Conversations and legacy Notifications lists automatically when items get added or removed."
          top_pad="10"
          width="450" />
         <check_box
@@ -765,7 +765,7 @@
 		 width="270"
 		 left="20"
 		 control_name="FSStatbarLegacyMeanPerSec"
-		 tool_tip="If enabled, Firestorm will use the legacy method of showing the period mean per second value in the traffic indicator instead of the current observed value"/>
+		 tool_tip="If enabled, ForMe.World will use the legacy method of showing the period mean per second value in the traffic indicator instead of the current observed value"/>
 		<check_box
 		 enabled_control="ShowNetStats"
 		 top_pad="4"
@@ -785,7 +785,7 @@
 		 left="10"
 		 width="270"
 		 control_name="FSEnableVolumeControls"
-		 tool_tip="If checked, Firestorm will show media controls (volume, media, stream) in upper right corner of the screen. Useful, if skin already has its own controls."/>
+		 tool_tip="If checked, ForMe.World will show media controls (volume, media, stream) in upper right corner of the screen. Useful, if skin already has its own controls."/>
 		<check_box
 		 top_pad="4"
 		 follows="left|top"
@@ -864,26 +864,6 @@
 		 tool_tip="Selects the time format used on main menu bar."
 		 width="250">
 			<combo_box.item
-			 label="Language default"
-			 name="Language"
-			 value="Language"/>
-			<combo_box.item
-			 label="12 Hour"
-			 name="12_Hour"
-			 value="12 Hour"/>
-			<combo_box.item
-			 label="12 Hour incl. Seconds"
-			 name="12_Hour_Seconds"
-			 value="12 Hour Seconds"/>
-			<combo_box.item
-			 label="12 Hour incl. Timezone"
-			 name="12_Hour_TZ"
-			 value="12 Hour TZ"/>
-			<combo_box.item
-			 label="12 Hour incl. Seconds &amp; Timezone"
-			 name="12_Hour_TZ_Seconds"
-			 value="12 Hour TZ Seconds"/>
-			<combo_box.item
 			 label="24 Hour"
 			 name="24_Hour"
 			 value="24 Hour"/>
@@ -959,7 +939,7 @@
 		 label="Open avatar profile directly when clicking on its name"
 		 layout="topleft"
 		 name="FSInspectAvatarSlurlOpensProfile"
-		 tool_tip="If enabled, Firestorm will open the profile of an avatar directly when clicking on a link with its name"
+		 tool_tip="If enabled, ForMe.World will open the profile of an avatar directly when clicking on a link with its name"
 		 initial_value="true"
 		 top_pad="6"
 		 left="10"
@@ -1844,7 +1824,7 @@ default 0.
          length="1"
          line_spacing.pixels="5">
           pixels (requires restart)
-Second Life viewer default 0. Viewer 1 default 2.
+ForMe.World viewer default 0. Viewer 1 default 2.
         </text>
 
         <text
@@ -1885,7 +1865,7 @@ Second Life viewer default 0. Viewer 1 default 2.
          length="1"
          line_spacing.pixels="5">
           pixels (requires restart)
-Second Life viewer default 20. Viewer 1 default 18.
+ForMe.World viewer default 20. Viewer 1 default 18.
         </text>
 
         <text
@@ -2032,3 +2012,4 @@ Second Life viewer default 20. Viewer 1 default 18.
     </panel>
 </tab_container>
 </panel>
+

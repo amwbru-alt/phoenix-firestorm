@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fscreatoraccess.h"
 
 #include "llmaterialeditor.h"
 
@@ -1221,6 +1222,8 @@ void LLMaterialEditor::onSelectCtrl(LLUICtrl* ctrl, const LLSD& data, S32 dirty_
 
 void LLMaterialEditor::onClickSave()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     if (!capabilitiesAvailable())
     {
         LLNotificationsUtil::add("MissingMaterialCaps");
@@ -1365,6 +1368,8 @@ const std::string LLMaterialEditor::buildMaterialDescription()
 
 bool LLMaterialEditor::saveIfNeeded()
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     if (mUploadingTexturesCount > 0)
     {
         // Upload already in progress, wait until
@@ -1765,6 +1770,8 @@ void LLMaterialEditor::refreshFromInventory(const LLUUID& new_item_id)
 
 void LLMaterialEditor::onClickSaveAs()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     if (!LLMaterialEditor::capabilitiesAvailable())
     {
         LLNotificationsUtil::add("MissingMaterialCaps");
@@ -1921,6 +1928,8 @@ void LLMaterialEditor::uploadMaterialFromModel(
     S32 index,
     const LLUUID& dest)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     if (index < 0 || !LLMaterialEditor::capabilitiesAvailable())
     {
         return;
@@ -2323,6 +2332,8 @@ bool LLMaterialEditor::canClipboardObjectsMaterial()
 
 void LLMaterialEditor::saveObjectsMaterialAs()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     LLSelectedTEGetMatData func(true);
     LLPermissions permissions;
     LLViewerInventoryItem* item = nullptr;
@@ -2339,6 +2350,8 @@ void LLMaterialEditor::saveObjectsMaterialAs()
 
 void LLMaterialEditor::saveObjectsMaterialAs(const LLGLTFMaterial* render_material, const LLLocalGLTFMaterial *local_material, const LLPermissions& permissions, const LLUUID& object_id, const LLUUID& item_id)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     if (local_material)
     {
         // This is a local material, reload it from file
@@ -2899,6 +2912,8 @@ void LLMaterialEditor::setFromGltfMetaData(const std::string& filename, const ti
 // </FS:Zi>
 void LLMaterialEditor::importMaterial(const LLUUID dest_folder)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     LLFilePickerReplyThread::startPicker(
         [dest_folder](const std::vector<std::string>& filenames, LLFilePicker::ELoadFilter load_filter, LLFilePicker::ESaveFilter save_filter)
             {
@@ -3200,6 +3215,8 @@ private:
 
 void LLMaterialEditor::applyToSelection()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     if (!mIsOverride)
     {
         // Only apply if working with 'live' materials
@@ -3565,6 +3582,8 @@ void LLMaterialEditor::inventoryChanged(LLViewerObject* object,
 
 void LLMaterialEditor::saveTexture(LLImageJ2C* img, const std::string& name, const LLUUID& asset_id, upload_callback_f cb)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     LLImageDataSharedLock lock(img);
 
     if (asset_id.isNull()

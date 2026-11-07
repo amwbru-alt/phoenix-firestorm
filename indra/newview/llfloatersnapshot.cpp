@@ -29,8 +29,6 @@
 #include "llfloatersnapshot.h"
 
 #include "llfloaterreg.h"
-#include "llfloaterflickr.h" // <FS:Ansariel> Share to Flickr
-#include "fsfloaterprimfeed.h" // <FS:Beq> Share to Primfeed
 #include "llimagefiltersmanager.h"
 #include "llcheckboxctrl.h"
 #include "llcombobox.h"
@@ -1488,18 +1486,12 @@ void LLFloaterSnapshotBase::ImplBase::updateLivePreview()
 {
     // don't update preview for hidden floater
     // <FS:Beq> FIRE-35002 - Post to flickr broken
-    bool have_socials = (
-        LLFloaterReg::findTypedInstance<LLFloaterFlickr>("flickr") != nullptr ||
-        LLFloaterReg::findTypedInstance<FSFloaterPrimfeed>("primfeed") != nullptr
-        );
-    if ( ((mFloater && mFloater->isInVisibleChain()) ||
-        have_socials) &&
-        ImplBase::updatePreviewList(true, have_socials))
+    if (mFloater && mFloater->isInVisibleChain() && ImplBase::updatePreviewList(true, false))
     // </FS:Beq>
     {
         LL_DEBUGS() << "changed" << LL_ENDL;
         updateControls(mFloater);
-    }    
+    }
 }
 
 //static

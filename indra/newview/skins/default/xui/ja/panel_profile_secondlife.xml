@@ -37,8 +37,8 @@
 	<icon tool_tip="フレンドは私のオンラインステータスを見ることができません。" name="cant_see_online"/>
 	<icon tool_tip="フレンドはマップ上で私を見ることができます。" name="can_see_on_map"/>
 	<icon tool_tip="フレンドはマップ上で私を見ることができません。" name="cant_see_on_map"/>
-	<icon tool_tip="フレンドは私のオブジェクトを編集できます。" name="can_edit_objects"/>
-	<icon tool_tip="フレンドは私のオブジェクトを編集できません。" name="cant_edit_objects"/>
+	<icon tool_tip="フレンドは私のオブジェクトを編集できます。" name="can_edit_objects" forme_creator_only="true"/>
+	<icon tool_tip="フレンドは私のオブジェクトを編集できません。" name="cant_edit_objects" forme_creator_only="true"/>
 	<text name="Key:" value="キー："/>
 	<text_editor name="user_key" value="（読み込んでいます…）"/>
 	<layout_stack name="imagepositioner">

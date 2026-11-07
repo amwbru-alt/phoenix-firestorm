@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <floater layout="topleft"
          name="env_adjust_snapshot"
-         help_topic="fs_personal_lighting"
+        
          save_rect="true"
          title="Personal Lighting"
          width="845"
@@ -9,7 +9,7 @@
          min_width="500"
          min_height="275"
          single_instance="true"
-         can_resize="false">
+         can_resize="false" header_height="44" header_vpad="10" header_icon="Forme_UI_Camera" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD" legacy_header_height="0">
   <string name="hdr_string">HDR Scale:</string>
   <string name="brightness_string">Brightness:</string>
   <string name="hdr_tooltip">Intensity of lighting effects such as realistically bright skies and dynamic exposure. 1.0 is the default, 0 is off, values between 0 and 1 are mixing Ambient with HDR.</string>

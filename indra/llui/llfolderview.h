@@ -288,6 +288,11 @@ protected:
     bool selectLastItem();
 
     bool addNoOptions(LLMenuGL* menu) const;
+    void showSelectionContextMenu(LLView* anchor, S32 x, S32 y);
+
+private:
+    LLMenuGL* getOrCreateContextMenu();
+    void showContextMenu(LLView* anchor, LLMenuGL* menu, S32 x, S32 y);
 
 
 protected:

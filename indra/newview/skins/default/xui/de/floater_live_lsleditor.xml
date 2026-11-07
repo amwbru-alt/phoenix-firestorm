@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="script ed float" title="Skript: Neues Skript">
+<floater name="script ed float" title="Skript: Neues Skript" forme_creator_only="true">
 	<floater.string name="not_allowed">
 		Dieses Skript kann nicht angezeigt oder bearbeitet werden, da eingeschränkte Berechtigungen festgelegt wurden. Um ein Skript innerhalb eines Objektes anzuzeigen oder zu bearbeiten, benötigen Sie die vollständige Berechtigung.
 	</floater.string>

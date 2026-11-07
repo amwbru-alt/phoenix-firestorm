@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <floater
  positioning="centered"
- legacy_header_height="18"
+ legacy_header_height="0"
  can_resize="true"
  default_tab_group="1"
  height="350"
@@ -9,10 +9,10 @@
  min_height="160"
  min_width="270"
  name="object_vram_usage"
- help_topic=""
+
  save_rect="true"
  title="Object impact on VRAM"
- width="400">
+ width="400" header_height="44" header_vpad="10" header_icon="Forme_UI_Cube" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD">
     <scroll_list
         name="result_list"
         left="10"

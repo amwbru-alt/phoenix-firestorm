@@ -1561,6 +1561,49 @@ bool LLFolderView::handleRightMouseDown( S32 x, S32 y, MASK mask )
     bool handled = childrenHandleRightMouseDown(x, y, mask) != NULL;
     auto count = mSelectedItems.size();
 
+    LLMenuGL* menu = getOrCreateContextMenu();
+
+    bool item_clicked{ false };
+    for (const auto item : mSelectedItems)
+    {
+        item_clicked |= item->getRect().pointInRect(x, y);
+    }
+    if(!item_clicked && mSingleFolderMode)
+    {
+        clearSelection();
+    }
+    bool hide_folder_menu = mSuppressFolderMenu && isFolderSelected();
+    if (menu && (mSingleFolderMode || (handled
+        && ( count > 0 && (hasVisibleChildren()) ))) && // show menu only if selected items are visible
+        !hide_folder_menu)
+    {
+        showContextMenu(this, menu, x, y);
+    }
+    else
+    {
+        if (menu && menu->getVisible())
+        {
+            menu->setVisible(false);
+        }
+        setSelection(NULL, false, true);
+    }
+    return handled;
+}
+
+void LLFolderView::showSelectionContextMenu(LLView* anchor, S32 x, S32 y)
+{
+    if (mSelectedItems.empty() || !hasVisibleChildren() || (mSuppressFolderMenu && isFolderSelected()))
+        return;
+
+    if (auto* panel = mParentPanel.get())
+        panel->setFocus(true);
+
+    if (auto* menu = getOrCreateContextMenu())
+        showContextMenu(anchor, menu, x, y);
+}
+
+LLMenuGL* LLFolderView::getOrCreateContextMenu()
+{
     LLMenuGL* menu = static_cast<LLMenuGL*>(mPopupMenuHandle.get());
     if (!menu)
     {
@@ -1589,53 +1632,33 @@ bool LLFolderView::handleRightMouseDown( S32 x, S32 y, MASK mask )
             mCallbackRegistrar->popScope();
         }
     }
+    return menu;
+}
 
-    bool item_clicked{ false };
-    for (const auto item : mSelectedItems)
+void LLFolderView::showContextMenu(LLView* anchor, LLMenuGL* menu, S32 x, S32 y)
+{
+    LL_INFOS("Inventory") << "Opening inventory menu from path: " << getPathname() << LL_ENDL;
+    if (mCallbackRegistrar)
     {
-        item_clicked |= item->getRect().pointInRect(x, y);
+        mCallbackRegistrar->pushScope();
     }
-    if(!item_clicked && mSingleFolderMode)
+    if (mEnableRegistrar)
     {
-        clearSelection();
+        mEnableRegistrar->pushScope();
     }
-    bool hide_folder_menu = mSuppressFolderMenu && isFolderSelected();
-    if (menu && (mSingleFolderMode || (handled
-        && ( count > 0 && (hasVisibleChildren()) ))) && // show menu only if selected items are visible
-        !hide_folder_menu)
-    {
-        LL_INFOS("Inventory") << "Opening inventory menu from path: " << getPathname() << LL_ENDL;
-        if (mCallbackRegistrar)
-        {
-            mCallbackRegistrar->pushScope();
-        }
-        if (mEnableRegistrar)
-        {
-            mEnableRegistrar->pushScope();
-        }
 
-        updateMenuOptions(menu);
+    updateMenuOptions(menu);
 
-        menu->updateParent(LLMenuGL::sMenuContainer);
-        LLMenuGL::showPopup(this, menu, x, y);
-        if (mEnableRegistrar)
-        {
-            mEnableRegistrar->popScope();
-        }
-        if (mCallbackRegistrar)
-        {
-            mCallbackRegistrar->popScope();
-        }
-    }
-    else
+    menu->updateParent(LLMenuGL::sMenuContainer);
+    LLMenuGL::showPopup(anchor, menu, x, y);
+    if (mEnableRegistrar)
     {
-        if (menu && menu->getVisible())
-        {
-            menu->setVisible(false);
-        }
-        setSelection(NULL, false, true);
+        mEnableRegistrar->popScope();
     }
-    return handled;
+    if (mCallbackRegistrar)
+    {
+        mCallbackRegistrar->popScope();
+    }
 }
 
 // Add "--no options--" if the menu is completely blank.

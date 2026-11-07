@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="preview lsl text" title="指令碼：旋轉指令碼">
+<floater name="preview lsl text" title="指令碼：旋轉指令碼" forme_creator_only="true">
 	<floater.string name="Title">
 		指令碼：[NAME]
 	</floater.string>

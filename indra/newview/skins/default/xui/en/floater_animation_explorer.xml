@@ -5,14 +5,14 @@
  can_minimize="false"
  can_resize="true"
  height="314"
- help_topic="fs_animation_explorer"
+
  layout="topleft"
  min_height="314"
  min_width="400"
  name="animation_explorer"
  save_rect="true"
  title="Animation Explorer"
- width="574">
+ width="574" header_height="44" header_vpad="10" header_icon="Forme_UI_Window" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD" legacy_header_height="0">
 
 	<scroll_list
 	 bottom="-4"

@@ -33,9 +33,9 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>${MACOSX_BUNDLE_COPYRIGHT}</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>For voice chat, you must grant permission for Second Life to use the microphone.</string>
+	<string>For voice chat, you must grant permission for ForMe.World to use the microphone.</string>
 	<key>NSLocalNetworkUsageDescription</key>
-	<string>Second Life uses WebRTC for voice chat, which may require local network access while establishing the voice connection.</string>
+	<string>ForMe.World uses WebRTC for voice chat, which may require local network access while establishing the voice connection.</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
@@ -50,7 +50,7 @@
 				<string>application/x-grid-location-info</string>
 			</array>
 			<key>CFBundleTypeName</key>
-			<string>Secondlife SLURL</string>
+			<string>ForMe.World SLURL</string>
 			<key>CFBundleTypeOSTypes</key>
 			<array>
 				<string>SLRL</string>
@@ -67,7 +67,7 @@
 	<array>
 		<dict>
 			<key>CFBundleURLName</key>
-			<string>Second Life URL</string>
+			<string>ForMe.World URL</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>secondlife</string>

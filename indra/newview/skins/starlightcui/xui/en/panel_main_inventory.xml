@@ -237,7 +237,7 @@
        bevel_style="none"
        follows="all"
        label="Inventory"
-       help_topic="my_inventory_tab"
+      
        layout="topleft"
        name="All Items"
        sort_order_setting="InventorySortOrder"
@@ -252,7 +252,7 @@
        follows="all"
        label="Recent"
        sort_order_setting="RecentItemsSortOrder"
-       help_topic="recent_inventory_tab"
+      
        layout="topleft"
        name="Recent Items"
        show_item_link_overlays="true"
@@ -265,7 +265,7 @@
        follows="all"
        height="338"
        label="Worn"
-       help_topic="worn_inventory_tab"
+      
        layout="topleft"
        left_delta="0"
        name="Worn Items"
@@ -279,7 +279,7 @@
        follows="all"
        height="338"
        label="Favorites"
-       help_topic="favorites_inventory_tab"
+      
        layout="topleft"
        name="Favorites"
        show_item_link_overlays="true"

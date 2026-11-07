@@ -148,7 +148,7 @@
 	Reinício de região:
 </panel.string>
 <panel.string name="textFSRestartOpenSim">
-	Reinício de região (OpenSim):
+	Reinício de região (ForMe.World):
 </panel.string>
 <panel.string name="textFSScriptFloaterClose">
 	Fechar diálogo de script:
@@ -183,7 +183,7 @@
 <panel.string name="textFSWindowOpen">
 	Abrir janela:
 </panel.string>
-<tab_container label="Preferências do Firestorm" name="tabs">
+<tab_container label="Preferências do ForMe.World" name="tabs">
 	<!-- Sounds -->
 	<panel label="Sons" name="Media Sounds Panel">
 		<slider label="Volume mestre" name="System Volume"/>
@@ -307,7 +307,7 @@
 		<radio_group name="ear_location">
 			<radio_item label="Ouvir chat de voz na posição da câmera" name="0"/>
 			<radio_item label="Ouvir chat de voz na posição do avatar" name="1"/>
-			<radio_item label="Ouvir chat de voz local com volume uniforme (somente OpenSim)" name="2"/>
+			<radio_item label="Ouvir chat de voz local com volume uniforme (somente ForMe.World)" name="2"/>
 		</radio_group>
 		<check_box label="Sincronizar lábios do avatar ao falar" name="enable_lip_sync"/>
 		<check_box label="Indicador de voz sobre avatares" name="FSShowVoiceVisualizer" tool_tip="Se ativado, o indicador de voz (ponto branco) será mostrado sobre os avatares."/>

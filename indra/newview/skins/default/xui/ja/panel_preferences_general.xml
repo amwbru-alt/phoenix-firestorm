@@ -74,7 +74,7 @@
 		（再起動後に反映）
 	</text>
 	<text name="time_format_clock_note">
-		トップバーの時計の表示形式は [secondlife:///app/openfloater/preferences?tab=ui&amp;subtab=UI-interface-top-bars インターフェイス ＞ トップバー] にあります。
+		トップバーの時計の表示形式は [fmw:///app/openfloater/preferences?tab=ui&amp;subtab=UI-interface-top-bars インターフェイス ＞ トップバー] にあります。
 	</text>
 	<!--away/logout-->
 	<text name="title_afk_text">
@@ -110,6 +110,6 @@
 		<combo_box.item label="終了しない" name="item4"/>
 	</combo_box>
 	<text name="text_box3">
-		退席中及び自動応答の際のメッセージは [secondlife:///app/openfloater/preferences?tab=im&amp;subtab=tab-autoresponse-1 「プライバシー」の「自動応答」] タブから設定できます。
+		退席中及び自動応答の際のメッセージは [fmw:///app/openfloater/preferences?tab=im&amp;subtab=tab-autoresponse-1 「プライバシー」の「自動応答」] タブから設定できます。
 	</text>
 </panel>

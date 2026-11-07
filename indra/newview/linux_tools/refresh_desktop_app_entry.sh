@@ -12,8 +12,8 @@ function install_desktop_entry()
 
     local desktop_entry="\
 [Desktop Entry]\n\
-Name=Firestorm Viewer\n\
-Comment=Client for accessing 3D virtual worlds\n\
+Name=ForMe.World\n\
+Comment=Клиент виртуального мира ForMe.World\n\
 Exec=${installation_prefix}/firestorm\n\
 Icon=${installation_prefix}/firestorm_icon.png\n\
 Terminal=false\n\
@@ -35,3 +35,4 @@ else
     # user-specific
     install_desktop_entry "$install_prefix" "$HOME/.local/share/applications"
 fi
+

@@ -1,87 +1,13 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater
- name="avatarinfo"
- height="510"
- width="485"
- layout="topleft"
- can_close="true"
- can_resize="true"
- help_topic="panel_my_profile_tab"
- min_height="510"
- min_width="480"
- positioning="centered"
- save_rect="true"
- title="Profile"
->
-    <panel
-     name="panel_profile_view"
-     top="0"
-     left="0"
-     height="500"
-     width="480"
-     follows="all"
-     class="panel_profile"
-    >
-        <tab_container
-         name="panel_profile_tabs"
-         top_pad="5"
-         left="0"
-         height="500"
-         width="480"
-         follows="all"
-         layout="topleft"
-         halign="center"
-         tab_position="top"
-        >
-            <panel
-             name="panel_profile_secondlife"
-             label="2nd Life"
-             layout="topleft"
-             class="panel_profile_secondlife"
-             filename="panel_profile_secondlife.xml"
-             help_topic="profile_secondlife_tab"
-            />
-            <panel
-             name="panel_profile_web"
-             label="Feed"
-             layout="topleft"
-             class="panel_profile_web"
-             filename="panel_profile_web.xml"
-             help_topic="profile_web_tab"
-            />
-            <panel
-             name="panel_profile_picks"
-             label="Picks"
-             layout="topleft"
-             class="panel_profile_picks"
-             filename="panel_profile_picks.xml"
-             help_topic="profile_picks_tab"
-            />
-            <panel
-             name="panel_profile_classifieds"
-             label="Classifieds"
-             layout="topleft"
-             class="panel_profile_classifieds"
-             filename="panel_profile_classifieds.xml"
-             help_topic="profile_classified_tab"
-            />
-            <panel
-             name="panel_profile_firstlife"
-             label="1st Life"
-             layout="topleft"
-             class="panel_profile_firstlife"
-             filename="panel_profile_firstlife.xml"
-             help_topic="profile_firstlife_tab"
-            />
-            <panel
-             name="panel_profile_notes"
-             label="Notes"
-             layout="topleft"
-             class="panel_profile_notes"
-             filename="panel_profile_notes.xml"
-             help_topic="profile_notes_tab"
-            />
-        </tab_container>
-    </panel>
+<?xml version='1.0' encoding='utf-8'?>
+<floater name="avatarinfo" height="744" width="760" layout="topleft" can_close="true" can_resize="true" min_height="744" min_width="760" positioning="centered" save_rect="true" title="Profile" header_height="44" header_vpad="10" header_icon="Forme_UI_Profile" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD" legacy_header_height="0">
+  <panel name="panel_profile_view" follows="all" class="panel_profile" layout="topleft" width="728" height="716" left="16" top="12">
+    <tab_container name="panel_profile_tabs" height="716" width="728" follows="all" layout="topleft" halign="center" tab_position="top" left="0" top="0" tab_height="36" tab_min_width="112" tab_max_width="174">
+      <panel name="panel_profile_secondlife" label="2nd Life" layout="topleft" class="panel_profile_secondlife" filename="panel_profile_secondlife.xml" />
+      <panel name="panel_profile_web" label="Feed" layout="topleft" class="panel_profile_web" filename="panel_profile_web.xml" />
+      <panel name="panel_profile_picks" label="Picks" layout="topleft" class="panel_profile_picks" filename="panel_profile_picks.xml" />
+      <panel name="panel_profile_classifieds" label="Classifieds" layout="topleft" class="panel_profile_classifieds" filename="panel_profile_classifieds.xml" />
+      <panel name="panel_profile_firstlife" label="1st Life" layout="topleft" class="panel_profile_firstlife" filename="panel_profile_firstlife.xml" />
+      <panel name="panel_profile_notes" label="Notes" layout="topleft" class="panel_profile_notes" filename="panel_profile_notes.xml" />
+    </tab_container>
+  </panel>
 </floater>
-

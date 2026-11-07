@@ -28,7 +28,7 @@
 					<button label="Perfil" name="info_btn" tool_tip="Mostrar el perfil del objeto"/>
 				</layout_panel>
 				<layout_panel name="share_btn_lp">
-					<button label="Compartir" name="share_btn" tool_tip="Compartir un objeto del inventario"/>
+					<button label="Compartir" name="share_btn" tool_tip="Compartir un objeto del inventario" forme_creator_only="true"/>
 				</layout_panel>
 				<layout_panel name="shop_btn_lp">
 					<button label="Comprar" name="shop_btn" tool_tip="Abrir la página web de Marketplace"/>

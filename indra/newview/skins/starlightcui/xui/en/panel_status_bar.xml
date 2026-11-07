@@ -1,16 +1,17 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <panel
- background_opaque="false"
+ background_opaque="true"
  background_visible="true"
+ bg_opaque_color="0.15 0.145 0.155 0.98"
  chrome="true"
  follows="top|right"
- height="19"
+ height="38"
  layout="topleft"
  left="0"
  mouse_opaque="false"
  name="status"
- top="19"
  tab_stop="false"
+ top="19"
  width="1000">
   <!-- icon
     top="0"
@@ -130,7 +131,7 @@
     left="192"
     name="buy_land_btn"
     top="2"
-    tool_tip="Parcel is for sale" 
+    tool_tip="Parcel is for sale"
     width="16"/>
   <icon
     follows="right|top"
@@ -166,8 +167,10 @@
     width="16"
 	scale_image="false"
     />
+     <!-- <FS:Zi> This text changes color when hovered over, implemented in llstatusbar.cpp
+                  Colors are defined in colors.xml as ParcelNormalColor and ParcelHoverColor -->
      <text
-       tool_tip="Name of land parcel on which you are standing. Click for About Land."
+	   tool_tip="Name of land parcel on which you are standing. Click for About Land."
        text_color="ParcelNormalColor"
        follows="left|top|right"
        height="16"
@@ -175,12 +178,23 @@
        left="291"
        length="1"
        name="parcel_info_text"
-       top="3"
+       top="2"
        value="(loading...)"
        type="string"
        width="100"/>
-   </panel>
 
+<text name="forme_hud_brand" layout="topleft" left="42" top="10" width="150" height="24" font="SansSerif" font_style="BOLD" text_color="0.94 0.93 0.94 1" mouse_opaque="false">ForMe.World</text>
+  <text name="forme_hud_location" layout="topleft" left="210" top="12" width="500" height="22" font="SansSerifSmall" text_color="0.90 0.89 0.90 1" use_ellipses="true" mouse_opaque="false" />
+</panel>
+
+        <panel.string name="forme_weather_clear">Clear</panel.string>
+    <panel.string name="forme_weather_cloudy">Cloudy</panel.string>
+    <panel.string name="forme_weather_fog">Fog</panel.string>
+    <panel.string name="forme_weather_rain">Rain</panel.string>
+    <panel.string name="forme_weather_storm">Storm</panel.string>
+    <panel.string name="forme_weather_snow">Snow</panel.string>
+    <panel.string name="forme_region_connected">Connected</panel.string>
+    <panel.string name="forme_region_disconnected">Region connection lost</panel.string>
     <panel.string
      name="packet_loss_tooltip">
         Packet Loss
@@ -190,8 +204,12 @@
         Bandwidth
     </panel.string>
     <panel.string
-     name="time">
+     name="time_ampm">
         [hour12, datetime, slt]:[min, datetime, slt]:[second, datetime, slt] [ampm, datetime, slt] [timezone,datetime, slt]
+    </panel.string>
+    <panel.string
+     name="time">
+        [hour, datetime, slt]:[min, datetime, slt] [timezone,datetime, slt]
     </panel.string>
     <panel.string
      name="timeTooltip">
@@ -201,10 +219,11 @@
      name="buycurrencylabel">
         L$ [AMT]
     </panel.string>
+    <!-- <FS:MJR> [FIRE-36776] - Add omnifilter to the top status bar -->
     <panel
       class="panel_omnifilter_controls"
       height="18"
-      left="-801"
+      left="-722"
       width="190"
       top="0"
       follows="right|top"
@@ -250,17 +269,22 @@
          name="cmb_omnifilter_rule_sets"
          tool_tip="Choose the Omnifilter Rule Set to use."
          width="150"/>
-    </panel>
+
+<text name="forme_hud_brand" layout="topleft" left="42" top="10" width="150" height="24" font="SansSerif" font_style="BOLD" text_color="0.94 0.93 0.94 1" mouse_opaque="false">ForMe.World</text>
+  <text name="forme_hud_location" layout="topleft" left="210" top="12" width="500" height="22" font="SansSerifSmall" text_color="0.90 0.89 0.90 1" use_ellipses="true" mouse_opaque="false" />
+</panel>
+    <!-- </FS:MJR> [FIRE-36776] -->
 
 	<panel
 	 height="18"
-	 left="-604"
+	 left="-525"
 	 top="0"
-	 width="110"
+	 width="120"
 	 follows="right|top"
 	 name="menu_search_panel"
-	 background_opaque="false"
-	 background_visible="true">
+	 background_opaque="true"
+	 background_visible="true"
+	 bg_opaque_color="MouseGray">
 		<search_editor
 		 clear_button_visible="true"
 		 follows="left|top"
@@ -274,11 +298,11 @@
 		 text_pad_left="6"
 		 tool_tip="Type the search term you are interested in here. Results will be displayed for partial fulltext matches within the menu."
 		 top="0">
-			<search_button 
+			<search_button
 			 top_pad="4"
-			 left_pad="4" 
+			 left_pad="4"
 			 width="12"
-			 height="12" 
+			 height="12"
 			 image_unselected="Search"
 			 image_selected="Search"/>
 			<clear_button
@@ -290,32 +314,36 @@
 			 pad_left="4"
 			 width="12"/>
 		</search_editor>
-	</panel>
+
+<text name="forme_hud_brand" layout="topleft" left="42" top="10" width="150" height="24" font="SansSerif" font_style="BOLD" text_color="0.94 0.93 0.94 1" mouse_opaque="false">ForMe.World</text>
+  <text name="forme_hud_location" layout="topleft" left="210" top="12" width="500" height="22" font="SansSerifSmall" text_color="0.90 0.89 0.90 1" use_ellipses="true" mouse_opaque="false" />
+</panel>
 
   <panel
     height="18"
-    left="-472"
+    left="-393"
     width="77"
     top="0"
     follows="right|top"
     name="balance_bg"
     visibility_control="FSShowCurrencyBalanceInStatusbar"
-    background_opaque="false"
-    background_visible="true">
+    background_opaque="true"
+    background_visible="true"
+    bg_opaque_color="MouseGray">
     <text
      halign="center"
      font="SansSerifSmall"
      follows="all"
      height="18"
      left="0"
-	 right="24"
+	 right="30"
      name="balance"
      text_color="CurrencyColor"
      text_readonly_color="CurrencyColor"
      tool_tip="Click to refresh your L$ balance"
-     top="4"
+     top="3"
      wrap="false"
-     value="L$???"
+     value="L$??"
      width="35" />
     <button
      auto_resize="true"
@@ -335,48 +363,21 @@
      tool_tip="Click to buy more L$"
      top="2"
      width="40" />
-  </panel>
-  
+
+<text name="forme_hud_brand" layout="topleft" left="42" top="10" width="150" height="24" font="SansSerif" font_style="BOLD" text_color="0.94 0.93 0.94 1" mouse_opaque="false">ForMe.World</text>
+  <text name="forme_hud_location" layout="topleft" left="210" top="12" width="500" height="22" font="SansSerifSmall" text_color="0.90 0.89 0.90 1" use_ellipses="true" mouse_opaque="false" />
+</panel>
+
   <panel
     height="18"
-    left_pad="5"
-    width="369"
+    left_pad="4"
+    width="247"
     top="0"
     follows="right|top"
     name="time_and_media_bg"
-    background_opaque="false"
-    background_visible="true">
-
-  	<!-- Draw distance widget here -->
-    <icon
-     follows="right|top"
-     height="16"
-     image_name="Draw_Distance"
-     name="dd_icon"
-     tool_tip="Draw Distance"
-     top="2"
-     left="1"
-     visible="true"
-     width="16"
-     scale_image="false"/>
-     <slider
-     control_name="RenderFarClip"
-     decimal_digits="0"
-     text_color="EmphasisColor" 
-     follows="right|top"
-     height="16"
-     increment="8"
-     initial_value="160"
-     layout="topleft"
-     tool_tip="Maximum distance away from camera to be rezzed (meters)"
-     top="3"
-     left_pad="2"
-     max_val="1024"
-     min_val="32"
-     name="drawdistance" 
-     top_delta="0"
-     width="98" />
-
+    background_opaque="true"
+    background_visible="true"
+    bg_opaque_color="MouseGray">
     <text
      type="string"
      font="Tabnum"
@@ -385,12 +386,12 @@
      halign="center"
      height="16"
      h_pad="2"
-     top="4"
+     top="3"
      layout="topleft"
-     left_pad="7"
+     left="2"
      name="TimeText"
      tool_tip="Current time (Pacific)"
-     width="98">
+     width="96">
         24:00:00 AM PST
     </text>
     <button
@@ -450,20 +451,60 @@
      left_pad="4"
      top="2"
      name="volume_btn"
-     tool_tip="Global Volume Control"
      width="16" />
     <text
      name="FPSText"
      type="string"
      follows="right|top"
-     top="4"
+     top="3"
      left_pad="4"
      height="16"
      width="42"
      halign="center"
-     tool_tip="Frames per second"
+     tool_tip="Frames per second (click to adjust limit)"
      wrap="false">
         200.0
     </text>
-  </panel>
+
+<text name="forme_hud_brand" layout="topleft" left="42" top="10" width="150" height="24" font="SansSerif" font_style="BOLD" text_color="0.94 0.93 0.94 1" mouse_opaque="false">ForMe.World</text>
+  <text name="forme_hud_location" layout="topleft" left="210" top="12" width="500" height="22" font="SansSerifSmall" text_color="0.90 0.89 0.90 1" use_ellipses="true" mouse_opaque="false" />
+</panel>
+  <button name="forme_hud_notifications" layout="topleft" follows="right|top"
+          top="8" right="-128" width="26" height="24" chrome="true"
+          image_overlay="Notices_Unread" tool_tip="Notifications" image_unselected="Forme_WMap_Clear" image_selected="Forme_WMap_Clear" image_pressed="Forme_WMap_Clear">
+    <commit_callback function="Floater.Toggle" parameter="notification_well_window" />
+  </button>
+  <button name="forme_hud_people" layout="topleft" follows="right|top"
+          top="8" right="-88" width="26" height="24" chrome="true"
+          image_overlay="Command_People_Icon" tool_tip="People" image_unselected="Forme_WMap_Clear" image_selected="Forme_WMap_Clear" image_pressed="Forme_WMap_Clear">
+    <commit_callback function="Floater.Toggle" parameter="people" />
+  </button>
+  <menu_button
+    name="forme_profile_menu_button"
+    follows="right|top"
+    layout="topleft"
+    top="5"
+    right="-8"
+    width="55"
+    height="28"
+    chrome="true"
+    menu_filename="menu_forme_profile.xml"
+    menu_position="bottomright"
+    tool_tip="Account menu" label="⌄" pad_left="33" image_unselected="Forme_WMap_Clear" image_selected="Forme_WMap_Clear" />
+  <avatar_icon
+    name="forme_profile_avatar"
+    follows="right|top"
+    layout="topleft"
+    top="5"
+    right="-32"
+    width="28"
+    height="28"
+    mouse_opaque="false"
+    tab_stop="false"
+    default_icon_name="Generic_Person" />
+
+<text name="forme_hud_brand" layout="topleft" left="42" top="10" width="150" height="24" font="SansSerif" font_style="BOLD" text_color="0.94 0.93 0.94 1" mouse_opaque="false">ForMe.World</text>
+  <text name="forme_hud_location" layout="topleft" left="210" top="12" width="500" height="22" font="SansSerifSmall" text_color="0.90 0.89 0.90 1" use_ellipses="true" mouse_opaque="false" />
+  <text name="forme_hud_star" layout="topleft" left="18" top="8" width="22" height="26" font="SansSerifLarge" text_color="0.69 0.44 0.87 1" mouse_opaque="false">✱</text>
+  <text name="forme_hud_connection" layout="topleft" left="442" top="12" width="190" height="22" font="SansSerifSmall" text_color="0.30 0.78 0.36 1" mouse_opaque="false" />
 </panel>

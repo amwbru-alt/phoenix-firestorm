@@ -68,7 +68,6 @@
 #include "llviewerwindow.h"
 #include "llrootview.h"
 #include "llviewerchat.h"
-#include "lltranslate.h"
 #include "llautoreplace.h"
 #include "lluiusage.h"
 // [RLVa:KB] - Checked: 2010-02-27 (RLVa-1.2.0b)

@@ -33,7 +33,7 @@ const std::string SECOND_LIFE_BETA_LABEL = "Second Life Beta";
 
 // @TODO this really should be private, but is used in llslurl
 #if defined(OPENSIM) && defined(SINGLEGRID)
-const std::string MAINGRID = SINGLEGRID_URI;
+const std::string MAINGRID = "185.173.93.200:8002"; // <FS:ForMe> Not a build-time override.
 #else
 const std::string MAINGRID = "util.agni.lindenlab.com";
 #endif

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <floater
  positioning="centered"
- legacy_header_height="18"
+ legacy_header_height="0"
  can_resize="true"
  height="590"
  layout="topleft"
  name="floater_placedetails"
- help_topic="floater_placedetails"
+
  save_rect="true"
  title="Landmark"
  min_height="570"
  min_width="250"
- width="322">
+ width="322" header_height="44" header_vpad="10" header_icon="Forme_UI_Pin" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD">
 	<string name="title_place">
 		Place Details
 	</string>
@@ -40,7 +40,7 @@
 	 height="533"
 	 layout="topleft"
 	 left="3"
-	 help_topic="landmark"
+	
 	 name="panel_landmark_info"
 	 top="20"
 	 visible="false"
@@ -52,7 +52,7 @@
 	 height="533"
 	 layout="topleft"
 	 left="3"
-	 help_topic="place_profile"
+	
 	 name="panel_place_profile"
 	 top="20"
 	 visible="false"

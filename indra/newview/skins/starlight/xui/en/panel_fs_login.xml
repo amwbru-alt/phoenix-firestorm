@@ -179,16 +179,7 @@
         width="145"
         height="80"
         visible="false">
-      <text
-        follows="left|bottom"
-        font="SansSerifSmall"
-        height="16"
-        name="grid_login_text"
-        top="35"
-        left="10"
-        width="128">
-        Log into Grid:
-      </text>
+      
       <combo_box
           allow_text_entry="true"
           font="SansSerifSmall"
@@ -294,7 +285,7 @@
           name="mode_combo"
           width="110">
            <combo_box.item
-            label="Firestorm"
+            label="ForMe.World"
             name="Firestorm"
             value="settings_firestorm.xml" />
            <combo_box.item

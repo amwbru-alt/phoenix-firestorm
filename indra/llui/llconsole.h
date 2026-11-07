@@ -26,6 +26,7 @@
 
 #ifndef LL_LLCONSOLE_H
 #define LL_LLCONSOLE_H
+#include <utility>
 
 #include "llfixedbuffer.h"
 #include "lluictrl.h"
@@ -122,7 +123,7 @@ public:
         public:
             // <FS:Ansariel> Added styleflags parameter for style customization
             //Paragraph (LLWString str, const LLColor4 &color, F32 add_time, const LLFontGL* font, F32 screen_width);
-            Paragraph (LLWString str, const LLColor4 &color, F32 add_time, const LLFontGL* font, F32 screen_width, LLFontGL::StyleFlags styleflags, const LLUUID& session_id, bool parse_urls, LLConsole* console);
+            Paragraph (LLWString str, const LLColor4 &color, F32 add_time, const LLFontGL* font, F32 screen_width, LLFontGL::StyleFlags styleflags, const LLUUID& session_id, bool parse_urls, LLConsole* console, const LLWString& prefix, const LLColor4& prefix_color);
             // </FS:Ansariel>
             void makeParagraphColorSegments ( const LLColor4 &color);
             // <FS:Ansariel> Added styleflags parameter for style customization
@@ -140,6 +141,10 @@ public:
             // <FS:Ansariel> Parse SLURLs
             LLUUID                              mID;
             LLWString                           mSourceText;
+            LLWString mSourcePrefix; // ForMe: preserve name/body colors across URL callbacks.
+            LLWString mColoredPrefix;
+            LLColor4 mBodyColor;
+            LLColor4 mPrefixColor;
             std::map<std::string, std::string>  mUrlLabels;
             // </FS:Ansariel>
     };
@@ -163,13 +168,14 @@ public:
     /*virtual*/ void    draw();
 
 // <FS:Ansariel> Chat console
-    void addConsoleLine(const std::string& utf8line, const LLColor4 &color, const LLUUID& session_id = LLUUID::null, LLFontGL::StyleFlags styleflags = LLFontGL::NORMAL);
-    void addConsoleLine(const LLWString& wline, const LLColor4 &color, const LLUUID& session_id = LLUUID::null, LLFontGL::StyleFlags styleflags = LLFontGL::NORMAL);
+    void addConsoleLine(const std::string& utf8line, const LLColor4 &color, const LLUUID& session_id = LLUUID::null, LLFontGL::StyleFlags styleflags = LLFontGL::NORMAL, const std::string& prefix = "", const LLColor4& prefix_color = LLColor4::white);
+    void addConsoleLine(const LLWString& wline, const LLColor4 &color, const LLUUID& session_id = LLUUID::null, LLFontGL::StyleFlags styleflags = LLFontGL::NORMAL, const LLWString& prefix = LLWString(), const LLColor4& prefix_color = LLColor4::white);
     void clear();
     void addSession(const LLUUID& session_id);
     void removeSession(const LLUUID& session_id);
 
     std::deque<LLColor4> mLineColors;
+    std::deque<std::pair<LLWString, LLColor4>> mLinePrefixes;
     std::deque<LLFontGL::StyleFlags> mLineStyle;
     std::deque<LLUUID> mSessionIDs;
 

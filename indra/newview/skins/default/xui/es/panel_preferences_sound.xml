@@ -139,7 +139,7 @@
 		Reinicio región:
 	</panel.string>
 	<panel.string name="textFSRestartOpenSim">
-		Reinicio región (OpenSim):
+		Reinicio región (ForMe.World):
 	</panel.string>
 	<panel.string name="textFSScriptFloaterClose">
 		Script dialog closes:
@@ -174,7 +174,7 @@
 	<panel.string name="textFSWindowOpen">
 		Apertura de ventana:
 	</panel.string>
-	<tab_container label="Prefs. Firestorm" name="tabs">
+	<tab_container label="Prefs. ForMe.World" name="tabs">
 		<panel label="General" name="Media Sounds Panel">
 			<slider label="Volumen general" name="System Volume"/>
 			<check_box label="Silenciar al minimizar" name="mute_when_minimized"/>

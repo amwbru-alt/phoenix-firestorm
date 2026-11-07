@@ -33,7 +33,7 @@
     <menu_item_call
      label="Share"
      layout="topleft"
-     name="share">
+     name="share" forme_creator_only="true">
         <on_click
          function="Places.LandmarksGear.Custom.Action"
          parameter="share" />

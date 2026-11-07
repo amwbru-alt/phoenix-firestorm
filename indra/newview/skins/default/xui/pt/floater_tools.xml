@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="toolbox floater" short_title="Ferramentas de construção" title="">
+<floater name="toolbox floater" short_title="Ferramentas de construção" title="" forme_creator_only="true">
 	<floater.string name="grid_screen_text">
 		Tela
 	</floater.string>
@@ -148,7 +148,7 @@
 		Faces selecionadas: [FACES_STRING]
 	</text>
 	<text name="more info label">
-		[CAPACITY_STRING] [secondlife:///app/openfloater/object_weights Mais informações]
+		[CAPACITY_STRING] [fmw:///app/openfloater/object_weights Mais informações]
 	</text>
 	<text name="selection_weight">
 		Peso de física [PHYS_WEIGHT], custo de renderização [DISP_WEIGHT].

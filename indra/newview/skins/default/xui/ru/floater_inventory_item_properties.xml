@@ -18,21 +18,21 @@
 	<check_box label="Изменить" name="CheckOwnerModify"/>
 	<check_box label="Копировать" name="CheckOwnerCopy"/>
 	<check_box label="Передавать" name="CheckOwnerTransfer"/>
-	<check_box label="Экспортировать" name="CheckOwnerExport"/>
+	<check_box label="Экспортировать" name="CheckOwnerExport" forme_creator_only="true"/>
 	<text name="AnyoneLabel">Все:</text>
-	<check_box label="Копировать" name="CheckEveryoneCopy"/>
+	<check_box label="Копировать" name="CheckEveryoneCopy" forme_creator_only="true"/>
 	<text name="GroupLabel">Группа:</text>
-	<check_box label="Поделиться" name="CheckShareWithGroup"/>
+	<check_box label="Поделиться" name="CheckShareWithGroup" forme_creator_only="true"/>
 	<text name="NextOwnerLabel">Следующий владелец:</text>
-	<check_box label="Изменить" name="CheckNextOwnerModify"/>
-	<check_box label="Копировать" name="CheckNextOwnerCopy"/>
-	<check_box label="Передавать" name="CheckNextOwnerTransfer"/>
-	<check_box label="Продать" name="CheckPurchase"/>
-	<combo_box name="ComboBoxSaleType">
+	<check_box label="Изменить" name="CheckNextOwnerModify" forme_creator_only="true"/>
+	<check_box label="Копировать" name="CheckNextOwnerCopy" forme_creator_only="true"/>
+	<check_box label="Передавать" name="CheckNextOwnerTransfer" forme_creator_only="true"/>
+	<check_box label="Продать" name="CheckPurchase" forme_creator_only="true"/>
+	<combo_box name="ComboBoxSaleType" forme_creator_only="true">
 		<combo_box.item label="Копию" name="Copy"/>
 		<combo_box.item label="Содержимое" name="Contents"/>
 		<combo_box.item label="Оригинал" name="Original"/>
 	</combo_box>
-	<spinner label="Цена:" name="Edit Cost"/>
+	<spinner label="Цена:" name="Edit Cost" forme_creator_only="true"/>
 	<text name="CurrencySymbol">L$</text>
 </floater>

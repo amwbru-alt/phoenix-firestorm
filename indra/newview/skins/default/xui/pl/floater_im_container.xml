@@ -18,7 +18,7 @@
 				<panel name="stub_panel">
 					<button name="stub_collapse_btn" tool_tip="Zwiń ten panel" />
 					<text name="stub_textbox">
-						Ta rozmowa jest w osobnym oknie. [secondlife:/// Z powrotem.]
+						Ta rozmowa jest w osobnym oknie. [fmw:/// Z powrotem.]
 					</text>
 				</panel>
 			</panel_container>

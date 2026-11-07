@@ -69,13 +69,13 @@ const std::string MAIN_GRID_LOGIN_URI = "https://login.agni.lindenlab.com/cgi-bi
 const std::string SL_UPDATE_QUERY_URL = "https://update.secondlife.com/update";
 
 const std::string MAIN_GRID_SLURL_BASE = "https://maps.secondlife.com/secondlife/";
-const std::string SYSTEM_GRID_APP_SLURL_BASE = "secondlife:///app";
+const std::string SYSTEM_GRID_APP_SLURL_BASE = "fmw:///app";
 
 const std::string MAIN_GRID_WEB_PROFILE_URL = "https://my.secondlife.com/";
 
-const char* SYSTEM_GRID_SLURL_BASE = "secondlife://%s/secondlife/";
+const char* SYSTEM_GRID_SLURL_BASE = "fmw://%s/secondlife/";
 const char* DEFAULT_SLURL_BASE = "https://%s/region/";
-const char* DEFAULT_APP_SLURL_BASE = "x-grid-location-info://%s/app";
+const char* DEFAULT_APP_SLURL_BASE = "fmw://%s/app";
 
 LLGridManager::LLGridManager()
 :   mIsInProductionGrid(false)

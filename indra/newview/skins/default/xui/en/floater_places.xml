@@ -1,26 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-
-<floater
-  positioning="centered"
-  default_tab_group="1"
-  legacy_header_height="18"
-  can_resize="true"
-  height="588"
-  layout="topleft"
-  name="floater_places"
-  help_topic="floater_places"
-  save_rect="true"
-  reuse_instance="true"
-  title="Places"
-  min_height="200"
-  min_width="200"
-  width="333">
-    <panel
-      top="18"
-      tab_group="1"
-      class="panel_places"
-      name="main_panel"
-      filename="panel_places.xml"
-      label="Places"
-      font="SansSerifBold"/>
+<?xml version='1.0' encoding='utf-8'?>
+<floater positioning="centered" default_tab_group="1" legacy_header_height="0" can_resize="true" height="662" layout="topleft" name="floater_places" save_rect="true" reuse_instance="true" title="Places" min_height="480" min_width="540" width="540" header_height="44" header_vpad="10" header_icon="Forme_UI_Pin" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD">
+  <panel tab_group="1" class="panel_places" name="main_panel" filename="panel_places.xml" label="Places" font="SansSerifBold" left="16" top="12" layout="topleft" width="508" height="634" follows="all" />
 </floater>

@@ -25,6 +25,8 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fsmarketplacelistings.h"
+#include "fscreatoraccess.h"
 #include "llinventorybridge.h"
 
 // external projects
@@ -1791,6 +1793,8 @@ void LLInvFVBridge::removeObject(LLInventoryModel *model, const LLUUID &uuid)
 
 bool LLInvFVBridge::canShare() const
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     bool can_share = false;
 
     if (isAgentInventory())
@@ -1825,6 +1829,7 @@ bool LLInvFVBridge::canShare() const
 
 bool LLInvFVBridge::canListOnMarketplace() const
 {
+    if (!ForMeMarketplace::available()) return false;
     LLInventoryModel * model = getInventoryModel();
 
     LLViewerInventoryCategory * cat = model->getCategory(mUUID);
@@ -1949,6 +1954,8 @@ LLInvFVBridge* LLInventoryFolderViewModelBuilder::createBridge(LLAssetType::ETyp
 
 void LLItemBridge::performAction(LLInventoryModel* model, std::string action)
 {
+    if ((action.starts_with("marketplace_") || action == "copy_to_marketplace_listings"
+        || action == "move_to_marketplace_listings") && !ForMeMarketplace::available()) return;
     if ("goto" == action)
     {
         gotoItem();
@@ -3879,6 +3886,8 @@ void LLInventoryCopyAndWearObserver::changed(U32 mask)
 
 void LLFolderBridge::performAction(LLInventoryModel* model, std::string action)
 {
+    if ((action.starts_with("marketplace_") || action == "copy_to_marketplace_listings"
+        || action == "move_to_marketplace_listings") && !ForMeMarketplace::available()) return;
     if ("open" == action)
     {
         LLFolderViewFolder *f = dynamic_cast<LLFolderViewFolder   *>(mInventoryPanel.get()->getItemByID(mUUID));

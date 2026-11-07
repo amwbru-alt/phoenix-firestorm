@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="script ed float" title="Modifica script: Nuovo script">
+<floater name="script ed float" title="Modifica script: Nuovo script" forme_creator_only="true">
 	<floater.string name="not_allowed">
 		Questo script non può essere visualizzato né modificato. Per visualizzare o modificare uno script all&apos;interno di un oggetto, sono necessari i diritti di modifica.
 	</floater.string>

@@ -10,8 +10,8 @@
 	<string name="Touch">Toucher</string>
 	<string name="Sit">S'asseoir</string>
 	<text name="object_creator">
- par secondlife:///app/agent/0e346d8b-4433-4d66-a6b0-fd37083abc4c/about
- propriétaire secondlife:///app/agent/0e346d8b-4433-4d66-a6b0-fd37083abc4c/about
+ par fmw:///app/agent/0e346d8b-4433-4d66-a6b0-fd37083abc4c/about
+ propriétaire fmw:///app/agent/0e346d8b-4433-4d66-a6b0-fd37083abc4c/about
 	</text>
 	<text name="price_text">L$30,000</text>
 	<icon name="secure_browsing" tool_tip="Navigation sécurisée"/>

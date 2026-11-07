@@ -54,7 +54,7 @@
 	<spinner label="Yüksek" name="height_range_spin_0"/>
 	<spinner label="Yüksek" name="height_range_spin_2"/>
 	<button label="Ham yüzeyi indir..." name="download_raw_btn" tool_tip="Sadece gayrimenkul sahipleri kullanabilir, yöneticiler kullanamaz"/>
-	<button label="Ham yüzeyi karşıya yükle..." name="upload_raw_btn" tool_tip="Sadece gayrimenkul sahipleri kullanabilir, yöneticiler kullanamaz"/>
-	<button label="Yüzeyi Kaydet" name="bake_terrain_btn" tool_tip="Yükseltme/alçaltma limitleri için  mevcut yüzeyi orta nokta olarak ayarla"/>
+	<button label="Ham yüzeyi karşıya yükle..." name="upload_raw_btn" tool_tip="Sadece gayrimenkul sahipleri kullanabilir, yöneticiler kullanamaz" forme_creator_only="true"/>
+	<button label="Yüzeyi Kaydet" name="bake_terrain_btn" tool_tip="Yükseltme/alçaltma limitleri için  mevcut yüzeyi orta nokta olarak ayarla" forme_creator_only="true"/>
 	<button label="Uygula" name="apply_btn"/>
 </panel>

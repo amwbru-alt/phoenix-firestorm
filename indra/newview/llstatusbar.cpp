@@ -31,6 +31,7 @@
 
 // viewer includes
 #include "llagent.h"
+#include "llavatariconctrl.h"
 #include "llagentcamera.h"
 #include "llbutton.h"
 #include "llcommandhandler.h"
@@ -115,7 +116,46 @@
 //
 
 LLStatusBar *gStatusBar = NULL;
-S32 STATUS_BAR_HEIGHT = 26;
+
+namespace
+{
+    std::string sRegionWeatherCondition;
+    std::string sRegionWeatherCap;
+    U32 sRegionWeatherRequest = 0;
+    LLStatusBar::RegionWeatherEffects sWeatherFrom;
+    LLStatusBar::RegionWeatherEffects sWeatherTo;
+    LLFrameTimer sWeatherSampleAge;
+    F32 sLightningDelay = -1.f;
+    std::string sLightningEvent;
+    std::string sLastThunderEvent;
+    LLUUID sThunderSound;
+
+    LLStatusBar::RegionWeatherEffects sampleWeatherEffects()
+    {
+        const F32 age = sWeatherSampleAge.getElapsedTimeF32();
+        const F32 blend = llclamp(age / 3.f, 0.f, 1.f);
+        const F32 flash_age = age - sLightningDelay;
+        return {
+            sWeatherFrom.rain + blend * (sWeatherTo.rain - sWeatherFrom.rain),
+            sWeatherFrom.snow + blend * (sWeatherTo.snow - sWeatherFrom.snow),
+            sLightningDelay >= 0 && flash_age >= 0.f && flash_age < 0.3f
+                ? 0.14f * (1.f - flash_age / 0.3f) : 0.f,
+            sWeatherFrom.fog + blend * (sWeatherTo.fog - sWeatherFrom.fog),
+            sWeatherFrom.cloud + blend * (sWeatherTo.cloud - sWeatherFrom.cloud)
+        };
+    }
+
+    void clearWeatherEffects()
+    {
+        sWeatherFrom = {};
+        sWeatherTo = {};
+        sLightningDelay = -1.f;
+        sLightningEvent.clear();
+        sThunderSound.setNull();
+    }
+    LLFrameTimer sRegionWeatherRefresh;
+}
+S32 STATUS_BAR_HEIGHT = 38;
 extern S32 MENU_BAR_HEIGHT;
 
 // <FS:LO> FIRE-7639 - Stop the blinking after a while
@@ -279,6 +319,44 @@ void LLStatusBar::draw()
     refresh();
     updateParcelInfoText();
     updateHealth();
+    if (auto* icon = findChild<LLAvatarIconCtrl>("forme_profile_avatar"))
+    {
+        if (gAgent.getID().notNull() && icon->getAvatarId() != gAgent.getID())
+        {
+            icon->setValue(LLSD(gAgent.getID()));
+        }
+    }
+    // The ForMe header owns the visible chrome. Native widgets remain available
+    // for their commands and state, without overlapping the compact header.
+    const bool full_menu = gSavedSettings.getBOOL("ForMeShowFullMenu");
+    if (getParent())
+    {
+        const S32 height = full_menu ? 62 : 38;
+        if (getParent()->getRect().getHeight() != height)
+            getParent()->reshape(getParent()->getRect().getWidth(), height, false);
+    }
+    if (gMenuBarView)
+    {
+        gMenuBarView->setVisible(full_menu);
+        if (full_menu) gMenuBarView->setRect(LLRect(8, 24, getRect().getWidth() - 8, 0));
+    }
+    for (LLView* child : *getChildList())
+        child->setVisible(child->getName().rfind("forme_", 0) == 0);
+    if (auto* location = findChild<LLTextBox>("forme_hud_location"))
+    {
+        LLViewerRegion* region = gAgent.getRegion();
+        location->setText(region && !gRlvHandler.hasBehaviour(RLV_BHVR_SHOWLOC) ? region->getName() : std::string());
+        LLRect rect = location->getRect();
+        rect.mRight = llmax(rect.mLeft, llmin(420, getRect().getWidth() - 168));
+        location->setRect(rect);
+    }
+    if (auto* connection = findChild<LLTextBox>("forme_hud_connection"))
+    {
+        const bool connected = gAgent.getRegion() && gAgent.getRegion()->isAlive();
+        connection->setText(std::string("● ") + getString(connected ? "forme_region_connected" : "forme_region_disconnected"));
+        connection->setColor(connected ? LLColor4(0.30f, 0.78f, 0.36f, 1.f) : LLColor4(0.85f, 0.55f, 0.35f, 1.f));
+        connection->setVisible(getRect().getWidth() >= 800);
+    }
     LLPanel::draw();
 }
 
@@ -293,7 +371,7 @@ bool LLStatusBar::postBuild()
     gMenuBarView->setRightMouseDownCallback(boost::bind(&show_navbar_context_menu, _1, _2, _3));
 
     mTextTime = getChild<LLTextBox>("TimeText" );
-    mTextTime->setClickedCallback(std::bind(&LLUrlAction::executeSLURL, "secondlife:///app/openfloater/preferences?search=StatusBarTimeFormat", true)); // <FS:PP> Open preferences page after clicking on the clock
+    mTextTime->setClickedCallback(std::bind(&LLUrlAction::executeSLURL, "fmw:///app/openfloater/preferences?search=StatusBarTimeFormat", true)); // <FS:PP> Open preferences page after clicking on the clock
 
     getChild<LLUICtrl>("buyL")->setCommitCallback(
         boost::bind(&LLStatusBar::onClickBuyCurrency, this));
@@ -495,7 +573,7 @@ bool LLStatusBar::postBuild()
     // <FS:Beq> Make FPS a clickable button with contextual colour
     // mFPSText = getChild<LLButton>("FPSText");
     mFPSText = getChild<LLTextBox>("FPSText");
-    mFPSText->setClickedCallback(std::bind(&LLUrlAction::executeSLURL, "secondlife:///app/openfloater/preferences?search=LimitFramerate", true));
+    mFPSText->setClickedCallback(std::bind(&LLUrlAction::executeSLURL, "fmw:///app/openfloater/preferences?search=LimitFramerate", true));
     // </FS:Beq>
     mVolumeIconsWidth = mBtnVolume->getRect().mRight - mStreamToggle->getRect().mLeft;
 
@@ -543,19 +621,17 @@ bool LLStatusBar::postBuild()
     // </FS:PP>
 
     // <FS:Zi> FIRE-20390, FIRE-4269 - Option for 12/24 hour clock and seconds display
-    mClockFormatChoices["12 Hour"] = "[hour12, datetime, slt]:[min, datetime, slt] [ampm, datetime, slt]";
-    mClockFormatChoices["12 Hour Seconds"] = "[hour12, datetime, slt]:[min, datetime, slt]:[second, datetime, slt] [ampm, datetime, slt]";
-    mClockFormatChoices["12 Hour TZ"] = "[hour12, datetime, slt]:[min, datetime, slt] [ampm, datetime, slt] [timezone,datetime, slt]";
-    mClockFormatChoices["12 Hour TZ Seconds"] = "[hour12, datetime, slt]:[min, datetime, slt]:[second, datetime, slt] [ampm, datetime, slt] [timezone,datetime, slt]";
     mClockFormatChoices["24 Hour"] = "[hour24, datetime, slt]:[min, datetime, slt]";
     mClockFormatChoices["24 Hour Seconds"] = "[hour24, datetime, slt]:[min, datetime, slt]:[second, datetime, slt]";
     mClockFormatChoices["24 Hour TZ"] = "[hour24, datetime, slt]:[min, datetime, slt] [timezone, datetime, slt]";
     mClockFormatChoices["24 Hour TZ Seconds"] = "[hour24, datetime, slt]:[min, datetime, slt]:[second, datetime, slt] [timezone, datetime, slt]";
 
-    // use the time format defined in the language's panel_status_bar.xml (default)
-    mClockFormatChoices["Language"] = getString("time");
+    // Migrate saved language/12-hour preferences to the common 24-hour clock.
 
     mClockFormat = gSavedSettings.getString("FSStatusBarTimeFormat");
+    LLStringUtil::replaceString(mClockFormat, "12 Hour", "24 Hour");
+    if (mClockFormat == "Language") mClockFormat = "24 Hour TZ";
+    gSavedSettings.setString("FSStatusBarTimeFormat",mClockFormat);
     // </FS:Zi>
 
     return true;
@@ -564,6 +640,14 @@ bool LLStatusBar::postBuild()
 // <FS:Zi> FIRE-20390, FIRE-4269 - Option for 12/24 hour clock and seconds display
 void LLStatusBar::updateClockDisplay()
 {
+    // Refresh host timezone/clock after an OS time or DST change even when the
+    // optional platform journal is disabled. The request runs asynchronously.
+    static LLFrameTimer clock_refresh;
+    if (clock_refresh.getElapsedTimeF32() >= 30.f && gAgent.getRegion())
+    {
+        clock_refresh.reset();
+        gAgent.getRegion()->requestSimulatorFeatures();
+    }
     // Get current UTC time, adjusted for the user's clock
     // being off.
     time_t utc_time;
@@ -1450,9 +1534,90 @@ void LLStatusBar::buildLocationString(std::string& loc_str, bool show_coords)
         (show_coords ? LLAgentUI::LOCATION_FORMAT_V1 : LLAgentUI::LOCATION_FORMAT_V1_NO_COORDS);
 
     if (!LLAgentUI::buildLocationString(loc_str, format))
+        loc_str.clear();
+
+    LLViewerRegion* region = gAgent.getRegion();
+    const std::string status = getString(region && region->isAlive()
+        ? "forme_region_connected" : "forme_region_disconnected");
+    loc_str = loc_str.empty() ? status : loc_str + "  ·  " + status;
+
+    if (!sRegionWeatherCondition.empty())
+        loc_str += "  ·  " + getString("forme_weather_" + sRegionWeatherCondition);
+}
+
+std::string LLStatusBar::regionWeatherCondition(const LLUUID& region_id)
+{
+    LLViewerRegion* region = gAgent.getRegion();
+    if (!region || !region->isAlive() || region->getRegionID() != region_id ||
+        region->getCapability("ForMeWeather") != sRegionWeatherCap)
+        return {};
+    return sRegionWeatherCondition;
+}
+
+LLStatusBar::RegionWeatherEffects LLStatusBar::updateRegionWeatherEffects()
+{
+    LLViewerRegion* region = gAgent.getRegion();
+    const std::string cap = region && region->isAlive() ? region->getCapability("ForMeWeather") : std::string();
+    const bool region_changed = cap != sRegionWeatherCap;
+    if (region_changed)
     {
-        loc_str = "???";
+        sRegionWeatherCap = cap;
+        ++sRegionWeatherRequest;
+        sLastThunderEvent.clear();
+        sRegionWeatherCondition.clear();
+        clearWeatherEffects();
     }
+    if (!cap.empty() && (region_changed || sRegionWeatherRefresh.getElapsedTimeF32() >= 15.f))
+    {
+        sRegionWeatherRefresh.reset();
+        const U32 request = ++sRegionWeatherRequest;
+        region->requestGetCapability("ForMeWeather",
+            [request](const LLSD& data)
+            {
+                if (request != sRegionWeatherRequest)
+                    return;
+
+                const std::string value = data["condition"].asString();
+                if (value == "clear" || value == "cloudy" || value == "fog" || value == "rain" || value == "storm" || value == "snow")
+                    sRegionWeatherCondition = value;
+                else
+                    sRegionWeatherCondition.clear();
+
+                const auto intensity = [](const LLSD& value)
+                {
+                    const F64 number = value.asReal();
+                    return number >= 0.0 && number <= 1.0 ? static_cast<F32>(number) : 0.f;
+                };
+                sWeatherFrom = sampleWeatherEffects();
+                sWeatherTo = { intensity(data["rain"]), intensity(data["snow"]), 0.f,
+                               intensity(data["fog"]), intensity(data["cloud"]) };
+                const F64 delay = data.has("lightning_delay")
+                    ? data["lightning_delay"].asReal() : data["lightning_in"].asReal();
+                sLightningDelay = delay > 0.0 && delay <= 75.0 ? static_cast<F32>(delay) : -1.f;
+                sLightningEvent = data["lightning_event"].asString();
+                const LLUUID thunder = data["thunder_sound"].asUUID();
+                if (gAudiop && thunder.notNull() && thunder != sThunderSound)
+                    gAudiop->preloadSound(thunder);
+                sThunderSound = thunder;
+                sWeatherSampleAge.reset();
+            },
+            [request](const LLSD&)
+            {
+                if (request == sRegionWeatherRequest)
+                {
+                    sRegionWeatherCondition.clear();
+                    clearWeatherEffects();
+                }
+            });
+    }
+    const F32 flash_age = sWeatherSampleAge.getElapsedTimeF32() - sLightningDelay;
+    if (gAudiop && sLightningDelay >= 0.f && flash_age >= 1.2f && flash_age < 3.f &&
+        sThunderSound.notNull() && !sLightningEvent.empty() && sLastThunderEvent != sLightningEvent)
+    {
+        sLastThunderEvent = sLightningEvent;
+        gAudiop->triggerSound(sThunderSound, gAgent.getID(), 0.6f, LLAudioEngine::AUDIO_TYPE_SFX);
+    }
+    return sampleWeatherEffects();
 }
 
 void LLStatusBar::setParcelInfoText(const std::string& new_text)
@@ -1917,11 +2082,13 @@ void LLStatusBar::onPopupRolloverChanged(const LLSD& newvalue)
 void LLStatusBar::onTimeFormatChanged(const std::string& format)
 {
     mClockFormat = format;
+    LLStringUtil::replaceString(mClockFormat, "12 Hour", "24 Hour");
+    if (mClockFormat == "Language") mClockFormat = "24 Hour TZ";
     updateClockDisplay();
 }
 // </FS:Zi>
 
-// Implements secondlife:///app/balance/request to request a L$ balance
+// Implements fmw:///app/balance/request to request a L$ balance
 // update via UDP message system. JC
 class LLBalanceHandler : public LLCommandHandler
 {
@@ -1941,3 +2108,4 @@ public:
 };
 // register with command dispatch system
 LLBalanceHandler gBalanceHandler;
+

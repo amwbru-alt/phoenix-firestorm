@@ -310,7 +310,7 @@ void LLFloater360Capture::writeDataURLHeader(const std::string filename)
     llofstream file_handle(filename.c_str());
     if (file_handle.is_open())
     {
-        file_handle << "// cube map images for Second Life Viewer panorama 360 images" << std::endl;
+        file_handle << "// cube map images for ForMe.World panorama 360 images" << std::endl;
         file_handle.close();
     }
 }

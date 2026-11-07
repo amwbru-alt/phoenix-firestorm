@@ -18,7 +18,7 @@
 			</text>
 			<radio_group name="preferred_browser_behavior">
 				<radio_item label="Bütün linklər üçün mənim brauzerimi (Chrome, Firefox, IE) istifadə et" name="new_external" tool_tip="Sistem brauzerini linklərin açılması üçün istifadə et. Tam ekran rejimində olduqda məsləhət görülmür." />
-				<radio_item label="Yalnız Second Life linkləri üçün daxili brauzer istifadə et" name="new_internal" tool_tip="Yalnız Second Life linkləri üçün daxili brauzer istifadə et" />
+				<radio_item label="Yalnız ForMe.World linkləri üçün daxili brauzer istifadə et" name="new_internal" tool_tip="Yalnız ForMe.World linkləri üçün daxili brauzer istifadə et" />
 				<radio_item label="Bütün linklər üçün daxili brauzer istifadə et" name="new_internal_all" />
 			</radio_group>
 			<text name="numberwebfloaters_label">

@@ -9,7 +9,7 @@
  name="create_landmark"
  positioning="centered"
  title="Create Landmark"
- width="330">
+ width="330" header_height="44" header_vpad="10" header_icon="Forme_UI_Pin" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD" legacy_header_height="0">
   <string name="favorites_bar">
     Favorites bar
   </string>
@@ -67,7 +67,7 @@
      parse_urls="true"
      skip_link_underline="true"
      wrap="true">
-        [secondlife:/// Create new folder]
+        [fmw:/// Create new folder]
     </text>
     <text
      follows="left|top"

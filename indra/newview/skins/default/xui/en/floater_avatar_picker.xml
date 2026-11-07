@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <floater
  positioning="cascading"
- legacy_header_height="18"
+ legacy_header_height="0"
  can_resize="true"
  height="350"
  layout="topleft"
  min_height="200"
  min_width="400"
  name="avatarpicker"
- help_topic="avatarpicker"
+
  save_rect="true"
  title="Choose Resident"
- width="500">
+ width="500" header_height="44" header_vpad="10" header_icon="Forme_UI_Window" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD">
     <floater.string
      name="not_found">
         &apos;[TEXT]&apos; not found
@@ -52,7 +52,7 @@
          label="Search"
          layout="topleft"
          left="6"
-         help_topic="avatarpicker"
+        
          name="SearchPanel"
          top="150"
          width="132">
@@ -111,7 +111,7 @@
          label="Friends"
          layout="topleft"
          left="6"
-         help_topic="avatarpicker"
+        
          name="FriendsPanel"
          top="150"
          width="132">
@@ -165,7 +165,7 @@
          label="Near Me"
          layout="topleft"
          left="6"
-         help_topic="avatarpicker"
+        
          name="NearMePanel"
          top="150"
          width="132">
@@ -241,7 +241,7 @@
          label="Search by UUID"
          layout="topleft"
          left="6"
-         help_topic="avatarpicker"
+        
          name="SearchPanelUUID"
          top="150"
          width="132">
@@ -301,7 +301,7 @@
          label="Contact Sets"
          layout="topleft"
          left="6"
-         help_topic="avatarpicker"
+        
          name="ContactSetsPanel"
          top="150"
          width="132">

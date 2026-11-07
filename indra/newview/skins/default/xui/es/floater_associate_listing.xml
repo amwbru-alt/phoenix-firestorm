@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="associate listing" title="ASOCIAR ARTÍCULOS">
+<floater name="associate listing" title="ASOCIAR ARTÍCULOS" forme_creator_only="true">
 	<text name="message">Id. de artículos:</text>
 	<line_editor name="listing_id">Escribe aquí el Id.</line_editor>
 	<button label="OK" name="OK"/>

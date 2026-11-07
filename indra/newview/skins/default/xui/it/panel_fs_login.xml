@@ -31,9 +31,7 @@
 			<text name="grid_builder_text">
 				+ Clicca per aggiungere altre griglie
 			</text>
-			<text name="grid_login_text">
-				Entra nella griglia:
-			</text>
+			
 		</layout_panel>
 		<layout_panel name="links_login_panel">
 			<text name="create_new_account_text">

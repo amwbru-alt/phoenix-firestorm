@@ -134,6 +134,7 @@ class FSChatHistory : public LLTextEditor   // <FS:Zi> FIRE-8600: TAB out of cha
 
     private:
         std::string mLastFromName;
+    std::string mForMeLastBadge; // <FS:ForMe> Break headers when verified role metadata changes.
         LLUUID mLastFromID;
         LLDate mLastMessageTime;
         bool mIsLastMessageFromLog;

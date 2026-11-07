@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <panel label="Adamlar" name="people_panel">
-	<string name="no_recent_people" value="Son zamanlarda danışan insan yoxdur. Kimləsə danışmaq istəyirsiniz? [secondlife:///app/search/people Axtarışdan] və ya [secondlife:///app/worldmap dünya xəritəsindən] istifadə edin." />
-	<string name="no_filtered_recent_people" value="Tələb etdiyiniz məzmun tapılmadı? [secondlife:///app/search/people/[SEARCH_TERM] Axtarışdan] istifadə edin." />
-	<string name="no_one_near" value="Yaxınınızda heç kim yoxdur. Kimlə danışmaq istəyirsiniz? [secondlife:///app/search/people Axtarışdan] və ya [secondlife:///app/worldmap dünya xəritəsindən] istifadə edin." />
-	<string name="no_one_filtered_near" value="Tələb etdiyiniz məzmun tapılmadı? [secondlife:///app/search/people/[SEARCH_TERM] Axtarışdan] istifadə edin." />
+	<string name="no_recent_people" value="Son zamanlarda danışan insan yoxdur. Kimləsə danışmaq istəyirsiniz? [fmw:///app/search/people Axtarışdan] və ya [fmw:///app/worldmap dünya xəritəsindən] istifadə edin." />
+	<string name="no_filtered_recent_people" value="Tələb etdiyiniz məzmun tapılmadı? [fmw:///app/search/people/[SEARCH_TERM] Axtarışdan] istifadə edin." />
+	<string name="no_one_near" value="Yaxınınızda heç kim yoxdur. Kimlə danışmaq istəyirsiniz? [fmw:///app/search/people Axtarışdan] və ya [fmw:///app/worldmap dünya xəritəsindən] istifadə edin." />
+	<string name="no_one_filtered_near" value="Tələb etdiyiniz məzmun tapılmadı? [fmw:///app/search/people/[SEARCH_TERM] Axtarışdan] istifadə edin." />
 	<string name="no_friends_online" value="Dostlarınızdan heç biri şəbəkədə deyil." />
 	<string name="no_friends" value="Dost yoxdur." />
 	<string name="no_friends_msg">
-		[secondlife:///app/search/people axtarışdan] dost tapın və ya sağ düyməsi ilə sakinləri dostlarınıza əlavə edin.
-Kimləsə danışmaq istəyirsiniz? [secondlife:///app/worldmap dünya xəritəsindən] istifadə edin.
+		[fmw:///app/search/people axtarışdan] dost tapın və ya sağ düyməsi ilə sakinləri dostlarınıza əlavə edin.
+Kimləsə danışmaq istəyirsiniz? [fmw:///app/worldmap dünya xəritəsindən] istifadə edin.
 	</string>
 	<string name="no_filtered_friends_msg">
-		Tələb etdiyiniz məzmun tapılmadı? [secondlife:///app/search/people/[SEARCH_TERM] Axtarışdan] istifadə edin.
+		Tələb etdiyiniz məzmun tapılmadı? [fmw:///app/search/people/[SEARCH_TERM] Axtarışdan] istifadə edin.
 	</string>
-	<string name="no_filtered_groups_msg" value="Tələb etdiyiniz məzmun tapılmadı? [secondlife:///app/search/groups/[SEARCH_TERM] Axtarışdan] istifadə edin." />
-	<string name="no_groups_msg" value="Qoşulmaü üçün qrup axtarırsınız?? [secondlife:///app/search/groups Axtarışdan] istifadə edin." />
+	<string name="no_filtered_groups_msg" value="Tələb etdiyiniz məzmun tapılmadı? [fmw:///app/search/groups/[SEARCH_TERM] Axtarışdan] istifadə edin." />
+	<string name="no_groups_msg" value="Qoşulmaü üçün qrup axtarırsınız?? [fmw:///app/search/groups Axtarışdan] istifadə edin." />
 	<string name="MiniMapToolTipMsg" value="[REGION] (İkili kliklə xəritəni açmaq, shift+surüşdürmə – baxış)" />
 	<string name="AltMiniMapToolTipMsg" value="[REGION] (İkili kliklə teleportasiya, shift+surüşdürmə – baxış)" />
 	<panel.string name="empty_list">

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <strings>
 	<string name="SUPPORT_SITE">
-		Firestorm Support Portal
+		ForMe.World Support Portal
 	</string>
 	<string name="StartupDetectingHardware">
 		Detekterer hardware...
@@ -94,7 +94,7 @@
 		For mange certifikater i serverens certifikat streng.  Kontakt venligst administrator af dette net.
 	</string>
 	<string name="CertInvalidSignature">
-		Signaturen på certifkat der blev returneret af Second Life serveren kunne ikke bekræftes.
+		Signaturen på certifkat der blev returneret af ForMe.World serveren kunne ikke bekræftes.
 	</string>
 	<string name="LoginFailedNoNetwork">
 		Netværksfejl: Kunne ikke etablere forbindelse, check venligst din netværksforbindelse.
@@ -106,7 +106,7 @@
 		Afslut
 	</string>
 	<string name="LoginFailedViewerNotPermitted">
-		Den klient du benytter kan ikke længere få adgang til Second Life. Besøg venligst denne side for at hente en ny klient:
+		Den klient du benytter kan ikke længere få adgang til ForMe.World. Besøg venligst denne side for at hente en ny klient:
 http://secondlife.com/download
 
 For mere information, se denne FAQ:
@@ -142,17 +142,17 @@ og besvar sikkerhedsspørgsmål for at nulstille dit password.
 Vi undskylder besværet.
 	</string>
 	<string name="LoginFailedEmployeesOnly">
-		Second Life er midlertidig lukket ned for vedligeholdelse.
+		ForMe.World er midlertidig lukket ned for vedligeholdelse.
 Kun medarbejdere kan logge på for øjeblikket.
 Check www.secondlife.com/status for opdateringer.
 	</string>
 	<string name="LoginFailedPremiumOnly">
-		Second Life har midlertidig begrænset muligheden for log-in for at sikre, at brugere på systemet ikke får dårlige svartider.
+		ForMe.World har midlertidig begrænset muligheden for log-in for at sikre, at brugere på systemet ikke får dårlige svartider.
 
- Brugere med gratis-konti vil ikke kunne logge på Second Life på dette tidspunkt.
+ Brugere med gratis-konti vil ikke kunne logge på ForMe.World på dette tidspunkt.
 	</string>
 	<string name="LoginFailedComputerProhibited">
-		Second Life kan ikke tilgås fra dennecomputer.
+		ForMe.World kan ikke tilgås fra dennecomputer.
 Hvis du mener dette er en fejl, kontakt venligst support@secondlife.com.
 	</string>
 	<string name="LoginFailedAcountSuspended">
@@ -161,7 +161,7 @@ Hvis du mener dette er en fejl, kontakt venligst support@secondlife.com.
 	</string>
 	<string name="LoginFailedAccountDisabled">
 		Vi kan desværre ikke behandle forespøgsel lige nu.
-Kontakt venligst Second Life supper for assitance via http://secondlife.com/support.
+Kontakt venligst ForMe.World supper for assitance via http://secondlife.com/support.
 Hvis du ikke kan ændre dit password ring venligst +1 (866) 476-9763.
 	</string>
 	<string name="LoginFailedTransformError">
@@ -189,7 +189,7 @@ Din konto vil ikke være tilgængelig før
 		Ikke muligt at koble til en simulator.
 	</string>
 	<string name="LoginFailedRestrictedHours">
-		Din konto kan kun tilgå Second Life
+		Din konto kan kun tilgå ForMe.World
 mellem [START] [END] Pacific Time.
 Kom venligst tilbage i dette tidsrum.
 
@@ -358,7 +358,7 @@ Prøv venligst om lidt igen.
 		Klik for at se denne lokation på kortet
 	</string>
 	<string name="TooltipSLAPP">
-		Klik for at starte secondlife:// kommando
+		Klik for at starte ForMe.World:// kommando
 	</string>
 	<string name="CurrentURL" value=" Nuværende URL: [CurrentURL]"/>
 	<string name="SLurlLabelTeleport">
@@ -1154,10 +1154,10 @@ Prøv venligst om lidt igen.
 		Tryk ESC for at skift til normalt udsyn
 	</string>
 	<string name="InventoryNoMatchingItems">
-		Fandt du ikke hvad du søgte? Prøv [secondlife:///app/search/all/[SEARCH_TERM] Search].
+		Fandt du ikke hvad du søgte? Prøv [fmw:///app/search/all/[SEARCH_TERM] Search].
 	</string>
 	<string name="PlacesNoMatchingItems">
-		Fandt du ikke hvad du søgte? Prøv [secondlife:///app/search/places/[SEARCH_TERM] Search].
+		Fandt du ikke hvad du søgte? Prøv [fmw:///app/search/places/[SEARCH_TERM] Search].
 	</string>
 	<string name="FavoritesNoMatchingItems">
 		Træk et landemærke hertil for at tilføje den som favorit.

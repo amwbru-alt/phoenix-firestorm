@@ -2,7 +2,7 @@
 <toggleable_menu name="profile_overflow_menu">
 	<!--<menu_item_call label="Xəritə" name="show_on_map"/>
 	<menu_item_call label="Ödə" name="pay"/>-->
-	<menu_item_call label="Paylaş" name="share"/>
+	<menu_item_call label="Paylaş" name="share" forme_creator_only="true"/>
 	<menu_item_call label="Zəng" name="call"/>
 	<!--<menu_item_check label="Blokla/Blokdan çıxart" name="block_unblock"/>-->
 	<menu_item_call label="Kontakt dəstlərinə əlavə et" name="add_to_contact_set"/>

@@ -83,7 +83,7 @@
 	<menu_item_call
 	 label="Edit"
 	 layout="topleft"
-	 name="edit_object">
+	 name="edit_object" forme_creator_only="true">
 		<menu_item_call.on_click
 		 function="AreaSearch.Action"
 		 parameter="edit"/>

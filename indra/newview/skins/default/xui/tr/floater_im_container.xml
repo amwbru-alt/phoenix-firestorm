@@ -20,7 +20,7 @@
 				<panel name="stub_panel">
 					<button name="stub_collapse_btn" tool_tip="Bu panoyu daralt"/>
 					<text name="stub_textbox">
-						Sohbet ayrı bir pencerede.   [secondlife:/// Bunu geri getir.]
+						Sohbet ayrı bir pencerede.   [fmw:/// Bunu geri getir.]
 					</text>
 				</panel>
 			</panel_container>

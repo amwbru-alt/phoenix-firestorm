@@ -18,7 +18,7 @@
 				<panel name="stub_panel">
 					<button name="stub_collapse_btn" tool_tip="Contraer este panel"/>
 					<text name="stub_textbox">
-						Esta conversación está en una ventana separada.   [secondlife:/// Traerla de vuelta.]
+						Esta conversación está en una ventana separada.   [fmw:/// Traerla de vuelta.]
 					</text>
 				</panel>
 			</panel_container>

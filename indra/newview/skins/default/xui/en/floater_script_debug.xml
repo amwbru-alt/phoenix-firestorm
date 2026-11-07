@@ -5,11 +5,11 @@
  height="233"
  layout="topleft"
  name="script debug floater"
- help_topic="script_debug_floater"
+
  save_rect="true"
  title="Script Warning/Error/Debug"
  reuse_instance="true"
- width="450">
+ width="450" header_height="44" header_vpad="10" header_icon="Forme_UI_Code" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD" legacy_header_height="0">
     <tab_container
      background_visible="false"
      follows="left|top|right|bottom"

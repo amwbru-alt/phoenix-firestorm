@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <toolbar_view
  follows="all"
  layout="topleft"
@@ -6,7 +6,7 @@
  height="500"
  width="1024"
  left="0"
- top="0" 
+ top="0"
  mouse_opaque="false"
  tab_stop="false"
  visible="true">
@@ -47,15 +47,15 @@
                  side="left"
                  button_display_mode="icons_only">
 	             <icon layout="topleft"
-	                   height="15"
-	                   width="28"
+	                   height="28"
+	                   width="15"
 	                   follows="left|top"
 	                   top="20"
 	                   left="10"
-	                   tab_stop="false" 
+	                   tab_stop="false"
                        visible="false"
-	                   image_name="Caret_Left_Icon"
-                       name="caret" />
+	                   image_name="Caret_Bottom_Icon"
+                       name="caret" use_draw_context_alpha="false" />
         </toolbar_vertical> <!-- FS:Ansariel: Special vertical toolbar -->
       </layout_panel>
       <layout_panel name="non_toolbar_panel"
@@ -84,7 +84,7 @@
                mouse_opaque="false"
                name="chiclet_container"
                tab_stop="false"
-               top="30"
+               top="40"
                bg_visible="false"
                width="20">
         </panel>
@@ -102,7 +102,7 @@
         </panel>
 		<!-- END FS:Ansariel: For chiclets and notices at bottom -->
       </layout_panel>
-      <layout_panel name="right_toolbar_panel"
+       <layout_panel name="right_toolbar_panel"
                     auto_resize="false"
                     height="500"
                     width="30"
@@ -119,15 +119,15 @@
           side="right"
           button_display_mode="icons_only">
 	      <icon layout="topleft"
-	            height="15"
-	            width="28"
+	            height="28"
+	            width="15"
 	            follows="left|top"
 	            top="20"
 	            left="10"
-	            tab_stop="false" 
+	            tab_stop="false"
                 visible="false"
-	            image_name="Caret_Right_Icon"
-	            name="caret" />
+	            image_name="Caret_Bottom_Icon"
+	            name="caret" use_draw_context_alpha="false" />
         </toolbar_vertical> <!-- FS:Ansariel: Special vertical toolbar -->
       </layout_panel>
     </layout_stack>
@@ -136,11 +136,84 @@
   <!-- Panel to take up the chat bar / tool bar layout stack -->
   <layout_panel name="bottom_toolbar_panel"
                 auto_resize="false"
-                height="60"
+                height="92"
                 width="1024"
                 mouse_opaque="false">
 
-  <!-- Horizontal panel to take up the chat bar and the tool bar -->
+  <layout_stack name="forme_bottom_hud" orientation="vertical" layout="topleft"
+                left="0" top="0" width="1024" height="92" follows="all"
+                border_size="0" mouse_opaque="false">
+  <!-- The toolbar itself -->
+  <layout_panel name="toolbar_panel"
+                auto_resize="false"
+                user_resize="false"
+                height="68"
+                width="1024"
+                mouse_opaque="false">
+
+    <toolbar name="toolbar_bottom"
+             layout="topleft"
+             left="0"
+             right="-1"
+             top="0"
+             height="68"
+             follows="left|right|bottom"
+             side="bottom"
+             button_display_mode="icons_with_text"
+             button_panel.bg_opaque_image="Forme_HUD_Dock"
+             button_panel.bg_opaque_image_overlay="White"
+             pad_left="8"
+             pad_right="8"
+             pad_top="5"
+             pad_bottom="5"
+             pad_between="3"
+             min_girth="36"
+             max_rows="2"
+             visible="true">
+      <button_icon_and_text desired_height="58"
+                            button_width.min="82"
+                            button_width.max="108"
+                            image_overlay_alignment="center"
+                            image_bottom_pad="11"
+                            image_top_pad="0"
+                            pad_bottom="-14"
+                            pad_left="6"
+                            pad_right="6"
+                            halign="center"
+                            font="SansSerifSmall"
+                            label_shadow="false"
+                            label_color="0.93 0.92 0.94 1"
+                            label_color_selected="FormeDockSelectedLabel"
+                            image_overlay_color="0.93 0.92 0.94 1"
+                            image_overlay_selected_color="FormeDockSelectedLabel"
+                            image_unselected="Forme_WMap_Clear"
+                            image_selected="Forme_HUD_Active"
+                            image_hover_unselected="Forme_Round_Field"
+                            image_pressed="Forme_HUD_Active"
+                            image_pressed_selected="Forme_HUD_Active"
+                            image_disabled="Forme_WMap_Clear"
+                            image_disabled_selected="Forme_WMap_Clear"
+                            image_color="White"
+                            image_color_disabled="White" />
+             <icon layout="topleft"
+	            height="28"
+	            width="15"
+	            follows="left|top"
+	            top="20"
+	            left="10"
+	            tab_stop="false"
+                visible="false"
+                use_draw_context_alpha="false"
+	            image_name="Caret_Bottom_Icon"
+	            name="caret" />
+    </toolbar>
+
+  </layout_panel>
+  <!-- The toolbar itself -->
+
+
+  <layout_panel name="forme_chat_row" auto_resize="false" width="1024" height="60" mouse_opaque="false">
+  <!-- The original resizable chat bar stays available in its own row. -->
   <layout_stack name="chat_bar_stack"
                 orientation="horizontal"
                 left="0"
@@ -159,7 +232,7 @@
                 auto_resize="false"
                 user_resize="true"
                 height="60"
-                right="-1"
+                width="320"
                 mouse_opaque="false">
 
   <!-- Vertical stack to house the stand fly buttons and the chat bar below -->
@@ -190,7 +263,7 @@
          tab_stop="false"
          name="state_management_buttons_container"
          visible="false"
-         width="210" />
+         width="158" />
 
   </layout_panel>
   <!-- Panel to house the stand fly buttons, will expand down if chatbar is hidden -->
@@ -204,7 +277,7 @@
                 mouse_opaque="false"
                 bg_opaque_image="Rounded_Rect"
                 background_visible="true"
-                bg_opaque_image_overlay="MouseGray"
+                bg_opaque_image_overlay="FormeDockSurface"
                 background_opaque="true">
 
   <button name="local_chat_button"
@@ -240,7 +313,7 @@
          height="25"
          follows="top|right"
          layout="topleft" />
-		 
+
   </layout_panel>
   <!-- The chat bar itself -->
 
@@ -250,48 +323,13 @@
   </layout_panel>
   <!-- The chat bar / stand fly stack container -->
 
-  <!-- The toolbar itself -->
-  <layout_panel name="toolbar_panel"
-                auto_resize="true"
-                user_resize="true"
-                height="30"
-                width="768"
-                mouse_opaque="false">
-
-    <toolbar layout="topleft"
-             button_panel.bg_opaque_image="Rounded_Rect_Top"
-             name="toolbar_bottom"
-             height="30"
-             left_pad="0"
-             right="-1"
-             top="0"
-             side="bottom"
-             follows="left|right|bottom"
-             button_display_mode="icons_with_text"
-             max_rows="2"
-             visible="true">
-             <icon layout="topleft"
-	            height="28"
-	            width="15"
-	            follows="left|top"
-	            top="20"
-	            left="10"
-	            tab_stop="false" 
-                visible="false"
-                use_draw_context_alpha="false"
-	            image_name="Caret_Bottom_Icon"
-	            name="caret" />
-    </toolbar>
+  <layout_panel name="forme_chat_spacer" auto_resize="true" width="704" height="60" mouse_opaque="false" />
+  </layout_stack>
+  </layout_panel>
+  <layout_panel name="forme_dock_margin" auto_resize="false" user_resize="false" width="1024" height="24" mouse_opaque="false" />
+  </layout_stack>
 
   </layout_panel>
-  <!-- The toolbar itself -->
-
-  </layout_stack>
-  <!-- Horizontal panel to take up the chat bar and the tool bar -->
-
-  </layout_panel>
-  <!-- Panel to take up the chat bar / tool bar layout stack -->
-
-  </layout_stack>
+</layout_stack>
 
 </toolbar_view>

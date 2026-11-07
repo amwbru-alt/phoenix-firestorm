@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<toggleable_menu name="menu_forme_profile" visible="false">
+  <menu_item_call name="Profile" label="Profile">
+    <on_click function="ShowAgentProfile" parameter="agent" />
+  </menu_item_call>
+  <menu_item_call name="Preferences" label="Preferences">
+    <on_click function="Floater.Toggle" parameter="preferences" />
+  </menu_item_call>
+  <menu_item_check name="Full client menu" label="Full client menu">
+    <on_check function="CheckControl" parameter="ForMeShowFullMenu" />
+    <on_click function="ToggleControl" parameter="ForMeShowFullMenu" />
+  </menu_item_check>
+  <menu_item_separator />
+  <menu_item_call name="Quit" label="Quit">
+    <on_click function="File.Quit" />
+  </menu_item_call>
+</toggleable_menu>

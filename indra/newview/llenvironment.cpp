@@ -43,6 +43,7 @@
 #include "llsky.h"
 
 #include "llviewershadermgr.h"
+#include "llstatusbar.h"
 
 #include "llparcel.h"
 #include "llviewerparcelmgr.h"
@@ -1861,9 +1862,26 @@ void LLEnvironment::updateSettingsUniforms()
     {
         LL_WARNS("ENVIRONMENT") << "Failed to update GL variable for water settings, environment is not properly set" << LL_ENDL;
     }
-    if (mCurrentEnvironment->getSky())
+    if (const auto sky = mCurrentEnvironment->getSky())
     {
-        updateGLVariablesForSettings(mSkyUniforms, mCurrentEnvironment->getSky());
+        updateGLVariablesForSettings(mSkyUniforms, sky);
+
+        // Apply weather to rendering only. Keep the region's EEP asset and day cycle intact.
+        const auto weather = LLStatusBar::updateRegionWeatherEffects();
+        auto& common = mSkyUniforms[LLGLSLShader::SG_ANY];
+        if (weather.cloud > 0.f)
+        {
+            const F32 clouds = llmax(sky->getCloudShadow(), weather.cloud);
+            common.uniform1f(LLShaderMgr::CLOUD_SHADOW, clouds);
+        }
+        if (weather.fog > 0.f)
+        {
+            const F32 haze = sky->getHazeDensity() + 0.65f * weather.fog;
+            const F32 density = sky->getDensityMultiplier() * (1.f + 3.f * weather.fog);
+            common.uniform1f(LLShaderMgr::HAZE_DENSITY, haze);
+            common.uniform1f(LLShaderMgr::DENSITY_MULTIPLIER, density);
+            mSkyUniforms[LLGLSLShader::SG_DEFAULT].uniform1f(LLShaderMgr::DENSITY_MULTIPLIER, density);
+        }
     }
     else
     {

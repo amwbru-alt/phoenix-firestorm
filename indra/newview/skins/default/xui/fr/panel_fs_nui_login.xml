@@ -36,9 +36,7 @@
 				<layout_panel name="2nd_row">
 					<layout_stack name="2nd_row_stack">
 						<layout_panel name="grid_panel">
-							<text name="grid_login_text" width="55">
-								Grille :
-							</text>
+							
 							<text name="grid_builder_text">
 								+ Ajouter des grilles
 							</text>

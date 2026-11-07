@@ -36,7 +36,7 @@
 #include "llviewerwindow.h"
 #include "llbutton.h"
 #include "llcachename.h"
-#include "llcommandhandler.h"   // secondlife:///app/chat/ support
+#include "llcommandhandler.h"   // fmw:///app/chat/ support
 #include "lleventflags.h"
 #include "llmediactrl.h"
 #include "llexpandabletextbox.h"

@@ -28,6 +28,8 @@
 #include "llviewerprecompiledheaders.h"
 
 #include "lltoolbarview.h"
+#include "llstartup.h"
+#include "lliconctrl.h"
 
 #include "llappviewer.h"
 #include "llbutton.h"
@@ -71,7 +73,8 @@ LLToolBarView::Toolbar::Toolbar()
 LLToolBarView::ToolbarSet::ToolbarSet()
 :   left_toolbar("left_toolbar"),
     right_toolbar("right_toolbar"),
-    bottom_toolbar("bottom_toolbar")
+    bottom_toolbar("bottom_toolbar"),
+    forme_dock_initialized("forme_dock_initialized", false)
 {}
 
 
@@ -118,6 +121,7 @@ bool LLToolBarView::postBuild()
     mToolbars[LLToolBarEnums::TOOLBAR_BOTTOM]->getCenterLayoutPanel()->setLocationId(LLToolBarEnums::TOOLBAR_BOTTOM);
 
     mBottomToolbarPanel = getChild<LLView>("bottom_toolbar_panel");
+    mForMeDockMargin = findChildView("forme_dock_margin");
 
     for (int i = LLToolBarEnums::TOOLBAR_FIRST; i <= LLToolBarEnums::TOOLBAR_LAST; i++)
     {
@@ -231,11 +235,12 @@ bool LLToolBarView::loadToolbars(bool force_default)
 
     // Load the toolbars.xml file
     std::string toolbar_file = gDirUtilp->getExpandedFilename(LL_PATH_PER_SL_ACCOUNT, "toolbars.xml");
+    const bool saved_layout = !force_default && gDirUtilp->fileExists(toolbar_file);
     if (force_default)
     {
         toolbar_file = gDirUtilp->getExpandedFilename(LL_PATH_TOP_SKIN, "toolbars.xml"); // FS:AO - Look in skin directory, not settings
     }
-    else if (!gDirUtilp->fileExists(toolbar_file))
+    else if (!saved_layout)
     {
         LL_WARNS() << "User toolbars def not found -> use selected skin" << LL_ENDL;
         toolbar_file = gDirUtilp->getExpandedFilename(LL_PATH_TOP_SKIN, "toolbars.xml"); // FS:AO - Look in skin directory, not settings
@@ -372,10 +377,24 @@ bool LLToolBarView::loadToolbars(bool force_default)
         // </FS:Zi>
         for (const LLCommandId::Params& command_params : toolbar_set.bottom_toolbar.commands)
         {
+            if (command_params.name() == "marketplace")
+                continue;
             if (!addCommandInternal(LLCommandId(command_params), mToolbars[LLToolBarEnums::TOOLBAR_BOTTOM]))
             {
                 LL_WARNS() << "Error adding command '" << command_params.name() << "' to bottom toolbar." << LL_ENDL;
             }
+        }
+    }
+
+    // Upgrade old saved layouts once. The user can remove either control afterwards.
+    const bool migrate_dock = saved_layout && !toolbar_set.forme_dock_initialized();
+    if (migrate_dock && mToolbars[LLToolBarEnums::TOOLBAR_BOTTOM])
+    {
+        for (const char* name : {"view", "move"})
+        {
+            const LLCommandId command(name);
+            if (!mToolbars[LLToolBarEnums::TOOLBAR_BOTTOM]->hasCommand(command))
+                addCommand(command, LLToolBarEnums::TOOLBAR_BOTTOM);
         }
     }
 
@@ -398,6 +417,8 @@ bool LLToolBarView::loadToolbars(bool force_default)
     }
 
     mToolbarsLoaded = true;
+    if (migrate_dock)
+        saveToolbars();
     return true;
 }
 
@@ -455,6 +476,7 @@ void LLToolBarView::saveToolbars() const
 
     // Build the parameter tree from the toolbar data
     LLToolBarView::ToolbarSet toolbar_set;
+    toolbar_set.forme_dock_initialized = true;
     if (mToolbars[LLToolBarEnums::TOOLBAR_LEFT])
     {
         toolbar_set.left_toolbar.button_display_mode = mToolbars[LLToolBarEnums::TOOLBAR_LEFT]->getButtonType();
@@ -629,6 +651,18 @@ void LLToolBarView::onToolBarButtonRemoved(LLView* button)
     // </FS:Ansariel>
 }
 
+LLRect LLToolBarView::getBottomDockRect(const LLView* relative_to) const
+{
+    const auto* toolbar = mToolbars[LLToolBarEnums::TOOLBAR_BOTTOM];
+    LLRect rect;
+    if (toolbar && toolbar->hasButtons() && toolbar->isInVisibleChain())
+    {
+        const auto* center = toolbar->getCenterLayoutPanel();
+        center->localRectToOtherView(center->getLocalRect(), &rect, relative_to);
+    }
+    return rect;
+}
+
 void LLToolBarView::draw()
 {
     LLRect toolbar_rects[LLToolBarEnums::TOOLBAR_COUNT];
@@ -673,6 +707,22 @@ void LLToolBarView::draw()
         }
     }
 
+    if (mForMeDockMargin)
+    {
+        if (auto* chat_row = findChildView("forme_chat_row"))
+            chat_row->setVisible(false);
+
+        const auto* toolbar = mToolbars[LLToolBarEnums::TOOLBAR_BOTTOM];
+        const S32 height = toolbar->getRect().getHeight() + mForMeDockMargin->getRect().getHeight();
+        if (mBottomToolbarPanel->getRect().getHeight() != height)
+            mBottomToolbarPanel->reshape(mBottomToolbarPanel->getRect().getWidth(), height);
+
+        if (mShowToolbars && !mForMeChatShown && LLStartUp::getStartupState() == STATE_STARTED)
+        {
+            mForMeChatShown = true;
+            LLFloaterReg::showInstance("fs_nearby_chat", LLSD(), false);
+        }
+    }
     LLUICtrl::draw();
 }
 
@@ -739,73 +789,38 @@ bool LLToolBarView::handleDragTool( S32 x, S32 y, const LLUUID& uuid, LLAssetTyp
 
 bool LLToolBarView::handleDropTool( void* cargo_data, EDragAndDropType cargo_type, S32 x, S32 y, LLToolBar* toolbar)
 {
-    if (cargo_type == DAD_PERSON)
+    if (cargo_type != DAD_WIDGET || !cargo_data || !toolbar || gSavedSettings.getBOOL("LockToolbars"))
     {
-        // DAD_PERSON means that cargo_data contains an uuid, not an LLInventoryObject
-        resetDragTool(NULL);
+        resetDragTool(nullptr);
         return false;
     }
-    // <FS:Zi> Do not drag and drop when toolbars are locked
-    if(gSavedSettings.getBOOL("LockToolbars"))
+
+    const auto* item = static_cast<const LLInventoryObject*>(cargo_data);
+    const LLCommandId id(item->getUUID());
+    LLCommand* command = LLCommandManager::instance().getCommand(id);
+    if (!command || item->getType() != LLAssetType::AT_WIDGET ||
+        (toolbar == gToolBarView->mToolbars[LLToolBarEnums::TOOLBAR_BOTTOM] && command->name() == "marketplace"))
     {
+        resetDragTool(nullptr);
         return false;
     }
-    // </FS:Zi>
 
-    bool handled = false;
-    LLInventoryObject* inv_item = static_cast<LLInventoryObject*>(cargo_data);
-
-    LLAssetType::EType type = inv_item->getType();
-    if (type == LLAssetType::AT_WIDGET)
+    // Rank is measured while the dragged button still occupies its original slot.
+    int rank = toolbar->isReadOnly() ? LLToolBar::RANK_NONE : toolbar->getRankFromPosition(x, y);
+    int old_rank;
+    const S32 old_location = gToolBarView->removeCommand(id, old_rank);
+    if (!toolbar->isReadOnly())
     {
-        handled = true;
-        // Get the command from its uuid
-        LLCommandManager& mgr = LLCommandManager::instance();
-        LLCommandId command_id(inv_item->getUUID());
-        LLCommand* command = mgr.getCommand(command_id);
-        if (command)
-        {
-            // Suppress the command from the toolbars (including the one it's dropped in,
-            // this will handle move position).
-            S32 old_toolbar_loc = gToolBarView->hasCommand(command_id);
-            LLToolBar* old_toolbar = NULL;
+        if (old_location != LLToolBarEnums::TOOLBAR_NONE &&
+            gToolBarView->mToolbars[old_location] == toolbar && rank > old_rank)
+            --rank;
 
-            if (old_toolbar_loc != LLToolBarEnums::TOOLBAR_NONE)
-            {
-                llassert(gToolBarView->mDragToolbarButton);
-                if (gToolBarView->mDragToolbarButton)
-                {
-                    old_toolbar = gToolBarView->mDragToolbarButton->getParentByType<LLToolBar>();
-                    if (old_toolbar->isReadOnly() && toolbar->isReadOnly())
-                    {
-                        // do nothing
-                    }
-                    else
-                    {
-                        int old_rank = LLToolBar::RANK_NONE;
-                        gToolBarView->removeCommand(command_id, old_rank);
-                    }
-                }
-            }
-
-            // Convert the (x,y) position in rank in toolbar
-            if (!toolbar->isReadOnly())
-            {
-                int new_rank = toolbar->getRankFromPosition(x,y);
-                toolbar->addCommand(command_id, new_rank);
-            }
-
-            // Save the new toolbars configuration
-            gToolBarView->saveToolbars();
-        }
-        else
-        {
-            LL_WARNS() << "Command couldn't be found in command manager" << LL_ENDL;
-        }
+        toolbar->addCommand(id, rank);
     }
 
-    resetDragTool(NULL);
-    return handled;
+    gToolBarView->saveToolbars();
+    resetDragTool(nullptr);
+    return true;
 }
 
 void LLToolBarView::resetDragTool(LLToolBarButton* toolbarButton)

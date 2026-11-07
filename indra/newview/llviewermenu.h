@@ -129,7 +129,7 @@ void handle_give_money_dialog();
 bool enable_pay_object();
 bool enable_buy_object();
 bool handle_go_to();
-bool update_grid_help();
+
 
 // Convert strings to internal types
 U32 render_type_from_string(std::string_view render_type);

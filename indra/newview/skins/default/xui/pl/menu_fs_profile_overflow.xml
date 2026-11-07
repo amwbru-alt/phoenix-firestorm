@@ -2,7 +2,7 @@
 <toggleable_menu name="profile_overflow_menu">
 	<!-- <menu_item_call label="Mapa" name="show_on_map" />
 	<menu_item_call label="Zapłać" name="pay" /> -->
-	<menu_item_call label="Udostępnij" name="share" />
+	<menu_item_call label="Udostępnij" name="share"  forme_creator_only="true"/>
 	<menu_item_call label="Zadzwoń" name="call" />
 	<!-- <menu_item_check label="Blokuj/Odblokuj" name="block_unblock" /> -->
 	<menu_item_call label="Dodaj do Zestawu Kontaktów" name="add_to_contact_set" />

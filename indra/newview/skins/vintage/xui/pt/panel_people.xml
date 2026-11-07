@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <panel label="Pessoas" name="people_panel">
-	<string name="no_recent_people" value="Não há ninguém recente. Procurando pessoas? Use a [secondlife:///app/search/people Busca] ou o [secondlife:///app/worldmap Mapa]." />
-	<string name="no_filtered_recent_people" value="Não encontrou o que procurava? Tente a [secondlife:///app/search/people/[SEARCH_TERM] Busca]." />
-	<string name="no_one_near" value="Não há ninguém por perto. Procurando pessoas? Use a [secondlife:///app/search/people Busca] ou o [secondlife:///app/worldmap Mapa]." />
-	<string name="no_one_filtered_near" value="Não encontrou o que procurava? Tente a [secondlife:///app/search/people/[SEARCH_TERM] Busca]." />
+	<string name="no_recent_people" value="Não há ninguém recente. Procurando pessoas? Use a [fmw:///app/search/people Busca] ou o [fmw:///app/worldmap Mapa]." />
+	<string name="no_filtered_recent_people" value="Não encontrou o que procurava? Tente a [fmw:///app/search/people/[SEARCH_TERM] Busca]." />
+	<string name="no_one_near" value="Não há ninguém por perto. Procurando pessoas? Use a [fmw:///app/search/people Busca] ou o [fmw:///app/worldmap Mapa]." />
+	<string name="no_one_filtered_near" value="Não encontrou o que procurava? Tente a [fmw:///app/search/people/[SEARCH_TERM] Busca]." />
 	<string name="no_friends_online" value="Nenhum amigo online" />
 	<string name="no_friends" value="Sem amigos" />
 	<string name="no_friends_msg">
-		Encontre amigos usando a [secondlife:///app/search/people Busca] ou clique com o botão direito em um residente para adicioná-lo como amigo.
-Procurando pessoas? Use o [secondlife:///app/worldmap Mapa].
+		Encontre amigos usando a [fmw:///app/search/people Busca] ou clique com o botão direito em um residente para adicioná-lo como amigo.
+Procurando pessoas? Use o [fmw:///app/worldmap Mapa].
 	</string>
 	<string name="no_filtered_friends_msg">
-		Não encontrou o que procurava? Tente a [secondlife:///app/search/people/[SEARCH_TERM] Busca].
+		Não encontrou o que procurava? Tente a [fmw:///app/search/people/[SEARCH_TERM] Busca].
 	</string>
 	<string name="people_filter_label" value="Filtrar pessoas" />
 	<string name="groups_filter_label" value="Filtrar grupos" />
-	<string name="no_filtered_groups_msg" value="Não encontrou o que procurava? Tente a [secondlife:///app/search/groups/[SEARCH_TERM] Busca]." />
-	<string name="no_groups_msg" value="Procurando grupos? Tente a [secondlife:///app/search/groups Busca]." />
+	<string name="no_filtered_groups_msg" value="Não encontrou o que procurava? Tente a [fmw:///app/search/groups/[SEARCH_TERM] Busca]." />
+	<string name="no_groups_msg" value="Procurando grupos? Tente a [fmw:///app/search/groups Busca]." />
 	<string name="MiniMapToolTipMsg" value="[REGION] (Duplo clique para abrir o mapa; Shift + arrastar para mover a visualização)" />
 	<string name="AltMiniMapToolTipMsg" value="[REGION] (Duplo clique para teleportar; Shift + arrastar para mover a visualização)" />
 	<string name="avatar_name_count" value="Nome [[TOTAL] / [IN_REGION] / [IN_CHAT_RANGE]]" />

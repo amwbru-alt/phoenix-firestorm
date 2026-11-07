@@ -110,8 +110,6 @@
 #include "llfloaterpathfindingcharacters.h"
 #include "llfloatertools.h"
 #include "llfloatersnapshot.h" // <FS:Beq/> for snapshotFrame
-#include "llfloaterflickr.h" // <FS:Beq/> for snapshotFrame
-#include "fsfloaterprimfeed.h" // <FS:Beq/> for snapshotFrame
 #include "llsnapshotlivepreview.h" // <FS:Beq/> for snapshotFrame
 // #include "llpanelface.h"  // <FS:Zi> switchable edit texture/materials panel - include not needed
 #include "llpathfindingpathtool.h"
@@ -358,7 +356,7 @@ S32     LLPipeline::sReflectionProbeLevel = (S32)LLReflectionMap::ProbeLevel::NO
 S32     LLPipeline::sVisibleLightCount = 0;
 bool    LLPipeline::sRenderingHUDs;
 F32     LLPipeline::sDistortionWaterClipPlaneMargin = 1.0125f;
-LLVector3 LLPipeline::sLastFocusPoint={};// <FS:Beq/> FIRE-16728 focus point lock & free focus DoF 
+LLVector3 LLPipeline::sLastFocusPoint={};// <FS:Beq/> FIRE-16728 focus point lock & free focus DoF
 bool    LLPipeline::sDoFEnabled = false;
 
 F32 LLPipeline::sVolumeSAFrame = 0.f; // ZK LBG
@@ -914,7 +912,7 @@ bool LLPipeline::allocateScreenBufferInternal(U32 resX, U32 resY)
 
     if (mRT == &mMainRT)
     { // hacky -- allocate auxillary buffer
-        LL_PROFILE_ZONE_NAMED_CATEGORY_DISPLAY("check reflection map setup"); // <FS:Beq/> improve Tracy scoping 
+        LL_PROFILE_ZONE_NAMED_CATEGORY_DISPLAY("check reflection map setup"); // <FS:Beq/> improve Tracy scoping
 
         gCubeSnapshot = true;
 
@@ -999,10 +997,10 @@ bool LLPipeline::allocateScreenBufferInternal(U32 resX, U32 resY)
 
     if (!gCubeSnapshot) // hack to not re-allocate various targets for cube snapshots
     {
-        LL_PROFILE_ZONE_NAMED_CATEGORY_DISPLAY("non-cube allocations"); // <FS:Beq/> improve Tracy scoping 
+        LL_PROFILE_ZONE_NAMED_CATEGORY_DISPLAY("non-cube allocations"); // <FS:Beq/> improve Tracy scoping
         if (RenderUIBuffer)
         {
-            LL_PROFILE_ZONE_NAMED_CATEGORY_DISPLAY("UIBuffer"); // <FS:Beq/> improve Tracy scoping 
+            LL_PROFILE_ZONE_NAMED_CATEGORY_DISPLAY("UIBuffer"); // <FS:Beq/> improve Tracy scoping
             if (!mUIScreen.allocate(resX, resY, GL_RGBA))
             {
                 return false;
@@ -1011,11 +1009,11 @@ bool LLPipeline::allocateScreenBufferInternal(U32 resX, U32 resY)
 
         if (RenderFSAAType > 0)
         {
-            LL_PROFILE_ZONE_NAMED_CATEGORY_DISPLAY("FSAABuffer"); // <FS:Beq/> improve Tracy scoping 
+            LL_PROFILE_ZONE_NAMED_CATEGORY_DISPLAY("FSAABuffer"); // <FS:Beq/> improve Tracy scoping
             if (!mFXAAMap.allocate(resX, resY, GL_RGBA)) return false;
             if (RenderFSAAType == 2)
             {
-                LL_PROFILE_ZONE_NAMED_CATEGORY_DISPLAY("SMAABuffer"); // <FS:Beq/> improve Tracy scoping 
+                LL_PROFILE_ZONE_NAMED_CATEGORY_DISPLAY("SMAABuffer"); // <FS:Beq/> improve Tracy scoping
                 if (!mSMAABlendBuffer.allocate(resX, resY, GL_RGBA, false)) return false;
             }
         }
@@ -1030,7 +1028,7 @@ bool LLPipeline::allocateScreenBufferInternal(U32 resX, U32 resY)
 
         if(RenderScreenSpaceReflections)
         {
-            LL_PROFILE_ZONE_NAMED_CATEGORY_DISPLAY("SSRBuffer"); // <FS:Beq/> improve Tracy scoping 
+            LL_PROFILE_ZONE_NAMED_CATEGORY_DISPLAY("SSRBuffer"); // <FS:Beq/> improve Tracy scoping
             mSceneMap.allocate(resX, resY, screenFormat, true);
         }
         else
@@ -1038,10 +1036,10 @@ bool LLPipeline::allocateScreenBufferInternal(U32 resX, U32 resY)
             mSceneMap.release();
         }
 
-        {LL_PROFILE_ZONE_NAMED_CATEGORY_DISPLAY("mPostMapBuffer"); // <FS:Beq/> improve Tracy scoping 
+        {LL_PROFILE_ZONE_NAMED_CATEGORY_DISPLAY("mPostMapBuffer"); // <FS:Beq/> improve Tracy scoping
         mPostPingMap.allocate(resX, resY, GL_RGBA);
         mPostPongMap.allocate(resX, resY, GL_RGBA);
-        } // <FS:Beq/> improve Tracy scoping 
+        } // <FS:Beq/> improve Tracy scoping
         // The water exclusion mask needs its own depth buffer so we can take care of the problem of multiple water planes.
         // Should we ever make water not just a plane, it also aids with that as well as the water planes will be rendered into the mask.
         // Why do we do this? Because it saves us some janky logic in the exclusion shader when we generate the mask.
@@ -1059,7 +1057,7 @@ bool LLPipeline::allocateScreenBufferInternal(U32 resX, U32 resY)
 
         // <FS:Beq> create an independent preview screen target
         {LL_PROFILE_ZONE_NAMED_CATEGORY_DISPLAY("PreviewScreenBuffer");
-        mPreviewScreen.allocate(MAX_PREVIEW_WIDTH, MAX_PREVIEW_HEIGHT, GL_RGBA, true); 
+        mPreviewScreen.allocate(MAX_PREVIEW_WIDTH, MAX_PREVIEW_HEIGHT, GL_RGBA, true);
         } // </FS:Beq>
         {LL_PROFILE_ZONE_NAMED_CATEGORY_DISPLAY("BakeMapBuffer");// <FS:Beq/> create an independent preview screen target
         mBakeMap.allocate(LLAvatarAppearanceDefines::SCRATCH_TEX_WIDTH, LLAvatarAppearanceDefines::SCRATCH_TEX_HEIGHT, GL_RGBA);
@@ -4939,7 +4937,7 @@ void LLPipeline::renderFocusPoint()
         LLGLDepthTest gls_depth(GL_FALSE);
         gGL.pushMatrix();
         gGL.translatef(focus_point.mV[VX], focus_point.mV[VY], focus_point.mV[VZ]);
-           
+
         gGL.begin(LLRender::LINES);
         if (LLPipeline::FSFocusPointLocked)
         {
@@ -4959,7 +4957,7 @@ void LLPipeline::renderFocusPoint()
         // Z-axis (Blue)
         gGL.vertex3f(0.0f, 0.0f, -size);
         gGL.vertex3f(0.0f, 0.0f, size);
-    
+
         gGL.end();
 
         gGL.popMatrix();
@@ -8512,13 +8510,13 @@ bool LLPipeline::renderSnapshotFrame(LLRenderTarget* src, LLRenderTarget* dst)
     float left   = 0.f;
     float top    = 0.f;
     float right  = 1.f;
-    float bottom = 1.f;        
+    float bottom = 1.f;
 
     // TODO - add debug settings to control the appearance of the snapshot frameand guides
-    static LLCachedControl<LLColor3> border_color(gSavedSettings, "FSSnapshotFrameBorderColor", LLColor3(1.f, 0.f, 0.f));    
-    static LLCachedControl<LLColor3> guide_color(gSavedSettings, "FSSnapshotFrameGuideColor", LLColor3(1.f, 1.f, 0.f));    
-    static LLCachedControl<F32> border_thickness(gSavedSettings, "FSSnapshotFrameBorderWidth", 2.0f);    
-    static LLCachedControl<F32> guide_thickness(gSavedSettings, "FSSnapshotFrameGuideWidth", 2.0f);    
+    static LLCachedControl<LLColor3> border_color(gSavedSettings, "FSSnapshotFrameBorderColor", LLColor3(1.f, 0.f, 0.f));
+    static LLCachedControl<LLColor3> guide_color(gSavedSettings, "FSSnapshotFrameGuideColor", LLColor3(1.f, 1.f, 0.f));
+    static LLCachedControl<F32> border_thickness(gSavedSettings, "FSSnapshotFrameBorderWidth", 2.0f);
+    static LLCachedControl<F32> guide_thickness(gSavedSettings, "FSSnapshotFrameGuideWidth", 2.0f);
     static LLCachedControl<F32> guide_visibility(gSavedSettings, "FSSnapshotGuideVisibility", 0.5f);
     static LLCachedControl<std::string> guide_style_setting(gSavedSettings, "FSSnapshotGuideStyle", std::string("rule_of_thirds"));
 
@@ -8555,10 +8553,8 @@ bool LLPipeline::renderSnapshotFrame(LLRenderTarget* src, LLRenderTarget* dst)
     }
     const F32 guide_visibility_value = show_guides ? (F32)guide_visibility : 0.f;
     const bool simple_snapshot_visible = LLFloaterReg::instanceVisible("simple_snapshot");
-    const bool flickr_snapshot_visible = LLFloaterReg::instanceVisible("flickr");
-    const bool primfeed_snapshot_visible = LLFloaterReg::instanceVisible("primfeed"); // <FS:Beq/> Primfeed integration
     const bool snapshot_visible = LLFloaterReg::instanceVisible("snapshot");
-    const bool any_snapshot_visible = simple_snapshot_visible || flickr_snapshot_visible || primfeed_snapshot_visible || snapshot_visible; // <FS:Beq/> Primfeed integration
+    const bool any_snapshot_visible = simple_snapshot_visible || snapshot_visible; // <FS:Beq/> Primfeed integration
     if (!show_frame || !any_snapshot_visible || !gPipeline.hasRenderDebugFeatureMask(LLPipeline::RENDER_DEBUG_FEATURE_UI))
     {
         return false;
@@ -8570,25 +8566,15 @@ bool LLPipeline::renderSnapshotFrame(LLRenderTarget* src, LLRenderTarget* dst)
         previewView = floater->impl->getPreviewView();
     }
     // Note: simple_snapshot not supported as there can be more than one active and more complex selection is required
-    if (flickr_snapshot_visible && !previewView)
-    {
-        auto * floater = dynamic_cast<LLFloaterFlickr*>(LLFloaterReg::findInstance("flickr"));
-        previewView = floater->getPreviewView();
-    }
      // <FS:Beq> Primfeed integration
-    if (primfeed_snapshot_visible && !previewView)
-    {
-        auto * floater = dynamic_cast<FSFloaterPrimfeed*>(LLFloaterReg::findInstance("primfeed"));
-        previewView = floater->getPreviewView();
-    }
     // </FS:Beq>
     if(!previewView)
     {
         return false;
     }
-    
+
     static LLCachedControl<bool> keep_aspect(gSavedSettings, "KeepAspectForSnapshot", false);
-    
+
     S32 snapshot_width;
     S32 snapshot_height;
     previewView->getSize(snapshot_width, snapshot_height);
@@ -8614,7 +8600,7 @@ bool LLPipeline::renderSnapshotFrame(LLRenderTarget* src, LLRenderTarget* dst)
         left   = 0.f;
         top    = y_offset / h;
         right  = 1.f;
-        bottom = (y_offset + frame_height) / h;        
+        bottom = (y_offset + frame_height) / h;
     }
     else
     {
@@ -8625,7 +8611,7 @@ bool LLPipeline::renderSnapshotFrame(LLRenderTarget* src, LLRenderTarget* dst)
         left   = x_offset / w;
         top    = 0.f;
         right  = (x_offset + frame_width) / w;
-        bottom = 1.f;        
+        bottom = 1.f;
 
     }
     LL_PROFILE_GPU_ZONE("Snapshot Frame");
@@ -8719,7 +8705,7 @@ void LLPipeline::renderDoF(LLRenderTarget* src, LLRenderTarget* dst)
             LLVector3 focus_point;
 
             // <FS:Beq> FIRE-16728 focus point lock & free focus DoF - based on a feature developed by NiranV Dean
-            
+
             if (LLPipeline::FSFocusPointLocked && !sLastFocusPoint.isExactlyZero())
             {
                 focus_point = sLastFocusPoint;

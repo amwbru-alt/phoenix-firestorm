@@ -43,7 +43,7 @@
 #include "llvelopack.h"
 #endif
 #include "llcheckboxctrl.h"
-#include "llcommandhandler.h"       // for secondlife:///app/login/
+#include "llcommandhandler.h"       // for fmw:///app/login/
 #include "llcombobox.h"
 #include "llviewercontrol.h"
 #include "llfocusmgr.h"
@@ -57,7 +57,6 @@
 #include "lluiconstants.h"
 #include "llslurl.h"
 #include "llversioninfo.h"
-#include "llviewerhelp.h"
 #include "llviewertexturelist.h"
 #include "llviewermenu.h"           // for handle_preferences()
 #include "llviewernetwork.h"

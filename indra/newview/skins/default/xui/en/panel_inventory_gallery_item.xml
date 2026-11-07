@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <panel
-   background_visible="false"
-   background_opaque="false"
-   bg_alpha_color="FrogGreen"
-   bg_opaque_color="FrogGreen"   
+   background_visible="true"
+   background_opaque="true"
+   bg_opaque_image="Rounded_Rect"
+   bg_opaque_image_overlay="floater_bg_color"
    border="false"
    bevel_style="none"
    follows="left|top"
-   height="149"
+   height="160"
    width="130"
    name="gallery_item_panel"
    layout="topleft"
@@ -21,7 +21,7 @@
    interactable="false"
    height="128"
    width="128"
-   top="0"
+   top="2"
    left="1"/>
   <icon
    left="5"
@@ -61,7 +61,7 @@
    bevel_style="none"
    follows="left|top"
    left="0"
-   top="129"
+   top="132"
    height="25"
    width="130"
    name="text_bg_panel">
@@ -69,15 +69,15 @@
       read_only="true"
       length="1"
       follows="left|top"
-      left="1"
+      left="5"
       height="23"
       layout="topleft"
       name="item_name"
       parse_urls="false"
-      text_readonly_color="White"
+      text_readonly_color="InventoryItemHighlightFgColor"
       word_wrap="true"
       top="2"
-      width="127"
+      width="120"
       use_ellipses="true">
       Item name, folder name.
     </text>

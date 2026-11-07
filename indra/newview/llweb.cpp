@@ -26,6 +26,8 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "formeurlpolicy.h"
+#include "formeviewerdata.h"
 
 #include "llweb.h"
 
@@ -34,12 +36,9 @@
 
 #include "llagent.h"
 #include "llappviewer.h"
-#include "llfloatermarketplace.h"
-#include "llfloaterwebcontent.h"
 #include "llfloaterreg.h"
 #include "lllogininstance.h"
 #include "llparcel.h"
-#include "llregex.h"
 #include "llsd.h"
 #include "llui.h"
 #include "lluri.h"
@@ -50,58 +49,33 @@
 #include "llviewerregion.h"
 #include "llviewerwindow.h"
 #include "llnotificationsutil.h"
-#include "lluriparser.h"
 
 bool on_load_url_external_response(const LLSD& notification, const LLSD& response, bool async );
 
 
 // static
-void LLWeb::loadURL(const std::string& url, const std::string& target, const std::string& uuid)
+void LLWeb::loadURL(const std::string& url, const std::string&, const std::string& uuid)
 {
-    if(target == "_internal")
-    {
-        // Force load in the internal browser, as if with a blank target.
-        loadURLInternal(url, "", uuid);
-    }
-
-    else if (useExternalBrowser(url) || (target == "_external"))
-    {
-        loadURLExternal(url);
-    }
-    else
-    {
-        loadURLInternal(url, target, uuid);
-    }
+    loadURLExternal(url, uuid);
 }
 
-// static
-// Explicitly open a Web URL using the Web content floater or Marketplace floater
-void LLWeb::loadURLInternal(const std::string &url, const std::string& target, const std::string& uuid, bool dev_mode)
+// Compatibility entry point for existing callers.
+void LLWeb::loadURLInternal(const std::string& url, const std::string&, const std::string& uuid, bool)
 {
-    LLFloaterWebContent::Params p;
-    p.url(url).target(target).id(uuid).dev_mode(dev_mode);
-
-    if (LLFloaterMarketplace::isMarketplaceURL(url))
-    {
-        LLFloaterReg::showInstance("marketplace", p);
-    }
-    else
-    {
-        LLFloaterReg::showInstance("web_content", p);
-    }
+    loadURLExternal(url, uuid);
 }
 
 // static
 void LLWeb::loadURLExternal(const std::string& url, const std::string& uuid)
 {
+    if (ForMeURL::blockedWeb(url) && !ForMeViewerData::allowedDownload(url)) return;
     loadURLExternal(url, true, uuid);
 }
 
 // static
 void LLWeb::loadURLExternal(const std::string& url, bool async, const std::string& uuid)
 {
-    // Act like the proxy window was closed, since we won't be able to track targeted windows in the external browser.
-    LLViewerMedia::getInstance()->proxyWindowClosed(uuid);
+    if (ForMeURL::blockedWeb(url) && !ForMeViewerData::allowedDownload(url)) return;
 
     if(gSavedSettings.getBOOL("DisableExternalBrowser"))
     {
@@ -207,7 +181,7 @@ std::string LLWeb::expandURLSubstitutions(const std::string &url,
     substitution["PARCEL_ID"] = llformat("%d", parcel_id);
 
 #ifdef OPENSIM // <FS:AW optional opensim support>
-    substitution["SLURL_TYPE"] = "hop"; // <FS:AW  provide SLURL_TYPE url substitution>
+    substitution["SLURL_TYPE"] = "fmw"; // <FS:AW  provide SLURL_TYPE url substitution>
 #endif // </FS:AW optional opensim support>
 
     // find the grid
@@ -231,34 +205,7 @@ std::string LLWeb::expandURLSubstitutions(const std::string &url,
 }
 
 //static
-bool LLWeb::useExternalBrowser(const std::string &url)
+bool LLWeb::useExternalBrowser(const std::string&)
 {
-#ifdef EXTERNAL_TOS
     return true;
-#else
-    if (gSavedSettings.getU32("PreferredBrowserBehavior") == BROWSER_EXTERNAL_ONLY)
-    {
-        return true;
-    }
-    else if (gSavedSettings.getU32("PreferredBrowserBehavior") == BROWSER_INT_LL_EXT_OTHERS)
-    {
-        LLUriParser up(url);
-        up.normalize();
-        up.extractParts();
-        std::string uri_string = up.host();
-
-        // <FS:Ansariel> FIRE-20796: Grid check status page ignores opening SL links in internal browser setting
-        //boost::regex pattern = boost::regex("\\b(lindenlab.com|secondlife.com|secondlife.io)$", boost::regex::perl|boost::regex::icase);
-        boost::regex pattern = boost::regex("\\b(lindenlab.com|secondlife.com|secondlife.io|secondlifegrid.net|secondlife-status.statuspage.io)$", boost::regex::perl|boost::regex::icase);
-        // </FS:Ansariel>
-        boost::match_results<std::string::const_iterator> matches;
-        return !(ll_regex_search(uri_string, matches, pattern));
-    }
-    else
-    {
-        boost::regex pattern = boost::regex("^mailto:", boost::regex::perl | boost::regex::icase);
-        boost::match_results<std::string::const_iterator> matches;
-        return ll_regex_search(url, matches, pattern);
-    }
-#endif
 }

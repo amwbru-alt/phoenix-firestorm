@@ -44,23 +44,23 @@
 	<text name="AnyoneLabel">
 		Enhver:
 	</text>
-	<check_box label="Kopiér" name="CheckEveryoneCopy"/>
+	<check_box label="Kopiér" name="CheckEveryoneCopy" forme_creator_only="true"/>
 	<text name="GroupLabel">
 		Gruppe:
 	</text>
-	<check_box label="Del" name="CheckShareWithGroup"/>
+	<check_box label="Del" name="CheckShareWithGroup" forme_creator_only="true"/>
 	<text name="NextOwnerLabel">
 		Næste ejer:
 	</text>
-	<check_box label="Redigér" name="CheckNextOwnerModify"/>
-	<check_box label="Kopiere" name="CheckNextOwnerCopy"/>
-	<check_box label="Sælg" name="CheckNextOwnerTransfer"/>
-	<check_box label="Til salg" name="CheckPurchase"/>
-	<combo_box name="ComboBoxSaleType">
+	<check_box label="Redigér" name="CheckNextOwnerModify" forme_creator_only="true"/>
+	<check_box label="Kopiere" name="CheckNextOwnerCopy" forme_creator_only="true"/>
+	<check_box label="Sælg" name="CheckNextOwnerTransfer" forme_creator_only="true"/>
+	<check_box label="Til salg" name="CheckPurchase" forme_creator_only="true"/>
+	<combo_box name="ComboBoxSaleType" forme_creator_only="true">
 		<combo_box.item label="Kopiér" name="Copy"/>
 		<combo_box.item label="Original" name="Original"/>
 	</combo_box>
-	<spinner label="Pris:" name="Edit Cost"/>
+	<spinner label="Pris:" name="Edit Cost" forme_creator_only="true"/>
 	<text name="CurrencySymbol">
 		L$
 	</text>

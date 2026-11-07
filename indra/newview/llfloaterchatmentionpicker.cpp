@@ -126,7 +126,7 @@ void LLFloaterChatMentionPicker::selectResident(const LLUUID& id)
     if (id.isNull())
         return;
 
-    setValue(stringize("secondlife:///app/agent/", id.asString(), "/mention "));
+    setValue(stringize("fmw:///app/agent/", id.asString(), "/mention "));
     onCommit();
     LLChatMentionHelper::instance().hideHelper();
 }

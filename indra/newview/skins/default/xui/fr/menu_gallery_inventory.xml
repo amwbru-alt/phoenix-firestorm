@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <context_menu name="Gallery">
-	<menu_item_call label="Partager" name="Share"/>
+	<menu_item_call label="Partager" name="Share" forme_creator_only="true"/>
 	<menu_item_call label="Vider la corbeille" name="Empty Trash"/>
 	<menu_item_call label="Jeter les objets trouvés" name="Empty Lost And Found"/>
 	<menu_item_call label="Se téléporter" name="Landmark Open"/>
@@ -54,7 +54,7 @@
 	<menu_item_call label="Annuler le regroupement par dossier" name="Ungroup folder items"/>
 	<menu_item_call label="Ajouter aux favoris" name="Add to Favorites"/>
 	<menu_item_call label="Supprimer des favoris" name="Remove from Favorites"/>
-	<menu label="Utiliser par défaut pour" name="upload_def">
+	<menu label="Utiliser par défaut pour" name="upload_def" forme_creator_only="true">
 		<menu_item_check label="Le chargement d'images" name="Image uploads"/>
 		<menu_item_check label="Le chargement de sons" name="Sound uploads"/>
 		<menu_item_check label="Le chargement d'animations" name="Animation uploads"/>
@@ -62,8 +62,8 @@
 		<menu_item_check label="Chargements de matériaux PBR" name="PBR uploads"/>
 	</menu>
 	<menu label="Marketplace" name="Marketplace">
-		<menu_item_call label="Copier dans la liste de Marketplace" name="Marketplace Copy"/>
-		<menu_item_call label="Déplacer vers la liste de Marketplace" name="Marketplace Move"/>
+		<menu_item_call label="Copier dans la liste de Marketplace" name="Marketplace Copy" forme_creator_only="true"/>
+		<menu_item_call label="Déplacer vers la liste de Marketplace" name="Marketplace Move" forme_creator_only="true"/>
 	</menu>
 	<menu_item_call label="--pas d'options--" name="--no options--"/>
 </context_menu>

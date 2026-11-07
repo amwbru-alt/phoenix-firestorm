@@ -7,7 +7,7 @@
 	<text name="name_label" value="名稱:" />
 	<text name="folder_label" value="儲存地點：" />
 	<text name="new_folder_textbox">
-		[secondlife:/// 新檔案夾]
+		[fmw:/// 新檔案夾]
 	</text>
 	<text name="notes_label" value="自己的說明：" />
 	<button label="確定" name="ok_btn" />

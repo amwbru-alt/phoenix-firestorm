@@ -61,7 +61,7 @@ static constexpr S32 msg_height_pad = 5;
 // LLObjectHandler
 //*******************************************************************************************************************
 
-// handle secondlife:///app/object/<ID>/inspect SLURLs
+// handle fmw:///app/object/<ID>/inspect SLURLs
 class LLObjectHandler : public LLCommandHandler
 {
 public:
@@ -90,7 +90,7 @@ public:
             if (!handle_zoom_to_object(object_id) && params.size() > 2)
             {
                 // zoom faled, show location
-                // secondlife:///app/object/object_id/zoomin/{LOCATION}/{COORDS} SLapp
+                // fmw:///app/object/object_id/zoomin/{LOCATION}/{COORDS} SLapp
                 const std::string region_name = LLURI::unescape(params[0].asString());
                 S32 x = (params.size() > 1) ? params[1].asInteger() : 128;
                 S32 y = (params.size() > 2) ? params[2].asInteger() : 128;

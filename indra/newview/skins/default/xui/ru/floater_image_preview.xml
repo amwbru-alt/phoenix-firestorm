@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="Image Preview">
+<floater name="Image Preview" forme_creator_only="true">
 	<string name="with_alpha" value="с альфой"/>
 	<string name="no_alpha" value="нет альфы"/>
 	<text name="name_label">

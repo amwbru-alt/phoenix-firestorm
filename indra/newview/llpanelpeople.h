@@ -65,6 +65,7 @@ public:
 
     bool postBuild() override;
     void onOpen(const LLSD& key) override;
+    void reshape(S32 width, S32 height, bool called_from_parent = true) override;
     bool notifyChildren(const LLSD& info) override;
     // Implements LLVoiceClientStatusObserver::onChange() to enable call buttons
     // when voice is available

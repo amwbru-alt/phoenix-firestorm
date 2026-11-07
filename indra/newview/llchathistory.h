@@ -125,6 +125,7 @@ class LLChatHistory : public LLUICtrl
 
     private:
         std::string mLastFromName;
+    std::string mForMeLastBadge; // <FS:ForMe> Break headers when verified role metadata changes.
         LLUUID mLastFromID;
         LLDate mLastMessageTime;
         bool mIsLastMessageFromLog;

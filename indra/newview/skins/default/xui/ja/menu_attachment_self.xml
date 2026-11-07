@@ -4,12 +4,12 @@
 	<menu_item_call label="インベントリに表示" name="Show original"/>
 	<menu_item_call label="お気に入りに追加" name="Add to favorites"/>
 	<menu_item_call label="お気に入りから削除" name="Remove from favorites"/>
-	<menu_item_call label="編集…" name="Edit..."/>
-	<menu_item_call label="ＰＢＲマテリアルを編集" name="EditGLTFMaterial"/>
+	<menu_item_call label="編集…" name="Edit..." forme_creator_only="true"/>
+	<menu_item_call label="ＰＢＲマテリアルを編集" name="EditGLTFMaterial" forme_creator_only="true"/>
 	<menu_item_call label="取り外す" name="Detach"/>
-	<context_menu label="名前をつけて保存" name="Export Menu">
-		<menu_item_call label="バックアップ" name="Backup"/>
-		<menu_item_call label="Collada" name="Collada"/>
+	<context_menu label="名前をつけて保存" name="Export Menu" forme_creator_only="true">
+		<menu_item_call label="バックアップ" name="Backup" forme_creator_only="true"/>
+		<menu_item_call label="Collada" name="Collada" forme_creator_only="true"/>
 	</context_menu>
 	<menu_item_call label="座る" name="Sit Down Here"/>
 	<menu_item_call label="立つ" name="Stand Up"/>

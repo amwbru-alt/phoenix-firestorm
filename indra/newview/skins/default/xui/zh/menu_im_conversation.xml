@@ -8,7 +8,7 @@
 	<menu_item_call label="聊天歷史……" name="chat_history" />
 	<menu_item_call label="放大" name="zoom_in" />
 	<menu_item_call label="地圖" name="map" />
-	<menu_item_call label="分享" name="Share" />
+	<menu_item_call label="分享" name="Share"  forme_creator_only="true"/>
 	<menu_item_call label="支付" name="Pay" />
 	<menu_item_call label="檢舉違規行為" name="Report Abuse" />
 	<menu_item_check label="封鎖語音" name="Block/Unblock" />

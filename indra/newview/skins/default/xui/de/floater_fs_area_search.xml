@@ -48,7 +48,7 @@
 			<check_box name="regular_expression" label="Reguläre Ausdrücke verwenden"/>
 			<button name="search" label="Suchen"/>
 			<button name="clear" label="Löschen"/>
-			<button name="copy_link" label="Als Link kopieren" tool_tip="Kopiert einen secondlife:///app/openfloater/area_search?... Link für die aktuelle Suche und Filter-Einstellungen." width="115"/>
+			<button name="copy_link" label="Als Link kopieren" tool_tip="Kopiert einen fmw:///app/openfloater/area_search?... Link für die aktuelle Suche und Filter-Einstellungen." width="115"/>
 		</panel>
 		<panel label="Filter" name="area_search_filter_panel">
 			<text name="only_list">

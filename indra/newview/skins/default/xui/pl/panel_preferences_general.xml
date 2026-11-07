@@ -80,7 +80,7 @@
 		(wymagany restart)
 	</text>
 	<text name="time_format_clock_note">
-		Format zegara na górnym pasku: [secondlife:///app/openfloater/preferences?tab=ui&amp;subtab=UI-interface-top-bars Interfejs - Górne paski].
+		Format zegara na górnym pasku: [fmw:///app/openfloater/preferences?tab=ui&amp;subtab=UI-interface-top-bars Interfejs - Górne paski].
 	</text>
 	<text name="title_afk_text">
 		Zasypiaj po czasie:
@@ -105,6 +105,6 @@
 	</combo_box>
 	<check_box name="AvatarSitOnAway" label="Usiądź, gdy Zasypiam"/>
 	<text name="text_box3">
-		Wiadomości automatyczne możesz znaleźć w [secondlife:///app/openfloater/preferences?tab=im&amp;subtab=tab-autoresponse-1 Prywatność / Autoodpowiedzi].
+		Wiadomości automatyczne możesz znaleźć w [fmw:///app/openfloater/preferences?tab=im&amp;subtab=tab-autoresponse-1 Prywatność / Autoodpowiedzi].
 	</text>
 </panel>

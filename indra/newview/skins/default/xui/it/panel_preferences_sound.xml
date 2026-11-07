@@ -148,7 +148,7 @@
 		Riavvio regione:
 	</panel.string>
 	<panel.string name="textFSRestartOpenSim">
-		Riavvio regione (OpenSim):
+		Riavvio regione (ForMe.World):
 	</panel.string>
 	<panel.string name="textFSScriptFloaterClose">
 		Script dialog closes:
@@ -183,7 +183,7 @@
 	<panel.string name="textFSWindowOpen">
 		Apre finestra:
 	</panel.string>
-	<tab_container label="Preferenze Firestorm" name="tabs">
+	<tab_container label="Preferenze ForMe.World" name="tabs">
 		<panel label="Generale" name="Media Sounds Panel">
 			<slider label="Volume Generale" name="System Volume"/>
 			<check_box label="Muta quando riduci ad icona" name="mute_when_minimized"/>
@@ -287,7 +287,7 @@
 			<radio_group name="ear_location">
 				<radio_item label="Ascolta voce da posizione camera" name="0"/>
 				<radio_item label="Ascolta voce da posizione avatar" name="1"/>
-				<radio_item label="Ascolta voce a tutto volume (solo OpenSim)" name="2"/>
+				<radio_item label="Ascolta voce a tutto volume (solo ForMe.World)" name="2"/>
 			</radio_group>
 			<check_box label="Muovi le labbra quando parli" name="enable_lip_sync"/>
 			<check_box label="Mostra indicatore voce sugli avatar" tool_tip="Mostra indicatore (pallino bianco) sopra agli avatar" name="FSShowVoiceVisualizer"/>

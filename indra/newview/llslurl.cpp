@@ -78,7 +78,7 @@ LLSLURL::LLSLURL(const std::string& slurl)
         if (slurl.find("://") == std::string::npos && slurl.substr(0, 4) != "data")
         // </FS:TJ>
         {
-            // There may be no scheme ('secondlife://', 'https://' etc.) passed in. In that
+            // There may be no scheme ('fmw://', 'https://' etc.) passed in. In that
             // case we want to normalize the slurl by putting the appropriate scheme
             // in front of the slurl.  So, we grab the appropriate slurl base
             // from the grid manager which may be http://slurl.com/secondlife/ for maingrid, or
@@ -131,13 +131,13 @@ LLSLURL::LLSLURL(const std::string& slurl)
             // parse a maingrid style slurl.  We know the grid is maingrid
             // so grab it.
             // A location slurl for maingrid (with the special schemes) can be in the form
-            // secondlife://<regionname>/<x>/<y>/<z>
+            // fmw://<regionname>/<x>/<y>/<z>
             // or
-            // secondlife://<Grid>/secondlife/<region>/<x>/<y>/<z>
+            // fmw://<Grid>/secondlife/<region>/<x>/<y>/<z>
             // where if grid is empty, it specifies Agni
 
             // An app style slurl for maingrid can be
-            // secondlife://<Grid>/app/<app parameters>
+            // fmw://<Grid>/app/<app parameters>
             // where an empty grid implies Agni
 
             // we'll start by checking the top of the 'path' which will be
@@ -150,7 +150,7 @@ LLSLURL::LLSLURL(const std::string& slurl)
             if ((path_array[0].asString() == LLSLURL::SLURL_SECONDLIFE_PATH) ||
                 (path_array[0].asString() == LLSLURL::SLURL_APP_PATH))
             {
-                // it's in the form secondlife://<grid>/(app|secondlife)
+                // it's in the form fmw://<grid>/(app|secondlife)
                 // so parse the grid name to derive the grid ID
                 if (!slurl_uri.hostName().empty())
                 {
@@ -158,7 +158,7 @@ LLSLURL::LLSLURL(const std::string& slurl)
                 }
                 else if(path_array[0].asString() == LLSLURL::SLURL_SECONDLIFE_PATH)
                 {
-                    // If the slurl is in the form secondlife:///secondlife/<region> form,
+                    // If the slurl is in the form fmw:///secondlife/<region> form,
                     // then we are in fact on maingrid.
                     mGrid = MAINGRID;
                 }
@@ -194,7 +194,7 @@ LLSLURL::LLSLURL(const std::string& slurl)
                 }
                 else
                 {
-                    // it wasn't a /secondlife/<region> or /app/<params>, so it must be secondlife://<region>
+                    // it wasn't a /secondlife/<region> or /app/<params>, so it must be fmw://<region>
                     // therefore the hostname will be the region name, and it's a location type
                     mType = LOCATION;
                     // 'normalize' it so the region name is in fact the head of the path_array

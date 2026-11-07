@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="script_recover" title="指令碼恢復">
+<floater name="script_recover" title="指令碼恢復" forme_creator_only="true">
 	<text name="txt2">
 		[APP_NAME] 發現了可能來源於之前崩潰的觀察者的指令碼。 選擇「恢復」將會把這些指令碼恢復到庫存中的「失物招領」檔案夾。
 	</text>

@@ -45,7 +45,7 @@ Calidad de dibujo (Render quality): [RENDERQUALITY]
 	<tab_container name="about_tab">
 		<panel label="Información" name="support_panel">
 			<text name="support_intro">    
-				Para obtener la información más reciente acerca de Firestorm, visita
+				Para obtener la información más reciente acerca de ForMe.World, visita
 https://www.firestormviewer.org
 			</text>
   			<button label="Copiar al portapapeles" name="copy_btn"/>
@@ -58,7 +58,7 @@ Los Linden son,
 con contribuciones de código de:
 			</text>
 		</panel>
-		<panel label="Créditos de Firestorm" name="fs_credits_panel">
+		<panel label="Créditos de ForMe.World" name="fs_credits_panel">
 			<scroll_container name="fs_credits_scroll_container">
 				<panel name="fs_credits_scroll_container_content_panel">
 					<text name="firestorm_intro">
@@ -70,10 +70,10 @@ Forman el Equipo de Desarrollo de Firestorm:
 						Han contribuído generosamente con código adicional:
 					</text>
 					<text name="fs_support_intro" >
-						Agradecimientos especiales para nuestro Equipo de Soporte de Firestorm, editores del wiki, educadores, y traductores:
+						Agradecimientos especiales para nuestro Equipo de Soporte de ForMe.World, editores del wiki, educadores, y traductores:
 					</text>
 					<text name="fs_art_intro" >
-						Firestorm incluye Starlight, modificado por Firestorm. Proporcionado por residentes para los residentes, con la intención de proveer una interfaz de uso alternativa, más luminosa y esperamos que más fácil de usar. Para más detalles ver &lt;nolink&gt;https://wiki.secondlife.com/wiki/Viewer_Skins/Starlight&lt;/nolink&gt;.
+						ForMe.World incluye Starlight, modificado por ForMe.World. Proporcionado por residentes para los residentes, con la intención de proveer una interfaz de uso alternativa, más luminosa y esperamos que más fácil de usar. Para más detalles ver &lt;nolink&gt;https://wiki.secondlife.com/wiki/Viewer_Skins/Starlight&lt;/nolink&gt;.
 
 Artistas y Diseñadores de la interfaz:
 					</text>

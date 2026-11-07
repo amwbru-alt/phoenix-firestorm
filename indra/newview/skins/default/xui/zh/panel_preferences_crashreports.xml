@@ -4,7 +4,7 @@
 	<check_box label="始終在傳送前詢問" name="checkSendCrashReportsAlwaysAsk" />
 	<check_box label="包括 settings.xml 檔案" name="checkSendSettings" />
 	<text name="textSendSettings">(包含第二人生使用者名稱)</text>
-	<check_box label="包括我的 Second Life 使用者名稱" name="checkSendName" />
+	<check_box label="包括我的 ForMe.World 使用者名稱" name="checkSendName" />
 	<text name="textSendName">(如果需要，用於請求額外資訊)</text>
 	<text name="textRestartRequired">任何設定的更改都需要重新啟動才能生效。</text>
 	<text name="textInformation1">除非另有說明，報告僅包含與崩潰有關的必要資訊</text>

@@ -95,7 +95,8 @@ public:
                                        EAcceptance* accept,
                                        std::string& tooltip_msg);
     /*virtual*/ void changed(U32);
-    /*virtual*/ void draw();
+    void draw() override;
+    void reshape(S32 width, S32 height, bool called_from_parent = true) override;
     /*virtual*/ void    onVisibilityChange ( bool new_visibility );
     // <FS:Ansariel> CTRL-F focusses local search editor
     /*virtual*/ bool hasAccelerators() const { return true; }
@@ -230,6 +231,9 @@ private:
     };
 
     LLFloaterInventoryFinder* getFinder();
+    LLFolderView* getVisibleInventorySelection();
+    LLUUID getVisibleGallerySelection();
+    void toggleForMeInventoryWidth();
 
     LLFilterEditor*             mFilterEditor;
     LLTabContainer*             mFilterTabs;
@@ -271,7 +275,7 @@ private:
     LLLayoutStack* mCombinationLayoutStack;
 
     // <FS:Zi> Filter dropdown
-    LLComboBox*                 mFilterComboBox;
+    LLComboBox*                 mFilterComboBox = nullptr;
     std::map<std::string,U64>   mFilterMap;         // contains name-to-number mapping for dropdown filter types
     U64                         mFilterMask;        // contains the cumulated bit filter for all dropdown filter types
     // </FS:Zi> Filter dropdown

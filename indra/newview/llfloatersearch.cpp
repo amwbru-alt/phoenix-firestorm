@@ -39,7 +39,7 @@
 #include "llviewernetwork.h"// </FS:AW  opensim search support>
 #include "lfsimfeaturehandler.h"    // <FS:CR> Opensim search support
 
-// support secondlife:///app/search/{CATEGORY}/{QUERY} SLapps
+// support fmw:///app/search/{CATEGORY}/{QUERY} SLapps
 class LLSearchHandler : public LLCommandHandler {
     public:
         // requires trusted browser to trigger

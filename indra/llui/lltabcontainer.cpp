@@ -27,6 +27,8 @@
 #include "linden_common.h"
 
 #include "lltabcontainer.h"
+#include "formeuistyle.h"
+#include "lldir.h"
 #include "llviewereventrecorder.h"
 #include "llfocusmgr.h"
 #include "lllocalcliprect.h"
@@ -437,7 +439,7 @@ void LLTabContainer::draw()
     {
         if (mIsVertical)
         {
-            target_pixel_scroll = cur_scroll_pos * (BTN_HEIGHT + tabcntrv_pad);
+            target_pixel_scroll = cur_scroll_pos * (mTabHeight + tabcntrv_pad);
         }
         else
         {
@@ -531,7 +533,7 @@ void LLTabContainer::draw()
 
             tuple->mButton->translate( left ? left - tuple->mButton->getRect().mLeft : 0,
                                        top ? top - tuple->mButton->getRect().mTop : 0 );
-            if (top) top -= BTN_HEIGHT + tabcntrv_pad;
+            if (top) top -= mTabHeight + tabcntrv_pad;
             if (left) left += tuple->mButton->getRect().getWidth();
 
             if (!mIsVertical)
@@ -1121,7 +1123,8 @@ void LLTabContainer::addTabPanel(const TabPanelParams& panel)
     S32 button_width = mMinTabWidth;
     if (!mIsVertical)
     {
-        button_width = llclamp(mFont->getWidth(trimmed_label) + tab_padding, mMinTabWidth, mMaxTabWidth);
+        const S32 icon_padding = gDirUtilp->getSkinThemeFolder() == "forme" && !mCustomIconCtrlUsed ? 28 : 0;
+        button_width = llclamp(mFont->getWidth(trimmed_label) + tab_padding + icon_padding, mMinTabWidth, mMaxTabWidth);
     }
 
     // Tab panel
@@ -1131,7 +1134,7 @@ void LLTabContainer::addTabPanel(const TabPanelParams& panel)
     {
         if( getTabPosition() == LLTabContainer::TOP )
         {
-            S32 tab_height = mIsVertical ? BTN_HEIGHT : mTabHeight;
+            S32 tab_height = mTabHeight;
             tab_panel_top = getRect().getHeight() - getTopBorderHeight() - (tab_height - tabcntr_button_panel_overlap);
             tab_panel_bottom = LLPANEL_BORDER_WIDTH;
         }
@@ -1180,9 +1183,9 @@ void LLTabContainer::addTabPanel(const TabPanelParams& panel)
     if (mIsVertical)
     {
         btn_rect.setLeftTopAndSize(tabcntrv_pad + LLPANEL_BORDER_WIDTH + 2, // JC - Fudge factor
-                                   (getRect().getHeight() - getTopBorderHeight() - LLPANEL_BORDER_WIDTH - 1) - ((BTN_HEIGHT + tabcntrv_pad) * getTabCount()),
+                                   (getRect().getHeight() - getTopBorderHeight() - LLPANEL_BORDER_WIDTH - 1) - ((mTabHeight + tabcntrv_pad) * getTabCount()),
                                    mMinTabWidth,
-                                   BTN_HEIGHT);
+                                   mTabHeight);
     }
     else if( getTabPosition() == LLTabContainer::TOP )
     {
@@ -1239,6 +1242,14 @@ void LLTabContainer::addTabPanel(const TabPanelParams& panel)
         }
 
         p.pad_bottom( mLabelPadBottom );
+        if (gDirUtilp->getSkinThemeFolder() == "forme" && !mCustomIconCtrlUsed && button_width >= 88)
+        {
+            p.image_overlay(LLUI::getUIImage(ForMeUI::iconFor(child->getName())));
+            p.image_overlay_alignment("left");
+            p.image_overlay_color(LLColor4(0.83f, 0.73f, 0.91f, 1.f));
+            p.image_overlay_selected_color(LLColor4::white);
+            p.pad_left(llmax(8, mLabelPadLeft));
+        }
         p.scale_image(true);
         p.tab_stop(false);
         p.follows.flags = FOLLOWS_LEFT;
@@ -1374,9 +1385,9 @@ void LLTabContainer::removeTabPanel(LLPanel* child)
             LLTabTuple* tuple = *iter;
             LLRect rect;
             rect.setLeftTopAndSize(tabcntrv_pad + LLPANEL_BORDER_WIDTH + 2, // JC - Fudge factor
-                                   (getRect().getHeight() - LLPANEL_BORDER_WIDTH - 1) - ((BTN_HEIGHT + tabcntrv_pad) * (tab_count)),
+                                   (getRect().getHeight() - LLPANEL_BORDER_WIDTH - 1) - ((mTabHeight + tabcntrv_pad) * (tab_count)),
                                    mMinTabWidth,
-                                   BTN_HEIGHT);
+                                   mTabHeight);
             if (tuple->mPlaceholderText)
             {
                 tuple->mPlaceholderText->setRect(rect);
@@ -2421,14 +2432,14 @@ void LLTabContainer::updateMaxScrollPos()
     bool no_scroll = true;
     if (mIsVertical)
     {
-        S32 tab_total_height = (BTN_HEIGHT + tabcntrv_pad) * getTabCount();
+        S32 tab_total_height = (mTabHeight + tabcntrv_pad) * getTabCount();
         S32 available_height = getRect().getHeight() - getTopBorderHeight();
         if( tab_total_height > available_height )
         {
             static LLUICachedControl<S32> tabcntrv_arrow_btn_size ("UITabCntrvArrowBtnSize", 0);
             S32 available_height_with_arrows = getRect().getHeight() - 2*(tabcntrv_arrow_btn_size + 3*tabcntrv_pad) - mNextArrowBtn->getRect().mBottom;
             S32 additional_needed = tab_total_height - available_height_with_arrows;
-            setMaxScrollPos((S32) ceil(additional_needed / float(BTN_HEIGHT + tabcntrv_pad) ) );
+            setMaxScrollPos((S32) ceil(additional_needed / float(mTabHeight + tabcntrv_pad) ) );
             no_scroll = false;
         }
     }

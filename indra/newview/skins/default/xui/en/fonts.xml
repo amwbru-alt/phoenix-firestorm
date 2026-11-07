@@ -212,4 +212,7 @@
          comment="Size of huge font for LSL editor (points, or 1/72 of an inch)"
          size="12"
          />
+  <font_size name="WMapTitle" size="20.0" />
+  <font_size name="WMapRegion" size="15.0" />
+  <font_size name="WMapBody" size="12.0" />
 </fonts>

@@ -32,6 +32,7 @@
 #include "llappviewer.h"
 #include "lldeferredsounds.h"
 #include "llvieweraudio.h"
+#include "formegridpolicy.h"
 #include "llviewercamera.h"
 #include "llviewercontrol.h"
 #include "llviewerwindow.h"
@@ -87,6 +88,7 @@ void LLViewerAudio::registerIdleListener()
 
 void LLViewerAudio::startInternetStreamWithAutoFade(const std::string &streamURI)
 {
+    if (!streamURI.empty() && !ForMeGrid::allowedServiceURI(streamURI)) return;
     LL_DEBUGS("AudioEngine") << "Start with outo fade: " << streamURI << LL_ENDL;
 
     // Old and new stream are identical

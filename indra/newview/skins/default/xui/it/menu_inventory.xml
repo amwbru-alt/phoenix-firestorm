@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <menu name="Popup">
-	<menu_item_call label="Condividi" name="Share"/>
+	<menu_item_call label="Condividi" name="Share" forme_creator_only="true"/>
 	<menu_item_call label="Apri" name="Task Open"/>
 	<menu_item_call label="Esegui" name="Task Play"/>
 	<menu_item_call label="Proprietà" name="Task Properties"/>
@@ -11,10 +11,10 @@
 	<menu_item_call label="Nuova cartella" name="New Folder"/>
 	<menu_item_call label="Nuova cartella" name="New Listing Folder" />
 	<menu_item_call label="Nuovo abito" name="New Outfit" />
-	<menu_item_call label="Nuovo script" name="New Script"/>
-	<menu_item_call label="Nuova annotazione" name="New Note"/>
-	<menu_item_call label="Nuovo gesto" name="New Gesture"/>
-	<menu_item_call label="Nuovo materiale" name="New Material"/>
+	<menu_item_call label="Nuovo script" name="New Script" forme_creator_only="true"/>
+	<menu_item_call label="Nuova annotazione" name="New Note" forme_creator_only="true"/>
+	<menu_item_call label="Nuovo gesto" name="New Gesture" forme_creator_only="true"/>
+	<menu_item_call label="Nuovo materiale" name="New Material" forme_creator_only="true"/>
 	<menu label="Nuovo indumento" name="New Clothes">
 		<menu_item_call label="Nuova camicia" name="New Shirt"/>
 		<menu_item_call label="Nuovi pantaloni" name="New Pants"/>
@@ -41,7 +41,7 @@
 		<menu_item_call label="Nuova acqua" name="New Water" />
 		<menu_item_call label="Nuovo ciclo giornata" name="New Day Cycle" />
 	</menu>
-	<menu label="Usa come predefinita per" name="upload_def">
+	<menu label="Usa come predefinita per" name="upload_def" forme_creator_only="true">
 		<menu_item_check label="Immagini caricate" name="Image uploads"/>
 		<menu_item_check label="Suoni caricati" name="Sound uploads"/>
 		<menu_item_check label="Animazioni caricate" name="Animation uploads"/>
@@ -125,17 +125,17 @@
 	<menu_item_call label="Applica solo a me stesso" name="Settings Apply Local" />
 	<menu_item_call label="Applica al lotto" name="Settings Apply Parcel" />
 	<menu label="Marketplace" name="Marketplace">
-		<menu_item_call label="Crea annuncio" name="Marketplace Create Listing"/>
-		<menu_item_call label="Associa annuncio" name="Marketplace Associate Listing"/>
-		<menu_item_call label="Visualizza annuncio (aggiorna)" name="Marketplace Get Listing"/>
-		<menu_item_call label="Controlla che non ci siano errori" name="Marketplace Check Listing"/>
-		<menu_item_call label="Modifica annuncio" name="Marketplace Edit Listing"/>
-		<menu_item_call label="Elenca" name="Marketplace List"/>
-		<menu_item_call label="Rimuovi annuncio" name="Marketplace Unlist"/>
-		<menu_item_call label="Attiva" name="Marketplace Activate"/>
-		<menu_item_call label="Disattiva" name="Marketplace Deactivate"/>
-		<menu_item_call label="Copia negli annunci Marketplace" name="Marketplace Copy"/>
-		<menu_item_call label="Sposta negli annunci Marketplace" name="Marketplace Move"/>
+		<menu_item_call label="Crea annuncio" name="Marketplace Create Listing" forme_creator_only="true"/>
+		<menu_item_call label="Associa annuncio" name="Marketplace Associate Listing" forme_creator_only="true"/>
+		<menu_item_call label="Visualizza annuncio (aggiorna)" name="Marketplace Get Listing" forme_creator_only="true"/>
+		<menu_item_call label="Controlla che non ci siano errori" name="Marketplace Check Listing" forme_creator_only="true"/>
+		<menu_item_call label="Modifica annuncio" name="Marketplace Edit Listing" forme_creator_only="true"/>
+		<menu_item_call label="Elenca" name="Marketplace List" forme_creator_only="true"/>
+		<menu_item_call label="Rimuovi annuncio" name="Marketplace Unlist" forme_creator_only="true"/>
+		<menu_item_call label="Attiva" name="Marketplace Activate" forme_creator_only="true"/>
+		<menu_item_call label="Disattiva" name="Marketplace Deactivate" forme_creator_only="true"/>
+		<menu_item_call label="Copia negli annunci Marketplace" name="Marketplace Copy" forme_creator_only="true"/>
+		<menu_item_call label="Sposta negli annunci Marketplace" name="Marketplace Move" forme_creator_only="true"/>
 	</menu>
 	<menu_item_call label="--nessuna opzione--" name="--no options--"/>
 </menu>

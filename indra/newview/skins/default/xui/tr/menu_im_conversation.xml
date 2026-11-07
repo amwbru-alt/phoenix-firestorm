@@ -8,7 +8,7 @@
 	<menu_item_call label="Sohbet geçmişi..." name="chat_history"/>
 	<menu_item_call label="Yakınlaştır" name="zoom_in"/>
 	<menu_item_call label="Harita" name="map"/>
-	<menu_item_call label="Paylaş" name="Share"/>
+	<menu_item_call label="Paylaş" name="Share" forme_creator_only="true"/>
 	<menu_item_call label="Öde" name="Pay"/>
 	<menu_item_check label="Sesi Engelle" name="Block/Unblock"/>
 	<menu_item_check label="Metni Engelle" name="MuteText"/>

@@ -1,7 +1,7 @@
 /**
  * @file llloginhandler.cpp
  * @brief Handles filling in the login panel information from a SLURL
- * such as secondlife:///app/login?first=Bob&last=Dobbs
+ * such as fmw:///app/login?first=Bob&last=Dobbs
  *
  * $LicenseInfo:firstyear=2008&license=viewerlgpl$
  * Second Life Viewer Source Code
@@ -25,6 +25,7 @@
  * $/LicenseInfo$
  */
 #include "llviewerprecompiledheaders.h"
+#include "formegridpolicy.h" // <FS:ForMe> Fixed-grid policy.
 
 #include "llloginhandler.h"
 
@@ -64,8 +65,9 @@ bool LLLoginHandler::parseDirectLogin(std::string url)
 
 void LLLoginHandler::parse(const LLSD& queryMap)
 {
+    if (queryMap.has("grid") && !ForMeGrid::allowedGrid(queryMap["grid"].asString())) return; // <FS:ForMe>
 
-    if (queryMap.has("grid"))
+    if (queryMap.has("grid") && ForMeGrid::allowedGrid(queryMap["grid"].asString()))
     {
       LLGridManager::getInstance()->setGridChoice(queryMap["grid"].asString());
     }
@@ -118,13 +120,6 @@ bool LLLoginHandler::handle(const LLSD& tokens,
 
     if  (LLStartUp::getStartupState() < STATE_LOGIN_CLEANUP)  //on splash page
     {
-      // as the login page may change from grid to grid, as well as
-      // things like username/password/etc, we simply refresh the
-      // login page to make sure everything is set up correctly
-      // <FS:Ansariel> [FS Login Panel]
-      //LLPanelLogin::loadLoginPage();
-      FSPanelLogin::loadLoginPage();
-      // </FS:Ansariel> [FS Login Panel]
       LLStartUp::setStartupState( STATE_LOGIN_CLEANUP );
     }
     return true;
@@ -186,6 +181,9 @@ LLPointer<LLCredential> LLLoginHandler::loadSavedUserLoginInfo()
     // <FS:Zi> Fix --autologin by loading the currently selected credentials if the above fails.
     //         UserLoginInfo contains "First Last @ Grid" and gets set in LLPanelLogin::onClickConnect()
     // return NULL;
+    // <FS:ForMe> Do not send a remembered Second Life/other-grid password to this grid.
+    const std::string saved = gSavedSettings.getString("UserLoginInfo");
+    if (!ForMeGrid::allowedCredential(saved)) return NULL;
     return gSecAPIHandler->loadCredential(gSavedSettings.getLLSD("UserLoginInfo"));
     // </FS:Zi>
 }

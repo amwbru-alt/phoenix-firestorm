@@ -147,7 +147,7 @@ public:
     LLTimer&  getEventTimer() { return mEventTimer;}
 };
 
-// support for secondlife:///app/appearance SLapps
+// support for fmw:///app/appearance SLapps
 class LLAppearanceHandler : public LLCommandHandler
 {
 public:
@@ -159,8 +159,8 @@ public:
                 const std::string& grid,
                 LLMediaCtrl* web)
     {
-        // support secondlife:///app/appearance/show, but for now we just
-        // make all secondlife:///app/appearance SLapps behave this way
+        // support fmw:///app/appearance/show, but for now we just
+        // make all fmw:///app/appearance SLapps behave this way
         if (!LLUI::getInstance()->mSettingGroups["config"]->getBOOL("EnableAppearance"))
         {
             LLNotificationsUtil::add("NoAppearance", LLSD(), LLSD(), std::string("SwitchToStandardSkinAndQuit"));

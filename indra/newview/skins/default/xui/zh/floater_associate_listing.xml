@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="associate listing" title="關聯刊登">
+<floater name="associate listing" title="關聯刊登" forme_creator_only="true">
 	<text name="message">刊登 ID：</text>
 	<line_editor name="listing_id">在此鍵入 ID</line_editor>
 	<button label="確定" name="OK" />

@@ -10,7 +10,7 @@
  height="207"
  layout="topleft"
  name="bulk_upload"
- width="430">
+ width="430" forme_creator_only="true">
     <layout_stack
       follows="all"
       height="203"

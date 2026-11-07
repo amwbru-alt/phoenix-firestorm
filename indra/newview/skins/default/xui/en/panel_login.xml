@@ -243,7 +243,7 @@
              name="grid_panel"
              background_visible="false"
              height="64"
-             width="300">
+             width="300" visible="false">
               <text
                follows="left|top"
                font="SansSerif"
@@ -267,7 +267,7 @@
                label="Select grid"
                layout="topleft"
                name="server_combo"
-               width="220">
+               width="220" enabled="false">
                  <combo_box.drop_down_button
                   pad_bottom="1"
                   pad_left="10"

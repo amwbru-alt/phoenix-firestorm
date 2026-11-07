@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "formeurlpolicy.h"
 #include "lltooltip.h"
 
 #include "llmediactrl.h"
@@ -668,8 +669,9 @@ void LLMediaCtrl::clearCache()
 //
 void LLMediaCtrl::navigateTo( std::string url_in, std::string mime_type, bool clean_browser)
 {
+    if (ForMeURL::blockedWeb(url_in)) return;
 // <AW>
-    // don't browse to slurls like "secondlife://" or "hop://"
+    // don't browse to slurls like "fmw://" or "fmw://"
     LLSLURL is_slurl(url_in);
     if(LLSLURL::INVALID != is_slurl.getType())
 // </AW>

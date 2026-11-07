@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<floater name="Anim Preview">
+<floater name="Anim Preview" forme_creator_only="true">
 	<text name="name_label">
 		Nombre:
 	</text>

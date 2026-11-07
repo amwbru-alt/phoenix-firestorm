@@ -99,7 +99,7 @@ void FSPanelGroupControlPanel::setSessionId(const LLUUID& session_id)
 
 void FSPanelGroupControlPanel::insertMentionAtCursor(const LLUUID& avatar_id)
 {
-    FSFloaterIM::getInstance(getSessionId())->findChild<LLChatEntry>("chat_editor")->insertMentionAtCursor("secondlife:///app/agent/" + avatar_id.asString() + "/mention");
+    FSFloaterIM::getInstance(getSessionId())->findChild<LLChatEntry>("chat_editor")->insertMentionAtCursor("fmw:///app/agent/" + avatar_id.asString() + "/mention");
 }
 
 uuid_vec_t FSPanelGroupControlPanel::getParticipants() const

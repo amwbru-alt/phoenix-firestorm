@@ -12,7 +12,7 @@
 	<menu_item_call label="Запрос в группу" name="invite_to_group"/>
 	<menu_item_call label="Приблизить камеру" name="zoom_in"/>
 	<menu_item_call label="Показать на карте" name="map"/>
-	<menu_item_call label="Поделиться предметом" name="share"/>
+	<menu_item_call label="Поделиться предметом" name="share" forme_creator_only="true"/>
 	<menu_item_call label="Заплатить" name="pay"/>
 	<menu_item_check label="Заблокировать/Разблокировать" name="block_unblock"/>
 	<menu_item_call label="Заморозить" name="freeze"/>

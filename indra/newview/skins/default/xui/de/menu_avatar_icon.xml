@@ -14,7 +14,7 @@
 	<menu_item_call label="Heranzoomen" name="Zoom In"/>
 	<menu_item_call label="Karte" name="Map"/>
 	<menu_item_call label="Verfolgen" name="track"/>
-	<menu_item_call label="Teilen" name="Share"/>
+	<menu_item_call label="Teilen" name="Share" forme_creator_only="true"/>
 	<menu_item_call label="Bezahlen" name="Pay"/>
 	<menu_item_call label="Name in Zwischenablage kopieren" name="copy name"/>
 	<menu_item_call label="Url in Zwischenablage kopieren" name="copy url"/>

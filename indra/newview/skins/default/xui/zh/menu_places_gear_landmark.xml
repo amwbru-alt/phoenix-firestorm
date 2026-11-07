@@ -2,7 +2,7 @@
 <toggleable_menu name="menu_ladmark_gear">
 	<menu_item_call label="瞬間傳送" name="teleport" />
 	<menu_item_call label="顯示在地圖上" name="show_on_map" />
-	<menu_item_call label="分享" name="share" />
+	<menu_item_call label="分享" name="share"  forme_creator_only="true"/>
 	<menu_item_call label="顯示/編輯地標" name="more_info" />
 	<menu_item_call label="移動到地標" name="Move to Landmarks" />
 	<menu_item_call label="移動到收藏夾" name="Move to Favorites" />

@@ -51,6 +51,6 @@
 	<spinner label="Haut" name="height_range_spin_2"/>
 <!-- Terrain Download/Upload/Bake buttons -->
 	<button label="Télécharger un terrain RAW..." name="download_raw_btn" tool_tip="Disponible uniquement pour les propriétaires, pas pour les gestionnaires"/>
-	<button label="Téléverser un terrain RAW..." name="upload_raw_btn" tool_tip="Disponible uniquement pour les propriétaires, pas pour les gestionnaires"/>
-	<button label="Figer le terrain" name="bake_terrain_btn" tool_tip="Définir le terrain actuel comme point médian pour les limites supérieures/inférieures"/>
+	<button label="Téléverser un terrain RAW..." name="upload_raw_btn" tool_tip="Disponible uniquement pour les propriétaires, pas pour les gestionnaires" forme_creator_only="true"/>
+	<button label="Figer le terrain" name="bake_terrain_btn" tool_tip="Définir le terrain actuel comme point médian pour les limites supérieures/inférieures" forme_creator_only="true"/>
 </panel>

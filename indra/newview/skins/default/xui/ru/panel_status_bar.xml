@@ -4,7 +4,15 @@
 		<button name="buy_land_btn" tool_tip="Участок для продажи"/>
 		<text tool_tip="Имя земельного участка, на котором вы стоите. Нажмите о земле." name="parcel_info_text" value="(загрузка...)"/>
 	</panel>
-	<panel.string name="packet_loss_tooltip">
+	    <panel.string name="forme_weather_clear">Ясно</panel.string>
+    <panel.string name="forme_weather_cloudy">Облачно</panel.string>
+    <panel.string name="forme_weather_fog">Туман</panel.string>
+    <panel.string name="forme_weather_rain">Дождь</panel.string>
+    <panel.string name="forme_weather_storm">Шторм</panel.string>
+    <panel.string name="forme_weather_snow">Снег</panel.string>
+    <panel.string name="forme_region_connected">Подключено</panel.string>
+    <panel.string name="forme_region_disconnected">Нет связи с регионом</panel.string>
+    <panel.string name="packet_loss_tooltip">
 		Потеря пакетов
 	</panel.string>
 	<panel.string name="bandwidth_tooltip">

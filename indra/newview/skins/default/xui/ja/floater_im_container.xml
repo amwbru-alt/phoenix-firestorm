@@ -18,7 +18,7 @@
 				<panel name="stub_panel">
 					<button name="stub_collapse_btn" tool_tip="このペインを最小化します。"/>
 					<text name="stub_textbox">
-						この会話は別ウィンドウで表示されます。[secondlife:/// 戻る]
+						この会話は別ウィンドウで表示されます。[fmw:/// 戻る]
 					</text>
 				</panel>
 			</panel_container>

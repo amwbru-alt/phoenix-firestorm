@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="build options floater" title="Opções da grade">
+<floater name="build options floater" title="Opções da grade" forme_creator_only="true">
 	<spinner label="Unidades (m)" name="GridResolution"/>
 	<spinner label="Extensão da grade (m)" name="GridDrawSize"/>
 	<spinner label="Casas decimais" name="DecimalPrecision"/>

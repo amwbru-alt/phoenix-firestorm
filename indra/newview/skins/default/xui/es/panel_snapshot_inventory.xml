@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<panel name="panel_snapshot_inventory">
+<panel name="panel_snapshot_inventory" forme_creator_only="true">
 	<text name="hint_lbl">
 		Guardar una imagen en el inventario cuesta [UPLOAD_COST] L$. Para guardar una imagen como textura, selecciona uno de los formatos cuadrados.
 	</text>

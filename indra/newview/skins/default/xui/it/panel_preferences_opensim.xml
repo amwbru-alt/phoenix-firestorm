@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<panel label="Opensim" name="opensim_panel">
-<tab_container label="Opensim" name="tabs">
+<panel label="ForMe.World" name="opensim_panel">
+<tab_container label="ForMe.World" name="tabs">
 	<panel label="Gestione grid" name="grid_management_panel">
 		<text name="add_grid_text">
 			Aggiungi grid

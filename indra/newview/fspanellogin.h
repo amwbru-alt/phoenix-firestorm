@@ -31,15 +31,13 @@
 
 #include "llpanel.h"
 #include "llpointer.h"          // LLPointer<>
-#include "llmediactrl.h"    // LLMediaCtrlObserver
 
 class LLLineEditor;
 class LLSLURL;
 class LLCredential;
 
 class FSPanelLogin:
-    public LLPanel,
-    public LLViewerMediaObserver
+    public LLPanel
 {
     LOG_CLASS(FSPanelLogin);
 public:
@@ -48,12 +46,13 @@ public:
                 void *callback_data);
     ~FSPanelLogin();
 
-    virtual void setFocus( bool b );
+    void setFocus(bool b) override;
 
     static void show(const LLRect &rect,
         void (*callback)(S32 option, void* user_data),
         void* callback_data);
     static void reshapePanel();
+    void reshape(S32 width, S32 height, bool called_from_parent = true) override;
 
     static void setFields(LLPointer<LLCredential> credential, bool from_startup = false);
 
@@ -72,12 +71,8 @@ public:
 
     void showLoginWidgets();
 
-    static void loadLoginPage();
     static void giveFocus();
-    static void setAlwaysRefresh(bool refresh);
 
-    // inherited from LLViewerMediaObserver
-    /*virtual*/ void handleMediaEvent(LLPluginClassMedia* self, EMediaEvent event);
     static void updateServer();  // update the combo box, change the login page to the new server, clear the combo
 
     /// to be called from LLStartUp::setStartSLURL
@@ -104,12 +99,10 @@ private:
     static void onClickNewAccount(void*);
     static void onClickVersion(void*);
     static void onClickForgotPassword(void*);
-    static void onClickHelp(void*);
     static void onPassKey(LLLineEditor* caller, void* user_data);
     static void updateServerCombo();
     static void onClickRemove(void*);
     static void onRemoveCallback(const LLSD& notification, const LLSD& response);
-    static void onClickGridMgrHelp(void*);
     static void onClickGridBuilder(void*);
     static void onShowHidePasswordClick(void*);
     static std::string credentialName();

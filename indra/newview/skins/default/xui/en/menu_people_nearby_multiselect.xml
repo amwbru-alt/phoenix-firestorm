@@ -52,7 +52,7 @@
      enabled="false"
      label="Share"
      layout="topleft"
-     name="share">
+     name="share" forme_creator_only="true">
         <on_click
          function="Avatar.Share" />
         <on_enable

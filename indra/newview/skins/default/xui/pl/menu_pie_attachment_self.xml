@@ -11,8 +11,8 @@
             <pie_slice label="Czarna lista" name="DerenderPermanent"/>
         </pie_menu>
         <pie_menu name="ExportMenu" label="Zapisz jako &gt;">
-            <pie_slice label="Kopia zapasowa" name="Backup"/>
-            <pie_slice label="Collada" name="Collada"/>
+            <pie_slice label="Kopia zapasowa" name="Backup" forme_creator_only="true"/>
+            <pie_slice label="Collada" name="Collada" forme_creator_only="true"/>
         </pie_menu>
 		<pie_menu name="Inventory" label="Szafa &gt;">
 			<pie_slice label="Dodaj ulubione" name="Add to favorites" />
@@ -37,5 +37,5 @@
         <pie_slice label="Zrzuć XML" name="Dump XML"/>
         <pie_slice label="Uniesienie" name="Hover Height"/>
     </pie_menu>
-    <pie_slice label="Edytuj" name="Edit..."/>
+    <pie_slice label="Edytuj" name="Edit..." forme_creator_only="true"/>
 </pie_menu>

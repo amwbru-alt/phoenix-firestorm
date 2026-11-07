@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!-- Side tray panel -->
 <panel label="Kişiler" name="people_panel">
-	<string name="no_recent_people" value="Yakın zamanlı kişi yok. Birlikte takılacak kişiler mi arıyorsunuz? [secondlife:///app/search/people Arayı] veya [secondlife:///app/worldmap Dünya Haritasını] deneyin."/>
-	<string name="no_filtered_recent_people" value="Aradığınızı bulamadınız mı? [secondlife:///app/search/people/[SEARCH_TERM] Ara] deneyin."/>
-	<string name="no_one_near" value="Yakında kimse yok. Birlikte takılacak kişiler mi arıyorsunuz? [secondlife:///app/search/people Arayın] veya [secondlife:///app/worldmap Dünya Haritasını] deneyin."/>
-	<string name="no_one_filtered_near" value="Aradığınızı bulamadınız mı? [secondlife:///app/search/people/[SEARCH_TERM] Ara] deneyin."/>
+	<string name="no_recent_people" value="Yakın zamanlı kişi yok. Birlikte takılacak kişiler mi arıyorsunuz? [fmw:///app/search/people Arayı] veya [fmw:///app/worldmap Dünya Haritasını] deneyin."/>
+	<string name="no_filtered_recent_people" value="Aradığınızı bulamadınız mı? [fmw:///app/search/people/[SEARCH_TERM] Ara] deneyin."/>
+	<string name="no_one_near" value="Yakında kimse yok. Birlikte takılacak kişiler mi arıyorsunuz? [fmw:///app/search/people Arayın] veya [fmw:///app/worldmap Dünya Haritasını] deneyin."/>
+	<string name="no_one_filtered_near" value="Aradığınızı bulamadınız mı? [fmw:///app/search/people/[SEARCH_TERM] Ara] deneyin."/>
 	<string name="no_friends_online" value="Çevrimiçi arkadaş yok"/>
 	<string name="no_friends" value="Arkadaş yok"/>
 	<string name="no_friends_msg">
-		[secondlife:///app/search/people Ara] kullanarak arkadaş bulun veya arkadaş olarak eklemek için bir Sakin üzerine sağ tıklayın.
-Birlikte takılacak kişiler mi arıyorsunuz? [secondlife:///app/worldmap Dünya Haritasını] deneyin.
+		[fmw:///app/search/people Ara] kullanarak arkadaş bulun veya arkadaş olarak eklemek için bir Sakin üzerine sağ tıklayın.
+Birlikte takılacak kişiler mi arıyorsunuz? [fmw:///app/worldmap Dünya Haritasını] deneyin.
 	</string>
 	<string name="no_filtered_friends_msg">
-		Aradığınızı bulamadınız mı? [secondlife:///app/search/people/[SEARCH_TERM] Ara] deneyin.
+		Aradığınızı bulamadınız mı? [fmw:///app/search/people/[SEARCH_TERM] Ara] deneyin.
 	</string>
-	<string name="no_filtered_groups_msg" value="Aradığınızı bulamadınız mı? [secondlife:///app/search/groups/[SEARCH_TERM] Ara] deneyin."/>
-	<string name="no_groups_msg" value="Katılacak Gruplar mı arıyorsunuz? [secondlife:///app/search/groups Ara] deneyin."/>
+	<string name="no_filtered_groups_msg" value="Aradığınızı bulamadınız mı? [fmw:///app/search/groups/[SEARCH_TERM] Ara] deneyin."/>
+	<string name="no_groups_msg" value="Katılacak Gruplar mı arıyorsunuz? [fmw:///app/search/groups Ara] deneyin."/>
 	<string name="MiniMapToolTipMsg" value="[REGION](Haritayı açmak için çift tıkla, yatay hareket için shift çek)"/>
 	<string name="AltMiniMapToolTipMsg" value="[REGION](Işınlamak için çift tıkla, yatay hareket için shift çek)"/>
 	<string name="AllFriendsTitle">

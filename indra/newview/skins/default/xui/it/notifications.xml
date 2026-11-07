@@ -184,7 +184,7 @@ Scegli solo un oggetto e riprova.
 		Nota: Se attivi questa opzione, chiunque usa questo computer può vedere l&apos;elenco di luoghi preferiti.
 	</notification>
 	<notification name="AllowMultipleViewers">
-		Non è possibile utilizzare più di un viewer Second Life contemporaneamente. L’utilizzo simultaneo potrebbe portare a collisioni o corruzione della cache texture, e ad un peggioramento nelle immagini e nella performance.
+		Non è possibile utilizzare più di un viewer ForMe.World contemporaneamente. L’utilizzo simultaneo potrebbe portare a collisioni o corruzione della cache texture, e ad un peggioramento nelle immagini e nella performance.
 		<usetemplate name="okbutton" yestext="OK"/>
 	</notification>
 	<notification name="GrantModifyRights">
@@ -3280,13 +3280,13 @@ Accettare?
 		I termini seguenti hanno impedito l&apos;aggiornamento del nome o della descrizione del profilo dell&apos;esperienza: [extra_info]
 	</notification>
 	<notification name="TeleportedHomeExperienceRemoved">
-		Sei stato teleportato dalla regione [region_name] per aver rimosso l&apos;esperienza secondlife:///app/experience/[public_id]/profile e non puoi più accedere alla regione.
+		Sei stato teleportato dalla regione [region_name] per aver rimosso l&apos;esperienza fmw:///app/experience/[public_id]/profile e non puoi più accedere alla regione.
 		<form name="form">
 			<ignore name="ignore" text="Espulso dalla regione per aver rimosso un&apos;esperienza"/>
 		</form>
 	</notification>
 	<notification name="TrustedExperienceEntry">
-		Ti è stato consentito l&apos;accesso alla regione [region_name] grazie alla partecipazione all&apos;esperienza chiave secondlife:///app/experience/[public_id]/profile. Se rimuovi l&apos;esperienza, sarai passibile di espulsione dalla regione.
+		Ti è stato consentito l&apos;accesso alla regione [region_name] grazie alla partecipazione all&apos;esperienza chiave fmw:///app/experience/[public_id]/profile. Se rimuovi l&apos;esperienza, sarai passibile di espulsione dalla regione.
 		<form name="form">
 			<ignore name="ignore" text="Può accedere a una regione grazie a un&apos;esperienza"/>
 		</form>
@@ -3299,14 +3299,14 @@ Accettare?
 Potrebbero essere disponibili altre esperienze chiave.
 	</notification>
 	<notification name="ExperienceEvent">
-		L&apos;esperienza secondlife:///app/experience/[public_id]/profile ha consentito ad un oggetto la seguente azione: [EventType].
-    Proprietario: secondlife:///app/agent/[OwnerID]/inspect
+		L&apos;esperienza fmw:///app/experience/[public_id]/profile ha consentito ad un oggetto la seguente azione: [EventType].
+    Proprietario: fmw:///app/agent/[OwnerID]/inspect
     Nome oggetto: [ObjectName]
     Nome lotto: [ParcelName]
 	</notification>
 	<notification name="ExperienceEventAttachment">
-		L&apos;esperienza secondlife:///app/experience/[public_id]/profile ha consentito a un elemento attaccato la seguente azione: [EventType].
-    Proprietario: secondlife:///app/agent/[OwnerID]/inspect
+		L&apos;esperienza fmw:///app/experience/[public_id]/profile ha consentito a un elemento attaccato la seguente azione: [EventType].
+    Proprietario: fmw:///app/agent/[OwnerID]/inspect
 	</notification>
 	<notification name="ScriptQuestionExperience">
 		&apos;&lt;nolink&gt;[OBJECTNAME]&lt;/nolink&gt;&apos;, un oggetto posseduto da &apos;[NAME]&apos;, richiede la tua partecipazione all&apos;esperienza [GRID_WIDE]:
@@ -4191,7 +4191,7 @@ Abilitare l&apos;invio automatico della versione?
 		<form name="form">
 			<button name="OK_okcancelignore" text="Sì"/>
 			<button name="Cancel_okcancelignore" text="No"/>
-			<ignore name="ignore" text="Iscrizione al gruppo di supporto Phoenix/Firestorm" save_option="true" />
+			<ignore name="ignore" text="Iscrizione al gruppo di supporto Phoenix/ForMe.World" save_option="true" />
 		</form>
 	</notification>
 	<notification name="ConfirmScriptModify">
@@ -5360,7 +5360,7 @@ Tieni presente che non è possibile selezionare "Ambiente condiviso" o "Basato s
 		L'importazione in blocco delle Windlight è terminata.
 	</notification>
 	<notification name="FSAOScriptedNotification">
-		Firestorm Animation Overrider (AO): [AO_MESSAGE]
+		ForMe.World Animation Overrider (AO): [AO_MESSAGE]
 		<usetemplate ignoretext="Avvisami quando un oggetto scriptato richiede l'accesso all'AO di Firestorm" name="notifyignore" />
 	</notification>
 	<notification name="WarnForceLoginURL">

@@ -2,7 +2,7 @@
 <toggleable_menu name="profile_overflow_menu">
 	<!-- <menu_item_call label="Carte" name="show_on_map" />
 	<menu_item_call label="Payer" name="pay" /> -->
-	<menu_item_call label="Partager" name="share" />
+	<menu_item_call label="Partager" name="share"  forme_creator_only="true"/>
 	<menu_item_call label="Appeler" name="call" />
 	<!-- <menu_item_check label="Bloquer/Débloquer" name="block_unblock" /> -->
 	<menu_item_call label="Ajouter à la liste de contacts" name="add_to_contact_set" />

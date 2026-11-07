@@ -28,6 +28,8 @@
 #include "linden_common.h"
 
 #include "lltextbase.h"
+#include "lluiimage.h"
+#include "lldir.h"
 
 #include "llemojidictionary.h"
 #include "llemojihelper.h"
@@ -1703,7 +1705,9 @@ void LLTextBase::draw()
                             : hasFocus()
                                 ? mFocusBgColor.get()
                                 : mWriteableBgColor.get();
-        gl_rect_2d(text_rect, bg_color % alpha, true);
+        const auto field = gDirUtilp->getSkinThemeFolder() == "forme" ? LLUI::getUIImage("Forme_Round_Field") : LLUIImagePtr();
+        if (field.notNull()) field->drawSolid(text_rect, bg_color % alpha);
+        else gl_rect_2d(text_rect, bg_color % alpha, true);
     }
 
     // Draw highlighted if needed

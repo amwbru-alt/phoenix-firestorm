@@ -33,10 +33,13 @@
 #define LL_LLFLOATERWORLDMAP_H
 
 #include "llfloater.h"
+#include "llframetimer.h"
 #include "llmapimagetype.h"
 #include "llremoteparcelrequest.h"
 #include "llslurl.h"
 #include "lltracker.h"
+
+#include <array>
 
 // <FS:Ansariel> Parcel details on map
 #include "llremoteparcelrequest.h"
@@ -264,6 +267,37 @@ private:
     LLScrollListCtrl*       mSearchResults = nullptr;
 
     LLPanel*                mTrackCtrlsPanel = nullptr;
+
+    void setRegionCardsMode(bool cards);
+    void loadRegionCards(S32 offset, bool refresh = false);
+    void showRegionCards(const LLSD& data, U64 request_id);
+    void selectRegionCard(S32 index);
+    void actOnRegionCard(S32 action);
+    void updateRegionDetails();
+    void requestMapRegion(const std::string& name);
+    void loadRegionPhoto(S32 slot, const LLSD& row);
+    static constexpr S32 REGION_DETAIL_PHOTO = 3;
+    struct RegionPhoto
+    {
+        std::array<std::string, 3> urls;
+        U64 request = 0;
+        bool pending = false;
+        bool loaded = false;
+        F64 retryAt = 0.;
+    };
+    std::array<RegionPhoto, REGION_DETAIL_PHOTO + 1> mRegionPhotos;
+
+    LLSD mRegionCards;
+    S32 mRegionCardOffset = 0;
+    S32 mSelectedRegionCard = -1;
+    U64 mRegionCardRequest = 0;
+    bool mRegionCardsMode = true;
+    bool mRegionCardsHaveMore = false;
+    LLFrameTimer mRegionCardRefresh;
+    LLSD mMapRegion;
+    std::string mMapRegionName;
+    U64 mMapRegionRequest = 0;
+    LLFrameTimer mMapRegionRefresh;
 
     boost::signals2::connection mTeleportFinishConnection;
 };

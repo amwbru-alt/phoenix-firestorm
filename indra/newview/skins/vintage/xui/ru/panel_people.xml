@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <panel label="Люди" name="people_panel">
-	<string name="no_recent_people" value="Нет людей, говоривших недавно. Ищете, с кем пообщаться? Воспользуйтесь [secondlife:///app/search/people поиском] или [secondlife:///app/worldmap картой мира]." />
-	<string name="no_filtered_recent_people" value="Не нашли того, что вам нужно? Воспользуйтесь [secondlife:///app/search/people/[SEARCH_TERM] поиском]." />
-	<string name="no_one_near" value="Никого нет рядом. Ищете, с кем пообщаться? Воспользуйтесь [secondlife:///app/search/people поиском] или [secondlife:///app/worldmap картой мира]." />
-	<string name="no_one_filtered_near" value="Не нашли того, что вам нужно? Воспользуйтесь [secondlife:///app/search/people/[SEARCH_TERM] поиском]." />
+	<string name="no_recent_people" value="Нет людей, говоривших недавно. Ищете, с кем пообщаться? Воспользуйтесь [fmw:///app/search/people поиском] или [fmw:///app/worldmap картой мира]." />
+	<string name="no_filtered_recent_people" value="Не нашли того, что вам нужно? Воспользуйтесь [fmw:///app/search/people/[SEARCH_TERM] поиском]." />
+	<string name="no_one_near" value="Никого нет рядом. Ищете, с кем пообщаться? Воспользуйтесь [fmw:///app/search/people поиском] или [fmw:///app/worldmap картой мира]." />
+	<string name="no_one_filtered_near" value="Не нашли того, что вам нужно? Воспользуйтесь [fmw:///app/search/people/[SEARCH_TERM] поиском]." />
 	<string name="no_friends_online" value="Нет друзей в сети" />
 	<string name="no_friends" value="Нет друзей" />
 	<string name="no_friends_msg">
-		Найдите друзей с помощью [secondlife:///app/search/people поиска] или добавьте жителей в друзья с помощью правой кнопки мыши.
-Ищете, с кем пообщаться? Воспользуйтесь [secondlife:///app/worldmap картой мира].
+		Найдите друзей с помощью [fmw:///app/search/people поиска] или добавьте жителей в друзья с помощью правой кнопки мыши.
+Ищете, с кем пообщаться? Воспользуйтесь [fmw:///app/worldmap картой мира].
 	</string>
 	<string name="no_filtered_friends_msg">
-		Не нашли того, что вам нужно? Воспользуйтесь [secondlife:///app/search/people/[SEARCH_TERM] поиском].
+		Не нашли того, что вам нужно? Воспользуйтесь [fmw:///app/search/people/[SEARCH_TERM] поиском].
 	</string>
 	<string name="people_filter_label" value="Фильтр людей" />
 	<string name="groups_filter_label" value="Фильтр групп" />
-	<string name="no_filtered_groups_msg" value="Не нашли того, что вам нужно? Воспользуйтесь [secondlife:///app/search/groups/[SEARCH_TERM] поиском]." />
-	<string name="no_groups_msg" value="Ищете группу, чтобы присоединиться к ней? Воспользуйтесь [secondlife:///app/search/groups поиском]." />
+	<string name="no_filtered_groups_msg" value="Не нашли того, что вам нужно? Воспользуйтесь [fmw:///app/search/groups/[SEARCH_TERM] поиском]." />
+	<string name="no_groups_msg" value="Ищете группу, чтобы присоединиться к ней? Воспользуйтесь [fmw:///app/search/groups поиском]." />
 	<string name="MiniMapToolTipMsg" value="[REGION](Двойной щелчок открывает карту, shift+перетягивание – обзор)" />
 	<string name="AltMiniMapToolTipMsg" value="[REGION](Двойной щелчок открывает карту, shift+перетягивание – обзор)" />
 	<string name="avatar_name_count" value="Имя [[TOTAL] / [IN_REGION] / [IN_CHAT_RANGE]]" />

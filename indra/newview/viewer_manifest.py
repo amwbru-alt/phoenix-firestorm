@@ -72,15 +72,13 @@ class ViewerManifest(LLManifest,FSViewerManifest):
     def construct(self):
         super(ViewerManifest, self).construct()
         self.path(src="../../scripts/messages/message_template.msg", dst="app_settings/message_template.msg")
-        
+
         # <FS:LO> Copy dictionaries to a place where the viewer can find them if ran from visual studio
         pkgdir = os.path.join(self.args['build'], os.pardir, 'packages')
         with self.prefix(src=pkgdir, dst="app_settings"):
             self.path("dictionaries")
 
         # <FS:Ansariel> Copy 360 snapshot JavaScripts
-        with self.prefix(src=pkgdir, dst="skins/default/html/common/equirectangular"):
-            self.path("js")
         # </FS:Ansariel>
 
         # <FS:Ansariel> Copy 3p fonts to build output
@@ -130,7 +128,7 @@ class ViewerManifest(LLManifest,FSViewerManifest):
 
                 # <FS:AR> Poser Presets
                 self.path("poses")
-                
+
                 # <FS:Beq> package static_assets folder
                 if self.fs_is_opensim():
                     self.path("static_assets")
@@ -192,7 +190,7 @@ class ViewerManifest(LLManifest,FSViewerManifest):
                 self.path("*.ttf")
                 self.path("*.txt")
                 self.path("*.xml")
-                
+
             # <FS:AO> Include firestorm resources
             with self.prefix(src_dst="fs_resources"):
                 self.path("*.lsltxt")
@@ -223,13 +221,6 @@ class ViewerManifest(LLManifest,FSViewerManifest):
                         self.path("*.png")
                     self.path("*/*.xml")
 
-                    # Update: 2017-11-01 CP Now we store app code in the html folder
-                    #         Initially the HTML/JS code to render equirectangular
-                    #         images for the 360 capture feature but more to follow.
-                    with self.prefix(src="*/html", dst="*/html"):
-                        #self.path("*/*/*/*.js") # <FS:Ansariel> Copied outside packaging and from packages directory already
-                        self.path("*/*/*.html")
-
             #build_data.json.  Standard with exception handling is fine.  If we can't open a new file for writing, we have worse problems
             #platform is computed above with other arg parsing
             build_data_dict = {"Type":"viewer","Version":'.'.join(self.args['version']),
@@ -259,7 +250,7 @@ class ViewerManifest(LLManifest,FSViewerManifest):
         return self.args['grid']
 
     def channel(self):
-        return self.args['channel']
+        return 'ForMe.World'
 
     def channel_with_pkg_suffix(self):
         fullchannel=self.channel()
@@ -274,10 +265,12 @@ class ViewerManifest(LLManifest,FSViewerManifest):
 
     def channel_type(self): # returns 'release', 'beta', 'project', or 'test'
         channel_qualifier=self.channel_variant().lower()
+        if self.channel() == 'ForMe.World':
+            return 'release'
         #<FS:TS> Somehow, we started leaving the - separating the variant from the app name
         # on the beginning of the channel qualifier. This screws up later processing that
         # depends on the channel type. If it's there, we chop it off.
-        if channel_qualifier[0] == '-':
+        if channel_qualifier.startswith('-'):
             channel_qualifier = channel_qualifier[1:]
         if channel_qualifier.startswith('release'):
             channel_type='release'
@@ -318,50 +311,13 @@ class ViewerManifest(LLManifest,FSViewerManifest):
         return suffix
 
     def installer_base_name(self):
-        global CHANNEL_VENDOR_BASE
-        # a standard map of strings for replacing in the templates
-        #<FS:TS> tag "OS" after CHANNEL_VENDOR_BASE and before any suffix
-        channel_base = "Phoenix-" + CHANNEL_VENDOR_BASE
-        if self.fs_is_opensim():
-            channel_base = channel_base + "OS"
-        #</FS:TS>
-        substitution_strings = {
-            'channel_vendor_base' : '_'.join(channel_base.split()),
-            'channel_variant_underscores':self.channel_variant_app_suffix(),
-            'version_underscores' : '_'.join(self.args['version']),
-            'arch':self.args['arch']
-            }
-        return "%(channel_vendor_base)s%(channel_variant_underscores)s_%(version_underscores)s_%(arch)s" % substitution_strings
+        return 'ForMe.World_%s_%s' % ('_'.join(self.args['version']), self.args['arch'])
 
     def installer_base_name_mac(self):
-        global CHANNEL_VENDOR_BASE
-        # a standard map of strings for replacing in the templates
-        substitution_strings = {
-            'channel_vendor_base' : '_'.join(CHANNEL_VENDOR_BASE.split()),
-            'channel_variant_underscores':self.channel_variant_app_suffix(),
-            'version_underscores' : '_'.join(self.args['version'])
-            }
-        return "%(channel_vendor_base)s%(channel_variant_underscores)s_%(version_underscores)s_universal" % substitution_strings
+        return 'ForMe.World_%s_universal' % '_'.join(self.args['version'])
 
     def app_name(self):
-        global CHANNEL_VENDOR_BASE
-        channel_type=self.channel_type()
-        #<FS:TS> LL uses "Viewer" in the name of their release package. We use "Release".
-        #if channel_type == 'release':
-        #    app_suffix='Viewer'
-        #else:
-        #    app_suffix=self.channel_variant()
-        app_suffix=self.channel_variant()
-
-        #<FS:ND> tag "OS" after CHANNEL_VENDOR_BASE and before any suffix
-        if self.fs_is_opensim():
-            app_suffix = "OS" + app_suffix
-        #</FS:ND>
-
-        #<FS:ND> Don't separate name by whitespace. This break a lot of things in the old FS installer logic.
-        #return CHANNEL_VENDOR_BASE + ' ' + app_suffix
-        return CHANNEL_VENDOR_BASE + app_suffix
-        #</FS:ND>
+        return 'ForMe.World'
 
     def exec_name(self):
         # <FS:Ansariel> Same as app_name_oneword()
@@ -373,9 +329,7 @@ class ViewerManifest(LLManifest,FSViewerManifest):
 
     # <FS:Ansariel> FIRE-30446: Set FriendlyAppName for protocol registrations
     def friendly_app_name(self):
-        global CHANNEL_VENDOR_BASE
-        return CHANNEL_VENDOR_BASE
-    # </FS:Ansariel>
+        return 'ForMe.World'
 
     def icon_path(self):
         # <FS:ND> Add -os for oss builds
@@ -711,16 +665,6 @@ class Windows_x86_64_Manifest(ViewerManifest):
             self.path_optional("vcruntime140_1.dll")
             self.path_optional("vcruntime140_threads.dll")
 
-            # <FS:TJ> Keep Vivox only for OpenSim viewers
-            if self.fs_is_opensim():
-                # SLVoice executable
-                with self.prefix(src=os.path.join(pkgdir, 'bin', 'release')):
-                    self.path("SLVoice.exe")
-
-                # Vivox libraries
-                self.path("vivoxsdk_x64.dll")
-                self.path("ortp_x64.dll")
-            # </FS:TJ>
 
             # BugSplat
             if self.args.get('bugsplat'):
@@ -751,17 +695,10 @@ class Windows_x86_64_Manifest(ViewerManifest):
 
         with self.prefix(src=pkgdir):
             self.path("ca-bundle.crt")
-        # <FS:TJ> Keep Vivox only for OpenSim viewers
-        if self.fs_is_opensim():
-            self.path("VivoxAUP.txt")
-        # </FS:TJ>
 
-        # Media plugins - CEF
+        # Media plugins
         with self.prefix(dst="llplugin"):
             with self.prefix(src=os.path.join(self.args['build'], os.pardir, 'media_plugins')):
-                with self.prefix(src=os.path.join('cef', self.args['configuration'])):
-                    self.path("media_plugin_cef.dll")
-
                 # Media plugins - LibVLC
                 with self.prefix(src=os.path.join('libvlc', self.args['configuration'])):
                     self.path("media_plugin_libvlc.dll")
@@ -772,91 +709,12 @@ class Windows_x86_64_Manifest(ViewerManifest):
                 #    with self.prefix(src=os.path.join('example', self.args['configuration'])):
                 #        self.path("media_plugin_example.dll")
 
-            # CEF runtime files - debug
-            # CEF runtime files - not debug (release, relwithdebinfo etc.)
-            config = 'debug' if self.args['configuration'].lower() == 'debug' else 'release'
-            with self.prefix(src=os.path.join(pkgdir, 'bin', config)):
-                self.path("chrome_elf.dll")
-                self.path("d3dcompiler_47.dll")
-                self.path("dxcompiler.dll")
-                self.path("dxil.dll")
-                self.path("libcef.dll")
-                self.path("libEGL.dll")
-                self.path("libGLESv2.dll")
-                self.path("v8_context_snapshot.bin")
-                self.path("vk_swiftshader.dll")
-                self.path("vk_swiftshader_icd.json")
-                self.path("vulkan-1.dll")
-                self.path("dullahan_host.exe")
-
-            # MSVC DLLs needed for CEF and have to be in same directory as plugin
+            # MSVC runtime for the media plugin
             with self.prefix(src=os.path.join(self.args['build'], os.pardir,
                                               'sharedlibs', self.args['buildtype'])):
                 self.path("msvcp140.dll")
                 self.path("vcruntime140.dll")
                 self.path_optional("vcruntime140_1.dll")
-
-            # CEF files common to all configurations
-            with self.prefix(src=os.path.join(pkgdir, 'resources')):
-                self.path("chrome_100_percent.pak")
-                self.path("chrome_200_percent.pak")
-                self.path("resources.pak")
-                self.path("icudtl.dat")
-
-            with self.prefix(src=os.path.join(pkgdir, 'resources', 'locales'), dst='locales'):
-                self.path("am.pak")
-                self.path("ar.pak")
-                self.path("bg.pak")
-                self.path("bn.pak")
-                self.path("ca.pak")
-                self.path("cs.pak")
-                self.path("da.pak")
-                self.path("de.pak")
-                self.path("el.pak")
-                self.path("en-GB.pak")
-                self.path("en-US.pak")
-                self.path("es-419.pak")
-                self.path("es.pak")
-                self.path("et.pak")
-                self.path("fa.pak")
-                self.path("fi.pak")
-                self.path("fil.pak")
-                self.path("fr.pak")
-                self.path("gu.pak")
-                self.path("he.pak")
-                self.path("hi.pak")
-                self.path("hr.pak")
-                self.path("hu.pak")
-                self.path("id.pak")
-                self.path("it.pak")
-                self.path("ja.pak")
-                self.path("kn.pak")
-                self.path("ko.pak")
-                self.path("lt.pak")
-                self.path("lv.pak")
-                self.path("ml.pak")
-                self.path("mr.pak")
-                self.path("ms.pak")
-                self.path("nb.pak")
-                self.path("nl.pak")
-                self.path("pl.pak")
-                self.path("pt-BR.pak")
-                self.path("pt-PT.pak")
-                self.path("ro.pak")
-                self.path("ru.pak")
-                self.path("sk.pak")
-                self.path("sl.pak")
-                self.path("sr.pak")
-                self.path("sv.pak")
-                self.path("sw.pak")
-                self.path("ta.pak")
-                self.path("te.pak")
-                self.path("th.pak")
-                self.path("tr.pak")
-                self.path("uk.pak")
-                self.path("vi.pak")
-                self.path("zh-CN.pak")
-                self.path("zh-TW.pak")
 
             with self.prefix(src=os.path.join(pkgdir, 'bin', 'release')):
                 self.path("libvlc.dll")
@@ -967,7 +825,7 @@ class Windows_x86_64_Manifest(ViewerManifest):
             return 'https://www.firestormviewer.org/firestorm-nightly-build-downloads'
         else:
             return '<NO-URL>'
-        
+
 
     def package_finish(self):
         # Check if we should use Velopack instead of NSIS
@@ -1119,7 +977,7 @@ class Windows_x86_64_Manifest(ViewerManifest):
         #installer_file = self.installer_base_name() + '_Setup.exe'
         installer_file = self.fs_installer_basename() + "_Setup.exe"
         # </FS:ND>
-        
+
         substitution_strings['installer_file'] = installer_file
         substitution_strings['is64bit'] = (1 if (self.address_size == 64) else 0)
         substitution_strings['isavx2'] = (1 if (self.fs_is_avx2()) else 0)
@@ -1146,7 +1004,7 @@ class Windows_x86_64_Manifest(ViewerManifest):
             !define INSTNAME   "%(app_name_oneword)s"
             !define SHORTCUT   "%(app_name)s"
             !define DL_URL   "%(dl_url)s"
-            !define URLNAME   "secondlife"
+            !define URLNAME   "fmw"
             !define IS64BIT   "%(is64bit)d"
             !define ISAVX2   "%(isavx2)d"
             !define ISOPENSIM   "%(is_opensim)d"
@@ -1320,7 +1178,7 @@ class Darwin_x86_64_Manifest(ViewerManifest):
                 # # yields a slightly smaller binary but makes crash
                 # # logs mostly useless. This may be desirable for the
                 # # final release. Or not.
-                # if ("package" in self.args['actions'] or 
+                # if ("package" in self.args['actions'] or
                     # "unpacked" in self.args['actions']):
                     # self.run_command(
                         # ['strip', '-S', executable])
@@ -1591,10 +1449,6 @@ class Darwin_x86_64_Manifest(ViewerManifest):
                 self.path("featuretable_mac.txt")
                 self.path("cube.dae")
 
-                # <FS:TJ> Keep Vivox only for OpenSim viewers
-                if self.fs_is_opensim():
-                    self.path("VivoxAUP.txt")
-                # </FS:TJ>
                 self.path("LGPL-license.txt")
                 with self.prefix(src=pkgdir,dst=""):
                     self.path("ca-bundle.crt")
@@ -1665,19 +1519,6 @@ class Darwin_x86_64_Manifest(ViewerManifest):
                                 ):
                     dylibs += path_optional(os.path.join(relpkgdir, libfile), libfile)
 
-                # <FS:TJ> Keep Vivox only for OpenSim viewers
-                if self.fs_is_opensim():
-                    # SLVoice executable
-                    with self.prefix(src=os.path.join(pkgdir, 'bin', 'release')):
-                        self.path("SLVoice")
-
-                    # Vivox libraries
-                    for libfile in (
-                                    'libortp.dylib',
-                                    'libvivoxsdk.dylib',
-                                    ):
-                        self.path2basename(relpkgdir, libfile)
-                # </FS:TJ>
 
                 # Discord social SDK
                 if self.args['discord'] == 'ON':
@@ -1718,25 +1559,15 @@ class Darwin_x86_64_Manifest(ViewerManifest):
                     executable_path[app] = \
                         self.dst_path_of(os.path.join(app, "Contents", "MacOS"))
 
-                # Dullahan helper apps go inside SLPlugin.app
+                # Package the audio/video plugin in SLPlugin.app
                 with self.prefix(dst=os.path.join(
                     "SLPlugin.app", "Contents", "Frameworks")):
-                    # copy CEF plugin
-                    self.path2basename("../media_plugins/cef/" + self.args['configuration'],
-                                       "media_plugin_cef.dylib")
-
                     # copy LibVLC plugin
                     self.path2basename("../media_plugins/libvlc/" + self.args['configuration'],
                                        "media_plugin_libvlc.dylib")
 
-                    # CEF framework and vlc libraries goes inside Contents/Frameworks.
+                    # VLC libraries go inside Contents/Frameworks.
                     with self.prefix(src=os.path.join(pkgdir, 'lib', 'release')):
-                        self.path("Chromium Embedded Framework.framework")
-                        self.path("DullahanHelper.app")
-                        self.path("DullahanHelper (Alerts).app")
-                        self.path("DullahanHelper (GPU).app")
-                        self.path("DullahanHelper (Renderer).app")
-                        self.path("DullahanHelper (Plugin).app")
 
                         # Copy libvlc
                         self.path( "libvlc*.dylib*" )
@@ -1749,7 +1580,7 @@ class Darwin_x86_64_Manifest(ViewerManifest):
         # annotated backtraces (i.e. function names in the crash log).  'strip' with no
         # arguments yields a slightly smaller binary but makes crash logs mostly useless.
         # This may be desirable for the final release.  Or not.
-        if ("package" in self.args['actions'] or 
+        if ("package" in self.args['actions'] or
             "unpacked" in self.args['actions']):
             self.run_command_shell('strip -S %(viewer_binary)r' %
                             { 'viewer_binary' : self.dst_path_of('Contents/MacOS/Firestorm')})
@@ -1762,11 +1593,11 @@ class Darwin_x86_64_Manifest(ViewerManifest):
 
         volname=CHANNEL_VENDOR_BASE+" Installer"  # DO NOT CHANGE without understanding comment above
 
-        # <FS:ND> Make sure all our package names look similar 
+        # <FS:ND> Make sure all our package names look similar
         #imagename = self.installer_base_name_mac()
         imagename = self.fs_installer_basename()
         # </FS:ND>
-        
+
         sparsename = imagename + ".sparseimage"
         finalname = imagename + ".dmg"
         # make sure we don't have stale files laying about
@@ -1782,7 +1613,7 @@ class Darwin_x86_64_Manifest(ViewerManifest):
             hdi_output = subprocess.check_output(['hdiutil', 'attach', '-private', sparsename], text=True)
         except subprocess.CalledProcessError as err:
             sys.exit("failed to mount image at '%s'" % sparsename)
-            
+
         try:
             devfile = re.search(r"/dev/disk([0-9]+)[^s]", hdi_output).group(0).strip()
             volpath = re.search(r'HFS\s+(.+)', hdi_output).group(1).strip()
@@ -1851,8 +1682,8 @@ class Darwin_x86_64_Manifest(ViewerManifest):
             # Set the disk image root's custom icon bit
             self.run_command(['SetFile', '-a', 'C', volpath])
 
-            # Sign the app if requested; 
-            # do this in the copy that's in the .dmg so that the extended attributes used by 
+            # Sign the app if requested;
+            # do this in the copy that's in the .dmg so that the extended attributes used by
             # the signature are preserved; moving the files using python will leave them behind
             # and invalidate the signatures.
             if 'signature' in self.args:
@@ -1926,7 +1757,6 @@ class Darwin_x86_64_Manifest(ViewerManifest):
                         # We could selectively sign those, or repackage them and then sign them. For an easy clean sweet we just resign them al
                         plain_sign += glob.glob(resources + "*.dylib")
                         plain_sign += glob.glob(resources + "llplugin/lib/*.dylib")
-                        plain_sign += glob.glob(resources + "SLPlugin.app/Contents/Frameworks/Chromium Embedded Framework.framework/Libraries/*.dylib")
 
                         deep_sign = [
                             # <FS:ND> Firestorm does not ship SLVersionChecker
@@ -1934,10 +1764,6 @@ class Darwin_x86_64_Manifest(ViewerManifest):
                             resources + "SLPlugin.app/Contents/MacOS/SLPlugin",
                             tmp_app_path,
                             ]
-                        # <FS:TJ> Keep Vivox only for OpenSim viewers
-                        if self.fs_is_opensim():
-                            deep_sign.insert(-1, resources + "SLVoice")
-                        # </FS:TJ>
                         for attempt in range(3):
                             if attempt: # second or subsequent iteration
                                 print("codesign failed, waiting {:d} seconds before retrying".format(sign_retry_wait),
@@ -1990,7 +1816,7 @@ class Darwin_x86_64_Manifest(ViewerManifest):
                         subprocess.run(['ditto', tmp_app_path, app_in_dmg], check=True)
 
         finally:
-            # Unmount the image even if exceptions from any of the above 
+            # Unmount the image even if exceptions from any of the above
             for tries in range(10):
                 try:
                     self.run_command(['hdiutil', 'detach', '-force', devfile])
@@ -2149,10 +1975,6 @@ class LinuxManifest(ViewerManifest):
         debpkgdir = os.path.join(pkgdir, "lib", "debug")
 
         self.path("licenses-linux.txt","licenses.txt")
-        # <FS:TJ> Keep Vivox only for OpenSim viewers
-        if self.fs_is_opensim():
-            self.path("VivoxAUP.txt")
-        # </FS:TJ>
         self.path("LGPL-license.txt")
         self.path("res/firestorm_icon.png","firestorm_icon.png")
         with self.prefix("linux_tools"):
@@ -2162,8 +1984,8 @@ class LinuxManifest(ViewerManifest):
             self.path("client-readme-joystick.txt","README-linux-joystick.txt")
             self.path("wrapper.sh","firestorm")
             with self.prefix(dst="etc"):
-                self.path("handle_secondlifeprotocol.sh")
-                self.path("register_secondlifeprotocol.sh")
+                self.path("handle_fmwprotocol.sh")
+                self.path("register_fmwprotocol.sh")
                 self.path("refresh_desktop_app_entry.sh")
                 self.path("launch_url.sh")
             self.path("install.sh")
@@ -2193,36 +2015,6 @@ class LinuxManifest(ViewerManifest):
         # plugins
         with self.prefix(src=os.path.join(self.args['build'], os.pardir, 'media_plugins'), dst="bin/llplugin"):
             self.path("gstreamer10/libmedia_plugin_gstreamer10.so", "libmedia_plugin_gstreamer.so")
-            self.path("cef/libmedia_plugin_cef.so", "libmedia_plugin_cef.so" )
-
-        # CEF files 
-        with self.prefix(src=os.path.join(pkgdir, 'lib', 'release'), dst="lib"):
-            self.path( "libcef.so" )
-            self.path( "libEGL*" )
-            self.path( "libvulkan*" )
-            self.path( "libvk_swiftshader*" )
-            self.path( "libGLESv2*" )
-
-        with self.prefix(src=os.path.join(pkgdir, 'bin', 'release'), dst="bin"):
-            self.path( "chrome-sandbox" )
-            self.path( "dullahan_host" )
-
-        with self.prefix(src=os.path.join(pkgdir, 'lib', 'release'), dst="bin"):
-            self.path( "v8_context_snapshot.bin" )
-            self.path( "vk_swiftshader_icd.json")
-
-        with self.prefix(src=os.path.join(pkgdir, 'lib', 'release'), dst="lib"):
-            self.path( "v8_context_snapshot.bin" )
-            self.path( "vk_swiftshader_icd.json")
-
-        with self.prefix(src=os.path.join(pkgdir, 'resources'), dst="lib"):
-            self.path( "chrome_100_percent.pak" )
-            self.path( "chrome_200_percent.pak" )
-            self.path( "resources.pak" )
-            self.path( "icudtl.dat" )
-
-        with self.prefix(src=os.path.join(pkgdir, 'resources', 'locales'), dst=os.path.join('lib', 'locales')):
-            self.path("*.pak")
 
         self.path("featuretable_linux.txt")
         self.path("cube.dae")
@@ -2294,22 +2086,6 @@ class LinuxManifest(ViewerManifest):
             ):
                 self.path(libfile)
 
-        # <FS:TJ> Keep Vivox only for OpenSim viewers
-        if self.fs_is_opensim():
-            # Vivox runtimes
-            # Currentelly, the 32-bit ones will work with a 64-bit client.
-            with self.prefix(src=os.path.join(pkgdir, 'bin32' ), dst="bin"):
-                self.path("SLVoice")
-            with self.prefix(src=os.path.join(pkgdir ), dst="bin"):
-                self.path("win32")
-                self.path("win64")
-
-            with self.prefix(src=os.path.join(pkgdir, 'lib32' ), dst="lib32"):
-                self.path("libvivox*")
-                self.path("libortp*")
-                self.path("libsndfile*")
-                self.path("*.crt")
-        # </FS:TJ>
 
     def package_finish(self):
         # a standard map of strings for replacing in the templates
@@ -2393,7 +2169,7 @@ class Linux_i686_Manifest(LinuxManifest):
             # <FS:ND> Linking this breaks voice as stock openal.so does not have alcGetMixedBuffer
             #self.path("libopenal.so", "libvivoxoal.so.1") # vivox's sdk expects this soname
             # </FS:ND>
-            
+
             # KLUDGE: As of 2012-04-11, the 'fontconfig' package installs
             # libfontconfig.so.1.4.4, along with symlinks libfontconfig.so.1
             # and libfontconfig.so. Before we added support for library-file
@@ -2433,17 +2209,6 @@ class Linux_i686_Manifest(LinuxManifest):
                     print("Skipping libfmod.so - not found")
                     pass
 
-        # <FS:TJ> Keep Vivox only for OpenSim viewers
-        if self.fs_is_opensim():
-            # Vivox runtimes
-            with self.prefix(src=relpkgdir, dst="bin"):
-                self.path("SLVoice")
-            with self.prefix(src=relpkgdir, dst="lib"):
-                self.path("libortp.so")
-                self.path("libsndfile.so.1")
-                #self.path("libvivoxoal.so.1") # no - we'll re-use the viewer's own OpenAL lib
-                self.path("libvivoxsdk.so")
-        # </FS:TJ>
 
         self.fs_delete_linux_symbols() # <FS:ND/> Delete old syms
         self.strip_binaries()

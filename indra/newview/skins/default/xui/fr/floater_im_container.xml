@@ -15,7 +15,7 @@
 			<panel_container name="im_box_tab_container">
 				<panel name="stub_panel">
 					<button name="stub_collapse_btn" tool_tip="Réduire ce panneau"/>
-					<text name="stub_textbox">Cette conversation s'affiche dans une fenêtre distincte.   [secondlife:/// La rattacher.]</text>
+					<text name="stub_textbox">Cette conversation s'affiche dans une fenêtre distincte.   [fmw:/// La rattacher.]</text>
 				</panel>
 			</panel_container>
 		</layout_panel>

@@ -37,11 +37,7 @@
 			<menu_item_call label="Axtarış/Əvəz etmə..." name="Search / Replace..." />
 			<menu_item_call label="Sətirə keç..." name="Go to line..." />
 		</menu>
-		<menu label="İstinad" name="Help">
-			<menu_item_call label="İstinad..." name="Help..." />
-			<menu_item_call label="Əsas sözlər ilə istinad..." name="Keyword Help..." />
-			<menu_item_call label="Skript kitabxanası..." name="Script Library" />
-		</menu>
+		
 	</menu_bar>
 
 	<layout_stack name="script_editor_button_bar">

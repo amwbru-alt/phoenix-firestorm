@@ -4,7 +4,7 @@
 	<menu_item_call label="坐在這裡" name="Sit Here" />
 	<menu_item_call label="購買這塊土地" name="Land Buy" />
 	<menu_item_call label="購買通行權" name="Land Buy Pass" />
-	<menu_item_call label="建造" name="Create" />
-	<menu_item_call label="編輯地形" name="Edit Terrain" />
+	<menu_item_call label="建造" name="Create"  forme_creator_only="true"/>
+	<menu_item_call label="編輯地形" name="Edit Terrain"  forme_creator_only="true"/>
 	<menu_item_call label="封鎖粒子所有者" name="Mute Particle" />
 </context_menu>

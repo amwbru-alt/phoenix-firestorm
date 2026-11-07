@@ -9,7 +9,7 @@
 	<menu_item_call label="Arkadaşı Çıkar" name="remove_friend"/>
 	<menu_item_call label="Gruba davet et..." name="Invite"/>
 	<menu_item_call label="Harita" name="Map"/>
-	<menu_item_call label="Paylaş" name="Share"/>
+	<menu_item_call label="Paylaş" name="Share" forme_creator_only="true"/>
 	<menu_item_call label="Öde" name="Pay"/>
 	<menu_item_check label="Engelle/Engeli Kaldır" name="Block/Unblock"/>
 </toggleable_menu>

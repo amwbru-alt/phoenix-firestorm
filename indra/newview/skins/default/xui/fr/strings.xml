@@ -5,10 +5,10 @@
      that are returned from one component and may appear in many places-->
 <strings>
 	<string name="SECOND_LIFE_GRID">
-		Grille de Second Life
+		Grille de ForMe.World
 	</string>
 	<string name="SUPPORT_SITE">
-		Portail Assistance Firestorm
+		Portail Assistance ForMe.World
 	</string>
 	<string name="StartupLoading">
 		Chargement de [APP_NAME]...
@@ -28,7 +28,7 @@
 	<string name="AboutHeader">
 		[APP_NAME] [VIEWER_VERSION_0].[VIEWER_VERSION_1].[VIEWER_VERSION_2] ([VIEWER_VERSION_3]) [BUILD_DATE] [BUILD_TIME] ([ADDRESS_SIZE]bit / [SIMD]) ([CHANNEL])
 [[VIEWER_RELEASE_NOTES_URL] [ReleaseNotes]]
-Parité avec le client Second Life: [VIEWER_VERSION_LL]
+Parité avec le client ForMe.World: [VIEWER_VERSION_LL]
 	</string>
 	<string name="AboutCompiler">
 		Compilé avec [COMPILER] version [COMPILER_VERSION]
@@ -206,13 +206,13 @@ Version serveur vocal : [VOICE_VERSION]
 		https://www.firestormviewer.org/join-secondlife/
 	</string>
 	<string name="AgniGridLabel">
-		Grille principale de Second Life (Agni)
+		Grille principale de ForMe.World (Agni)
 	</string>
 	<string name="AditiGridLabel">
-		Grille de test bêta Second Life (Aditi)
+		Grille de test bêta ForMe.World (Aditi)
 	</string>
 	<string name="LoginFailedViewerNotPermitted">
-		Le client que vous utilisez ne permet plus d&apos;accéder à Second Life. Téléchargez un nouveau client à la page suivante :
+		Le client que vous utilisez ne permet plus d&apos;accéder à ForMe.World. Téléchargez un nouveau client à la page suivante :
 http://secondlife.com/download
 
 Pour plus d&apos;informations, consultez la page FAQ ci-dessous :
@@ -252,17 +252,17 @@ et répondez à la question de sécurité. Votre mot de passe sera réinitialis�
 Nous vous prions de nous excuser pour la gêne occasionnée.
 	</string>
 	<string name="LoginFailedEmployeesOnly">
-		Second Life est temporairement fermé pour des raisons de maintenance.
+		ForMe.World est temporairement fermé pour des raisons de maintenance.
 Seuls les employés peuvent actuellement y accéder.
 Consultez la page www.secondlife.com/status pour plus d&apos;informations.
 	</string>
 	<string name="LoginFailedPremiumOnly">
-		Les connexions à Second Life sont temporairement limitées afin de s&apos;assurer que l&apos;expérience des utilisateurs présents dans le monde virtuel soit optimale.
+		Les connexions à ForMe.World sont temporairement limitées afin de s&apos;assurer que l&apos;expérience des utilisateurs présents dans le monde virtuel soit optimale.
 
-Les personnes disposant de comptes gratuits ne pourront pas accéder à Second Life pendant ce temps afin de permettre à celles qui ont payé pour pouvoir utiliser Second Life de le faire.
+Les personnes disposant de comptes gratuits ne pourront pas accéder à ForMe.World pendant ce temps afin de permettre à celles qui ont payé pour pouvoir utiliser ForMe.World de le faire.
 	</string>
 	<string name="LoginFailedComputerProhibited">
-		Impossible d&apos;accéder à Second Life depuis cet ordinateur.
+		Impossible d&apos;accéder à ForMe.World depuis cet ordinateur.
 Si vous pensez qu&apos;il s&apos;agit d&apos;une erreur, contactez
 l&apos;Assistance à l&apos;adresse suivante : support@secondlife.com.
 	</string>
@@ -272,7 +272,7 @@ l&apos;Assistance à l&apos;adresse suivante : support@secondlife.com.
 	</string>
 	<string name="LoginFailedAccountDisabled">
 		Impossible de traiter votre demande à l&apos;heure actuelle.
-Pour obtenir de l&apos;aide, veuillez contacter l&apos;Assistance Second Life à la page suivante : http://support.secondlife.com.
+Pour obtenir de l&apos;aide, veuillez contacter l&apos;Assistance ForMe.World à la page suivante : http://support.secondlife.com.
 	</string>
 	<string name="LoginFailedTransformError">
 		Incohérence des données lors de la connexion.
@@ -298,7 +298,7 @@ Veuillez réessayer de vous connecter dans une minute.
 		Impossible de se connecter à un simulateur.
 	</string>
 	<string name="LoginFailedRestrictedHours">
-		Votre compte permet uniquement d&apos;accéder à Second Life
+		Votre compte permet uniquement d&apos;accéder à ForMe.World
 entre [START] et [END], heure du Pacifique.
 Veuillez réessayer au cours de la période indiquée.
 Si vous pensez qu&apos;il s&apos;agit d&apos;une erreur, contactez l&apos;Assistance à l&apos;adresse suivante : support@secondlife.com
@@ -653,7 +653,7 @@ Si vous pensez qu'il s'agit d'une erreur, veuillez contacter support@secondlife.
 		Cliquez pour voir cet emplacement sur la carte
 	</string>
 	<string name="TooltipSLAPP">
-		Cliquez pour exécuter la commande secondlife://
+		Cliquez pour exécuter la commande ForMe.World://
 	</string>
 	<string name="TooltipFSHelpDebugSLUrl">
 		Cliquez pour ouvrir la fenêtre des paramètres de débogage pour ce paramètre
@@ -1638,10 +1638,10 @@ http://secondlife.com/support pour vous aider à résoudre ce problème.
 		Appuyez sur ESC pour quitter la vue subjective
 	</string>
 	<string name="InventoryNoMatchingItems">
-		Vous n&apos;avez pas trouvé ce que vous cherchiez ? Essayez [secondlife:///app/search/all/[SEARCH_TERM] Rechercher].
+		Vous n&apos;avez pas trouvé ce que vous cherchiez ? Essayez [fmw:///app/search/all/[SEARCH_TERM] Rechercher].
 	</string>
 	<string name="InventoryNoMatchingRecentItems">
-		Avez-vous trouvé ce que vous cherchiez ? Essayez [secondlife:///app/inventory/filters Show filters].
+		Avez-vous trouvé ce que vous cherchiez ? Essayez [fmw:///app/inventory/filters Show filters].
 	</string>
 	<string name="InventoryNoMatchingFavorites">
 		Vous n'avez ajouté aucun article à vos favoris.
@@ -1653,7 +1653,7 @@ http://secondlife.com/support pour vous aider à résoudre ce problème.
 		Afficher les onglets masqués
 	</string>
 	<string name="PlacesNoMatchingItems">
-		Vous n&apos;avez pas trouvé ce que vous cherchiez ? Essayez [secondlife:///app/search/places/[SEARCH_TERM] Rechercher].
+		Vous n&apos;avez pas trouvé ce que vous cherchiez ? Essayez [fmw:///app/search/places/[SEARCH_TERM] Rechercher].
 	</string>
 	<string name="FavoritesNoMatchingItems">
 		Faites glisser un repère ici pour l&apos;ajouter à vos Favoris.
@@ -1679,21 +1679,11 @@ http://secondlife.com/support pour vous aider à résoudre ce problème.
 	<string name="InventoryInboxNoItems">
 		Les achats que vous avez effectués sur Marketplace s&apos;affichent ici. Vous pouvez alors les faire glisser vers votre inventaire afin de les utiliser.
 	</string>
-	<string name="MarketplaceURL">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/
-	</string>
-	<string name="MarketplaceURL_CreateStore">
-		http://community.secondlife.com/t5/English-Knowledge-Base/Selling-in-the-Marketplace/ta-p/700193#Section_.3
-	</string>
-	<string name="MarketplaceURL_Dashboard">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/merchants/store/dashboard
-	</string>
-	<string name="MarketplaceURL_Imports">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/merchants/store/imports
-	</string>
-	<string name="MarketplaceURL_LearnMore">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/learn_more
-	</string>
+	<string name="MarketplaceURL">http://185.173.93.200:8002/web/marketplace.html</string>
+	<string name="MarketplaceURL_CreateStore">http://185.173.93.200:8002/web/seller.html</string>
+	<string name="MarketplaceURL_Dashboard">http://185.173.93.200:8002/web/seller.html</string>
+	<string name="MarketplaceURL_Imports">http://185.173.93.200:8002/web/seller.html</string>
+	<string name="MarketplaceURL_LearnMore">http://185.173.93.200:8002/web/terms.html</string>
 	<string name="InventoryPlayAnimationTooltip">
 		Ouvrir la fenêtre avec les options Jeu
 	</string>
@@ -1729,18 +1719,9 @@ http://secondlife.com/support pour vous aider à résoudre ce problème.
 	<string name="InventoryOutboxError">
 		La [[MARKETPLACE_CREATE_STORE_URL] boutique de Marketplace] renvoie des erreurs.
 	</string>
-	<string name="InventoryMarketplaceError">
-		Une erreur est survenue lors de l’ouverture des annonces de Marketplace.
-Si vous continuez de recevoir ce message, contactez l’assistance Second Life à http://support.secondlife.com pour obtenir de l’aide.
-	</string>
-	<string name="InventoryMarketplaceConnectionError">
-		La connexion au listing de Marketplace a échoué.
-Si vous continuez à recevoir ce message, veuillez contacter l'assistance de Second Life à l'adresse suivante http://support.secondlife.com
-	</string>
-	<string name="InventoryMarketplaceConnectionErrorReason">
-		La connexion au listing de Marketplace a échoué. Raison :: [REASON]
-Si vous continuez à recevoir ce message, veuillez contacter l'assistance de Second Life à l'adresse suivante http://support.secondlife.com
-	</string>
+	<string name="InventoryMarketplaceError">Une erreur est survenue lors de l’ouverture des annonces de Marketplace.</string>
+	<string name="InventoryMarketplaceConnectionError">La connexion au listing de Marketplace a échoué.</string>
+	<string name="InventoryMarketplaceConnectionErrorReason">La connexion au listing de Marketplace a échoué. Raison :: [REASON]</string>
 	<string name="InventoryMarketplaceListingsNoItemsTitle">
 		Votre dossier Annonces de Marketplace est vide.
 	</string>
@@ -6103,7 +6084,7 @@ Essayez avec le chemin d&apos;accès à l&apos;éditeur entre guillemets doubles
 		Changer l&apos;angle de la caméra
 	</string>
 	<string name="Command_Voice_Tooltip">
-		Commandes de réglage du volume des appels et des personnes près de vous dans Second Life.
+		Commandes de réglage du volume des appels et des personnes près de vous dans ForMe.World.
 	</string>
 	<string name="Command_Quickprefs_Tooltip">
 		Préférences rapides pour modifier des paramètres souvent utilisés
@@ -6631,7 +6612,7 @@ correctement. Si vous continuez à recevoir ce message d&apos;erreur, veuillez v
 		avec support de Havok
 	</string>
 	<string name="FSWithOpensim">
-		avec support de OpenSimulator
+		avec support de ForMe.World
 	</string>
 
 	<!-- Firestorm search -->
