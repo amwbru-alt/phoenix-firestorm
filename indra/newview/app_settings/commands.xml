@@ -96,7 +96,7 @@
   
   <command name="inventory"
            available_in_toybox="true"
-           icon="Command_Inventory_Icon"
+           icon="Forme_HUD_Inventory"
            label_ref="Command_Inventory_Label"
            tooltip_ref="Command_Inventory_Tooltip"
            execute_function="Floater.Toggle"
@@ -108,7 +108,7 @@
            />
   <command name="map"
            available_in_toybox="true"
-           icon="Command_Map_Icon"
+           icon="Forme_HUD_Map"
            label_ref="Command_Map_Label"
            tooltip_ref="Command_Map_Tooltip"
            execute_function="Floater.Toggle"
@@ -151,7 +151,7 @@
            />
   <command name="move"
            available_in_toybox="true"
-           icon="Command_Move_Icon"
+           icon="Forme_UI_Walk"
            label_ref="Command_Move_Label"
            tooltip_ref="Command_Move_Tooltip"
            execute_function="Floater.Toggle"
@@ -161,7 +161,7 @@
            />
   <command name="people"
            available_in_toybox="true"
-           icon="Command_People_Icon"
+           icon="Forme_HUD_People"
            label_ref="Command_People_Label"
            tooltip_ref="Command_People_Tooltip"
            execute_function="Floater.Toggle"
@@ -253,7 +253,7 @@
   />
   <command name="view"
            available_in_toybox="true"
-           icon="Command_View_Icon"
+           icon="Forme_UI_Camera"
            label_ref="Command_View_Label"
            tooltip_ref="Command_View_Tooltip"
            execute_function="View.ToggleCameraFloater"

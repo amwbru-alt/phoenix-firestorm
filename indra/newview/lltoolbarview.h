@@ -64,6 +64,8 @@ public:
                             right_toolbar,
                             bottom_toolbar;
 
+        Optional<bool> forme_dock_initialized;
+
         ToolbarSet();
     };
 
@@ -98,6 +100,7 @@ public:
     static void resetDragTool(LLToolBarButton* toolbarButton);
     LLInventoryObject* getDragItem();
     LLView* getBottomToolbar() { return mBottomToolbarPanel; }
+    LLRect getBottomDockRect(const LLView* relative_to) const;
     LLToolBar* getToolbar(LLToolBarEnums::EToolBarLocation toolbar) { return mToolbars[toolbar]; }
     bool isModified() const;
 
@@ -117,6 +120,7 @@ protected:
 private:
     void    saveToolbars() const;
     bool mForMeChatShown = false;
+    LLView* mForMeDockMargin = nullptr;
     bool    addCommandInternal(const LLCommandId& commandId, LLToolBar* toolbar);
     void    addToToolset(command_id_list_t& command_list, Toolbar& toolbar) const;
 

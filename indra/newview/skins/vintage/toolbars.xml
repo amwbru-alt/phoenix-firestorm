@@ -28,6 +28,8 @@
          name="map" />
         <command
          name="inventory" />
+        <command name="view" />
+        <command name="move" />
     </bottom_toolbar>
     <left_toolbar
      button_alignment="center"

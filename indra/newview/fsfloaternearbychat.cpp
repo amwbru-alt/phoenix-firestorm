@@ -37,6 +37,7 @@
 #include "fschatoptionsmenu.h"
 #include "fscommon.h"
 #include "formehudlayout.h"
+#include "lltoolbarview.h"
 #include "fsfloaterim.h"
 #include "fsfloaterimcontainer.h"
 #include "fsnearbychathub.h"
@@ -617,7 +618,9 @@ void FSFloaterNearbyChat::layoutForMeChat()
     const bool show_type = gSavedSettings.getBOOL("FSShowChatType");
     const S32 input_extra = mForMeInputHeight - 30;
     const S32 tools_extra = show_channel || show_type ? 32 : 0;
-    const auto layout = ForMeHUD::layout(getParent()->getRect().getWidth(), getParent()->getRect().getHeight(), mForMeChatCollapsed, input_extra + tools_extra);
+    const LLRect dock = gToolBarView ? gToolBarView->getBottomDockRect(getParent()) : LLRect();
+    const auto layout = ForMeHUD::layout(getParent()->getRect().getWidth(), getParent()->getRect().getHeight(),
+        mForMeChatCollapsed, input_extra + tools_extra, dock.mLeft, dock.mTop);
     const S32 width = layout.chatWidth, height = layout.chatHeight;
     if (getRect().getWidth() != width || getRect().getHeight() != height)
         LLFloater::reshape(width, height, false);

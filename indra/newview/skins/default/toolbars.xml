@@ -8,6 +8,7 @@
         <command name="map"/>
         <command name="people"/>
         <command name="inventory"/>
-        <command name="marketplace"/>
+        <command name="view"/>
+        <command name="move"/>
     </bottom_toolbar>
 </toolbars>

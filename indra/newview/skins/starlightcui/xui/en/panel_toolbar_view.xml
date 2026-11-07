@@ -136,41 +136,65 @@
   <!-- Panel to take up the chat bar / tool bar layout stack -->
   <layout_panel name="bottom_toolbar_panel"
                 auto_resize="false"
-                height="110"
+                height="92"
                 width="1024"
                 mouse_opaque="false">
 
   <layout_stack name="forme_bottom_hud" orientation="vertical" layout="topleft"
-                left="0" top="0" width="1024" height="110" follows="all"
+                left="0" top="0" width="1024" height="92" follows="all"
                 border_size="0" mouse_opaque="false">
   <!-- The toolbar itself -->
   <layout_panel name="toolbar_panel"
                 auto_resize="false"
                 user_resize="false"
-                height="50"
+                height="68"
                 width="1024"
                 mouse_opaque="false">
 
-    <toolbar layout="topleft"
-             button_panel.bg_opaque_image="Rounded_Rect"
-             button_panel.bg_opaque_image_overlay="FormeDockSurface"
-             pad_left="12"
-             pad_right="12"
-             pad_top="4"
-             pad_bottom="4"
-             pad_between="6"
-             button_icon_and_text.desired_height="42"
-             button_icon_and_text.label_color_selected="FormeDockSelectedLabel"
-             name="toolbar_bottom"
-             height="50"
+    <toolbar name="toolbar_bottom"
+             layout="topleft"
              left="0"
              right="-1"
              top="0"
-             side="bottom"
+             height="68"
              follows="left|right|bottom"
+             side="bottom"
              button_display_mode="icons_with_text"
+             button_panel.bg_opaque_image="Forme_HUD_Dock"
+             button_panel.bg_opaque_image_overlay="White"
+             pad_left="8"
+             pad_right="8"
+             pad_top="5"
+             pad_bottom="5"
+             pad_between="3"
+             min_girth="36"
              max_rows="2"
              visible="true">
+      <button_icon_and_text desired_height="58"
+                            button_width.min="82"
+                            button_width.max="108"
+                            image_overlay_alignment="center"
+                            image_bottom_pad="11"
+                            image_top_pad="0"
+                            pad_bottom="-14"
+                            pad_left="6"
+                            pad_right="6"
+                            halign="center"
+                            font="SansSerifSmall"
+                            label_shadow="false"
+                            label_color="0.93 0.92 0.94 1"
+                            label_color_selected="FormeDockSelectedLabel"
+                            image_overlay_color="0.93 0.92 0.94 1"
+                            image_overlay_selected_color="FormeDockSelectedLabel"
+                            image_unselected="Forme_WMap_Clear"
+                            image_selected="Forme_HUD_Active"
+                            image_hover_unselected="Forme_Round_Field"
+                            image_pressed="Forme_HUD_Active"
+                            image_pressed_selected="Forme_HUD_Active"
+                            image_disabled="Forme_WMap_Clear"
+                            image_disabled_selected="Forme_WMap_Clear"
+                            image_color="White"
+                            image_color_disabled="White" />
              <icon layout="topleft"
 	            height="28"
 	            width="15"
@@ -302,39 +326,10 @@
   <layout_panel name="forme_chat_spacer" auto_resize="true" width="704" height="60" mouse_opaque="false" />
   </layout_stack>
   </layout_panel>
+  <layout_panel name="forme_dock_margin" auto_resize="false" user_resize="false" width="1024" height="24" mouse_opaque="false" />
   </layout_stack>
 
   </layout_panel>
 </layout_stack>
 
-<panel name="forme_compact_dock" layout="topleft" left="313" bottom="-24" width="496" height="76" follows="bottom" background_visible="true" background_opaque="true" bg_opaque_image="Forme_HUD_Dock" bg_opaque_color="White">
-    <panel name="forme_dock_map" layout="topleft" left="6" top="5" width="121" height="66">
-      <button name="forme_dock_button_map" layout="topleft" left="0" top="0" width="121" height="66" label="" image_unselected="Forme_WMap_Clear" image_selected="Forme_HUD_Active" image_pressed="Forme_HUD_Active" image_pressed_selected="Forme_HUD_Active" image_disabled_selected="Forme_HUD_Active" hover_glow_amount="0" draw_focus_border="false" is_toggle="true">
-        <commit_callback function="Floater.Toggle" parameter="world_map" />
-      </button>
-      <icon name="forme_dock_icon_map" layout="topleft" left="46" top="6" width="28" height="28" image_name="Forme_HUD_Map" mouse_opaque="false" color="0.90 0.88 0.91 1" />
-      <text name="forme_dock_label_map" layout="topleft" left="0" top="41" width="121" height="20" font="SansSerifSmall" halign="center" text_color="0.90 0.88 0.91 1" mouse_opaque="false">Карта</text>
-    </panel>
-    <panel name="forme_dock_people" layout="topleft" left="127" top="5" width="121" height="66">
-      <button name="forme_dock_button_people" layout="topleft" left="0" top="0" width="121" height="66" label="" image_unselected="Forme_WMap_Clear" image_selected="Forme_HUD_Active" image_pressed="Forme_HUD_Active" image_pressed_selected="Forme_HUD_Active" image_disabled_selected="Forme_HUD_Active" hover_glow_amount="0" draw_focus_border="false" is_toggle="true">
-        <commit_callback function="Floater.Toggle" parameter="people" />
-      </button>
-      <icon name="forme_dock_icon_people" layout="topleft" left="46" top="6" width="28" height="28" image_name="Forme_HUD_People" mouse_opaque="false" color="0.90 0.88 0.91 1" />
-      <text name="forme_dock_label_people" layout="topleft" left="0" top="41" width="121" height="20" font="SansSerifSmall" halign="center" text_color="0.90 0.88 0.91 1" mouse_opaque="false">Люди</text>
-    </panel>
-    <panel name="forme_dock_inventory" layout="topleft" left="248" top="5" width="121" height="66">
-      <button name="forme_dock_button_inventory" layout="topleft" left="0" top="0" width="121" height="66" label="" image_unselected="Forme_WMap_Clear" image_selected="Forme_HUD_Active" image_pressed="Forme_HUD_Active" image_pressed_selected="Forme_HUD_Active" image_disabled_selected="Forme_HUD_Active" hover_glow_amount="0" draw_focus_border="false" is_toggle="true">
-        <commit_callback function="Floater.Toggle" parameter="inventory" />
-      </button>
-      <icon name="forme_dock_icon_inventory" layout="topleft" left="46" top="6" width="28" height="28" image_name="Forme_HUD_Inventory" mouse_opaque="false" color="0.90 0.88 0.91 1" />
-      <text name="forme_dock_label_inventory" layout="topleft" left="0" top="41" width="121" height="20" font="SansSerifSmall" halign="center" text_color="0.90 0.88 0.91 1" mouse_opaque="false">Инвентарь</text>
-    </panel>
-    <panel name="forme_dock_market" layout="topleft" left="369" top="5" width="121" height="66">
-      <button name="forme_dock_button_market" layout="topleft" left="0" top="0" width="121" height="66" label="" image_unselected="Forme_WMap_Clear" image_selected="Forme_HUD_Active" image_pressed="Forme_HUD_Active" image_pressed_selected="Forme_HUD_Active" image_disabled_selected="Forme_HUD_Active" hover_glow_amount="0" draw_focus_border="false" is_toggle="true">
-        <commit_callback function="Avatar.OpenMarketplace" />
-      </button>
-      <icon name="forme_dock_icon_market" layout="topleft" left="46" top="6" width="28" height="28" image_name="Forme_HUD_Market" mouse_opaque="false" color="0.90 0.88 0.91 1" />
-      <text name="forme_dock_label_market" layout="topleft" left="0" top="41" width="121" height="20" font="SansSerifSmall" halign="center" text_color="0.90 0.88 0.91 1" mouse_opaque="false">Маркет</text>
-    </panel>
-  </panel>
 </toolbar_view>

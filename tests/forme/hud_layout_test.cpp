@@ -29,24 +29,25 @@
 #include <cassert>
 int main()
 {
-    const auto reference = ForMeHUD::layout(1672, 940, false);
-    assert(reference.dockWidth == 496 && reference.dockLeft == 588);
+    const auto reference = ForMeHUD::layout(1672, 940, false, 0, 588, 92);
     assert(reference.chatWidth == 380 && reference.chatHeight == 204 && reference.chatBottom == 24);
+    const auto emptyDock = ForMeHUD::layout(580, 420, false, 0, 0, 0);
+    assert(emptyDock.chatBottom == 24);
     for (int width = 320; width <= 3840; width += 16)
         for (int height = 360; height <= 2160; height += 24)
             for (bool collapsed : {false, true})
             for (int extra : {0, 32, 80, 112})
+            for (int dockTop : {92, 153})
             {
-                const auto value = ForMeHUD::layout(width, height, collapsed, extra);
-                assert(value.dockLeft >= 12 && value.dockLeft + value.dockWidth <= width - 12);
+                const int dockLeft = std::max(12, (width - 496) / 2);
+                const auto value = ForMeHUD::layout(width, height, collapsed, extra, dockLeft, dockTop);
                 assert(value.chatWidth <= width - 24);
                 assert(value.chatHeight >= 96);
                 assert(value.chatBottom + value.chatHeight <= height - 12);
-                const bool horizontalGap = 12 + value.chatWidth + 16 <= value.dockLeft;
-                const bool verticalGap = value.chatBottom >= value.dockBottom + 76 + 12;
+                const bool horizontalGap = 12 + value.chatWidth + 16 <= dockLeft;
+                const bool verticalGap = value.chatBottom >= dockTop + 12;
                 assert(horizontalGap || verticalGap);
-                const auto other = ForMeHUD::layout(width, height, !collapsed);
+                const auto other = ForMeHUD::layout(width, height, !collapsed, 0, dockLeft, dockTop);
                 assert(value.chatBottom == other.chatBottom && value.chatWidth == other.chatWidth);
-                assert(value.dockLeft == other.dockLeft && value.dockBottom == other.dockBottom);
             }
 }

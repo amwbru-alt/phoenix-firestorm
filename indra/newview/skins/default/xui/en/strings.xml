@@ -2736,7 +2736,7 @@ name="Command_360_Capture_Label">360° Snapshot</string>
   <string name="Command_Marketplace_Label">Marketplace</string>
   <string name="Command_MarketplaceListings_Label">Marketplace</string>
   <string name="Command_MiniMap_Label">Mini-map</string>
-  <string name="Command_Move_Label">Walk / run / fly</string>
+  <string name="Command_Move_Label">Movement</string>
   <string name="Command_People_Label">People</string>
   <string name="Command_Performance_Label">Graphics speed</string>
   <string name="Command_Picks_Label">Picks</string>
@@ -2747,7 +2747,7 @@ name="Command_360_Capture_Label">360° Snapshot</string>
   <string name="Command_Search_Label">Search</string>
   <string name="Command_Snapshot_Label">Snapshot</string>
   <string name="Command_Speak_Label">Speak</string>
-  <string name="Command_View_Label">Camera controls</string>
+  <string name="Command_View_Label">Camera</string>
 <!-- Ansariel: Renamed for FS (FIRE-5019)
   <string name="Command_Voice_Label">Voice settings</string>-->
   <string name="Command_Voice_Label">Nearby voice</string>

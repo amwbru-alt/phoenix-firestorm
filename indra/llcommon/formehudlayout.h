@@ -32,15 +32,13 @@ namespace ForMeHUD
 {
 struct Layout
 {
-    int dockLeft, dockWidth, dockBottom, chatWidth, chatHeight, chatBottom;
+    int chatWidth, chatHeight, chatBottom;
 };
-inline Layout layout(int width, int height, bool collapsed, int extraHeight = 0)
+inline Layout layout(int width, int height, bool collapsed, int extraHeight, int dockLeft, int dockTop)
 {
-    const int dockWidth = std::min(496, std::max(0, width - 24));
-    const int dockLeft = (width - dockWidth) / 2;
     const int chatWidth = std::min(380, std::max(0, width - 24));
-    const int bottom = dockLeft >= 12 + chatWidth + 16 ? 24 : 112;
-    return {dockLeft, dockWidth, 24, chatWidth,
+    const int bottom = dockTop <= 0 || dockLeft >= 12 + chatWidth + 16 ? 24 : dockTop + 12;
+    return {chatWidth,
         std::min((collapsed ? 112 : 204) + std::clamp(extraHeight, 0, 112), std::max(0, height - bottom - 12)), bottom};
 }
 }

@@ -52,14 +52,29 @@ for skin in ('default', 'starlight', 'starlightcui', 'vintage'):
             name = el.get(key, '')
             if name.startswith('Forme_'):
                 assert name in textures and (BASE/'textures'/textures[name]).is_file(), (skin, name)
+commands = {node.get('name'): node for node in ET.parse(ROOT/'indra/newview/app_settings/commands.xml').getroot()}
+dock_defaults = ET.parse(BASE/'toolbars.xml').getroot().find('bottom_toolbar')
+assert [node.get('name') for node in dock_defaults] == ['map', 'people', 'inventory', 'view', 'move']
+for command, action, parameter in (
+    ('view', 'View.ToggleCameraFloater', None),
+    ('move', 'Floater.Toggle', 'moveview'),
+):
+    node = commands[command]
+    assert node.get('available_in_toybox') == 'true'
+    assert node.get('execute_function') == action and node.get('execute_parameters') == parameter
+    assert node.get('icon') in textures
+assert commands['marketplace'].get('available_in_toybox') == 'false'
+ru = ET.parse(BASE/'xui/ru/strings.xml').getroot()
+assert ru.find("string[@name='Command_View_Label']").text.strip() == 'Камера'
+assert ru.find("string[@name='Command_Move_Label']").text.strip() == 'Движение'
 for skin in ('default', 'starlight', 'starlightcui'):
     root = ET.parse(ROOT/f'indra/newview/skins/{skin}/xui/en/panel_toolbar_view.xml').getroot()
-    dock = root.find(".//*[@name='forme_compact_dock']")
-    buttons = dock.findall('.//button')
-    assert len(buttons) == 4
-    actions = [(b.find('commit_callback').get('function'), b.find('commit_callback').get('parameter')) for b in buttons]
-    assert actions == [('Floater.Toggle','world_map'), ('Floater.Toggle','people'), ('Floater.Toggle','inventory'), ('Avatar.OpenMarketplace',None)]
-    assert all(el.get('image_name','').startswith('Forme_HUD_') for el in dock.findall('.//icon'))
+    assert root.find(".//*[@name='forme_compact_dock']") is None
+    dock = root.find(".//toolbar[@name='toolbar_bottom']")
+    assert dock.get('button_panel.bg_opaque_image') == 'Forme_HUD_Dock'
+    assert dock.get('read_only') != 'true' and dock.get('visible') != 'false'
+    assert dock.find('button_icon_and_text').get('image_selected') == 'Forme_HUD_Active'
+    assert root.find(".//*[@name='forme_dock_margin']").get('height') == '24'
 for path in (ROOT/'indra/newview/skins').glob('*/xui/*/floater_fs_nearby_chat.xml'):
     if path.parent.name == 'en': continue
     locale = ET.parse(path).getroot()
@@ -69,4 +84,4 @@ for name in ('Surface','Dock','Active','Input'):
     assert struct.unpack('>II', path.read_bytes()[16:24]) == (64,64)
 header = ET.parse(BASE/'xui/en/panel_forme_chat_header.xml').getroot()
 assert {'avatar_icon','user_name','time_box','header_ls'} <= {el.get('name') for el in header.iter()}
-print('PASS native chat controls, real history/editor, all skins, four dock commands and packaged line icons')
+print('PASS native chat controls, real history/editor, all skins, editable dock and default camera/movement actions and packaged line icons')

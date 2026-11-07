@@ -5526,9 +5526,7 @@ https://www.firestormviewer.org/support за помощь в решении эт
     <string name="Command_Speak_Label">
 		Говорить
 	</string>
-    <string name="Command_View_Label">
-		Управление камерой
-	</string>
+    <string name="Command_View_Label">Камера</string>
     <string name="Command_Voice_Label">
 		Голос рядом
 	</string>

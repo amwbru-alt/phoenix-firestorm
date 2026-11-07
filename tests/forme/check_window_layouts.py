@@ -57,7 +57,7 @@ for identifier, filename in registered:
     root = resource(filename)
     if identifier in custom:
         continue
-    assert int(root.get('header_height', '0')) == (28 if filename == 'floater_moveview.xml' else 44), filename
+    assert int(root.get('header_height', '0')) == (28 if filename in {'floater_moveview.xml', 'floater_camera.xml'} else 44), filename
     assert root.get('header_icon') in textures, filename
     framed += 1
 
@@ -131,7 +131,12 @@ category_scroll = child(inventory, 'forme_inventory_categories')
 assert int(category_scroll.get('width')) - int(child(inventory, 'forme_inventory_categories_body').get('width')) >= 20
 assert child(people, 'panel_radar').get('right') == child(people, 'panel_radar').get('bottom') == '-1'
 camera = resource('floater_camera.xml')
-assert int(camera.get('min_height')) >= int(camera.get('height')) + 44
+assert int(camera.get('min_height')) == int(camera.get('height')) + int(camera.get('header_height'))
+assert camera.get('can_resize') == 'false' and int(camera.get('width')) <= 400
+for block in ('buttons_panel', 'zoom', 'preset_buttons_panel'):
+    fits(child(camera, block), camera)
+for item in child(camera, 'buttons_panel'):
+    fits(item, child(camera, 'buttons_panel'))
 assert child(camera, 'cam_rotate_stick').tag == 'joystick_rotate'
 assert child(camera, 'cam_track_stick').tag == 'joystick_track'
 assert int(child(camera, 'zoom').get('left')) < int(child(camera, 'preset_buttons_panel').get('left'))
