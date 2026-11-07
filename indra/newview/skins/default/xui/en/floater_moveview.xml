@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<floater positioning="specified" right="-693" bottom="-50" legacy_header_height="0" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" can_dock="false" can_minimize="false" can_close="false" can_resize="true" height="118" layout="topleft" min_height="162" min_width="612" name="move_floater" save_rect="true" save_visibility="true" single_instance="true" chrome="true" show_title="true" width="612" header_height="44" header_vpad="10" header_icon="Forme_UI_Walk" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD">
+<floater positioning="specified" right="-16" bottom="-50" legacy_header_height="0" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" can_dock="false" can_minimize="false" can_close="false" can_resize="false" height="66" layout="topleft" min_height="94" min_width="272" name="move_floater" save_rect="true" save_visibility="true" single_instance="true" chrome="true" show_title="true" width="272" header_height="28" header_vpad="3" header_icon="Forme_UI_Walk" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD">
   <string name="walk_forward_tooltip">
         Walk Forward (press Up Arrow or W)
     </string>
@@ -48,13 +48,10 @@
   <string name="crouch_tooltip">
         Crouch (press C)
     </string>
-  <string name="walk_title">
-    </string>
-  <string name="run_title">
-    </string>
-  <string name="fly_title">
-    </string>
-  <panel border="false" top="4" follows="all" layout="topleft" left="3" mouse_opaque="false" name="panel_actions" height="72" width="80">
+  <string name="walk_title">Walk</string>
+  <string name="run_title">Run</string>
+  <string name="fly_title">Flight</string>
+  <panel border="false" top="4" follows="all" layout="topleft" left="3" mouse_opaque="false" name="panel_actions" height="72" width="80" visible="false">
     <layout_stack border_size="0" top="0" enabled="true" height="72" left="0" mouse_opaque="false" name="ls_vertical" orientation="vertical" width="80" follows="all">
       <layout_panel mouse_opaque="false" name="lp_row1" user_resize="false" width="80" height="25">
         <layout_stack border_size="0" top="0" enabled="true" height="25" left="0" mouse_opaque="false" name="ls_horizontal1" orientation="horizontal" width="80" follows="all">
@@ -88,22 +85,22 @@
       </layout_panel>
     </layout_stack>
   </panel>
-  <panel name="forme_layout_move_directions" layout="topleft" left="16" top="12" width="188" height="92">
-    <button height="40" follows="left|top" image_selected="Forme_Round_Accent" image_pressed_selected="Forme_Round_Accent" image_unselected="Forme_Round_Field" layout="topleft" name="turn left btn" width="40" scale_image="true" tool_tip="Turn left (press Left Arrow or A)" left="0" top="0" image_overlay="Forme_UI_Rotate" image_pressed="Forme_Round_Accent" />
-    <joystick_turn follows="left|top" height="40" image_selected="Forme_Round_Accent" image_pressed_selected="Forme_Round_Accent" image_unselected="Forme_Round_Field" layout="topleft" name="forward btn" quadrant="up" width="40" scale_image="true" tool_tip="Walk forward (press up arrow or W)" left="48" top="0" image_overlay="Forme_UI_ArrowUp" image_pressed="Forme_Round_Accent" />
-    <button height="40" follows="left|top" image_selected="Forme_Round_Accent" image_pressed_selected="Forme_Round_Accent" image_unselected="Forme_Round_Field" layout="topleft" width="40" name="turn right btn" scale_image="true" tool_tip="Turn right (press Right Arrow or D)" left="96" top="0" image_overlay="Forme_UI_Rotate" image_pressed="Forme_Round_Accent" />
-    <button follows="left|top" height="40" image_selected="Forme_Round_Accent" image_pressed_selected="Forme_Round_Accent" image_unselected="Forme_Round_Field" layout="topleft" name="move up btn" scale_image="true" tool_tip="Fly up (press E)" width="40" left="144" top="0" image_overlay="Forme_UI_ArrowUp" image_pressed="Forme_Round_Accent" />
-    <joystick_slide height="40" follows="left|top" image_selected="Forme_Round_Accent" image_pressed_selected="Forme_Round_Accent" image_unselected="Forme_Round_Field" layout="topleft" name="move left btn" quadrant="left" width="40" scale_image="true" tool_tip="Walk left (press Shift + Left Arrow or A)" left="0" top="48" image_overlay="Forme_UI_ArrowLeft" image_pressed="Forme_Round_Accent" />
-    <joystick_turn follows="left|top" height="40" image_selected="Forme_Round_Accent" image_pressed_selected="Forme_Round_Accent" image_unselected="Forme_Round_Field" layout="topleft" name="backward btn" quadrant="down" width="40" scale_image="true" tool_tip="Walk backward (press down arrow or S)" left="48" top="48" image_overlay="Forme_UI_ArrowDown" image_pressed="Forme_Round_Accent" />
-    <joystick_slide height="40" follows="left|top" image_selected="Forme_Round_Accent" image_pressed_selected="Forme_Round_Accent" image_unselected="Forme_Round_Field" layout="topleft" name="move right btn" quadrant="right" width="40" scale_image="true" tool_tip="Walk right (press Shift + Right Arrow or D)" left="96" top="48" image_overlay="Forme_UI_ArrowRight" image_pressed="Forme_Round_Accent" />
-    <button follows="left|top" height="40" image_selected="Forme_Round_Accent" image_pressed_selected="Forme_Round_Accent" image_unselected="Forme_Round_Field" layout="topleft" name="move down btn" scale_image="true" tool_tip="Fly down (press C)" width="40" left="144" top="48" image_overlay="Forme_UI_ArrowDown" image_pressed="Forme_Round_Accent" />
+  <panel name="forme_layout_move_directions" layout="topleft" left="8" top="9" width="96" height="48">
+    <button height="22" follows="left|top" image_selected="Forme_Round_Accent" image_pressed_selected="Forme_Round_Accent" image_unselected="Forme_Round_Field" layout="topleft" name="turn left btn" width="22" scale_image="true" tool_tip="Turn left (press Left Arrow or A)" left="0" top="0" image_overlay="Forme_UI_Rotate" image_pressed="Forme_Round_Accent" draw_focus_border="false" />
+    <joystick_turn follows="left|top" height="22" image_selected="Forme_Round_Accent" image_pressed_selected="Forme_Round_Accent" image_unselected="Forme_Round_Field" layout="topleft" name="forward btn" quadrant="up" width="22" scale_image="true" tool_tip="Walk forward (press up arrow or W)" left="24" top="0" image_overlay="Forme_UI_ArrowUp" image_pressed="Forme_Round_Accent" draw_focus_border="false" />
+    <button height="22" follows="left|top" image_selected="Forme_Round_Accent" image_pressed_selected="Forme_Round_Accent" image_unselected="Forme_Round_Field" layout="topleft" width="22" name="turn right btn" scale_image="true" tool_tip="Turn right (press Right Arrow or D)" left="48" top="0" image_overlay="Forme_UI_Rotate" image_pressed="Forme_Round_Accent" draw_focus_border="false" />
+    <button follows="left|top" height="22" image_selected="Forme_Round_Accent" image_pressed_selected="Forme_Round_Accent" image_unselected="Forme_Round_Field" layout="topleft" name="move up btn" scale_image="true" tool_tip="Fly up (press E)" width="22" left="72" top="0" image_overlay="Forme_UI_ArrowUp" image_pressed="Forme_Round_Accent" draw_focus_border="false" />
+    <joystick_slide height="22" follows="left|top" image_selected="Forme_Round_Accent" image_pressed_selected="Forme_Round_Accent" image_unselected="Forme_Round_Field" layout="topleft" name="move left btn" quadrant="left" width="22" scale_image="true" tool_tip="Walk left (press Shift + Left Arrow or A)" left="0" top="25" image_overlay="Forme_UI_ArrowLeft" image_pressed="Forme_Round_Accent" draw_focus_border="false" />
+    <joystick_turn follows="left|top" height="22" image_selected="Forme_Round_Accent" image_pressed_selected="Forme_Round_Accent" image_unselected="Forme_Round_Field" layout="topleft" name="backward btn" quadrant="down" width="22" scale_image="true" tool_tip="Walk backward (press down arrow or S)" left="24" top="25" image_overlay="Forme_UI_ArrowDown" image_pressed="Forme_Round_Accent" draw_focus_border="false" />
+    <joystick_slide height="22" follows="left|top" image_selected="Forme_Round_Accent" image_pressed_selected="Forme_Round_Accent" image_unselected="Forme_Round_Field" layout="topleft" name="move right btn" quadrant="right" width="22" scale_image="true" tool_tip="Walk right (press Shift + Right Arrow or D)" left="48" top="25" image_overlay="Forme_UI_ArrowRight" image_pressed="Forme_Round_Accent" draw_focus_border="false" />
+    <button follows="left|top" height="22" image_selected="Forme_Round_Accent" image_pressed_selected="Forme_Round_Accent" image_unselected="Forme_Round_Field" layout="topleft" name="move down btn" scale_image="true" tool_tip="Fly down (press C)" width="22" left="72" top="25" image_overlay="Forme_UI_ArrowDown" image_pressed="Forme_Round_Accent" draw_focus_border="false" />
   </panel>
-  <layout_stack name="forme_layout_move_modes" layout="topleft" left="224" top="34" width="372" height="44" orientation="horizontal" animate="false">
-    <layout_panel mouse_opaque="false" name="modes_container" auto_resize="true" user_resize="false" height="44" width="372">
-      <panel mouse_opaque="false" border="false" height="44" layout="topleft" name="panel_modes" width="372" left="0" top="0">
-        <button follows="left|bottom" height="42" image_overlay="Forme_UI_Walk" image_selected="PushButton_Selected_Press" layout="topleft" name="mode_walk_btn" pad_right="0" tool_tip="Walking mode" width="120" left="0" top="0" label="Walk" image_overlay_alignment="left" pad_left="10" halign="left" />
-        <button follows="left|bottom" height="42" image_overlay="Forme_UI_Walk" image_selected="PushButton_Selected_Press" layout="topleft" name="mode_run_btn" pad_left="10" pad_right="0" tool_tip="Running mode" width="120" left="126" top="0" label="Run" image_overlay_alignment="left" halign="left" />
-        <button follows="left|bottom" height="42" image_overlay="Forme_UI_Send" image_selected="PushButton_Selected_Press" layout="topleft" name="mode_fly_btn" pad_left="10" pad_right="0" tool_tip="Flying mode" width="120" left="252" top="0" label="Fly" image_overlay_alignment="left" halign="left" />
+  <layout_stack name="forme_layout_move_modes" layout="topleft" left="105" top="21" width="160" height="24" orientation="horizontal" animate="false">
+    <layout_panel mouse_opaque="false" name="modes_container" auto_resize="true" user_resize="false" height="24" width="160">
+      <panel mouse_opaque="false" border="false" height="24" layout="topleft" name="panel_modes" width="160" left="0" top="0">
+        <button follows="left|bottom" height="24" image_selected="Forme_Round_Accent" layout="topleft" name="mode_walk_btn" pad_right="0" tool_tip="Walking mode" width="52" left="0" top="0" label="Walk" pad_left="0" halign="center" font="SansSerifSmall" label_shadow="false" image_unselected="Forme_Round_Field" image_pressed="Forme_Round_Selection" image_pressed_selected="Forme_Round_Accent" use_ellipses="true" />
+        <button follows="left|bottom" height="24" image_selected="Forme_Round_Accent" layout="topleft" name="mode_run_btn" pad_left="0" pad_right="0" tool_tip="Running mode" width="52" left="54" top="0" label="Run" halign="center" font="SansSerifSmall" label_shadow="false" image_unselected="Forme_Round_Field" image_pressed="Forme_Round_Selection" image_pressed_selected="Forme_Round_Accent" use_ellipses="true" />
+        <button follows="left|bottom" height="24" image_selected="Forme_Round_Accent" layout="topleft" name="mode_fly_btn" pad_left="0" pad_right="0" tool_tip="Flying mode" width="52" left="108" top="0" label="Fly" halign="center" font="SansSerifSmall" label_shadow="false" image_unselected="Forme_Round_Field" image_pressed="Forme_Round_Selection" image_pressed_selected="Forme_Round_Accent" use_ellipses="true" />
       </panel>
     </layout_panel>
   </layout_stack>

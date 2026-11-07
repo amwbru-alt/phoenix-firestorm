@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<panel follows="all" height="660" label="Things" layout="topleft" min_height="300" min_width="240" name="main inventory panel" width="840">
+<panel follows="all" height="510" label="Things" layout="topleft" min_height="300" min_width="240" name="main inventory panel" width="660">
   <panel.string name="Itemcount">
   </panel.string>
   <panel.string name="ItemcountFetching">
@@ -14,17 +14,17 @@
   <panel.string name="inventory_title">Inventory</panel.string>
   <panel.string name="default_mode_btn">Multi_Folder_Mode</panel.string>
   <panel.string name="single_folder_mode_btn">Single_Folder_Mode</panel.string>
-  <layout_stack follows="left|right|top" animate="false" orientation="horizontal" name="top_stack" left="16" top="12" layout="topleft" height="40" right="-16">
-    <layout_panel border="false" bevel_style="in" user_resize="false" auto_resize="false" height="40" width="62" name="nav_buttons" visible="false">
+  <layout_stack follows="left|right|top" animate="false" orientation="horizontal" name="top_stack" left="16" top="12" layout="topleft" height="32" right="-16">
+    <layout_panel border="false" bevel_style="in" user_resize="false" auto_resize="false" height="32" width="62" name="nav_buttons" visible="false">
       <button follows="top|left" height="23" image_selected="Single_Folder_Back" image_pressed="Single_Folder_Back" image_unselected="Single_Folder_Back" scale_image="false" layout="topleft" left="0" top="2" name="back_btn" tool_tip="Back" width="20" />
       <button follows="top|left" height="23" image_selected="Single_Folder_Forward" image_pressed="Single_Folder_Forward" image_unselected="Single_Folder_Forward" scale_image="false" layout="topleft" left_pad="1" name="forward_btn" tool_tip="Forward" width="20" />
       <button follows="top|left" height="23" image_selected="Single_Folder_Up" image_pressed="Single_Folder_Up" image_unselected="Single_Folder_Up" scale_image="false" layout="topleft" left_pad="1" name="up_btn" tool_tip="Go up one level" width="20" />
     </layout_panel>
-    <layout_panel border="false" bevel_style="in" user_resize="false" height="40" width="324" name="filter_panel" visible="true">
-      <filter_editor text_pad_left="10" follows="left|top|right" height="40" label="Filter Inventory" layout="topleft" left="2" max_length_chars="300" highlight_text_field="true" name="inventory search editor" tool_tip="Type in one or more words to search for, separated by '+' " top="0" width="322" />
+    <layout_panel border="false" bevel_style="in" user_resize="false" height="32" width="568" name="filter_panel" visible="true">
+      <filter_editor text_pad_left="10" follows="left|top|right" height="32" label="Filter Inventory" layout="topleft" left="2" max_length_chars="300" highlight_text_field="false" name="inventory search editor" tool_tip="Type in one or more words to search for, separated by '+' " top="0" right="-1" use_bg_color="false" background_image="Forme_Round_Field" background_image_focused="Forme_Round_Field" />
     </layout_panel>
   </layout_stack>
-  <layout_stack follows="left|top|right" animate="false" name="ctrl_stack" orientation="horizontal" left="16" top="60" layout="topleft" height="28" right="-16">
+  <layout_stack follows="left|top|right" animate="false" name="ctrl_stack" orientation="horizontal" left="16" top="50" layout="topleft" height="28" right="-16">
     <layout_panel border="false" bevel_style="in" user_resize="false" auto_resize="false" height="28" width="168" name="collapse_expand_buttons">
       <button name="collapse_btn" label="Collapse" width="80" height="26" left="0" top="0" follows="top|left" layout="topleft" />
       <button name="expand_btn" label="Expand" width="80" height="26" left_pad="4" follows="top|left" layout="topleft" />
@@ -56,8 +56,8 @@
       <menu_button follows="top|right" tool_tip="Show search visibility options" height="26" image_overlay="Inv_Toolbar_SearchVisibility" layout="topleft" right="-1" top_delta="0" name="options_visibility_btn" width="31" />
     </layout_panel>
   </layout_stack>
-  <panel follows="all" halign="center" layout="topleft" name="default_inventory_panel" left="194" top="100" right="-16" bottom="-58">
-    <tab_container bg_alpha_color="DkGray" bg_opaque_color="DkGray" background_visible="false" background_opaque="false" follows="all" halign="center" height="338" layout="topleft" left="0" name="inventory filter tabs" open_tabs_on_drag_and_drop="true" tab_position="top" top="0" use_ellipses="true" tab_height="34" tab_min_width="110" tab_max_width="190">
+  <panel follows="all" halign="center" layout="topleft" name="default_inventory_panel" left="182" top="88" right="-16" bottom="-58">
+    <tab_container bg_alpha_color="DkGray" bg_opaque_color="DkGray" background_visible="false" background_opaque="false" follows="all" halign="center" layout="topleft" left="0" name="inventory filter tabs" open_tabs_on_drag_and_drop="true" tab_position="top" top="0" use_ellipses="true" tab_height="28" tab_min_width="86" tab_max_width="102" right="-1" bottom="-1">
       <inventory_panel border="false" bevel_style="none" follows="all" label="Inventory" layout="topleft" name="All Items" sort_order_setting="InventorySortOrder" show_item_link_overlays="true" preinitialize_views="false" scroll.reserve_scroll_corner="false">
         <folder double_click_override="true" />
       </inventory_panel>
@@ -72,8 +72,8 @@
       </favorites_inventory_panel>
     </tab_container>
   </panel>
-  <panel follows="all" halign="center" layout="topleft" name="combination_view_inventory" visible="false" left="194" top="100" right="-16" bottom="-58">
-    <layout_stack follows="all" height="338" name="combination_view_stack" animate="false" drag_handle_thickness="6" drag_handle_first_indent="18" drag_handle_second_indent="18" drag_handle_color="InventoryFocusOutlineColor" drag_handle_shift="5" show_drag_handle="true" top="0" left="0" orientation="vertical">
+  <panel follows="all" halign="center" layout="topleft" name="combination_view_inventory" visible="false" left="182" top="88" right="-16" bottom="-58">
+    <layout_stack follows="all" name="combination_view_stack" animate="false" drag_handle_thickness="6" drag_handle_first_indent="18" drag_handle_second_indent="18" drag_handle_color="InventoryFocusOutlineColor" drag_handle_shift="5" show_drag_handle="true" top="0" left="0" orientation="vertical" right="-1" bottom="-1">
       <layout_panel border="false" bevel_style="in" user_resize="true" auto_resize="true" height="228" min_width="150" name="comb_gallery_layout">
         <panel class="inventory_gallery" filename="panel_inventory_gallery.xml" left="0" top_pad="0" height="228" name="comb_gallery_view_inv" background_visible="true" follows="all" layout="topleft">
         </panel>
@@ -117,65 +117,65 @@
       <dnd_button follows="top|right" height="31" image_hover_unselected="Toolbar_Right_Over" image_overlay="TrashItem_Off" image_selected="Toolbar_Right_Selected" image_unselected="Toolbar_Right_Off" left="0" layout="topleft" name="trash_btn" tool_tip="Remove selected item" top="0" width="31" />
     </panel>
   </panel>
-  <scroll_container name="forme_inventory_categories" layout="topleft" left="16" top="100" width="166" bottom="-58" follows="left|top|bottom" opaque="false" reserve_scroll_corner="false">
-    <panel name="forme_inventory_categories_body" layout="topleft" left="0" top="0" width="154" height="552" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
-      <button name="forme_category_all" label="All types" tool_tip="All types" layout="topleft" left="6" top="6" width="142" height="32" halign="left" pad_left="8" image_overlay="Forme_UI_Window" image_overlay_alignment="left" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" label_shadow="false">
+  <scroll_container name="forme_inventory_categories" layout="topleft" left="16" top="88" width="154" bottom="-58" follows="left|top|bottom" opaque="false" reserve_scroll_corner="false">
+    <panel name="forme_inventory_categories_body" layout="topleft" left="0" top="0" width="132" height="460" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
+      <button name="forme_category_all" label="All types" tool_tip="All types" layout="topleft" left="6" top="6" width="120" height="27" halign="left" pad_left="8" image_overlay="Forme_UI_Window" image_overlay_alignment="left" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" label_shadow="false" use_ellipses="true">
         <button.commit_callback function="ForMeInventory.Category" parameter="filter_type_all" />
         <button.is_toggled_callback function="ForMeInventory.CategorySelected" parameter="filter_type_all" />
       </button>
-      <button name="forme_category_clothing" label="Clothing" tool_tip="Clothing" layout="topleft" left="6" top="42" width="142" height="32" halign="left" pad_left="8" image_overlay="Forme_UI_Clothes" image_overlay_alignment="left" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" label_shadow="false">
+      <button name="forme_category_clothing" label="Clothing" tool_tip="Clothing" layout="topleft" left="6" top="36" width="120" height="27" halign="left" pad_left="8" image_overlay="Forme_UI_Clothes" image_overlay_alignment="left" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" label_shadow="false" use_ellipses="true">
         <button.commit_callback function="ForMeInventory.Category" parameter="filter_type_clothing" />
         <button.is_toggled_callback function="ForMeInventory.CategorySelected" parameter="filter_type_clothing" />
       </button>
-      <button name="forme_category_objects" label="Objects" tool_tip="Objects" layout="topleft" left="6" top="78" width="142" height="32" halign="left" pad_left="8" image_overlay="Forme_UI_Cube" image_overlay_alignment="left" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" label_shadow="false">
+      <button name="forme_category_objects" label="Objects" tool_tip="Objects" layout="topleft" left="6" top="66" width="120" height="27" halign="left" pad_left="8" image_overlay="Forme_UI_Cube" image_overlay_alignment="left" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" label_shadow="false" use_ellipses="true">
         <button.commit_callback function="ForMeInventory.Category" parameter="filter_type_objects" />
         <button.is_toggled_callback function="ForMeInventory.CategorySelected" parameter="filter_type_objects" />
       </button>
-      <button name="forme_category_textures" label="Textures" tool_tip="Textures" layout="topleft" left="6" top="114" width="142" height="32" halign="left" pad_left="8" image_overlay="Forme_UI_Graphics" image_overlay_alignment="left" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" label_shadow="false">
+      <button name="forme_category_textures" label="Textures" tool_tip="Textures" layout="topleft" left="6" top="96" width="120" height="27" halign="left" pad_left="8" image_overlay="Forme_UI_Graphics" image_overlay_alignment="left" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" label_shadow="false" use_ellipses="true">
         <button.commit_callback function="ForMeInventory.Category" parameter="filter_type_textures" />
         <button.is_toggled_callback function="ForMeInventory.CategorySelected" parameter="filter_type_textures" />
       </button>
-      <button name="forme_category_materials" label="Materials" tool_tip="Materials" layout="topleft" left="6" top="150" width="142" height="32" halign="left" pad_left="8" image_overlay="Forme_UI_Layers" image_overlay_alignment="left" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" label_shadow="false">
+      <button name="forme_category_materials" label="Materials" tool_tip="Materials" layout="topleft" left="6" top="126" width="120" height="27" halign="left" pad_left="8" image_overlay="Forme_UI_Layers" image_overlay_alignment="left" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" label_shadow="false" use_ellipses="true">
         <button.commit_callback function="ForMeInventory.Category" parameter="filter_type_materials" />
         <button.is_toggled_callback function="ForMeInventory.CategorySelected" parameter="filter_type_materials" />
       </button>
-      <button name="forme_category_scripts" label="Scripts" tool_tip="Scripts" layout="topleft" left="6" top="186" width="142" height="32" halign="left" pad_left="8" image_overlay="Forme_UI_Code" image_overlay_alignment="left" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" label_shadow="false">
+      <button name="forme_category_scripts" label="Scripts" tool_tip="Scripts" layout="topleft" left="6" top="156" width="120" height="27" halign="left" pad_left="8" image_overlay="Forme_UI_Code" image_overlay_alignment="left" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" label_shadow="false" use_ellipses="true">
         <button.commit_callback function="ForMeInventory.Category" parameter="filter_type_scripts" />
         <button.is_toggled_callback function="ForMeInventory.CategorySelected" parameter="filter_type_scripts" />
       </button>
-      <button name="forme_category_sounds" label="Sounds" tool_tip="Sounds" layout="topleft" left="6" top="222" width="142" height="32" halign="left" pad_left="8" image_overlay="Forme_UI_Music" image_overlay_alignment="left" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" label_shadow="false">
+      <button name="forme_category_sounds" label="Sounds" tool_tip="Sounds" layout="topleft" left="6" top="186" width="120" height="27" halign="left" pad_left="8" image_overlay="Forme_UI_Music" image_overlay_alignment="left" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" label_shadow="false" use_ellipses="true">
         <button.commit_callback function="ForMeInventory.Category" parameter="filter_type_sounds" />
         <button.is_toggled_callback function="ForMeInventory.CategorySelected" parameter="filter_type_sounds" />
       </button>
-      <button name="forme_category_animations" label="Animations" tool_tip="Animations" layout="topleft" left="6" top="258" width="142" height="32" halign="left" pad_left="8" image_overlay="Forme_UI_Walk" image_overlay_alignment="left" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" label_shadow="false">
+      <button name="forme_category_animations" label="Animations" tool_tip="Animations" layout="topleft" left="6" top="216" width="120" height="27" halign="left" pad_left="8" image_overlay="Forme_UI_Walk" image_overlay_alignment="left" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" label_shadow="false" use_ellipses="true">
         <button.commit_callback function="ForMeInventory.Category" parameter="filter_type_animations" />
         <button.is_toggled_callback function="ForMeInventory.CategorySelected" parameter="filter_type_animations" />
       </button>
-      <button name="forme_category_gestures" label="Gestures" tool_tip="Gestures" layout="topleft" left="6" top="294" width="142" height="32" halign="left" pad_left="8" image_overlay="Forme_UI_Profile" image_overlay_alignment="left" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" label_shadow="false">
+      <button name="forme_category_gestures" label="Gestures" tool_tip="Gestures" layout="topleft" left="6" top="246" width="120" height="27" halign="left" pad_left="8" image_overlay="Forme_UI_Profile" image_overlay_alignment="left" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" label_shadow="false" use_ellipses="true">
         <button.commit_callback function="ForMeInventory.Category" parameter="filter_type_gestures" />
         <button.is_toggled_callback function="ForMeInventory.CategorySelected" parameter="filter_type_gestures" />
       </button>
-      <button name="forme_category_landmarks" label="Landmarks" tool_tip="Landmarks" layout="topleft" left="6" top="330" width="142" height="32" halign="left" pad_left="8" image_overlay="Forme_UI_Pin" image_overlay_alignment="left" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" label_shadow="false">
+      <button name="forme_category_landmarks" label="Landmarks" tool_tip="Landmarks" layout="topleft" left="6" top="276" width="120" height="27" halign="left" pad_left="8" image_overlay="Forme_UI_Pin" image_overlay_alignment="left" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" label_shadow="false" use_ellipses="true">
         <button.commit_callback function="ForMeInventory.Category" parameter="filter_type_landmarks" />
         <button.is_toggled_callback function="ForMeInventory.CategorySelected" parameter="filter_type_landmarks" />
       </button>
-      <button name="forme_category_notecards" label="Notecards" tool_tip="Notecards" layout="topleft" left="6" top="366" width="142" height="32" halign="left" pad_left="8" image_overlay="Forme_UI_Note" image_overlay_alignment="left" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" label_shadow="false">
+      <button name="forme_category_notecards" label="Notecards" tool_tip="Notecards" layout="topleft" left="6" top="306" width="120" height="27" halign="left" pad_left="8" image_overlay="Forme_UI_Note" image_overlay_alignment="left" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" label_shadow="false" use_ellipses="true">
         <button.commit_callback function="ForMeInventory.Category" parameter="filter_type_notecards" />
         <button.is_toggled_callback function="ForMeInventory.CategorySelected" parameter="filter_type_notecards" />
       </button>
-      <button name="forme_category_snapshots" label="Snapshots" tool_tip="Snapshots" layout="topleft" left="6" top="402" width="142" height="32" halign="left" pad_left="8" image_overlay="Forme_UI_Camera" image_overlay_alignment="left" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" label_shadow="false">
+      <button name="forme_category_snapshots" label="Snapshots" tool_tip="Snapshots" layout="topleft" left="6" top="336" width="120" height="27" halign="left" pad_left="8" image_overlay="Forme_UI_Camera" image_overlay_alignment="left" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" label_shadow="false" use_ellipses="true">
         <button.commit_callback function="ForMeInventory.Category" parameter="filter_type_snapshots" />
         <button.is_toggled_callback function="ForMeInventory.CategorySelected" parameter="filter_type_snapshots" />
       </button>
-      <button name="forme_category_settings" label="Settings" tool_tip="Settings" layout="topleft" left="6" top="438" width="142" height="32" halign="left" pad_left="8" image_overlay="Forme_UI_Settings" image_overlay_alignment="left" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" label_shadow="false">
+      <button name="forme_category_settings" label="Settings" tool_tip="Settings" layout="topleft" left="6" top="366" width="120" height="27" halign="left" pad_left="8" image_overlay="Forme_UI_Settings" image_overlay_alignment="left" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" label_shadow="false" use_ellipses="true">
         <button.commit_callback function="ForMeInventory.Category" parameter="filter_type_settings" />
         <button.is_toggled_callback function="ForMeInventory.CategorySelected" parameter="filter_type_settings" />
       </button>
-      <button name="forme_category_folders" label="Folders" tool_tip="Folders" layout="topleft" left="6" top="474" width="142" height="32" halign="left" pad_left="8" image_overlay="Forme_UI_Folder" image_overlay_alignment="left" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" label_shadow="false">
+      <button name="forme_category_folders" label="Folders" tool_tip="Folders" layout="topleft" left="6" top="396" width="120" height="27" halign="left" pad_left="8" image_overlay="Forme_UI_Folder" image_overlay_alignment="left" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" label_shadow="false" use_ellipses="true">
         <button.commit_callback function="ForMeInventory.Category" parameter="filter_type_folders" />
         <button.is_toggled_callback function="ForMeInventory.CategorySelected" parameter="filter_type_folders" />
       </button>
-      <button name="forme_category_custom" label="Custom…" tool_tip="Custom…" layout="topleft" left="6" top="510" width="142" height="32" halign="left" pad_left="8" image_overlay="Forme_UI_Sliders" image_overlay_alignment="left" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" label_shadow="false">
+      <button name="forme_category_custom" label="Custom…" tool_tip="Custom…" layout="topleft" left="6" top="426" width="120" height="27" halign="left" pad_left="8" image_overlay="Forme_UI_Sliders" image_overlay_alignment="left" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" label_shadow="false" use_ellipses="true">
         <button.commit_callback function="ForMeInventory.Category" parameter="filter_type_custom" />
         <button.is_toggled_callback function="ForMeInventory.CategorySelected" parameter="filter_type_custom" />
       </button>

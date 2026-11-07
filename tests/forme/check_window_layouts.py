@@ -57,7 +57,7 @@ for identifier, filename in registered:
     root = resource(filename)
     if identifier in custom:
         continue
-    assert int(root.get('header_height', '0')) == 44, filename
+    assert int(root.get('header_height', '0')) == (28 if filename == 'floater_moveview.xml' else 44), filename
     assert root.get('header_icon') in textures, filename
     framed += 1
 
@@ -76,11 +76,11 @@ nav = child(people, 'forme_people_navigation').findall('button')
 assert len(nav) == 6
 assert {x.find('button.commit_callback').get('parameter') for x in nav} == native_tabs
 assert child(people, 'tabs').get('hide_tabs') == 'true'
-# Every tile stays inside the 442px pane and is independently reachable.
+# The default grid fits before resize, then the People panel balances all three columns.
 for first in nav:
     x, y = int(first.get('left')), int(first.get('top'))
     w, h = int(first.get('width')), int(first.get('height'))
-    assert 0 <= x and x + w <= 442 and 0 <= y and y + h <= 80
+    assert 0 <= x and x + w <= 442 and 0 <= y and y + h <= 64
     for second in nav:
         if first is second:
             continue
@@ -94,8 +94,42 @@ assert child(item, 'item_scroll_container').find("./layout_stack[@name='main_sta
 move = resource('floater_moveview.xml')
 for name in ['forward btn', 'backward btn', 'move left btn', 'move right btn']:
     assert child(move, name).tag in ['joystick_turn', 'joystick_slide'], name
-assert child(move, 'panel_modes') is not None
-assert int(move.get('min_height')) >= int(move.get('height')) + 44
+# All eight directions and all three modes must fit the compact movement window,
+# including for users whose previous version saved a much larger rectangle.
+def fits(widget, parent):
+    left, top, width, height = (int(widget.get(k)) for k in ('left', 'top', 'width', 'height'))
+    assert 0 <= left < left + width <= int(parent.get('width')), widget.attrib
+    assert 0 <= top < top + height <= int(parent.get('height')), widget.attrib
+
+assert move.get('can_resize') == 'false' and int(move.get('width')) <= 280
+assert int(move.get('min_height')) == int(move.get('height')) + int(move.get('header_height'))
+directions = child(move, 'forme_layout_move_directions')
+mode_stack = child(move, 'forme_layout_move_modes')
+assert len(directions) == 8 and len(child(move, 'panel_modes')) == 3
+for block in (directions, mode_stack):
+    fits(block, move)
+assert int(directions.get('left')) + int(directions.get('width')) < int(mode_stack.get('left'))
+for button in directions:
+    fits(button, directions)
+for button in child(move, 'panel_modes'):
+    fits(button, child(move, 'panel_modes'))
+# Leave enough room for Stop Flying and Flycam to appear together.
+assert int(child(move, 'modes_container').get('width')) >= 160
+for skin in ('default', 'starlightcui'):
+    themed = ET.parse(ROOT / f'indra/newview/skins/{skin}/xui/en/floater_moveview.xml').getroot()
+    assert themed.attrib == move.attrib
+movement_ru = ET.parse(BASE / 'xui/ru/floater_moveview.xml').getroot()
+assert len(child(movement_ru, 'panel_modes').findall('button')) == 3
+# At the inventory's minimum width, all four native tabs fit beside the categories.
+inv_floater = resource('floater_my_inventory.xml')
+inv_tabs = child(inventory, 'inventory filter tabs')
+inv_tree = child(inventory, 'default_inventory_panel')
+tab_room = int(inv_floater.get('min_width')) - int(inv_tree.get('left')) + int(inv_tree.get('right'))
+assert len(inv_tabs) * int(inv_tabs.get('tab_max_width')) + 16 <= tab_room
+assert inv_tabs.get('right') == inv_tabs.get('bottom') == '-1'
+category_scroll = child(inventory, 'forme_inventory_categories')
+assert int(category_scroll.get('width')) - int(child(inventory, 'forme_inventory_categories_body').get('width')) >= 20
+assert child(people, 'panel_radar').get('right') == child(people, 'panel_radar').get('bottom') == '-1'
 camera = resource('floater_camera.xml')
 assert int(camera.get('min_height')) >= int(camera.get('height')) + 44
 assert child(camera, 'cam_rotate_stick').tag == 'joystick_rotate'

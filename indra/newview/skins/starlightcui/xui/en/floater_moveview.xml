@@ -1,422 +1,107 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<floater
- positioning="specified"
- right="-693"
- bottom="-50"
- legacy_header_height="18"
- bg_opaque_color="SL-CustomBackground"
- bg_alpha_color="SL-CustomBackground"
- background_visible="true"
- background_opaque="false"
- can_dock="false"
- can_minimize="false"
- can_close="false"
- can_resize="true"
- height="75"
- layout="topleft"
- min_height="82"
- min_width="86"
- name="move_floater"
-
- save_rect="true"
- save_visibility="true"
- single_instance="true"
- chrome="true"
- show_title="false"
- width="86">
-    <string
-     name="walk_forward_tooltip">
+<?xml version='1.0' encoding='utf-8'?>
+<floater positioning="specified" right="-16" bottom="-50" legacy_header_height="0" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" can_dock="false" can_minimize="false" can_close="false" can_resize="false" height="66" layout="topleft" min_height="94" min_width="272" name="move_floater" save_rect="true" save_visibility="true" single_instance="true" chrome="true" show_title="true" width="272" header_height="28" header_vpad="3" header_icon="Forme_UI_Walk" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD">
+  <string name="walk_forward_tooltip">
         Walk Forward (press Up Arrow or W)
     </string>
-    <string
-     name="walk_back_tooltip">
+  <string name="walk_back_tooltip">
         Walk Backwards (press Down Arrow or S)
     </string>
-    <string
-     name="walk_left_tooltip">
+  <string name="walk_left_tooltip">
         Walk left (press Shift + Left Arrow or A)
     </string>
-    <string
-     name="walk_right_tooltip">
+  <string name="walk_right_tooltip">
         Walk right (press Shift + Right Arrow or D)
     </string>
-    <string
-     name="run_forward_tooltip">
+  <string name="run_forward_tooltip">
         Run Forward (press Up Arrow or W)
     </string>
-    <string
-     name="run_back_tooltip">
+  <string name="run_back_tooltip">
         Run Backwards (press Down Arrow or S)
     </string>
-    <string
-     name="run_left_tooltip">
+  <string name="run_left_tooltip">
         Run left (press Shift + Left Arrow or A)
     </string>
-    <string
-     name="run_right_tooltip">
+  <string name="run_right_tooltip">
         Run right (press Shift + Right Arrow or D)
     </string>
-    <string
-     name="fly_forward_tooltip">
+  <string name="fly_forward_tooltip">
         Fly Forward (press Up Arrow or W)
     </string>
-    <string
-     name="fly_back_tooltip">
+  <string name="fly_back_tooltip">
         Fly Backwards (press Down Arrow or S)
     </string>
-    <string
-     name="fly_left_tooltip">
+  <string name="fly_left_tooltip">
         Fly left (press Shift + Left Arrow or A)
     </string>
-    <string
-     name="fly_right_tooltip">
+  <string name="fly_right_tooltip">
         Fly right (press Shift + Right Arrow or D)
     </string>
-    <string
-     name="fly_up_tooltip">
+  <string name="fly_up_tooltip">
         Fly up (press E)
     </string>
-    <string
-     name="fly_down_tooltip">
+  <string name="fly_down_tooltip">
         Fly down (press C)
     </string>
-    <string
-     name="jump_tooltip">
+  <string name="jump_tooltip">
         Jump (press E)
     </string>
-    <string
-     name="crouch_tooltip">
+  <string name="crouch_tooltip">
         Crouch (press C)
     </string>
-    <string
-     name="walk_title">
-    </string>
-    <string
-     name="run_title">
-    </string>
-    <string
-     name="fly_title">
-    </string>
-    <panel
-     border="false"
-     top="1"
-     follows="all"
-     layout="topleft"
-     left="3"
-     mouse_opaque="false"
-     name="panel_actions"
-     height="72"
-     width="80">
-        <layout_stack
-         border_size="0"
-         top="0"
-         enabled="true"
-         height="72"
-         left="0"
-         mouse_opaque="false"
-         name="ls_vertical"
-         orientation="vertical"
-         width="80"
-         follows="all">
-            <layout_panel
-             mouse_opaque="false"
-             name="lp_row1"
-             user_resize="false"
-             width="80"
-             height="25">
-                <layout_stack
-                 border_size="0"
-                 top="0"
-                 enabled="true"
-                 height="25"
-                 left="0"
-                 mouse_opaque="false"
-                 name="ls_horizontal1"
-                 orientation="horizontal"
-                 width="80"
-                 follows="all">
-                    <layout_panel
-                     mouse_opaque="false"
-                     name="lp_col1_1"
-                     user_resize="false"
-                     height="25"
-                     width="20">
-                        <button
-                         height="25"
-                         follows="all"
-                         image_selected="Movement_TurnLeft_On"
-                         image_pressed_selected="Movement_TurnLeft_On"
-                         image_unselected="Movement_TurnLeft_Off"
-                         layout="topleft"
-                         left="0"
-                         name="turn left btn"
-                         width="20"
-                         scale_image="true"
-                         tool_tip="Turn left (press Left Arrow or A)"
-                         top="0"/>
-                    </layout_panel>
-
-                    <layout_panel
-                     mouse_opaque="false"
-                     name="lp_col1_2"
-                     user_resize="false"
-                     height="25"
-                     width="20">
-                        <joystick_turn
-                         follows="all"
-                         height="25"
-                         image_selected="Movement_Forward_On"
-                         image_pressed_selected="Movement_Forward_On"
-                         image_unselected="Movement_Forward_Off"
-                         layout="topleft"
-                         left="0"
-                         name="forward btn"
-                         quadrant="up"
-                         width="20"
-                         scale_image="true"
-                         tool_tip="Walk forward (press up arrow or W)"
-                         top="0"/>
-                    </layout_panel>
-
-                    <layout_panel
-                     mouse_opaque="false"
-                     name="lp_col1_3"
-                     user_resize="false"
-                     height="25"
-                     width="20">
-                        <button
-                         height="25"
-                         follows="all"
-                         image_selected="Movement_TurnRight_On"
-                         image_pressed_selected="Movement_TurnRight_On"
-                         image_unselected="Movement_TurnRight_Off"
-                         layout="topleft"
-                         left="0"
-                         width="20"
-                         name="turn right btn"
-                         scale_image="true"
-                         tool_tip="Turn right (press Right Arrow or D)"
-                         top="0"/>
-                    </layout_panel>
-
-                    <layout_panel
-                     mouse_opaque="false"
-                     name="lp_col1_4"
-                     user_resize="false"
-                     height="25"
-                     width="20">
-                        <button
-                         follows="all"
-                         height="25"
-                         image_selected="Movement_Up_On"
-                         image_pressed_selected="Movement_Up_On"
-                         image_unselected="Movement_Up_Off"
-                         layout="topleft"
-                         left="0"
-                         name="move up btn"
-                         scale_image="true"
-                         tool_tip="Fly up (press E)"
-                         top="0"
-                         width="20"/>
-                    </layout_panel>
-                </layout_stack>
-            </layout_panel>
-
-            <layout_panel
-             mouse_opaque="false"
-             name="lp_row2"
-             user_resize="false"
-             height="25"
-             width="80">
-                <layout_stack
-                 border_size="0"
-                 top="0"
-                 enabled="true"
-                 height="25"
-                 left="0"
-                 mouse_opaque="false"
-                 name="ls_horizontal2"
-                 orientation="horizontal"
-                 width="80"
-                 follows="all">
-                    <layout_panel
-                     mouse_opaque="false"
-                     name="lp_col2_1"
-                     user_resize="false"
-                     height="25"
-                     width="20">
-                        <joystick_slide
-                         height="25"
-                         follows="all"
-                         image_selected="Movement_Left_On"
-                         image_pressed_selected="Movement_Left_On"
-                         image_unselected="Movement_Left_Off"
-                         layout="topleft"
-                         left="0"
-                         name="move left btn"
-                         quadrant="left"
-                         width="20"
-                         scale_image="true"
-                         tool_tip="Walk left (press Shift + Left Arrow or A)"
-                         top="0"/>
-                    </layout_panel>
-
-                    <layout_panel
-                     mouse_opaque="false"
-                     name="lp_col2_2"
-                     user_resize="false"
-                     height="25"
-                     width="20">
-                        <joystick_turn
-                         follows="all"
-                         height="25"
-                         image_selected="Movement_Backward_On"
-                         image_pressed_selected="Movement_Backward_On"
-                         image_unselected="Movement_Backward_Off"
-                         layout="topleft"
-                         left="0"
-                         name="backward btn"
-                         quadrant="down"
-                         width="20"
-                         scale_image="true"
-                         tool_tip="Walk backward (press down arrow or S)"
-                         top="0"/>
-                    </layout_panel>
-
-                    <layout_panel
-                     mouse_opaque="false"
-                     name="lp_col2_3"
-                     user_resize="false"
-                     height="25"
-                     width="20">
-                        <joystick_slide
-                         height="25"
-                         follows="all"
-                         image_selected="Movement_Right_On"
-                         image_pressed_selected="Movement_Right_On"
-                         image_unselected="Movement_Right_Off"
-                         layout="topleft"
-                         left="0"
-                         name="move right btn"
-                         quadrant="right"
-                         width="20"
-                         scale_image="true"
-                         tool_tip="Walk right (press Shift + Right Arrow or D)"
-                         top="0"/>
-                    </layout_panel>
-
-                    <layout_panel
-                     mouse_opaque="false"
-                     name="lp_col2_4"
-                     user_resize="false"
-                     height="25"
-                     width="20">
-                        <button
-                         follows="all"
-                         height="25"
-                         image_selected="Movement_Down_On"
-                         image_pressed_selected="Movement_Down_On"
-                         image_unselected="Movement_Down_Off"
-                         layout="topleft"
-                         left="0"
-                         name="move down btn"
-                         scale_image="true"
-                         tool_tip="Fly down (press C)"
-                         top="0"
-                         width="20"/>
-                    </layout_panel>
-                </layout_stack>
-            </layout_panel>
-
-            <layout_panel
-             mouse_opaque="false"
-             name="lp_row3"
-             auto_resize="false"
-             user_resize="false"
-             height="25"
-             width="80">
-                <layout_stack
-                 border_size="0"
-                 top="0"
-                 enabled="true"
-                 height="21"
-                 left="0"
-                 mouse_opaque="false"
-                 name="ls_horizontal3"
-                 orientation="horizontal"
-                 width="80"
-                 follows="all">
-                    <layout_panel
-                     mouse_opaque="false"
-                     name="lp_col3_1"
-                     user_resize="false"
-                     height="21"
-                     width="1"/>
-                    <layout_panel
-                     mouse_opaque="false"
-                     name="modes_container"
-                     auto_resize="false"
-                     user_resize="false"
-                     height="21"
-                     width="78">
-                        <!-- Width and height of this panel should be synchronized with panel_stand_stop_flying.xml -->
-                        <panel
-                         mouse_opaque="false"
-                         border="false"
-                         height="21"
-                         layout="topleft"
-                         left="0"
-                         name="panel_modes"
-                         top_pad="2"
-                         width="78">
-                            <button
-                             follows="left|bottom"
-                             height="19"
-                             image_overlay="Move_Walk_Off"
-                             image_selected="PushButton_Selected_Press"
-                             layout="topleft"
-                             name="mode_walk_btn"
-                             left="0"
-                             pad_right="0"
-                             tool_tip="Walking mode"
-                             top="0"
-                             width="26" />
-                            <button
-                             follows="left|bottom"
-                             height="19"
-                             image_overlay="Move_Run_Off"
-                             image_selected="PushButton_Selected_Press"
-                             layout="topleft"
-                             left_pad="0"
-                             name="mode_run_btn"
-                             pad_left="0"
-                             pad_right="0"
-                             tool_tip="Running mode"
-                             top="0"
-                             width="26" />
-                            <button
-                             follows="left|bottom"
-                             height="19"
-                             image_overlay="Move_Fly_Off"
-                             image_selected="PushButton_Selected_Press"
-                             layout="topleft"
-                             left_pad="0"
-                             name="mode_fly_btn"
-                             pad_left="0"
-                             pad_right="0"
-                             tool_tip="Flying mode"
-                             top="0"
-                             width="26" />
-                        </panel>
-                    </layout_panel>
-                    <layout_panel
-                     mouse_opaque="false"
-                     name="lp_col3_3"
-                     user_resize="false"
-                     height="21"
-                     width="1"/>
-                </layout_stack>
-            </layout_panel>
-       </layout_stack>
-    </panel>
+  <string name="walk_title">Walk</string>
+  <string name="run_title">Run</string>
+  <string name="fly_title">Flight</string>
+  <panel border="false" top="4" follows="all" layout="topleft" left="3" mouse_opaque="false" name="panel_actions" height="72" width="80" visible="false">
+    <layout_stack border_size="0" top="0" enabled="true" height="72" left="0" mouse_opaque="false" name="ls_vertical" orientation="vertical" width="80" follows="all">
+      <layout_panel mouse_opaque="false" name="lp_row1" user_resize="false" width="80" height="25">
+        <layout_stack border_size="0" top="0" enabled="true" height="25" left="0" mouse_opaque="false" name="ls_horizontal1" orientation="horizontal" width="80" follows="all">
+          <layout_panel mouse_opaque="false" name="lp_col1_1" user_resize="false" height="25" width="20">
+                        </layout_panel>
+          <layout_panel mouse_opaque="false" name="lp_col1_2" user_resize="false" height="25" width="20">
+                        </layout_panel>
+          <layout_panel mouse_opaque="false" name="lp_col1_3" user_resize="false" height="25" width="20">
+                        </layout_panel>
+          <layout_panel mouse_opaque="false" name="lp_col1_4" user_resize="false" height="25" width="20">
+                        </layout_panel>
+        </layout_stack>
+      </layout_panel>
+      <layout_panel mouse_opaque="false" name="lp_row2" user_resize="false" height="25" width="80">
+        <layout_stack border_size="0" top="0" enabled="true" height="25" left="0" mouse_opaque="false" name="ls_horizontal2" orientation="horizontal" width="80" follows="all">
+          <layout_panel mouse_opaque="false" name="lp_col2_1" user_resize="false" height="25" width="20">
+                        </layout_panel>
+          <layout_panel mouse_opaque="false" name="lp_col2_2" user_resize="false" height="25" width="20">
+                        </layout_panel>
+          <layout_panel mouse_opaque="false" name="lp_col2_3" user_resize="false" height="25" width="20">
+                        </layout_panel>
+          <layout_panel mouse_opaque="false" name="lp_col2_4" user_resize="false" height="25" width="20">
+                        </layout_panel>
+        </layout_stack>
+      </layout_panel>
+      <layout_panel mouse_opaque="false" name="lp_row3" auto_resize="false" user_resize="false" height="25" width="80">
+        <layout_stack border_size="0" top="0" enabled="true" height="21" left="0" mouse_opaque="false" name="ls_horizontal3" orientation="horizontal" width="80" follows="all">
+          <layout_panel mouse_opaque="false" name="lp_col3_1" user_resize="false" height="21" width="1" />
+          <layout_panel mouse_opaque="false" name="lp_col3_3" user_resize="false" height="21" width="1" />
+        </layout_stack>
+      </layout_panel>
+    </layout_stack>
+  </panel>
+  <panel name="forme_layout_move_directions" layout="topleft" left="8" top="9" width="96" height="48">
+    <button height="22" follows="left|top" image_selected="Forme_Round_Accent" image_pressed_selected="Forme_Round_Accent" image_unselected="Forme_Round_Field" layout="topleft" name="turn left btn" width="22" scale_image="true" tool_tip="Turn left (press Left Arrow or A)" left="0" top="0" image_overlay="Forme_UI_Rotate" image_pressed="Forme_Round_Accent" draw_focus_border="false" />
+    <joystick_turn follows="left|top" height="22" image_selected="Forme_Round_Accent" image_pressed_selected="Forme_Round_Accent" image_unselected="Forme_Round_Field" layout="topleft" name="forward btn" quadrant="up" width="22" scale_image="true" tool_tip="Walk forward (press up arrow or W)" left="24" top="0" image_overlay="Forme_UI_ArrowUp" image_pressed="Forme_Round_Accent" draw_focus_border="false" />
+    <button height="22" follows="left|top" image_selected="Forme_Round_Accent" image_pressed_selected="Forme_Round_Accent" image_unselected="Forme_Round_Field" layout="topleft" width="22" name="turn right btn" scale_image="true" tool_tip="Turn right (press Right Arrow or D)" left="48" top="0" image_overlay="Forme_UI_Rotate" image_pressed="Forme_Round_Accent" draw_focus_border="false" />
+    <button follows="left|top" height="22" image_selected="Forme_Round_Accent" image_pressed_selected="Forme_Round_Accent" image_unselected="Forme_Round_Field" layout="topleft" name="move up btn" scale_image="true" tool_tip="Fly up (press E)" width="22" left="72" top="0" image_overlay="Forme_UI_ArrowUp" image_pressed="Forme_Round_Accent" draw_focus_border="false" />
+    <joystick_slide height="22" follows="left|top" image_selected="Forme_Round_Accent" image_pressed_selected="Forme_Round_Accent" image_unselected="Forme_Round_Field" layout="topleft" name="move left btn" quadrant="left" width="22" scale_image="true" tool_tip="Walk left (press Shift + Left Arrow or A)" left="0" top="25" image_overlay="Forme_UI_ArrowLeft" image_pressed="Forme_Round_Accent" draw_focus_border="false" />
+    <joystick_turn follows="left|top" height="22" image_selected="Forme_Round_Accent" image_pressed_selected="Forme_Round_Accent" image_unselected="Forme_Round_Field" layout="topleft" name="backward btn" quadrant="down" width="22" scale_image="true" tool_tip="Walk backward (press down arrow or S)" left="24" top="25" image_overlay="Forme_UI_ArrowDown" image_pressed="Forme_Round_Accent" draw_focus_border="false" />
+    <joystick_slide height="22" follows="left|top" image_selected="Forme_Round_Accent" image_pressed_selected="Forme_Round_Accent" image_unselected="Forme_Round_Field" layout="topleft" name="move right btn" quadrant="right" width="22" scale_image="true" tool_tip="Walk right (press Shift + Right Arrow or D)" left="48" top="25" image_overlay="Forme_UI_ArrowRight" image_pressed="Forme_Round_Accent" draw_focus_border="false" />
+    <button follows="left|top" height="22" image_selected="Forme_Round_Accent" image_pressed_selected="Forme_Round_Accent" image_unselected="Forme_Round_Field" layout="topleft" name="move down btn" scale_image="true" tool_tip="Fly down (press C)" width="22" left="72" top="25" image_overlay="Forme_UI_ArrowDown" image_pressed="Forme_Round_Accent" draw_focus_border="false" />
+  </panel>
+  <layout_stack name="forme_layout_move_modes" layout="topleft" left="105" top="21" width="160" height="24" orientation="horizontal" animate="false">
+    <layout_panel mouse_opaque="false" name="modes_container" auto_resize="true" user_resize="false" height="24" width="160">
+      <panel mouse_opaque="false" border="false" height="24" layout="topleft" name="panel_modes" width="160" left="0" top="0">
+        <button follows="left|bottom" height="24" image_selected="Forme_Round_Accent" layout="topleft" name="mode_walk_btn" pad_right="0" tool_tip="Walking mode" width="52" left="0" top="0" label="Walk" pad_left="0" halign="center" font="SansSerifSmall" label_shadow="false" image_unselected="Forme_Round_Field" image_pressed="Forme_Round_Selection" image_pressed_selected="Forme_Round_Accent" use_ellipses="true" />
+        <button follows="left|bottom" height="24" image_selected="Forme_Round_Accent" layout="topleft" name="mode_run_btn" pad_left="0" pad_right="0" tool_tip="Running mode" width="52" left="54" top="0" label="Run" halign="center" font="SansSerifSmall" label_shadow="false" image_unselected="Forme_Round_Field" image_pressed="Forme_Round_Selection" image_pressed_selected="Forme_Round_Accent" use_ellipses="true" />
+        <button follows="left|bottom" height="24" image_selected="Forme_Round_Accent" layout="topleft" name="mode_fly_btn" pad_left="0" pad_right="0" tool_tip="Flying mode" width="52" left="108" top="0" label="Fly" halign="center" font="SansSerifSmall" label_shadow="false" image_unselected="Forme_Round_Field" image_pressed="Forme_Round_Selection" image_pressed_selected="Forme_Round_Accent" use_ellipses="true" />
+      </panel>
+    </layout_panel>
+  </layout_stack>
 </floater>
