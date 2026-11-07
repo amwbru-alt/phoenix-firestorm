@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<panel follows="all" height="510" label="Things" layout="topleft" min_height="300" min_width="240" name="main inventory panel" width="660">
+<panel follows="all" height="498" label="Things" layout="topleft" min_height="300" min_width="320" name="main inventory panel" width="384">
   <panel.string name="Itemcount">
   </panel.string>
   <panel.string name="ItemcountFetching">
@@ -14,24 +14,29 @@
   <panel.string name="inventory_title">Inventory</panel.string>
   <panel.string name="default_mode_btn">Multi_Folder_Mode</panel.string>
   <panel.string name="single_folder_mode_btn">Single_Folder_Mode</panel.string>
-  <layout_stack follows="left|right|top" animate="false" orientation="horizontal" name="top_stack" left="16" top="12" layout="topleft" height="32" right="-16">
-    <layout_panel border="false" bevel_style="in" user_resize="false" auto_resize="false" height="32" width="62" name="nav_buttons" visible="false">
+  <layout_stack follows="left|right|top" animate="false" orientation="horizontal" name="top_stack" left="12" top="12" layout="topleft" height="34" right="-12">
+    <layout_panel border="false" bevel_style="in" user_resize="false" auto_resize="false" height="34" width="62" name="nav_buttons" visible="false">
       <button follows="top|left" height="23" image_selected="Single_Folder_Back" image_pressed="Single_Folder_Back" image_unselected="Single_Folder_Back" scale_image="false" layout="topleft" left="0" top="2" name="back_btn" tool_tip="Back" width="20" />
       <button follows="top|left" height="23" image_selected="Single_Folder_Forward" image_pressed="Single_Folder_Forward" image_unselected="Single_Folder_Forward" scale_image="false" layout="topleft" left_pad="1" name="forward_btn" tool_tip="Forward" width="20" />
       <button follows="top|left" height="23" image_selected="Single_Folder_Up" image_pressed="Single_Folder_Up" image_unselected="Single_Folder_Up" scale_image="false" layout="topleft" left_pad="1" name="up_btn" tool_tip="Go up one level" width="20" />
     </layout_panel>
-    <layout_panel border="false" bevel_style="in" user_resize="false" height="32" width="568" name="filter_panel" visible="true">
-      <filter_editor text_pad_left="10" follows="left|top|right" height="32" label="Filter Inventory" layout="topleft" left="2" max_length_chars="300" highlight_text_field="false" name="inventory search editor" tool_tip="Type in one or more words to search for, separated by '+' " top="0" right="-1" use_bg_color="false" background_image="Forme_Round_Field" background_image_focused="Forme_Round_Field" />
+    <layout_panel border="false" bevel_style="in" user_resize="false" height="34" width="280" name="filter_panel" visible="true">
+      <filter_editor text_pad_left="7" follows="left|top|right" height="34" label="Search inventory" layout="topleft" left="0" max_length_chars="300" highlight_text_field="false" name="inventory search editor" tool_tip="Type in one or more words to search for, separated by '+' " top="0" right="-1" use_bg_color="false" background_image="Forme_Round_Field" background_image_focused="Forme_Round_Field" search_button_visible="true" />
+    </layout_panel>
+    <layout_panel name="forme_inventory_size_panel" auto_resize="false" user_resize="false" width="34" height="34">
+      <button name="forme_inventory_size" layout="topleft" top="1" left="2" width="32" height="32" follows="left|top"
+              image_overlay="Forme_UI_Window" tool_tip="Switch between compact and wide inventory"
+              image_unselected="Forme_Round_Field" image_selected="Forme_HUD_Active" />
     </layout_panel>
   </layout_stack>
-  <layout_stack follows="left|top|right" animate="false" name="ctrl_stack" orientation="horizontal" left="16" top="50" layout="topleft" height="28" right="-16">
-    <layout_panel border="false" bevel_style="in" user_resize="false" auto_resize="false" height="28" width="168" name="collapse_expand_buttons">
-      <button name="collapse_btn" label="Collapse" width="80" height="26" left="0" top="0" follows="top|left" layout="topleft" />
-      <button name="expand_btn" label="Expand" width="80" height="26" left_pad="4" follows="top|left" layout="topleft" />
+  <layout_stack follows="left|top|right" animate="false" name="ctrl_stack" orientation="horizontal" left="12" top="53" layout="topleft" height="28" right="-12">
+    <layout_panel border="false" bevel_style="in" user_resize="false" auto_resize="false" height="28" width="134" name="collapse_expand_buttons">
+      <button name="collapse_btn" label="Collapse" width="64" height="26" left="0" top="0" follows="top|left" layout="topleft" pad_left="2" pad_right="2" font="SansSerifSmall" use_ellipses="true" tool_tip="Collapse folders" />
+      <button name="expand_btn" label="Expand" width="64" height="26" left_pad="4" follows="top|left" layout="topleft" pad_left="2" pad_right="2" font="SansSerifSmall" use_ellipses="true" tool_tip="Expand folders" />
     </layout_panel>
-    <layout_panel border="false" bevel_style="in" user_resize="false" height="28" width="164" name="filter_ctrls">
-      <text name="filter_label" value="Filter:" width="40" height="22" left="0" top="3" follows="top|left" layout="topleft" />
-      <combo_box name="filter_combo_box" right="-35" height="26" left_pad="4" follows="top|left|right" layout="topleft">
+    <layout_panel border="false" bevel_style="in" user_resize="false" height="28" width="174" name="filter_ctrls">
+      <text name="filter_label" value="Filter:" width="40" height="22" left="0" top="3" follows="top|left" layout="topleft" visible="false" />
+      <combo_box name="filter_combo_box" right="-35" height="26" follows="top|left|right" layout="topleft" left="0" top="0">
         <combo_box.item value="filter_type_all" label="All Types" />
         <combo_box.item value="filter_separator" label="------------" enabled="false" />
         <combo_box.item value="filter_type_animations" label="Animations" />
@@ -56,8 +61,8 @@
       <menu_button follows="top|right" tool_tip="Show search visibility options" height="26" image_overlay="Inv_Toolbar_SearchVisibility" layout="topleft" right="-1" top_delta="0" name="options_visibility_btn" width="31" />
     </layout_panel>
   </layout_stack>
-  <panel follows="all" halign="center" layout="topleft" name="default_inventory_panel" left="182" top="88" right="-16" bottom="-58">
-    <tab_container bg_alpha_color="DkGray" bg_opaque_color="DkGray" background_visible="false" background_opaque="false" follows="all" halign="center" layout="topleft" left="0" name="inventory filter tabs" open_tabs_on_drag_and_drop="true" tab_position="top" top="0" use_ellipses="true" tab_height="28" tab_min_width="86" tab_max_width="102" right="-1" bottom="-1">
+  <panel follows="all" halign="center" layout="topleft" name="default_inventory_panel" left="12" top="92" right="-12" bottom="-54" background_visible="true" bg_alpha_image="Forme_UI_Card" bg_alpha_color="White">
+    <tab_container bg_alpha_color="DkGray" bg_opaque_color="DkGray" background_visible="false" background_opaque="false" follows="all" halign="center" layout="topleft" left="4" name="inventory filter tabs" open_tabs_on_drag_and_drop="true" tab_position="top" top="4" use_ellipses="true" tab_height="29" tab_min_width="63" tab_max_width="75" right="-4" bottom="-4">
       <inventory_panel border="false" bevel_style="none" follows="all" label="Inventory" layout="topleft" name="All Items" sort_order_setting="InventorySortOrder" show_item_link_overlays="true" preinitialize_views="false" scroll.reserve_scroll_corner="false">
         <folder double_click_override="true" />
       </inventory_panel>
@@ -72,7 +77,7 @@
       </favorites_inventory_panel>
     </tab_container>
   </panel>
-  <panel follows="all" halign="center" layout="topleft" name="combination_view_inventory" visible="false" left="182" top="88" right="-16" bottom="-58">
+  <panel follows="all" halign="center" layout="topleft" name="combination_view_inventory" visible="false" left="12" top="92" right="-12" bottom="-54">
     <layout_stack follows="all" name="combination_view_stack" animate="false" drag_handle_thickness="6" drag_handle_first_indent="18" drag_handle_second_indent="18" drag_handle_color="InventoryFocusOutlineColor" drag_handle_shift="5" show_drag_handle="true" top="0" left="0" orientation="vertical" right="-1" bottom="-1">
       <layout_panel border="false" bevel_style="in" user_resize="true" auto_resize="true" height="228" min_width="150" name="comb_gallery_layout">
         <panel class="inventory_gallery" filename="panel_inventory_gallery.xml" left="0" top_pad="0" height="228" name="comb_gallery_view_inv" background_visible="true" follows="all" layout="topleft">
@@ -86,7 +91,7 @@
       </layout_panel>
     </layout_stack>
   </panel>
-  <panel follows="left|right|bottom" layout="topleft" name="bottom_panel" left="16" top="-46" height="34" right="-16" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
+  <panel follows="left|right|bottom" layout="topleft" name="bottom_panel" left="12" top="-44" height="34" right="-12" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
     <panel follows="top|left" height="31" left="0" layout="topleft" name="options_gear_btn_panel" width="32">
       <menu_button follows="top|left" tool_tip="Show additional options" height="31" image_hover_unselected="Toolbar_Left_Over" image_overlay="OptionsMenu_Off" image_selected="Toolbar_Left_Selected" image_unselected="Toolbar_Left_Off" layout="topleft" left="0" name="options_gear_btn" top="0" width="31" />
     </panel>
@@ -107,17 +112,20 @@
     <panel follows="top|left" height="31" layout="topleft" left_pad="0" name="view_mode_panel" width="32">
       <button follows="top|left" height="31" image_hover_unselected="Toolbar_Middle_Over" image_overlay="Single_Folder_Mode" image_selected="Toolbar_Middle_Selected" image_unselected="Toolbar_Middle_Off" layout="topleft" left="0" name="view_mode_btn" tool_tip="Switch between views" top="0" width="31" />
     </panel>
-    <panel follows="top|left|right" height="31" left_pad="0" right="-33" layout="topleft" name="dummy_panel">
+    <panel follows="top|left|right" height="31" left_pad="0" right="-65" layout="topleft" name="dummy_panel">
       <text type="string" length="1" height="17" layout="topleft" left="8" name="ItemcountText" font="SansSerifMedium" valign="center" tool_tip="[ITEMS] Items, [CATEGORIES] Folders" use_ellipses="true" follows="bottom|left|right" right="-8">
           Elements
           </text>
-      <icon follows="top|left|right" height="31" image_name="Toolbar_Middle_Off" layout="topleft" left="0" top="0" right="-1" name="dummy_icon" />
+      <icon follows="top|left|right" height="31" image_name="Toolbar_Middle_Off" layout="topleft" left="0" top="0" right="-1" name="dummy_icon" visible="false" />
     </panel>
-    <panel follows="top|right" height="31" left_pad="0" right="-1" layout="topleft" name="trash_btn_panel" width="32">
+    <button name="forme_inventory_item_actions" layout="topleft" right="-33" top="0" width="31" height="31" follows="top|right"
+            image_overlay="Forme_UI_More" image_unselected="Forme_Round_Field" enabled="false"
+            tool_tip="Actions for the selected items" />
+    <panel follows="top|right" height="31" right="-1" layout="topleft" name="trash_btn_panel" width="32">
       <dnd_button follows="top|right" height="31" image_hover_unselected="Toolbar_Right_Over" image_overlay="TrashItem_Off" image_selected="Toolbar_Right_Selected" image_unselected="Toolbar_Right_Off" left="0" layout="topleft" name="trash_btn" tool_tip="Remove selected item" top="0" width="31" />
     </panel>
   </panel>
-  <scroll_container name="forme_inventory_categories" layout="topleft" left="16" top="88" width="154" bottom="-58" follows="left|top|bottom" opaque="false" reserve_scroll_corner="false">
+  <scroll_container name="forme_inventory_categories" layout="topleft" left="12" top="92" width="154" bottom="-54" follows="left|top|bottom" opaque="false" reserve_scroll_corner="false" visible="false">
     <panel name="forme_inventory_categories_body" layout="topleft" left="0" top="0" width="132" height="460" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
       <button name="forme_category_all" label="All types" tool_tip="All types" layout="topleft" left="6" top="6" width="120" height="27" halign="left" pad_left="8" image_overlay="Forme_UI_Window" image_overlay_alignment="left" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" label_shadow="false" use_ellipses="true">
         <button.commit_callback function="ForMeInventory.Category" parameter="filter_type_all" />

@@ -19,13 +19,16 @@
       <button name="up_btn" tool_tip="На уровень выше" />
     </layout_panel>
     <layout_panel name="filter_panel">
-      <filter_editor label="Фильтр" name="inventory search editor" tool_tip="Напишите одно или несколько слов для поиска. Для разделения используйте '+' " />
+      <filter_editor label="Поиск в инвентаре" name="inventory search editor" tool_tip="Напишите одно или несколько слов для поиска. Для разделения используйте '+' " />
+    </layout_panel>
+    <layout_panel name="forme_inventory_size_panel">
+      <button name="forme_inventory_size" tool_tip="Переключить компактный и широкий вид" />
     </layout_panel>
   </layout_stack>
   <layout_stack name="ctrl_stack">
     <layout_panel name="collapse_expand_buttons">
-      <button name="collapse_btn" label="Свернуть" width="80" />
-      <button name="expand_btn" label="Развернуть" width="80" />
+      <button name="collapse_btn" label="Свернуть" width="64" tool_tip="Свернуть папки" />
+      <button name="expand_btn" label="Раскрыть" width="64" tool_tip="Развернуть папки" />
     </layout_panel>
     <layout_panel name="filter_ctrls">
       <text name="filter_label" value="Фильтр:" />
@@ -79,6 +82,7 @@
 				Элементов
 			</text>
     </panel>
+    <button name="forme_inventory_item_actions" tool_tip="Действия с выбранными предметами" />
     <panel name="trash_btn_panel">
       <dnd_button name="trash_btn" tool_tip="Удалить выбранный элемент" />
     </panel>

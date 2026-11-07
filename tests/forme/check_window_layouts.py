@@ -120,15 +120,23 @@ for skin in ('default', 'starlightcui'):
     assert themed.attrib == move.attrib
 movement_ru = ET.parse(BASE / 'xui/ru/floater_moveview.xml').getroot()
 assert len(child(movement_ru, 'panel_modes').findall('button')) == 3
-# At the inventory's minimum width, all four native tabs fit beside the categories.
+# The stock inventory starts in a narrow right-side window. Its four built-in tabs
+# fit at minimum width, and custom tabs can still use native tab scrolling.
 inv_floater = resource('floater_my_inventory.xml')
 inv_tabs = child(inventory, 'inventory filter tabs')
 inv_tree = child(inventory, 'default_inventory_panel')
-tab_room = int(inv_floater.get('min_width')) - int(inv_tree.get('left')) + int(inv_tree.get('right'))
+assert int(inv_floater.get('width')) <= 400 and inv_floater.get('right') == '-16'
+assert inv_floater.get('can_resize') == 'true' and inv_floater.get('save_rect') == 'true'
+tab_room = (int(inv_floater.get('min_width')) - int(inv_tree.get('left')) + int(inv_tree.get('right'))
+            - int(inv_tabs.get('left')) + int(inv_tabs.get('right')))
 assert len(inv_tabs) * int(inv_tabs.get('tab_max_width')) + 16 <= tab_room
-assert inv_tabs.get('right') == inv_tabs.get('bottom') == '-1'
+assert inv_tabs.get('right') == inv_tabs.get('bottom') == '-4'
 category_scroll = child(inventory, 'forme_inventory_categories')
+assert category_scroll.get('visible') == 'false'
 assert int(category_scroll.get('width')) - int(child(inventory, 'forme_inventory_categories_body').get('width')) >= 20
+assert child(inventory, 'filter_combo_box').find("./combo_box.item[@value='filter_type_custom']") is not None
+assert child(inventory, 'forme_inventory_item_actions').get('enabled') == 'false'
+assert child(inventory, 'forme_inventory_item_actions').get('right') == '-33'
 assert child(people, 'panel_radar').get('right') == child(people, 'panel_radar').get('bottom') == '-1'
 camera = resource('floater_camera.xml')
 assert int(camera.get('min_height')) == int(camera.get('height')) + int(camera.get('header_height'))
