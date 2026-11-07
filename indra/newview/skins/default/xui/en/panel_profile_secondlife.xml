@@ -104,8 +104,9 @@
   </layout_stack>
   <text name="About:" value="About:" height="22" width="64" follows="left|top" layout="topleft" halign="right" left="12" top="278" />
   <button name="btn_preview" tool_tip="Toggle preview of your profile 'about' section" height="24" width="24" follows="left|top" layout="topleft" image_overlay="Profile_Group_Visibility_On" is_toggle="true" enabled="false" visible="false" left="80" top="276" />
-  <view_border height="124" layout="topleft" follows="all" name="info_border_sl_description_edit" bevel_style="in" left="12" top="310" width="482" />
-  <text_editor name="sl_description_edit" trusted_content="false" always_show_icons="true" enabled="false" height="116" follows="all" layout="topleft" bg_readonly_color="Transparent" border_visible="false" font="SansSerifSmall" h_pad="3" max_length="65000" parse_urls="true" word_wrap="true" left="16" top="314" width="474" />
+  <icon name="forme_profile_about_card" layout="topleft" follows="all" left="12" top="310" width="482" height="124" image_name="Forme_UI_Card" mouse_opaque="false" />
+  <view_border height="124" layout="topleft" follows="all" name="info_border_sl_description_edit" bevel_style="in" left="12" top="310" width="482" visible="false" />
+  <text_editor name="sl_description_edit" trusted_content="false" always_show_icons="true" enabled="false" height="108" follows="all" layout="topleft" bg_readonly_color="Transparent" border_visible="false" font="SansSerifSmall" h_pad="3" max_length="65000" parse_urls="true" word_wrap="true" left="22" top="318" width="462" />
   <text name="Groups:" value="Groups:" height="24" width="96" follows="left|bottom" layout="topleft" halign="right" left="12" top="454" />
   <button name="group_invite" label="+" tool_tip="Invite to Group" height="28" width="28" follows="left|bottom" layout="topleft" label_selected="+" left="466" top="450" />
   <group_list name="group_list" height="100" follows="left|bottom|right" layout="topleft" border_visible="true" for_agent="false" left="12" top="488" width="482" />
@@ -131,6 +132,7 @@
       <menu_button height="36" width="202" layout="topleft" follows="left|right|top" name="overflow_btn" image_overlay="Forme_UI_More" left="0" top="88" image_overlay_alignment="left" pad_left="10" halign="left" />
     </layout_panel>
   </layout_stack>
+  <button name="forme_profile_website" label="Change photo on website" tool_tip="Open your ForMe.World profile in a browser" visible="false" height="40" width="202" follows="right|top" layout="topleft" left="510" top="278" image_overlay="Forme_UI_Link" image_overlay_alignment="left" imgoverlay_label_space="8" pad_left="10" halign="left" image_unselected="Forme_WMap_Copy" image_selected="Forme_WMap_Copy" />
   <check_box name="show_in_search" label="Show in search" tool_tip="Let people see you in search results" enabled="false" height="24" width="210" follows="left|bottom" layout="topleft" visible="false" left="12" top="642" />
   <check_box name="hide_sl_age" label="Show full birthdate" tool_tip="Let people see your SL age" enabled="false" height="24" width="220" follows="left|bottom" layout="topleft" visible="false" left="230" top="642" />
   <button name="save_description_changes" label="Save" height="30" width="96" enabled="false" follows="right|bottom" layout="topleft" left="510" top="642" />

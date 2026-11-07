@@ -39,6 +39,8 @@
 #include "llslurl.h"
 #include "lltracker.h"
 
+#include <array>
+
 // <FS:Ansariel> Parcel details on map
 #include "llremoteparcelrequest.h"
 
@@ -273,7 +275,17 @@ private:
     void actOnRegionCard(S32 action);
     void updateRegionDetails();
     void requestMapRegion(const std::string& name);
-    static LLUIImagePtr fetchRegionPhoto(const LLSD& row);
+    void loadRegionPhoto(S32 slot, const LLSD& row);
+    static constexpr S32 REGION_DETAIL_PHOTO = 3;
+    struct RegionPhoto
+    {
+        std::array<std::string, 3> urls;
+        U64 request = 0;
+        bool pending = false;
+        bool loaded = false;
+        F64 retryAt = 0.;
+    };
+    std::array<RegionPhoto, REGION_DETAIL_PHOTO + 1> mRegionPhotos;
 
     LLSD mRegionCards;
     S32 mRegionCardOffset = 0;
@@ -283,7 +295,6 @@ private:
     bool mRegionCardsHaveMore = false;
     LLFrameTimer mRegionCardRefresh;
     LLSD mMapRegion;
-    LLUIImagePtr mMapRegionPhoto;
     std::string mMapRegionName;
     U64 mMapRegionRequest = 0;
     LLFrameTimer mMapRegionRefresh;

@@ -125,8 +125,6 @@ public:
 
     void onAvatarNameCache(const LLUUID& agent_id, const LLAvatarName& av_name);
 
-    void setProfileImageUploading(bool loading);
-    void setProfileImageUploaded(const LLUUID &image_asset_id);
 
     bool hasUnsavedChanges() override;
     void commitUnsavedChanges() override;
@@ -218,9 +216,6 @@ private:
     void onDiscardDescriptionChanges();
     void onShowAgentPermissionsDialog();
     void onShowAgentProfileTexture();
-    void onShowTexturePicker();
-    void onSecondLifePicChanged();  // <FS:Zi> Allow proper texture swatch handling
-    void onCommitProfileImage(const LLUUID& id);
 
     // <FS:Ansariel> Fix LL UI/UX design accident
     enum class BadgeLocation
@@ -264,7 +259,6 @@ private:
     LLMenuButton*       mCopyMenuButton;
     LLButton*           mGroupInviteButton;
     LLButton*           mDisplayNameButton;
-    LLMenuButton*       mImageActionMenuButton;
     LLButton*           mTeleportButton;
     LLButton*           mShowOnMapButton;
     LLButton*           mBlockButton;
@@ -279,11 +273,9 @@ private:
 
     LLHandle<LLFloater> mFloaterPermissionsHandle;
     LLHandle<LLFloater> mFloaterProfileTextureHandle;
-    LLHandle<LLFloater> mFloaterTexturePickerHandle;
 
     bool                mHasUnsavedDescriptionChanges;
     bool                mVoiceStatus;
-    bool                mWaitingForImageUpload;
     bool                mAllowPublish;
     bool                mPreview; // <AS:Chanayane> Preview button
     bool                mHideAge;
@@ -365,8 +357,6 @@ public:
     void apply(LLAvatarData* data);
     void resetData() override;
 
-    void setProfileImageUploading(bool loading);
-    void setProfileImageUploaded(const LLUUID &image_asset_id);
 
     bool hasUnsavedChanges() override { return mHasUnsavedChanges; }
     void commitUnsavedChanges() override;
@@ -374,11 +364,6 @@ public:
 protected:
     void setLoaded() override;
 
-    void onUploadPhoto();
-    void onChangePhoto();
-    void onRemovePhoto();
-    void onFirstLifePicChanged();   // <FS:Zi> Allow proper texture swatch handling
-    void onCommitPhoto(const LLUUID& id);
     void setDescriptionText(const std::string &text);
     // <AS:Chanayane> Preview button
     void reparseDescriptionText(const std::string& text);
@@ -393,14 +378,10 @@ protected:
     // LLThumbnailCtrl*     mPicture;
     LLTextureCtrl* mPicture;
     // </FS:Zi>
-    LLButton* mUploadPhoto;
-    LLButton* mChangePhoto;
-    LLButton* mRemovePhoto;
     LLButton* mSaveChanges;
     LLButton* mDiscardChanges;
     LLButton* mPreviewButton; // <AS:Chanayane> Preview button
 
-    LLHandle<LLFloater> mFloaterTexturePickerHandle;
 
     std::string     mCurrentDescription;
     LLUUID          mImageId;

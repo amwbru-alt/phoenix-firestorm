@@ -221,36 +221,26 @@ void LLAvatarIconCtrl::setValue(const LLSD& value)
     {
         LLAvatarPropertiesProcessor* app =
             LLAvatarPropertiesProcessor::getInstance();
-        if (mAvatarId.notNull())
+        const LLUUID avatar_id = value.asUUID();
+        if (mAvatarId != avatar_id)
         {
-            app->removeObserver(mAvatarId, this);
-        }
+            if (mAvatarId.notNull())
+                app->removeObserver(mAvatarId, this);
 
-        if (mAvatarId != value.asUUID())
-        {
-            mAvatarId = value.asUUID();
-
-            // *BUG: This will return stale icons if a user changes their
-            // profile picture. However, otherwise we send too many upstream
-            // AvatarPropertiesRequest messages.
-
-            // to get fresh avatar icon use
-            // LLAvatarIconIDCache::getInstance()->remove(avatar_id);
-
-            // Check if cache already contains image_id for that avatar
-            if (!updateFromCache())
+            mAvatarId = avatar_id;
+            if (mAvatarId.notNull())
             {
-                // *TODO: Consider getting avatar icon/badge directly from
-                // People API, rather than sending AvatarPropertyRequest
-                // messages.  People API already hits the user table.
-                LLIconCtrl::setValue(mDefaultIconName, LLViewerFetchedTexture::BOOST_UI);
+                // Cached portraits also need updates from the portal profile event.
                 app->addObserver(mAvatarId, this);
-                app->sendAvatarLegacyPropertiesRequest(mAvatarId);
+                if (!updateFromCache())
+                {
+                    LLIconCtrl::setValue(mDefaultIconName, LLViewerFetchedTexture::BOOST_UI);
+                    app->sendAvatarLegacyPropertiesRequest(mAvatarId);
+                }
             }
-            else if (gAgentID == mAvatarId)
+            else
             {
-                // Always track any changes to our own icon id
-                app->addObserver(mAvatarId, this);
+                LLIconCtrl::setValue(mDefaultIconName, LLViewerFetchedTexture::BOOST_UI);
             }
         }
     }
