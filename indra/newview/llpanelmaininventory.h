@@ -93,7 +93,7 @@ public:
                                        EDragAndDropType cargo_type,
                                        void* cargo_data,
                                        EAcceptance* accept,
-                                       std::string& tooltip_msg);
+                                       std::string& tooltip_msg) override;
     void changed(U32) override;
     void draw() override;
     void reshape(S32 width, S32 height, bool called_from_parent = true) override;
