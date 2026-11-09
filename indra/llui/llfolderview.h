@@ -265,6 +265,7 @@ public:
     virtual void updateMenu();
 
     void finishRenamingItem( void );
+    void showSelectionContextMenu(LLView* anchor, S32 x, S32 y);
 
     // Note: We may eventually have to move that method up the hierarchy to LLFolderViewItem.
     LLHandle<LLFolderView>  getHandle() const { return getDerivedHandle<LLFolderView>(); }
@@ -288,7 +289,6 @@ protected:
     bool selectLastItem();
 
     bool addNoOptions(LLMenuGL* menu) const;
-    void showSelectionContextMenu(LLView* anchor, S32 x, S32 y);
 
 private:
     LLMenuGL* getOrCreateContextMenu();
