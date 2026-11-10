@@ -2541,7 +2541,7 @@ void LLFloaterWorldMap::loadRegionPhoto(S32 slot, const LLSD& row)
             if (!Http::getStatusFromLLSD(result[Http::HTTP_RESULTS]))
                 continue;
             const LLSD& response = result;
-            const auto raw = decodeRegionPhoto(response[Http::HTTP_RESULTS_RAW].asBinary());
+            auto raw = decodeRegionPhoto(response[Http::HTTP_RESULTS_RAW].asBinary());
             if (!raw)
                 continue;
 
