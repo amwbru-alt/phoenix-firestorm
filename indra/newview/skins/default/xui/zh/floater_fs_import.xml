@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="fs_import" title="物件匯入">
+<floater name="fs_import" title="物件匯入" forme_creator_only="true">
 	<floater.string name="floater_title">
 		匯入 [FILENAME]
 	</floater.string>

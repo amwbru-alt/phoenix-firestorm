@@ -37,6 +37,7 @@
 
 //class LLInventoryModel;
 //class LLInventoryObserver;
+class LLSD;
 class LLMessageSystem;
 class LLTrackingData;
 
@@ -113,6 +114,7 @@ public:
     typedef std::queue<std::pair<LLUUID, bool>> buddy_status_queue_t;
 
     S32 addBuddyList(const buddy_map_t& buddies);
+    void syncForMeRelationships(const LLSD& relationships);
     //S32 removeBuddyList(const buddy_list_t& exes);
     void copyBuddyList(buddy_map_t& buddies) const;
 

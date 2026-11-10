@@ -5,7 +5,7 @@
         label="Density"
         layout="topleft"
         left="0"
-        help_topic="sky_density"
+       
         name="panel_settings_sky_density"
         top="0">
     <layout_stack 

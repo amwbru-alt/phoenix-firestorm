@@ -464,16 +464,7 @@ void handleUrl(const char* url_utf8)
 
 void dispatchUrl(std::string url)
 {
-    // Safari 3.2 silently mangles secondlife:///app/ URLs into
-    // secondlife:/app/ (only one leading slash).
-    // Fix them up to meet the URL specification. JC
-    const std::string prefix = "secondlife:/app/";
-    std::string test_prefix = url.substr(0, prefix.length());
-    LLStringUtil::toLower(test_prefix);
-    if (test_prefix == prefix)
-    {
-        url.replace(0, prefix.length(), "secondlife:///app/");
-    }
+    if (!url.starts_with("fmw://")) return;
 
     LLMediaCtrl* web = NULL;
     const bool trusted_browser = false;

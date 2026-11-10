@@ -61,14 +61,14 @@ LLUrlRegistry::LLUrlRegistry()
     // <FS:Ansariel> Normalize only trusted URL
     //registerUrl(new LLUrlEntrySeconlifeURL());
     mUrlEntryTrustedUrl = new LLUrlEntrySecondlifeURL();
-    registerUrl(mUrlEntryTrustedUrl);
+
     // </FS:Ansariel>
     // <FS:PP> Add trusted domains
     mUrlEntryFirestormTrustedUrl = new LLUrlEntryFirestormURL();
-    registerUrl(mUrlEntryFirestormTrustedUrl);
-    registerUrl(new LLUrlEntrySimpleFirestormURL());
+
+
     // </FS:PP>
-    registerUrl(new LLUrlEntrySimpleSecondlifeURL());
+
 
     registerUrl(new LLUrlEntryHTTP());
     mUrlEntryHTTPLabel = new LLUrlEntryHTTPLabel();
@@ -98,7 +98,6 @@ LLUrlRegistry::LLUrlRegistry()
     registerUrl(new LLUrlEntryExperienceProfile());
     mUrlEntryKeybinding = new LLUrlEntryKeybinding();
     registerUrl(mUrlEntryKeybinding);
-    registerUrl(new FSHelpDebugUrlEntrySL()); // <FS:Ansariel> FS Help SLUrl
     // <FS:Ansariel> Wear folder SLUrl
     mUrlEntryWear = new FSUrlEntryWear();
     registerUrl(mUrlEntryWear);
@@ -556,3 +555,4 @@ bool LLUrlRegistry::containsAgentMention(const std::string& text)
     }
     return false;
 }
+

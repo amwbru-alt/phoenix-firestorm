@@ -571,7 +571,7 @@ LLContextMenu* FSParticipantList::FSParticipantListMenu::createMenu()
 
 void FSParticipantList::FSParticipantListMenu::copyURLToClipboard(const LLUUID& avatar_id)
 {
-    LLUrlAction::copyURLToClipboard("secondlife:///app/agent/" + mUUIDs.front().asString() + "/mention");
+    LLUrlAction::copyURLToClipboard("fmw:///app/agent/" + mUUIDs.front().asString() + "/mention");
 }
 
 void FSParticipantList::FSParticipantListMenu::insertMentionAtCursor(const LLUUID& avatar_id)

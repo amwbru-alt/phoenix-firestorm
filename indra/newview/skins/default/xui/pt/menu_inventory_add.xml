@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <menu name="menu_inventory_add">
-	<menu label="Enviar" name="upload">
-		<menu_item_call label="Imagem..." name="Upload Image"/>
-		<menu_item_call label="Som ([COST] L$)..." name="Upload Sound"/>
-		<menu_item_call label="Animação ([COST] L$)..." name="Upload Animation"/>
-		<menu_item_call label="Modelo..." name="Upload Model"/>
-		<menu_item_call label="Material..." name="Upload Material"/>
-		<menu_item_call label="Upload em lote..." name="Bulk Upload"/>
-		<menu_item_call label="Importar linkset..." name="import linkset"/>
+	<menu label="Enviar" name="upload" forme_creator_only="true">
+		<menu_item_call label="Imagem..." name="Upload Image" forme_creator_only="true"/>
+		<menu_item_call label="Som ([COST] L$)..." name="Upload Sound" forme_creator_only="true"/>
+		<menu_item_call label="Animação ([COST] L$)..." name="Upload Animation" forme_creator_only="true"/>
+		<menu_item_call label="Modelo..." name="Upload Model" forme_creator_only="true"/>
+		<menu_item_call label="Material..." name="Upload Material" forme_creator_only="true"/>
+		<menu_item_call label="Upload em lote..." name="Bulk Upload" forme_creator_only="true"/>
+		<menu_item_call label="Importar linkset..." name="import linkset" forme_creator_only="true"/>
 	</menu>
 	<menu_item_call label="Nova pasta" name="New Folder"/>
-	<menu_item_call label="Novo script" name="New Script"/>
-	<menu_item_call label="Nova notecard" name="New Note"/>
-	<menu_item_call label="Novo gesto" name="New Gesture"/>
-	<menu_item_call label="Novo material" name="New Material"/>
+	<menu_item_call label="Novo script" name="New Script" forme_creator_only="true"/>
+	<menu_item_call label="Nova notecard" name="New Note" forme_creator_only="true"/>
+	<menu_item_call label="Novo gesto" name="New Gesture" forme_creator_only="true"/>
+	<menu_item_call label="Novo material" name="New Material" forme_creator_only="true"/>
 	<menu label="Novas roupas" name="New Clothes">
 		<menu_item_call label="Nova camisa" name="New Shirt"/>
 		<menu_item_call label="Nova calça" name="New Pants"/>

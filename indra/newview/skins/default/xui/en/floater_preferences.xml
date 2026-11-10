@@ -1,222 +1,36 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater
- legacy_header_height="18"
- positioning="centered"
- default_tab_group="2"
- height="561"
- layout="topleft"
- name="Preferences"
- help_topic="preferences"
- save_rect="true"
- single_instance="true"
- title="Preferences"
- width="673">
-    <button
-     follows="right|bottom"
-     height="23"
-     label="OK"
-     label_selected="OK"
-     layout="topleft"
-     left_pad="5"
-     right="-105"
-     name="OK"
-     top="528"
-     width="90">
-        <button.commit_callback
-         function="Pref.OK" />
+<?xml version='1.0' encoding='utf-8'?>
+<floater legacy_header_height="0" positioning="centered" default_tab_group="2" height="664" layout="topleft" name="Preferences" save_rect="true" single_instance="true" title="Preferences" width="852" header_height="44" header_vpad="10" header_icon="Forme_UI_Settings" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD" min_width="852" min_height="664">
+  <button follows="right|bottom" label="OK" label_selected="OK" layout="topleft" name="OK" left="-226" top="618" width="98" height="34">
+    <button.commit_callback function="Pref.OK" />
+  </button>
+  <button follows="right|bottom" label="Cancel" label_selected="Cancel" layout="topleft" name="Cancel" left="-116" top="618" width="100" height="34">
+    <button.commit_callback function="Pref.Cancel" />
+  </button>
+  <panel name="search_panel" layout="topleft" follows="left|top|right" tab_group="2" left="16" top="26" height="40" right="-16">
+    <search_editor clear_button_visible="true" follows="left|top|right" label="Search Settings" layout="topleft" max_length_bytes="255" name="search_prefs_edit" text_pad_left="34" tool_tip="Type the search term you are interested in here. Results will be displayed for partial fulltext matches within the setting's name or comment." left="0" top="0" height="40" right="-46">
+      <search_editor.commit_callback function="UpdateFilter" />
+      <search_editor.clear_button rect.height="18" rect.width="18" rect.bottom="-1" />
+      <search_editor.search_button rect.height="12" rect.width="12" rect.bottom="-1" />
+    </search_editor>
+    <button image_overlay="Copy" layout="topleft" name="copy_search_slurl_btn" tool_tip="Copy search query as SLURL" left="-38" top="2" width="36" height="36">
+      <button.commit_callback function="Pref.CopySearchAsSLURL" />
     </button>
-    <button
-     follows="right|bottom"
-     height="23"
-     label="Cancel"
-     label_selected="Cancel"
-     layout="topleft"
-     left_pad="5"
-     name="Cancel"
-     right="-10"
-     width="90" >
-        <button.commit_callback
-         function="Pref.Cancel" />
-    </button>
-
-    <panel
-     name="search_panel"
-     layout="topleft"
-     follows="left|top|right"
-     left="4"
-     right="-4"
-     top="21"
-     height="18"
-     tab_group="2">
-        <search_editor
-         clear_button_visible="true"
-         follows="left|top|right"
-         height="18"
-         label="Search Settings"
-         layout="topleft"
-         left="0"
-         max_length_bytes="255"
-         name="search_prefs_edit"
-         right="-30"
-         text_pad_left="6"
-         tool_tip="Type the search term you are interested in here. Results will be displayed for partial fulltext matches within the setting's name or comment."
-         top="0">
-         <search_editor.commit_callback
-          function="UpdateFilter" />
-         <search_editor.clear_button
-          rect.height="18"
-          rect.width="18"
-          rect.bottom="-1" />
-         <search_editor.search_button
-          rect.height="12"
-          rect.width="12"
-          rect.bottom="-1" />
-        </search_editor>
-        <button
-          height="18"
-          image_overlay="Copy"
-          layout="topleft"
-          left_pad="2"
-          top_delta="0"
-          name="copy_search_slurl_btn"
-          tool_tip="Copy search query as SLURL"
-          width="28">
-          <button.commit_callback
-            function="Pref.CopySearchAsSLURL" />
-        </button>
-    </panel>
-
-    <tab_container
-     follows="all"
-     halign="left"
-     height="480"
-     layout="topleft"
-     left="0"
-     name="pref core"
-     tab_group="1"
-     tab_position="left"
-     tab_width="125"
-     tab_padding_right="4"
-     top="42"
-     width="673">
-        <panel
-         class="panel_preference"
-         filename="panel_preferences_general.xml"
-         label="General"
-         layout="topleft"
-         help_topic="preferences_general_tab"
-         name="general" />
-        <panel
-         class="panel_preference"
-         filename="panel_preferences_chat.xml"
-         label="Chat"
-         layout="topleft"
-         help_topic="preferences_chat_tab"
-         name="chat" />
-        <panel
-         class="panel_preference"
-         filename="panel_preferences_colors.xml"
-         label="Colors"
-         layout="topleft"
-         help_topic="preferences_colors_tab"
-         name="colors" />
-        <panel
-          class="panel_preference_graphics"
-         filename="panel_preferences_graphics1.xml"
-         label="Graphics"
-         layout="topleft"
-         help_topic="preferences_display_tab"
-         name="display" />
-        <panel
-         class="panel_preference_sounds"
-         filename="panel_preferences_sound.xml"
-         label="Sound &amp; Media"
-         layout="topleft"
-         help_topic="preferences_audio_tab"
-         name="audio" />
-        <panel
-         class="panel_preference"
-         filename="panel_preferences_setup.xml"
-         label="Network &amp; Files"
-         layout="topleft"
-         help_topic="preferences_input_tab"
-         name="input" />
-        <panel
-		 class="panel_preference"
-         filename="panel_preferences_move.xml"
-         label="Move &amp; View"
-         layout="topleft"
-         help_topic="preferences_move_tab"
-         name="move" />
-        <panel
-         class="panel_preference_controls"
-         filename="panel_preferences_controls.xml"
-         label="Controls"
-         layout="topleft"
-         help_topic="preferences_controls_tab"
-         name="controls" />
-        <panel
-         class="panel_preference"
-         filename="panel_preferences_alerts.xml"
-         label="Notifications"
-         layout="topleft"
-         help_topic="preferences_msgs_tab"
-         name="msgs" />
-        <panel
-         class="panel_preference_privacy"
-         filename="panel_preferences_privacy.xml"
-         label="Privacy"
-         layout="topleft"
-         help_topic="preferences_privacy_tab"
-         name="im" />
-        <panel
-         class="panel_preference"
-         filename="panel_preferences_advanced.xml"
-         label="Advanced"
-         layout="topleft"
-         help_topic="preferences_advanced1_tab"
-         name="advanced1" />
-        <panel
-         class="panel_preference"
-         filename="panel_preferences_UI.xml"
-         label="User Interface"
-         layout="topleft"
-         help_topic="preferences_ui_extras_tab"
-         name="ui" />
-        <panel
-         class="panel_preference_skins"
-         filename="panel_preferences_skins.xml"
-         label="Skins"
-         layout="topleft"
-         help_topic="preferences_skins_tab"
-         name="skins" />
-        <panel
-         class="panel_preference_crashreports"
-         filename="panel_preferences_crashreports.xml"
-         label="Crash Reports"
-         layout="topleft"
-         help_topic="preferences_crashreports_tab"
-         name="crashreports" />
-        <panel
-         class="panel_preference_firestorm"
-         filename="panel_preferences_firestorm.xml"
-         label="Firestorm"
-         layout="topleft"
-         help_topic="preferences_firestorm_tab"
-         name="firestorm" />
-        <panel
-         class="panel_preference_opensim"
-         filename="panel_preferences_opensim.xml"
-         label="Opensim"
-         layout="topleft"
-         help_topic="preferences_opensim_tab"
-         name="opensim" />
-        <panel
-         class="panel_preference_backup"
-         filename="panel_preferences_backup.xml"
-         label="Backup &amp; Restore"
-         layout="topleft"
-         help_topic="preferences_backup_tab"
-         name="backup" />
-    </tab_container>
+  </panel>
+  <tab_container follows="all" halign="left" layout="topleft" name="pref core" tab_group="1" tab_position="left" tab_width="184" tab_padding_right="14" left="16" top="80" width="820" height="526" tab_height="34" label_pad_left="10" use_ellipses="true">
+    <panel class="panel_preference" filename="panel_preferences_general.xml" label="General" layout="topleft" name="general" />
+    <panel class="panel_preference" filename="panel_preferences_chat.xml" label="Chat" layout="topleft" name="chat" />
+    <panel class="panel_preference_graphics" filename="panel_preferences_graphics1.xml" label="Graphics" layout="topleft" name="display" />
+    <panel class="panel_preference_sounds" filename="panel_preferences_sound.xml" label="Sound &amp; Media" layout="topleft" name="audio" />
+    <panel class="panel_preference" filename="panel_preferences_setup.xml" label="Network &amp; Files" layout="topleft" name="input" />
+    <panel class="panel_preference" filename="panel_preferences_move.xml" label="Move &amp; View" layout="topleft" name="move" />
+    <panel class="panel_preference_controls" filename="panel_preferences_controls.xml" label="Controls" layout="topleft" name="controls" />
+    <panel class="panel_preference" filename="panel_preferences_alerts.xml" label="Notifications" layout="topleft" name="msgs" />
+    <panel class="panel_preference_privacy" filename="panel_preferences_privacy.xml" label="Privacy" layout="topleft" name="im" />
+    <panel class="panel_preference" filename="panel_preferences_advanced.xml" label="Advanced" layout="topleft" name="advanced1" />
+    <panel class="panel_preference" filename="panel_preferences_UI.xml" label="User Interface" layout="topleft" name="ui" />
+    <panel class="panel_preference_skins" filename="panel_preferences_skins.xml" label="Skins" layout="topleft" name="skins" />
+    <panel class="panel_preference_crashreports" filename="panel_preferences_crashreports.xml" label="Crash Reports" layout="topleft" name="crashreports" />
+    <panel class="panel_preference_firestorm" filename="panel_preferences_firestorm.xml" label="ForMe.World" layout="topleft" name="firestorm" />
+    <panel class="panel_preference_backup" filename="panel_preferences_backup.xml" label="Backup &amp; Restore" layout="topleft" name="backup" />
+  </tab_container>
 </floater>

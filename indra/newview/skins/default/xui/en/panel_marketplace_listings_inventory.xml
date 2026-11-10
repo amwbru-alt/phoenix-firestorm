@@ -2,7 +2,7 @@
 <inventory_panel
     label="All"
     name="All Items"
-    help_topic="marketplace_tab"
+   
     layout="topleft"
     follows="all"
     width="308"

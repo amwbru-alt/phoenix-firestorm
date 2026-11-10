@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fscreatoraccess.h"
 
 #include "llfloatertools.h"
 
@@ -376,7 +377,7 @@ bool    LLFloaterTools::postBuild()
     if (btnExpand && mTab)
     {
         mExpandedHeight = getRect().getHeight();
-        mCollapsedHeight = mExpandedHeight - mTab->getRect().getHeight() + btnExpand->getRect().getHeight();
+        mCollapsedHeight = llmax(280, mExpandedHeight - mTab->getRect().getHeight() + btnExpand->getRect().getHeight());
         if (!gSavedSettings.getBOOL("FSToolboxExpanded"))
         {
             mTab->setVisible(false);
@@ -1158,6 +1159,8 @@ bool LLFloaterTools::canClose()
 // virtual
 void LLFloaterTools::onOpen(const LLSD& key)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     mParcelSelection = LLViewerParcelMgr::getInstance()->getFloatingParcelSelection();
     mObjectSelection = LLSelectMgr::getInstance()->getEditSelection();
 

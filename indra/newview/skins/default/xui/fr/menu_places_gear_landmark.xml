@@ -2,7 +2,7 @@
 <toggleable_menu name="menu_ladmark_gear">
 	<menu_item_call label="Téléporter" name="teleport"/>
 	<menu_item_call label="Afficher sur la carte" name="show_on_map"/>
-	<menu_item_call label="Partager" name="share"/>
+	<menu_item_call label="Partager" name="share" forme_creator_only="true"/>
 	<menu_item_call label="Plus d'informations" name="more_info"/>
 	<menu_item_call label="Déplacer vers Repères" name="Move to Landmarks"/>
 	<menu_item_call label="Déplacer vers Favoris" name="Move to Favorites"/>

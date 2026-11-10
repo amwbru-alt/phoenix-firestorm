@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "formegridpolicy.h" // <FS:ForMe> Fixed-grid policy.
 // include this to get winsock2 because openssl attempts to include winsock1
 #include "llwin32headers.h"
 #include <openssl/x509_vfy.h>
@@ -198,6 +199,12 @@ LLXMLRPCTransaction::Impl::Impl
     , mHasResponse(false)
     , mResponseParsed(false)
 {
+    // <FS:ForMe> Defense in depth for login requests posted directly to XML-RPC.
+    if (method == "login_to_simulator" && !ForMeGrid::allowedLoginURI(uri))
+    {
+        setStatus(LLXMLRPCTransaction::StatusOtherError, "This viewer connects only to ForMe.World.");
+        return;
+    }
     LLCore::HttpOptions::ptr_t httpOpts;
     LLCore::HttpHeaders::ptr_t httpHeaders;
 
@@ -208,6 +215,7 @@ LLXMLRPCTransaction::Impl::Impl
 
     // LLRefCounted starts with a 1 ref, so don't add a ref in the smart pointer
     httpOpts = std::make_shared<LLCore::HttpOptions>();
+    httpOpts->setFollowRedirects(false); // <FS:ForMe> Never POST credentials through HTTP redirects.
 
     // Delay between repeats will start from 5 sec and grow to 20 sec with each repeat
     httpOpts->setMinBackoff((LLCore::HttpTime)5E6L);

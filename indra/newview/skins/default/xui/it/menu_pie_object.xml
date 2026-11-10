@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <pie_menu name="Object Pie">
 	<pie_slice label="Apri" name="Open"/>
-	<pie_slice label="Crea" name="Build"/>
+	<pie_slice label="Crea" name="Build" forme_creator_only="true"/>
 	<pie_slice label="Tocca" name="Pie Object Touch"/>
 	<pie_slice label="Siediti qui" name="Pie Object Sit"/>
 	<pie_slice label="Alzati" name="Object Stand Up"/>
 	<pie_slice label="Compra" name="Buy..."/>
 	<pie_menu label="Prendi &gt;" name="Take Submenu">
-		<pie_slice label="Copie come ogg. separati" name="Take Copy Separate" />
-		<pie_slice label="Prendi copia" name="Take Copy" />
-		<pie_slice label="Prendi" name="Take" />
-		<pie_slice label="Come multi-ogg." name="Take combined" />
-		<pie_slice label="Copia come multi-ogg." name="Take Copy combined" />
-		<pie_slice label="Come ogg. separati" name="Take Separate" />
+		<pie_slice label="Copie come ogg. separati" name="Take Copy Separate"  forme_creator_only="true"/>
+		<pie_slice label="Prendi copia" name="Take Copy"  forme_creator_only="true"/>
+		<pie_slice label="Prendi" name="Take"  forme_creator_only="true"/>
+		<pie_slice label="Come multi-ogg." name="Take combined"  forme_creator_only="true"/>
+		<pie_slice label="Copia come multi-ogg." name="Take Copy combined"  forme_creator_only="true"/>
+		<pie_slice label="Come ogg. separati" name="Take Separate"  forme_creator_only="true"/>
 	</pie_menu>
 	<pie_slice label="Paga" name="Pay..."/>
 	<pie_menu label="Altro &gt;" name="Object Pie More 1">
-		<pie_slice label="Elimina" name="Delete"/>
+		<pie_slice label="Elimina" name="Delete" forme_creator_only="true"/>
 		<pie_slice label="Indossa" name="Wear"/>
-		<pie_slice label="Prendi copia" name="Take Copy" />
+		<pie_slice label="Prendi copia" name="Take Copy"  forme_creator_only="true"/>
 		<pie_menu label="Attacca HUD &gt;" name="Pie Object Attach HUD"/>
 		<pie_menu label="Attacca &gt;" name="Pie Object Attach">
 			<pie_menu label="Schel. avanz. &gt;" name="Enhanced Skeleton">
@@ -41,7 +41,7 @@
 				</pie_menu>
 			</pie_menu>
 		</pie_menu>
-		<pie_slice label="Restituisci" name="Return..."/>
+		<pie_slice label="Restituisci" name="Return..." forme_creator_only="true"/>
 		<pie_menu label="Altro &gt;" name="Object Pie More 2">
 			<pie_menu name="ResetMenu" label="Ripristina &gt;">
 				<pie_slice label="Ricar. texture" name="Texture Refresh"/>
@@ -53,8 +53,8 @@
 			</pie_menu>
 			<pie_slice label="Segnala abuso" name="Report Abuse..."/>
 			<pie_menu name="ExportMenu" label="Esporta &gt;">
-				<pie_slice label="Salva copia" name="Backup"/>
-				<pie_slice label="Collada" name="Collada"/>
+				<pie_slice label="Salva copia" name="Backup" forme_creator_only="true"/>
+				<pie_slice label="Collada" name="Collada" forme_creator_only="true"/>
 				<pie_slice label="Scarica XML" name="Dump XML" />
 			</pie_menu>
 			<pie_menu label="Pathfinding &gt;" name="Pathfinding">
@@ -66,17 +66,17 @@
 				<pie_slice label="Particelle" name="Mute Particle"/>
 			</pie_menu>
 			<pie_menu label="Script &gt;" name="ScriptsMenu">
-				<pie_slice label="Compila Mono" name="CompileMono"/>
-				<pie_slice label="Compila LSL" name="CompileLSL"/>
-				<pie_slice label="Ripristina" name="Object Reset Scripts"/>
-				<pie_slice label="Avvia" name="Object Set Scripts to Running"/>
-				<pie_slice label="Ferma" name="Object Set Scripts to Not Running"/>
-				<pie_slice label="Rimuovi" name="Remove Scripts From Selection"/>
+				<pie_slice label="Compila Mono" name="CompileMono" forme_creator_only="true"/>
+				<pie_slice label="Compila LSL" name="CompileLSL" forme_creator_only="true"/>
+				<pie_slice label="Ripristina" name="Object Reset Scripts" forme_creator_only="true"/>
+				<pie_slice label="Avvia" name="Object Set Scripts to Running" forme_creator_only="true"/>
+				<pie_slice label="Ferma" name="Object Set Scripts to Not Running" forme_creator_only="true"/>
+				<pie_slice label="Rimuovi" name="Remove Scripts From Selection" forme_creator_only="true"/>
 				<pie_slice label="Info" name="ScriptInfo"/>
 			</pie_menu>
 			<pie_slice label="Ispeziona" name="Object Inspect"/>
 		</pie_menu>
 		<pie_slice label="Compra" name="Buy..."/>
 	</pie_menu>
-	<pie_slice label="Modifica" name="Edit..."/>
+	<pie_slice label="Modifica" name="Edit..." forme_creator_only="true"/>
 </pie_menu>

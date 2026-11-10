@@ -8,10 +8,10 @@
 		[當前伺服器]
 	</string>
 	<string name="APP_NAME">
-		Firestorm
+		ForMe.World
 	</string>
 	<string name="CAPITALIZED_APP_NAME">
-		FIRESTORM
+		ForMe.World
 	</string>
 	<string name="SECOND_LIFE_GRID">
 		第二人生
@@ -26,9 +26,7 @@
 	<string name="SHORT_VIEWER_GENERATION">
 		V[VERSION]
 	</string>
-	<string name="APP_NAME_ABBR">
-		FS
-	</string>
+	<string name="APP_NAME_ABBR">ForMe.World</string>
 	<string name="StartupLoading">
 		[APP_NAME]載入中...
 	</string>
@@ -48,7 +46,7 @@
 	<string name="AboutHeader">
 [APP_NAME] [VIEWER_VERSION_0].[VIEWER_VERSION_1].[VIEWER_VERSION_2] ([VIEWER_VERSION_3]) [BUILD_DATE] [BUILD_TIME] ([ADDRESS_SIZE]bit / [SIMD]) ([CHANNEL]) [BUILD_TYPE]
 [[VIEWER_RELEASE_NOTES_URL] [ReleaseNotes]]
-与 Second Life Viewer 保持一致: [VIEWER_VERSION_LL]
+与 ForMe.World Viewer 保持一致: [VIEWER_VERSION_LL]
 	</string>
 	<string name="AboutCompiler">
 		Built with [COMPILER] version [COMPILER_VERSION]
@@ -741,7 +739,7 @@ support@secondlife.com.
 		點擊在大地圖上檢視當前位置
 	</string>
 	<string name="TooltipSLAPP">
-		點擊運行 secondlife:// 指令
+		點擊運行 ForMe.World:// 指令
 	</string>
 	<string name="TooltipFSHelpDebugSLUrl">
 		點擊除錯當前視窗設定
@@ -760,7 +758,7 @@ support@secondlife.com.
 	<string name="SLurlLabelShowOnMap">
 		顯示到地圖
 	</string>
-	<!-- label strings for secondlife:///app/agent SLapps -->
+	<!-- label strings for fmw:///app/agent SLapps -->
 	<string name="SLappAgentMute">
 		封鎖
 	</string>
@@ -1801,10 +1799,10 @@ support@secondlife.com.
 	</string>
 	<!-- inventory -->
 	<string name="InventoryNoMatchingItems">
-		未找到你想要的？ 嘗試 [secondlife:///app/search/all/[SEARCH_TERM] 搜尋].
+		未找到你想要的？ 嘗試 [fmw:///app/search/all/[SEARCH_TERM] 搜尋].
 	</string>
 	<string name="InventoryNoMatchingRecentItems">
-		未找到你想要的？ 嘗試 [secondlife:///app/inventory/filters 更改過濾器].
+		未找到你想要的？ 嘗試 [fmw:///app/inventory/filters 更改過濾器].
 	</string>
 	<string name="InventoryNoMatchingFavorites">
 		您尚未將任何物件標記為收藏。
@@ -1842,21 +1840,11 @@ support@secondlife.com.
 	<string name="InventoryInboxNoItems">
 		你在第二人生市場中購買的物件將會出現在這裡。你可以將其拖入庫存區使用。
 	</string>
-	<string name="MarketplaceURL">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/
-	</string>
-	<string name="MarketplaceURL_CreateStore">
-		http://community.secondlife.com/t5/English-Knowledge-Base/Selling-in-the-Marketplace/ta-p/700193#Section_.3
-	</string>
-	<string name="MarketplaceURL_Dashboard">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/merchants/store/dashboard
-	</string>
-	<string name="MarketplaceURL_Imports">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/merchants/store/imports
-	</string>
-	<string name="MarketplaceURL_LearnMore">
-		https://marketplace.[MARKETPLACE_DOMAIN_NAME]/learn_more
-	</string>
+	<string name="MarketplaceURL">http://185.173.93.200:8002/web/marketplace.html</string>
+	<string name="MarketplaceURL_CreateStore">http://185.173.93.200:8002/web/seller.html</string>
+	<string name="MarketplaceURL_Dashboard">http://185.173.93.200:8002/web/seller.html</string>
+	<string name="MarketplaceURL_Imports">http://185.173.93.200:8002/web/seller.html</string>
+	<string name="MarketplaceURL_LearnMore">http://185.173.93.200:8002/web/terms.html</string>
 	<string name="InventoryPlayAnimationTooltip">
 		開啟播放視窗。
 	</string>
@@ -1890,18 +1878,9 @@ support@secondlife.com.
 	<string name="InventoryOutboxError">
 當前 [[MARKETPLACE_CREATE_STORE_URL] 市場商店] 傳回錯誤
 	</string>
-	<string name="InventoryMarketplaceError">
-打開市場列表錯誤。
-如果你持續收到該資訊，請聯絡第二人生尋求幫助，網址：http://support.secondlife.com
-	</string>
-	<string name="InventoryMarketplaceConnectionError">
-無法打開市場列表。
-如果你持續收到該資訊，請聯絡第二人生尋求幫助，網址：http://support.secondlife.com
-	</string>
-	<string name="InventoryMarketplaceConnectionErrorReason">
-無法打開市場列表。原因: [REASON]
-如果你持續收到該資訊，請聯絡第二人生尋求幫助，網址：http://support.secondlife.com
-	</string>
+	<string name="InventoryMarketplaceError">打開市場列表錯誤。</string>
+	<string name="InventoryMarketplaceConnectionError">無法打開市場列表。</string>
+	<string name="InventoryMarketplaceConnectionErrorReason">無法打開市場列表。原因: [REASON]</string>
 	<string name="InventoryMarketplaceListingsNoItemsTitle">
 		你的市場銷售列表為空。
 	</string>
@@ -2185,7 +2164,7 @@ support@secondlife.com.
 	</string>
 	<!-- Virtual Firestorm system folders -->
 	<string name="InvFolder #Firestorm">
-		#Firestorm
+		#ForMe.World
 	</string>
 	<string name="InvFolder #Phoenix">
 		#Phoenix

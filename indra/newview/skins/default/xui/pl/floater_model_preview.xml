@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<floater name="Model Preview" title="Przesyłanie modelu">
+<floater name="Model Preview" title="Przesyłanie modelu" forme_creator_only="true">
 <string name="status_parse_error">Błąd: Problem z parsowaniem modelu, zobacz log.</string>
 <string name="status_bind_shape_orientation">Uwaga: Macierz powiązań kształtu nie jest w standardowej orientacji X-forward.</string>
 <string name="status_material_mismatch">Błąd: Materiał nie jest podzbiorem modelu referencyjnego.</string>
@@ -48,7 +48,7 @@
 <string name="ParsingErrorNoRoot">Dokument nie ma elementu głównego</string>
 <string name="ParsingErrorNoScene">Dokument nie zawiera visual_scene</string>
 <string name="ParsingErrorPositionInvalidModel">Nie można przetworzyć meszu bez danych pozycji. Nieprawidłowy model.</string>
-<string name="UnknownException">Importer uległ awarii podczas przetwarzania pliku [FILENAME]. Jeśli plik jest prawidłowy, to zgłoś to wsparciu Second Life. Wyjątek: [EXCEPTION].</string>
+<string name="UnknownException">Importer uległ awarii podczas przetwarzania pliku [FILENAME]. Jeśli plik jest prawidłowy, to zgłoś to wsparciu ForMe.World. Wyjątek: [EXCEPTION].</string>
 <string name="ParsingErrorEmptyInvBindInvalidModel">Nie można przetworzyć meszu bez danych InvBind. Nieprawidłowy model.</string>
 <string name="NoScenesFound">Brak zdefiniowanych scen w pliku GLTF</string>
 <string name="InvalidMeshReference">Węzeł [NODE_NAME] odwołuje się do nieprawidłowego meszu [MESH_INDEX] (łącznie meszy: [TOTAL_MESHES])</string>

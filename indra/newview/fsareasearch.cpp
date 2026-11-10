@@ -327,7 +327,7 @@ void FSAreaSearch::applySlappParams(const LLSD& params)
 std::string FSAreaSearch::buildSlappLink() const
 {
     std::ostringstream url;
-    url << "secondlife:///app/openfloater/area_search";
+    url << "fmw:///app/openfloater/area_search";
     bool first = true;
     auto add = [&](const char* k, const std::string& v)
     {
@@ -1593,7 +1593,7 @@ bool FSPanelAreaSearchList::handleKeyHere(KEY key, MASK mask)
             return true;
         }
     }
-    
+
     return LLPanel::handleKeyHere(key, mask);
 }
 

@@ -26,8 +26,8 @@
 	<icon name="cant_see_online" tool_tip="Друг не может мой статус в сети"/>
 	<icon name="can_see_on_map" tool_tip="Друг может видеть меня на карте"/>
 	<icon name="cant_see_on_map" tool_tip="Друг не может видеть меня на карте"/>
-	<icon name="can_edit_objects" tool_tip="Друг может править мои объекты"/>
-	<icon name="cant_edit_objects" tool_tip="Друг не может править мои объекты"/>
+	<icon name="can_edit_objects" tool_tip="Друг может править мои объекты" forme_creator_only="true"/>
+	<icon name="cant_edit_objects" tool_tip="Друг не может править мои объекты" forme_creator_only="true"/>
 	<text name="Key:" value="Ключ:"/>
 	<text_editor name="user_key" value="(загрузка...)"/>
 	<layout_stack name="imagepositioner">
@@ -77,6 +77,7 @@
 	</layout_stack>
 	<check_box name="show_in_search" label="Показать в поиске" tool_tip="Позволить людям видеть вас в результатах поиска"/>
 	<check_box name="hide_sl_age" label="Показать полную дату рождения" tool_tip="Позволить людям видеть ваш возраст в СЛ"/>
+	<button name="forme_profile_website" label="Сменить фото на сайте" tool_tip="Открыть профиль ForMe.World в браузере"/>
 	<button name="save_description_changes" label="Сохранить"/>
 	<button name="discard_description_changes" label="Отказаться"/>
 </panel>

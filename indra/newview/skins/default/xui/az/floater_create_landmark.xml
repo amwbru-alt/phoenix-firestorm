@@ -4,7 +4,7 @@
 	<text name="title_label" value="Ətraflı"/>
 	<text name="name_label" value="Adı:"/>
 	<text name="folder_label" value="Əlfəcini harada saxla:"/>
-	<text name="new_folder_textbox">[secondlife:/// Yeni qovluq yarat]</text>
+	<text name="new_folder_textbox">[fmw:/// Yeni qovluq yarat]</text>
 	<text name="notes_label" value="Qeydlərim:"/>
 	<button label="OK" name="ok_btn"/>
 	<button label="Ləğv et" name="cancel_btn"/>

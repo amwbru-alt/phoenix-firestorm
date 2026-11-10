@@ -41,7 +41,6 @@
 #include "llstring.h"
 #include "lltextutil.h"
 #include "lltrans.h"
-#include "lltranslate.h"
 #include "lluictrlfactory.h"
 #include "llfloaterimsessiontab.h"
 #include "llagent.h"
@@ -742,42 +741,6 @@ void chatterBoxInvitationCoro(std::string url, LLUUID sessionId, LLIMMgr::EInvit
     gIMMgr->clearPendingAgentListUpdates(sessionId);
     gIMMgr->clearPendingInvitation(sessionId);
 
-}
-
-void translateSuccess(const LLUUID& session_id, const std::string& from, const LLUUID& from_id, const std::string& utf8_text,
-                        U64 time_n_flags, std::string originalMsg, std::string expectLang, std::string translation, const std::string detected_language)
-{
-    std::string message_txt(utf8_text);
-    // filter out non-interesting responses
-    if (!translation.empty()
-        && ((detected_language.empty()) || (expectLang != detected_language))
-        && (LLStringUtil::compareInsensitive(translation, originalMsg) != 0))
-    {   // Note - if this format changes, also fix code in addMessagesFromServerHistory()
-        message_txt += XL8_START_TAG + LLTranslate::removeNoTranslateTags(translation) + XL8_END_TAG;
-    }
-
-    // Extract info packed in time_n_flags
-    bool log2file =      (bool)(time_n_flags & (1LL << 32));
-    bool is_region_msg = (bool)(time_n_flags & (1LL << 33));
-    U32 time_stamp = (U32)(time_n_flags & 0x00000000ffffffff);
-
-    LLIMModel::getInstance()->processAddingMessage(session_id, from, from_id, message_txt, log2file, is_region_msg, time_stamp, false);
-}
-
-void translateFailure(const LLUUID& session_id, const std::string& from, const LLUUID& from_id, const std::string& utf8_text,
-                        U64 time_n_flags, int status, const std::string err_msg)
-{
-    std::string message_txt(utf8_text);
-    std::string msg = LLTrans::getString("TranslationFailed", LLSD().with("[REASON]", err_msg));
-    LLStringUtil::replaceString(msg, "\n", " "); // we want one-line error messages
-    message_txt += XL8_START_TAG + msg + XL8_END_TAG;
-
-    // Extract info packed in time_n_flags
-    bool log2file = (bool)(time_n_flags & (1LL << 32));
-    bool is_region_msg = (bool)(time_n_flags & (1LL << 33));
-    U32 time_stamp = (U32)(time_n_flags & 0x00000000ffffffff);
-
-    LLIMModel::getInstance()->processAddingMessage(session_id, from, from_id, message_txt, log2file, is_region_msg, time_stamp, false);
 }
 
 void chatterBoxHistoryCoro(std::string url, LLUUID sessionId, std::string from, std::string message, U32 timestamp)
@@ -1954,20 +1917,7 @@ void LLIMModel::proccessOnlineOfflineNotification(
 void LLIMModel::addMessage(const LLUUID& session_id, const std::string& from, const LLUUID& from_id,
                            const std::string& utf8_text, bool log2file /* = true */, bool is_region_msg /* = false */, U32 time_stamp /* = 0 */, bool is_announcement /* = false */, bool keyword_alert_performed /* = false */)
 {
-    //if (gSavedSettings.getBOOL("TranslateChat") && (from != SYSTEM_FROM))
-    if (gSavedSettings.getBOOL("TranslateChat") && (from != SYSTEM_FROM) && !is_announcement && !keyword_alert_performed)
-    {
-        const std::string from_lang = ""; // leave empty to trigger autodetect
-        const std::string to_lang = LLTranslate::getTranslateLanguage();
-        U64 time_n_flags = ((U64) time_stamp) | (log2file ? (1LL << 32) : 0) | (is_region_msg ? (1LL << 33) : 0);   // boost::bind has limited parameters
-        LLTranslate::translateMessage(from_lang, to_lang, utf8_text,
-            boost::bind(&translateSuccess, session_id, from, from_id, utf8_text, time_n_flags, utf8_text, from_lang, _1, _2),
-            boost::bind(&translateFailure, session_id, from, from_id, utf8_text, time_n_flags, _1, _2));
-    }
-    else
-    {
-        processAddingMessage(session_id, from, from_id, utf8_text, log2file, is_region_msg, time_stamp, is_announcement, keyword_alert_performed);
-    }
+    processAddingMessage(session_id, from, from_id, utf8_text, log2file, is_region_msg, time_stamp, is_announcement, keyword_alert_performed);
 }
 
 // <FS:Ansariel> Added is_announcement parameter
@@ -3986,7 +3936,7 @@ LLUUID LLIMMgr::addSession(
     if (new_session &&
         ((IM_NOTHING_SPECIAL == dialog) || (IM_SESSION_P2P_INVITE == dialog) || (IM_SESSION_CONFERENCE_START == dialog)) &&
         // <AS:chanayane> [FIRE-34494] fix unable to open an IM with someone who started a group chat
-        //ids.size())   
+        //ids.size())
         !ids.empty())
         // </AS:chanayane>
     {
@@ -4000,9 +3950,9 @@ LLUUID LLIMMgr::addSession(
             // Protect against wrong session type reuse (e.g., conference reused for IM)
             if (session->mType != dialog)
             {
-                LL_WARNS("IMVIEW") << "Discarding mismatched session type reuse: expected " 
-                   << dialog << " but found " << session->mType 
-                   << " for session " << session->mSessionID 
+                LL_WARNS("IMVIEW") << "Discarding mismatched session type reuse: expected "
+                   << dialog << " but found " << session->mType
+                   << " for session " << session->mSessionID
                    << ". This may indicate improper reuse of a session object." << LL_ENDL;
                 session = nullptr;
                 new_session = true;

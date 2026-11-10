@@ -20,7 +20,7 @@
 				<panel name="stub_panel">
 					<button name="stub_collapse_btn" tool_tip="Dieses Fenster schließen"/>
 					<text name="stub_textbox">
-						Diese Unterhaltung erscheint in einem separaten Fenster.   [secondlife:/// Zurückholen.]
+						Diese Unterhaltung erscheint in einem separaten Fenster.   [fmw:/// Zurückholen.]
 					</text>
 				</panel>
 			</panel_container>

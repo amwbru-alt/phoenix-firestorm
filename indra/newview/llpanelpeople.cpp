@@ -609,6 +609,16 @@ LLPanelPeople::LLPanelPeople()
     mRecentListUpdater = new LLRecentListUpdater(boost::bind(&LLPanelPeople::updateRecentList,  this));
     mButtonsUpdater = new LLButtonsUpdater(boost::bind(&LLPanelPeople::updateButtons, this));
 
+    mCommitCallbackRegistrar.add("ForMePeople.SelectTab", [this](LLUICtrl*, const LLSD& value)
+    {
+        if (mTabContainer && mTabContainer->selectTabByName(value.asString()))
+            onTabSelected(value);
+    });
+    mEnableCallbackRegistrar.add("ForMePeople.SelectedTab", [this](LLUICtrl*, const LLSD& value)
+    {
+        return mTabContainer && mTabContainer->getCurrentPanel() &&
+            mTabContainer->getCurrentPanel()->getName() == value.asString();
+    });
     mCommitCallbackRegistrar.add("People.AddFriend", boost::bind(&LLPanelPeople::onAddFriendButtonClicked, this));
     mCommitCallbackRegistrar.add("People.AddFriendWizard",  boost::bind(&LLPanelPeople::onAddFriendWizButtonClicked,    this));
     mCommitCallbackRegistrar.add("People.DelFriend",        boost::bind(&LLPanelPeople::onDeleteFriendButtonClicked,    this));
@@ -1728,6 +1738,33 @@ bool LLPanelPeople::onRecentViewSortMenuItemCheck(const LLSD& userdata)
 void LLPanelPeople::onMoreButtonClicked()
 {
     // *TODO: not implemented yet
+}
+
+void LLPanelPeople::reshape(S32 width, S32 height, bool called_from_parent)
+{
+    LLPanel::reshape(width, height, called_from_parent);
+    auto* navigation = findChildView("forme_people_navigation");
+    if (!navigation)
+        return;
+
+    constexpr S32 columns = 3;
+    constexpr S32 gap = 4;
+    const S32 usable_width = navigation->getRect().getWidth() - (columns - 1) * gap;
+    if (usable_width <= 0)
+        return;
+
+    for (S32 i = 0; i < 6; ++i)
+    {
+        if (auto* button = navigation->findChildView("forme_people_tab_" + std::to_string(i), false))
+        {
+            const S32 column = i % columns;
+            const S32 left = usable_width * column / columns + gap * column;
+            const S32 right = usable_width * (column + 1) / columns + gap * column;
+            const LLRect rect = button->getRect();
+            button->translate(left - rect.mLeft, 0);
+            button->reshape(right - left, rect.getHeight(), true);
+        }
+    }
 }
 
 void LLPanelPeople::onOpen(const LLSD& key)

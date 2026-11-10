@@ -1,76 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater
- legacy_header_height="18"
- can_resize="true"
- height="590"
- layout="topleft"
- min_height="271"
- min_width="320"
- name="preview lsl text"
- help_topic="preview_lsl_text"
- save_rect="true"
- title="Script: Rotation script"
- width="508">
-    <floater.string
-     name="Title">
+<?xml version='1.0' encoding='utf-8'?>
+<floater legacy_header_height="0" can_resize="true" height="702" layout="topleft" min_height="620" min_width="760" name="preview lsl text" save_rect="true" title="Script: Rotation script" width="760" forme_creator_only="true" header_height="44" header_vpad="10" header_icon="Forme_UI_Code" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD">
+  <floater.string name="Title">
         Script: [NAME]
     </floater.string>
-    <panel
-     follows="left|top|right|bottom"
-     height="522"
-     layout="topleft"
-     left="10"
-     name="script panel"
-     top="62"
-     width="497" />
-    <icon
-     follows="top|right"
-     height="18"
-     image_name="Lock"
-     layout="topleft"
-     left="426"
-     mouse_opaque="true"
-     name="lock"
-     top="1"
-     width="18" />
-    <text
-     type="string"
-     length="1"
-     follows="left|top|right"
-     width="490"
-     use_ellipses="true"
-     font="SansSerif"
-     height="18"
-     layout="topleft"
-     left="13"
-     name="path_txt"
-     tool_tip="Inventory location: [PATH]"
-     top="21">
+  <panel follows="left|top|right|bottom" layout="topleft" name="script panel" left="16" top="76" width="728" height="610" />
+  <icon follows="top|right" height="18" image_name="Lock" layout="topleft" left="426" mouse_opaque="true" name="lock" top="1" width="18" />
+  <text type="string" length="1" follows="left|top|right" use_ellipses="true" font="SansSerif" layout="topleft" name="path_txt" tool_tip="Inventory location: [PATH]" left="16" top="18" width="728" height="22">
         Inventory location: [PATH]
     </text>
-    <text
-     type="string"
-     length="1"
-     follows="left|top"
-     font="SansSerif"
-     height="19"
-     layout="topleft"
-     left="13"
-     name="desc txt"
-     top_pad="4"
-     width="80">
+  <text type="string" length="1" follows="left|top" font="SansSerif" layout="topleft" name="desc txt" left="16" top="48" width="80" height="24">
         Description:
     </text>
-    <line_editor
-     border_style="line"
-     border_thickness="1"
-     follows="left|top|right"
-     font="SansSerif"
-     height="19"
-     layout="topleft"
-     left_delta="80"
-     max_length_bytes="127"
-     name="desc"
-     top_delta="-2"
-     width="394" />
+  <line_editor border_style="line" border_thickness="1" follows="left|top|right" font="SansSerif" layout="topleft" max_length_bytes="127" name="desc" left="100" top="44" width="644" height="32" />
 </floater>

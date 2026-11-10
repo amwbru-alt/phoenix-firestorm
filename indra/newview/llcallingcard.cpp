@@ -302,6 +302,45 @@ S32 LLAvatarTracker::addBuddyList(const LLAvatarTracker::buddy_map_t& buds)
 }
 
 
+// Apply a complete server snapshot locally. This must never send friendship
+// termination or rights-change messages back to the simulator.
+void LLAvatarTracker::syncForMeRelationships(const LLSD& relationships)
+{
+    if (!relationships.isArray() || relationships.size() > 10000) return;
+    struct State { S32 to, from; bool online, hasOnline; };
+    std::map<LLUUID, State> incoming;
+    for (auto it = relationships.beginArray(); it != relationships.endArray(); ++it)
+    {
+        const LLSD& row = *it;
+        LLUUID id = row["id"].asUUID();
+        S32 to = row["my_flags"].asInteger(), from = row["their_flags"].asInteger();
+        if (id.isNull() || id == gAgent.getID() || to < 0 || from < 0 || (to & ~7) || (from & ~7) || incoming.count(id)) return;
+        incoming[id] = {to,from,row["online"].asBoolean(),row["online"].isBoolean()};
+    }
+    for (auto it = mBuddyInfo.begin(); it != mBuddyInfo.end(); )
+    {
+        if (incoming.count(it->first)) { ++it; continue; }
+        addChangedMask(LLFriendObserver::REMOVE, it->first);
+        delete it->second; it = mBuddyInfo.erase(it);
+    }
+    for (const auto& entry : incoming)
+    {
+        auto found = mBuddyInfo.find(entry.first);
+        if (found == mBuddyInfo.end())
+        {
+            mBuddyInfo[entry.first] = new LLRelationship(entry.second.to, entry.second.from, false);
+            addChangedMask(LLFriendObserver::ADD, entry.first);
+        }
+        else
+        {
+            found->second->setRightsTo(entry.second.to); found->second->setRightsFrom(entry.second.from);
+            addChangedMask(LLFriendObserver::POWERS | LLFriendObserver::PERMS, entry.first);
+        }
+        if (entry.second.hasOnline) setBuddyOnline(entry.first, entry.second.online);
+    }
+    notifyObservers();
+}
+
 void LLAvatarTracker::copyBuddyList(buddy_map_t& buddies) const
 {
     buddy_map_t::const_iterator it = mBuddyInfo.begin();

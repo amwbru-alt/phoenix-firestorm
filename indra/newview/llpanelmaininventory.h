@@ -72,7 +72,7 @@ public:
     LLPanelMainInventory(const LLPanel::Params& p = getDefaultParams());
     ~LLPanelMainInventory();
 
-    bool postBuild();
+    bool postBuild() override;
 
     enum EViewModeType
     {
@@ -81,24 +81,25 @@ public:
         MODE_COMBINATION
     };
 
-    virtual bool handleKeyHere(KEY key, MASK mask);
+    bool handleKeyHere(KEY key, MASK mask) override;
     // <FS:PP> FIRE-35598: Custom filters in inventory (feature idea: Catznip)
-    /*virtual*/ bool handleRightMouseDown(S32 x, S32 y, MASK mask);
-    /*virtual*/ bool handleMouseDown(S32 x, S32 y, MASK mask);
+    bool handleRightMouseDown(S32 x, S32 y, MASK mask) override;
+    bool handleMouseDown(S32 x, S32 y, MASK mask) override;
     void refreshFinderFromFilter();
     // </FS:PP>
 
     // Inherited functionality
-    /*virtual*/ bool handleDragAndDrop(S32 x, S32 y, MASK mask, bool drop,
+    bool handleDragAndDrop(S32 x, S32 y, MASK mask, bool drop,
                                        EDragAndDropType cargo_type,
                                        void* cargo_data,
                                        EAcceptance* accept,
-                                       std::string& tooltip_msg);
-    /*virtual*/ void changed(U32);
-    /*virtual*/ void draw();
-    /*virtual*/ void    onVisibilityChange ( bool new_visibility );
+                                       std::string& tooltip_msg) override;
+    void changed(U32) override;
+    void draw() override;
+    void reshape(S32 width, S32 height, bool called_from_parent = true) override;
+    void onVisibilityChange(bool new_visibility) override;
     // <FS:Ansariel> CTRL-F focusses local search editor
-    /*virtual*/ bool hasAccelerators() const { return true; }
+    bool hasAccelerators() const override { return true; }
 
     LLInventoryPanel* getPanel() { return mActivePanel; }
     LLInventoryPanel* getActivePanel() { return mActivePanel; }
@@ -214,7 +215,7 @@ protected:
     void onCollapseButtonClicked();
     void onExpandButtonClicked();
     // </FS:Zi> Inventory Collapse and Expand Buttons
-    void onFocusReceived();
+    void onFocusReceived() override;
     void onSelectSearchType();
     void updateSearchTypeCombo();
     void setSearchType(LLInventoryFilter::ESearchType type);
@@ -230,6 +231,9 @@ private:
     };
 
     LLFloaterInventoryFinder* getFinder();
+    LLFolderView* getVisibleInventorySelection();
+    LLUUID getVisibleGallerySelection();
+    void toggleForMeInventoryWidth();
 
     LLFilterEditor*             mFilterEditor;
     LLTabContainer*             mFilterTabs;
@@ -271,7 +275,7 @@ private:
     LLLayoutStack* mCombinationLayoutStack;
 
     // <FS:Zi> Filter dropdown
-    LLComboBox*                 mFilterComboBox;
+    LLComboBox*                 mFilterComboBox = nullptr;
     std::map<std::string,U64>   mFilterMap;         // contains name-to-number mapping for dropdown filter types
     U64                         mFilterMask;        // contains the cumulated bit filter for all dropdown filter types
     // </FS:Zi> Filter dropdown

@@ -12,6 +12,6 @@
 	<button name="group_btn" label="Group"/>
 	<button name="place_btn" label="Place"/>
 	<button name="event_btn" label="Event"/>
-	<text name="slurl">secondlife:///app/agent/00000000-0000-0000-0000-000000000000/inspect</text>
-	<text name="slurl_group">secondlife:///app/group/00000000-0000-0000-0000-000000000000/inspect</text>
+	<text name="slurl">fmw:///app/agent/00000000-0000-0000-0000-000000000000/inspect</text>
+	<text name="slurl_group">fmw:///app/group/00000000-0000-0000-0000-000000000000/inspect</text>
 </floater>

@@ -25,6 +25,8 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fsmarketplacelistings.h"
+#include "fscreatoraccess.h"
 
 #include "llappviewer.h"
 
@@ -82,7 +84,6 @@
 #include "llviewerobjectlist.h"
 #include "llworldmap.h"
 #include "llmutelist.h"
-#include "llviewerhelp.h"
 #include "lluicolortable.h"
 #include "llurldispatcher.h"
 #include "llurlhistory.h"
@@ -155,7 +156,6 @@
 #include "stringize.h"
 #include "llcoros.h"
 #include "llexception.h"
-#include "cef/dullahan_version.h"
 #if !LL_LINUX
 #include "vlc/libvlc_version.h"
 #endif // LL_LINUX
@@ -241,8 +241,6 @@
 #include "llfloaterreg.h"
 #include "llfloatersimplesnapshot.h"
 #include "llfloatersnapshot.h"
-#include "llfloaterflickr.h"
-#include "fsfloaterprimfeed.h" // <FS:Beq/> Primfeed Floater
 #include "llsidepanelinventory.h"
 
 // includes for idle() idleShutdown()
@@ -887,7 +885,7 @@ bool LLAppViewer::init()
     // set skin search path to default, will be overridden later
     // this allows simple skinned file lookups to work
 // [SL:KB] - Patch: Viewer-Skins | Checked: 2012-12-26 (Catznip-3.4)
-    gDirUtilp->setSkinFolder("default", "", "en");
+    gDirUtilp->setSkinFolder("default", "", "ru");
 // [/SL:KB]
 //  gDirUtilp->setSkinFolder("default", "en");
 
@@ -1051,6 +1049,7 @@ bool LLAppViewer::init()
 
     LL_INFOS("InitInfo") << "UI initialized." << LL_ENDL ;
 
+    gSavedSettings.setString("Language", "ru");
     // NOW LLUI::getLanguage() should work. gDirUtilp must know the language
     // for this session ASAP so all the file-loading commands that follow,
     // that use findSkinnedFilenames(), will include the localized files.
@@ -1108,7 +1107,7 @@ bool LLAppViewer::init()
     LLUrlAction::setExecuteSLURLCallback(&LLURLDispatcher::dispatchFromTextEditor);
 
     // Let code in llui access the viewer help floater
-    LLUI::getInstance()->mHelpImpl = LLViewerHelp::getInstance();
+    LLUI::getInstance()->mHelpImpl = nullptr;
 
     LL_INFOS("InitInfo") << "UI initialization is done." << LL_ENDL ;
 
@@ -1206,8 +1205,8 @@ bool LLAppViewer::init()
     // <FS:Beq> allow detected hardware to be overridden.
     gGLManager.mVRAMDetected = gGLManager.mVRAM;
     LL_INFOS("AppInit") << "VRAM detected: " << gGLManager.mVRAMDetected << LL_ENDL;
-    overrideDetectedHardware(); 
-    // </FS:Beq> 
+    overrideDetectedHardware();
+    // </FS:Beq>
 
 
     // writeSystemInfo can be called after window is initialized (gViewerWindow non-null)
@@ -1790,8 +1789,6 @@ bool LLAppViewer::doFrame()
                     gPipeline.mReflectionMapManager.update();
                     LLFloaterSnapshot::update(); // take snapshots
                     LLFloaterSimpleSnapshot::update();
-                    LLFloaterFlickr::update(); // <FS:Beq/> FIRE-35002 - Flickr preview not updating whne opened directly from tool tray icon
-                    FSFloaterPrimfeed::update(); // <FS:Beq/> Primfeed support
                     gGLActive = false;
                 }
 
@@ -2659,7 +2656,7 @@ void errorCallback(LLError::ELevel level, const std::string &error_string)
 
         if (error_display_string.find("MissingString(") != std::string::npos)
         {
-            error_display_string = "We are sorry, but Firestorm has crashed and needs to be closed. If you see this issue happening repeatedly, please contact our support team and submit the following message:\n\n[ERROR_DETAILS]";
+            error_display_string = "We are sorry, but ForMe.World has crashed and needs to be closed. If you see this issue happening repeatedly, please contact our support team and submit the following message:\n\n[ERROR_DETAILS]";
             LLStringUtil::format(error_display_string, map);
         }
         if (caption.find("MissingString(") != std::string::npos)
@@ -3058,16 +3055,7 @@ bool LLAppViewer::initConfiguration()
         return false;
     }
 
-    //<FS:Techwolf Lupindo>
-    // load defaults overide here. Can not use settings_files.xml as path is different then above loading of defaults.
-    std::string fsdata_defaults = gDirUtilp->getExpandedFilename(LL_PATH_USER_SETTINGS, llformat("fsdata_defaults.%s.xml", LLVersionInfo::getInstance()->getShortVersion().c_str()));
-    std::string fsdata_global = "Global";
-    std::shared_ptr<LLControlGroup> settings_group = LLControlGroup::getInstance(fsdata_global);
-    if(settings_group && settings_group->loadFromFile(fsdata_defaults, set_defaults))
-    {
-        LL_INFOS() << "Loaded settings file " << fsdata_defaults << LL_ENDL;
-    }
-    //</FS:Techwolf Lupindo>
+    // Defaults are shipped with ForMe.World; do not load legacy vendor overrides.
 
     initStrings(); // setup paths for LLTrans based on settings files only
     // - set procedural settings
@@ -3362,6 +3350,7 @@ bool LLAppViewer::initConfiguration()
         gSavedSettings.setBOOL("RenderDebugGLSession", false);
     }
 
+    gSavedSettings.setString("Language", "ru");
     // <FS:TT> Hacking to save the skin and theme for future use.
     mCurrentSkin = gSavedSettings.getString("SkinCurrent");
     mCurrentSkinTheme = gSavedSettings.getString("SkinCurrentTheme");
@@ -3894,7 +3883,7 @@ bool LLAppViewer::initWindow()
 
 void LLAppViewer::writeDebugInfo(bool isStatic)
 {
-    LL_PROFILE_ZONE_SCOPED_CATEGORY_LOGGING; // <FS:Beq/> improve instrumentation 
+    LL_PROFILE_ZONE_SCOPED_CATEGORY_LOGGING; // <FS:Beq/> improve instrumentation
 #if LL_WINDOWS && LL_BUGSPLAT
     // <FS:Beq> Improve Bugsplat tracking by using attributes for certain static data items.
     const LLSD& info = getViewerInfo();
@@ -4173,35 +4162,8 @@ LLSD LLAppViewer::getViewerInfo() const
         info["VOICE_VERSION"] = LLTrans::getString("NotConnected");
     }
 
-//#if !LL_LINUX
-    std::ostringstream cef_ver_codec;
-    cef_ver_codec << "Dullahan: ";
-    cef_ver_codec << DULLAHAN_VERSION_MAJOR;
-    cef_ver_codec << ".";
-    cef_ver_codec << DULLAHAN_VERSION_MINOR;
-    cef_ver_codec << ".";
-    cef_ver_codec << DULLAHAN_VERSION_POINT;
-    cef_ver_codec << ".";
-    cef_ver_codec << DULLAHAN_VERSION_BUILD;
-
-    cef_ver_codec << std::endl;
-    cef_ver_codec << "  CEF: ";
-    cef_ver_codec << CEF_VERSION;
-
-    cef_ver_codec << std::endl;
-    cef_ver_codec << "  Chromium: ";
-    cef_ver_codec << CHROME_VERSION_MAJOR;
-    cef_ver_codec << ".";
-    cef_ver_codec << CHROME_VERSION_MINOR;
-    cef_ver_codec << ".";
-    cef_ver_codec << CHROME_VERSION_BUILD;
-    cef_ver_codec << ".";
-    cef_ver_codec << CHROME_VERSION_PATCH;
-
-    info["LIBCEF_VERSION"] = cef_ver_codec.str();
-//#else
-//  info["LIBCEF_VERSION"] = "Undefined";
-//#endif
+    // ForMe.World opens web content in the external browser; CEF is not bundled.
+    info["LIBCEF_VERSION"] = "Not included (external browser)";
 
 #if !LL_LINUX
     std::ostringstream vlc_ver_codec;
@@ -4520,11 +4482,6 @@ void LLAppViewer::writeSystemInfo()
     // Insert crash host url (url to post crash log to) if configured. This insures
     // that the crash report will go to the proper location in the case of a
     // prior freeze.
-    std::string crashHostUrl = gSavedSettings.get<std::string>("CrashHostUrl");
-    if(crashHostUrl != "")
-    {
-        gDebugInfo["CrashHostUrl"] = crashHostUrl;
-    }
 
     // Dump some debugging info
     LL_INFOS("SystemInfo") << "Application: " << LLTrans::getString("APP_NAME") << LL_ENDL;
@@ -5861,6 +5818,24 @@ void LLAppViewer::idle()
 {
     LL_PROFILE_ZONE_SCOPED_CATEGORY_APP;
     pingMainloopTimeout("Main:Idle");
+    // UI visibility is derived in memory, never from an editable debug setting.
+    ForMeAvatarBadges::updateSelf();
+    const bool forme_creator = !gDisconnected && ForMeCreatorAccess::allowed();
+    LLView::setForMeCreatorAccess(forme_creator);
+    static std::string forme_listing_cap;
+    static bool forme_listing_creator = false;
+    const std::string current_listing_cap = forme_creator ? ForMeMarketplace::capability() : "";
+    if (current_listing_cap != forme_listing_cap || forme_creator != forme_listing_creator)
+    {
+        forme_listing_cap = current_listing_cap;
+        forme_listing_creator = forme_creator;
+        LLMarketplaceData::instance().resetForMeSession();
+        LLFloaterReg::destroyInstance("marketplace_listings");
+        LLFloaterReg::destroyInstance("associate_listing");
+        LLFloaterReg::destroyInstance("marketplace_validation");
+        check_merchant_status(true);
+    }
+
 
     // Update frame timers
     static LLTimer idle_timer;
@@ -6048,6 +6023,7 @@ void LLAppViewer::idle()
         //
         idleNameCache();
         idleNetwork();
+        LLView::setForMeCreatorAccess(!gDisconnected && ForMeCreatorAccess::allowed());
 
 
         // Check for away from keyboard, kick idle agents.

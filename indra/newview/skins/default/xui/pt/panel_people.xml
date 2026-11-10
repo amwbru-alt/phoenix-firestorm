@@ -2,9 +2,9 @@
 <!-- Side tray panel -->
 <panel label="Pessoas" name="people_panel">
 	<string name="no_recent_people" value="Nenhuma pessoa recente."/>
-	<string name="no_filtered_recent_people" value="Não encontrou o que procurava? Tente [secondlife:///app/search/people/[SEARCH_TERM] Busca]."/>
-	<string name="no_one_near" value="Não há ninguém por perto. Procurando pessoas para conversar? Tente [secondlife:///app/search/people Busca] ou o [secondlife:///app/worldmap Mapa-múndi]."/>
-	<string name="no_one_filtered_near" value="Não encontrou o que procurava? Tente [secondlife:///app/search/people/[SEARCH_TERM] Busca]."/>
+	<string name="no_filtered_recent_people" value="Não encontrou o que procurava? Tente [fmw:///app/search/people/[SEARCH_TERM] Busca]."/>
+	<string name="no_one_near" value="Não há ninguém por perto. Procurando pessoas para conversar? Tente [fmw:///app/search/people Busca] ou o [fmw:///app/worldmap Mapa-múndi]."/>
+	<string name="no_one_filtered_near" value="Não encontrou o que procurava? Tente [fmw:///app/search/people/[SEARCH_TERM] Busca]."/>
 	<string name="no_friends_online" value="Nenhum amigo online"/>
 	<string name="no_friends" value="Sem amigos"/>
 	<string name="no_friends_msg">
@@ -12,14 +12,14 @@
 
 Procurando lugares com mais pessoas?
 
-[secondlife:///app/floater/destinations Guia de Destinos] tem locais selecionados pela equipe administradora do grid.
+[fmw:///app/floater/destinations Guia de Destinos] tem locais selecionados pela equipe administradora do grid.
 
-[secondlife:///app/search/ Busca] permite pesquisar todo o grid por palavras-chave específicas.
+[fmw:///app/search/ Busca] permite pesquisar todo o grid por palavras-chave específicas.
 	</string>
 	<string name="no_filtered_friends_msg">
-		Não encontrou o que procurava? Tente [secondlife:///app/search/people/[SEARCH_TERM] Busca].
+		Não encontrou o que procurava? Tente [fmw:///app/search/people/[SEARCH_TERM] Busca].
 	</string>
-	<string name="no_filtered_groups_msg" value="Não encontrou o que procurava? Tente [secondlife:///app/search/groups/[SEARCH_TERM] Busca]."/>
+	<string name="no_filtered_groups_msg" value="Não encontrou o que procurava? Tente [fmw:///app/search/groups/[SEARCH_TERM] Busca]."/>
 	<string name="no_groups_msg" value="Você não participa de nenhum grupo.">
 		Você não participa de nenhum grupo.
 
@@ -27,7 +27,7 @@ Saiba mais sobre [https://community.secondlife.com/knowledgebase/joining-and-par
 	</string>
 	<string name="MiniMapToolTipMsg" value="[REGION] (Duplo clique para abrir o mapa; Shift + arrastar para mover a visualização)"/>
 	<string name="AltMiniMapToolTipMsg" value="[REGION] (Duplo clique para teleportar; Shift + arrastar para mover a visualização)"/>
-	<string name="GroupCountWithInfo" value="Você participa de [COUNT] grupos e pode entrar em mais [REMAINING]. [secondlife:/// Aumente seu limite]"/>
+	<string name="GroupCountWithInfo" value="Você participa de [COUNT] grupos e pode entrar em mais [REMAINING]. [fmw:/// Aumente seu limite]"/>
 	<string name="empty_list">
 		Este conjunto de contatos está vazio.
 	</string>

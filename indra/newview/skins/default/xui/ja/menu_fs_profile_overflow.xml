@@ -4,7 +4,7 @@
 	<menu_item_call label="マップ" name="show_on_map"/>
 	<menu_item_call label="支払う" name="pay"/>
 	-->
-	<menu_item_call label="共有" name="share"/>
+	<menu_item_call label="共有" name="share" forme_creator_only="true"/>
 	<menu_item_call label="コール" name="call"/>
 	<!--
 	<menu_item_check label="ブロック／ブロック解除" name="block_unblock"/>

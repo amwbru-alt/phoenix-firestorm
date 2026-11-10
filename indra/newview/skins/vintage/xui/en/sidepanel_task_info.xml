@@ -3,7 +3,7 @@
 	 height="590"
 	 layout="topleft"
 	 name="object properties"
-	 help_topic="object_properties"
+	
 	 title="Object Profile"
 	 follows="all"
 	 width="333">
@@ -100,7 +100,7 @@
          label=""
          layout="topleft"
          left="10"
-         help_topic=""
+        
          name="properties_panel"
          top="45"
          right="-10"

@@ -711,66 +711,6 @@
         <key>description</key>
         <string>Spell checking dictionaries to bundled into the viewer</string>
       </map>
-      <key>dullahan</key>
-      <map>
-        <key>platforms</key>
-        <map>
-          <key>darwin64</key>
-          <map>
-            <key>archive</key>
-            <map>
-              <key>hash</key>
-              <string>b7255a36fa9af6ac311645da2f291195679f7bae</string>
-              <key>hash_algorithm</key>
-              <string>sha1</string>
-              <key>url</key>
-              <string>https://github.com/secondlife/dullahan/releases/download/v1.50.0-CEF_152.0.6.83/dullahan-1.50.0.202609160023_152.0.6_g708dc14_chromium-152.0.7977.83-darwin64-35039647119.tar.zst</string>
-            </map>
-            <key>name</key>
-            <string>darwin64</string>
-          </map>
-          <key>linux64</key>
-          <map>
-            <key>archive</key>
-            <map>
-              <key>hash</key>
-              <string>c8f92179257a12382a31187eda9a84747f6cbe38</string>
-              <key>hash_algorithm</key>
-              <string>sha1</string>
-              <key>url</key>
-              <string>https://github.com/secondlife/dullahan/releases/download/v1.50.0-CEF_152.0.6.83/dullahan-1.50.0.202609160023_152.0.6_g708dc14_chromium-152.0.7977.83-linux64-35039647119.tar.zst</string>
-            </map>
-            <key>name</key>
-            <string>linux64</string>
-          </map>
-          <key>windows64</key>
-          <map>
-            <key>archive</key>
-            <map>
-              <key>hash</key>
-              <string>7d5826579fb88b9d5d855d68d614947c1958a401</string>
-              <key>hash_algorithm</key>
-              <string>sha1</string>
-              <key>url</key>
-              <string>https://github.com/secondlife/dullahan/releases/download/v1.50.0-CEF_152.0.6.83/dullahan-1.50.0.202609160023_152.0.6_g708dc14_chromium-152.0.7977.83-windows64-35039647119.tar.zst</string>
-            </map>
-            <key>name</key>
-            <string>windows64</string>
-          </map>
-        </map>
-        <key>license</key>
-        <string>MPL</string>
-        <key>license_file</key>
-        <string>LICENSES/LICENSE.txt</string>
-        <key>copyright</key>
-        <string>Copyright (c) 2017, Linden Research, Inc.</string>
-        <key>version</key>
-        <string>1.50.0.202609160023_152.0.6_g708dc14_chromium-152.0.7977.83</string>
-        <key>name</key>
-        <string>dullahan</string>
-        <key>description</key>
-        <string>A headless browser SDK that uses the Chromium Embedded Framework (CEF). It is designed to make it easier to write applications that render modern web content directly to a memory buffer, inject synthesized mouse and keyboard events as well as interact with web based features like JavaScript or cookies.</string>
-      </map>
       <key>emoji_shortcodes</key>
       <map>
         <key>platforms</key>

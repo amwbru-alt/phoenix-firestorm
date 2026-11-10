@@ -2,6 +2,8 @@
 <llsd xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:noNamespaceSchemaLocation="llsd.xsd">
 <map>
+  <key>ForMeShowFullMenu</key>
+  <map><key>Comment</key><string>Show the complete client menu below the compact ForMe header.</string><key>Persist</key><integer>0</integer><key>Type</key><string>Boolean</string><key>Value</key><integer>0</integer></map>
   <key>FSLandmarkCreatedNotification</key>
   <map>
     <key>Comment</key>
@@ -16,7 +18,7 @@
   <key>FSEnforceStrictObjectCheck</key>
   <map>
     <key>Comment</key>
-    <string>Force malformed prims to be treated as invalid. This setting derenders all malformed prims, even those that might not cause obvious issues. Setting to false will allow bad prims to render but can cause crashes. (Disabled on OpenSim)</string>
+    <string>Force malformed prims to be treated as invalid. This setting derenders all malformed prims, even those that might not cause obvious issues. Setting to false will allow bad prims to render but can cause crashes. (Disabled on ForMe.World)</string>
     <key>Persist</key>
     <integer>1</integer>
     <key>Type</key>
@@ -162,18 +164,7 @@
     <key>Type</key>
     <string>String</string>
     <key>Value</key>
-    <string>http://phoenixviewer.com/app/fsdata/grids.xml</string>
-  </map>
-  <key>FSPrimfeedViewerApiKey</key>
-  <map>
-    <key>Comment</key>
-    <string>Viewer key for API login.</string>
-    <key>Persist</key>
-    <integer>1</integer>
-    <key>Type</key>
-    <string>String</string>
-    <key>Value</key>
-    <string>xAcXYt8SBius3Lor4wHle8L96PDHYlAZuWYXIYQUdW4b09mjhQUAwiqmWp5UNYXLpq5GSUtuKHuDYLwaueACPkew93l6MRY8jfBKSH09kv0zyGglpky07X7X7Sp4Rzin</string>
+    <string></string>
   </map>
   <key>FSGridBuilderURL</key>
   <map>
@@ -184,7 +175,7 @@
     <key>Type</key>
     <string>String</string>
     <key>Value</key>
-    <string>https://phoenixviewer.com/app/fsdata/fs_grid_builder.html</string>
+    <string></string>
   </map>
   <key>LastConnectedGrid</key>
   <map>
@@ -391,7 +382,7 @@
   <key>FSTPHistoryTZ</key>
   <map>
     <key>Comment</key>
-    <string>Select the timezone to be used with Teleport History. ('utc' = default, 'slt' = Second Life Time, 'local' = the local timezone of the client)</string>
+    <string>Select the timezone to be used with Teleport History. ('utc' = default, 'slt' = ForMe.World Time, 'local' = the local timezone of the client)</string>
     <key>Persist</key>
     <integer>1</integer>
     <key>Type</key>
@@ -996,7 +987,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>grey</string>
+      <string>forme</string>
     </map>
 
     <key>ShowSearchTopBar</key>
@@ -1590,7 +1581,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>http://search.metaverseink.com/opensim/results.jsp?query=[QUERY]&amp;submit=[CATEGORY]</string>
+      <string>http://185.173.93.200:8002/web/</string>
     </map>
 
   <key>ImporterDebugVerboseLogging</key>
@@ -1669,19 +1660,6 @@
       <string>Boolean</string>
       <key>Value</key>
       <integer>1</integer>
-    </map>
-    <key>CrashHostUrl</key>
-    <map>
-      <key>Comment</key>
-      <string>A URL pointing to a crash report handler; overrides cluster negotiation to locate crash handler.</string>
-      <key>Persist</key>
-      <integer>1</integer>
-      <key>Type</key>
-      <string>String</string>
-      <key>Value</key>
-      <string></string>
-      <key>Backup</key>
-      <integer>0</integer>
     </map>
     <key>AFKTimeout</key>
     <map>
@@ -2299,7 +2277,7 @@
         <key>Type</key>
         <string>String</string>
         <key>Value</key>
-        <string>https://lecs-viewer-web-components.s3.amazonaws.com/v3.0/[GRID_LOWERCASE]/vawp/index.html</string>
+        <string></string>
     </map>
     <key>AvatarAlignMini</key>
     <map>
@@ -2859,39 +2837,6 @@
       <string>Boolean</string>
       <key>Value</key>
       <integer>1</integer>
-    </map>
-    <key>EnableDiscord</key>
-    <map>
-      <key>Comment</key>
-      <string>When set, connect to Discord to enable Rich Presence (UNUSED)</string>
-      <key>Persist</key>
-      <integer>1</integer>
-      <key>Type</key>
-      <string>Boolean</string>
-      <key>Value</key>
-      <integer>1</integer>
-    </map>
-    <key>ShowDiscordActivityDetails</key>
-    <map>
-      <key>Comment</key>
-      <string>When set, show avatar name on Discord Rich Presence (UNUSED)</string>
-      <key>Persist</key>
-      <integer>1</integer>
-      <key>Type</key>
-      <string>Boolean</string>
-      <key>Value</key>
-      <integer>0</integer>
-    </map>
-    <key>ShowDiscordActivityState</key>
-    <map>
-      <key>Comment</key>
-      <string>When set, show location on Discord Rich Presence (UNUSED)</string>
-      <key>Persist</key>
-      <integer>1</integer>
-      <key>Type</key>
-      <string>Boolean</string>
-      <key>Value</key>
-      <integer>0</integer>
     </map>
     <key>EnableDiskCacheDebugInfo</key>
     <map>
@@ -3772,7 +3717,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string></string>
+      <string>185.173.93.200:8002</string>
       <key>Backup</key>
       <integer>0</integer>
     </map>
@@ -4973,7 +4918,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://lecs-viewer-web-components.s3.amazonaws.com/v3.0/[GRID_LOWERCASE]/guide.html</string>
+      <string></string>
       <key>Backup</key>
       <integer>0</integer>
     </map>
@@ -5925,13 +5870,13 @@
     <key>FSOpenSimAlwaysForceShowGrid</key>
     <map>
       <key>Comment</key>
-      <string>Soft enable/disable the startup behaviour of OpenSim builds to allow gridlist access</string>
+      <string>Soft enable/disable the startup behaviour of ForMe.World builds to allow gridlist access</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
       <string>Boolean</string>
       <key>Value</key>
-      <integer>1</integer>
+      <integer>0</integer>
     </map>
     <key>ForceMissingType</key>
     <map>
@@ -6010,7 +5955,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/products/search?search[category_id]=200&amp;search[maturity][]=General&amp;search[page]=1&amp;search[per_page]=12</string>
+      <string></string>
     </map>
     <key>GridCrossSections</key>
     <map>
@@ -6098,7 +6043,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://wiki.firestormviewer.org/[TOPIC]</string>
+      <string></string>
       <key>Backup</key>
       <integer>0</integer>
     </map>
@@ -6111,7 +6056,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://wiki.firestormviewer.org/start#basic_functions</string>
+      <string></string>
       <key>Backup</key>
       <integer>0</integer>
     </map>    
@@ -6124,7 +6069,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://viewer-sidebar.secondlife.com/sidebar.html</string>
+      <string></string>
       <key>Backup</key>
       <integer>0</integer>
     </map>
@@ -6153,7 +6098,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>http://guidebooks.secondlife.io/welcome/index.html</string>
+      <string></string>
     </map>
     <key>HighResSnapshot</key>
     <map>
@@ -6182,7 +6127,7 @@
     <key>HostID</key>
     <map>
       <key>Comment</key>
-      <string>Machine identifier for hosted Second Life instances</string>
+      <string>Machine identifier for hosted ForMe.World instances</string>
       <key>Persist</key>
       <integer>0</integer>
       <key>Type</key>
@@ -6310,7 +6255,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>default</string>
+      <string>ru</string>
     </map>
     <key>InventoryAutoOpenDelay</key>
     <map>
@@ -6835,7 +6780,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://wiki.secondlife.com/wiki/[LSL_STRING]</string>
+      <string></string>
       <key>Backup</key>
       <integer>0</integer>
     </map>
@@ -6859,7 +6804,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://status.secondlifegrid.net/history.atom</string>
+      <string></string>
     </map>
     <key>GridStatusUpdateDelay</key>
     <map>
@@ -6903,7 +6848,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>default</string>
+      <string>ru</string>
     </map>
     <key>LanguageIsPublic</key>
         <map>
@@ -7470,7 +7415,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://map.secondlife.com/</string>
+      <string></string>
     </map>
     <key>CurrentMapServerURL</key>
     <map>
@@ -7591,7 +7536,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_objectFemale</key>
     <map>
@@ -7602,7 +7547,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/attachments</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_objectMale</key>
     <map>
@@ -7613,7 +7558,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/attachments</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_clothingFemale</key>
     <map>
@@ -7624,7 +7569,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/clothing_female_avatar</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_clothingMale</key>
     <map>
@@ -7635,7 +7580,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/clothing_male_avatar</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_bodypartFemale</key>
     <map>
@@ -7646,7 +7591,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_bodypartMale</key>
     <map>
@@ -7657,7 +7602,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_glovesMale</key>
     <map>
@@ -7668,7 +7613,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/gloves_both_women_and_men</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_glovesFemale</key>
     <map>
@@ -7679,7 +7624,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/gloves_both_women_and_men</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_jacketFemale</key>
     <map>
@@ -7690,7 +7635,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/jacket_womens</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_jacketMale</key>
     <map>
@@ -7701,7 +7646,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/jacket_mens</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_physicsFemale</key>
     <map>
@@ -7723,7 +7668,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>http://marketplace.secondlife.com/</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_shirtFemale</key>
     <map>
@@ -7734,7 +7679,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/shirt_womens</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_shirtMale</key>
     <map>
@@ -7745,7 +7690,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/shirt_mens</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_undershirtFemale</key>
     <map>
@@ -7756,7 +7701,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/undershirt_womens</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_undershirtMale</key>
     <map>
@@ -7767,7 +7712,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/undershirt_mens</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_skirtFemale</key>
     <map>
@@ -7778,7 +7723,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/skirts_women</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_skirtMale</key>
     <map>
@@ -7789,7 +7734,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/skirts_women</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_pantsFemale</key>
     <map>
@@ -7800,7 +7745,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/pants_women</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_pantsMale</key>
     <map>
@@ -7811,7 +7756,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/pants_men</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_underpantsFemale</key>
     <map>
@@ -7822,7 +7767,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/underwear_women</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_underpantsMale</key>
     <map>
@@ -7833,7 +7778,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/underwear_men</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_shoesFemale</key>
     <map>
@@ -7844,7 +7789,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/shoes_women</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_shoesMale</key>
     <map>
@@ -7855,7 +7800,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/shoes_men</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_socksFemale</key>
     <map>
@@ -7866,7 +7811,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/socks_women</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_socksMale</key>
     <map>
@@ -7877,7 +7822,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/socks_women</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_tattooMale</key>
     <map>
@@ -7888,7 +7833,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/tattoo_both_women_and_men</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_tattooFemale</key>
     <map>
@@ -7899,7 +7844,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/tattoo_both_women_and_men</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_hairFemale</key>
     <map>
@@ -7910,7 +7855,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/womens_hair</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_hairMale</key>
     <map>
@@ -7921,7 +7866,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/mens_hair</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_eyesFemale</key>
     <map>
@@ -7932,7 +7877,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/womens_eyes</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_eyesMale</key>
     <map>
@@ -7943,7 +7888,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/mens_eyes</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_shapeFemale</key>
     <map>
@@ -7954,7 +7899,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/womens_shape</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_shapeMale</key>
     <map>
@@ -7965,7 +7910,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/mens_shape</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_skinFemale</key>
     <map>
@@ -7976,7 +7921,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/womens_skin</string>
+      <string></string>
     </map>
     <key>MarketplaceURL_skinMale</key>
     <map>
@@ -7987,7 +7932,7 @@
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://marketplace.secondlife.com/trampoline/viewer21/mens_skin</string>
+      <string></string>
     </map>
     <key>MaxDragDistance</key>
     <map>
@@ -9436,7 +9381,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>NumSessions</key>
     <map>
       <key>Comment</key>
-      <string>Number of successful logins to Second Life</string>
+      <string>Number of successful logins to ForMe.World</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -9986,7 +9931,7 @@ Change of this parameter will affect the layout of buttons in notification toast
       <key>Type</key>
       <string>Boolean</string>
       <key>Value</key>
-      <integer>1</integer>
+      <integer>0</integer>
     </map>
 
     <key>PluginInstancesLow</key>
@@ -13967,7 +13912,7 @@ Change of this parameter will affect the layout of buttons in notification toast
 			<key>Type</key>
 			<string>String</string>
 			<key>Value</key>
-			<string>https://phoenixviewer.com/app/file-a-jira/?environment=[ENVIRONMENT]</string>
+			<string></string>
 		</map>
 	<key>RevokePermsOnStopAnimation</key>
     <map>
@@ -14659,7 +14604,7 @@ Change of this parameter will affect the layout of buttons in notification toast
   <key>FSUseLegacyUnsupportedHardwareChecks</key>
     <map>
       <key>Comment</key>
-      <string>If enabled, Firestorm will perform utterly pointless checks that probably made sense in 2004.</string>
+      <string>If enabled, ForMe.World will perform utterly pointless checks that probably made sense in 2004.</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -14670,7 +14615,7 @@ Change of this parameter will affect the layout of buttons in notification toast
   <key>FSUseStandaloneGroupFloater</key>
     <map>
       <key>Comment</key>
-      <string>If enabled, Firestorm will use a standalone floater for each group profile.</string>
+      <string>If enabled, ForMe.World will use a standalone floater for each group profile.</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -15632,7 +15577,7 @@ Change of this parameter will affect the layout of buttons in notification toast
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>en</string>
+      <string>ru</string>
     </map>
     <key>TabToTextFieldsOnly</key>
     <map>
@@ -16015,28 +15960,6 @@ Change of this parameter will affect the layout of buttons in notification toast
       <string>String</string>
       <key>Value</key>
       <string>default</string>
-    </map>
-    <key>TranslateChat</key>
-    <map>
-      <key>Comment</key>
-      <string>Translate incoming chat messages</string>
-      <key>Persist</key>
-      <integer>1</integer>
-      <key>Type</key>
-      <string>Boolean</string>
-      <key>Value</key>
-      <integer>0</integer>
-    </map>
-    <key>TranslationService</key>
-    <map>
-      <key>Comment</key>
-      <string>Translation API to use. (google|azure)</string>
-      <key>Persist</key>
-      <integer>1</integer>
-      <key>Type</key>
-      <string>String</string>
-      <key>Value</key>
-      <string>azure</string>
     </map>
     <key>GoogleTranslateAPIKey</key>
     <map>
@@ -16934,7 +16857,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>UISndRestart</key>
     <map>
       <key>Comment</key>
-      <string>Sound file for region restarting, Second Life grid (uuid for sound asset)</string>
+      <string>Sound file for region restarting, ForMe.World grid (uuid for sound asset)</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -16945,7 +16868,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>UISndRestartOpenSim</key>
     <map>
       <key>Comment</key>
-      <string>Sound file for region restarting, OpenSim grid (uuid for sound asset)</string>
+      <string>Sound file for region restarting, ForMe.World grid (uuid for sound asset)</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -17937,7 +17860,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>VivoxLogDirectory</key>
     <map>
         <key>Comment</key>
-        <string>Default log path is Application Support/SecondLife/logs specify alternate absolute path here.</string>
+        <string>Default log path is Application Support/ForMe.World/logs specify alternate absolute path here.</string>
         <key>Persist</key>
         <integer>1</integer>
         <key>Type</key>
@@ -19002,8 +18925,6 @@ Change of this parameter will affect the layout of buttons in notification toast
           <string>script_floater</string>
           <string>world_map</string>
           <string>preferences</string>
-          <string>flickr</string>
-          <string>primfeed</string>
       </array>
       <key>Backup</key>
       <integer>0</integer>
@@ -20014,7 +19935,7 @@ Change of this parameter will affect the layout of buttons in notification toast
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://common-flash-secondlife-com.s3.amazonaws.com/viewer/v2.6/agni/404.html</string>
+      <string></string>
       <key>Backup</key>
       <integer>0</integer>
     </map>
@@ -20032,7 +19953,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>NearbyListShowMap</key>
     <map>
       <key>Comment</key>
-      <string>Show/hide map above nearby people list (unused by firestorm)</string>
+      <string>Show/hide map above nearby people list (unused by ForMe.World)</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -22033,7 +21954,7 @@ Change of this parameter will affect the layout of buttons in notification toast
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>Firestorm</string>
+      <string>ForMe.World</string>
     </map>
   <key>FSSkinCurrentThemeReadableName</key>
     <map>
@@ -22046,7 +21967,7 @@ Change of this parameter will affect the layout of buttons in notification toast
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>Grey</string>
+      <string>ForMe.World</string>
     </map>
     <key>FSStatusbarShowSimulatorVersion</key>
     <map>
@@ -23456,7 +23377,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>FSUseStandalonePlaceDetailsFloater</key>
     <map>
       <key>Comment</key>
-      <string>If enabled, Firestorm will use a standalone floater for each landmark details, teleport history details and parcel details view.</string>
+      <string>If enabled, ForMe.World will use a standalone floater for each landmark details, teleport history details and parcel details view.</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -23467,7 +23388,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>FSUseStandaloneTeleportHistoryFloater</key>
     <map>
       <key>Comment</key>
-      <string>If enabled, Firestorm will use a standalone floater for the teleport history view.</string>
+      <string>If enabled, ForMe.World will use a standalone floater for the teleport history view.</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -23478,7 +23399,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>FSUseStandaloneBlocklistFloater</key>
     <map>
       <key>Comment</key>
-      <string>If enabled, Firestorm will use a standalone floater for the blocklist.</string>
+      <string>If enabled, ForMe.World will use a standalone floater for the blocklist.</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -23489,7 +23410,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>FSDisableIMChiclets</key>
     <map>
       <key>Comment</key>
-      <string>If enabled, Firestorm will not show any group / IM chat chiclets (notifications envelope and sum of IMs will remain on the screen).</string>
+      <string>If enabled, ForMe.World will not show any group / IM chat chiclets (notifications envelope and sum of IMs will remain on the screen).</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -23511,7 +23432,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>FSDisableMouseWheelCameraZoom</key>
     <map>
       <key>Comment</key>
-      <string>If true, Firestorm will not use mouse wheel to zoom in/out the camera.</string>
+      <string>If true, ForMe.World will not use mouse wheel to zoom in/out the camera.</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -23533,7 +23454,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>FSEnableVolumeControls</key>
     <map>
         <key>Comment</key>
-        <string>If true, Firestorm will show volume controls (sounds, media, stream) in upper right corner of the screen. Useful, if skin already has its own controls.</string>
+        <string>If true, ForMe.World will show volume controls (sounds, media, stream) in upper right corner of the screen. Useful, if skin already has its own controls.</string>
         <key>Persist</key>
         <integer>1</integer>
         <key>Type</key>
@@ -23544,7 +23465,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>FSResetCameraOnMovement</key>
     <map>
         <key>Comment</key>
-        <string>If true, Firestorm will reset camera on avatar movement.</string>
+        <string>If true, ForMe.World will reset camera on avatar movement.</string>
         <key>Persist</key>
         <integer>1</integer>
         <key>Type</key>
@@ -23555,7 +23476,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>FSShowInterfaceInMouselook</key>
     <map>
         <key>Comment</key>
-        <string>If true, Firestorm will show user interface in mouselook mode.</string>
+        <string>If true, ForMe.World will show user interface in mouselook mode.</string>
         <key>Persist</key>
         <integer>1</integer>
         <key>Type</key>
@@ -24784,7 +24705,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>FSFlashOnScriptDialog</key>
     <map>
       <key>Comment</key>
-      <string>Flash/Bounce the app icon when a script dialog is received and Firestorm is not in focus</string>
+      <string>Flash/Bounce the app icon when a script dialog is received and ForMe.World is not in focus</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -24795,7 +24716,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>FSFlashOnMessage</key>
     <map>
       <key>Comment</key>
-      <string>Flash/Bounce the app icon when a new message is received and Firestorm is not in focus</string>
+      <string>Flash/Bounce the app icon when a new message is received and ForMe.World is not in focus</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -24806,7 +24727,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>FSFlashOnObjectIM</key>
     <map>
       <key>Comment</key>
-      <string>Flash/Bounce the app icon when a new instant message from an object is received and Firestorm is not in focus.</string>
+      <string>Flash/Bounce the app icon when a new instant message from an object is received and ForMe.World is not in focus.</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -25145,7 +25066,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>AllowNoCopyRezRestoreToWorld</key>
     <map>
       <key>Comment</key>
-      <string>Allow Restore to Last Position for no-copy objects on Second Life grids. This can lead to content loss, and is only meant to be used for testing a potential server side fix.</string>
+      <string>Allow Restore to Last Position for no-copy objects on ForMe.World grids. This can lead to content loss, and is only meant to be used for testing a potential server side fix.</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -25213,7 +25134,7 @@ Change of this parameter will affect the layout of buttons in notification toast
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://phoenixviewer.com/app/loginV3/secondlifegrid.xml</string>
+      <string></string>
     </map>
     <key>FSIgnoreAdHocSessions</key>
     <map>
@@ -25503,72 +25424,6 @@ Change of this parameter will affect the layout of buttons in notification toast
       <key>Value</key>
       <integer>4</integer>
     </map>
-    <key>FSLastSnapshotToFlickrHeight</key>
-    <map>
-      <key>Comment</key>
-      <string>The height of the last Flickr snapshot, in px</string>
-      <key>Persist</key>
-      <integer>1</integer>
-      <key>Type</key>
-      <string>S32</string>
-      <key>Value</key>
-      <integer>768</integer>
-    </map>
-    <key>FSLastSnapshotToFlickrWidth</key>
-    <map>
-      <key>Comment</key>
-      <string>The width of the last Flickr snapshot, in px</string>
-      <key>Persist</key>
-      <integer>1</integer>
-      <key>Type</key>
-      <string>S32</string>
-      <key>Value</key>
-      <integer>1024</integer>
-    </map>
-    <key>FSLastSnapshotToFlickrResolution</key>
-    <map>
-      <key>Comment</key>
-      <string>At what resolution should snapshots be posted on Flickr. 0=Current Window, 1=320x240, 2=640x480, 3=800x600, 4=1024x768, 5=1280x1024, 6=1600x1200, 7=Custom</string>
-      <key>Persist</key>
-      <integer>1</integer>
-      <key>Type</key>
-      <string>S32</string>
-      <key>Value</key>
-      <integer>4</integer>
-    </map>
-    <key>FSLastSnapshotToPrimfeedHeight</key>
-    <map>
-      <key>Comment</key>
-      <string>The height of the last Primfeed snapshot, in px</string>
-      <key>Persist</key>
-      <integer>1</integer>
-      <key>Type</key>
-      <string>S32</string>
-      <key>Value</key>
-      <integer>768</integer>
-    </map>
-    <key>FSLastSnapshotToPrimfeedWidth</key>
-    <map>
-      <key>Comment</key>
-      <string>The width of the last Primfeed snapshot, in px</string>
-      <key>Persist</key>
-      <integer>1</integer>
-      <key>Type</key>
-      <string>S32</string>
-      <key>Value</key>
-      <integer>1024</integer>
-    </map>
-    <key>FSLastSnapshotToPrimfeedResolution</key>
-    <map>
-      <key>Comment</key>
-      <string>At what resolution should snapshots be posted on Primfeed. 0=Current Window, 1=320x240, 2=640x480, 3=800x600, 4=1024x768, 5=1280x1024, 6=1600x1200, 7=Custom</string>
-      <key>Persist</key>
-      <integer>1</integer>
-      <key>Type</key>
-      <string>S32</string>
-      <key>Value</key>
-      <integer>4</integer>
-    </map>
     <key>FSLastSnapshotToTwitterHeight</key>
     <map>
       <key>Comment</key>
@@ -25616,7 +25471,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>FSUseAis3Api</key>
     <map>
       <key>Comment</key>
-      <string>Option to disable the use of the AISv3 inventory API. NOTE: This setting has NO EFFECT in Second Life!</string>
+      <string>Option to disable the use of the AISv3 inventory API. NOTE: This setting has NO EFFECT in ForMe.World!</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -25859,7 +25714,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>FSNoVersionPopup</key>
     <map>
       <key>Comment</key>
-      <string>Disables version popup on the Firestorm Login page</string>
+      <string>Disables version popup on the ForMe.World Login page</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>
@@ -26695,7 +26550,7 @@ Change of this parameter will affect the layout of buttons in notification toast
       <key>Type</key>
       <string>String</string>
       <key>Value</key>
-      <string>https://duckduckgo.com</string>
+      <string>http://185.173.93.200:8002/web/</string>
     </map>
     <key>FSMiniMapWhisperRing</key>
     <map>
@@ -27713,7 +27568,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>OmnifilterControls</key>
     <map>
         <key>Comment</key>
-        <string>If true, Firestorm will show the omnifilter controls (enable, drop down) in upper right corner of the screen. Useful, if multiple omnifilter rule sets are being used.</string>
+        <string>If true, ForMe.World will show the omnifilter controls (enable, drop down) in upper right corner of the screen. Useful, if multiple omnifilter rule sets are being used.</string>
         <key>Persist</key>
         <integer>1</integer>
         <key>Type</key>
@@ -27758,7 +27613,7 @@ Change of this parameter will affect the layout of buttons in notification toast
     <key>FSUseFSLegacySearch</key>
     <map>
       <key>Comment</key>
-      <string>Uses Firestorm&apos;s legacy search if enabled - the Linden Lab version instead if disabled</string>
+      <string>Uses ForMe.World&apos;s legacy search if enabled - the Linden Lab version instead if disabled</string>
       <key>Persist</key>
       <integer>1</integer>
       <key>Type</key>

@@ -798,7 +798,7 @@ void RlvHandler::onActiveGroupChanged()
         }
 
         // Notify them about the change
-        const LLSD sdArgs = LLSD().with("GROUP_SLURL", (m_idAgentGroup.notNull()) ? llformat("secondlife:///app/group/%s/about", m_idAgentGroup.asString().c_str()) : "(none)");
+        const LLSD sdArgs = LLSD().with("GROUP_SLURL", (m_idAgentGroup.notNull()) ? llformat("fmw:///app/group/%s/about", m_idAgentGroup.asString().c_str()) : "(none)");
         RlvUtil::notifyBlocked(RlvStringKeys::Blocked::GroupChange, sdArgs);
 
         setActiveGroup(m_idAgentGroup);

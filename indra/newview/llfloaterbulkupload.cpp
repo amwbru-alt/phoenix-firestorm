@@ -26,6 +26,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fscreatoraccess.h"
 
 #include "llfloaterbulkupload.h"
 
@@ -126,6 +127,8 @@ void LLFloaterBulkUpload::onUpload2KCheckBox()
 
 void LLFloaterBulkUpload::onClickUpload()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     do_bulk_upload(mFiles, mAllow2kTextures, mDestinationFolderId);
     closeFloater();
 }

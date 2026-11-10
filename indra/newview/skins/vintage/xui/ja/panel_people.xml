@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <panel label="人物" name="people_panel">
-	<string name="no_recent_people" value="最近交流があった人物はいません。一緒に何かする仲間をお探しですか？[secondlife:///app/search/people 検索]か[secondlife:///app/worldmap ワールドマップ]をお試しください。"/>
-	<string name="no_filtered_recent_people" value="お探しの人物は見つかりましたか？[secondlife:///app/search/people/[SEARCH_TERM] 検索]をお試しください。"/>
-	<string name="no_one_near" value="近くに誰もいません。一緒に何かする仲間をお探しですか？[secondlife:///app/search/people 検索]か[secondlife:///app/worldmap ワールドマップ]をお試しください。"/>
-	<string name="no_one_filtered_near" value="お探しの人物は見つかりましたか？[secondlife:///app/search/people/[SEARCH_TERM] 検索]をお試しください。"/>
+	<string name="no_recent_people" value="最近交流があった人物はいません。一緒に何かする仲間をお探しですか？[fmw:///app/search/people 検索]か[fmw:///app/worldmap ワールドマップ]をお試しください。"/>
+	<string name="no_filtered_recent_people" value="お探しの人物は見つかりましたか？[fmw:///app/search/people/[SEARCH_TERM] 検索]をお試しください。"/>
+	<string name="no_one_near" value="近くに誰もいません。一緒に何かする仲間をお探しですか？[fmw:///app/search/people 検索]か[fmw:///app/worldmap ワールドマップ]をお試しください。"/>
+	<string name="no_one_filtered_near" value="お探しの人物は見つかりましたか？[fmw:///app/search/people/[SEARCH_TERM] 検索]をお試しください。"/>
 	<string name="no_friends_online" value="オンラインのフレンドはいません。"/>
 	<string name="no_friends" value="フレンドはいません。"/>
 	<string name="no_friends_msg">
@@ -11,11 +11,11 @@
 
 より多くの人が集まる場所をお探しですか？
 
-[secondlife:///app/floater/destinations 行き先ガイド]にはSecond Lifeスタッフが選んだ場所があります。
-[secondlife:///app/search/ 検索]では、特定のキーワードでSecond Life全体を検索できます。
+[fmw:///app/floater/destinations 行き先ガイド]にはSecond Lifeスタッフが選んだ場所があります。
+[fmw:///app/search/ 検索]では、特定のキーワードでSecond Life全体を検索できます。
 	</string>
 	<string name="no_filtered_friends_msg">
-		お探しのものは見つかりましたか？[secondlife:///app/search/people/[SEARCH_TERM] 検索]をお試しください。
+		お探しのものは見つかりましたか？[fmw:///app/search/people/[SEARCH_TERM] 検索]をお試しください。
 	</string>
 	<string name="people_filter_label" value="人物をフィルタ"/>
 	<string name="groups_filter_label" value="グループをフィルタ"/>
@@ -23,8 +23,8 @@
 	*WORKAROUND: for group_list.no_items_msg & group_list.no_filtered_items_msg attributes.
 	They are not defined as translatable in VLT. See EXT-5931
 	-->
-	<string name="no_filtered_groups_msg" value="お探しのものは見つかりましたか？[secondlife:///app/search/groups/[SEARCH_TERM] 検索]をお試しください。"/>
-	<string name="no_groups_msg" value="グループをお探しですか？[secondlife:///app/search/groups 検索]をお試しください。"/>
+	<string name="no_filtered_groups_msg" value="お探しのものは見つかりましたか？[fmw:///app/search/groups/[SEARCH_TERM] 検索]をお試しください。"/>
+	<string name="no_groups_msg" value="グループをお探しですか？[fmw:///app/search/groups 検索]をお試しください。"/>
 	<string name="MiniMapToolTipMsg" value="[REGION]（ダブルクリックでマップを開きます。Shift‐ドラッグで水平・垂直移動）"/>
 	<string name="AltMiniMapToolTipMsg" value="[REGION]（ダブルクリックでテレポートします。Shift‐ドラッグで水平・垂直移動）"/>
 	<string name="avatar_name_count" value="名前 [[TOTAL]／[IN_REGION]／[IN_CHAT_RANGE]]"/>

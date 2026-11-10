@@ -20,7 +20,7 @@
 				<panel name="stub_panel">
 					<button name="stub_collapse_btn" tool_tip="Recolher este painel"/>
 					<text name="stub_textbox">
-						Esta conversa está em uma janela separada.   [secondlife:/// Trazer de volta.]
+						Esta conversa está em uma janela separada.   [fmw:/// Trazer de volta.]
 					</text>
 				</panel>
 			</panel_container>

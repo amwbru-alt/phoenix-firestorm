@@ -2,14 +2,14 @@
 <floater
  height="282"
  width="500"
- help_topic="collada_export"
+
  layout="topleft"
- legacy_header_height="18"
+ legacy_header_height="0"
  name="floater_export_collada"
  min_width="250"
  min_height="268"
  save_rect="true"
- title="Save as Collada...">
+ title="Save as Collada..." header_height="44" header_vpad="10" header_icon="Forme_UI_Window" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD">
   <floater.string name="texture_progress">
 	Save [OBJECT] Collada: Saving textures ([COUNT] remaining)
   </floater.string>

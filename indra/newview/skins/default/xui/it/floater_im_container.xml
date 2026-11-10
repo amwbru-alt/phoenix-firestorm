@@ -18,7 +18,7 @@
 				<panel name="stub_panel">
 					<button name="stub_collapse_btn" tool_tip="Minimizza questo pannello"/>
 					<text name="stub_textbox">
-						Questa conversazione in una finestra separata. [secondlife:/// Ripristina conversazione.]
+						Questa conversazione in una finestra separata. [fmw:/// Ripristina conversazione.]
 					</text>
 				</panel>
 			</panel_container>

@@ -16,7 +16,7 @@
 			<menu_button name="teleport_btn" tool_tip="この住人にテレポートのオファーやリクエストを送ります。"/>
 		</layout_panel>
 		<layout_panel name="share_panel">
-			<button tool_tip="この住人にアイテムを送ります。" name="share_btn"/>
+			<button tool_tip="この住人にアイテムを送ります。" name="share_btn" forme_creator_only="true"/>
 		</layout_panel>
 		<layout_panel name="pay_panel">
 			<button tool_tip="この住人にリンデンドルを送金します。" name="pay_btn"/>

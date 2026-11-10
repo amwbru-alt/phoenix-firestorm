@@ -175,13 +175,13 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 endif (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 
 # Default deploy grid
-set(GRID agni CACHE STRING "Target Grid")
+set(GRID forme CACHE STRING "ForMe.World target grid" FORCE)
 
 #set(VIEWER_CHANNEL "Second Life Test" CACHE STRING "Viewer Channel Name")
 
 # Flickr API keys.
 set(FLICKR_API_KEY "daaabff93a967e0f37fa18863bb43b29")
-set(FLICKR_API_SECRET "846f0958020b553e") 
+set(FLICKR_API_SECRET "846f0958020b553e")
 
 # Discord client key.
 set(DDISCORD_API_KEY "427641535253708801")
@@ -190,7 +190,7 @@ set(DDISCORD_API_KEY "427641535253708801")
 #set(ENABLE_SIGNING OFF CACHE BOOL "Enable signing the viewer")
 set(ENABLE_SIGNING OFF)
 
-# FS:ND Don't force this into the cache here, we set it in 00-Common.make 
+# FS:ND Don't force this into the cache here, we set it in 00-Common.make
 #set(SIGNING_IDENTITY "" CACHE STRING "Specifies the signing identity to use, if necessary.")
 
 set(VERSION_BUILD "0" CACHE STRING "Revision number passed in from the outside")

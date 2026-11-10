@@ -25,7 +25,7 @@
 							<radar_list.columns name="has_notes" tool_tip="Заметки аватара"/>
 							<radar_list.columns label="Возраст" name="age"/>
 							<radar_list.columns label="Время" name="seen"/>
-							<radar_list.columns label="Расстояние" name="range"/>
+							<radar_list.columns label="Дист." name="range" tool_tip="Расстояние до аватара"/>
 						</radar_list>
 					</layout_panel>
 				</layout_stack>

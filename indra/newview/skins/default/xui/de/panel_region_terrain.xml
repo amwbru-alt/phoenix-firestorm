@@ -67,7 +67,7 @@
 	<spinner label="Hoch" name="height_range_spin_0"/>
 	<spinner label="Hoch" name="height_range_spin_2"/>
 	<button label="RAW-Terrain herunterladen..." name="download_raw_btn" tool_tip="Nur für Grundbesitzeigentümer verfügbar, nicht für Verwalter"/>
-	<button label="RAW-Terrain hochladen..." name="upload_raw_btn" tool_tip="Nur für Grundbesitzeigentümer verfügbar, nicht für Verwalter"/>
-	<button label="Terrain formen" name="bake_terrain_btn" tool_tip="Das aktuelle Terrain zum Mittelpunkt für die oberen/unteren Terraingrenzen machen"/>
+	<button label="RAW-Terrain hochladen..." name="upload_raw_btn" tool_tip="Nur für Grundbesitzeigentümer verfügbar, nicht für Verwalter" forme_creator_only="true"/>
+	<button label="Terrain formen" name="bake_terrain_btn" tool_tip="Das aktuelle Terrain zum Mittelpunkt für die oberen/unteren Terraingrenzen machen" forme_creator_only="true"/>
 	<button label="Übernehmen" name="apply_btn"/>
 </panel>

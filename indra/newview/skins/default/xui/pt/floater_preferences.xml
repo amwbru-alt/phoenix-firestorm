@@ -8,7 +8,7 @@
 	<tab_container name="pref core">
 		<panel label="Geral" name="general"/> 
 		<panel label="Chat" name="chat"/> 
-		<panel label="Cores" name="colors"/> 
+		 
 		<panel label="Gráficos" name="display"/> 
 		<panel label="Som e mídia" name="audio"/> 
 		<panel label="Rede e arquivos" name="input"/> 
@@ -20,8 +20,7 @@
 		<panel label="Interface gráfica" name="ui"/> 
 		<panel label="Tema da interface" name="skins"/> 
 		<panel label="Relatórios de falha" name="crashreports"/>
-		<panel label="Firestorm" name="firestorm"/> 
-		<panel label="OpenSim" name="opensim"/> 
+		<panel label="ForMe.World" name="firestorm"/>
 		<panel label="Backup / Restaurar" name="backup"/>
 	</tab_container>
 </floater>

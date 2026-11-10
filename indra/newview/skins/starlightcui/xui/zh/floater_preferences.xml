@@ -16,8 +16,8 @@ https://accounts.secondlife.com/change_email/
 	<tab_container name="pref core">
 		<panel label="一般設定" name="general" />
 		<panel label="聊天" name="chat" />
-		<panel label="顏色" name="colors" />
-		<panel label="介面顏色" name="custom_colors"/>
+		
+		
 		<panel label="顯示" name="display" />
 		<panel label="聲音與媒體" name="audio" />
 		<panel label="其他設定" name="input" />
@@ -29,8 +29,7 @@ https://accounts.secondlife.com/change_email/
 		<panel label="使用者界面" name="ui" />
 		<panel label="皮膚" name="skins" />
 		<panel label="崩潰報告" name="crashreports" />
-		<panel label="Firestorm" name="firestorm" />
-		<panel label="OpenSim" name="opensim" />
+		<panel label="ForMe.World" name="firestorm" />
 		<panel label="備份" name="backup" />
 	</tab_container>
 </floater>

@@ -152,14 +152,10 @@ class LLLogChatTimeScanner: public LLSingleton<LLLogChatTimeScanner>
     LLSINGLETON(LLLogChatTimeScanner);
 
 public:
-    date getTodayPacificDate()
+    date getTodayServerDate()
     {
-        typedef boost::date_time::local_adjustor<ptime, -8, no_dst> pst;
-        typedef boost::date_time::local_adjustor<ptime, -7, no_dst> pdt;
-        time_t t_time = time(NULL);
-        ptime p_time = LLStringOps::getPacificDaylightTime()
-            ? pdt::utc_to_local(from_time_t(t_time))
-            : pst::utc_to_local(from_time_t(t_time));
+        time_t t_time = time_corrected();
+        ptime p_time = from_time_t(t_time) + seconds(LLStringOps::getForMeTimeOffset());
         struct tm s_tm = to_tm(p_time);
         return date_from_tm(s_tm);
     }
@@ -173,7 +169,7 @@ public:
         // Cuts off the "%Y/%m/%d" from string for todays timestamps.
         // Assume that passed string has at least "%H:%M" time format.
         date log_date(not_a_date_time);
-        date today(getTodayPacificDate());
+        date today(getTodayServerDate());
 
         // Parse the passed date
         mDateStream.str(LLStringUtil::null);
@@ -216,7 +212,7 @@ public:
         // Cuts off the "%Y/%m/%d" from string for todays timestamps.
         // Assume that passed string has at least "%H:%M:%S" time format.
         date log_date(not_a_date_time);
-        date today(getTodayPacificDate());
+        date today(getTodayServerDate());
 
         // Parse the passed date
         mDateSecStream.str(LLStringUtil::null);
@@ -378,7 +374,7 @@ std::string LLLogChat::timestamp2LogString(U32 timestamp, bool withdate)
             + LLTrans::getString("TimeDay") + "] ";
     }
 
-    static bool use_24h = gSavedSettings.getBOOL("Use24HourClock");
+    const bool use_24h = true;
     if (use_24h)
     {
         timeStr += "[" + LLTrans::getString("TimeHour") + "]:["
@@ -1444,3 +1440,4 @@ void LLLoadHistoryThread::removeLoadEndSignal(const load_end_signal_t::slot_type
     }
     mLoadEndSignal = NULL;
 }
+

@@ -4,7 +4,7 @@
 	<menu_item_call label="Arkadaşı Çıkar" name="remove_friends"/>
 	<menu_item_call label="Aİ" name="im"/>
 	<menu_item_call label="Ara" name="call"/>
-	<menu_item_call label="Paylaş" name="share"/>
+	<menu_item_call label="Paylaş" name="share" forme_creator_only="true"/>
 	<menu_item_call label="Öde" name="pay"/>
 	<menu_item_call label="Işınlama Teklif Et" name="offer_teleport"/>
 </context_menu>

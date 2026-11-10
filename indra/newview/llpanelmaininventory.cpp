@@ -182,6 +182,16 @@ LLPanelMainInventory::LLPanelMainInventory(const LLPanel::Params& p)
     mCommitCallbackRegistrar.add("Inventory.EmptyLostAndFound", boost::bind(&LLInventoryModel::emptyFolderType, &gInventory, "ConfirmEmptyLostAndFound", LLFolderType::FT_LOST_AND_FOUND));
     mCommitCallbackRegistrar.add("Inventory.DoCreate", boost::bind(&LLPanelMainInventory::doCreate, this, _2));
     mCommitCallbackRegistrar.add("Inventory.ShowFilters", boost::bind(&LLPanelMainInventory::toggleFindOptions, this));
+    mEnableCallbackRegistrar.add("ForMeInventory.CategorySelected", [this](LLUICtrl*, const LLSD& value)
+    {
+        return mFilterComboBox && mFilterComboBox->getValue().asString() == value.asString();
+    });
+    mCommitCallbackRegistrar.add("ForMeInventory.Category", [this](LLUICtrl*, const LLSD& value)
+    {
+        if (!mFilterComboBox) return;
+        mFilterComboBox->selectByValue(value.asString());
+        onFilterTypeSelected(value.asString());
+    });
     mCommitCallbackRegistrar.add("Inventory.ResetFilters", boost::bind(&LLPanelMainInventory::resetFilters, this));
     //mCommitCallbackRegistrar.add("Inventory.SetSortBy", boost::bind(&LLPanelMainInventory::setSortBy, this, _2)); // <FS:Zi> Sort By menu handlers
 
@@ -439,6 +449,21 @@ bool LLPanelMainInventory::postBuild()
     mCombinationGalleryLayoutPanel = getChild<LLLayoutPanel>("comb_gallery_layout");
     mCombinationListLayoutPanel = getChild<LLLayoutPanel>("comb_inventory_layout");
     mCombinationLayoutStack = getChild<LLLayoutStack>("combination_view_stack");
+    if (auto* resize = findChild<LLButton>("forme_inventory_size"))
+        resize->setClickedCallback([this](LLUICtrl*, const LLSD&) { toggleForMeInventoryWidth(); });
+
+    if (auto* actions = findChild<LLButton>("forme_inventory_item_actions"))
+    {
+        actions->setClickedCallback([this](LLUICtrl* button, const LLSD&)
+        {
+            const LLUUID gallery_item = getVisibleGallerySelection();
+            if (gallery_item.notNull())
+                mCombinationGalleryPanel->showContextMenu(button, 0, button->getRect().getHeight(), gallery_item);
+            else if (auto* folder = getVisibleInventorySelection())
+                folder->showSelectionContextMenu(button, 0, button->getRect().getHeight());
+        });
+    }
+
 
     mCombinationInventoryPanel = getChild<LLInventorySingleFolderPanel>("comb_single_folder_inv");
     LLInventoryFilter& comb_inv_filter = mCombinationInventoryPanel->getFilter();
@@ -1168,7 +1193,7 @@ void LLPanelMainInventory::onFilterTypeSelected(const std::string& filter_type_n
 
         return;
     }
-    // <FS:minerjr> [FIRE-35042] Inventory - Only Coalesced Filter - More accessible 
+    // <FS:minerjr> [FIRE-35042] Inventory - Only Coalesced Filter - More accessible
     // Special treatment for "coalesced" filter
     else if (filter_type_name == "filter_type_coalesced")
     {
@@ -1396,9 +1421,78 @@ void LLPanelMainInventory::setFocusOnFilterEditor()
     }
 }
 
+namespace
+{
+constexpr S32 INVENTORY_COMPACT_WIDTH = 384;
+constexpr S32 INVENTORY_WIDE_WIDTH = 660;
+constexpr S32 INVENTORY_CATEGORY_BREAKPOINT = 576;
+constexpr S32 INVENTORY_MARGIN = 12;
+}
+
+void LLPanelMainInventory::reshape(S32 width, S32 height, bool called_from_parent)
+{
+    LLPanel::reshape(width, height, called_from_parent);
+    auto* categories = findChildView("forme_inventory_categories", false);
+    if (!categories)
+        return;
+
+    const bool wide = width >= INVENTORY_CATEGORY_BREAKPOINT;
+    categories->setVisible(wide);
+    const S32 left = wide ? categories->getRect().mRight + INVENTORY_MARGIN : INVENTORY_MARGIN;
+    for (const char* name : {"default_inventory_panel", "combination_view_inventory"})
+    {
+        if (auto* view = findChildView(name, false))
+        {
+            const LLRect current = view->getRect();
+            view->translate(left - current.mLeft, 0);
+            view->reshape(llmax(0, width - left - INVENTORY_MARGIN), current.getHeight(), true);
+        }
+    }
+
+    if (auto* resize = findChild<LLButton>("forme_inventory_size"))
+        resize->setToggleState(wide);
+}
+
+void LLPanelMainInventory::toggleForMeInventoryWidth()
+{
+    auto* floater = gFloaterView ? gFloaterView->getParentFloater(this) : nullptr;
+    if (!floater || floater->getParent() != gFloaterView)
+        return;
+
+    const LLRect bounds = gFloaterView->getSnapRect();
+    const LLRect current = floater->getRect();
+    const bool wide = getRect().getWidth() >= INVENTORY_CATEGORY_BREAKPOINT;
+    const S32 width = llmin(wide ? INVENTORY_COMPACT_WIDTH : INVENTORY_WIDE_WIDTH, bounds.getWidth());
+    if (width <= 0 || (!wide && width < INVENTORY_CATEGORY_BREAKPOINT))
+        return;
+    // Keep the edge nearest the world controls in place, even when opening the wide view.
+    const S32 right = llclamp(current.mRight, bounds.mLeft + width, bounds.mRight);
+    floater->setShape(LLRect(right - width, current.mTop, right, current.mBottom), true);
+}
+
+LLFolderView* LLPanelMainInventory::getVisibleInventorySelection()
+{
+    if (!mActivePanel || !mActivePanel->isInVisibleChain())
+        return nullptr;
+    auto* root = mActivePanel->getRootFolder();
+    return root && root->hasVisibleChildren() && root->getCurSelectedItem() ? root : nullptr;
+}
+
+LLUUID LLPanelMainInventory::getVisibleGallerySelection()
+{
+    return mCombinationGalleryPanel && mCombinationGalleryPanel->isInVisibleChain()
+        ? mCombinationGalleryPanel->getFirstSelectedItemID() : LLUUID::null;
+}
+
 // virtual
 void LLPanelMainInventory::draw()
 {
+    if (auto* actions = findChild<LLButton>("forme_inventory_item_actions"))
+        actions->setEnabled(getVisibleInventorySelection() || getVisibleGallerySelection().notNull());
+    if (auto* resize = findChild<LLButton>("forme_inventory_size"))
+        resize->setEnabled(getRect().getWidth() >= INVENTORY_CATEGORY_BREAKPOINT ||
+            (gFloaterView && gFloaterView->getSnapRect().getWidth() >= INVENTORY_CATEGORY_BREAKPOINT));
+
     if (mActivePanel && mFilterEditor)
     {
         // <FS:Ansariel> Separate search for inventory tabs from Satomi Ahn (FIRE-913 & FIRE-6862)
@@ -2046,7 +2140,7 @@ void LLFloaterInventoryFinder::onOnlyCoalescedFilterCommit()
     if (mOnlyCoalescedFilterCheck && mFilter)
     {
         // Set the mFilter's Filter Coalesced Objects value to the Only Coalesced Filter Checkbox value
-        mFilter->setFilterCoalescedObjects(mOnlyCoalescedFilterCheck->getValue());        
+        mFilter->setFilterCoalescedObjects(mOnlyCoalescedFilterCheck->getValue());
     }
     FSInventoryCustomTabs::notifyFilterStateChanged(mPanelMainInventory); // <FS:PP> FIRE-35598: Custom filters in inventory (feature idea: Catznip)
 }

@@ -39,7 +39,7 @@
          layout="topleft"
          left="0"
          right="-1"
-         help_topic="roles_members_tab"
+        
          name="members_sub_tab"
          tool_tip="Members"
          class="panel_group_members_subtab">
@@ -140,7 +140,7 @@ clicking on their names.
          layout="topleft"
          left="0"
          right="-1"
-         help_topic="roles_roles_tab"
+        
          name="roles_sub_tab"
          class="panel_group_roles_subtab">
            <!-- <button
@@ -244,7 +244,7 @@ including the Everyone and Owner Roles.
          layout="topleft"
          left="0"
          right="-1"
-         help_topic="roles_actions_tab"
+        
          name="actions_sub_tab"
          class="panel_group_actions_subtab"
          tool_tip="You can view an Ability&apos;s Description and which Roles and Members can execute the Ability."
@@ -310,7 +310,7 @@ things in this group. There&apos;s a broad variety of Abilities.
         layout="topleft"
         left="0"
         right="-1"
-        help_topic="roles_banlist_tab"
+       
         name="banlist_sub_tab"
         class="panel_group_banlist_subtab"
         tool_tip="View the banned residents from this group."

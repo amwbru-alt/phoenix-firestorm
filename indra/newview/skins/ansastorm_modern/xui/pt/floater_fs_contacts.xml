@@ -2,7 +2,7 @@
 <floater name="imcontacts" title="Contatos">
 	<string name="no_friends" value="Sem amigos"/>
 	<string name="no_filtered_groups_msg" value="Nenhum grupo contendo &quot;[SEARCH_TERM]&quot; encontrado."/>
-	<string name="no_groups_msg" value="Está procurando grupos para entrar? Tente a [secondlife:///app/search/groups busca]."/>
+	<string name="no_groups_msg" value="Está procurando grupos para entrar? Tente a [fmw:///app/search/groups busca]."/>
 	<string name="favorite_label" value="Fixar"/>
 	<string name="unfavorite_label" value="Desafixar"/>
 	<tab_container name="friends_and_groups">

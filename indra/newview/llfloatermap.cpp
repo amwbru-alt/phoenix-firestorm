@@ -28,6 +28,7 @@
 
 // self include
 #include "llfloatermap.h"
+#include "llbutton.h"
 
 // Library includes
 #include "llfloaterreg.h"
@@ -55,10 +56,10 @@
 //const F32 MAP_MINOR_DIR_THRESHOLD = 0.035f;
 const F32 MAP_MINOR_DIR_THRESHOLD = 0.07f;
 
-const S32 MAP_PADDING_LEFT = 0;
-const S32 MAP_PADDING_TOP = 2;
-const S32 MAP_PADDING_RIGHT = 2;
-const S32 MAP_PADDING_BOTTOM = 0;
+const S32 MAP_PADDING_LEFT = 8;
+const S32 MAP_PADDING_TOP = 8;
+const S32 MAP_PADDING_RIGHT = 8;
+const S32 MAP_PADDING_BOTTOM = 8;
 //
 // Member functions
 //
@@ -94,6 +95,17 @@ bool LLFloaterMap::postBuild()
     mMap->setAltToolTipHintMsg(getString("AltToolTipHintMsg"));
     sendChildToBack(mMap);
 
+    getChild<LLButton>("forme_minimap_zoom_in")->setClickedCallback([this](LLUICtrl*, const LLSD&)
+    {
+        const LLRect& rect = mMap->getLocalRect();
+        mMap->handleScrollWheel(rect.getCenterX(), rect.getCenterY(), -1);
+    });
+    getChild<LLButton>("forme_minimap_zoom_out")->setClickedCallback([this](LLUICtrl*, const LLSD&)
+    {
+        const LLRect& rect = mMap->getLocalRect();
+        mMap->handleScrollWheel(rect.getCenterX(), rect.getCenterY(), 1);
+    });
+
     mTextBoxNorth     = getChild<LLTextBox>("floater_map_north");
     mTextBoxEast      = getChild<LLTextBox>("floater_map_east");
     mTextBoxWest      = getChild<LLTextBox>("floater_map_west");
@@ -127,6 +139,9 @@ bool LLFloaterMap::postBuild()
     getDragHandle()->setTitleVisible(true);
     // </FS:Ansariel>
 
+    // Start at the upper right rather than restoring legacy skin geometry.
+    if (getParent()) setOrigin(llmax(0, getParent()->getRect().getWidth() - getRect().getWidth() - 16),
+        llmax(0, getParent()->getRect().getHeight() - getRect().getHeight() - 16));
     // keep onscreen
     gFloaterView->adjustToFitScreen(this, false);
 
@@ -257,6 +272,10 @@ void LLFloaterMap::draw()
         getDragHandle()->setMouseOpaque(true);
     }
 
+    for (auto* label : {mTextBoxNorth, mTextBoxEast, mTextBoxWest, mTextBoxSouth,
+         mTextBoxNorthEast, mTextBoxNorthWest, mTextBoxSouthEast, mTextBoxSouthWest})
+        label->setVisible(false);
+    getDragHandle()->setTitleVisible(false);
     LLFloater::draw();
 }
 

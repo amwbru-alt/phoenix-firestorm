@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <panel label="Personnes" name="people_panel">
-	<string name="no_recent_people" value="Aucun appel récent. Vous voulez rencontrer des gens ? Essayez d'utiliser le [secondlife:///app/search/people Moteur de recherche] ou la [secondlife:///app/worldmap Carte du monde]." />
-	<string name="no_filtered_recent_people" value="Vous n'avez pas trouvé ce que vous cherchiez ? Essayez d'utiliser le [secondlife:///app/search/people/[SEARCH_TERM] Moteur de recherche]." />
-	<string name="no_one_near" value="Il n'y a personne autour. Vous voulez rencontrer des gens ? Essayez d'utiliser le [secondlife:///app/search/people Moteur de recherche] ou la [secondlife:///app/worldmap Carte du monde]." />
-	<string name="no_one_filtered_near" value="Vous n'avez pas trouvé ce que vous cherchiez ? Essayez d'utiliser le [secondlife:///app/search/people/[SEARCH_TERM] Moteur de recherche]." />
+	<string name="no_recent_people" value="Aucun appel récent. Vous voulez rencontrer des gens ? Essayez d'utiliser le [fmw:///app/search/people Moteur de recherche] ou la [fmw:///app/worldmap Carte du monde]." />
+	<string name="no_filtered_recent_people" value="Vous n'avez pas trouvé ce que vous cherchiez ? Essayez d'utiliser le [fmw:///app/search/people/[SEARCH_TERM] Moteur de recherche]." />
+	<string name="no_one_near" value="Il n'y a personne autour. Vous voulez rencontrer des gens ? Essayez d'utiliser le [fmw:///app/search/people Moteur de recherche] ou la [fmw:///app/worldmap Carte du monde]." />
+	<string name="no_one_filtered_near" value="Vous n'avez pas trouvé ce que vous cherchiez ? Essayez d'utiliser le [fmw:///app/search/people/[SEARCH_TERM] Moteur de recherche]." />
 	<string name="no_friends_online" value="Aucun ami en ligne" />
 	<string name="no_friends" value="Pas d'amis" />
 	<string name="no_friends_msg">
-		Recherchez des amis avec le [secondlife:///app/search/people Moteur de recherche] ou cliquez avec le bouton droit de la souris sur le résident et proposez-lui de faire connaissance..
-Vous voulez rencontrer des gens ? Essayez d'utiliser la [secondlife:///app/worldmap Carte du monde].
+		Recherchez des amis avec le [fmw:///app/search/people Moteur de recherche] ou cliquez avec le bouton droit de la souris sur le résident et proposez-lui de faire connaissance..
+Vous voulez rencontrer des gens ? Essayez d'utiliser la [fmw:///app/worldmap Carte du monde].
 	</string>
 	<string name="no_filtered_friends_msg">
-		Vous n'avez pas trouvé ce que vous cherchiez ? Essayez d'utiliser le [secondlife:///app/search/people/[SEARCH_TERM] Moteur de recherche].
+		Vous n'avez pas trouvé ce que vous cherchiez ? Essayez d'utiliser le [fmw:///app/search/people/[SEARCH_TERM] Moteur de recherche].
 	</string>
 	<string name="people_filter_label" value="Filtrer les personnes" />
 	<string name="groups_filter_label" value="Filtrer les groupes" />
-	<string name="no_filtered_groups_msg" value="Vous n'avez pas trouvé ce que vous cherchiez ? Essayez d'utiliser le [secondlife:///app/search/groups/[SEARCH_TERM] Moteur de recherche]." />
-	<string name="no_groups_msg" value="Vous voulez rejoindre un groupe ? Essayez d'utiliser le [secondlife:///app/search/groups Moteur de recherche]." />
+	<string name="no_filtered_groups_msg" value="Vous n'avez pas trouvé ce que vous cherchiez ? Essayez d'utiliser le [fmw:///app/search/groups/[SEARCH_TERM] Moteur de recherche]." />
+	<string name="no_groups_msg" value="Vous voulez rejoindre un groupe ? Essayez d'utiliser le [fmw:///app/search/groups Moteur de recherche]." />
 	<string name="MiniMapToolTipMsg" value="[REGION] (Un double-clic permet d'ouvrir la carte, glisser avec Maj permet de déplacer la carte.)" />
 	<string name="AltMiniMapToolTipMsg" value="[REGION] (Double-clic pour se téléporter, glisser avec Maj permet de déplacer la carte.)" />
-	<string name="GroupCountWithInfo" value="Vous appartenez à [COUNT] et vous pouvez encore rejoindre [REMAINING]. [secondlife:/// En savoir plus?]" />
+	<string name="GroupCountWithInfo" value="Vous appartenez à [COUNT] et vous pouvez encore rejoindre [REMAINING]. [fmw:/// En savoir plus?]" />
 	<string name="avatar_name_count" value="Nom [[TOTAL] / [IN_REGION] / [IN_CHAT_RANGE]]" />
 	<panel.string name="empty_list">
 		Cet ensemble de contacts est vide.

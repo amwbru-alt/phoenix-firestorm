@@ -19,8 +19,8 @@
 	<icon name="cant_see_online" tool_tip="Dost mənim şəbəkə statusumu görmək üçün icazəsi yoxdur"/>
 	<icon name="can_see_on_map" tool_tip="Dost məni xəritədə görmək üçün icazəsi var"/>
 	<icon name="cant_see_on_map" tool_tip="Dost məni xəritədə görmək üçün icazəsi yoxdur"/>
-	<icon name="can_edit_objects" tool_tip="Dost mənim obyektlərimi düzəltmək üçün icazəsi var"/>
-	<icon name="cant_edit_objects" tool_tip="Dost mənim obyektlərimi düzəltmək üçün icazəsi yoxdur"/>
+	<icon name="can_edit_objects" tool_tip="Dost mənim obyektlərimi düzəltmək üçün icazəsi var" forme_creator_only="true"/>
+	<icon name="cant_edit_objects" tool_tip="Dost mənim obyektlərimi düzəltmək üçün icazəsi yoxdur" forme_creator_only="true"/>
 	<text name="Key:" value="Açar:"/>
 	<text_editor name="user_key" value="(yüklənir...)"/>
 	<layout_stack name="imagepositioner">

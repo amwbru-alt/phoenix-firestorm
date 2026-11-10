@@ -5,7 +5,7 @@
 	background_visible="false"
 	height="200"
 	layout="topleft"
-	help_topic="prim_media_controls"
+
 	mouse_opaque="false"
 	min_width="300"
 	width="800">

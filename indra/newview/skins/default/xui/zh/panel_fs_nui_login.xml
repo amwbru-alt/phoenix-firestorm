@@ -33,9 +33,7 @@
 				<layout_panel name="2nd_row">
 					<layout_stack name="2nd_row_stack">
 						<layout_panel name="grid_panel">
-							<text name="grid_login_text">
-								網路:
-							</text>
+							
 							<text name="grid_builder_text">
 								+ 新增更多類比網格
 							</text>

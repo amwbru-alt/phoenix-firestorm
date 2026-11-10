@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <floater
- legacy_header_height="18"
+ legacy_header_height="0"
  can_resize="false"
  height="400"
  layout="topleft"
  name="floater_test_inspectors"
- help_topic="floater_test_inspectors"
+
  title="Test Inspectors" 
  translate="false"
- width="400">
+ width="400" header_height="44" header_vpad="10" header_icon="Forme_UI_Window" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD">
   <text
    height="20"
    left="10"
@@ -121,7 +121,7 @@
   name="slurl"
   top_pad="20"
   width="150">
-    secondlife:///app/agent/00000000-0000-0000-0000-000000000000/inspect
+    fmw:///app/agent/00000000-0000-0000-0000-000000000000/inspect
   </text>
   <text
   follows="left|top"
@@ -132,6 +132,6 @@
   name="slurl_group"
   top_pad="20"
   width="150">
-    secondlife:///app/group/00000000-0000-0000-0000-000000000000/inspect
+    fmw:///app/group/00000000-0000-0000-0000-000000000000/inspect
   </text>
 </floater>

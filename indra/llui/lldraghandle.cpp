@@ -29,6 +29,7 @@
 #include "linden_common.h"
 
 #include "lldraghandle.h"
+#include "lluiimage.h"
 
 #include "llmath.h"
 
@@ -62,7 +63,8 @@ LLDragHandle::LLDragHandle(const LLDragHandle::Params& p)
     mDragShadowColor(p.drag_shadow_color()),
     mFont(p.font),
     mFontShadow(p.font_shadow),     // <FS:Zi> Allow skins to override drag handle font shadow
-    mLabelVPad(p.label_vpad())
+    mLabelVPad(p.label_vpad()),
+    mTitleIcon(p.title_icon())
 
 {
     static LLUICachedControl<S32> snap_margin ("SnapMargin", 0);
@@ -192,6 +194,14 @@ void LLDragHandleTop::draw()
         mTitleBox->setEnabled(getForeground());
     }
 
+    if (mTitleIcon && mTitleBox && mTitleBox->getVisible() && !getTitle().empty())
+    {
+        const S32 top = getRect().getHeight();
+        const F32 alpha = getDrawContext().mAlpha;
+        mTitleIcon->draw(16, top - 34, 22, 22, LLColor4(0.80f, 0.64f, 0.94f, alpha));
+        gl_rect_2d(16, top - 43, getRect().getWidth() - 16, top - 44,
+            LLColor4(0.50f, 0.47f, 0.52f, 0.30f * alpha));
+    }
     LLView::draw();
 }
 
@@ -246,13 +256,14 @@ void LLDragHandleTop::reshapeTitleBox()
     {
         return;
     }
-    const LLFontGL* font = LLFontGL::getFontSansSerif();
+    const LLFontGL* font = mFont;
+    const S32 left_pad = mTitleIcon ? 48 : LEFT_PAD;
     S32 title_width = getRect().getWidth();
-    title_width -= LEFT_PAD + 2 * BORDER_PAD + getButtonsRect().getWidth();
+    title_width -= left_pad + 2 * BORDER_PAD + getButtonsRect().getWidth();
     S32 title_height = font->getLineHeight();
     LLRect title_rect;
     title_rect.setLeftTopAndSize(
-        LEFT_PAD,
+        left_pad,
         getRect().getHeight() - mLabelVPad,
         title_width,
         title_height);

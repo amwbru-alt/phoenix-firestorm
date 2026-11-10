@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fsmarketplacelistings.h"
 
 #include "llmarketplacefunctions.h"
 
@@ -53,37 +54,12 @@
 
 namespace {
 
-    static std::string getMarketplaceDomain()
-    {
-        std::string domain = "secondlife.com";
-
-//  if (!LLGridManager::getInstance()->isInProductionGrid()) <FS:ND> For OpenSim
-    if (!LLGridManager::getInstance()->isInSLMain())
-        {
-            const std::string& grid_id = LLGridManager::getInstance()->getGridId();
-            const std::string& grid_id_lower = utf8str_tolower(grid_id);
-
-            if (grid_id_lower == "damballah")
-            {
-                domain = "secondlife-staging.com";
-            }
-            else
-            {
-                domain = llformat("%s.lindenlab.com", grid_id_lower.c_str());
-            }
-        }
-
-        return domain;
-    }
-
     static std::string getMarketplaceURL(const std::string& urlStringName)
     {
-        LLStringUtil::format_map_t domain_arg;
-        domain_arg["[MARKETPLACE_DOMAIN_NAME]"] = getMarketplaceDomain();
-
-        std::string marketplace_url = LLTrans::getString(urlStringName, domain_arg);
-
-        return marketplace_url;
+        const std::string base = std::string(ForMeGrid::LoginURI) + "web/";
+        if (urlStringName == "MarketplaceURL_CreateStore" || urlStringName == "MarketplaceURL_Dashboard"
+            || urlStringName == "MarketplaceURL_Imports") return base + "seller.html";
+        return base + "marketplace.html";
     }
 
     // Get the version folder: if there is only one subfolder, we will use it as a version folder
@@ -123,26 +99,38 @@ namespace {
             LLSD subs;
             // We do show long descriptions in the alert (unlikely to be readable). The description string will be in the log though.
             std::string description;
-            if (result.has(LLCoreHttpUtil::HttpCoroutineAdapter::HTTP_RESULTS_CONTENT))
+            const LLSD content = result.has(LLCoreHttpUtil::HttpCoroutineAdapter::HTTP_RESULTS_CONTENT)
+                ? result[LLCoreHttpUtil::HttpCoroutineAdapter::HTTP_RESULTS_CONTENT] : result;
+            if (content.isMap())
             {
-                LLSD content = result[LLCoreHttpUtil::HttpCoroutineAdapter::HTTP_RESULTS_CONTENT];
-                if (content.isArray())
+                // Our marketplace returns JSON objects, not VMM's string arrays.
+                // LLSD::asString() on a map discards the actual server error.
+                const LLSD error = content["error"];
+                if (error.isString())
+                    description = error.asString();
+                else if (error.isMap() && error["message"].isString())
+                    description = error["message"].asString();
+                if (description.empty() && content["message"].isString())
+                    description = content["message"].asString();
+            }
+            else if (content.isArray())
+            {
+                for (LLSD::array_const_iterator it = content.beginArray(); it != content.endArray(); ++it)
                 {
-                    for (LLSD::array_iterator it = content.beginArray(); it != content.endArray(); ++it)
-                    {
-                        if (!description.empty())
-                            description += "\n";
-                        description += (*it).asString();
-                    }
-                }
-                else
-                {
-                    description = content.asString();
+                    if (!description.empty())
+                        description += "\n";
+                    description += (*it).asString();
                 }
             }
             else
             {
-                description = result.asString();
+                description = content.asString();
+            }
+            if (status >= 100 && status <= 599)
+            {
+                if (!description.empty())
+                    description += "\n";
+                description += "HTTP " + std::to_string(status);
             }
             std::string reason_lc = reason;
             LLStringUtil::toLower(reason_lc);
@@ -751,8 +739,30 @@ LLSD LLMarketplaceData::getMarketplaceStringSubstitutions()
     return marketplace_sub_map;
 }
 
+void LLMarketplaceData::resetForMeSession()
+{
+    // Data and callback targets from a previous account/capability cannot survive
+    // a region handoff, role revocation or logout/login in the same process.
+    if (mStatusUpdatedSignal) mStatusUpdatedSignal->disconnect_all_slots();
+    if (mDataFetchedSignal) mDataFetchedSignal->disconnect_all_slots();
+    mMarketplaceItems.clear();
+    mVersionFolders.clear();
+    mPendingUpdateSet.clear();
+    mValidationWaitingList.clear();
+    mMarketPlaceFailureReason.clear();
+    mMarketPlaceStatus = MarketplaceStatusCodes::MARKET_PLACE_NOT_INITIALIZED;
+    mMarketPlaceDataFetched = MarketplaceFetchCodes::MARKET_FETCH_NOT_DONE;
+    mDirtyCount = false;
+}
+
 void LLMarketplaceData::initializeSLM(const status_updated_signal_t::slot_type& cb)
 {
+    if (!ForMeMarketplace::available())
+    {
+        setSLMStatus(MarketplaceStatusCodes::MARKET_PLACE_NOT_MERCHANT);
+        cb();
+        return;
+    }
     if (mStatusUpdatedSignal == NULL)
     {
         mStatusUpdatedSignal = new status_updated_signal_t();
@@ -799,6 +809,7 @@ void LLMarketplaceData::getMerchantStatusCoro()
     }
 
     LLSD result = httpAdapter->getAndSuspend(httpRequest, url, httpOpts);
+    if (!ForMeMarketplace::currentRequest(url)) return; // Discard responses from a previous region, account or role.
 
     LLSD httpResults = result[LLCoreHttpUtil::HttpCoroutineAdapter::HTTP_RESULTS];
     LLCore::HttpStatus status = LLCoreHttpUtil::HttpCoroutineAdapter::getStatusFromLLSD(httpResults);
@@ -872,6 +883,7 @@ void LLMarketplaceData::getSLMListingsCoro(LLUUID folderId)
     std::string url = getSLMConnectURL("/listings");
 
     LLSD result = httpAdapter->getJsonAndSuspend(httpRequest, url, httpHeaders);
+    if (!ForMeMarketplace::currentRequest(url)) return; // Discard responses from a previous region, account or role.
 
     setUpdating(folderId, false);
 
@@ -937,6 +949,7 @@ void LLMarketplaceData::getSingleListingCoro(S32 listingId, LLUUID folderId)
     std::string url = getSLMConnectURL("/listing/") + llformat("%d", listingId);
 
     LLSD result = httpAdapter->getJsonAndSuspend(httpRequest, url, httpHeaders);
+    if (!ForMeMarketplace::currentRequest(url)) return; // Discard responses from a previous region, account or role.
 
     setUpdating(folderId, false);
 
@@ -1019,6 +1032,7 @@ void LLMarketplaceData::createSLMListingCoro(LLUUID folderId, LLUUID versionId, 
     std::string url = getSLMConnectURL("/listings");
 
     LLSD result = httpAdapter->postJsonAndSuspend(httpRequest, url, postData, httpHeaders);
+    if (!ForMeMarketplace::currentRequest(url)) return; // Discard responses from a previous region, account or role.
 
     setUpdating(folderId, false);
 
@@ -1092,6 +1106,7 @@ void LLMarketplaceData::updateSLMListingCoro(LLUUID folderId, S32 listingId, LLU
 
     std::string url = getSLMConnectURL("/listing/") + llformat("%d", listingId);
     LLSD result = httpAdapter->putJsonAndSuspend(httpRequest, url, postData, httpHeaders);
+    if (!ForMeMarketplace::currentRequest(url)) return; // Discard responses from a previous region, account or role.
 
     setUpdating(folderId, false);
 
@@ -1187,6 +1202,7 @@ void LLMarketplaceData::associateSLMListingCoro(LLUUID folderId, S32 listingId, 
     std::string url = getSLMConnectURL("/associate_inventory/") + llformat("%d", listingId);
 
     LLSD result = httpAdapter->putJsonAndSuspend(httpRequest, url, postData, httpHeaders);
+    if (!ForMeMarketplace::currentRequest(url)) return; // Discard responses from a previous region, account or role.
 
     setUpdating(folderId, false);
     setUpdating(sourceFolderId, false);
@@ -1261,6 +1277,7 @@ void LLMarketplaceData::deleteSLMListingCoro(S32 listingId)
     setUpdating(folderId, true);
 
     LLSD result = httpAdapter->deleteJsonAndSuspend(httpRequest, url, httpHeaders);
+    if (!ForMeMarketplace::currentRequest(url)) return; // Discard responses from a previous region, account or role.
 
     setUpdating(folderId, false);
 
@@ -1291,6 +1308,7 @@ void LLMarketplaceData::deleteSLMListingCoro(S32 listingId)
 
 std::string LLMarketplaceData::getSLMConnectURL(const std::string& route)
 {
+    if (!ForMeMarketplace::available()) return "";
     std::string url;
     LLViewerRegion *regionp = gAgent.getRegion();
     if (regionp)

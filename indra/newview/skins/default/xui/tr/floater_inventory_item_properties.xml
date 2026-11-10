@@ -18,19 +18,19 @@
 	<check_box label="Kopyala" name="CheckOwnerCopy"/>
 	<check_box label="Tekrar Sat" name="CheckOwnerTransfer"/>
 	<text name="AnyoneLabel">Herkes:</text>
-	<check_box label="Kopyala" name="CheckEveryoneCopy"/>
+	<check_box label="Kopyala" name="CheckEveryoneCopy" forme_creator_only="true"/>
 	<text name="GroupLabel">Grup:</text>
-	<check_box label="Paylaş" name="CheckShareWithGroup"/>
+	<check_box label="Paylaş" name="CheckShareWithGroup" forme_creator_only="true"/>
 	<text name="NextOwnerLabel">Sonraki sahip:</text>
-	<check_box label="Düzenle" name="CheckNextOwnerModify"/>
-	<check_box label="Kopyala" name="CheckNextOwnerCopy"/>
-	<check_box label="Tekrar Sat" name="CheckNextOwnerTransfer"/>
-	<check_box label="Satılık" name="CheckPurchase"/>
-	<combo_box name="ComboBoxSaleType">
+	<check_box label="Düzenle" name="CheckNextOwnerModify" forme_creator_only="true"/>
+	<check_box label="Kopyala" name="CheckNextOwnerCopy" forme_creator_only="true"/>
+	<check_box label="Tekrar Sat" name="CheckNextOwnerTransfer" forme_creator_only="true"/>
+	<check_box label="Satılık" name="CheckPurchase" forme_creator_only="true"/>
+	<combo_box name="ComboBoxSaleType" forme_creator_only="true">
 		<combo_box.item label="Kopyala" name="Copy"/>
 		<combo_box.item label="İçerik" name="Contents"/>
 		<combo_box.item label="Orijinal" name="Original"/>
 	</combo_box>
-	<spinner label="Fiyat:" name="Edit Cost"/>
+	<spinner label="Fiyat:" name="Edit Cost" forme_creator_only="true"/>
 	<text name="CurrencySymbol">L$</text>
 </floater>

@@ -22,7 +22,7 @@
 		(Beholdning)
 	</panel.string>
 	<panel.string name="origin_inworld">
-		(I Second Life)
+		(I ForMe.World)
 	</panel.string>
 	<text name="title" value="Profil for genstand"/>
 	<text name="origin" value="(Beholdning)"/>

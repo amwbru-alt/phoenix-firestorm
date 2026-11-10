@@ -11,7 +11,7 @@
  name="chat">
 
 <tab_container
- label="Firestorm Prefs"
+ label="ForMe.World Prefs"
  layout="topleft"
  follows="all"
  top="5"
@@ -895,16 +895,6 @@
 		 label="Spell Checking..."
 		 width="160">
 		</button>
-		<button
-		 follows="top|left"
-		 height="23"
-		 layout="topleft"
-		 left_pad="5"
-		 name="translation_settings_btn"
-		 width="160"
-		 commit_callback.function="Pref.TranslationSettings"
-		 label="Translation...">
-		</button>
 		<check_box
 		 control_name="PlayTypingAnim"
 		 height="16"
@@ -1334,7 +1324,7 @@
 		 height="18"
 		 name="FSShowMessageCountInWindowTitle"
 		 control_name="FSShowMessageCountInWindowTitle"
-		 label="Show number of unread IMs in Firestorm's window title"/>
+		 label="Show number of unread IMs in ForMe.World's window title"/>
 
 		<check_box
 		 layout="topleft"

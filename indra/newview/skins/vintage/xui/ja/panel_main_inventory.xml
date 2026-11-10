@@ -12,7 +12,7 @@
 	<menu_bar name="inventory_menu_bar">
 		<menu label="インベントリ" name="inventory_inventory_menu">
 			<menu_item_call name="inventory_open" label="開く"/>
-			<menu_item_call name="inventory_share" label="共有"/>
+			<menu_item_call name="inventory_share" label="共有" forme_creator_only="true"/>
 			<menu_item_call name="replace_links" label="リンクを修正"/>
 			<menu_item_call name="inventory_new_window" label="新しいインベントリウィンドウ"/>
 			<menu_item_check label="保護フォルダ" name="Protected Folders"/>
@@ -35,9 +35,9 @@
 		</menu>
 		<menu label="作成" name="inventory_create_menu">
 			<menu_item_call name="inventory_new_folder" label="新しいフォルダ"/>
-			<menu_item_call name="inventory_new_script" label="新しいスクリプト"/>
-			<menu_item_call name="inventory_new_note" label="新しいノートカード"/>
-			<menu_item_call name="inventory_new_gesture" label="新しいジェスチャー"/>
+			<menu_item_call name="inventory_new_script" label="新しいスクリプト" forme_creator_only="true"/>
+			<menu_item_call name="inventory_new_note" label="新しいノートカード" forme_creator_only="true"/>
+			<menu_item_call name="inventory_new_gesture" label="新しいジェスチャー" forme_creator_only="true"/>
 			<menu name="inventory_new_clothes" label="新しい衣装">
 				<menu_item_call name="inventory_new_shirt" label="新しいシャツ"/>
 				<menu_item_call name="inventory_new_pants" label="新しいズボン"/>

@@ -154,7 +154,7 @@ background_visible="true"
                       layout="topleft"
                       left="0"
                       follows="left|top|right"
-                      help_topic="group_general_tab"
+                     
                       name="group_general_tab_panel"
                       top="0" />
          </accordion_tab>
@@ -187,7 +187,7 @@ background_visible="true"
                     follows="left|top|right"
                     layout="topleft"
                     left="0"
-                    help_topic="group_notices_tab"
+                   
                     name="group_notices_tab_panel"
                     top="0" />
          </accordion_tab>
@@ -220,7 +220,7 @@ background_visible="true"
                follows="left|top|right"
                layout="topleft"
                left="0"
-               help_topic="group_experiences_tab"
+              
                name="group_experiences_tab_panel"
                top="0" />
          </accordion_tab>

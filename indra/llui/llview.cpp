@@ -113,6 +113,7 @@ LLView::Params::Params()
 :   name("name", std::string("unnamed")),
     enabled("enabled", true),
     visible("visible", true),
+    forme_creator_only("forme_creator_only", false),
     mouse_opaque("mouse_opaque", true),
     follows("follows"),
     hover_cursor("hover_cursor", "UI_CURSOR_ARROW"),
@@ -142,6 +143,7 @@ LLView::Params::Params()
 
 LLView::LLView(const LLView::Params& p)
 :   mVisible(p.visible),
+    mForMeCreatorOnly(p.forme_creator_only),
     mInDraw(false),
     mName(p.name),
     mParentView(NULL),
@@ -2416,8 +2418,9 @@ void LLView::initFromParams(const LLView::Params& params)
 
     // call virtual methods with most recent data
     // use getters because these values might not come through parameter block
-    setEnabled(getEnabled());
-    setVisible(getVisible());
+    // Preserve requested state while role access is denied; role changes are reversible.
+    setEnabled(mEnabled);
+    setVisible(mVisible);
 
     if (!params.name().empty())
     {

@@ -11,8 +11,8 @@
 			<pie_slice label="封鎖" name="DerenderPermanent" />
 		</pie_menu>
 		<pie_menu name="ExportMenu" label="另存為 &gt;">
-			<pie_slice label="備份" name="Backup" />
-			<pie_slice label="Collada" name="Collada" />
+			<pie_slice label="備份" name="Backup"  forme_creator_only="true"/>
+			<pie_slice label="Collada" name="Collada"  forme_creator_only="true"/>
 		</pie_menu>
 		<pie_menu name="Inventory" label="庫存 &gt;">
 			<menu_item_call label="添加到收藏" name="Add to favorites" />
@@ -37,5 +37,5 @@
 		<pie_slice label="轉儲 XML" name="Dump XML" />
 		<pie_slice label="懸浮高度" name="Hover Height" />
 	</pie_menu>
-	<pie_slice label="編輯" name="Edit..." />
+	<pie_slice label="編輯" name="Edit..."  forme_creator_only="true"/>
 </pie_menu>

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <menu name="menu_inventory_add">
-	<menu label="Subir" name="upload">
-		<menu_item_call label="Imagen..." name="Upload Image"/>
-		<menu_item_call label="Sonido ([COST] L$)..." name="Upload Sound"/>
-		<menu_item_call label="Animación ([COST] L$)..." name="Upload Animation"/>
-		<menu_item_call label="Modelo..." name="Upload Model"/>
-		<menu_item_call label="Masivo..." name="Bulk Upload"/>
+	<menu label="Subir" name="upload" forme_creator_only="true">
+		<menu_item_call label="Imagen..." name="Upload Image" forme_creator_only="true"/>
+		<menu_item_call label="Sonido ([COST] L$)..." name="Upload Sound" forme_creator_only="true"/>
+		<menu_item_call label="Animación ([COST] L$)..." name="Upload Animation" forme_creator_only="true"/>
+		<menu_item_call label="Modelo..." name="Upload Model" forme_creator_only="true"/>
+		<menu_item_call label="Masivo..." name="Bulk Upload" forme_creator_only="true"/>
 	</menu>
 	<menu_item_call label="Carpeta nueva" name="New Folder"/>
-	<menu_item_call label="Script nuevo" name="New Script"/>
-	<menu_item_call label="Nota nueva" name="New Note"/>
-	<menu_item_call label="Gesto nuevo" name="New Gesture"/>
+	<menu_item_call label="Script nuevo" name="New Script" forme_creator_only="true"/>
+	<menu_item_call label="Nota nueva" name="New Note" forme_creator_only="true"/>
+	<menu_item_call label="Gesto nuevo" name="New Gesture" forme_creator_only="true"/>
 	<menu label="Ropas nuevas" name="New Clothes">
 		<menu_item_call label="Camisa nueva" name="New Shirt"/>
 		<menu_item_call label="Pantalón nuevo" name="New Pants"/>

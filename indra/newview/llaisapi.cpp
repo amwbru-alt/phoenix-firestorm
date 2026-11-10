@@ -41,6 +41,7 @@
 #include "llviewercontrol.h"
 
 #include "llviewernetwork.h"
+#include "fsavatarbadges.h"
 
 ///----------------------------------------------------------------------------
 /// Classes for AISv3 support.
@@ -65,7 +66,8 @@ bool AISAPI::isAvailable()
 {
     // <FS:Ansariel> Add AIS3 debug setting
     //if (gAgent.getRegion())
-    if (gAgent.getRegion() && (gSavedSettings.getBOOL("FSUseAis3Api") || LLGridManager::instance().isInSecondLife()))
+    if (gAgent.getRegion() && (gSavedSettings.getBOOL("FSUseAis3Api") || LLGridManager::instance().isInSecondLife()
+        || ForMeGrid::allowedServiceURI(gAgent.getRegion()->getCapability("ForMeState"))))
     // </FS:Ansariel>
     {
         return gAgent.getRegion()->isCapabilityAvailable(INVENTORY_CAP_NAME);

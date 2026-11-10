@@ -18,7 +18,7 @@
   can_resize="true"
   min_width="250"
   save_rect="true"
-  min_height="150">
+  min_height="150" header_height="44" header_vpad="10" header_icon="Forme_UI_Chat" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD" legacy_header_height="0">
     <floater.string
      name="participant_added"
      value="[NAME] was invited to the conversation."/>
@@ -207,7 +207,7 @@
        image_unselected="Toolbar_Middle_Off"
        tool_tip="Send an item to this resident"
        name="share_btn"
-       width="24">
+       width="24" forme_creator_only="true">
         <button.commit_callback
          function="IMSession.Menu.Action"
          parameter="share"/>

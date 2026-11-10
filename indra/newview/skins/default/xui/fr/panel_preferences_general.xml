@@ -59,7 +59,7 @@
 		(Redémarrage requis)
 	</text>
 	<text name="time_format_clock_note">
-		Le format de l'heure pour la barre supérieure se trouve dans [secondlife:///app/openfloater/preferences?tab=ui&amp;subtab=UI-interface-top-bars Interface - Barres supérieures].
+		Le format de l'heure pour la barre supérieure se trouve dans [fmw:///app/openfloater/preferences?tab=ui&amp;subtab=UI-interface-top-bars Interface - Barres supérieures].
 	</text>
 	<text name="title_afk_text">Absent après :</text>
 	<text name="title_afk_quit_text">Déconnecter après avoir été absent :</text>
@@ -79,5 +79,5 @@
 		<combo_box.item label="30 minutes" name="item3"/>
 		<combo_box.item label="Jamais" name="item4"/>
 	</combo_box>
-	<text name="text_box3">Les réponses automatiques peuvent être définies dans [secondlife:///app/openfloater/preferences?tab=im&amp;subtab=tab-autoresponse-1 les options de Confidentialité]</text>
+	<text name="text_box3">Les réponses automatiques peuvent être définies dans [fmw:///app/openfloater/preferences?tab=im&amp;subtab=tab-autoresponse-1 les options de Confidentialité]</text>
 </panel>

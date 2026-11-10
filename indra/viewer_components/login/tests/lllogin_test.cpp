@@ -34,6 +34,7 @@
 #include "linden_common.h"
 // associated header
 #include "../lllogin.h"
+#include "formegridpolicy.h" // <FS:ForMe> Tests use the distribution policy.
 // STL headers
 // std headers
 #include <chrono>
@@ -162,6 +163,8 @@ public:
             mResponse["error"] = "dummy response";
             mResponse["transfer_rate"] = 0;
             mResponse["responses"]["login"] = true;
+            mResponse["responses"]["sim_ip"] = ForMeGrid::Host;
+            mResponse["responses"]["seed_capability"] = "http://185.173.93.200:9000/CAPS/seed";
         }
     }
 
@@ -240,11 +243,12 @@ namespace tut
         LLTempBoundListener conn2 = listener.listenTo(login.getEventPump());
 
         LLSD credentials;
+        credentials["method"] = "login_to_simulator";
         credentials["first"] = "foo";
         credentials["last"] = "bar";
         credentials["passwd"] = "secret";
 
-        login.connect("login.bar.com", credentials);
+        login.connect(ForMeGrid::LoginURI, credentials);
         listener.waitFor(
             "online state",
             [&listener]()->bool{ return listener.lastEvent()["state"].asString() == "online"; });
@@ -268,11 +272,12 @@ namespace tut
         LLTempBoundListener conn2 = listener.listenTo(login.getEventPump());
 
         LLSD credentials;
+        credentials["method"] = "login_to_simulator";
         credentials["first"] = "who";
         credentials["last"] = "what";
         credentials["passwd"] = "badpasswd";
 
-        login.connect("login.bar.com", credentials);
+        login.connect(ForMeGrid::LoginURI, credentials);
         llcoro::suspend();
 
         ensure_equals("Auth state", listener.lastEvent()["change"].asString(), "authenticating");
@@ -314,11 +319,12 @@ namespace tut
         LLTempBoundListener conn2 = listener.listenTo(login.getEventPump());
 
         LLSD credentials;
+        credentials["method"] = "login_to_simulator";
         credentials["first"] = "these";
         credentials["last"] = "don't";
         credentials["passwd"] = "matter";
 
-        login.connect("login.bar.com", credentials);
+        login.connect(ForMeGrid::LoginURI, credentials);
         llcoro::suspend();
 
         ensure_equals("Auth state", listener.lastEvent()["change"].asString(), "authenticating");
@@ -340,4 +346,48 @@ namespace tut
 
         ensure_equals("Failed to offline", listener.lastEvent()["state"].asString(), "offline");
     }
+    template<> template<>
+    void llviewerlogin_object::test<4>()
+    {
+        set_test_name("ForMe blocks foreign login before XML-RPC");
+        LLEventStream xmlrpcPump("LLXMLRPCTransaction");
+        int sent = 0;
+        LLTempBoundListener wire = xmlrpcPump.listen("count", [&sent](const LLSD&) { ++sent; return false; });
+        LLLogin login;
+        LoginListener listener("test_ear");
+        LLTempBoundListener events = listener.listenTo(login.getEventPump());
+        login.connect("https://login.agni.lindenlab.com/cgi-bin/login.cgi", LLSD());
+        listener.waitFor("blocked login", [&listener]() { return listener.lastEvent()["change"].asString() == "fail.login"; });
+        ensure_equals("No credential request sent", sent, 0);
+        ensure_equals("Blocked reason", listener.lastEvent()["data"]["reason"].asString(), "grid_blocked");
+    }
+
+    template<> template<>
+    void llviewerlogin_object::test<5>()
+    {
+        set_test_name("ForMe blocks protocol redirect without forwarding credentials");
+        LLEventStream xmlrpcPump("LLXMLRPCTransaction");
+        LLSD response;
+        response["status"] = "Complete";
+        response["errorcode"] = 0;
+        response["error"] = "";
+        response["transfer_rate"] = 0;
+        response["responses"]["login"] = "indeterminate";
+        response["responses"]["next_url"] = "http://other-grid.example:8002/";
+        response["responses"]["next_method"] = "login_to_simulator";
+        LLXMLRPCListener dummy("redirect", true, response);
+        LLTempBoundListener wire = dummy.listenTo(xmlrpcPump);
+        int sent = 0;
+        LLTempBoundListener counter = xmlrpcPump.listen("counter", [&sent](const LLSD&) { ++sent; return false; });
+        LLLogin login;
+        LoginListener listener("test_ear");
+        LLTempBoundListener events = listener.listenTo(login.getEventPump());
+        LLSD params;
+        params["method"] = "login_to_simulator";
+        login.connect(ForMeGrid::LoginURI, params);
+        listener.waitFor("blocked redirect", [&listener]() { return listener.lastEvent()["change"].asString() == "fail.login"; });
+        ensure_equals("Only the authorized endpoint received a request", sent, 1);
+        ensure_equals("Blocked reason", listener.lastEvent()["data"]["reason"].asString(), "grid_blocked");
+    }
+
 }

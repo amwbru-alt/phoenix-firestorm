@@ -148,7 +148,7 @@
 		Restart regionu:
 	</panel.string>
 	<panel.string name="textFSRestartOpenSim">
-		Restart regionu (OpenSim):
+		Restart regionu (ForMe.World):
 	</panel.string>
 	<panel.string name="textFSScriptFloaterClose">
 		Skrypt zamyka okno:
@@ -298,7 +298,7 @@
 			<radio_group name="ear_location">
 				<radio_item label="Odtwarzaj głos z pozycji kamery" name="0"/>
 				<radio_item label="Odtwarzaj głos z pozycji mojego awatara" name="1"/>
-				<radio_item label="Odtwarzaj głos z pełną głośnością (tylko OpenSim)" name="2" />
+				<radio_item label="Odtwarzaj głos z pełną głośnością (tylko ForMe.World)" name="2" />
 			</radio_group>
 			<check_box label="Poruszaj ustami awatara podczas mówienia" name="enable_lip_sync"/>
 			<check_box label="Pokazuj wskaźniki dźwięku ponad awatarami" tool_tip="Pokazuj wskaźniki dźwięku (białe kropki) ponad awatarami" name="FSShowVoiceVisualizer"/>

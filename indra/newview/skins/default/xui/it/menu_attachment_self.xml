@@ -2,12 +2,12 @@
 <context_menu name="Attachment Pie">
 	<menu_item_call label="Tocca" name="Attachment Object Touch"/>
 	<menu_item_call label="Mostra in inventario" name="Show original"/>
-	<menu_item_call label="Modifica" name="Edit..."/>
-	<menu_item_call label="Modifica materiale PBR" name="EditGLTFMaterial"/>
+	<menu_item_call label="Modifica" name="Edit..." forme_creator_only="true"/>
+	<menu_item_call label="Modifica materiale PBR" name="EditGLTFMaterial" forme_creator_only="true"/>
 	<menu_item_call label="Stacca" name="Detach"/>
-	<context_menu label="Esporta" name="Export Menu">
-		<menu_item_call label="Salva copia" name="Backup"/>
-		<menu_item_call label="Collada" name="Collada"/>
+	<context_menu label="Esporta" name="Export Menu" forme_creator_only="true">
+		<menu_item_call label="Salva copia" name="Backup" forme_creator_only="true"/>
+		<menu_item_call label="Collada" name="Collada" forme_creator_only="true"/>
 	</context_menu>
 	<menu_item_call label="Siediti" name="Sit Down Here"/>
 	<menu_item_call label="Alzati" name="Stand Up"/>

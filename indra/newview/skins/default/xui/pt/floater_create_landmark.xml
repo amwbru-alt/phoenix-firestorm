@@ -7,7 +7,7 @@
 	<text name="name_label" value="Nome:"/>
 	<text name="folder_label" value="Salvar este Landmark em:"/>
 	<text name="new_folder_textbox">
-		[secondlife:/// Criar nova pasta]
+		[fmw:/// Criar nova pasta]
 	</text>
 	<text name="notes_label" value="Minhas notas:"/>
 	<button label="OK" name="ok_btn"/>

@@ -420,7 +420,7 @@
      label="Share"
      layout="topleft"
      name="Share"
-     visible="true">
+     visible="true" forme_creator_only="true">
      <on_click
          function="Inventory.GearDefault.Custom.Action"
          parameter="share" />

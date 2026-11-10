@@ -2,7 +2,7 @@
 <toggleable_menu name="profile_overflow_menu">
 	<menu_item_call label="Mapa" name="show_on_map"/>
 	<menu_item_call label="Pagar" name="pay"/>
-	<menu_item_call label="Compartilhar" name="share"/>
+	<menu_item_call label="Compartilhar" name="share" forme_creator_only="true"/>
 	<menu_item_call label="Ligar" name="call"/>
 	<menu_item_call label="Adicionar ao conjunto" name="add_to_contact_set"/>
 	<menu_item_call label="Copiar nome" name="copy_name_to_clipboard"/>

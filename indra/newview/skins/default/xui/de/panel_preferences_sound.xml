@@ -148,7 +148,7 @@
 	Regionsneustart:
 </panel.string>
 <panel.string name="textFSRestartOpenSim">
-	Regionsneustart (OpenSim):
+	Regionsneustart (ForMe.World):
 </panel.string>
 <panel.string name="textFSScriptFloaterClose">
 	Schließen Skript-Dialog:
@@ -183,7 +183,7 @@
 <panel.string name="textFSWindowOpen">
 	Öffnen eines Fensters:
 </panel.string>
-<tab_container label="Firestorm Prefs" name="tabs">
+<tab_container label="ForMe.World Prefs" name="tabs">
 	<!-- Sounds -->
 	<panel label="Klänge" name="Media Sounds Panel">
 		<slider label="Master-Lautstärke" name="System Volume"/>
@@ -307,7 +307,7 @@
 		<radio_group name="ear_location">
 			<radio_item label="Voice-Chat von Kameraposition aus hören" name="0"/>
 			<radio_item label="Voice-Chat von Avatarposition aus hören" name="1"/>
-			<radio_item label="Voice-Chat in der Nähe in gleicher Lautstärke hören (nur OpenSim)" name="2"/>
+			<radio_item label="Voice-Chat in der Nähe in gleicher Lautstärke hören (nur ForMe.World)" name="2"/>
 		</radio_group>
 		<check_box label="Avatarlippen beim Sprechen bewegen" name="enable_lip_sync"/>
 		<check_box label="Zeige Voice-Indikator über Avataren" name="FSShowVoiceVisualizer" tool_tip="Wenn diese Option aktiviert ist, wird der Voice-Indikator (weißer Punkt) über Avataren angezeigt."/>

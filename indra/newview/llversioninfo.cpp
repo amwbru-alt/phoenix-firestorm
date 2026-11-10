@@ -55,7 +55,8 @@ LLVersionInfo::LLVersionInfo():
     // LL_VIEWER_CHANNEL is a macro defined on the compiler command line. The
     // macro expands to the string name of the channel, but without quotes. We
     // need to turn it into a quoted string. LL_TO_STRING() does that.
-    mWorkingChannelName(LL_TO_STRING(LL_VIEWER_CHANNEL)),
+    // mWorkingChannelName(LL_TO_STRING(LL_VIEWER_CHANNEL)),
+    mWorkingChannelName("ForMe.World"), // <FS:ForMe> Visible product name.
     build_configuration(LLBUILD_CONFIG), // set in indra/cmake/BuildVersion.cmake
     // instantiate an LLEventMailDrop with canonical name to listen for news
     // from the Viewer Version Manager
@@ -176,7 +177,8 @@ std::string LLVersionInfo::getChannel() const
 
 void LLVersionInfo::resetChannel(const std::string& channel)
 {
-    mWorkingChannelName = channel;
+    // mWorkingChannelName = channel;
+    mWorkingChannelName = "ForMe.World"; // <FS:ForMe> Keep UI branding stable.
     mVersionChannel.clear(); // Reset version and channel string til next use.
 }
 

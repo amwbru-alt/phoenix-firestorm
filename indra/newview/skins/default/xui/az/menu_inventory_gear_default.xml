@@ -46,7 +46,7 @@
 	<menu_item_call label="Bütün qovluqları bağla" name="close_folders"/>
 	<menu_item_call label="Close All Windows" name="close_windows"/>
 	<menu_item_call label="Teksturanı ayrı saxla" name="Save Texture As"/>
-	<menu_item_call label="Paylaş" name="Share"/>
+	<menu_item_call label="Paylaş" name="Share" forme_creator_only="true"/>
 	<menu_item_call label="Orijinalını tap" name="Find Original"/>
 	<menu_item_call label="'Tapılan əşyaları' silin" name="empty_lostnfound"/>
 	<menu_item_call label="Səbəti təmizlə" name="empty_trash"/>

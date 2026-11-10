@@ -11,7 +11,7 @@
 
 <floater
  legacy_header_height="0"
- header_height="0"
+ header_height="44"
  name="toast"
  title=""
  visible="false"
@@ -21,8 +21,8 @@
  left="0"
  top="0"
  background_visible="false"
- bg_opaque_image="Toast_Over"
- bg_alpha_image="Toast_Background"
+ bg_opaque_image="Forme_Round_Window"
+ bg_alpha_image="Forme_Round_WindowInactive"
  can_minimize="false"
  can_tear_off="false"
  can_resize="false"
@@ -30,7 +30,7 @@
  can_close="false"
  can_dock="false"
  border_visible = "false"
- border = "false"
+ border = "false" header_vpad="10" header_icon="Forme_UI_Window" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD"
 >
  <panel
   background_opaque="false"

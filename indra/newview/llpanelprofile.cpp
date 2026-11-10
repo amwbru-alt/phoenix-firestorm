@@ -26,6 +26,7 @@
 
 #include "llviewerprecompiledheaders.h"
 #include "llpanelprofile.h"
+#include "formegridpolicy.h"
 
 // Common
 #include "llavatarnamecache.h"
@@ -39,7 +40,6 @@
 #include "llcheckboxctrl.h"
 #include "llcombobox.h"
 #include "lllineeditor.h"
-#include "llloadingindicator.h"
 #include "llmenubutton.h"
 #include "lltabcontainer.h"
 #include "lltextbox.h"
@@ -49,9 +49,6 @@
 #include "lltooldraganddrop.h"
 #include "llgrouplist.h"
 #include "llurlaction.h"
-
-// Image
-#include "llimagej2c.h"
 
 // Newview
 #include "llagent.h" //gAgent
@@ -63,7 +60,6 @@
 #include "llfloaterprofiletexture.h"
 #include "llfloaterreg.h"
 #include "llfloaterreporter.h"
-#include "llfilepicker.h"
 #include "llfirstuse.h"
 #include "llgroupactions.h"
 #include "lllogchat.h"
@@ -76,7 +72,6 @@
 #include "lltrans.h"
 #include "llviewercontrol.h"
 #include "llviewermenu.h" //is_agent_mappable
-#include "llviewermenufile.h"
 #include "llviewertexturelist.h"
 #include "llvoiceclient.h"
 #include "llweb.h"
@@ -103,217 +98,6 @@ static const std::string PANEL_NOTES        = "panel_profile_notes";
 static const std::string PANEL_PROFILE_VIEW = "panel_profile_view";
 
 static const std::string PROFILE_PROPERTIES_CAP = "AgentProfile";
-static const std::string PROFILE_IMAGE_UPLOAD_CAP = "UploadAgentProfileImage";
-
-//////////////////////////////////////////////////////////////////////////
-
-LLUUID post_profile_image(std::string cap_url, const LLSD &first_data, std::string path_to_image, LLHandle<LLPanel> *handle)
-{
-    LLCore::HttpRequest::policy_t httpPolicy(LLCore::HttpRequest::DEFAULT_POLICY_ID);
-    LLCoreHttpUtil::HttpCoroutineAdapter::ptr_t
-        httpAdapter = std::make_shared<LLCoreHttpUtil::HttpCoroutineAdapter>("post_profile_image_coro", httpPolicy);
-    LLCore::HttpRequest::ptr_t httpRequest = std::make_shared<LLCore::HttpRequest>();
-    LLCore::HttpHeaders::ptr_t httpHeaders;
-
-    LLCore::HttpOptions::ptr_t httpOpts = std::make_shared<LLCore::HttpOptions>();
-    httpOpts->setFollowRedirects(true);
-
-    // Retry stage-2 upload by re-requesting a fresh one-time uploader capability (up to 3 attempts total)
-    const S32 MAX_UPLOAD_RETRIES = 2;
-    S32 upload_retry_count = 0;
-    LLUUID result_uuid;
-
-    while (upload_retry_count <= MAX_UPLOAD_RETRIES)
-    {
-        // Stage 1: Request uploader URL
-        LLSD result = httpAdapter->postAndSuspend(httpRequest, cap_url, first_data, httpOpts, httpHeaders);
-
-        LLSD httpResults = result[LLCoreHttpUtil::HttpCoroutineAdapter::HTTP_RESULTS];
-        LLCore::HttpStatus status = LLCoreHttpUtil::HttpCoroutineAdapter::getStatusFromLLSD(httpResults);
-
-        if (!status)
-        {
-            // todo: notification?
-            LL_WARNS("AvatarProperties") << "Failed to get uploader cap " << status.toString() << LL_ENDL;
-            return LLUUID::null;
-        }
-
-        if (!result.has("uploader"))
-        {
-            // todo: notification?
-            LL_WARNS("AvatarProperties") << "Failed to get uploader cap, response contains no data." << LL_ENDL;
-            return LLUUID::null;
-        }
-
-        std::string uploader_cap = result["uploader"].asString();
-        if (uploader_cap.empty())
-        {
-            LL_WARNS("AvatarProperties") << "Failed to get uploader cap, cap invalid." << LL_ENDL;
-            return LLUUID::null;
-        }
-
-        // Stage 2: Upload the image
-        LLCore::HttpRequest::ptr_t uploaderhttpRequest = std::make_shared<LLCore::HttpRequest>();
-        LLCore::HttpHeaders::ptr_t uploaderhttpHeaders = std::make_shared<LLCore::HttpHeaders>();
-        LLCore::HttpOptions::ptr_t uploaderhttpOpts = std::make_shared<LLCore::HttpOptions>();
-        S64 length;
-
-        {
-            llifstream instream(path_to_image.c_str(), std::iostream::binary | std::iostream::ate);
-            if (!instream.is_open())
-            {
-                LL_WARNS("AvatarProperties") << "Failed to open file " << path_to_image << LL_ENDL;
-                return LLUUID::null;
-            }
-            length = instream.tellg();
-        }
-
-        uploaderhttpHeaders->append(HTTP_OUT_HEADER_CONTENT_TYPE, "application/jp2");
-        uploaderhttpHeaders->append(HTTP_OUT_HEADER_CONTENT_LENGTH, std::to_string(length));
-        uploaderhttpOpts->setFollowRedirects(true);
-
-        result = httpAdapter->postFileAndSuspend(uploaderhttpRequest, uploader_cap, path_to_image, uploaderhttpOpts, uploaderhttpHeaders);
-
-        httpResults = result[LLCoreHttpUtil::HttpCoroutineAdapter::HTTP_RESULTS];
-        status = LLCoreHttpUtil::HttpCoroutineAdapter::getStatusFromLLSD(httpResults);
-
-        LL_DEBUGS("AvatarProperties") << result << LL_ENDL;
-
-        if (!status)
-        {
-            if (upload_retry_count < MAX_UPLOAD_RETRIES)
-            {
-                upload_retry_count++;
-                LL_WARNS("AvatarProperties") << "Failed to upload image (attempt " << upload_retry_count
-                                             << " of " << (MAX_UPLOAD_RETRIES + 1) << "): " << status.toString()
-                                             << ", re-requesting uploader..." << LL_ENDL;
-                llcoro::suspendUntilTimeout(1.0f);
-                continue;
-            }
-            else
-            {
-                LL_WARNS("AvatarProperties") << "Failed to upload image after " << (MAX_UPLOAD_RETRIES + 1)
-                                            << " attempts: " << status.toString() << LL_ENDL;
-                return LLUUID::null;
-            }
-        }
-
-        // Todo: should we really repeat if 'complete' not set?
-        if (result["state"].asString() != "complete")
-        {
-            if (upload_retry_count < MAX_UPLOAD_RETRIES)
-            {
-                upload_retry_count++;
-                if (result.has("message"))
-                {
-                    LL_WARNS("AvatarProperties") << "Failed to upload image, state " << result["state"]
-                                                 << " message: " << result["message"] << " (attempt "
-                                                 << upload_retry_count << " of " << (MAX_UPLOAD_RETRIES + 1)
-                                                 << "), re-requesting uploader..." << LL_ENDL;
-                }
-                else
-                {
-                    LL_WARNS("AvatarProperties") << "Failed to upload image (attempt " << upload_retry_count
-                                                 << " of " << (MAX_UPLOAD_RETRIES + 1)
-                                                 << "), re-requesting uploader..." << LL_ENDL;
-                }
-                llcoro::suspendUntilTimeout(1.0f);
-                continue;
-            }
-            else
-            {
-                if (result.has("message"))
-                {
-                    LL_WARNS("AvatarProperties") << "Failed to upload image after " << (MAX_UPLOAD_RETRIES + 1)
-                                                 << " attempts, state " << result["state"]
-                                                 << " message: " << result["message"] << LL_ENDL;
-                }
-                else
-                {
-                    LL_WARNS("AvatarProperties") << "Failed to upload image after " << (MAX_UPLOAD_RETRIES + 1)
-                                                << " attempts" << LL_ENDL;
-                }
-                return LLUUID::null;
-            }
-        }
-
-        // Success!
-        result_uuid = result["new_asset"].asUUID();
-        break;
-    }
-
-    return result_uuid;
-}
-
-enum EProfileImageType
-{
-    PROFILE_IMAGE_SL,
-    PROFILE_IMAGE_FL,
-};
-
-void post_profile_image_coro(std::string cap_url, EProfileImageType type, std::string path_to_image, LLHandle<LLPanel> *handle)
-{
-    LLSD data;
-    switch (type)
-    {
-    case PROFILE_IMAGE_SL:
-        data["profile-image-asset"] = "sl_image_id";
-        break;
-    case PROFILE_IMAGE_FL:
-        data["profile-image-asset"] = "fl_image_id";
-        break;
-    }
-
-    LLUUID result = post_profile_image(cap_url, data, path_to_image, handle);
-
-    // reset loading indicator
-    if (!handle->isDead())
-    {
-        switch (type)
-        {
-        case PROFILE_IMAGE_SL:
-            {
-                LLPanelProfileSecondLife* panel = static_cast<LLPanelProfileSecondLife*>(handle->get());
-                if (result.notNull())
-                {
-                    panel->setProfileImageUploaded(result);
-                }
-                else
-                {
-                    // failure, just stop progress indicator
-                    panel->setProfileImageUploading(false);
-                }
-                break;
-            }
-        case PROFILE_IMAGE_FL:
-            {
-                LLPanelProfileFirstLife* panel = static_cast<LLPanelProfileFirstLife*>(handle->get());
-                if (result.notNull())
-                {
-                    panel->setProfileImageUploaded(result);
-                }
-                else
-                {
-                    // failure, just stop progress indicator
-                    panel->setProfileImageUploading(false);
-                }
-                break;
-            }
-        }
-    }
-
-    if (type == PROFILE_IMAGE_SL && result.notNull())
-    {
-        LLAvatarIconIDCache::getInstance()->add(gAgentID, result);
-        // Should trigger callbacks in icon controls
-        LLAvatarPropertiesProcessor::getInstance()->sendAvatarPropertiesRequest(gAgentID);
-    }
-
-    // Cleanup
-    LLFile::remove(path_to_image);
-    delete handle;
-}
-
 //////////////////////////////////////////////////////////////////////////
 // LLProfileHandler
 
@@ -768,7 +552,6 @@ LLPanelProfileSecondLife::LLPanelProfileSecondLife()
     : LLPanelProfilePropertiesProcessorTab()
     , mAvatarNameCacheConnection()
     , mHasUnsavedDescriptionChanges(false)
-    , mWaitingForImageUpload(false)
     , mAllowPublish(false)
     , mHideAge(false)
     , mAllowEdit(true)
@@ -835,7 +618,6 @@ bool LLPanelProfileSecondLife::postBuild()
     mCopyMenuButton = getChild<LLMenuButton>("copy_btn");
     mGroupInviteButton = getChild<LLButton>("group_invite");
     mDisplayNameButton = getChild<LLButton>("set_name");
-    mImageActionMenuButton = getChild<LLMenuButton>("image_action_btn");
     mTeleportButton = getChild<LLButton>("teleport");
     mShowOnMapButton = getChild<LLButton>("show_on_map_btn");
     mBlockButton = getChild<LLButton>("block");
@@ -879,10 +661,13 @@ bool LLPanelProfileSecondLife::postBuild()
     mCantSeeOnMapIcon->setMouseUpCallback([this](LLUICtrl*, S32 x, S32 y, MASK mask) { onShowAgentPermissionsDialog(); });
     mCanEditObjectsIcon->setMouseUpCallback([this](LLUICtrl*, S32 x, S32 y, MASK mask) { onShowAgentPermissionsDialog(); });
     mCantEditObjectsIcon->setMouseUpCallback([this](LLUICtrl*, S32 x, S32 y, MASK mask) { onShowAgentPermissionsDialog(); });
-    // <FS:Zi> Allow proper texture swatch handling
-    // mSecondLifePic->setMouseUpCallback([this](LLUICtrl*, S32 x, S32 y, MASK mask) { onShowAgentProfileTexture(); });
-    mSecondLifePic->setCommitCallback(boost::bind(&LLPanelProfileSecondLife::onSecondLifePicChanged, this));
-    // </FS:Zi>
+    mSecondLifePic->setEnabled(false); // Read-only image preview.
+    getChildView("image_action_panel")->setVisible(false);
+    getChild<LLButton>("forme_profile_website")->setClickedCallback([this](LLUICtrl*, const LLSD&)
+    {
+        if (getSelfProfile())
+            LLWeb::loadURLExternal(std::string(ForMeGrid::LoginURI) + "web/profile.html");
+    });
 
     // <FS:Ansariel> RLVa support
     mRlvBehaviorCallbackConnection = gRlvHandler.setBehaviourCallback(boost::bind(&LLPanelProfileSecondLife::updateRlvRestrictions, this, _1));
@@ -949,24 +734,11 @@ void LLPanelProfileSecondLife::onOpen(const LLSD& key)
     //    // Todo: use PeopleContextMenu instead?
     //    mAgentActionMenuButton->setMenu("menu_profile_other.xml", LLMenuButton::MP_BOTTOM_RIGHT);
     //}
-// <FS:Beq> Remove the menu thingy and just have click picture to change
-// if (own_profile)
-// only if we are in opensim and opensim doesn't have the image upload cap
-#ifdef OPENSIM
-    std::string cap_url = gAgent.getRegionCapability(PROFILE_IMAGE_UPLOAD_CAP);
-    if( own_profile && (!LLGridManager::instance().isInOpenSim() || !cap_url.empty() ) )
-#else
-    if (own_profile)
-#endif
-// </FS:Beq>
+    getChildView("forme_profile_website")->setVisible(own_profile);
+    if (!own_profile)
     {
-        mImageActionMenuButton->setVisible(true);
-        mImageActionMenuButton->setMenu("menu_fs_profile_image_actions.xml", LLMenuButton::MP_BOTTOM_RIGHT);
-    }
-    else
-    {
-        mImageActionMenuButton->setVisible(false);
-        LLToggleableMenu* profile_menu = LLUICtrlFactory::getInstance()->createFromFile<LLToggleableMenu>("menu_fs_profile_overflow.xml", gMenuHolder, LLViewerMenuHolderGL::child_registry_t::instance());
+        LLToggleableMenu* profile_menu = LLUICtrlFactory::getInstance()->createFromFile<LLToggleableMenu>(
+            "menu_fs_profile_overflow.xml", gMenuHolder, LLViewerMenuHolderGL::child_registry_t::instance());
         mOverflowButton->setMenu(profile_menu, LLMenuButton::MP_TOP_RIGHT);
     }
 
@@ -984,9 +756,6 @@ void LLPanelProfileSecondLife::onOpen(const LLSD& key)
 
     // <FS:Ansariel> Display agent ID
     getChild<LLUICtrl>("user_key")->setValue(avatar_id.asString());
-
-    // <FS:Zi> Allow proper texture swatch handling
-    mSecondLifePic->setEnabled(own_profile);
 
     mAvatarNameCacheConnection = LLAvatarNameCache::get(getAvatarId(), boost::bind(&LLPanelProfileSecondLife::onAvatarNameCache, this, _1, _2));
 }
@@ -1356,59 +1125,6 @@ void LLPanelProfileSecondLife::onAvatarNameCache(const LLUUID& agent_id, const L
     // </FS:Ansariel>
 }
 
-void LLPanelProfileSecondLife::setProfileImageUploading(bool loading)
-{
-    LLLoadingIndicator* indicator = getChild<LLLoadingIndicator>("image_upload_indicator");
-    indicator->setVisible(loading);
-    if (loading)
-    {
-        indicator->start();
-    }
-    else
-    {
-        indicator->stop();
-    }
-    mWaitingForImageUpload = loading;
-}
-
-void LLPanelProfileSecondLife::setProfileImageUploaded(const LLUUID &image_asset_id)
-{
-    mSecondLifePic->setValue(image_asset_id);
-    mImageId = image_asset_id;
-
-    LLViewerFetchedTexture* imagep = LLViewerTextureManager::getFetchedTexture(image_asset_id);
-    if (imagep->getFullHeight())
-    {
-        onImageLoaded(true, imagep);
-    }
-    else
-    {
-        imagep->setLoadedCallback(onImageLoaded,
-            MAX_DISCARD_LEVEL,
-            false,
-            false,
-            new LLHandle<LLPanel>(getHandle()),
-            NULL,
-            false);
-    }
-
-    LLFloater *floater = mFloaterProfileTextureHandle.get();
-    if (floater)
-    {
-        LLFloaterProfileTexture * texture_view = dynamic_cast<LLFloaterProfileTexture*>(floater);
-        if (mImageId.notNull())
-        {
-            texture_view->loadAsset(mImageId);
-        }
-        else
-        {
-            texture_view->resetAsset();
-        }
-    }
-
-    setProfileImageUploading(false);
-}
-
 bool LLPanelProfileSecondLife::hasUnsavedChanges()
 {
     LLFloater *floater = mFloaterPermissionsHandle.get();
@@ -1449,7 +1165,7 @@ void LLPanelProfileSecondLife::fillCommonData(const LLAvatarData* avatar_data)
 
     fillAgeData(avatar_data);
 
-    setDescriptionText(avatar_data->about_text);
+    if (!mHasUnsavedDescriptionChanges) setDescriptionText(avatar_data->about_text);
 
     if (avatar_data->image_id.notNull())
     {
@@ -1515,6 +1231,21 @@ void LLPanelProfileSecondLife::fillPartnerData(const LLAvatarData* avatar_data)
 
 void LLPanelProfileSecondLife::fillAccountStatus(const LLAvatarData* avatar_data)
 {
+    if (avatar_data->forme_premium.isMap() && !gAgent.getRegionCapability("ForMePremium").empty())
+    {
+        const LLSD& premium = avatar_data->forme_premium;
+        LLStringUtil::format_map_t values;
+        values["[DATE]"] = premium["expires_at"].asString().substr(0,10);
+        values["[BUYER_DISCOUNT]"] = premium["buyer_discount_percent"].asString();
+        values["[SELLER_SHARE]"] = premium["seller_percent"].asString();
+        values["[SERVER_SHARE]"] = premium["server_percent"].asString();
+        const bool own = avatar_data->avatar_id == gAgent.getID();
+        const std::string label = !premium["enabled"].asBoolean() ? "ForMePremiumUnavailable" : premium["active"].asBoolean() ? (own ? "ForMePremiumActive" : "ForMePremiumPublicActive") : "ForMePremiumInactive";
+        getChild<LLUICtrl>("account_info")->setValue(LLTrans::getString(label, values));
+        getChild<LLUICtrl>("account_info")->setToolTip(own && premium["enabled"].asBoolean() ? LLTrans::getString("ForMePremiumBenefits", values) : "");
+        return;
+    }
+
     LLStringUtil::format_map_t args;
     args["[ACCTTYPE]"] = LLAvatarPropertiesProcessor::accountType(avatar_data);
     args["[PAYMENTINFO]"] = LLAvatarPropertiesProcessor::paymentInfo(avatar_data);
@@ -1799,7 +1530,7 @@ void LLPanelProfileSecondLife::onImageLoaded(bool success,
     if (!handle->isDead())
     {
         LLPanelProfileSecondLife* panel = static_cast<LLPanelProfileSecondLife*>(handle->get());
-        if (panel)
+        if (panel && src_vi && panel->mImageId == src_vi->getID())
         {
             panel->onImageLoaded(success, src_vi);
         }
@@ -1995,91 +1726,6 @@ void LLPanelProfileSecondLife::updateButtons()
 }
 // </FS:Ansariel>
 
-class LLProfileImagePicker : public LLFilePickerThread
-{
-public:
-    LLProfileImagePicker(EProfileImageType type, LLHandle<LLPanel> *handle);
-    ~LLProfileImagePicker();
-    void notify(const std::vector<std::string>& filenames) override;
-
-private:
-    LLHandle<LLPanel> *mHandle;
-    EProfileImageType mType;
-};
-
-LLProfileImagePicker::LLProfileImagePicker(EProfileImageType type, LLHandle<LLPanel> *handle)
-    : LLFilePickerThread(LLFilePicker::FFLOAD_IMAGE),
-    mHandle(handle),
-    mType(type)
-{
-}
-
-LLProfileImagePicker::~LLProfileImagePicker()
-{
-    delete mHandle;
-}
-
-void LLProfileImagePicker::notify(const std::vector<std::string>& filenames)
-{
-    if (mHandle->isDead())
-    {
-        return;
-    }
-    if (filenames.empty())
-    {
-        return;
-    }
-    std::string file_path = filenames[0];
-    if (file_path.empty())
-    {
-        return;
-    }
-
-    // generate a temp texture file for coroutine
-    std::string temp_file = gDirUtilp->getTempFilename();
-    U32 codec = LLImageBase::getCodecFromExtension(gDirUtilp->getExtension(file_path));
-    constexpr S32 MAX_DIM = 256;
-    if (!LLViewerTextureList::createUploadFile(file_path, temp_file, codec, MAX_DIM))
-    {
-        LLSD notif_args;
-        notif_args["REASON"] = LLImage::getLastThreadError().c_str();
-        LLNotificationsUtil::add("CannotUploadTexture", notif_args);
-        LL_WARNS("AvatarProperties") << "Failed to upload profile image of type " << (S32)mType << ", " << notif_args["REASON"].asString() << LL_ENDL;
-        return;
-    }
-
-    std::string cap_url = gAgent.getRegionCapability(PROFILE_IMAGE_UPLOAD_CAP);
-    if (cap_url.empty())
-    {
-        LLSD args;
-        args["CAPABILITY"] = PROFILE_IMAGE_UPLOAD_CAP;
-        LLNotificationsUtil::add("RegionCapabilityRequestError", args);
-        LL_WARNS("AvatarProperties") << "Failed to upload profile image of type " << (S32)mType << ", no cap found" << LL_ENDL;
-        return;
-    }
-
-    switch (mType)
-    {
-    case PROFILE_IMAGE_SL:
-        {
-            LLPanelProfileSecondLife* panel = static_cast<LLPanelProfileSecondLife*>(mHandle->get());
-            panel->setProfileImageUploading(true);
-        }
-        break;
-    case PROFILE_IMAGE_FL:
-        {
-            LLPanelProfileFirstLife* panel = static_cast<LLPanelProfileFirstLife*>(mHandle->get());
-            panel->setProfileImageUploading(true);
-        }
-        break;
-    }
-
-    LLCoros::instance().launch("postAgentUserImageCoro",
-        boost::bind(post_profile_image_coro, cap_url, mType, temp_file, mHandle));
-
-    mHandle = nullptr; // transferred to post_profile_image_coro
-}
-
 void LLPanelProfileSecondLife::onCommitMenu(const LLSD& userdata)
 {
     const std::string item_name = userdata.asString();
@@ -2180,30 +1826,6 @@ void LLPanelProfileSecondLife::onCommitMenu(const LLSD& userdata)
         LLSD subs;
         url = LLWeb::expandURLSubstitutions(url, subs);
         LLUrlAction::openURL(url);
-    }
-    else if (item_name == "upload_photo")
-    {
-        (new LLProfileImagePicker(PROFILE_IMAGE_SL, new LLHandle<LLPanel>(getHandle())))->getFile();
-
-        LLFloater* floaterp = mFloaterTexturePickerHandle.get();
-        if (floaterp)
-        {
-            floaterp->closeFloater();
-        }
-    }
-    else if (item_name == "change_photo")
-    {
-        onShowTexturePicker();
-    }
-    else if (item_name == "remove_photo")
-    {
-        onCommitProfileImage(LLUUID::null);
-
-        LLFloater* floaterp = mFloaterTexturePickerHandle.get();
-        if (floaterp)
-        {
-            floaterp->closeFloater();
-        }
     }
     // <FS:Ansariel> Fix LL UI/UX design accident
     else if (item_name == "add_to_contact_set")
@@ -2316,17 +1938,6 @@ bool LLPanelProfileSecondLife::onEnableMenu(const LLSD& userdata)
         || item_name == "copy_username")
     {
         return !mAvatarNameCacheConnection.connected();
-    }
-    else if (item_name == "upload_photo"
-        || item_name == "change_photo")
-    {
-        std::string cap_url = gAgent.getRegionCapability(PROFILE_IMAGE_UPLOAD_CAP);
-        return !cap_url.empty() && !mWaitingForImageUpload && getIsLoaded();
-    }
-    else if (item_name == "remove_photo")
-    {
-        std::string cap_url = gAgent.getRegionCapability(PROFILE_PROPERTIES_CAP);
-        return mImageId.notNull() && !cap_url.empty() && !mWaitingForImageUpload && getIsLoaded();
     }
     // <FS:Ansariel> Fix LL UI/UX design accident
     else if (item_name == "kick" || item_name == "freeze" || item_name == "unfreeze" || item_name == "csr")
@@ -2552,145 +2163,6 @@ void LLPanelProfileSecondLife::onShowAgentProfileTexture()
     }
 }
 
-void LLPanelProfileSecondLife::onShowTexturePicker()
-{
-    LLFloater* floaterp = mFloaterTexturePickerHandle.get();
-
-    // Show the dialog
-    if (!floaterp)
-    {
-        LLFloater* parent_floater = gFloaterView->getParentFloater(this);
-        if (parent_floater)
-        {
-            // because inventory construction is somewhat slow
-            getWindow()->setCursor(UI_CURSOR_WAIT);
-            LLFloaterTexturePicker* texture_floaterp = new LLFloaterTexturePicker(
-                this,
-                mImageId,
-                LLUUID::null,
-                mImageId,
-                false,
-                false,
-                getString("texture_picker_label"), // "SELECT PHOTO", // <FS:Ansariel> Fix LL UI/UX design accident
-                PERM_NONE,
-                PERM_NONE,
-                false,
-                NULL,
-                PICK_TEXTURE);
-
-            mFloaterTexturePickerHandle = texture_floaterp->getHandle();
-
-            texture_floaterp->setOnFloaterCommitCallback([this](LLTextureCtrl::ETexturePickOp op, LLPickerSource source, const LLUUID& asset_id, const LLUUID&, const LLUUID&)
-            {
-                if (op == LLTextureCtrl::TEXTURE_SELECT)
-                {
-                    onCommitProfileImage(asset_id);
-                }
-            });
-            texture_floaterp->setLocalTextureEnabled(false);
-            texture_floaterp->setBakeTextureEnabled(false);
-            texture_floaterp->setCanApply(false, true, false);
-
-            parent_floater->addDependentFloater(mFloaterTexturePickerHandle);
-
-            texture_floaterp->openFloater();
-            texture_floaterp->setFocus(true);
-        }
-    }
-    else
-    {
-        floaterp->setMinimized(false);
-        floaterp->setVisibleAndFrontmost(true);
-    }
-}
-
-// <FS:Zi> Allow proper texture swatch handling
-void LLPanelProfileSecondLife::onSecondLifePicChanged()
-{
-    onCommitProfileImage(mSecondLifePic->getImageAssetID());
-}
-// </FS:Zi>
-
-void LLPanelProfileSecondLife::onCommitProfileImage(const LLUUID& id)
-{
-    if (mImageId == id)
-        return;
-
-    if (!gAgent.getRegionCapability(PROFILE_PROPERTIES_CAP).empty())
-    {
-        std::function<void(bool)> callback = [id](bool result)
-        {
-            if (result)
-            {
-                LLAvatarIconIDCache::getInstance()->add(gAgentID, id);
-                // Should trigger callbacks in icon controls
-                LLAvatarPropertiesProcessor::getInstance()->sendAvatarPropertiesRequest(gAgentID);
-            }
-        };
-
-        if (!saveAgentUserInfoCoro("sl_image_id", id, callback))
-            return;
-
-        mImageId = id;
-        if (mImageId == LLUUID::null)
-        {
-            mSecondLifePic->setValue("Generic_Person_Large");
-        }
-        else
-        {
-            mSecondLifePic->setValue(mImageId);
-        }
-
-        // <FS:Ansariel> Fix LL UI/UX design accident
-        LLViewerFetchedTexture* imagep = LLViewerTextureManager::getFetchedTexture(mImageId);
-        if (imagep->getFullHeight())
-        {
-            onImageLoaded(true, imagep);
-        }
-        else
-        {
-            imagep->setLoadedCallback(onImageLoaded,
-                MAX_DISCARD_LEVEL,
-                false,
-                false,
-                new LLHandle<LLPanel>(getHandle()),
-                NULL,
-                false);
-        }
-        // </FS:Ansariel>
-
-        LLFloater *floater = mFloaterProfileTextureHandle.get();
-        if (floater)
-        {
-            LLFloaterProfileTexture * texture_view = dynamic_cast<LLFloaterProfileTexture*>(floater);
-            if (mImageId == LLUUID::null)
-            {
-                texture_view->resetAsset();
-            }
-            else
-            {
-                texture_view->loadAsset(mImageId);
-            }
-        }
-    }
-// <FS:Beq> Make OpenSim profiles work again
-#ifdef OPENSIM
-    else
-    {
-        if (LLGridManager::getInstance()->isInOpenSim())
-        {
-            mImageId = id;
-            // save immediately only if description changes are not pending.
-            if(!mHasUnsavedDescriptionChanges)
-            {
-                onSaveDescriptionChanges();
-            }
-        }
-    }
-#endif
-// </FS:Beq>
-}
-
 // <FS:Ansariel> RLVa support
 void LLPanelProfileSecondLife::updateRlvRestrictions(ERlvBehaviour behavior)
 {
@@ -2879,23 +2351,20 @@ bool LLPanelProfileFirstLife::postBuild()
     mPicture = getChild<LLTextureCtrl>("real_world_pic");
     // </FS:Zi>
 
-    mUploadPhoto = getChild<LLButton>("fl_upload_image");
-    mChangePhoto = getChild<LLButton>("fl_change_image");
-    mRemovePhoto = getChild<LLButton>("fl_remove_image");
     mSaveChanges = getChild<LLButton>("fl_save_changes");
     mDiscardChanges = getChild<LLButton>("fl_discard_changes");
     mPreviewButton = getChild<LLButton>("btn_preview"); // <AS:Chanayane> Preview button
 
-    mUploadPhoto->setCommitCallback([this](LLUICtrl*, void*) { onUploadPhoto(); }, nullptr);
-    mChangePhoto->setCommitCallback([this](LLUICtrl*, void*) { onChangePhoto(); }, nullptr);
-    mRemovePhoto->setCommitCallback([this](LLUICtrl*, void*) { onRemovePhoto(); }, nullptr);
     mSaveChanges->setCommitCallback([this](LLUICtrl*, void*) { onSaveDescriptionChanges(); }, nullptr);
     mDiscardChanges->setCommitCallback([this](LLUICtrl*, void*) { onDiscardDescriptionChanges(); }, nullptr);
     // <AS:Chanayane> Preview button
     mPreviewButton->setCommitCallback([this](LLUICtrl*, void*) { onClickPreview(); }, nullptr);
     // </AS:Chanayane>
     mDescriptionEdit->setKeystrokeCallback([this](LLTextEditor* caller) { onSetDescriptionDirty(); });
-    mPicture->setCommitCallback(boost::bind(&LLPanelProfileFirstLife::onFirstLifePicChanged, this));    // <FS:Zi> Allow proper texture swatch handling
+    mPicture->setEnabled(false);
+    getChildView("fl_upload_image")->setVisible(false);
+    getChildView("fl_change_image")->setVisible(false);
+    getChildView("fl_remove_image")->setVisible(false);
 
     return true;
 }
@@ -2912,36 +2381,7 @@ void LLPanelProfileFirstLife::onOpen(const LLSD& key)
     mPreviewButton->setVisible(getSelfProfile()); // <AS:Chanayane> Preview button
     mDescriptionEdit->setParseHTML(!getSelfProfile()); // <AS:Chanayane> Fix FIRE-35185 (disables link rendering while editing picks or 1st life)
 
-    // <FS:Zi> Allow proper texture swatch handling
-    mPicture->setEnabled(getSelfProfile());
-
     resetData();
-}
-
-void LLPanelProfileFirstLife::setProfileImageUploading(bool loading)
-{
-    mUploadPhoto->setEnabled(!loading);
-    mChangePhoto->setEnabled(!loading);
-    mRemovePhoto->setEnabled(!loading && mImageId.notNull());
-
-    LLLoadingIndicator* indicator = getChild<LLLoadingIndicator>("image_upload_indicator");
-    indicator->setVisible(loading);
-    if (loading)
-    {
-        indicator->start();
-    }
-    else
-    {
-        indicator->stop();
-    }
-}
-
-void LLPanelProfileFirstLife::setProfileImageUploaded(const LLUUID &image_asset_id)
-{
-    mPicture->setValue(image_asset_id);
-    mImageId = image_asset_id;
-
-    setProfileImageUploading(false);
 }
 
 void LLPanelProfileFirstLife::commitUnsavedChanges()
@@ -2950,129 +2390,6 @@ void LLPanelProfileFirstLife::commitUnsavedChanges()
     {
         onSaveDescriptionChanges();
     }
-}
-
-void LLPanelProfileFirstLife::onUploadPhoto()
-{
-    (new LLProfileImagePicker(PROFILE_IMAGE_FL, new LLHandle<LLPanel>(getHandle())))->getFile();
-
-    LLFloater* floaterp = mFloaterTexturePickerHandle.get();
-    if (floaterp)
-    {
-        floaterp->closeFloater();
-    }
-}
-
-void LLPanelProfileFirstLife::onChangePhoto()
-{
-    LLFloater* floaterp = mFloaterTexturePickerHandle.get();
-
-    // Show the dialog
-    if (!floaterp)
-    {
-        LLFloater* parent_floater = gFloaterView->getParentFloater(this);
-        if (parent_floater)
-        {
-            // because inventory construction is somewhat slow
-            getWindow()->setCursor(UI_CURSOR_WAIT);
-            LLFloaterTexturePicker* texture_floaterp = new LLFloaterTexturePicker(
-                this,
-                mImageId,
-                LLUUID::null,
-                mImageId,
-                false,
-                false,
-                getString("texture_picker_label"), // "SELECT PHOTO", // <FS:Ansariel> Fix LL UI/UX design accident
-                PERM_NONE,
-                PERM_NONE,
-                false,
-                NULL,
-                PICK_TEXTURE);
-
-            mFloaterTexturePickerHandle = texture_floaterp->getHandle();
-
-            texture_floaterp->setOnFloaterCommitCallback([this](LLTextureCtrl::ETexturePickOp op, LLPickerSource source, const LLUUID& asset_id, const LLUUID&, const LLUUID&)
-            {
-                if (op == LLTextureCtrl::TEXTURE_SELECT)
-                {
-                    onCommitPhoto(asset_id);
-                }
-            });
-            texture_floaterp->setLocalTextureEnabled(false);
-            texture_floaterp->setBakeTextureEnabled(false);
-            texture_floaterp->setCanApply(false, true, false);
-
-            parent_floater->addDependentFloater(mFloaterTexturePickerHandle);
-
-            texture_floaterp->openFloater();
-            texture_floaterp->setFocus(true);
-        }
-    }
-    else
-    {
-        floaterp->setMinimized(false);
-        floaterp->setVisibleAndFrontmost(true);
-    }
-}
-
-void LLPanelProfileFirstLife::onRemovePhoto()
-{
-    onCommitPhoto(LLUUID::null);
-
-    LLFloater* floaterp = mFloaterTexturePickerHandle.get();
-    if (floaterp)
-    {
-        floaterp->closeFloater();
-    }
-}
-
-// <FS:Zi> Allow proper texture swatch handling
-void LLPanelProfileFirstLife::onFirstLifePicChanged()
-{
-    onCommitPhoto(mPicture->getImageAssetID());
-}
-// </FS:Zi>
-
-void LLPanelProfileFirstLife::onCommitPhoto(const LLUUID& id)
-{
-    if (mImageId == id)
-        return;
-
-    if (!gAgent.getRegionCapability(PROFILE_PROPERTIES_CAP).empty())
-    {
-        if (!saveAgentUserInfoCoro("fl_image_id", id))
-            return;
-
-        mImageId = id;
-        if (mImageId.notNull())
-        {
-            mPicture->setValue(mImageId);
-        }
-        else
-        {
-            mPicture->setValue("Generic_Person_Large");
-        }
-
-        mRemovePhoto->setEnabled(mImageId.notNull());
-    }
-// <FS:Beq> Make OpenSim profiles work again
-#ifdef OPENSIM
-    else
-    {
-        LL_WARNS("AvatarProperties") << "Failed to update profile data, no cap found" << LL_ENDL;
-        if (LLGridManager::getInstance()->isInOpenSim())
-        {
-            mImageId = id;
-            mImageId = id;
-            // save immediately only if description changes are not pending.
-            if(!mHasUnsavedChanges)
-            {
-                onSaveDescriptionChanges();
-            }
-        }
-    }
-#endif
-// </FS:Beq>
 }
 
 void LLPanelProfileFirstLife::setDescriptionText(const std::string &text)
@@ -3206,7 +2523,7 @@ void LLPanelProfileFirstLife::processProperties(void * data, EAvatarProcessorTyp
 
 void LLPanelProfileFirstLife::processProperties(const LLAvatarData* avatar_data)
 {
-    setDescriptionText(avatar_data->fl_about_text);
+    if (!mHasUnsavedChanges) setDescriptionText(avatar_data->fl_about_text);
 
     mImageId = avatar_data->fl_image_id;
 
@@ -3240,22 +2557,6 @@ void LLPanelProfileFirstLife::resetData()
     mPicture->setImageAssetID(LLUUID::null);
     mImageId = LLUUID::null;
 
-// <FS:Beq> remove the buttons and just have click image to update profile
-// mUploadPhoto->setVisible(getSelfProfile());
-// mChangePhoto->setVisible(getSelfProfile());
-// mRemovePhoto->setVisible(getSelfProfile());
-    auto show_image_buttons = getSelfProfile();
-#ifdef OPENSIM
-    std::string cap_url = gAgent.getRegionCapability(PROFILE_IMAGE_UPLOAD_CAP);
-    if (cap_url.empty() && LLGridManager::instance().isInOpenSim())
-    {
-        show_image_buttons = false;
-    }
-#endif
-    mUploadPhoto->setVisible(show_image_buttons);
-    mChangePhoto->setVisible(show_image_buttons);
-    mRemovePhoto->setVisible(show_image_buttons);
-// </FS:Beq>
     mSaveChanges->setVisible(getSelfProfile());
     mDiscardChanges->setVisible(getSelfProfile());
     mPreviewButton->setVisible(getSelfProfile()); // <AS:Chanayane> Preview button
@@ -3268,8 +2569,6 @@ void LLPanelProfileFirstLife::setLoaded()
     if (getSelfProfile())
     {
         mDescriptionEdit->setEnabled(true);
-        mPicture->setEnabled(true);
-        mRemovePhoto->setEnabled(mImageId.notNull());
         mPreviewButton->setEnabled(true);
     }
 }

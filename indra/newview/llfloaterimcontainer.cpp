@@ -1119,10 +1119,6 @@ void LLFloaterIMContainer::onCustomAction(const LLSD& userdata)
             floater_prefp->selectPrivacyPanel();
         }
     }
-    if ("Translating.Toggle" == command)
-    {
-        gSavedSettings.setBOOL("TranslateChat", !gSavedSettings.getBOOL("TranslateChat"));
-    }
 }
 
 bool LLFloaterIMContainer::isActionChecked(const LLSD& userdata)
@@ -1152,14 +1148,6 @@ bool LLFloaterIMContainer::isActionChecked(const LLSD& userdata)
     if ("sort_participants_by_distance" == command)
     {
         return (order.getSortOrderParticipants() == LLConversationFilter::SO_DISTANCE);
-    }
-    if ("Translating.Enabled" == command)
-    {
-        return gSavedPerAccountSettings.getBOOL("TranslatingEnabled");
-    }
-    if ("Translating.On" == command)
-    {
-        return gSavedSettings.getBOOL("TranslateChat");
     }
     return false;
 }

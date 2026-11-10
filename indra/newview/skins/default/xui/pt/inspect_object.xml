@@ -25,8 +25,8 @@ Proprietário [OWNER]
 	</string>
 	<text name="object_name" value="Teste de um nome de objeto bem longo, que ocupa mais de uma linha."/>
 	<text name="object_creator">
-		de secondlife:///app/agent/0e346d8b-4433-4d66-a6b0-fd37083abc4c/about
-proprietário secondlife:///app/agent/0e346d8b-4433-4d66-a6b0-fd37083abc4c/about
+		de fmw:///app/agent/0e346d8b-4433-4d66-a6b0-fd37083abc4c/about
+proprietário fmw:///app/agent/0e346d8b-4433-4d66-a6b0-fd37083abc4c/about
 	</text>
 	<text name="price_text">
 		30.000 L$

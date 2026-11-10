@@ -34,7 +34,7 @@
               follows="left|right|top"
               name="status_bar_container"
               tab_stop="false"
-              height="19"
+              height="38"
               left="0"
               top="0"
               width="1024"
@@ -46,7 +46,7 @@
             left="0"
             top="0"
             width="1024"
-            height="19"/>
+            height="38"/>
     </layout_panel>
     <layout_panel auto_resize="true"  
                   follows="all"

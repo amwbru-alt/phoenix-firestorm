@@ -52,6 +52,7 @@ public:
     ~FSFloaterNearbyChat();
 
     bool postBuild() override;
+    void draw() override;
 
     /** @param archive true - to save a message to the chat history log */
     void addMessage(const LLChat& message, bool archive = true, const LLSD& args = LLSD());
@@ -124,6 +125,13 @@ protected:
     static S32 sLastSpecialChatChannel;
 
 private:
+    void layoutForMeChat();
+    void setForMeChatCollapsed(bool collapsed);
+    bool mForMeChat = false;
+    bool mForMeChatCollapsed = false;
+    S32 mForMeChatUnread = 0;
+    S32 mForMeInputHeight = 30;
+
     void onChatOptionsContextMenuItemClicked(const LLSD& userdata);
     bool onChatOptionsCheckContextMenuItem(const LLSD& userdata);
     bool onChatOptionsVisibleContextMenuItem(const LLSD& userdata);

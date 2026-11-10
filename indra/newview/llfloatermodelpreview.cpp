@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fscreatoraccess.h"
 
 #include "llmodelloader.h"
 #include "llmodelpreview.h"
@@ -425,6 +426,8 @@ void LLFloaterModelPreview::initModelPreview()
 //static
 void LLFloaterModelPreview::showModelPreview(const LLUUID& dest_folder)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     LLFloaterModelPreview* fmp = (LLFloaterModelPreview*)LLFloaterReg::getInstance("upload_model");
     if (fmp && !fmp->isModelLoading())
     {
@@ -1908,6 +1911,8 @@ void LLFloaterModelPreview::onReset(void* user_data)
 //static
 void LLFloaterModelPreview::onUpload(void* user_data)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     assert_main_thread();
 
     LLFloaterModelPreview* mp = (LLFloaterModelPreview*) user_data;
@@ -2191,6 +2196,8 @@ void LLFloaterModelPreview::onModelUploadFailure()
 
 bool LLFloaterModelPreview::isModelUploadAllowed()
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     bool allow_upload = mHasUploadPerm && !mUploadModelUrl.empty();
     if (mModelPreview)
     {

@@ -2,10 +2,8 @@ repos:
   - repo: https://github.com/secondlife/git-hooks.git
     rev: v1.0.2
     hooks:
-      - id: opensource-license
       - id: llsd
       - id: no-trigraphs
-      - id: copyright
       - id: end-of-file
         files: \.(cpp|c|m|mm|h|py|glsl|cmake|txt)$
         exclude: language.txt
@@ -18,3 +16,10 @@ repos:
       - id: mixed-line-ending
       - id: trailing-whitespace
         files: \.(cpp|c|m|mm|h|inl|py|glsl|cmake|yaml|sh)$
+  - repo: local
+    hooks:
+      - id: opensource-license
+        name: Check Firestorm and standard opensource notices
+        entry: python3 scripts/forme_check_license.py
+        language: system
+        files: \.(?:cpp|c|h|py|glsl)$

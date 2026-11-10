@@ -47,7 +47,7 @@
 	<menu_item_call label="Alle Ordner einklappen" name="close_folders"/>
 	<menu_item_call label="Alle Fenster schließen" name="close_windows"/>
 	<menu_item_call label="Textur speichern als" name="Save Texture As"/>
-	<menu_item_call label="Teilen" name="Share"/>
+	<menu_item_call label="Teilen" name="Share" forme_creator_only="true"/>
 	<menu_item_call label="Original suchen" name="Find Original"/>
 	<menu_item_call label="Fundbüro ausleeren" name="empty_lostnfound"/>
 	<menu_item_call label="Papierkorb ausleeren" name="empty_trash"/>

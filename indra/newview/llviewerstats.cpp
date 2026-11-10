@@ -64,7 +64,6 @@
 #include "llcorehttputil.h"
 #include "llinventorymodel.h"
 #include "lluiusage.h"
-#include "lltranslate.h"
 
 // "Minimal Vulkan" to get max API Version
 
@@ -722,7 +721,6 @@ void send_viewer_stats(bool include_preferences)
     agent["meters_traveled"] = gAgent.getDistanceTraveled();
     agent["regions_visited"] = gAgent.getRegionsVisited();
     agent["mem_use"] = LLMemory::getCurrentRSS() / 1024.0;
-    agent["translation"] = LLTranslate::instance().asLLSD();
 
     LLSD &system = body["system"];
 

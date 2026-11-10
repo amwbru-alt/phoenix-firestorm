@@ -1,9 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <toggleable_menu name="menu_group_plus">
-	<menu_item_call label="Активировать" name="Activate"/>
-	<menu_item_call label="Информация" name="View Info"/>
-	<menu_item_call label="Копировать SLurl в буфер" name="Copy SLurl to clipboard" />
-	<menu_item_call label="Чат" name="Chat"/>
-	<menu_item_call label="Звонок" name="Call"/>
-	<menu_item_call label="Покинуть" name="Leave"/>
+    <menu_item_call label="Активировать" name="Activate" />
+    <menu_item_call label="Информация" name="View Info" />
+    <menu_item_call label="Копировать SLurl в буфер" name="Copy SLurl to clipboard" />
+    <menu_item_call label="Чат" name="Chat" />
+    <menu_item_call label="Звонок" name="Call" />
+    <menu_item_call label="Покинуть" name="Leave" />
+    <menu_item_call name="Favorite" label="Закрепить группу" />
+    <menu_item_call name="Unfavorite" label="Открепить группу" />
 </toggleable_menu>

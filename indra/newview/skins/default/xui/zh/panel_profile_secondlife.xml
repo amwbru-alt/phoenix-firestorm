@@ -34,8 +34,8 @@
 	<icon tool_tip="朋友無法看到我的在線狀態" name="cant_see_online" />
 	<icon tool_tip="朋友可以在世界地圖上找到我" name="can_see_on_map" />
 	<icon tool_tip="朋友無法在世界地圖上找到我" name="cant_see_on_map" />
-	<icon tool_tip="朋友可以編輯我的物件" name="can_edit_objects" />
-	<icon tool_tip="朋友無法編輯我的物件" name="cant_edit_objects" />
+	<icon tool_tip="朋友可以編輯我的物件" name="can_edit_objects"  forme_creator_only="true"/>
+	<icon tool_tip="朋友無法編輯我的物件" name="cant_edit_objects"  forme_creator_only="true"/>
 	<text name="Key:" value="UUID:" />
 	<text_editor name="user_key" value="(正在載入...)" />
 	<layout_stack name="imagepositioner">

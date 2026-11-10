@@ -100,7 +100,7 @@ background_visible="true"
       expanded="true"
       layout="topleft"
       name="second_life_tab"
-      title="Second Life"
+      title="ForMe.World"
       fit_panel="false">
     <scroll_container
      color="SL-Background_66"

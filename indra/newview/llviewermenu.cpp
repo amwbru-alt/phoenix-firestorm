@@ -25,6 +25,8 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fsmarketplacelistings.h"
+#include "fscreatoraccess.h"
 
 #ifdef INCLUDE_VLD
 #define VLD_FORCE_ENABLE 1
@@ -121,7 +123,6 @@
 #include "lltrans.h"
 #include "llviewerdisplay.h" //for gWindowResized
 #include "llviewergenericmessage.h"
-#include "llviewerhelp.h"
 #include "llviewermenufile.h"   // init_menu_file()
 #include "llviewermessage.h"
 #include "llviewernetwork.h"
@@ -516,13 +517,16 @@ LLSLMMenuUpdater::LLSLMMenuUpdater()
 }
 void LLSLMMenuUpdater::setMerchantMenu()
 {
+    const bool forme_merchant = ForMeMarketplace::available()
+        && LLMarketplaceData::instance().getSLMStatus() == MarketplaceStatusCodes::MARKET_PLACE_MERCHANT;
     // All other cases (new merchant, not merchant, migrated merchant): show the new Marketplace Listings menu and enable the tool
     if(!mMarketplaceListingsItem.isDead())
     {
-        mMarketplaceListingsItem.get()->setVisible(true);
+        mMarketplaceListingsItem.get()->setVisible(ForMeCreatorAccess::allowed());
     }
     LLCommand* command = LLCommandManager::instance().getCommand("marketplacelistings");
-    gToolBarView->enableCommand(command->id(), true);
+    gToolBarView->enableCommand(command->id(), ForMeCreatorAccess::allowed());
+    if (!forme_merchant) return;
 
     const LLUUID marketplacelistings_id = gInventory.getMarketplaceListingsUUID();
     if (marketplacelistings_id.isNull())
@@ -539,30 +543,19 @@ void LLSLMMenuUpdater::setMerchantMenu()
 
 void LLSLMMenuUpdater::checkMerchantStatus(bool force)
 {
-    // <FS:Ansariel> Don't show merchant outbox or SL Marketplace stuff outside SL
-    if (!LLGridManager::getInstance()->isInSecondLife())
+    // Discovery failures must not silently remove the creator's entry point.
+    // The floater explains missing service/merchant access; mutations retain
+    // their capability, role and server-side permission checks.
+    setMerchantMenu();
+    if (!ForMeMarketplace::available())
     {
-        gMenuHolder->getChild<LLView>("MarketplaceListings")->setVisible(false);
+        if (!ForMeCreatorAccess::allowed())
+            LLFloaterReg::hideInstance("marketplace_listings");
+        LLMarketplaceData::instance().setSLMStatus(MarketplaceStatusCodes::MARKET_PLACE_NOT_MERCHANT);
         return;
     }
-    // </FS:Ansariel>
-
     if (force)
-    {
-        // Reset the SLM status: we actually want to check again, that's the point of calling check_merchant_status()
         LLMarketplaceData::instance().setSLMStatus(MarketplaceStatusCodes::MARKET_PLACE_NOT_INITIALIZED);
-    }
-    // Hide SLM related menu item
-    if(!mMarketplaceListingsItem.isDead())
-    {
-        mMarketplaceListingsItem.get()->setVisible(false);
-    }
-
-    // Also disable the toolbar button for Marketplace Listings
-    LLCommand* command = LLCommandManager::instance().getCommand("marketplacelistings");
-    gToolBarView->enableCommand(command->id(), false);
-
-    // Launch an SLM test connection to get the merchant status
     LLMarketplaceData::instance().initializeSLM(boost::bind(&set_merchant_SLM_menu));
 }
 
@@ -2818,23 +2811,6 @@ class LLAdvancedCompressFileTest : public view_listener_t
 ///////////////////
 // PRIMFEED AUTH //
 ///////////////////
-#include "fsprimfeedauth.h"
-class LLAdvancedPrimfeedAuth : public view_listener_t
-{
-    bool handleEvent(const LLSD& userdata)
-    {
-        FSPrimfeedAuth::initiateAuthRequest();
-        return true;
-    }
-};
-class LLAdvancedPrimfeedAuthReset : public view_listener_t
-{
-    bool handleEvent(const LLSD& userdata)
-    {
-        FSPrimfeedAuth::resetAuthStatus();
-        return true;
-    }
-};
 // </FS:Beq>
 
 /////////////////////////
@@ -3918,6 +3894,8 @@ struct LLSelectedTEGetmatIdAndPermissions : public LLSelectedTEFunctor
 
 bool enable_object_edit_gltf_material()
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     if (!LLMaterialEditor::capabilitiesAvailable())
     {
         return false;
@@ -3969,6 +3947,8 @@ class LLObjectBuild : public view_listener_t
 {
     bool handleEvent(const LLSD& userdata)
     {
+        if (!ForMeCreatorAccess::allowed()) return true; // <FS:ForMe>
+
         if (gAgentCamera.getFocusOnAvatar() && !LLToolMgr::getInstance()->inEdit() && gSavedSettings.getBOOL("EditCameraMovement") )
         {
             // zoom in if we're looking at the avatar
@@ -4027,6 +4007,8 @@ void update_camera()
 
 void handle_object_edit()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     update_camera();
 
     LLFloaterReg::showInstance("build");
@@ -4048,6 +4030,8 @@ void handle_object_edit()
 
 void handle_object_edit_gltf_material()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     if (!LLFloaterReg::instanceVisible("build"))
     {
         handle_object_edit(); // does update_camera();
@@ -4139,6 +4123,8 @@ class LLLandBuild : public view_listener_t
 {
     bool handleEvent(const LLSD& userdata)
     {
+        if (!ForMeCreatorAccess::allowed()) return true; // <FS:ForMe>
+
         LLViewerParcelMgr::getInstance()->deselectLand();
 
         if (gAgentCamera.getFocusOnAvatar() && !LLToolMgr::getInstance()->inEdit() && gSavedSettings.getBOOL("EditCameraMovement") )
@@ -4187,6 +4173,8 @@ class LLLandEnableBuyPass : public view_listener_t
 
 bool enable_object_edit()
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     if (!isAgentAvatarValid()) return false;
 
     // *HACK:  The new "prelude" Help Islands have a build sandbox area,
@@ -4284,6 +4272,8 @@ bool enable_gltf_save_as()
 
 bool enable_gltf_upload()
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     return enable_gltf_save_as();
 }
 
@@ -6090,6 +6080,8 @@ class LLViewCheckToggleUI : public view_listener_t
 
 void handle_object_owner_permissive()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     // only send this if they're a god.
     if(gAgent.isGodlike())
     {
@@ -6101,6 +6093,8 @@ void handle_object_owner_permissive()
 
 void handle_object_owner_self()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     // only send this if they're a god.
     if(gAgent.isGodlike())
     {
@@ -6111,6 +6105,8 @@ void handle_object_owner_self()
 // Shortcut to set owner permissions to not editable.
 void handle_object_lock()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     LLSelectMgr::getInstance()->selectionSetObjectPermissions(PERM_OWNER, false, PERM_MODIFY);
 }
 
@@ -6414,6 +6410,8 @@ static void derez_objects_separate(EDeRezDestination dest, const LLUUID &dest_id
 
 void handle_take_copy()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     if (LLSelectMgr::getInstance()->getSelection()->isEmpty()) return;
 
 // [RLVa:KB] - Checked: 2010-03-07 (RLVa-1.2.0c) | Modified: RLVa-1.2.0a
@@ -6433,6 +6431,8 @@ void handle_take_copy()
 
 void handle_take_separate_copy()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     if (LLSelectMgr::getInstance()->getSelection()->isEmpty())
         return;
 
@@ -6546,6 +6546,8 @@ void force_take_copy()
 
 void handle_take(bool take_separate)
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     // we want to use the folder this was derezzed from if it's
     // available. Otherwise, derez to the normal place.
 //  if(LLSelectMgr::getInstance()->getSelection()->isEmpty())
@@ -6649,12 +6651,12 @@ void handle_take(bool take_separate)
     // Fix: pass selection to the confirm_take, so that selection doesn't "die" after confirmation dialog is opened
     LLObjectSelectionHandle obj_selection = LLSelectMgr::instance().getSelection();
     params.functor.function([take_separate, obj_selection](const LLSD &notification, const LLSD &response)
-    { 
-        if (take_separate) 
+    {
+        if (take_separate)
         {
             confirm_take_separate(notification, response, obj_selection);
         }
-        else 
+        else
         {
             confirm_take(notification, response, obj_selection);
         }
@@ -7011,6 +7013,8 @@ class LLToolsSaveToObjectInventory : public view_listener_t
 {
     bool handleEvent(const LLSD& userdata)
     {
+        if (!ForMeCreatorAccess::allowed()) return true; // <FS:ForMe>
+
         LLSelectNode* node = LLSelectMgr::getInstance()->getSelection()->getFirstRootNode();
         if(node && (node->mValid) && (!node->mFromTaskID.isNull()))
         {
@@ -7106,6 +7110,8 @@ class LLToolsSnapObjectXY : public view_listener_t
 {
     bool handleEvent(const LLSD& userdata)
     {
+        if (!ForMeCreatorAccess::allowed()) return true; // <FS:ForMe>
+
         F64 snap_size = (F64)gSavedSettings.getF32("GridResolution");
 
         for (LLObjectSelection::root_iterator iter = LLSelectMgr::getInstance()->getSelection()->root_begin();
@@ -7617,6 +7623,8 @@ static void return_objects(LLObjectsReturnPackage *objectsReturnPackage, const L
 
 void handle_object_return()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     if (!LLSelectMgr::getInstance()->getSelection()->isEmpty())
     {
         LLObjectsReturnPackage *objectsReturnPackage = new LLObjectsReturnPackage();
@@ -7648,6 +7656,8 @@ void handle_object_delete()
 
 void handle_force_delete()
 {
+    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+
     LLSelectMgr::getInstance()->selectForceDelete();
 }
 
@@ -7966,7 +7976,7 @@ class LLCommSetShowOnscreenConsole : public view_listener_t
         // This change will propagate to the other controls for this value
         bool show_onscreen_console = !gSavedSettings.getBOOL("FSShowOnscreenConsole");
         gSavedSettings.setBOOL("FSShowOnscreenConsole", show_onscreen_console);
-        
+
         return true;
     }
 };
@@ -8780,133 +8790,13 @@ class LLFloaterVisible : public view_listener_t
     }
 };
 
-class LLShowHelp : public view_listener_t
-{
-    bool handleEvent(const LLSD& userdata)
-    {
-        std::string help_topic = userdata.asString();
-#ifdef OPENSIM
-        if (help_topic.find("grid_") != std::string::npos)
-        {
-            help_topic.erase(0,5);
 
-            std::string url;
-            LLSD grid_info;
-            LLGridManager::getInstance()->getGridData(grid_info);
-            if (grid_info.has(help_topic))
-            {
-                url = grid_info[help_topic].asString();
-            }
-
-            if(!url.empty())
-            {
-                LLWeb::loadURLInternal(url);
-            }
-            LL_DEBUGS() << "grid_help " <<  help_topic << " url " << url << LL_ENDL;
-
-            return true;
-        }
-#endif // OPENSIM
-        LLViewerHelp* vhelp = LLViewerHelp::getInstance();
-        vhelp->showTopic(help_topic);
-
-        return true;
-    }
-};
 
 // <AW: OpenSim>
-bool update_grid_help()
-{
-// <FS:AW  grid management>
-    if (!gMenuHolder) //defend crash on shutdown
-    {
-        return false;
-    }
-// </FS:AW  grid management>
 
-    bool needs_seperator = false;
-
-#ifdef OPENSIM // <FS:AW optional opensim support>
-    LLSD grid_info;
-    LLGridManager::getInstance()->getGridData(grid_info);
-    std::string grid_label = LLGridManager::getInstance()->getGridLabel();
-    bool is_opensim = LLGridManager::getInstance()->isInOpenSim();
-    if (is_opensim && grid_info.has("help"))
-    {
-        needs_seperator = true;
-        gMenuHolder->childSetVisible("current_grid_help",true);
-        gMenuHolder->childSetLabelArg("current_grid_help", "[CURRENT_GRID]", grid_label);
-        gMenuHolder->childSetVisible("current_grid_help_login",true);
-        gMenuHolder->childSetLabelArg("current_grid_help_login", "[CURRENT_GRID]", grid_label);
-    }
-    else
-#endif // OPENSIM // <FS:AW optional opensim support>
-    {
-        gMenuHolder->childSetVisible("current_grid_help",false);
-        gMenuHolder->childSetVisible("current_grid_help_login",false);
-    }
-#ifdef OPENSIM // <FS:AW optional opensim support>
-    if (is_opensim && grid_info.has("about"))
-    {
-        needs_seperator = true;
-        gMenuHolder->childSetVisible("current_grid_about",true);
-        gMenuHolder->childSetLabelArg("current_grid_about", "[CURRENT_GRID]", grid_label);
-        gMenuHolder->childSetVisible("current_grid_about_login",true);
-        gMenuHolder->childSetLabelArg("current_grid_about_login", "[CURRENT_GRID]", grid_label);
-    }
-    else
-#endif // OPENSIM // <FS:AW optional opensim support>
-    {
-        gMenuHolder->childSetVisible("current_grid_about",false);
-        gMenuHolder->childSetVisible("current_grid_about_login",false);
-    }
-    //FIXME: this does nothing
-    gMenuHolder->childSetVisible("grid_help_seperator",needs_seperator);
-    gMenuHolder->childSetVisible("grid_help_seperator_login",needs_seperator);
-
-// <FS:AW  opensim destinations and avatar picker>
-#ifdef OPENSIM // <FS:AW optional opensim support>
-    if (is_opensim)
-    {
-        if (!LLLoginInstance::getInstance()->hasResponse("destination_guide_url")
-        ||LLLoginInstance::getInstance()->getResponse("destination_guide_url").asString().empty()
-        )
-        {
-            gMenuHolder->childSetVisible("Avatar Picker", false);
-        }
-
-        if (!LLLoginInstance::getInstance()->hasResponse("avatar_picker_url")
-        ||LLLoginInstance::getInstance()->getResponse("avatar_picker_url").asString().empty()
-        )
-        {
-            gMenuHolder->childSetVisible("Destinations", false);
-        }
-    }
-#endif // OPENSIM // <FS:AW optional opensim support>
-// </FS:AW  opensim destinations and avatar picker>
-
-    return true;
-}
 // </AW: OpenSim>
 
-class LLToggleHelp : public view_listener_t
-{
-    bool handleEvent(const LLSD& userdata)
-    {
-        LLFloater* help_browser = (LLFloaterReg::findInstance("help_browser"));
-        if (help_browser && help_browser->isInVisibleChain())
-        {
-            help_browser->closeFloater();
-        }
-        else
-        {
-            std::string help_topic = userdata.asString();
-            LLViewerHelp* vhelp = LLViewerHelp::getInstance();
-            vhelp->showTopic(help_topic);
-        }
-        return true;
-    }
-};
+
 
 class LLToggleSpeak : public view_listener_t
 {
@@ -9113,6 +9003,8 @@ class LLLandEdit : public view_listener_t
 {
     bool handleEvent(const LLSD& userdata)
     {
+        if (!ForMeCreatorAccess::allowed()) return true; // <FS:ForMe>
+
         if (gAgentCamera.getFocusOnAvatar() && gSavedSettings.getBOOL("EditCameraMovement") )
         {
             // zoom in if we're looking at the avatar
@@ -10435,6 +10327,8 @@ class LLAdvancedClickGLTFUpload: public view_listener_t
 {
     bool handleEvent(const LLSD& userdata)
     {
+        if (!ForMeCreatorAccess::allowed()) return true; // <FS:ForMe>
+
         LL::GLTFSceneManager::instance().uploadSelection();
         return true;
     }
@@ -10444,6 +10338,8 @@ class LLAdvancedClickGLTFEdit : public view_listener_t
 {
     bool handleEvent(const LLSD& userdata)
     {
+        if (!ForMeCreatorAccess::allowed()) return true; // <FS:ForMe>
+
         LLFloaterReg::showInstance("gltf_asset_editor");
         return true;
     }
@@ -10795,14 +10691,7 @@ class LLToolsEnableSaveToObjectInventory : public view_listener_t
     }
 };
 
-class LLToggleHowTo : public view_listener_t
-{
-    bool handleEvent(const LLSD& userdata)
-    {
-        LLFloaterReg::toggleInstanceOrBringToFront("guidebook");
-        return true;
-    }
-};
+
 
 class LLViewEnableMouselook : public view_listener_t
 {
@@ -11554,16 +11443,6 @@ void handle_load_from_xml(void*)
     }
 }
 
-void handle_web_browser_test(const LLSD& param)
-{
-    std::string url = param.asString();
-    if (url.empty())
-    {
-        url = "about:blank";
-    }
-    LLWeb::loadURLInternal(url);
-}
-
 bool callback_clear_cache_immediately(const LLSD& notification, const LLSD& response)
 {
     S32 option = LLNotificationsUtil::getSelectedOption(notification, response);
@@ -11579,18 +11458,6 @@ bool callback_clear_cache_immediately(const LLSD& notification, const LLSD& resp
 void handle_cache_clear_immediately()
 {
     LLNotificationsUtil::add("ConfirmClearCache", LLSD(), LLSD(), callback_clear_cache_immediately);
-}
-
-void handle_web_content_test(const LLSD& param)
-{
-    std::string url = param.asString();
-    // <FS:LO> Add a user settable home page for the built in web browser
-    if (url == "HOME_PAGE")
-    {
-        url = gSavedSettings.getString("FSBrowserHomePage");
-    }
-    // </FS:LO>
-    LLWeb::loadURLInternal(url, LLStringUtil::null, LLStringUtil::null, true);
 }
 
 void handle_show_url(const LLSD& param)
@@ -12430,21 +12297,6 @@ public:
     }
 };
 
-class LLUpdateMembershipLabel : public view_listener_t
-{
-    bool handleEvent(const LLSD& userdata)
-    {
-        const std::string label_str =  LLAgentBenefitsMgr::isCurrent("Base") ? LLTrans::getString("MembershipUpgradeText") : LLTrans::getString("MembershipPremiumText");
-        gMenuHolder->childSetLabelArg("Membership", "[Membership]", label_str);
-
-        // <FS:Ansariel> OpenSim check
-        //return true;
-        return LLGridManager::instance().isInSecondLife();
-        // </FS:Ansariel>
-    }
-};
-
-
 class LLToggleUIHints : public view_listener_t
 {
     bool handleEvent(const LLSD& userdata)
@@ -12578,6 +12430,8 @@ void toggleTeleportHistory()
 // <FS:Techwolf Lupindo> export
 bool enable_export_object()
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     for (LLObjectSelection::root_iterator iter = LLSelectMgr::getInstance()->getSelection()->root_begin();
          iter != LLSelectMgr::getInstance()->getSelection()->root_end(); iter++)
     {
@@ -12832,7 +12686,6 @@ void initialize_menus()
 
     view_listener_t::addEnable(new LLUploadCostCalculator(), "Upload.CalculateCosts");
 
-    view_listener_t::addEnable(new LLUpdateMembershipLabel(), "Membership.UpdateLabel");
 
     // <FS:Ansariel> [FS communication UI]
     //enable.add("Conversation.IsConversationLoggingAllowed", boost::bind(&LLFloaterIMContainer::isConversationLoggingAllowed));
@@ -13014,7 +12867,6 @@ void initialize_menus()
 
     // Help menu
     // most items use the ShowFloater method
-    view_listener_t::addMenu(new LLToggleHowTo(), "Help.ToggleHowTo");
 
     // Advanced menu
     view_listener_t::addMenu(new LLAdvancedToggleConsole(), "Advanced.ToggleConsole");
@@ -13088,8 +12940,6 @@ void initialize_menus()
     view_listener_t::addMenu(new LLAdvancedTerrainDeleteLocalPaintMap(), "Advanced.TerrainDeleteLocalPaintMap");
 
     // Advanced > UI
-    commit.add("Advanced.WebBrowserTest", boost::bind(&handle_web_browser_test, _2));   // sigh! this one opens the MEDIA browser
-    commit.add("Advanced.WebContentTest", boost::bind(&handle_web_content_test, _2));   // this one opens the Web Content floater
     commit.add("Advanced.ShowURL", boost::bind(&handle_show_url, _2));
     commit.add("Advanced.ReportBug", boost::bind(&handle_report_bug, _2));
     view_listener_t::addMenu(new LLAdvancedBuyCurrencyTest(), "Advanced.BuyCurrencyTest");
@@ -13209,8 +13059,6 @@ void initialize_menus()
     view_listener_t::addMenu(new LLAdvancedCheckShowObjectUpdates(), "Advanced.CheckShowObjectUpdates");
     view_listener_t::addMenu(new LLAdvancedCompressImage(), "Advanced.CompressImage");
     view_listener_t::addMenu(new LLAdvancedCompressFileTest(), "Advanced.CompressFileTest");
-    view_listener_t::addMenu(new LLAdvancedPrimfeedAuth(), "Advanced.PrimfeedAuth");
-    view_listener_t::addMenu(new LLAdvancedPrimfeedAuthReset(), "Advanced.PrimfeedAuthReset");
     view_listener_t::addMenu(new LLAdvancedShowDebugSettings(), "Advanced.ShowDebugSettings");
     view_listener_t::addMenu(new LLAdvancedEnableViewAdminOptions(), "Advanced.EnableViewAdminOptions");
     view_listener_t::addMenu(new LLAdvancedToggleViewAdminOptions(), "Advanced.ToggleViewAdminOptions");
@@ -13425,8 +13273,6 @@ void initialize_menus()
     // Generic actions
     commit.add("ReportAbuse", boost::bind(&handle_report_abuse));
     commit.add("BuyCurrency", boost::bind(&handle_buy_currency));
-    view_listener_t::addMenu(new LLShowHelp(), "ShowHelp");
-    view_listener_t::addMenu(new LLToggleHelp(), "ToggleHelp");
     view_listener_t::addMenu(new LLToggleSpeak(), "ToggleSpeak");
     view_listener_t::addMenu(new LLPromptShowURL(), "PromptShowURL");
     view_listener_t::addMenu(new LLShowAgentProfile(), "ShowAgentProfile");

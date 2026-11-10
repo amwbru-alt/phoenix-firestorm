@@ -601,17 +601,6 @@
             <integer>0</integer>
         </map>
     <!-- End of back compatibility settings -->
-    <key>TranslatingEnabled</key>
-        <map>
-        <key>Comment</key>
-            <string>Translation prefs are set</string>
-        <key>Persist</key>
-            <integer>1</integer>
-        <key>Type</key>
-            <string>Boolean</string>
-        <key>Value</key>
-            <integer>0</integer>
-        </map>
     <key>KeepConversationLogTranscripts</key>
     	<map>
       	<key>Comment</key>
@@ -1201,61 +1190,6 @@
 				<integer>0</integer>
 		</map>
     <!-- Settings imported from Exodus -->
-    <key>ExodusFlickrToken</key>
-        <map>
-        <key>Comment</key>
-            <string>Flickr OAuth Token</string>
-        <key>Persist</key>
-            <integer>1</integer>
-        <key>Type</key>
-            <string>String</string>
-        <key>Value</key>
-            <string/>
-        </map>
-    <key>ExodusFlickrTokenSecret</key>
-        <map>
-        <key>Comment</key>
-            <string>Flickr OAuth Token Secret</string>
-        <key>Persist</key>
-            <integer>1</integer>
-        <key>Type</key>
-            <string>String</string>
-        <key>Value</key>
-            <string/>
-        </map>
-    <key>ExodusFlickrNSID</key>
-        <map>
-        <key>Comment</key>
-            <string>Flickr User ID</string>
-        <key>Persist</key>
-            <integer>1</integer>
-        <key>Type</key>
-            <string>String</string>
-        <key>Value</key>
-            <string/>
-        </map>
-    <key>ExodusFlickrUsername</key>
-        <map>
-        <key>Comment</key>
-            <string>Flickr Username</string>
-        <key>Persist</key>
-            <integer>1</integer>
-        <key>Type</key>
-            <string>String</string>
-        <key>Value</key>
-            <string/>
-        </map>
-    <key>ExodusFlickrFullName</key>
-        <map>
-        <key>Comment</key>
-            <string>Flickr Username</string>
-        <key>Persist</key>
-            <integer>1</integer>
-        <key>Type</key>
-            <string>String</string>
-        <key>Value</key>
-            <string/>
-        </map>
     <!-- End of settings imported from Exodus -->
     <key>layout_size_chat_bar_stack</key>
         <map>
@@ -1374,17 +1308,6 @@
         <key>Value</key>
             <integer>1</integer>
         </map>
-     <key>FSEnableDiscordIntegration</key>
-        <map>
-        <key>Comment</key>
-            <string>If enabled, will allow Firestorm to connect to discord if open and share location data with. Default (false)</string>
-        <key>Persist</key>
-            <integer>1</integer>
-        <key>Type</key>
-            <string>Boolean</string>
-        <key>Value</key>
-            <integer>0</integer>
-        </map>
      <key>FSFavoriteGroups</key>
         <map>
         <key>Comment</key>
@@ -1431,94 +1354,6 @@
         <key>Value</key>
         <array></array>
         </map>
-     <key>FSShareNameToDiscord</key>
-        <map>
-        <key>Comment</key>
-            <string>If enabled, will allow Firestorm to share avatar user and display name with discord. Default (false)</string>
-        <key>Persist</key>
-            <integer>1</integer>
-        <key>Type</key>
-            <string>Boolean</string>
-        <key>Value</key>
-            <integer>0</integer>
-        </map>
-     <key>FSPrimfeedOAuthToken</key>
-        <map>
-        <key>Comment</key>
-            <string>contains the secure authentication toke to post to your primfeed account (do not share)</string>
-        <key>Persist</key>
-            <integer>1</integer>
-        <key>Type</key>
-            <string>String</string>
-        <key>Value</key>
-            <string></string>
-        </map>
-     <key>FSPrimfeedProfileLink</key>
-        <map>
-        <key>Comment</key>
-            <string>The profile page for the account associated with the currently linked Primfeed account</string>
-        <key>Persist</key>
-            <integer>1</integer>
-        <key>Type</key>
-            <string>String</string>
-        <key>Value</key>
-            <string></string>
-        </map>
-     <key>FSPrimfeedPlan</key>
-        <map>
-        <key>Comment</key>
-            <string>The plan type associated with the currently linked Primfeed account</string>
-        <key>Persist</key>
-            <integer>1</integer>
-        <key>Type</key>
-            <string>String</string>
-        <key>Value</key>
-            <string></string>
-        </map>
-     <key>FSPrimfeedUsername</key>
-        <map>
-        <key>Comment</key>
-            <string>The username associated with the currently linked Primfeed account</string>
-        <key>Persist</key>
-            <integer>1</integer>
-        <key>Type</key>
-            <string>String</string>
-        <key>Value</key>
-            <string></string>
-        </map>
-     <key>FSPrimfeedCommercialContent</key>
-        <map>
-        <key>Comment</key>
-            <string>Does this post contain commercial content</string>
-        <key>Persist</key>
-            <integer>1</integer>
-        <key>Type</key>
-            <string>Boolean</string>
-        <key>Value</key>
-            <integer>0</integer>
-        </map>
-     <key>FSPrimfeedAddToPublicGallery</key>
-        <map>
-        <key>Comment</key>
-            <string>Should this post go to the public gallery?</string>
-        <key>Persist</key>
-            <integer>0</integer>
-        <key>Type</key>
-            <string>Boolean</string>
-        <key>Value</key>
-            <integer>0</integer>
-        </map>
-     <key>FSPrimfeedOpenURLOnPost</key>
-        <map>
-        <key>Comment</key>
-            <string>if true open the URL in a browser when the post completes</string>
-        <key>Persist</key>
-            <integer>1</integer>
-        <key>Type</key>
-            <string>Boolean</string>
-        <key>Value</key>
-            <integer>0</integer>
-        </map>
      <key>FSProtectedFolders</key>
         <map>
         <key>Comment</key>
@@ -1529,28 +1364,6 @@
             <string>LLSD</string>
         <key>Value</key>
             <array/>
-        </map>
-     <key>FSPrimfeedPhotoRating</key>
-        <map>
-        <key>Comment</key>
-            <string>Content rating to be shared with Primfeed.</string>
-        <key>Persist</key>
-            <integer>1</integer>
-        <key>Type</key>
-            <string>Integer</string>
-        <key>Value</key>
-            <integer>1</integer>
-        </map>
-     <key>FlickrPhotoRating</key>
-        <map>
-        <key>Comment</key>
-            <string>Content rating to be shared with Flickr.</string>
-        <key>Persist</key>
-            <integer>1</integer>
-        <key>Type</key>
-            <string>Integer</string>
-        <key>Value</key>
-            <integer>1</integer>
         </map>
     <key>FSCurrentAOState</key>
         <map>

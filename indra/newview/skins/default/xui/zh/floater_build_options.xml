@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="build options floater" title="網格選項">
+<floater name="build options floater" title="網格選項" forme_creator_only="true">
 	<spinner label="單位（米）" name="GridResolution" />
 	<spinner label="範圍（米）" name="GridDrawSize" />
 	<spinner label="小數位" name="DecimalPrecision" />

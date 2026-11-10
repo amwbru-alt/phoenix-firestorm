@@ -294,7 +294,7 @@
    top_delta="0"
    name="upload_raw_btn"
    tool_tip="Available only to estate owners, not managers"
-   width="160" />
+   width="160"  forme_creator_only="true"/>
   <button
    follows="left|top"
    height="20"
@@ -303,5 +303,5 @@
    left_pad="10"
    name="bake_terrain_btn"
    tool_tip="Set current terrain as mid-point for raise/lower limits"
-   width="100" />
+   width="100"  forme_creator_only="true"/>
 </panel>

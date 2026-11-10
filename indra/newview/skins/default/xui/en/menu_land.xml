@@ -51,7 +51,7 @@
    <menu_item_call
      enabled="false"
      label="Build"
-     name="Create">
+     name="Create" forme_creator_only="true">
         <menu_item_call.on_click
          function="Land.Build" />
         <menu_item_call.on_enable
@@ -60,7 +60,7 @@
     <menu_item_call
      enabled="false"
      label="Edit Terrain"
-     name="Edit Terrain">
+     name="Edit Terrain" forme_creator_only="true">
         <menu_item_call.on_click
          function="Land.Edit" />
         <menu_item_call.on_enable

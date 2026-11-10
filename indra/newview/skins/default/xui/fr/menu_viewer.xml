@@ -2,7 +2,7 @@
 <menu_bar name="Main Menu">
 	<menu label="Moi" name="Me">
 		<menu_item_call label="Compte" name="Manage Account"/>
-		<menu_item_call label="Annonces de Marketplace..." name="MarketplaceListings"/>
+		<menu_item_call label="Annonces de Marketplace..." name="MarketplaceListings" forme_creator_only="true"/>
 		<menu_item_call label="Acheter des L$..." name="Buy and Sell L$"/>
 		<menu_item_call label="Inventaire" name="NewInventoryWindow"/>
 		<menu_item_check label="Inventaire" name="Inventory"/>
@@ -181,18 +181,18 @@
 		</menu>
 		<menu_item_check label="N'afficher que les amis" name="Render Friends Only"/>
 	</menu>
-	<menu label="Construire" name="BuildTools">
-		<menu_item_check label="Construire" name="Show Build Tools"/>
+	<menu label="Construire" name="BuildTools" forme_creator_only="true">
+		<menu_item_check label="Construire" name="Show Build Tools" forme_creator_only="true"/>
 		<menu label="Sélectionner un outil de construction" name="Select Tool">
-			<menu_item_call label="Outil de mise au point" name="Focus"/>
-			<menu_item_call label="Outil de déplacement" name="Move"/>
-			<menu_item_call label="Outil de modification" name="Edit"/>
-			<menu_item_call label="Outil de création" name="Create"/>
-			<menu_item_call label="Outil Terrain" name="Land"/>
+			<menu_item_call label="Outil de mise au point" name="Focus" forme_creator_only="true"/>
+			<menu_item_call label="Outil de déplacement" name="Move" forme_creator_only="true"/>
+			<menu_item_call label="Outil de modification" name="Edit" forme_creator_only="true"/>
+			<menu_item_call label="Outil de création" name="Create" forme_creator_only="true"/>
+			<menu_item_call label="Outil Terrain" name="Land" forme_creator_only="true"/>
 		</menu>
-		<menu_item_call label="Lien" name="Link"/>
-		<menu_item_call label="Annuler le lien" name="Unlink"/>
-		<menu_item_check label="Modifier les parties liées" name="Edit Linked Parts"/>
+		<menu_item_call label="Lien" name="Link" forme_creator_only="true"/>
+		<menu_item_call label="Annuler le lien" name="Unlink" forme_creator_only="true"/>
+		<menu_item_check label="Modifier les parties liées" name="Edit Linked Parts" forme_creator_only="true"/>
 		<menu label="Sélectionner des éléments" name="Select Elements">
 			<menu_item_call label="Sélectionner la partie ou la face suivante" name="Select Next Part or Face"/>
 			<menu_item_call label="Sélectionner la partie ou la face précédente" name="Select Previous Part or Face"/>
@@ -205,24 +205,24 @@
 		<menu label="Objet" name="Object">
 			<menu_item_call label="Acheter" name="Menu Object Buy"/>
 			<menu_item_call label="Prendre" name="Menu Object Take"/>
-			<menu_item_call label="Prendre une copie" name="Take Copy"/>
-			<menu_item_call label="Dupliquer" name="Duplicate"/>
-			<menu_item_call label="Modifier les particles" name="Menu Object Edit Particles"/>
-			<menu_item_call label="Enregistrer dans le contenu des objets" name="Save Object Back to Object Contents"/>
-			<menu_item_call label="Renvoi de l&apos;objet" name="Return Object back to Owner"/>
-			<menu label="Enregistrer sous" name="Export Menu">
-				<menu_item_call label="Sauvegarde" name="Backup"/>
+			<menu_item_call label="Prendre une copie" name="Take Copy" forme_creator_only="true"/>
+			<menu_item_call label="Dupliquer" name="Duplicate" forme_creator_only="true"/>
+			<menu_item_call label="Modifier les particles" name="Menu Object Edit Particles" forme_creator_only="true"/>
+			<menu_item_call label="Enregistrer dans le contenu des objets" name="Save Object Back to Object Contents" forme_creator_only="true"/>
+			<menu_item_call label="Renvoi de l&apos;objet" name="Return Object back to Owner" forme_creator_only="true"/>
+			<menu label="Enregistrer sous" name="Export Menu" forme_creator_only="true">
+				<menu_item_call label="Sauvegarde" name="Backup" forme_creator_only="true"/>
 			</menu>
 		</menu>
 		<menu label="Scripts" name="Scripts">
 			<menu_item_call label="Avertissements/erreurs de script" name="Script Debug"/>
 			<menu_item_call label="Informations sur le script (Compteur)" name="Script Info"/>
-			<menu_item_call label="Recompiler les scripts (Mono)" name="Mono"/>
-			<menu_item_call label="Recompiler les scripts (LSL)" name="LSL"/>
-			<menu_item_call label="Réinitialiser les scripts" name="Reset Scripts"/>
-			<menu_item_call label="Définir les scripts sur Exécution" name="Set Scripts to Running"/>
-			<menu_item_call label="Définir les scripts sur Pas d&apos;exécution" name="Set Scripts to Not Running"/>
-			<menu_item_call label="Supprimer les scripts de la sélection" name="Remove Scripts From Selection"/>
+			<menu_item_call label="Recompiler les scripts (Mono)" name="Mono" forme_creator_only="true"/>
+			<menu_item_call label="Recompiler les scripts (LSL)" name="LSL" forme_creator_only="true"/>
+			<menu_item_call label="Réinitialiser les scripts" name="Reset Scripts" forme_creator_only="true"/>
+			<menu_item_call label="Définir les scripts sur Exécution" name="Set Scripts to Running" forme_creator_only="true"/>
+			<menu_item_call label="Définir les scripts sur Pas d&apos;exécution" name="Set Scripts to Not Running" forme_creator_only="true"/>
+			<menu_item_call label="Supprimer les scripts de la sélection" name="Remove Scripts From Selection" forme_creator_only="true"/>
 		</menu>
 		<menu label="Recherche de chemin" name="Pathfinding">
 			<menu_item_call label="Objets des régions" name="pathfinding_linksets_menu_item"/>
@@ -258,63 +258,26 @@
 				<menu_item_check label="Le plus faible" name="Lowest lod setting"/>
 			</menu>
 			<menu_item_check label="Fixer sur la grille" name="Snap to Grid"/>
-			<menu_item_call label="Fixer les coordonnées XY de l&apos;objet sur la grille" name="Snap Object XY to Grid"/>
+			<menu_item_call label="Fixer les coordonnées XY de l&apos;objet sur la grille" name="Snap Object XY to Grid" forme_creator_only="true"/>
 			<menu_item_call label="Utiliser la sélection pour la grille" name="Use Selection for Grid"/>
-			<menu_item_call label="Options de la grille..." name="Grid Options"/>
+			<menu_item_call label="Options de la grille..." name="Grid Options" forme_creator_only="true"/>
 			<menu_item_call label="Définir les permissions par défaut..." name="Set default permissions"/>
 		</menu>
-		<menu label="Charger" name="Upload">
-			<menu_item_call label="Image..." name="Upload Image"/>
-			<menu_item_call label="Son ([COST] L$)..." name="Upload Sound"/>
-			<menu_item_call label="Animation ([COST] L$)..." name="Upload Animation"/>
-			<menu_item_call label="Modèle..." name="Upload Model"/>
-			<menu_item_call label="Matériau PBR..." name="Upload Material"/>
-			<menu_item_call label="Par lot..." name="Bulk Upload"/>
-			<menu_item_call label="Importer un groupe d'objets" name="import linkset"/>
+		<menu label="Charger" name="Upload" forme_creator_only="true">
+			<menu_item_call label="Image..." name="Upload Image" forme_creator_only="true"/>
+			<menu_item_call label="Son ([COST] L$)..." name="Upload Sound" forme_creator_only="true"/>
+			<menu_item_call label="Animation ([COST] L$)..." name="Upload Animation" forme_creator_only="true"/>
+			<menu_item_call label="Modèle..." name="Upload Model" forme_creator_only="true"/>
+			<menu_item_call label="Matériau PBR..." name="Upload Material" forme_creator_only="true"/>
+			<menu_item_call label="Par lot..." name="Bulk Upload" forme_creator_only="true"/>
+			<menu_item_call label="Importer un groupe d'objets" name="import linkset" forme_creator_only="true"/>
 		</menu>
 		<menu_item_call label="Maillage local" name="local_mesh"/>
 		<menu_item_call label="Annuler" name="Undo"/>
 		<menu_item_call label="Refaire" name="Redo"/>
 	</menu>
-	<menu label="Contenu" name="Content">
-		<menu_item_check label="Recherche" name="Search"/>
-		<menu_item_call label="Marketplace SL" name="SL Marketplace"/>
-		<menu_item_call label="Taux de change du L$" name="LindenXchange"/>
-		<menu_item_call label="Bibliothèque de scripts" name="Script Library"/>
-		<menu_item_call label="Communauté SL (blogs, forums, nouvelles)" name="SL Community Pages"/>
-		<menu_item_call label="Blog Firestorm" name="Firestorm Blog"/>
-		<menu_item_call label="Primfeed Firestorm" name="Firestorm Primfeed"/>
-		<menu_item_call label="Flickr Firestorm" name="Firestorm Flickr"/>
-		<menu_item_call label="YouTube Firestorm" name="Firestorm YouTube"/>
-		<menu_item_call label="Twitter Firestorm" name="Firestorm Twitter"/>
-		<menu_item_call label="Plurk Firestorm" name="Firestorm Plurk"/>
-		<menu_item_call label="Message du jour" name="Firestorm MoTD"/>
-	</menu>
-	<menu label="Aide" name="Help">
-		<menu_item_check label="Affficher les conseils" name="Enable Hints"/>
-		<menu_item_call label="Wiki Firestorm" name="Firestorm Wiki"/>
-		<menu_item_call label="Dépannage" name="Troubleshooting"/>
-		<menu_item_call label="Rejoindre un groupe d'aide Firestorm" name="firestorm_support_group"/>
-		<menu_item_call label="Horaires des classes Firestorm" name="Firestorm Classes Schedule"/>
-		<menu_item_call label="Calendrier des évènements Firestorm" name="Firestorm Events Calendar"/>
-		<menu_item_check label="Guide" name="How To"/>
-		<!-- <menu_item_call label="Aide Second Life" name="Second Life Help"/>-->
-		<menu_item_call label="Aide [CURRENT_GRID]" name="current_grid_help"/>
-		<menu_item_call label="À propos de [CURRENT_GRID]" name="current_grid_about"/>
-		<!-- <menu_item_call label="Tutoriels" name="Tutorial"/>
-		<menu_item_call label="Base de connaissance" name="Knowledge Base"/>
-		<menu_item_call label="Wiki" name="Wiki"/>
-		<menu_item_call label="Forums communautaires" name="Community Forums"/>
-		<menu_item_call label="Portail d'assistance" name="Support portal"/>
-		<menu_item_call label="Blogs de [SECOND_LIFE]" name="Second Life Blogs"/>-->
-		<menu_item_call name="whitelist_folders" label="Conseils de liste blanche"/>
-		<menu_item_check label="Consulter l'état de la grille" name="Grid Status"/>
-		<menu_item_call label="Signaler une infraction" name="Report Abuse"/>
-		<menu_item_call label="Signaler un problème" name="Report Bug"/>
-		<menu_item_call label="Collisions, coups et bousculades" name="Bumps, Pushes &amp;amp; Hits"/>
-		<menu_item_check label="Activer le bouton Sysinfo" name="Enable Sysinfo Button"/>
-		<menu_item_call label="À propos de [APP_NAME]" name="About Second Life"/>
-	</menu>
+	
+	
 	<menu label="Avancé" name="Advanced">
 		<menu_item_call label="Refixer les textures" name="Rebake Texture"/>
 		<menu_item_call label="Actualiser les attachements" name="Refresh Attachments"/>
@@ -657,12 +620,12 @@
 	</menu>
 	<menu label="Admin" name="Admin">
 		<menu label="Objet" name="AdminObject">
-			<menu_item_call label="Prendre une copie" name="Admin Take Copy"/>
-			<menu_item_call label="Me faire devenir propriétaire" name="Force Owner To Me"/>
-			<menu_item_call label="Forcer la permission du propriétaire" name="Force Owner Permissive"/>
-			<menu_item_call label="Supprimer" name="Delete"/>
-			<menu_item_call label="Verrouiller" name="Lock"/>
-			<menu_item_call label="Obtenir les ID des actifs" name="Get Assets IDs"/>
+			<menu_item_call label="Prendre une copie" name="Admin Take Copy" forme_creator_only="true"/>
+			<menu_item_call label="Me faire devenir propriétaire" name="Force Owner To Me" forme_creator_only="true"/>
+			<menu_item_call label="Forcer la permission du propriétaire" name="Force Owner Permissive" forme_creator_only="true"/>
+			<menu_item_call label="Supprimer" name="Delete" forme_creator_only="true"/>
+			<menu_item_call label="Verrouiller" name="Lock" forme_creator_only="true"/>
+			<menu_item_call label="Obtenir les ID des actifs" name="Get Assets IDs" forme_creator_only="true"/>
 		</menu>
 		<menu label="Parcelle" name="Parcel">
 			<menu_item_call label="Téléporter le propriétaire" name="Owner To Me"/>

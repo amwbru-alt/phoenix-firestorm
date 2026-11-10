@@ -245,7 +245,7 @@ Lütfen sadece bir nesne seçin ve tekrar deneyin.
 		<usetemplate name="okbutton" yestext="Tamam"/>
 	</notification>
 	<notification name="AllowMultipleViewers">
-		Birden çok Second Life görüntüleyiciyi çalıştırma özelliği desteklenmiyor. Bu durum doku önbelleği çakışmalarına, görsellerin bozulmasına ve performansın düşmesine yol açabilir.
+		Birden çok ForMe.World görüntüleyiciyi çalıştırma özelliği desteklenmiyor. Bu durum doku önbelleği çakışmalarına, görsellerin bozulmasına ve performansın düşmesine yol açabilir.
 		<usetemplate name="okbutton" yestext="Tamam"/>
 	</notification>
 	<notification name="GrantModifyRights">
@@ -521,7 +521,7 @@ Ortamı sadece bir yüze yerleştirmek için, Yüz Seç&apos;i seçin ve ardınd
 		Aşağıdaki nedenden dolayı, bir raporun ekran görüntüsü karşıya yüklenirken bir sorun oluştu: [REASON]
 	</notification>
 	<notification name="MustAgreeToLogIn">
-		[CURRENT_GRID]&apos;ta oturum açmaya devam etmek için Second Life Şartlar ve Koşullar&apos;ı, Gizlilik Politikası&apos;nı ve Hizmet Koşulları&apos;nı kabul etmelisiniz.
+		[CURRENT_GRID]&apos;ta oturum açmaya devam etmek için ForMe.World Şartlar ve Koşullar&apos;ı, Gizlilik Politikası&apos;nı ve Hizmet Koşulları&apos;nı kabul etmelisiniz.
 	</notification>
 	<notification name="CouldNotPutOnOutfit">
 		Dış görünüm eklenemedi.
@@ -3110,13 +3110,13 @@ Kabul ediyor musunuz?
 		Aşağıdaki koşullar deneyim profili adının ve/veya açıklamasının güncellenmesini engelledi: [extra_info]
 	</notification>
 	<notification name="TeleportedHomeExperienceRemoved">
-		secondlife:///app/experience/[public_id]/profile deneyimini kaldırdığınız için [region_name] bölgesinden dışarı ışınlandınız ve artık bu bölgeye girme hakkınız yok.
+		fmw:///app/experience/[public_id]/profile deneyimini kaldırdığınız için [region_name] bölgesinden dışarı ışınlandınız ve artık bu bölgeye girme hakkınız yok.
 		<form name="form">
 			<ignore name="ignore" text="Bir deneyim kaldırıldığı için bölgeden çıkarıldı"/>
 		</form>
 	</notification>
 	<notification name="TrustedExperienceEntry">
-		secondlife:///app/experience/[public_id]/profile anahtar deneyimine katılarak [region_name] bölgesine giriş izni aldınız. Bu deneyimin kaldırılması bu bölgeden çıkarılmanıza neden olabilir.
+		fmw:///app/experience/[public_id]/profile anahtar deneyimine katılarak [region_name] bölgesine giriş izni aldınız. Bu deneyimin kaldırılması bu bölgeden çıkarılmanıza neden olabilir.
 		<form name="form">
 			<ignore name="ignore" text="Bir deneyim bir bölgeye girme izni verdi"/>
 		</form>
@@ -3129,14 +3129,14 @@ Kabul ediyor musunuz?
 Başka Anahtar Deneyimler de olabilir.
 	</notification>
 	<notification name="ExperienceEvent">
-		secondlife:///app/experience/[public_id]/profile deneyimiyle [EventType] için bir nesneye izin verildi.
-    Sahibi: secondlife:///app/agent/[OwnerID]/inspect
+		fmw:///app/experience/[public_id]/profile deneyimiyle [EventType] için bir nesneye izin verildi.
+    Sahibi: fmw:///app/agent/[OwnerID]/inspect
     Nesne Adı: [ObjectName]
     Parsel Adı: [ParcelName]
 	</notification>
 	<notification name="ExperienceEventAttachment">
-		secondlife:///app/experience/[public_id]/profile deneyimiyle [EventType] için bir eke izin verildi.
-    Sahibi: secondlife:///app/agent/[OwnerID]/inspect
+		fmw:///app/experience/[public_id]/profile deneyimiyle [EventType] için bir eke izin verildi.
+    Sahibi: fmw:///app/agent/[OwnerID]/inspect
 	</notification>
 	<notification name="ScriptQuestionExperience">
 		&apos;&lt;nolink&gt;[OBJECTNAME]&lt;/nolink&gt;&apos;, &quot;[NAME]&quot; adlı kişiye ait bir nesne, [GRID_WIDE] deneyimine katılmanızı istiyor:
@@ -3416,7 +3416,7 @@ Detaylar için SecondLife.log&apos;a bakın
 
 &lt;nolink&gt;[ITEMS]&lt;/nolink&gt;
 
-Paylaşmanın yapılacağı Second Life Sakinleri:
+Paylaşmanın yapılacağı ForMe.World Sakinleri:
 
 &lt;nolink&gt;[RESIDENTS]&lt;/nolink&gt;
 		<usetemplate name="okcancelbuttons" notext="İptal" yestext="Tamam"/>
@@ -3428,7 +3428,7 @@ Aşağıdaki öğeleri paylaşmak istediğinize emin misiniz?
 
 &lt;nolink&gt;[ITEMS]&lt;/nolink&gt;
 
-Paylaşmanın yapılacağı Second Life Sakinleri:
+Paylaşmanın yapılacağı ForMe.World Sakinleri:
 
 &lt;nolink&gt;[RESIDENTS]&lt;/nolink&gt;
 		<usetemplate name="okcancelbuttons" notext="İptal" yestext="Tamam"/>

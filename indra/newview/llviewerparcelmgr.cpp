@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "fscreatoraccess.h"
 
 #include "llviewerparcelmgr.h"
 
@@ -723,6 +724,8 @@ LLParcel * LLViewerParcelMgr::getAgentOrSelectedParcel() const
 // Return whether the agent can build on the land they are on
 bool LLViewerParcelMgr::allowAgentBuild() const
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     // <FS> Rez under land group
     //if (mAgentParcel)
     //{
@@ -750,6 +753,8 @@ bool LLViewerParcelMgr::allowAgentBuild() const
 // Return whether anyone can build on the given parcel
 bool LLViewerParcelMgr::allowAgentBuild(const LLParcel* parcel) const
 {
+    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+
     return parcel->getAllowModify();
 }
 

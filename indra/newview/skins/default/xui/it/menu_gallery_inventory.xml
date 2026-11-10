@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <context_menu name="Gallery">
-	<menu_item_call label="Condividi" name="Share" />
+	<menu_item_call label="Condividi" name="Share"  forme_creator_only="true"/>
 	<menu_item_call label="Svuota Cestino" name="Empty Trash" />
 	<menu_item_call label="Svuota Oggetti smarriti" name="Empty Lost And Found" />
 	<menu_item_call label="Apri segnaposto" name="Landmark Open" />
@@ -51,10 +51,10 @@
 	<menu_item_call label="Applica al lotto" name="Settings Apply Parcel" />
 	<menu label="Crea nuovo" name="create_new">
 		<menu_item_call label="Nuova cartella" name="New Folder"/>
-		<menu_item_call label="Nuovo script" name="New Script"/>
-		<menu_item_call label="Nuova annotazione" name="New Note"/>
-		<menu_item_call label="Nuovo gesto" name="New Gesture"/>
-		<menu_item_call label="Nuovo materiale" name="New Material"/>
+		<menu_item_call label="Nuovo script" name="New Script" forme_creator_only="true"/>
+		<menu_item_call label="Nuova annotazione" name="New Note" forme_creator_only="true"/>
+		<menu_item_call label="Nuovo gesto" name="New Gesture" forme_creator_only="true"/>
+		<menu_item_call label="Nuovo materiale" name="New Material" forme_creator_only="true"/>
 		<menu label="Nuovo indumento" name="New Clothes">
 			<menu_item_call label="Nuova camicia" name="New Shirt"/>
 			<menu_item_call label="Nuovi pantaloni" name="New Pants"/>
@@ -84,7 +84,7 @@
 	</menu>
 	<menu_item_call label="Crea cartella dagli elementi selezionati" name="New folder from selected" />
 	<menu_item_call label="Separa gli elementi della cartella" name="Ungroup folder items" />
-	<menu label="Usa come predefinita per" name="upload_def">
+	<menu label="Usa come predefinita per" name="upload_def" forme_creator_only="true">
 		<menu_item_check label="Immagini caricate" name="Image uploads"/>
 		<menu_item_check label="Suoni caricati" name="Sound uploads"/>
 		<menu_item_check label="Animazioni caricate" name="Animation uploads"/>
@@ -92,8 +92,8 @@
 		<menu_item_check label="Materiali PBR caricati" name="PBR uploads"/>
 	</menu>
 	<menu label="Marketplace" name="Marketplace">
-		<menu_item_call label="Copia negli annunci Marketplace" name="Marketplace Copy"/>
-		<menu_item_call label="Sposta negli annunci Marketplace" name="Marketplace Move"/>
+		<menu_item_call label="Copia negli annunci Marketplace" name="Marketplace Copy" forme_creator_only="true"/>
+		<menu_item_call label="Sposta negli annunci Marketplace" name="Marketplace Move" forme_creator_only="true"/>
 	</menu>
 	<menu_item_call label="--nessuna opzione--" name="--no options--"/>
 </context_menu>

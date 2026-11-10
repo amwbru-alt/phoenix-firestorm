@@ -4,7 +4,7 @@
 	height="150"
 	layout="topleft"
 	name="block_list_panel"
-	help_topic="blocked_list"
+
 	width="304">
    <string
     name="no_blocked"

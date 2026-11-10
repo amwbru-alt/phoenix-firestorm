@@ -42,7 +42,7 @@
            name="outfit_gallery_tab"
            background_visible="false"
            bg_alpha_color="SL-Background_66"
-           help_topic="outfit_gallery_tab"
+          
            follows="all"
            label="Outfit Gallery"
            layout="topleft"
@@ -54,7 +54,7 @@
            name="outfitslist_tab"
            background_visible="false"
            bg_alpha_color="SL-Background_66"
-           help_topic="my_outfits_tab"
+          
            follows="all"
            label="Outfits"
            layout="topleft"
@@ -66,7 +66,7 @@
            filename="panel_outfits_wearing.xml"
            follows="all"
            height="520"
-           help_topic="now_wearing_tab"
+          
            label="Wearing"
            layout="topleft"
            name="cof_tab"

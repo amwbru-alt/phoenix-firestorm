@@ -47,7 +47,8 @@
 //#include "llfirstuse.h"
 #include "llfloaterreg.h"       // getTypedInstance()
 #include "llfocusmgr.h"
-//#include "lliconctrl.h" // <FS:Ansariel> Use own expand/collapse function
+//#include "lliconctrl.h"
+#include "llstatusbar.h" // <FS:Ansariel> Use own expand/collapse function
 #include "llinventoryfunctions.h"
 #include "llinventorymodel.h"
 #include "llinventorymodelbackgroundfetch.h"
@@ -71,6 +72,14 @@
 #include "llviewerregion.h"
 #include "llviewerstats.h"
 #include "llviewertexture.h"
+#include "llcoros.h"
+#include "llcorehttputil.h"
+#include "lliconctrl.h"
+#include "llimage.h"
+#include "lllineeditor.h"
+#include "lluiimage.h"
+#include "lluri.h"
+#include "formegridpolicy.h"
 #include "llviewerwindow.h"
 #include "llworldmap.h"
 #include "llworldmapmessage.h"
@@ -131,7 +140,7 @@ static const F32 ZOOM_MAX = 128.f;
 // Globals
 //---------------------------------------------------------------------------
 
-// handle secondlife:///app/worldmap/{NAME}/{COORDS} URLs
+// handle fmw:///app/worldmap/{NAME}/{COORDS} URLs
 class LLWorldMapHandler : public LLCommandHandler
 {
 public:
@@ -169,12 +178,12 @@ public:
 
         if (params.size() == 0)
         {
-            // support the secondlife:///app/worldmap SLapp
+            // support the fmw:///app/worldmap SLapp
             LLFloaterReg::showInstance("world_map", "center");
             return true;
         }
 
-        // support the secondlife:///app/worldmap/{LOCATION}/{COORDS} SLapp
+        // support the fmw:///app/worldmap/{LOCATION}/{COORDS} SLapp
         const std::string region_name = LLURI::unescape(params[0].asString());
         S32 x = (params.size() > 1) ? params[1].asInteger() : 128;
         S32 y = (params.size() > 2) ? params[2].asInteger() : 128;
@@ -188,7 +197,7 @@ public:
 };
 LLWorldMapHandler gWorldMapHandler;
 
-// handle secondlife:///app/worldmap_global/{GLOBAL_COORDS} URLs
+// handle fmw:///app/worldmap_global/{GLOBAL_COORDS} URLs
 class LLWorldMapGlobalHandler : public LLCommandHandler
 {
 public:
@@ -234,7 +243,7 @@ public:
 };
 LLWorldMapGlobalHandler gWorldMapGlobalHandler;
 
-// SocialMap handler secondlife:///app/maptrackavatar/id
+// SocialMap handler fmw:///app/maptrackavatar/id
 class LLMapTrackAvatarHandler : public LLCommandHandler
 {
 public:
@@ -425,7 +434,50 @@ void* LLFloaterWorldMap::createWorldMapView(void* data)
 
 bool LLFloaterWorldMap::postBuild()
 {
+    const auto bind = [this](const std::string& name, auto action)
+    {
+        getChild<LLButton>(name)->setClickedCallback([action](LLUICtrl*, const LLSD&) { action(); });
+    };
+    bind("forme_region_close", [this] { closeFloater(); });
+    bind("forme_region_map", [this]
+    {
+        if (mSelectedRegionCard >= 0 && mSelectedRegionCard < mRegionCards.size()) actOnRegionCard(0);
+        else
+        {
+            setRegionCardsMode(false);
+            getChildView("forme_region_detail_panel")->setVisible(true);
+            if (gAgent.getRegion()) requestMapRegion(gAgent.getRegion()->getName());
+        }
+    });
+    bind("forme_region_cards", [this]
+    {
+        if (mRegionCardRequest == 0)
+            loadRegionCards(0);
+        else
+            setRegionCardsMode(true);
+    });
+    bind("forme_region_zoom_in", [this]
+    {
+        mZoomSlider->setValue(mZoomSlider->getValue().asReal() + 0.5);
+    });
+    bind("forme_region_zoom_out", [this]
+    {
+        mZoomSlider->setValue(mZoomSlider->getValue().asReal() - 0.5);
+    });
+    bind("forme_region_detail_copy", [this] { actOnRegionCard(1); });
+    bind("forme_region_detail_tp", [this] { actOnRegionCard(2); });
+    for (S32 i = 0; i < 3; ++i)
+    {
+        bind("forme_region_details_" + std::to_string(i), [this, i] { selectRegionCard(i); actOnRegionCard(0); });
+        getChild<LLPanel>("forme_region_card_" + std::to_string(i))->setMouseDownCallback(
+            [this, i](LLUICtrl*, S32, S32, MASK) { selectRegionCard(i); });
+    }
+    auto* query = getChild<LLLineEditor>("forme_region_query");
+    query->setCommitOnFocusLost(false);
+    query->setCommitCallback([this](LLUICtrl*, const LLSD&) { loadRegionCards(0); });
+
     mMapView = dynamic_cast<LLWorldMapView*>(getChild<LLPanel>("objects_mapview"));
+    mMapView->setForMeStyle(true);
     mMapView->setPan(0, 0, true);
 
     mTeleportButton = getChild<LLButton>("Teleport");
@@ -540,6 +592,14 @@ void LLFloaterWorldMap::onOpen(const LLSD& key)
         setTeleportFinishedCallback(boost::bind(&LLFloaterWorldMap::onTeleportFinished, this));
 
     bool center_on_target = (key.asString() == "center");
+    setRegionCardsMode(!center_on_target);
+    if (!center_on_target)
+        loadRegionCards(0);
+    else if (auto* info = LLWorldMap::getInstance()->simInfoFromPosGlobal(LLTracker::getTrackedPositionGlobal()))
+        requestMapRegion(info->getName());
+    else if (gAgent.getRegion())
+        requestMapRegion(gAgent.getRegion()->getName());
+
 
     mIsClosing = false;
 
@@ -611,10 +671,17 @@ bool LLFloaterWorldMap::handleHover(S32 x, S32 y, MASK mask)
 
 bool LLFloaterWorldMap::handleScrollWheel(S32 x, S32 y, S32 clicks)
 {
+    if (mRegionCardsMode)
+    {
+        if (clicks > 0 && mRegionCardsHaveMore) loadRegionCards(mRegionCardOffset + 3);
+        else if (clicks < 0 && mRegionCardOffset > 0) loadRegionCards(llmax(0, mRegionCardOffset - 3));
+        return true;
+    }
+
     if (!isMinimized() && isFrontmost())
     {
-        S32 map_x = x - mMapView->getRect().mLeft;
-        S32 map_y = y - mMapView->getRect().mBottom;
+        S32 map_x = 0, map_y = 0;
+        localPointToOtherView(x, y, &map_x, &map_y, mMapView);
         if (mMapView->pointInView(map_x, map_y))
         {
             F32 old_slider_zoom = (F32) mZoomSlider->getValue().asReal();
@@ -639,6 +706,34 @@ void LLFloaterWorldMap::reshape( S32 width, S32 height, bool called_from_parent 
 // virtual
 void LLFloaterWorldMap::draw()
 {
+    if (mRegionCardsMode && mRegionCardRequest != 0 && mRegionCardRefresh.getElapsedTimeF32() >= 15.f)
+        loadRegionCards(mRegionCardOffset, true);
+    if (!mRegionCardsMode && !mMapRegionName.empty() && mMapRegionRefresh.getElapsedTimeF32() >= 15.f)
+        requestMapRegion(mMapRegionName);
+    const auto update_weather = [this](const std::string& icon_name, const std::string& label_name, const LLSD& row)
+    {
+        auto* icon = getChild<LLIconCtrl>(icon_name);
+        std::string condition;
+        if (row.isMap())
+        {
+            condition = row["weather"]["condition"].asString();
+            const std::string local = LLStatusBar::regionWeatherCondition(row["region_id"].asUUID());
+            if (!local.empty()) condition = local;
+        }
+        const bool known = condition == "clear" || condition == "cloudy" || condition == "fog" ||
+            condition == "rain" || condition == "storm" || condition == "snow";
+        const auto image = known ? LLUI::getUIImage("Forme_Weather_" + condition) : LLUIImagePtr();
+        if (icon->getImage().get() != image.get()) icon->setImage(image);
+        icon->setVisible(image.notNull());
+        icon->setColor(condition == "clear" ? LLColor4(1.f, 0.70f, 0.06f, 1.f) :
+            condition == "snow" ? LLColor4(0.29f, 0.68f, 0.90f, 1.f) :
+            LLColor4(0.78f, 0.79f, 0.80f, 1.f));
+        getChild<LLTextBox>(label_name)->setText(getString(known ? "forme_weather_" + condition : "forme_weather_unknown"));
+    };
+    for (S32 i = 0; i < 3; ++i)
+        update_weather("forme_region_weather_" + std::to_string(i), "forme_region_weather_label_" + std::to_string(i), i < mRegionCards.size() ? mRegionCards[i] : LLSD());
+    update_weather("forme_region_detail_weather", "forme_region_detail_weather_label", mMapRegion);
+
     // <FS:Ansariel> Performance improvement
     static LLButton* track_region_btn     = getChild<LLButton>("track_region");
 
@@ -925,6 +1020,7 @@ void LLFloaterWorldMap::trackLocation(const LLVector3d& pos_global)
     }
 
     std::string sim_name = sim_info->getName();
+    if (!mRegionCardsMode && sim_name != mMapRegionName) requestMapRegion(sim_name);
 // <FS:CR> Aurora-sim var region teleports
     //F32 region_x = (F32)fmod( pos_global.mdV[VX], (F64)REGION_WIDTH_METERS );
     //F32 region_y = (F32)fmod( pos_global.mdV[VY], (F64)REGION_WIDTH_METERS );
@@ -2216,5 +2312,371 @@ void LLPanelHideBeacon::updatePosition()
     {
         S32 x_pos = bottom_tb_center - getRect().getWidth() / 2;
         setOrigin( x_pos + HIDE_BEACON_PAD, 0);
+    }
+}
+
+
+void LLFloaterWorldMap::setRegionCardsMode(bool cards)
+{
+    mRegionCardsMode = cards;
+    getChildView("forme_regions_panel")->setVisible(cards);
+    getChildView("resizing_stack")->setVisible(!cards);
+    getChildView("forme_region_detail_panel")->setVisible(!cards && mSelectedRegionCard >= 0);
+    getChild<LLButton>("forme_region_map")->setToggleState(!cards);
+    getChild<LLButton>("forme_region_cards")->setToggleState(cards);
+}
+
+void LLFloaterWorldMap::loadRegionCards(S32 offset, bool refresh)
+{
+    mRegionCardRefresh.reset();
+    if (!refresh)
+    {
+        setRegionCardsMode(true);
+        mRegionCardOffset = offset;
+        mRegionCards = LLSD::emptyArray();
+        selectRegionCard(-1);
+        for (S32 i = 0; i < 3; ++i)
+            getChildView("forme_region_card_" + std::to_string(i))->setVisible(false);
+        getChild<LLTextBox>("forme_region_status")->setText(getString("forme_regions_loading"));
+    }
+
+    const std::string url = std::string(ForMeGrid::LoginURI) + "api/web/public-regions?max=3&offset=" +
+        std::to_string(offset) + "&q=" + LLURI::escape(getChild<LLLineEditor>("forme_region_query")->getText());
+    const U64 request_id = ++mRegionCardRequest;
+    const auto handle = getHandle();
+    LLCoros::instance().launch("ForMeRegionCards", [handle, request_id, url]
+    {
+        auto adapter = std::make_shared<LLCoreHttpUtil::HttpCoroutineAdapter>(
+            "ForMeRegionCards", LLCore::HttpRequest::DEFAULT_POLICY_ID);
+        auto request = std::make_shared<LLCore::HttpRequest>();
+        auto options = std::make_shared<LLCore::HttpOptions>();
+        options->setFollowRedirects(false);
+        options->setTimeout(8);
+        options->setRetries(0);
+        LLSD result;
+        try { result = adapter->getJsonAndSuspend(request, url, options); }
+        catch (...) { result = LLSD(); }
+        if (auto* map = dynamic_cast<LLFloaterWorldMap*>(handle.get()))
+            map->showRegionCards(result, request_id);
+    });
+}
+
+void LLFloaterWorldMap::showRegionCards(const LLSD& data, U64 request_id)
+{
+    if (request_id != mRegionCardRequest)
+        return;
+    auto* status = getChild<LLTextBox>("forme_region_status");
+    if (!data["ok"].asBoolean() || !data["regions"].isArray() || data["regions"].size() > 3)
+    {
+        if (mRegionCards.size() == 0) status->setText(getString("forme_regions_failed"));
+        else
+        {
+            for (S32 i = 0; i < mRegionCards.size(); ++i)
+            {
+                mRegionCards[i]["weather"] = LLSD();
+                mRegionCards[i]["visitor_count"] = LLSD();
+            }
+            updateRegionDetails();
+        }
+        return;
+    }
+
+    const LLUUID selected = mSelectedRegionCard >= 0 && mSelectedRegionCard < mRegionCards.size()
+        ? mRegionCards[mSelectedRegionCard]["region_id"].asUUID() : LLUUID::null;
+    mRegionCards = data["regions"];
+    for (S32 i = mRegionCards.size(); i < 3; ++i)
+        loadRegionPhoto(i, LLSD());
+    mRegionCardsHaveMore = data["has_more"].asBoolean();
+    for (S32 i = 0; i < 3; ++i)
+        getChildView("forme_region_card_" + std::to_string(i))->setVisible(i < mRegionCards.size());
+    for (S32 i = 0; i < mRegionCards.size(); ++i)
+    {
+        const std::string suffix = std::to_string(i);
+        const LLSD& row = mRegionCards[i];
+        getChildView("forme_region_card_" + suffix)->setVisible(true);
+        getChild<LLTextBox>("forme_region_name_" + suffix)->setText(row["name"].asString());
+        loadRegionPhoto(i, row);
+    }
+    S32 selection = 0;
+    for (S32 i = 0; i < mRegionCards.size(); ++i)
+        if (mRegionCards[i]["region_id"].asUUID() == selected) selection = i;
+    if (mRegionCards.size() > 0)
+        selectRegionCard(selection);
+    else
+        status->setText(getString("forme_regions_empty"));
+}
+
+void LLFloaterWorldMap::selectRegionCard(S32 index)
+{
+    mSelectedRegionCard = index;
+    for (S32 i = 0; i < 3; ++i)
+    {
+        auto* card = getChildView("forme_region_card_" + std::to_string(i));
+        auto* selection = getChildView("forme_region_selection_" + std::to_string(i));
+        // XUI negative top/left values are parent-relative anchors, not an outset.
+        selection->setRect(LLRect(-4, card->getRect().getHeight() + 4, card->getRect().getWidth() + 4, -4));
+        selection->setVisible(i == index);
+    }
+    if (index >= 0 && index < mRegionCards.size())
+    {
+        getChild<LLTextBox>("forme_region_status")->setText(std::string());
+        if (mRegionCardsMode || mMapRegionName.empty())
+        {
+            mMapRegion = mRegionCards[index];
+            mMapRegionName = mMapRegion["name"].asString();
+            ++mMapRegionRequest;
+            mMapRegionRefresh.reset();
+            updateRegionDetails();
+        }
+    }
+}
+
+namespace
+{
+std::string portalRegionImageUrl(std::string path)
+{
+    const std::string origin = ForMeGrid::LoginURI;
+    if (path.starts_with(origin))
+        path = "/" + path.substr(origin.size());
+
+    if ((!path.starts_with("/web/assets/img/") && !path.starts_with("/map/map-") &&
+         !path.starts_with("/map-")) || path.find("..") != std::string::npos ||
+        path.find("//") != std::string::npos ||
+        path.find_first_not_of("/ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_.") != std::string::npos)
+        return {};
+
+    return origin + path.substr(1);
+}
+
+LLPointer<LLImageRaw> decodeRegionPhoto(const LLSD::Binary& bytes)
+{
+    if (bytes.size() < 8 || bytes.size() > 4 * 1024 * 1024)
+        return nullptr;
+
+    // The portal returns ordinary web images, which can have arbitrary dimensions.
+    // Choose the decoder from the file signature so an HTML error cannot become a texture.
+    const bool jpeg = bytes[0] == 0xff && bytes[1] == 0xd8 && bytes[2] == 0xff;
+    constexpr std::array<U8, 8> png{0x89, 'P', 'N', 'G', 0x0d, 0x0a, 0x1a, 0x0a};
+    const bool is_png = std::equal(png.begin(), png.end(), bytes.begin());
+    if (!jpeg && !is_png)
+        return nullptr;
+
+    LLPointer<LLImageFormatted> image = LLImageFormatted::loadFromMemory(
+        bytes.data(), static_cast<U32>(bytes.size()), jpeg ? "image/jpeg" : "image/png");
+    if (!image || image->getWidth() <= 0 || image->getHeight() <= 0 ||
+        static_cast<U64>(image->getWidth()) * image->getHeight() > 16 * 1024 * 1024)
+        return nullptr;
+
+    LLPointer<LLImageRaw> raw = new LLImageRaw;
+    if (!image->decode(raw, 0.f) || raw->isBufferInvalid())
+        return nullptr;
+    return raw;
+}
+
+std::string regionPhotoControl(S32 slot)
+{
+    return slot == 3 ? "forme_region_detail_photo" : "forme_region_photo_" + std::to_string(slot);
+}
+}
+
+void LLFloaterWorldMap::loadRegionPhoto(S32 slot, const LLSD& row)
+{
+    const std::string photo = portalRegionImageUrl(row["photo"].asString());
+    std::string tile = portalRegionImageUrl(row["map_image_url"].asString());
+    if (tile.empty() && row["x"].isInteger() && row["y"].isInteger() &&
+        row["x"].asInteger() >= 0 && row["y"].asInteger() >= 0)
+    {
+        tile = std::string(ForMeGrid::LoginURI) + "map/map-1-" +
+            row["x"].asString() + "-" + row["y"].asString() + "-objects.jpg";
+    }
+    const std::string map_prefix = std::string(ForMeGrid::LoginURI) + "map/map-";
+    const std::string legacy_tile = tile.starts_with(map_prefix)
+        ? std::string(ForMeGrid::LoginURI) + tile.substr(map_prefix.size() - 4) : std::string();
+    const std::array<std::string, 3> urls{
+        photo, tile == photo ? std::string() : tile, legacy_tile == photo ? std::string() : legacy_tile
+    };
+    auto& state = mRegionPhotos[slot];
+    if (state.urls == urls && (state.pending || state.loaded || LLFrameTimer::getTotalSeconds() < state.retryAt))
+        return;
+
+    state.urls = urls;
+    state.loaded = false;
+    state.retryAt = 0.;
+    state.pending = !photo.empty() || !tile.empty();
+    const U64 request_id = ++state.request;
+    const auto control = regionPhotoControl(slot);
+    getChild<LLIconCtrl>(control)->setImage(LLUIImagePtr());
+    getChildView(control + "_placeholder")->setVisible(true);
+    if (!state.pending)
+        return;
+
+    const auto handle = getHandle();
+    LLCoros::instance().launch("ForMeRegionPhoto", [handle, slot, control, request_id, urls]
+    {
+        auto adapter = std::make_shared<LLCoreHttpUtil::HttpCoroutineAdapter>(
+            "ForMeRegionPhoto", LLCore::HttpRequest::DEFAULT_POLICY_ID);
+        auto request = std::make_shared<LLCore::HttpRequest>();
+        auto options = std::make_shared<LLCore::HttpOptions>();
+        options->setFollowRedirects(false);
+        options->setTimeout(8);
+        options->setRetries(0);
+
+        for (const auto& url : urls)
+        {
+            if (url.empty())
+                continue;
+            auto* map = dynamic_cast<LLFloaterWorldMap*>(handle.get());
+            if (!map || map->mRegionPhotos[slot].request != request_id)
+                return;
+
+            LLSD result;
+            try { result = adapter->getRawAndSuspend(request, url, options, nullptr); }
+            catch (...) { result = LLSD(); }
+
+            map = dynamic_cast<LLFloaterWorldMap*>(handle.get());
+            if (!map || map->mRegionPhotos[slot].request != request_id)
+                return;
+
+            using Http = LLCoreHttpUtil::HttpCoroutineAdapter;
+            if (!Http::getStatusFromLLSD(result[Http::HTTP_RESULTS]))
+                continue;
+            const LLSD& response = result;
+            auto raw = decodeRegionPhoto(response[Http::HTTP_RESULTS_RAW].asBinary());
+            if (!raw)
+                continue;
+
+            const F32 aspect = static_cast<F32>(raw->getWidth()) / raw->getHeight();
+            // Preserve the source aspect for cropping before scaling to GPU texture dimensions.
+            raw->biasedScaleToPowerOfTwo(1024);
+            if (raw->isBufferInvalid())
+                continue;
+            const auto texture = LLViewerTextureManager::getLocalTexture(raw.get(), false);
+            if (!texture || !texture->isGLTextureCreated())
+                continue;
+
+            auto* icon = map->getChild<LLIconCtrl>(control);
+            const LLRect& rect = icon->getRect();
+            const F32 viewport = static_cast<F32>(rect.getWidth()) / rect.getHeight();
+            const F32 u = std::min(1.f, viewport / aspect);
+            const F32 v = std::min(1.f, aspect / viewport);
+            LLUIImagePtr image = new LLUIImage(url, texture);
+            image->setClipRegion(LLRectf((1.f - u) / 2.f, (1.f + v) / 2.f,
+                                         (1.f + u) / 2.f, (1.f - v) / 2.f));
+            icon->setImage(image);
+            map->getChildView(control + "_placeholder")->setVisible(false);
+            auto& state = map->mRegionPhotos[slot];
+            state.pending = false;
+            state.loaded = true;
+            return;
+        }
+
+        auto* map = dynamic_cast<LLFloaterWorldMap*>(handle.get());
+        if (map && map->mRegionPhotos[slot].request == request_id)
+        {
+            auto& state = map->mRegionPhotos[slot];
+            state.pending = false;
+            state.retryAt = LLFrameTimer::getTotalSeconds() + 30.;
+        }
+    });
+}
+
+void LLFloaterWorldMap::requestMapRegion(const std::string& name)
+{
+    if (!ForMeGrid::localRegion(name)) return;
+    if (name != mMapRegionName)
+    {
+        mMapRegion = LLSD();
+        getChild<LLTextBox>("forme_region_detail_title")->setText(name);
+        loadRegionPhoto(REGION_DETAIL_PHOTO, LLSD());
+        getChild<LLTextBox>("forme_region_detail_visitors")->setText(std::string());
+        getChildView("forme_region_detail_tp")->setEnabled(false);
+        getChildView("forme_region_detail_copy")->setEnabled(false);
+    }
+    mMapRegionName = name;
+    getChildView("forme_region_detail_panel")->setVisible(!mRegionCardsMode);
+    mMapRegionRefresh.reset();
+    const U64 request_id = ++mMapRegionRequest;
+    const auto handle = getHandle();
+    const std::string url = std::string(ForMeGrid::LoginURI) + "api/web/public-regions?max=1&name=" + LLURI::escape(name);
+    LLCoros::instance().launch("ForMeMapRegion", [handle, request_id, name, url]
+    {
+        auto adapter = std::make_shared<LLCoreHttpUtil::HttpCoroutineAdapter>("ForMeMapRegion", LLCore::HttpRequest::DEFAULT_POLICY_ID);
+        auto request = std::make_shared<LLCore::HttpRequest>();
+        auto options = std::make_shared<LLCore::HttpOptions>();
+        options->setFollowRedirects(false);
+        options->setTimeout(8);
+        options->setRetries(0);
+        LLSD result;
+        try { result = adapter->getJsonAndSuspend(request, url, options); }
+        catch (...) { result = LLSD(); }
+        auto* map = dynamic_cast<LLFloaterWorldMap*>(handle.get());
+        if (!map || request_id != map->mMapRegionRequest || map->mMapRegionName != name) return;
+        if (!result["ok"].asBoolean() || !result["regions"].isArray() || result["regions"].size() != 1 ||
+            result["regions"][0]["name"].asString() != name)
+        {
+            // Never leave old weather or a visitor count attached to a different location.
+            map->mMapRegion["name"] = name;
+            map->mMapRegion["weather"] = LLSD();
+            map->mMapRegion["visitor_count"] = LLSD();
+            if (map->mMapRegion.isMap()) map->updateRegionDetails();
+            return;
+        }
+        map->mMapRegion = result["regions"][0];
+        map->updateRegionDetails();
+    });
+}
+
+void LLFloaterWorldMap::updateRegionDetails()
+{
+    const auto visitors = [this](const LLSD& row)
+    {
+        LLStringUtil::format_map_t args;
+        args["[COUNT]"] = row["visitor_count"].isInteger() && row["visitor_count"].asInteger() >= 0
+            ? row["visitor_count"].asString() : "—";
+        return getString("forme_region_visitors", args);
+    };
+    for (S32 i = 0; i < mRegionCards.size(); ++i)
+        getChild<LLTextBox>("forme_region_visitors_" + std::to_string(i))->setText(visitors(mRegionCards[i]));
+    const LLSD& row = mMapRegion;
+    getChild<LLTextBox>("forme_region_detail_title")->setText(row["name"].asString());
+    getChild<LLTextBox>("forme_region_detail_visitors")->setText(visitors(row));
+    if (!mRegionCardsMode)
+        loadRegionPhoto(REGION_DETAIL_PHOTO, row);
+    getChildView("forme_region_detail_panel")->setVisible(!mRegionCardsMode);
+    const bool valid = !row["name"].asString().empty() && row["x"].isInteger() && row["y"].isInteger();
+    getChildView("forme_region_detail_tp")->setEnabled(valid);
+    getChildView("forme_region_detail_copy")->setEnabled(valid);
+
+}
+
+void LLFloaterWorldMap::actOnRegionCard(S32 action)
+{
+    if (mRegionCardsMode && (mSelectedRegionCard < 0 || mSelectedRegionCard >= mRegionCards.size())) return;
+    const LLSD& row = mRegionCardsMode ? mRegionCards[mSelectedRegionCard] : mMapRegion;
+    const std::string name = row["name"].asString();
+    if (name.empty() || !ForMeGrid::localRegion(name))
+        return;
+    const S32 local_x = row["size_x"].asInteger() > 0 ? row["size_x"].asInteger() / 2 : 128;
+    const S32 local_y = row["size_y"].asInteger() > 0 ? row["size_y"].asInteger() / 2 : 128;
+    if (action == 0)
+    {
+        setRegionCardsMode(false);
+        getChildView("forme_region_detail_panel")->setVisible(true);
+
+        updateRegionDetails();
+        trackURL(name, local_x, local_y, 25);
+        centerOnTarget(true);
+    }
+    else if (action == 1)
+    {
+        const std::string link = "fmw://" + LLURI::escape(name) + "/" + std::to_string(local_x) + "/" + std::to_string(local_y) + "/25";
+        getWindow()->copyTextToClipboard(utf8str_to_wstring(link));
+    }
+    else if (row["x"].isInteger() && row["y"].isInteger() &&
+             row["x"].asInteger() >= 0 && row["y"].asInteger() >= 0)
+    {
+        const F64 origin_x = row["origin_x"].isInteger() ? row["origin_x"].asInteger() : row["x"].asInteger() * 256.0;
+        const F64 origin_y = row["origin_y"].isInteger() ? row["origin_y"].asInteger() : row["y"].asInteger() * 256.0;
+        gAgent.teleportViaLocation(LLVector3d(origin_x + local_x, origin_y + local_y, 25.0));
     }
 }

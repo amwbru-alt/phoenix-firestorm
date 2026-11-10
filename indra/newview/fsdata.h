@@ -42,7 +42,6 @@ class FSData : public LLSingleton<FSData>
 public:
     void startDownload();
     void downloadAgents();
-    void processResponder(const LLSD& content, const std::string& url, bool save_to_file, const LLDate& last_modified);
     void addAgents();
 
     LLSD resolveClientTag(const LLUUID& id, bool new_system, const LLColor4& new_system_color) const;
@@ -71,62 +70,28 @@ public:
 
     LLSD allowedLogin() const;
 
-    bool enableLegacySearch() const { return mLegacySearch; }
+    bool enableLegacySearch() const { return true; }
 
     std::string processRequestForInfo(const LLUUID& requester, const std::string& message, const std::string& name, const LLUUID& sessionid);
     static LLSD getSystemInfo();
-    static void callbackReqInfo(const LLSD &notification, const LLSD &response);
 
     std::string getOpenSimMOTD() const { return mOpenSimMOTD; }
     void selectNextMOTD();
 
-    bool getFSDataDone() const { return mFSDataDone; }
-    bool getAgentsDone() const { return mAgentsDone; }
+    bool getFSDataDone() const { return true; }
+    bool getAgentsDone() const { return true; }
 
     bool isAgentFlag(const LLUUID& agent_id, FSData::flags_t flag) const;
 
+    const std::string& getLatestVersion() const { return mLatestVersion; }
+    const std::string& getDownloadURL() const { return mDownloadURL; }
+
 private:
-    static void sendInfo(const LLUUID& destination, const LLUUID& sessionid, const std::string& my_name, EInstantMessage dialog);
-    void processAssets(const LLSD& assets);
-    void processAgents(const LLSD& data);
-    void saveLLSD(const LLSD& data, const std::string& filename, const LLDate& last_modified);
-    bool loadFromFile(LLSD& data, std::string filename);
-    void processData(const LLSD& fs_data);
-    void processClientTags(const LLSD& tags);
-    void updateClientTagsLocal();
-    void onNameCache(const LLUUID& av_id, const LLAvatarName& av_name);
-
-    std::map<LLUUID, S32> mTeamAgents;
-    std::map<std::string, LLSD> mBlockedVersions;
-
-    uuid_set_t mSupportGroup;
-    uuid_set_t mTestingGroup;
-
-    LLSD mHeaders;
-    LLSD mLegacyClientList;
-    LLSD mRandomMOTDs;
-
-    std::string mFSdataFilename;
-    std::string mFSdataDefaultsFilename;
-    std::string mFSdataDefaultsUrl;
-    std::string mAgentsFilename;
-    std::string mAssetsFilename;
-    std::string mClientTagsFilename;
-
-    std::string mBaseURL;
-    std::string mFSDataURL;
-    std::string mAgentsURL;
-    std::string mAssetsURL;
-
-    std::string mSecondLifeMOTD;
+    bool mRequested = false;
     std::string mOpenSimMOTD;
+    std::string mLatestVersion;
+    std::string mDownloadURL;
 
-    bool mLegacySearch;
-    bool mFSDataDone;
-    bool mAgentsDone;
-
-    typedef std::map<LLUUID, boost::signals2::connection> avatar_name_cache_connection_map_t;
-    avatar_name_cache_connection_map_t mAvatarNameCacheConnections;
 };
 
 #endif // FS_DATA_H

@@ -410,7 +410,7 @@ void fractionFromDecimal(F32 decimal_val, S32& numerator, S32& denominator)
     }
 }
 
-// handle secondlife:///app/worldmap/{NAME}/{COORDS} URLs
+// handle fmw:///app/worldmap/{NAME}/{COORDS} URLs
 // Also see LLUrlEntryKeybinding, the value of this command type
 // is ability to show up to date value in chat
 class LLKeybindingHandler: public LLCommandHandler
@@ -507,12 +507,9 @@ LLFloaterPreference::LLFloaterPreference(const LLSD& key)
     mCommitCallbackRegistrar.add("Pref.WindowedMod",            boost::bind(&LLFloaterPreference::onCommitWindowedMode, this));
     mCommitCallbackRegistrar.add("Pref.UpdateSliderText",       boost::bind(&LLFloaterPreference::refreshUI,this));
     mCommitCallbackRegistrar.add("Pref.QualityPerformance",     boost::bind(&LLFloaterPreference::onChangeQuality, this, _2));
-    mCommitCallbackRegistrar.add("Pref.applyUIColor",           boost::bind(&LLFloaterPreference::applyUIColor, this ,_1, _2));
-    mCommitCallbackRegistrar.add("Pref.getUIColor",             boost::bind(&LLFloaterPreference::getUIColor, this ,_1, _2));
     mCommitCallbackRegistrar.add("Pref.MaturitySettings",       boost::bind(&LLFloaterPreference::onChangeMaturity, this));
     mCommitCallbackRegistrar.add("Pref.BlockList",              boost::bind(&LLFloaterPreference::onClickBlockList, this));
     mCommitCallbackRegistrar.add("Pref.Proxy",                  boost::bind(&LLFloaterPreference::onClickProxySettings, this));
-    mCommitCallbackRegistrar.add("Pref.TranslationSettings",    boost::bind(&LLFloaterPreference::onClickTranslationSettings, this));
     mCommitCallbackRegistrar.add("Pref.AutoReplace",            boost::bind(&LLFloaterPreference::onClickAutoReplace, this));
     mCommitCallbackRegistrar.add("Pref.PermsDefault",           boost::bind(&LLFloaterPreference::onClickPermsDefault, this));
     mCommitCallbackRegistrar.add("Pref.RememberedUsernames",    boost::bind(&LLFloaterPreference::onClickRememberedUsernames, this));
@@ -660,8 +657,6 @@ bool LLFloaterPreference::postBuild()
     //gSavedSettings.getControl("ChatFontSize")->getSignal()->connect(boost::bind(&LLViewerChat::signalChatFontChanged));
     // </FS:Ansariel> [FS communication UI]
 
-    gSavedSettings.getControl("ChatBubbleOpacity")->getSignal()->connect(boost::bind(&LLFloaterPreference::onNameTagOpacityChange, this, _2));
-    gSavedSettings.getControl("ConsoleBackgroundOpacity")->getSignal()->connect(boost::bind(&LLFloaterPreference::onConsoleOpacityChange, this, _2));   // <FS:CR> FIRE-1332 - Sepeate opacity settings for nametag and console chat
 
     gSavedSettings.getControl("PreferredMaturity")->getSignal()->connect(boost::bind(&LLFloaterPreference::onChangeMaturity, this));
 
@@ -693,6 +688,7 @@ bool LLFloaterPreference::postBuild()
 
     mLanguageCombobox = getChild<LLComboBox>("language_combobox");
     mLanguageCombobox->setCommitCallback(boost::bind(&LLFloaterPreference::onLanguageChange, this));
+    mLanguageCombobox->setEnabled(false);
     mTimeFormatCombobox = getChild<LLComboBox>("time_format_combobox");
     mTimeFormatCombobox->setCommitCallback(boost::bind(&LLFloaterPreference::onTimeFormatChange, this));
 
@@ -780,7 +776,7 @@ bool LLFloaterPreference::postBuild()
 // [/SL:KB]
 
 // <FS:AW  opensim preferences>
-#if !defined(OPENSIM) || defined(SINGLEGRID)
+#if 1 // <FS:ForMe> This distribution never exposes the OpenSim/grid editor tab.
     // Hide the opensim tab if opensim isn't enabled
     LLTabContainer* tab_container = getChild<LLTabContainer>("pref core");
     if (tab_container)
@@ -793,12 +789,11 @@ bool LLFloaterPreference::postBuild()
 #if defined(OPENSIM) && !defined(SINGLEGRID)
     childSetEnabled("show_grid_selection_check", !gSavedSettings.getBOOL("FSOpenSimAlwaysForceShowGrid"));
 #endif
+    childSetVisible("show_grid_selection_check", false); // <FS:ForMe>
 // </FS:AW  opensim preferences>
 
     // <FS:Zi> Pie menu
-    gSavedSettings.getControl("OverridePieColors")->getSignal()->connect(boost::bind(&LLFloaterPreference::onPieColorsOverrideChanged, this));
     // make sure pie color controls are enabled or greyed out properly
-    onPieColorsOverrideChanged();
     // </FS:Zi> Pie menu
 
     // <FS:Zi> Group Notices and chiclets location setting conversion bool => S32
@@ -874,15 +869,7 @@ bool LLFloaterPreference::postBuild()
 }
 
 // <FS:Zi> Pie menu
-void LLFloaterPreference::onPieColorsOverrideChanged()
-{
-    bool enable = gSavedSettings.getBOOL("OverridePieColors");
 
-    getChild<LLColorSwatchCtrl>("pie_bg_color_override")->setEnabled(enable);
-    getChild<LLColorSwatchCtrl>("pie_selected_color_override")->setEnabled(enable);
-    getChild<LLSliderCtrl>("pie_menu_opacity")->setEnabled(enable);
-    getChild<LLSliderCtrl>("pie_menu_fade_out")->setEnabled(enable);
-}
 // </FS:Zi> Pie menu
 
 // <FS:Zi> Group Notices and chiclets location setting conversion bool => S32
@@ -1076,7 +1063,6 @@ void LLFloaterPreference::cancel(const std::vector<std::string> settings_to_skip
     LLFloaterReg::hideInstance("pref_joystick");
 
     // hide translation settings floater
-    LLFloaterReg::hideInstance("prefs_translation");
 
     // hide autoreplace settings floater
     LLFloaterReg::hideInstance("prefs_autoreplace");
@@ -1242,10 +1228,6 @@ void LLFloaterPreference::onOpen(const LLSD& key)
     //onNotificationsChange("ObjectIMOptions");
     // </FS:CR>
 
-    // <FS:Ansariel> [FS Login Panel]
-    //LLPanelLogin::setAlwaysRefresh(true);
-    FSPanelLogin::setAlwaysRefresh(true);
-    // </FS:Ansariel> [FS Login Panel]
     refresh();
 
 
@@ -1320,8 +1302,8 @@ void LLFloaterPreference::onOpen(const LLSD& key)
 
     }
     // <FS:Zi> Support for tab/subtab links like:
-    //         secondlife:///app/openfloater/preferences?tab=backup
-    //         secondlife:///app/openfloater/preferences?tab=colors&subtab=tab-minimap
+    //         fmw:///app/openfloater/preferences?tab=backup
+    //         fmw:///app/openfloater/preferences?tab=colors&subtab=tab-minimap
     if (key.has("tab"))
     {
         selectPanel(key["tab"]);
@@ -1344,7 +1326,7 @@ void LLFloaterPreference::onOpen(const LLSD& key)
         }
     }
     // Support preferences search SLURLs:
-    // secondlife:///app/openfloater/preferences?search=%23%20of%20lines
+    // fmw:///app/openfloater/preferences?search=%23%20of%20lines
     else if (key.has("search"))
     {
         mFilterEdit->setText(key["search"].asString());
@@ -1546,10 +1528,6 @@ void LLFloaterPreference::onClose(bool app_quitting)
         gSavedSettings.setS32("LastPrefTab", getChild<LLTabContainer>("pref core")->getCurrentPanelIndex());
     }
     // </FS:Ansariel>
-    // <FS:Ansariel> [FS Login Panel]
-    //LLPanelLogin::setAlwaysRefresh(false);
-    FSPanelLogin::setAlwaysRefresh(false);
-    // </FS:Ansariel> [FS Login Panel]
     if (!app_quitting)
     {
         cancel();
@@ -1751,26 +1729,10 @@ void LLFloaterPreference::onNotificationsChange(const std::string& OptionName)
     getChild<LLTextBox>("notifications_alert")->setVisible(show_notifications_alert);
 }
 
-void LLFloaterPreference::onNameTagOpacityChange(const LLSD& newvalue)
-{
-    LLColorSwatchCtrl* color_swatch = findChild<LLColorSwatchCtrl>("background");
-    if (color_swatch)
-    {
-        LLColor4 new_color = color_swatch->get();
-        color_swatch->set(new_color.setAlpha((F32)newvalue.asReal()));
-    }
-}
+
 
 // <FS:CR> FIRE-1332 - Sepeate opacity settings for nametag and console chat
-void LLFloaterPreference::onConsoleOpacityChange(const LLSD& newvalue)
-{
-    LLColorSwatchCtrl* color_swatch = findChild<LLColorSwatchCtrl>("console_background");
-    if (color_swatch)
-    {
-        LLColor4 new_color = color_swatch->get();
-        color_swatch->set(new_color.setAlpha((F32)newvalue.asReal()));
-    }
-}
+
 // </FS:CR>
 
 void LLFloaterPreference::onClickSetCache()
@@ -2276,7 +2238,7 @@ void LLFloaterPreference::refreshEnabledState()
 // <FS:Zi> Support preferences search SLURLs
 void LLFloaterPreference::onCopySearch()
 {
-    std::string searchQuery = "secondlife:///app/openfloater/preferences?search=" + LLURI::escape(mFilterEdit->getText());
+    std::string searchQuery = "fmw:///app/openfloater/preferences?search=" + LLURI::escape(mFilterEdit->getText());
     LLClipboard::instance().copyToClipboard(utf8str_to_wstring(searchQuery), 0, static_cast<S32>(searchQuery.size()));
 }
 // </FS:Zi>
@@ -3023,10 +2985,6 @@ void LLFloaterPreference::onClickProxySettings()
     LLFloaterReg::showInstance("prefs_proxy");
 }
 
-void LLFloaterPreference::onClickTranslationSettings()
-{
-    LLFloaterReg::showInstance("prefs_translation");
-}
 
 void LLFloaterPreference::onClickAutoReplace()
 {
@@ -3242,16 +3200,9 @@ void LLFloaterPreference::updateSearchableItems()
     mSearchDataDirty = true;
 }
 
-void LLFloaterPreference::applyUIColor(LLUICtrl* ctrl, const LLSD& param)
-{
-    LLUIColorTable::instance().setColor(param.asString(), LLColor4(ctrl->getValue()));
-}
 
-void LLFloaterPreference::getUIColor(LLUICtrl* ctrl, const LLSD& param)
-{
-    LLColorSwatchCtrl* color_swatch = (LLColorSwatchCtrl*) ctrl;
-    color_swatch->setOriginal(LLUIColorTable::instance().getColor(param.asString()));
-}
+
+
 
 void LLFloaterPreference::setCacheLocation(const LLStringExplicit& location)
 {
@@ -3537,15 +3488,6 @@ bool LLPanelPreference::postBuild()
     //}
     //</FS:HG> FIRE-6340, FIRE-6567 - Setting Bandwidth issues
 
-#ifdef EXTERNAL_TOS
-    LLRadioGroup* ext_browser_settings = getChild<LLRadioGroup>("preferred_browser_behavior");
-    if (ext_browser_settings)
-    {
-        // turn off ability to set external/internal browser
-        ext_browser_settings->setSelectedByValue(LLWeb::BROWSER_EXTERNAL_ONLY, true);
-        ext_browser_settings->setEnabled(false);
-    }
-#endif
 
     ////////////////////// PanelAlerts ///////////////////
     if (hasChild("OnlineOfflinetoNearbyChat", true))
@@ -5812,7 +5754,7 @@ void FSPanelPreferenceBackup:: doRestoreSettings(const LLSD& notification, const
         // start clean
         LL_INFOS("SettingsBackup") << "clearing global settings" << LL_ENDL;
         gSavedSettings.resetToDefaults();
-        LLFeatureManager::getInstance()->applyRecommendedSettings();  
+        LLFeatureManager::getInstance()->applyRecommendedSettings();
 
         // run restore on global controls
         LL_INFOS("SettingsBackup") << "restoring global settings from backup" << LL_ENDL;

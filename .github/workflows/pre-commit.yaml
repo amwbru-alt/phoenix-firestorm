@@ -6,13 +6,31 @@ on:
     branches: [main, contribute]
     tags: [v*]
 
+permissions:
+  contents: read
 
 jobs:
   pre-commit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          # Retain event base commits even when the target branch advances.
+          fetch-depth: 0
       - uses: actions/setup-python@v7
         with:
-          python-version: 3.x
+          python-version: '3.11'
+      - name: Select all changes in this pull request or push
+        id: range
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          if [[ "$BASE_SHA" =~ ^[0-9a-f]{40}$ && "$BASE_SHA" != "0000000000000000000000000000000000000000" ]]; then
+            printf 'args=--from-ref %s --to-ref %s --show-diff-on-failure\n' "$BASE_SHA" "$HEAD_SHA" >> "$GITHUB_OUTPUT"
+          else
+            echo 'args=--all-files --show-diff-on-failure' >> "$GITHUB_OUTPUT"
+          fi
       - uses: pre-commit/action@v3.0.1
+        with:
+          extra_args: ${{ steps.range.outputs.args }}

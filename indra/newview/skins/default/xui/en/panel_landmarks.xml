@@ -3,7 +3,7 @@
    name="Landmarks"
    layout="topleft"
    left="0"
-   help_topic="panel_landmarks"
+  
    border="false"
    follows="all">
     <places_inventory_panel

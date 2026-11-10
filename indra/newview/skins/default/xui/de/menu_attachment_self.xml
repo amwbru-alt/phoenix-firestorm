@@ -4,12 +4,12 @@
 	<menu_item_call label="In Inventar anzeigen" name="Show original"/>
 	<menu_item_call label="Zu Favoriten hinzufügen" name="Add to favorites"/>
 	<menu_item_call label="Aus Favoriten entfernen" name="Remove from favorites"/>
-	<menu_item_call label="Bearbeiten" name="Edit..."/>
-	<menu_item_call label="PBR-Material bearbeiten" name="EditGLTFMaterial"/>
+	<menu_item_call label="Bearbeiten" name="Edit..." forme_creator_only="true"/>
+	<menu_item_call label="PBR-Material bearbeiten" name="EditGLTFMaterial" forme_creator_only="true"/>
 	<menu_item_call label="Abnehmen" name="Detach"/>
-	<context_menu label="Speichern als" name="Export Menu">
-		<menu_item_call label="Backup" name="Backup"/>
-		<menu_item_call label="Collada" name="Collada"/>
+	<context_menu label="Speichern als" name="Export Menu" forme_creator_only="true">
+		<menu_item_call label="Backup" name="Backup" forme_creator_only="true"/>
+		<menu_item_call label="Collada" name="Collada" forme_creator_only="true"/>
 	</context_menu>
 	<menu_item_call label="Hinsetzen" name="Sit Down Here"/>
 	<menu_item_call label="Aufstehen" name="Stand Up"/>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <panel label="人群" name="people_panel">
-	<string name="no_recent_people" value="沒有最近的人。 想找人見面聊天？ 請試試[secondlife:///app/search/people 搜尋]或[secondlife:///app/worldmap 世界地圖]。" />
-	<string name="no_filtered_recent_people" value="找不到你要找的嗎？ 請試試[secondlife:///app/search/people/[SEARCH_TERM] 搜尋]。" />
-	<string name="no_one_near" value="附近無人。 想找人見面聊天？ 請試試[secondlife:///app/search/people 搜尋]或[secondlife:///app/worldmap 世界地圖]。" />
-	<string name="no_one_filtered_near" value="找不到你要找的嗎？ 請試試[secondlife:///app/search/people/[SEARCH_TERM] 搜尋]。" />
+	<string name="no_recent_people" value="沒有最近的人。 想找人見面聊天？ 請試試[fmw:///app/search/people 搜尋]或[fmw:///app/worldmap 世界地圖]。" />
+	<string name="no_filtered_recent_people" value="找不到你要找的嗎？ 請試試[fmw:///app/search/people/[SEARCH_TERM] 搜尋]。" />
+	<string name="no_one_near" value="附近無人。 想找人見面聊天？ 請試試[fmw:///app/search/people 搜尋]或[fmw:///app/worldmap 世界地圖]。" />
+	<string name="no_one_filtered_near" value="找不到你要找的嗎？ 請試試[fmw:///app/search/people/[SEARCH_TERM] 搜尋]。" />
 	<string name="no_friends_online" value="無朋友上線" />
 	<string name="no_friends" value="無朋友" />
 	<string name="no_friends_msg">
@@ -11,14 +11,14 @@
 
 尋找有更多人的地方？
 
-[secondlife:///app/floater/destinations 目的地] 包含類比網路管理員選擇的地點。
+[fmw:///app/floater/destinations 目的地] 包含類比網路管理員選擇的地點。
 
-[secondlife:///app/search/ 搜尋] 可讓您在類比網路中搜尋特定關鍵字。	
+[fmw:///app/search/ 搜尋] 可讓您在類比網路中搜尋特定關鍵字。	
 	</string>
 	<string name="no_filtered_friends_msg">
-		找不到你要找的嗎？ 請試試[secondlife:///app/search/people/[SEARCH_TERM] 搜尋]。
+		找不到你要找的嗎？ 請試試[fmw:///app/search/people/[SEARCH_TERM] 搜尋]。
 	</string>
-	<string name="no_filtered_groups_msg" value="找不到你要找的嗎？ 請試試[secondlife:///app/search/groups/[SEARCH_TERM] 搜尋]。" />
+	<string name="no_filtered_groups_msg" value="找不到你要找的嗎？ 請試試[fmw:///app/search/groups/[SEARCH_TERM] 搜尋]。" />
 	<string name="no_groups_msg">
 		您不是任何群組的成員。
 
@@ -26,7 +26,7 @@
 	</string>
 	<string name="MiniMapToolTipMsg" value="[REGION]（雙擊以開啟地圖，按下 shift 鍵拖拽來平移）" />
 	<string name="AltMiniMapToolTipMsg" value="[REGION]（雙擊以瞬間傳送，按下 shift 鍵拖拽來平移）" />
-	<string name="GroupCountWithInfo" value="您已加入 [COUNT] 個群組，還可以加入 [REMAINING] 個其他群組。 [secondlife:/// 想再多加幾個嗎？]" />
+	<string name="GroupCountWithInfo" value="您已加入 [COUNT] 個群組，還可以加入 [REMAINING] 個其他群組。 [fmw:/// 想再多加幾個嗎？]" />
 	<panel.string name="empty_list">
 		此聯絡人分組為空。
 	</panel.string>

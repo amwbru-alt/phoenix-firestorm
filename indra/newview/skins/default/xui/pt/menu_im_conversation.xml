@@ -8,7 +8,7 @@
 	<menu_item_call label="Histórico de chat..." name="chat_history"/>
 	<menu_item_call label="Aproximar" name="zoom_in"/>
 	<menu_item_call label="Mapa" name="map"/>
-	<menu_item_call label="Compartilhar" name="Share"/>
+	<menu_item_call label="Compartilhar" name="Share" forme_creator_only="true"/>
 	<menu_item_call label="Pagar" name="Pay"/>
 	<menu_item_call label="Denunciar abuso" name="Report Abuse"/>
 	<menu_item_check label="Bloquear voz" name="Block/Unblock"/>

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <floater
  positioning="centered"
- legacy_header_height="18"
+ legacy_header_height="0"
  height="600"
  layout="topleft"
  name="floater_about"
- help_topic="floater_about"
+
  save_rect="true"
  title="About [APP_NAME]"
- width="515">
+ width="515" header_height="44" header_vpad="10" header_icon="Forme_UI_Window" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD">
   
   <tab_container
     follows="all" 
@@ -21,7 +21,7 @@
     <panel
       border="true" 
       label="Info"
-      help_topic="about_support_tab"
+     
       name="support_panel">
       <text
         follows="top|left|right"
@@ -33,9 +33,8 @@
         top="16"
         width="434"
         wrap="true">
-For the latest information about Firestorm, visit 
-https://www.firestormviewer.org
-      </text>
+ForMe.World client and system information
+</text>
       <text_editor
         parse_urls="true"
         follows="top|left"
@@ -59,8 +58,8 @@ https://www.firestormviewer.org
     </panel>
     <panel
       border="true"
-      label="Linden Lab Credits"
-      help_topic="about_credits_tab"
+      label="Contributors"
+     
       name="credits_panel">
       <text
         follows="top|left|right"
@@ -71,11 +70,8 @@ https://www.firestormviewer.org
         top="16"
         width="489"
         wrap="true">
-Firestorm would not be possible without the decision from Linden Lab to make their Second Life viewer source code available.
-
-Second Life is brought to you by the Lindens, 
-with open source contributions from:
-      </text>
+Open-source contributors:
+</text>
       <text_editor
        enabled="false"
        follows="top|left"
@@ -93,8 +89,8 @@ Dummy Name replaced at run time
     <panel
       height="1250"
       border="true"
-      label="Firestorm Credits"
-      help_topic="about_fscredits_tab"
+      label="ForMe.World Credits"
+     
       name="fs_credits_panel">
         <scroll_container
          follows="all"
@@ -124,10 +120,10 @@ Dummy Name replaced at run time
                  top="0"
                  width="450"
                  wrap="true">
-Firestorm is a community development project to improve the SecondLife(tm) Viewer experience. We package contributions from various community developers along with code from Linden Lab and ourselves to bring you a quality, feature-rich viewer experience backed up by a large volunteer support team. Firestorm is brought to you by The Phoenix Firestorm Project, Inc., a non-profit organization.
+ForMe.World client
 
-The Firestorm Development Team:
-                </text>
+Upstream contributors:
+</text>
                 <text
                  enabled="false"
                  follows="top|left"
@@ -151,8 +147,8 @@ Angeldark Raymaker, Ansariel Hiller, ArminWeatherHax, Arrehn Oberlander, Ayane L
                  top_pad="8"
                  width="450"
                  wrap="true">
-Additional code generously contributed to Firestorm by:
-                </text>
+Additional open-source contributions:
+</text>
                 <text
                  enabled="false"
                  follows="top|left"
@@ -176,8 +172,8 @@ Aira Yumi, Albatroz Hird, Alexie Birman, Andromeda Rage, Angus Boyd, Animats, Ar
                  top_pad="8"
                  width="450"
                  wrap="true">
-Special thanks to our Firestorm Support Team, Beta Testers, wiki editors, educators and translators:
-                </text>
+Thanks to the support teams, testers, editors and translators:
+</text>
                 <text
                  enabled="false"
                  follows="top|left"
@@ -201,10 +197,8 @@ Afrika Burton, Albatroz Hird, Alexru Resident, alison Seesaw, AnaLucia Loon, Ana
                  top_pad="8"
                  width="450"
                  wrap="true">
-Firestorm includes Starlight, modified for Firestorm. It is provided by residents for residents, with the intention of providing an alternative, brighter, and hopefully easier to use interface. For further details see &lt;nolink&gt;https://wiki.secondlife.com/wiki/Viewer_Skins/Starlight&lt;/nolink&gt;.
-
-UI Artists and Designers:
-                </text>
+Starlight interface artwork and design contributors:
+</text>
                 <text
                  enabled="false"
                  follows="top|left"
@@ -225,7 +219,7 @@ Adam Frisby, Alexandrea Fride, DarkAgent Baphomet, David Rowe, Digital Scribe, D
     <panel
       border="true"
       label="Licenses"
-      help_topic="about_licenses_tab"
+     
       name="licenses_panel">
       <text_editor
        enabled="false"

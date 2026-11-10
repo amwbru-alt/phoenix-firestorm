@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="build options floater" title="Опции сетки">
+<floater name="build options floater" title="Опции сетки" forme_creator_only="true">
 	<spinner label="Еденицы сетки (метры)" name="GridResolution"/>
 	<spinner label="Размер сетки (метры)" name="GridDrawSize"/>
 	<spinner label="Десятичная точка" name="DecimalPrecision"/>

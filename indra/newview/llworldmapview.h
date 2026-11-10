@@ -88,6 +88,7 @@ public:
     LLVector3d      viewPosToGlobal(S32 x,S32 y);
 
     virtual void    draw();
+    void setForMeStyle(bool enabled) { mForMeStyle = enabled; }
     void            drawGenericItems(const LLSimInfo::item_info_list_t& items, LLUIImagePtr image);
     void            drawGenericItem(const LLItemInfo& item, LLUIImagePtr image);
     void            drawImage(const LLVector3d& global_pos, LLUIImagePtr image, const LLColor4& color = LLColor4::white);
@@ -137,6 +138,7 @@ public:
     void            updateVisibleBlocks();
 
 protected:
+    bool mForMeStyle = false;
     void            setDirectionPos( LLTextBox* text_box, F32 rotation );
     void            updateDirections();
 

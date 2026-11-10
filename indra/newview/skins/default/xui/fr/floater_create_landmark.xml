@@ -7,7 +7,7 @@
 	<text name="name_label" value="Nom :" />
 	<text name="folder_label" value="Emplacement :" />
 	<text name="new_folder_textbox">
-		[secondlife:/// Créer un nouveau dossier]
+		[fmw:/// Créer un nouveau dossier]
 	</text>
 	<text name="notes_label" value="Notes :" />
 	<button label="Annuler" name="cancel_btn" />

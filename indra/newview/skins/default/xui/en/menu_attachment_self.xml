@@ -48,7 +48,7 @@
      enabled="false"
      label="Edit"
      layout="topleft"
-     name="Edit...">
+     name="Edit..." forme_creator_only="true">
         <menu_item_call.on_click
          function="Object.Edit" />
         <menu_item_call.on_enable
@@ -56,7 +56,7 @@
     </menu_item_call>
     <menu_item_call
      label="Edit PBR Material"
-     name="EditGLTFMaterial">
+     name="EditGLTFMaterial" forme_creator_only="true">
         <menu_item_call.on_click
          function="Object.EditGLTFMaterial" />
         <menu_item_call.on_enable
@@ -74,10 +74,10 @@
     </menu_item_call>
     <context_menu
         label="Save as"
-        name="Export Menu">
+        name="Export Menu" forme_creator_only="true">
         <menu_item_call
             label="Backup"
-            name="Backup">
+            name="Backup" forme_creator_only="true">
             <menu_item_call.on_click
             function="Object.Export" />
             <menu_item_call.on_enable
@@ -85,7 +85,7 @@
         </menu_item_call>
         <menu_item_call
             label="Collada"
-            name="Collada">
+            name="Collada" forme_creator_only="true">
             <menu_item_call.on_click
             function="Object.ExportCollada" />
             <menu_item_call.on_enable

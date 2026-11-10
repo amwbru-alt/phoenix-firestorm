@@ -2,23 +2,23 @@
 <!-- Side tray panel -->
 <panel label="Résidents" name="people_panel">
 	<string name="no_recent_people" value="Personne ne s'est manifesté récemment."/>
-	<string name="no_filtered_recent_people" value="Vous n&apos;avez pas trouvé ce que vous cherchiez ? Essayez [secondlife:///app/search/people/[SEARCH_TERM] Rechercher]."/>
-	<string name="no_one_near" value="Personne près de vous. Pour rechercher des résidents avec qui passer du temps, voir [secondlife:///app/search/people Rechercher] ou [secondlife:///app/worldmap Carte du monde]."/>
-	<string name="no_one_filtered_near" value="Vous n&apos;avez pas trouvé ce que vous cherchiez ? Essayez [secondlife:///app/search/people/[SEARCH_TERM] Rechercher]."/>
+	<string name="no_filtered_recent_people" value="Vous n&apos;avez pas trouvé ce que vous cherchiez ? Essayez [fmw:///app/search/people/[SEARCH_TERM] Rechercher]."/>
+	<string name="no_one_near" value="Personne près de vous. Pour rechercher des résidents avec qui passer du temps, voir [fmw:///app/search/people Rechercher] ou [fmw:///app/worldmap Carte du monde]."/>
+	<string name="no_one_filtered_near" value="Vous n&apos;avez pas trouvé ce que vous cherchiez ? Essayez [fmw:///app/search/people/[SEARCH_TERM] Rechercher]."/>
 	<string name="no_friends_online" value="Pas d&apos;amis connectés"/>
 	<string name="no_friends" value="Pas d&apos;amis"/>
 	<string name="no_friends_msg">
-		Pour rechercher des amis, utilisez [secondlife:///app/search/people Rechercher] ou cliquez-droit sur le résident à ajouter comme ami.
-Pour rechercher des résidents avec qui passer du temps, utilisez [secondlife:///app/worldmap Carte du monde].
+		Pour rechercher des amis, utilisez [fmw:///app/search/people Rechercher] ou cliquez-droit sur le résident à ajouter comme ami.
+Pour rechercher des résidents avec qui passer du temps, utilisez [fmw:///app/worldmap Carte du monde].
 	</string>
 	<string name="no_filtered_friends_msg">
-		Vous n&apos;avez pas trouvé ce que vous cherchiez ? Essayez [secondlife:///app/search/people/[SEARCH_TERM] Rechercher].
+		Vous n&apos;avez pas trouvé ce que vous cherchiez ? Essayez [fmw:///app/search/people/[SEARCH_TERM] Rechercher].
 	</string>
-	<string name="no_filtered_groups_msg" value="Vous n&apos;avez pas trouvé ce que vous cherchiez ? Essayez [secondlife:///app/search/groups/[SEARCH_TERM] Rechercher]."/>
-	<string name="no_groups_msg" value="Vous souhaitez trouver des groupes à rejoindre ? Utilisez [secondlife:///app/search/groups Rechercher]."/>
+	<string name="no_filtered_groups_msg" value="Vous n&apos;avez pas trouvé ce que vous cherchiez ? Essayez [fmw:///app/search/groups/[SEARCH_TERM] Rechercher]."/>
+	<string name="no_groups_msg" value="Vous souhaitez trouver des groupes à rejoindre ? Utilisez [fmw:///app/search/groups Rechercher]."/>
 	<string name="MiniMapToolTipMsg" value="[REGION](Carte : double-clic ; Panoramique : Maj + faire glisser)"/>
 	<string name="AltMiniMapToolTipMsg" value="[REGION](Téléportation : double-clic ; Panoramique : Maj + faire glisser)"/>
-	<string name="GroupCountWithInfo" value="Vous appartenez à [COUNT] groupes, et pouvez en rejoindre [REMAINING] autres.  [secondlife:/// Vous en voulez plus ?]"/>
+	<string name="GroupCountWithInfo" value="Vous appartenez à [COUNT] groupes, et pouvez en rejoindre [REMAINING] autres.  [fmw:/// Vous en voulez plus ?]"/>
 	<panel.string name="empty_list">
 		Ce cercle est vide.
 	</panel.string>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="build options floater" title="Options de la règle">
+<floater name="build options floater" title="Options de la règle" forme_creator_only="true">
 	<spinner label="Unité (mètres)" name="GridResolution"/>
 	<spinner label="Intersections jusqu'à (mètres)" name="GridDrawSize"/>
 	<spinner label="Précision décimale" name="DecimalPrecision"/>

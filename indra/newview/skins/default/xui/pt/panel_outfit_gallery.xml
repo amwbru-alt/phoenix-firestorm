@@ -4,10 +4,10 @@
 		Foto do look "[OUTFIT_NAME]"
 	</string>
 	<string name="no_outfits_msg">
-		Você ainda não tem looks. Tente [secondlife:///app/search/all/ a busca].
+		Você ainda não tem looks. Tente [fmw:///app/search/all/ a busca].
 	</string>
 	<string name="no_matched_outfits_msg">
-		Não encontrou o que procurava? Tente [secondlife:///app/search/all/[SEARCH_TERM] a busca].
+		Não encontrou o que procurava? Tente [fmw:///app/search/all/[SEARCH_TERM] a busca].
 	</string>
 	<text name="no_outfits_txt">
 		Buscando...

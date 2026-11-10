@@ -4,10 +4,10 @@
 		Zdjecie stroju: "[OUTFIT_NAME]"
 	</string>
 	<string name="no_outfits_msg">
-		Nie ma jeszcze żadnych strojów. Spróbuj [secondlife:///app/search/all/ Wyszukiwarki]
+		Nie ma jeszcze żadnych strojów. Spróbuj [fmw:///app/search/all/ Wyszukiwarki]
 	</string>
 	<string name="no_matched_outfits_msg">
-		Nie udało Ci się znaleźć tego, czego szukasz? Spróbuj [secondlife:///app/search/all/[SEARCH_TERM] Wyszukiwarki].
+		Nie udało Ci się znaleźć tego, czego szukasz? Spróbuj [fmw:///app/search/all/[SEARCH_TERM] Wyszukiwarki].
 	</string>
 	<text name="no_outfits_txt">
 		Szukam...

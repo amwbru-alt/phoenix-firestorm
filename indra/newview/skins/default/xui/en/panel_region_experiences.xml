@@ -3,7 +3,7 @@
   border="true"
   follows="all"
   height="320"
-  help_topic="panel_region_experience_tab"
+ 
   label="Experiences"
   name="Experiences"
   layout="topleft"

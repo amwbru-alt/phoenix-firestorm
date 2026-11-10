@@ -4,10 +4,10 @@
 		「[OUTFIT_NAME]」のアウトフィットの画像
 	</string>
 	<string name="no_outfits_msg">
-		あなたは、まだアウトフィットを持っていません。[secondlife:///app/search/all/ 検索]してみてください。
+		あなたは、まだアウトフィットを持っていません。[fmw:///app/search/all/ 検索]してみてください。
 	</string>
 	<string name="no_matched_outfits_msg">
-		お探しのものが見つかりませんでしたか？[secondlife:///app/search/all/[SEARCH_TERM] 検索]してみてください。
+		お探しのものが見つかりませんでしたか？[fmw:///app/search/all/[SEARCH_TERM] 検索]してみてください。
 	</string>
 	<text name="no_outfits_txt">
 		検索しています…

@@ -9,7 +9,7 @@
 		<panel label="Chat" name="chat"/>
 		<panel label="Flyt &amp; se" name="move"/>
 		<panel label="Beskeder" name="msgs"/>
-		<panel label="Farver" name="colors"/>
+		
 		<panel label="Privatliv" name="im"/>
 		<panel label="Opsætning" name="input"/>
 		<panel label="Avanceret" name="advanced1"/>

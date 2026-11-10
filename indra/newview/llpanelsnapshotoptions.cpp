@@ -31,8 +31,6 @@
 
 #include "llfloatersnapshot.h" // FIXME: create a snapshot model
 #include "llfloaterreg.h"
-#include "llfloaterflickr.h" // <FS:Ansariel> Share to Flickr
-#include "fsfloaterprimfeed.h" // <FS:Beq> Share to Primfeed
 
 /**
  * Provides several ways to save a snapshot.
@@ -52,8 +50,6 @@ private:
     void onSaveToEmail();
     void onSaveToInventory();
     void onSaveToComputer();
-    void onSendToFlickr(); // <FS:Ansariel> Share to Flickr
-    void onSendToPrimfeed(); // <FS:Beq/> Share to Primfeed
 
     LLFloaterSnapshotBase* mSnapshotFloater;
 };
@@ -66,8 +62,6 @@ LLPanelSnapshotOptions::LLPanelSnapshotOptions()
     mCommitCallbackRegistrar.add("Snapshot.SaveToEmail",        boost::bind(&LLPanelSnapshotOptions::onSaveToEmail,     this));
     mCommitCallbackRegistrar.add("Snapshot.SaveToInventory",    boost::bind(&LLPanelSnapshotOptions::onSaveToInventory, this));
     mCommitCallbackRegistrar.add("Snapshot.SaveToComputer",     boost::bind(&LLPanelSnapshotOptions::onSaveToComputer,  this));
-    mCommitCallbackRegistrar.add("Snapshot.SendToFlickr",       boost::bind(&LLPanelSnapshotOptions::onSendToFlickr, this)); // <FS:Ansariel> Share to Flickr
-    mCommitCallbackRegistrar.add("Snapshot.SendToPrimfeed",     boost::bind(&LLPanelSnapshotOptions::onSendToPrimfeed, this)); // <FS:Beq/> Share to Primfeed
 }
 
 // virtual
@@ -112,27 +106,7 @@ void LLPanelSnapshotOptions::onSaveToComputer()
 }
 
 // <FS:Ansariel> Share to Flickr
-void LLPanelSnapshotOptions::onSendToFlickr()
-{
-    LLFloaterReg::hideInstance("snapshot");
-
-    if (auto flickr_floater = LLFloaterReg::getTypedInstance<LLFloaterFlickr>("flickr"))
-    {
-        flickr_floater->showPhotoPanel();
-    }
-    LLFloaterReg::showInstance("flickr");
-}
 // </FS:Ansariel>
 
 // <FS:Beq> Share to Primfeed
-void LLPanelSnapshotOptions::onSendToPrimfeed()
-{
-    LLFloaterReg::hideInstance("snapshot");
-
-    if (auto primfeed_floater = LLFloaterReg::getTypedInstance<FSFloaterPrimfeed>("primfeed"))
-    {
-        primfeed_floater->showPhotoPanel();
-    }
-    LLFloaterReg::showInstance("primfeed");
-}
 // </FS:Beq>

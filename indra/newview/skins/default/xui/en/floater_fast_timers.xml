@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <floater
- legacy_header_height="18"
+ legacy_header_height="0"
  can_minimize="false"
  can_tear_off="false"
  can_resize="true"
@@ -13,7 +13,7 @@
  save_visibility="false"
  single_instance="true" 
  min_width="400"
- width="700">
+ width="700" header_height="44" header_vpad="10" header_icon="Forme_UI_Window" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD">
   <string name="pause" >Pause</string>
   <string name="run">Run</string>
   <combo_box name="time_scale_combo"

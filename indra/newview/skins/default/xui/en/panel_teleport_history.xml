@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <panel name="Teleport History" bottom="0" height="400" left="0" width="313"
-     help_topic="panel_teleport_history"
+    
      border="false" follows="left|top|right|bottom">
     <accordion
      follows="left|top|right|bottom"
@@ -12,10 +12,10 @@
      width="307">
         <no_matched_tabs_text
          name="no_matched_teleports_msg"
-         value="Didn't find what you're looking for? Try [secondlife:///app/search/places/[SEARCH_TERM] Search]." />
+         value="Didn't find what you're looking for? Try [fmw:///app/search/places/[SEARCH_TERM] Search]." />
         <no_visible_tabs_text
          name="no_teleports_msg"
-         value="Teleport history is empty. Try [secondlife:///app/search/places/ Search]." />
+         value="Teleport history is empty. Try [fmw:///app/search/places/ Search]." />
 	    <accordion_tab
          layout="topleft"
          name="today"

@@ -241,5 +241,5 @@ bool FSContactsFriendsMenu::checkOption(const LLSD& userdata)
 
 void FSContactsFriendsMenu::copyURLToClipboard()
 {
-    LLUrlAction::copyURLToClipboard("secondlife:///app/agent/" + mUUIDs.front().asString() + "/mention");
+    LLUrlAction::copyURLToClipboard("fmw:///app/agent/" + mUUIDs.front().asString() + "/mention");
 }
