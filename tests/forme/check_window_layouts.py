@@ -386,6 +386,13 @@ classified_footer = child(classified, 'buttons')
 assert classified_footer.get('bottom') == '-5' and classified_footer.get('right') == '-9'
 classified_actions = child(classified_footer, 'layout_stack1')
 assert classified_actions.get('right') == '-1' and classified_actions.get('width') is None
+# IM session cannot shrink below the combined speakers and conversation columns.
+im_session = resource('floater_im_session.xml')
+assert int(im_session.get('min_width')) == 480
+im_panels = child(im_session, 'main_stack').find("./layout_panel[@name='body_panel']/layout_stack[@name='im_panels']")
+assert im_panels is not None
+assert int(child(im_panels, 'speakers_list_panel').get('width')) == 170
+assert int(child(im_panels, 'right_part_holder').get('min_width')) == 300
 # Notification Center's tab list and footer flex inside the resizable shell.
 notifications = resource('floater_notifications_tabbed.xml')
 assert int(notifications.get('min_width')) == 480
