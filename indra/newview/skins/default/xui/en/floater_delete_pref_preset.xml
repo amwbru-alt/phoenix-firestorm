@@ -1,50 +1,52 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <floater
  legacy_header_height="0"
- height="130"
+ height="190"
 
  layout="topleft"
  name="delete_pref_preset"
  positioning="centered"
  save_rect="true"
  title="Delete Pref Preset"
- width="240" header_height="44" header_vpad="10" header_icon="Forme_UI_Window" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD">
+ width="360" header_height="44" header_vpad="10" header_icon="Forme_UI_Window" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD">
 
     <string name="title_graphic">Delete Graphic Preset</string>
     <string name="title_camera">Delete Camera Preset</string>
 
     <text
      follows="top|left|right"
-     height="10"
+     height="20"
      layout="topleft"
-     left="10"
+     left="20"
      name="Preset"
-     top="30"
-     width="200">
+     top="18"
+     right="-20">
      Select a preset
     </text>
     <combo_box
      follows="top|left"
      layout="topleft"
-     left="10"
+     left="20"
      name="preset_combo"
-     top_delta="20"
-     width="220"/>
+     top="58"
+     right="-20"/>
     <button
      follows="top|left"
-     height="23"
+     height="28"
      label="Delete"
      layout="topleft"
-     top_delta="40"
-     left="10"
+     bottom="-18"
+     right="-188"
      name="delete"
      width="100"/>
     <button
      follows="top|left"
-     height="23"
+     height="28"
      label="Cancel"
      layout="topleft"
-     left_pad="20"
+     left_pad="8"
+     right="-20"
+     bottom="-18"
      name="cancel"
      width="100"/>
 </floater>
