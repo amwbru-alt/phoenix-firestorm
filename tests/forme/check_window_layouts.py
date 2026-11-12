@@ -386,6 +386,33 @@ classified_footer = child(classified, 'buttons')
 assert classified_footer.get('bottom') == '-5' and classified_footer.get('right') == '-9'
 classified_actions = child(classified_footer, 'layout_stack1')
 assert classified_actions.get('right') == '-1' and classified_actions.get('width') is None
+# Marketplace Listings content follows its resizable shell instead of retaining 420px widths.
+marketplace_window = resource('floater_marketplace_listings.xml')
+assert int(marketplace_window.get('min_width')) == 380
+marketplace_shell = child(marketplace_window, 'marketplace_listings_panel')
+assert marketplace_shell.get('width') is None and marketplace_shell.get('height') is None
+assert marketplace_shell.get('right') == '-0'
+market_background = child(marketplace_shell, 'background_panel')
+assert market_background.get('width') is None and market_background.get('height') is None
+assert market_background.get('right') == '-10' and market_background.get('bottom') == '-0'
+market_placeholder = child(market_background, 'marketplace_listings_inventory_placeholder_panel')
+assert market_placeholder.get('width') is None and market_placeholder.get('height') is None
+assert child(market_background, 'panel_marketplace_listing').get('right') == '-0'
+market_progress = child(marketplace_shell, 'initialization_progress_indicator')
+assert market_progress.get('width') is None and market_progress.get('height') is None
+market_progress_row = market_progress.find("./layout_panel[@height='24']/layout_stack[@orientation='horizontal']")
+assert market_progress_row is not None and market_progress_row.get('width') is None
+market_panel = resource('panel_marketplace_listings.xml')
+assert market_panel.get('width') is None and market_panel.get('height') is None
+assert market_panel.get('right') == '-0' and market_panel.get('bottom') == '-0'
+market_tabs_panel = child(market_panel, 'tab_container_panel')
+assert market_tabs_panel.get('width') is None and market_tabs_panel.get('right') == '-0'
+market_filter = child(market_tabs_panel, 'filter_editor')
+assert market_filter.get('width') is None and market_filter.get('right') == '-0'
+market_tabs = child(market_tabs_panel, 'marketplace_filter_tabs')
+assert market_tabs.get('width') is None and market_tabs.get('height') is None
+assert market_tabs.get('right') == '-0' and market_tabs.get('bottom') == '-0'
+assert child(market_panel, 'marketplace_drop_zone').get('width') is None
 # Contacts tabs follow the resizable shell down to the declared minimum width.
 contacts = resource('floater_fs_contacts.xml')
 assert int(contacts.get('min_width')) == 420
