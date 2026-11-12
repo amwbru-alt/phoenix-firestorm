@@ -269,6 +269,14 @@ for name in ('people_profile_btn', 'people_message_btn', 'people_friend_btn',
              'teleport_btn', 'map_btn', 'event_reminder_btn'):
     action = child(search_details, name)
     assert int(action.get('height')) == 28 and int(action.get('width')) == 112, name
+search_browser = resource('floater_search.xml')
+assert int(child(search_browser, 'external_controls').get('width')) == 770
+assert int(child(search_browser, 'statusbartext').get('width')) == 680
+assert child(search_browser, 'reload').get('left') == '75'
+assert child(search_browser, 'address').get('right') == '-26'
+market_browser = resource('floater_marketplace.xml')
+assert child(market_browser, 'reload').get('left') == '75'
+assert child(market_browser, 'address').get('right') == '-26'
 profile_texture = resource('floater_profile_texture.xml')
 assert profile_texture.get('bg_opaque_image') == 'Forme_Round_Window'
 
