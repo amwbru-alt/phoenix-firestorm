@@ -33,25 +33,28 @@
      layout="topleft"
      left="20"
      name="search_btn"
+     follows="left|bottom"
      bottom="-18"
      width="110" />
     <button
-     height="24"
+     height="28"
      label="Replace"
      label_selected="Replace"
      layout="topleft"
      left_pad="8"
      name="replace_btn"
-     top_delta="0"
+     bottom="-18"
+     follows="left|bottom"
      width="110" />
     <button
-     height="24"
+     height="28"
      label="Replace All"
      label_selected="Replace All"
      layout="topleft"
      left_pad="8"
      name="replace_all_btn"
-     top_delta="0"
+     bottom="-18"
+     follows="left|bottom"
      width="110" />
     <text
      type="string"
@@ -80,8 +83,8 @@
     <line_editor
      border_style="line"
      border_thickness="1"
-     follows="left|top"
-     height="16"
+     follows="left|top|right"
+     height="26"
      layout="topleft"
      left="100"
      name="search_text"
