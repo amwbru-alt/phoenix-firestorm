@@ -102,7 +102,7 @@
         follows="left|top"
         height="22"
         layout="topleft"
-        left="51"
+        left="75"
         name="reload"
         top_delta="0"
         width="22">
@@ -121,7 +121,7 @@
         combo_editor.select_on_focus="true"
         tool_tip="Enter URL here"
         top_delta="0"
-        width="672">
+        right="-26">
         <combo_box.commit_callback
           function="WebContent.EnterAddress" />
       </combo_box>
@@ -163,7 +163,7 @@
       name="external_controls"
       top_delta="0"
       auto_resize="true"
-      width="585">
+      width="770">
       <web_browser
         bottom="-2"
         follows="all"
@@ -187,7 +187,7 @@
         parse_urls="false"
         text_color="0.4 0.4 0.4 1"
         top_pad="3"
-        width="495"/>
+        width="680"/>
       <progress_bar
         color_bar="0.3 1.0 0.3 1"
         follows="bottom|right"
