@@ -104,6 +104,8 @@ profile_permissions = resource('floater_profile_permissions.xml')
 assert profile_permissions.get('bg_opaque_image') == 'Forme_Round_Window'
 assert all(int(child(profile_permissions, name).get('width')) == 340
            for name in ('online_check', 'map_check', 'objects_check'))
+experience_picker = resource('floater_experience_search.xml')
+assert int(experience_picker.get('width')) >= int(experience_picker.get('min_width'))
 group_titles = resource('floater_fs_group_titles.xml')
 assert int(group_titles.get('width')) == 600
 assert int(group_titles.get('height')) == 420
