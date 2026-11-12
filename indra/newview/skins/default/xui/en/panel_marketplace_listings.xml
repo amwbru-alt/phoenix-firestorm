@@ -4,14 +4,14 @@
   name="Marketplace Panel"
   follows="all"
   layout="topleft"
-  width="308"
-  height="440">
+  width="420"
+  height="555">
   <panel
     name="tool_panel"
     follows="left|top|right"
     layout="topleft"
     height="30"
-    width="308"
+    width="420"
     top="0"
     left="0">
     <menu_button
@@ -47,16 +47,18 @@
       layout="topleft"
       follows="top|right"
       width="110"
-      height="26"
-      left_pad="130"/>
+      height="28"
+      right="-2"/>
   </panel>
   <panel
     name="tab_container_panel"
     follows="all"
     layout="topleft"
     default_tab_group="1"
-    width="308"
-    height="350">
+    width="420"
+    height="480"
+    top="30"
+    bottom="-45">
   <filter_editor
     text_pad_left="10"
     follows="left|top|right"
@@ -67,7 +69,7 @@
     max_length_chars="300"
     name="filter_editor"
     top="0"
-    width="308" />
+    width="420" />
   <tab_container
     name="marketplace_filter_tabs"
     follows="all"
@@ -75,8 +77,9 @@
     top="30"
     left="0"
     top_pad="0"
-    width="308"
-    height="320"
+    width="420"
+    height="450"
+    bottom="-4"
     halign="center"
     tab_height="30"
     tab_group="1"
@@ -89,8 +92,9 @@
       mouse_opaque="true"
       follows="bottom|left|right"
       left="2"
-      width="306"
+      width="416"
       height="40"
+      bottom="-4"
       background_visible="true"
       background_opaque="true"
       bg_alpha_image="none"
@@ -107,7 +111,7 @@
           top="13"
           height="20"
           left="2"
-          width="306"
+          width="412"
           halign="center"
           font_shadow="hard"
           valign="top">
