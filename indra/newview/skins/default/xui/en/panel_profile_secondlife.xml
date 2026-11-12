@@ -49,12 +49,12 @@
   <string name="FSGW" value=" Gateway" />
   <string name="texture_picker_label" value="Profile Picture" />
   <text name="name_label" value="Name:" height="24" width="64" follows="left|top" layout="topleft" halign="right" left="12" top="14" />
-  <panel name="name_holder" height="32" follows="left|top|right" layout="topleft" bg_visible="false" border_visible="false" left="84" top="10" width="478">
+  <panel name="name_holder" height="32" follows="left|top|right" layout="topleft" bg_visible="false" border_visible="false" left="84" top="10" width="430">
     <view_border left="0" right="-1" height="16" top="0" layout="topleft" follows="left|top|right" name="info_border" bevel_style="in" />
     <text_editor name="complete_name" value="(loading...)" top="0" left="2" right="-1" height="16" follows="left|top|right" layout="topleft" allow_scroll="false" bg_visible="false" border_visible="false" h_pad="1" v_pad="2" enabled="false" max_length="254" />
     <menu_button name="copy_btn" tool_tip="Copy options" height="16" right="-2" top="0" width="16" image_selected="Copy" image_unselected="Copy" image_hover_selected="CopyBright" image_hover_unselected="CopyBright" hover_glow_amount="0.33" chrome="true" tab_stop="false" follows="top|right" layout="topleft" />
   </panel>
-  <button height="28" width="28" layout="topleft" follows="top|right" name="set_name" image_overlay="Edit_Wrench" tool_tip="Set Display Name" visible="false" enabled="false" left="566" top="12" />
+  <button height="28" width="28" layout="topleft" follows="top|right" name="set_name" image_overlay="Edit_Wrench" tool_tip="Set Display Name" visible="false" enabled="false" left="520" top="12" />
   <icon tool_tip="Friend can see my online status" mouse_opaque="true" name="can_see_online" image_name="Profile_Perm_Online_Enabled" layout="topleft" follows="right|top" interactable="true" top_delta="-1" right="-61" height="24" width="24" left_pad="2" />
   <icon tool_tip="Friend can not see my online status" mouse_opaque="true" name="cant_see_online" image_name="Profile_Perm_Online_Disabled" layout="topleft" follows="right|top" interactable="true" top_delta="0" right="-61" height="24" width="24" left_pad="2" />
   <icon tool_tip="Friend can see me on map" mouse_opaque="true" name="can_see_on_map" image_name="Profile_Perm_Find_Enabled" layout="topleft" follows="right|top" interactable="true" top_delta="0" right="-30" height="24" width="24" left_pad="2" />
@@ -104,9 +104,9 @@
   </layout_stack>
   <text name="About:" value="About:" height="22" width="64" follows="left|top" layout="topleft" halign="right" left="12" top="278" />
   <button name="btn_preview" tool_tip="Toggle preview of your profile 'about' section" height="24" width="24" follows="left|top" layout="topleft" image_overlay="Profile_Group_Visibility_On" is_toggle="true" enabled="false" visible="false" left="80" top="276" />
-  <icon name="forme_profile_about_card" layout="topleft" follows="all" left="12" top="310" width="482" height="124" image_name="Forme_UI_Card" mouse_opaque="false" />
-  <view_border height="124" layout="topleft" follows="all" name="info_border_sl_description_edit" bevel_style="in" left="12" top="310" width="482" visible="false" />
-  <text_editor name="sl_description_edit" trusted_content="false" always_show_icons="true" enabled="false" height="108" follows="all" layout="topleft" bg_readonly_color="Transparent" border_visible="false" font="SansSerifSmall" h_pad="3" max_length="65000" parse_urls="true" word_wrap="true" left="22" top="318" width="462" />
+  <icon name="forme_profile_about_card" layout="topleft" follows="left|top|right" left="12" top="310" width="482" height="124" image_name="Forme_UI_Card" mouse_opaque="false" />
+  <view_border height="124" layout="topleft" follows="left|top|right" name="info_border_sl_description_edit" bevel_style="in" left="12" top="310" width="482" visible="false" />
+  <text_editor name="sl_description_edit" trusted_content="false" always_show_icons="true" enabled="false" height="108" follows="left|top|right" layout="topleft" bg_readonly_color="Transparent" border_visible="false" font="SansSerifSmall" h_pad="6" max_length="65000" parse_urls="true" word_wrap="true" left="22" top="318" width="462" />
   <text name="Groups:" value="Groups:" height="24" width="96" follows="left|bottom" layout="topleft" halign="right" left="12" top="454" />
   <button name="group_invite" label="+" tool_tip="Invite to Group" height="28" width="28" follows="left|bottom" layout="topleft" label_selected="+" left="466" top="450" />
   <group_list name="group_list" height="100" follows="left|bottom|right" layout="topleft" border_visible="true" for_agent="false" left="12" top="488" width="482" />
@@ -116,11 +116,11 @@
       Drop inventory item here.
     </text>
   <layout_stack name="buttonstack" height="352" follows="right|top" layout="topleft" orientation="vertical" left="510" top="278" width="202">
-    <layout_panel name="left_buttonstack" left="2" right="-2" height="88" follows="all" layout="topleft" user_resize="false" auto_resize="false" width="202">
+    <layout_panel name="left_buttonstack" left="2" right="-2" height="84" follows="all" layout="topleft" user_resize="false" auto_resize="false" width="202">
       <button name="show_on_map_btn" label="Find on Map" tool_tip="Locate the Resident on the map" height="36" follows="left|right|top" layout="topleft" label_selected="Find on Map" left="0" top="0" width="202" image_overlay="Forme_UI_Map" image_overlay_alignment="left" pad_left="10" halign="left" />
       <button name="pay" label="Pay" tool_tip="Pay money to the Resident" height="36" follows="left|right|top" layout="topleft" label_selected="Pay" left="0" top="44" width="202" image_overlay="Forme_UI_Database" image_overlay_alignment="left" pad_left="10" halign="left" />
     </layout_panel>
-    <layout_panel name="middle_buttonstack" left="2" right="-2" follows="all" layout="topleft" user_resize="false" auto_resize="false" height="88" width="202">
+    <layout_panel name="middle_buttonstack" left="2" right="-2" follows="all" layout="topleft" user_resize="false" auto_resize="false" height="84" width="202">
       <button name="teleport" label="Offer Teleport" tool_tip="Offer a teleport to the Resident" height="36" follows="left|right|top" layout="topleft" label_selected="Offer Teleport" left="0" top="0" width="202" image_overlay="Forme_UI_Pin" image_overlay_alignment="left" pad_left="10" halign="left" />
       <button name="im" label="Instant Message" tool_tip="Open instant message session" height="36" follows="left|right|top" layout="topleft" label_selected="Instant Message" left="0" top="44" width="202" image_overlay="Forme_UI_Chat" image_overlay_alignment="left" pad_left="10" halign="left" />
     </layout_panel>
