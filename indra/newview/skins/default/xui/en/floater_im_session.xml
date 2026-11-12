@@ -183,7 +183,7 @@
             </layout_panel>
             <layout_panel
              name="body_panel"
-             height="235">
+             height="300">
                 <layout_stack
                  default_tab_group="2"
                  drag_handle_gap="6"
@@ -200,16 +200,16 @@
                  left="0">
                     <layout_panel
                      name="speakers_list_panel"
-                     expanded_min_dim="115"
+                     expanded_min_dim="140"
                      min_dim="0"
-                     width="150" 
+                     width="170" 
                      user_resize="true"
                      auto_resize="false" />
                     <layout_panel
                      default_tab_group="3"
                      tab_group="2"
                      name="right_part_holder"
-                     min_width="207">
+                     min_width="300">
                         <layout_stack
                          animate="true" 
                          follows="all"
