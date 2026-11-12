@@ -84,7 +84,6 @@
      top="23" />
 	<avatar_list
      left="6"
-     width="255"
      top="53"
      bottom="-29"
 	 follows="all"
@@ -97,7 +96,7 @@
      allow_select="true"
 	 multi_select="true"
      keep_one_selected="false"
-     name="contact_list" />
+     name="contact_list"  right="-92" />
     <!-- Action buttons -->
 	<button
 	 top="1"
