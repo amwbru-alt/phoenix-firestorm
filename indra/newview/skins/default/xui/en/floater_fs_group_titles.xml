@@ -19,23 +19,24 @@
 
 	<filter_editor
 	 follows="left|top|right"
-	 height="23"
+	 height="28"
 	 layout="topleft"
-	 left="5"
+	 left="16"
 	 label="Filter Group Titles"
 	 max_length_bytes="20"
 	 name="filter_input"
-	 top="5"
-	 right="-5" />
+	 top="14"
+	 right="-16" />
 
 	<scroll_list
 	 name="title_list"
 	 follows="all"
 	 draw_heading="true"
 	 layout="topleft"
-	 right="-5"
-	 left="5"
-	 height="330">
+	 right="-16"
+	 left="16"
+	 top="52"
+	 bottom="-88">
 		<column
 		 name="default_marker"
 		 label="D"
@@ -75,18 +76,19 @@
 	 label="This Region"
 	 font="SansSerifSmall"
 	 tool_tip="Assign the region you are currently in"
-	 height="22"
-	 width="85"
-	 left="5"
+	 height="28"
+	 width="104"
+	 left="16"
+	 bottom="-52"
 	 follows="left|bottom"/>
 	<button
 	 name="btnSetRegionManual"
 	 label="Type Region"
 	 font="SansSerifSmall"
 	 tool_tip="Manually enter a region name to assign"
-	 height="22"
-	 width="105"
-	 left_pad="1"
+	 height="28"
+	 width="112"
+	 left_pad="8"
 	 top_delta="0"
 	 follows="left|bottom"/>
 	<button
@@ -94,9 +96,9 @@
 	 label="Clear Region"
 	 font="SansSerifSmall"
 	 tool_tip="Remove region assignment from the selected title"
-	 height="22"
-	 width="95"
-	 left_pad="1"
+	 height="28"
+	 width="112"
+	 left_pad="8"
 	 top_delta="0"
 	 follows="left|bottom"/>
 
@@ -105,49 +107,49 @@
 	 label="Info"
 	 tool_tip="Show info about group of selected title"
 	 font="SansSerifSmall"
-	 height="22"
-	 width="75"
-	 right="-131"
-	 top_delta="0"
+	 height="28"
+	 width="76"
+	 right="-220"
+	 bottom="-52"
 	 follows="right|bottom"/>
 	<button
 	 name="btnActivate"
 	 label="Activate"
 	 tool_tip="Activate selected group title"
 	 font="SansSerifSmall"
-	 height="22"
+	 height="28"
 	 width="100"
-	 right="-30"
-	 top_delta="0"
+	 right="-112"
+	 bottom="-52"
 	 follows="right|bottom"/>
 	<button
 	 image_overlay="Refresh_Off"
 	 tool_tip="Refresh list of available group titles"
 	 name="btnRefresh"
-	 height="22"
-	 width="25"
-	 right="-4"
-	 top_delta="0"
+	 height="28"
+	 width="28"
+	 right="-72"
+	 bottom="-52"
 	 follows="right|bottom"/>
 
 	<check_box
 	 follows="left|bottom"
 	 height="16"
 	 layout="topleft"
-	 left="5"
-	 top_pad="6"
+	 left="16"
+	 bottom="-20"
 	 name="use_default_title"
 	 label="Use default title in regions without assignment"
 	 tool_tip="When you enter a region with no title assignment, switch to the title marked as default. A default of &lt;No group title&gt; wears no tag."
-	 width="350" />
+	 width="390" />
 	<button
 	 name="btnSetDefault"
 	 label="Set as default"
 	 font="SansSerifSmall"
 	 tool_tip="Mark the selected title as the default for regions without an assignment"
-	 height="22"
-	 width="130"
-	 right="-4"
-	 top_delta="-3"
+	 height="28"
+	 width="140"
+	 right="-16"
+	 bottom="-18"
 	 follows="right|bottom"/>
 </floater>
