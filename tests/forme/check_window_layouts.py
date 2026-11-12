@@ -379,4 +379,40 @@ classified_footer = child(classified, 'buttons')
 assert classified_footer.get('bottom') == '-5' and classified_footer.get('right') == '-9'
 classified_actions = child(classified_footer, 'layout_stack1')
 assert classified_actions.get('right') == '-1' and classified_actions.get('width') is None
+# Group Profile tabs fit the 313px content column without fixed-width overflow.
+group_general = resource('panel_group_general.xml')
+assert int(group_general.get('width')) == 313
+general_content = child(group_general, 'group_general_panel')
+assert general_content.get('right') == '-3' and general_content.get('width') is None
+for name in ('info_border', 'group_key', 'founder_name'):
+    control = child(general_content, name)
+    assert control.get('right') == '-75' and control.get('width') is None, name
+assert child(general_content, 'join_cost_text').get('right') == '-70'
+general_preferences = child(general_content, 'group_preferences_layout')
+assert general_preferences.get('right') == '-1'
+assert int(child(general_preferences, 'user_preferences_container').get('width')) == 150
+assert int(child(general_preferences, 'group_preferences_container').get('width')) == 150
+for name in ('list_groups_in_profile', 'receive_notices', 'receive_chat'):
+    assert int(child(general_content, name).get('width')) == 140, name
+group_roles = resource('panel_group_roles.xml')
+assert int(group_roles.get('width')) == 313
+for name, width in (('member_invite', 70), ('member_eject', 60),
+                    ('member_ban', 90), ('export_list', 70),
+                    ('role_create', 88), ('role_copy', 88), ('role_delete', 88)):
+    assert int(child(group_roles, name).get('width')) == width, name
+assert child(group_roles, 'banlist_sub_tab').get('width') is None
+assert child(group_roles, 'role_description').get('width') is None
+group_notices = resource('panel_group_notices.xml')
+assert int(group_notices.get('width')) == 313
+notice_composer = child(group_notices, 'panel_create_new_notice')
+assert notice_composer.get('right') == '-1' and notice_composer.get('width') is None
+for name in ('create_subject', 'create_message', 'create_inventory_name', 'drop_target'):
+    control = child(notice_composer, name)
+    assert control.get('right') == '-4' and control.get('width') is None, name
+notice_history = child(group_notices, 'panel_view_past_notice')
+assert notice_history.get('right') == '-1' and notice_history.get('width') is None
+for name in ('lbl7', 'view_subject', 'view_message', 'view_inventory_name'):
+    assert child(notice_history, name).get('right') == '-10', name
+group_land = resource('panel_group_land_money.xml')
+assert int(group_land.get('width')) == 313
 print(f'PASS {framed} registered frames, {len(aliases)} line-icon aliases, native category/tab navigation and retained joystick classes')
