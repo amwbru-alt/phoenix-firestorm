@@ -110,6 +110,26 @@ group_titles = resource('floater_fs_group_titles.xml')
 assert int(group_titles.get('width')) == 600
 assert int(group_titles.get('height')) == 420
 assert int(child(group_titles, 'title_list').get('height')) == 330
+# Dialog controls use explicit anchors and balanced action rows, not only larger shells.
+assert child(group_titles, 'filter_input').get('left') == '16'
+assert child(group_titles, 'filter_input').get('right') == '-16'
+assert child(group_titles, 'title_list').get('top') == '52'
+assert child(group_titles, 'title_list').get('bottom') == '-88'
+for name in ('btnSetRegion', 'btnSetRegionManual', 'btnClearRegion',
+             'btnInfo', 'btnActivate', 'btnRefresh'):
+    assert child(group_titles, name).get('bottom') == '-52', name
+assert child(group_titles, 'use_default_title').get('bottom') == '-20'
+assert child(group_titles, 'btnSetDefault').get('bottom') == '-18'
+contact_add = resource('floater_fs_contact_add.xml')
+assert int(contact_add.get('width')) == 380 and int(contact_add.get('height')) == 190
+assert child(contact_add, 'textfield').get('right') == '-20'
+assert int(child(contact_add, 'contact_sets').get('width')) == 300
+display_name = resource('floater_display_name.xml')
+assert int(display_name.get('width')) == 500
+assert int(child(display_name, 'display_name_editor').get('width')) == 460
+assert int(child(display_name, 'display_name_confirm').get('width')) == 460
+assert all(int(child(display_name, name).get('height')) == 28
+           for name in ('reset_btn', 'save_btn', 'cancel_btn'))
 profile_texture = resource('floater_profile_texture.xml')
 assert profile_texture.get('bg_opaque_image') == 'Forme_Round_Window'
 
