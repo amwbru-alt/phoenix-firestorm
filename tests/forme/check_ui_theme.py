@@ -17,7 +17,7 @@ for name, expected in contract['resources'].items():
         # Camera style parameter blocks configure existing constructor-owned
         # children; they do not add controls or change native command bindings.
         if name == 'floater_camera.xml' and node.tag in ('panel_camera_item.text', 'panel_camera_item.icon_over', 'panel_camera_item.icon_selected'):
-            assert not any(key in node.attrib for key in contract['attributes'])
+            assert not any(key in node.attrib for key in contract['attributes'] if key != 'value')
             return []
         if node.get('name') == 'item_scroll_container' or node.get('name', '').startswith('forme_layout_'):
             return [row for child in node for row in semantic_nodes(child)]
@@ -48,7 +48,7 @@ for node in rounded:
 status = (ROOT / 'indra/newview/llstatusbar.cpp').read_text()
 assert 'gMenuBarView->setVisible(full_menu)' in status
 profile = ET.parse(BASE / 'xui/en/menu_forme_profile.xml').getroot()
-assert profile.find(".//*[@parameter='ForMeShowFullMenu']") is not None
+assert ET.parse(BASE / "xui/en/floater_preferences.xml").find(".//*[@control_name='ForMeShowFullMenu']") is not None
 native = ET.parse(BASE / 'xui/en/menu_fs_chat_options.xml').getroot()
 compact = ET.parse(BASE / 'xui/en/menu_forme_chat_actions.xml').getroot()
 for item in native:

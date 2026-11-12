@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<floater legacy_header_height="0" header_height="28" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" right="-460" bottom="-50" can_dock="false" can_minimize="false" can_resize="false" can_close="false" chrome="true" follows="bottom" height="112" min_height="140" layout="topleft" name="camera_floater" title="Camera" save_rect="true" save_visibility="true" show_title="true" single_instance="true" width="384" min_width="384" header_vpad="3" header_icon="Forme_UI_Camera" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD">
+<floater legacy_header_height="0" header_height="28" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" right="-460" bottom="-50" can_dock="false" can_minimize="false" can_resize="false" can_close="false" chrome="true" follows="bottom" height="344" min_height="372" layout="topleft" name="camera_floater" title="Camera and movement" save_rect="true" save_visibility="true" show_title="true" single_instance="true" width="520" min_width="520" header_vpad="3" header_icon="Forme_UI_Camera" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD" rect_control_suffix="_forme_camera_v3">
   <floater.string name="rotate_tooltip">
         Rotate Camera Around Focus
   </floater.string>
@@ -13,32 +13,32 @@
         View Object
   </floater.string>
   <string name="inactive_combo_text">Use preset</string>
-  <panel follows="top|left" height="28" layout="topleft" name="buttons_panel" width="360" left="12" top="8">
-    <panel_camera_item name="front_view" tool_tip="Front View" width="48" left="0" top="0" height="28" layout="topleft">
+  <panel follows="top|left" height="36" layout="topleft" name="buttons_panel" width="488" left="16" top="12">
+    <panel_camera_item name="front_view" tool_tip="Front View" width="156" left="0" top="0" height="36" layout="topleft">
       <panel_camera_item.mousedown_callback function="CameraPresets.ChangeView" parameter="Front View" />
-      <panel_camera_item.picture image_name="Forme_UI_Camera" width="22" height="22" left="13" top="3" color="0.94 0.92 0.95 1" />
-      <panel_camera_item.selected_picture image_name="Forme_UI_Camera" width="22" height="22" left="13" top="3" color="0.79 0.61 0.93 1" />
-      <panel_camera_item.text visible="false" />
-      <panel_camera_item.icon_over left="0" top="0" width="48" height="28" layout="topleft" />
-      <panel_camera_item.icon_selected left="0" top="0" width="48" height="28" layout="topleft" />
+      <panel_camera_item.picture image_name="Forme_UI_Camera" width="22" height="22" left="12" top="7" color="0.94 0.92 0.95 1" />
+      <panel_camera_item.selected_picture image_name="Forme_UI_Camera" width="22" height="22" left="12" top="7" color="0.79 0.61 0.93 1" />
+      <panel_camera_item.text visible="true" left="42" top="9" width="108" height="22" value="Front" />
+      <panel_camera_item.icon_over left="0" top="0" width="156" height="36" layout="topleft" />
+      <panel_camera_item.icon_selected left="0" top="0" width="156" height="36" layout="topleft" />
     </panel_camera_item>
-    <panel_camera_item name="group_view" tool_tip="Side View" width="48" left="52" top="0" height="28" layout="topleft">
+    <panel_camera_item name="group_view" tool_tip="Side View" width="156" left="164" top="0" height="36" layout="topleft">
       <panel_camera_item.mousedown_callback function="CameraPresets.ChangeView" parameter="Side View" />
-      <panel_camera_item.picture image_name="Forme_UI_People" width="22" height="22" left="13" top="3" color="0.94 0.92 0.95 1" />
-      <panel_camera_item.selected_picture image_name="Forme_UI_People" width="22" height="22" left="13" top="3" color="0.79 0.61 0.93 1" />
-      <panel_camera_item.text visible="false" />
-      <panel_camera_item.icon_over left="0" top="0" width="48" height="28" layout="topleft" />
-      <panel_camera_item.icon_selected left="0" top="0" width="48" height="28" layout="topleft" />
+      <panel_camera_item.picture image_name="Forme_UI_People" width="22" height="22" left="12" top="7" color="0.94 0.92 0.95 1" />
+      <panel_camera_item.selected_picture image_name="Forme_UI_People" width="22" height="22" left="12" top="7" color="0.79 0.61 0.93 1" />
+      <panel_camera_item.text visible="true" left="42" top="9" width="108" height="22" value="Side" />
+      <panel_camera_item.icon_over left="0" top="0" width="156" height="36" layout="topleft" />
+      <panel_camera_item.icon_selected left="0" top="0" width="156" height="36" layout="topleft" />
     </panel_camera_item>
-    <panel_camera_item name="rear_view" tool_tip="Rear View" width="48" left="104" top="0" height="28" layout="topleft">
+    <panel_camera_item name="rear_view" tool_tip="Rear View" width="156" left="328" top="0" height="36" layout="topleft">
       <panel_camera_item.mousedown_callback function="CameraPresets.ChangeView" parameter="Rear View" />
-      <panel_camera_item.picture image_name="Forme_UI_Profile" width="22" height="22" left="13" top="3" color="0.94 0.92 0.95 1" />
-      <panel_camera_item.selected_picture image_name="Forme_UI_Profile" width="22" height="22" left="13" top="3" color="0.79 0.61 0.93 1" />
-      <panel_camera_item.text visible="false" />
-      <panel_camera_item.icon_over left="0" top="0" width="48" height="28" layout="topleft" />
-      <panel_camera_item.icon_selected left="0" top="0" width="48" height="28" layout="topleft" />
+      <panel_camera_item.picture image_name="Forme_UI_Profile" width="22" height="22" left="12" top="7" color="0.94 0.92 0.95 1" />
+      <panel_camera_item.selected_picture image_name="Forme_UI_Profile" width="22" height="22" left="12" top="7" color="0.79 0.61 0.93 1" />
+      <panel_camera_item.text visible="true" left="42" top="9" width="108" height="22" value="Back" />
+      <panel_camera_item.icon_over left="0" top="0" width="156" height="36" layout="topleft" />
+      <panel_camera_item.icon_selected left="0" top="0" width="156" height="36" layout="topleft" />
     </panel_camera_item>
-    <panel_camera_item name="tpp_view" tool_tip="TPP View" width="48" left="156" top="0" height="28" layout="topleft">
+    <panel_camera_item name="tpp_view" tool_tip="TPP View" width="48" left="156" top="0" height="28" layout="topleft" visible="false">
       <panel_camera_item.mousedown_callback function="CameraPresets.ChangeView" parameter="TPP View" />
       <panel_camera_item.picture image_name="Forme_UI_Profile" width="22" height="22" left="13" top="3" color="0.94 0.92 0.95 1" />
       <panel_camera_item.selected_picture image_name="Forme_UI_Profile" width="22" height="22" left="13" top="3" color="0.79 0.61 0.93 1" />
@@ -46,7 +46,7 @@
       <panel_camera_item.icon_over left="0" top="0" width="48" height="28" layout="topleft" />
       <panel_camera_item.icon_selected left="0" top="0" width="48" height="28" layout="topleft" />
     </panel_camera_item>
-    <panel_camera_item name="object_view" tool_tip="Object View" width="48" left="208" top="0" height="28" layout="topleft">
+    <panel_camera_item name="object_view" tool_tip="Object View" width="48" left="208" top="0" height="28" layout="topleft" visible="false">
       <panel_camera_item.mousedown_callback function="CameraPresets.ChangeView" parameter="object_view" />
       <panel_camera_item.picture image_name="Forme_UI_Cube" width="22" height="22" left="13" top="3" color="0.94 0.92 0.95 1" />
       <panel_camera_item.selected_picture image_name="Forme_UI_Cube" width="22" height="22" left="13" top="3" color="0.79 0.61 0.93 1" />
@@ -54,7 +54,7 @@
       <panel_camera_item.icon_over left="0" top="0" width="48" height="28" layout="topleft" />
       <panel_camera_item.icon_selected left="0" top="0" width="48" height="28" layout="topleft" />
     </panel_camera_item>
-    <panel_camera_item name="mouselook_view" tool_tip="Mouselook View" width="48" left="260" top="0" height="28" layout="topleft">
+    <panel_camera_item name="mouselook_view" tool_tip="Mouselook View" width="48" left="260" top="0" height="28" layout="topleft" visible="false">
       <panel_camera_item.mousedown_callback function="CameraPresets.ChangeView" parameter="mouselook_view" />
       <panel_camera_item.picture image_name="Forme_UI_Eye" width="22" height="22" left="13" top="3" color="0.94 0.92 0.95 1" />
       <panel_camera_item.selected_picture image_name="Forme_UI_Eye" width="22" height="22" left="13" top="3" color="0.79 0.61 0.93 1" />
@@ -62,7 +62,7 @@
       <panel_camera_item.icon_over left="0" top="0" width="48" height="28" layout="topleft" />
       <panel_camera_item.icon_selected left="0" top="0" width="48" height="28" layout="topleft" />
     </panel_camera_item>
-    <panel_camera_item name="reset_view" tool_tip="Reset view" width="48" left="312" top="0" height="28" layout="topleft">
+    <panel_camera_item name="reset_view" tool_tip="Reset view" width="48" left="312" top="0" height="28" layout="topleft" visible="false">
       <panel_camera_item.mousedown_callback function="CameraPresets.ChangeView" parameter="reset_view" />
       <panel_camera_item.picture image_name="Forme_UI_Rotate" width="22" height="22" left="13" top="3" color="0.94 0.92 0.95 1" />
       <panel_camera_item.selected_picture image_name="Forme_UI_Rotate" width="22" height="22" left="13" top="3" color="0.79 0.61 0.93 1" />
@@ -71,52 +71,59 @@
       <panel_camera_item.icon_selected left="0" top="0" width="48" height="28" layout="topleft" />
     </panel_camera_item>
   </panel>
-  <panel border="false" width="150" class="camera_zoom_panel" height="60" layout="topleft" mouse_opaque="false" name="zoom" follows="left|top" left="12" top="44">
-    <layout_stack enabled="true" height="60" mouse_opaque="true" name="camera_view_layout_stack" orientation="horizontal" follows="all" left="0" top="0" width="150" layout="topleft">
-      <layout_panel name="camera_rotate_layout_panel" user_resize="false" height="60" width="54" auto_resize="false">
-        <joystick_rotate follows="left|top" height="54" width="54" image_selected="Cam_Rotate_In" image_unselected="Cam_Rotate_Out" layout="topleft" left="0" mouse_opaque="false" name="cam_rotate_stick" quadrant="left" scale_image="true" sound_flags="3" visible="true" tool_tip="Orbit camera around focus" held_down_delay.seconds="0.0" top="0" />
-        <button follows="bottom|left" width="12" height="12" image_selected="VirtualTrackball_Rotate_Left_Active" image_unselected="VirtualTrackball_Rotate_Left" layout="topleft" top_delta="42" left_delta="0" name="roll_left" tool_tip="Roll camera Left">
+  <panel border="false" width="488" class="camera_zoom_panel" height="136" layout="topleft" mouse_opaque="false" name="zoom" follows="left|top" left="16" top="62">
+    <layout_stack enabled="true" height="136" mouse_opaque="true" name="camera_view_layout_stack" orientation="horizontal" follows="all" left="0" top="0" width="488" layout="topleft">
+      <layout_panel name="camera_rotate_layout_panel" user_resize="false" height="136" width="156" auto_resize="false" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
+        <text name="forme_camera_rotate_layout_panel_label" layout="topleft" left="0" top="0" width="156" height="22" halign="center" value="Rotation" />
+        <joystick_rotate follows="left|top" height="96" width="96" image_selected="Cam_Rotate_In" image_unselected="Cam_Rotate_Out" layout="topleft" left="30" mouse_opaque="false" name="cam_rotate_stick" quadrant="left" scale_image="true" sound_flags="3" visible="true" tool_tip="Orbit camera around focus" held_down_delay.seconds="0.0" top="28" forme_ring="true" />
+        <button follows="bottom|left" width="12" height="12" image_selected="VirtualTrackball_Rotate_Left_Active" image_unselected="VirtualTrackball_Rotate_Left" layout="topleft" name="roll_left" tool_tip="Roll camera Left" left="30" top="112">
           <commit_callback function="Camera.roll_left" />
           <mouse_held_callback function="Camera.roll_left" />
         </button>
-        <button follows="bottom|right" width="12" height="12" image_selected="VirtualTrackball_Rotate_Right_Active" image_unselected="VirtualTrackball_Rotate_Right" layout="topleft" top_delta="0" left_delta="42" name="roll_right" tool_tip="Roll camera Right">
+        <button follows="bottom|right" width="12" height="12" image_selected="VirtualTrackball_Rotate_Right_Active" image_unselected="VirtualTrackball_Rotate_Right" layout="topleft" name="roll_right" tool_tip="Roll camera Right" left="114" top="112">
           <commit_callback function="Camera.roll_right" />
           <mouse_held_callback function="Camera.roll_right" />
         </button>
       </layout_panel>
-      <layout_panel name="camera_zoom_layout_panel" auto_resize="true" user_resize="false" height="60" width="34">
-        <button follows="top|left" height="15" image_disabled="AddItem_Disabled" image_selected="AddItem_Press" image_unselected="AddItem_Off" layout="topleft" name="zoom_plus_btn" scale_image="true" width="24" left="3" top="0">
+      <layout_panel name="camera_zoom_layout_panel" auto_resize="false" user_resize="false" height="136" width="156" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
+        <text name="forme_camera_zoom_layout_panel_label" layout="topleft" left="0" top="0" width="156" height="22" halign="center" value="Zoom" />
+        <button follows="top|left" height="28" image_disabled="AddItem_Disabled" image_selected="AddItem_Press" image_unselected="AddItem_Off" layout="topleft" name="zoom_plus_btn" scale_image="true" width="36" left="60" top="28">
           <commit_callback function="Zoom.plus" />
           <mouse_held_callback function="Zoom.plus" />
         </button>
-        <slider_bar height="26" layout="topleft" name="zoom_slider" orientation="vertical" follows="top|left|bottom" tool_tip="Zoom camera toward focus" min_val="0" max_val="1" width="16" left="7" top="17">
+        <slider_bar height="38" layout="topleft" name="zoom_slider" orientation="vertical" follows="top|left|bottom" tool_tip="Zoom camera toward focus" min_val="0" max_val="1" width="16" left="70" top="60">
           <commit_callback function="Slider.value_changed" />
         </slider_bar>
-        <button follows="bottom|left" height="15" image_disabled="MinusItem_Disabled" image_selected="MinusItem_Press" image_unselected="MinusItem_Off" layout="topleft" name="zoom_minus_btn" scale_image="true" width="24" left="3" top="45">
+        <button follows="bottom|left" height="28" image_disabled="MinusItem_Disabled" image_selected="MinusItem_Press" image_unselected="MinusItem_Off" layout="topleft" name="zoom_minus_btn" scale_image="true" width="36" left="60" top="102">
           <commit_callback function="Zoom.minus" />
           <mouse_held_callback function="Zoom.minus" />
         </button>
       </layout_panel>
-      <layout_panel name="panel_track" user_resize="false" height="60" width="54" auto_resize="false">
-        <joystick_track follows="left|top" height="54" width="54" image_selected="Cam_Tracking_In" image_unselected="Cam_Tracking_Out" layout="topleft" left_delta="0" name="cam_track_stick" quadrant="left" scale_image="true" sound_flags="3" tool_tip="Move camera up and down, left and right" top="0" />
+      <layout_panel name="panel_track" user_resize="false" height="136" width="156" auto_resize="false" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
+        <text name="forme_panel_track_label" layout="topleft" left="0" top="0" width="156" height="22" halign="center" value="Pan" />
+        <joystick_track follows="left|top" height="96" width="96" image_selected="Cam_Tracking_In" image_unselected="Cam_Tracking_Out" layout="topleft" left_delta="0" name="cam_track_stick" quadrant="left" scale_image="true" sound_flags="3" tool_tip="Move camera up and down, left and right" top="28" left="30" forme_ring="true" />
       </layout_panel>
     </layout_stack>
   </panel>
-  <panel border="false" height="60" layout="topleft" follows="left|top" name="preset_buttons_panel" mouse_opaque="false" left="174" top="44" width="198">
-    <button follows="bottom|left|right" height="26" label="Position..." layout="topleft" name="camera_position_btn" width="162" left="0" top="0">
+  <panel border="false" height="60" layout="topleft" follows="left|top" name="preset_buttons_panel" mouse_opaque="false" left="16" top="214" width="488">
+    <button follows="bottom|left|right" height="26" label="Position..." layout="topleft" name="camera_position_btn" width="200" left="0" top="0">
       <button.commit_callback function="Floater.Show" parameter="prefs_view_advanced" />
     </button>
-    <button follows="bottom|right" height="26" layout="topleft" name="save_preset_btn" tool_tip="Save as Preset" image_overlay="Forme_UI_Save" image_overlay_max_size="18" width="30" left="168" top="0">
+    <button follows="bottom|right" height="26" layout="topleft" name="save_preset_btn" tool_tip="Save as Preset" image_overlay="Forme_UI_Save" image_overlay_max_size="18" width="30" left="208" top="0">
       <button.commit_callback function="CameraPresets.Save" />
     </button>
-    <combo_box follows="bottom|left|right" height="26" mouse_opaque="true" name="preset_combo" width="162" left="0" top="32" layout="topleft">
+    <combo_box follows="bottom|left|right" height="26" mouse_opaque="true" name="preset_combo" width="200" left="248" top="0" layout="topleft">
       <combo_list mouse_wheel_opaque="true" />
       <combo_box.item label="Use preset" name="Use preset" value="default" />
     </combo_box>
-    <button follows="bottom|right" height="26" width="30" layout="topleft" mouse_opaque="true" name="gear_btn" tool_tip="Camera Presets" image_overlay="Forme_UI_Settings" image_overlay_max_size="18" is_toggle="true" left="168" top="32">
+    <button follows="bottom|right" height="26" width="30" layout="topleft" mouse_opaque="true" name="gear_btn" tool_tip="Camera Presets" image_overlay="Forme_UI_Settings" image_overlay_max_size="18" is_toggle="true" left="456" top="0">
       <button.commit_callback function="CameraPresets.ShowPresetsList" />
     </button>
   </panel>
   <panel name="viewer_camera_info" left="0" top="135" width="400" height="150" border="true" visible="false" background_visible="true" />
   <panel name="agent_camera_info" left="0" top="285" width="400" height="150" border="true" visible="false" background_visible="true" />
+  <button name="forme_camera_walk" layout="topleft" left="16" top="290" width="108" height="34" label="Walk" is_toggle="true" image_selected="Forme_Round_Accent" />
+  <button name="forme_camera_run" layout="topleft" left="132" top="290" width="108" height="34" label="Run" is_toggle="true" image_selected="Forme_Round_Accent" />
+  <button name="forme_camera_fly" layout="topleft" left="248" top="290" width="108" height="34" label="Fly" is_toggle="true" image_selected="Forme_Round_Accent" />
+  <button name="forme_camera_reset" layout="topleft" left="370" top="290" width="134" height="34" label="Reset" image_overlay="Forme_UI_Rotate" image_overlay_alignment="left" image_overlay_max_size="20" pad_left="10" />
 </floater>

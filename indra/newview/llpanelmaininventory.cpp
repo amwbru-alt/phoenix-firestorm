@@ -177,6 +177,10 @@ LLPanelMainInventory::LLPanelMainInventory(const LLPanel::Params& p)
 {
     // Menu Callbacks (non contex menus)
     mCommitCallbackRegistrar.add("Inventory.DoToSelected", boost::bind(&LLPanelMainInventory::doToSelected, this, _2));
+    mCommitCallbackRegistrar.add("ForMeInventory.View", [this](LLUICtrl* ctrl, const LLSD&) {
+        if (getChild<LLTabContainer>("inventory filter tabs")->selectTabByName(ctrl->getValue().asString()))
+            onFilterSelected();
+    });
     mCommitCallbackRegistrar.add("Inventory.CloseAllFolders", boost::bind(&LLPanelMainInventory::closeAllFolders, this));
     mCommitCallbackRegistrar.add("Inventory.EmptyTrash", boost::bind(&LLInventoryModel::emptyFolderType, &gInventory, "ConfirmEmptyTrash", LLFolderType::FT_TRASH));
     mCommitCallbackRegistrar.add("Inventory.EmptyLostAndFound", boost::bind(&LLInventoryModel::emptyFolderType, &gInventory, "ConfirmEmptyLostAndFound", LLFolderType::FT_LOST_AND_FOUND));
@@ -1319,6 +1323,15 @@ void LLPanelMainInventory::onFilterSelected()
     if (!mActivePanel)
     {
         return;
+    }
+
+    if (auto* views = findChild<LLComboBox>("forme_inventory_view"))
+    {
+        views->removeall();
+        for (S32 i = 0; i < mFilterTabs->getTabCount(); ++i)
+            if (auto* panel = mFilterTabs->getPanelByIndex(i))
+                views->add(panel->getLabel(), LLSD(panel->getName()));
+        views->setValue(mActivePanel->getName());
     }
 
     FSInventoryCustomTabs::noteActivePanel(this, mActivePanel); // <FS:PP> FIRE-35598: Custom filters in inventory (feature idea: Catznip)

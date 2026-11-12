@@ -1,27 +1,58 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <floater name="Preferences" title="Настройки">
-	<button label="Применить" label_selected="Применить" name="Apply"/>
-	<button label="Отменить" label_selected="Отменить" name="Cancel"/>
-	<panel name="search_panel">
-		<search_editor label="Поиск настроек" name="search_prefs_edit" tool_tip="Введите интересующий вас термин для поиска здесь. Результаты будут отображены для частичного совпадения полного текста в названии параметра или комментариях."/>
-		<button name="copy_search_slurl_btn" tool_tip="Копировать поисковый запрос как SLURL"/>
-	</panel>
-	<tab_container name="pref core">
-		<panel label="Общие" name="general"/>
-		<panel label="Чат" name="chat"/>
-		
-		<panel label="Графика" name="display"/>
-		<panel label="Звук и медиа" name="audio"/>
-		<panel label="Сеть и файлы" name="input"/>
-		<panel label="Движение и вид" name="move"/>
-		<panel label="Управление" name="controls"/>
-		<panel label="Уведомления" name="msgs"/>
-		<panel label="Приватность" name="im"/>
-		<panel label="Расширеное" name="advanced1"/>
-		<panel label="Интерфейс" name="ui"/>
-		<panel label="Темы" name="skins"/>
-		<panel label="Ошибки" name="crashreports"/>
-		<panel label="ForMe.World" name="firestorm"/>
-		<panel label="Резервная копия" name="backup"/>
-	</tab_container>
+  <button label="Применить" label_selected="Применить" name="Apply" />
+  <button label="Отменить" label_selected="Отменить" name="Cancel" />
+  <panel name="search_panel">
+    <search_editor label="Поиск настроек" name="search_prefs_edit" tool_tip="Введите интересующий вас термин для поиска здесь. Результаты будут отображены для частичного совпадения полного текста в названии параметра или комментариях." />
+    <button name="copy_search_slurl_btn" tool_tip="Копировать поисковый запрос как SLURL" />
+  </panel>
+  <tab_container name="pref core">
+    <panel label="Общие" name="general" />
+    <panel label="Чат" name="chat" />
+    <panel label="Графика" name="display" />
+    <panel label="Звук и медиа" name="audio" />
+    <panel label="Сеть и файлы" name="input" />
+    <panel label="Движение и вид" name="move" />
+    <panel label="Управление" name="controls" />
+    <panel label="Уведомления" name="msgs" />
+    <panel label="Приватность" name="im" />
+    <panel label="Расширеное" name="advanced1" />
+    <panel label="Интерфейс" name="ui" />
+    <panel label="Темы" name="skins" />
+    <panel label="Ошибки" name="crashreports" />
+    <panel label="ForMe.World" name="firestorm" />
+    <panel label="Резервная копия" name="backup" />
+    <panel name="forme_interface" label="Интерфейс">
+      <text name="forme_interface_title" value="Интерфейс" />
+      <text name="forme_scale_label" value="Масштаб" />
+      <text name="forme_font_label" value="Размер текста" />
+      <check_box name="forme_tooltips" label="Показывать подсказки" />
+      <check_box name="forme_compact_header" label="Компактная верхняя панель" />
+      <combo_box name="forme_font">
+        <combo_box.item label="Маленький" value="-1" />
+        <combo_box.item label="Средний" value="0" />
+        <combo_box.item label="Крупный" value="2" />
+      </combo_box>
+    </panel>
+  </tab_container>
+  <button name="forme_apply" label="Применить" />
+  <panel name="forme_preferences_nav">
+    <button name="forme_preferences_general" label="Общие" />
+    <button name="forme_preferences_display" label="Графика" />
+    <button name="forme_preferences_audio" label="Звук" />
+    <button name="forme_preferences_controls" label="Управление" />
+    <button name="forme_preferences_forme_interface" label="Интерфейс" />
+    <button name="forme_preferences_im" label="Приватность" />
+    <combo_box name="forme_preferences_more" label="Другие настройки…">
+      <combo_box.item label="Чат" value="chat" />
+      <combo_box.item label="Сеть и файлы" value="input" />
+      <combo_box.item label="Движение и вид" value="move" />
+      <combo_box.item label="Уведомления" value="msgs" />
+      <combo_box.item label="Расширенные" value="advanced1" />
+      <combo_box.item label="Дополнительный интерфейс" value="ui" />
+      <combo_box.item label="Темы" value="skins" />
+      <combo_box.item label="ForMe.World" value="firestorm" />
+      <combo_box.item label="Резервная копия" value="backup" />
+    </combo_box>
+  </panel>
 </floater>

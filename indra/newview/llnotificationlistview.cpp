@@ -42,3 +42,18 @@ bool LLNotificationListView::addNotification(LLNotificationListItem * item)
 }
 
 //EOF
+
+void LLNotificationListView::filterReadNotifications(const std::set<LLUUID>& read, bool only_unread)
+{
+    std::vector<LLPanel*> items;
+    getItems(items);
+    bool changed = false;
+    for (auto* panel : items)
+    {
+        auto* item = dynamic_cast<LLNotificationListItem*>(panel);
+        if (!item) continue;
+        const bool visible = !only_unread || !read.count(item->getID());
+        if (item->getVisible() != visible) { item->setVisible(visible); changed = true; }
+    }
+    if (changed) { rearrangeItems(); notifyParentItemsRectChanged(); }
+}

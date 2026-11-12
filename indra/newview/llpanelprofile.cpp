@@ -27,6 +27,8 @@
 #include "llviewerprecompiledheaders.h"
 #include "llpanelprofile.h"
 #include "formegridpolicy.h"
+#include "fsavatarbadges.h"
+#include "llavatariconctrl.h"
 
 // Common
 #include "llavatarnamecache.h"
@@ -2743,7 +2745,41 @@ LLPanelProfile::~LLPanelProfile()
 
 bool LLPanelProfile::postBuild()
 {
+    if (auto* message = findChild<LLButton>("forme_profile_message"))
+    {
+        message->setClickedCallback([this]() {
+            if (getAvatarId().notNull() && getAvatarId() != gAgent.getID())
+                LLAvatarActions::startIM(getAvatarId());
+        });
+        getChild<LLButton>("forme_profile_details")->setClickedCallback([this]() {
+            LLSD key; key["id"] = getAvatarId();
+            LLFloaterReg::showInstance("profile_details", key);
+        });
+        auto* tabs = getChild<LLTabContainer>("panel_profile_tabs");
+        for (const auto& name : {PANEL_WEB, PANEL_CLASSIFIEDS, PANEL_FIRSTLIFE, PANEL_NOTES})
+            tabs->setTabVisibility(getChild<LLPanel>(name), false);
+    }
     return true;
+}
+
+void LLPanelProfile::draw()
+{
+    if (auto* avatar = findChild<LLAvatarIconCtrl>("forme_profile_avatar"))
+    {
+        if (avatar->getAvatarId() != getAvatarId()) avatar->setValue(LLSD(getAvatarId()));
+        auto* base = getChild<LLPanel>(PANEL_SECONDLIFE);
+        const bool show_name = RlvActions::canShowName(RlvActions::SNC_DEFAULT, getAvatarId());
+        avatar->setVisible(show_name);
+        getChild<LLTextBox>("forme_profile_name")->setText(show_name
+            ? base->getChild<LLUICtrl>("complete_name")->getValue().asString() : std::string());
+        auto* badge = getChild<LLTextBox>("forme_profile_badge");
+        const auto data = show_name ? ForMeAvatarBadges::get(getAvatarId()) : ForMeBadge::Data();
+        badge->setVisible(data.valid);
+        badge->setText(data.valid ? data.label : std::string());
+        if (data.valid) badge->setColor(ForMeAvatarBadges::color(data.badgeColor));
+        getChild<LLButton>("forme_profile_message")->setVisible(getAvatarId().notNull() && getAvatarId() != gAgent.getID());
+    }
+    LLPanel::draw();
 }
 
 void LLPanelProfile::onTabChange()

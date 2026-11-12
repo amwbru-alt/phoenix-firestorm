@@ -32,6 +32,7 @@
 #include "llcoord.h"
 #include "indra_constants.h"
 #include "llrender.h"
+#include "llrender2dutils.h"
 
 // Project includes
 #include "llui.h"
@@ -455,7 +456,8 @@ LLJoystickCameraRotate::LLJoystickCameraRotate(const LLJoystickCameraRotate::Par
     mInTop( false ),
     mInRight( false ),
     mInBottom( false ),
-    mInCenter( false )
+    mInCenter( false ),
+    mFormeRing(p.forme_ring)
 {
     mCenterImageName = "Cam_Rotate_Center";
 }
@@ -622,6 +624,32 @@ void LLJoystickCameraRotate::setToggleState( bool left, bool top, bool right, bo
 void LLJoystickCameraRotate::draw()
 {
     LLGLSUIDefault gls_ui;
+    if (mFormeRing)
+    {
+        const F32 cx = getRect().getWidth() * 0.5f;
+        const F32 cy = getRect().getHeight() * 0.5f;
+        const F32 radius = llmin(cx, cy) - 3.f;
+        const F32 alpha = getDrawContext().mAlpha * (getEnabled() ? 1.f : 0.35f);
+        gGL.getTexUnit(0)->unbind(LLTexUnit::TT_TEXTURE);
+        gGL.color4f(0.66f, 0.63f, 0.68f, alpha);
+        gl_circle_2d(cx, cy, radius, 64, false);
+        gGL.color4f(mInCenter ? 0.68f : 0.42f, mInCenter ? 0.48f : 0.40f, mInCenter ? 0.82f : 0.45f, alpha);
+        gl_circle_2d(cx, cy, 10.f, 32, true);
+        const auto arrow = [alpha](F32 x, F32 y, F32 dx, F32 dy, bool active) {
+            gGL.color4f(active ? 0.76f : 0.92f, active ? 0.56f : 0.90f, active ? 0.92f : 0.94f, alpha);
+            gGL.begin(LLRender::LINE_STRIP);
+            gGL.vertex2f(x - dx * 5.f - dy * 5.f, y - dy * 5.f + dx * 5.f);
+            gGL.vertex2f(x, y);
+            gGL.vertex2f(x - dx * 5.f + dy * 5.f, y - dy * 5.f - dx * 5.f);
+            gGL.end();
+        };
+        arrow(cx, cy + radius - 9.f, 0.f, 1.f, mInTop);
+        arrow(cx + radius - 9.f, cy, 1.f, 0.f, mInRight);
+        arrow(cx, cy - radius + 9.f, 0.f, -1.f, mInBottom);
+        arrow(cx - radius + 9.f, cy, -1.f, 0.f, mInLeft);
+        return;
+    }
+
 
   getImageUnselected()->draw( getLocalRect() );
     LLPointer<LLUIImage> image = getImageSelected();

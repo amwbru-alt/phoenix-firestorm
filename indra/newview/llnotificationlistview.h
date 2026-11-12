@@ -28,6 +28,7 @@
 #define LL_LLNOTIFICATIONLISTVIEW_H
 
 #include "llflatlistview.h"
+#include <set>
 #include "llnotificationlistitem.h"
 
 /**
@@ -44,6 +45,7 @@ public:
     friend class LLUICtrlFactory;
 
     virtual bool addNotification(LLNotificationListItem * item);
+    void filterReadNotifications(const std::set<LLUUID>& read, bool only_unread);
 };
 
 #endif

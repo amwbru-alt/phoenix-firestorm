@@ -442,6 +442,7 @@ public:
     /*virtual*/ ~LLPanelProfile();
 
     bool postBuild() override;
+    void draw() override;
 
     void updateData() override;
     void refreshName();

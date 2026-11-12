@@ -472,7 +472,19 @@ LLFloaterPreference::LLFloaterPreference(const LLSD& key)
         registered_dialog = true;
     }
 
+    mCommitCallbackRegistrar.add("ForMe.PreferencesPanel", [this](LLUICtrl*, const LLSD& name) {
+        getChild<LLTabContainer>("pref core")->selectTabByName(name.asString());
+    });
+    mCommitCallbackRegistrar.add("ForMe.PreferencesOther", [this](LLUICtrl* ctrl, const LLSD&) {
+        getChild<LLTabContainer>("pref core")->selectTabByName(ctrl->getValue().asString());
+    });
     mCommitCallbackRegistrar.add("Pref.Cancel",             boost::bind(&LLFloaterPreference::onBtnCancel, this, _2));
+    mCommitCallbackRegistrar.add("Pref.Apply", [this](LLUICtrl*, const LLSD&) {
+        if (auto* focus = dynamic_cast<LLUICtrl*>(gFocusMgr.getKeyboardFocus()))
+            if (focus->acceptsTextInput()) focus->onCommit();
+        apply();
+        saveSettings();
+    });
     mCommitCallbackRegistrar.add("Pref.OK",                 boost::bind(&LLFloaterPreference::onBtnOK, this, _2));
 
     mCommitCallbackRegistrar.add("Pref.ClearCache",             boost::bind(&LLFloaterPreference::onClickClearCache, this));
@@ -643,6 +655,19 @@ void LLFloaterPreference::saveAvatarPropertiesCoro(const std::string cap_url, bo
 
 bool LLFloaterPreference::postBuild()
 {
+    getChild<LLTabContainer>("pref core")->setCommitCallback([this](LLUICtrl*, const LLSD&) {
+        auto* current = getChild<LLTabContainer>("pref core")->getCurrentPanel();
+        for (const auto& name : {"general", "display", "audio", "controls", "forme_interface", "im"})
+            getChild<LLButton>(std::string("forme_preferences_") + name)->setToggleState(current && current->getName() == name);
+    });
+
+    if (auto* compact = findChild<LLCheckBoxCtrl>("forme_compact_header"))
+    {
+        compact->setValue(!gSavedSettings.getBOOL("ForMeShowFullMenu"));
+        compact->setCommitCallback([](LLUICtrl* ctrl, const LLSD&) {
+            gSavedSettings.setBOOL("ForMeShowFullMenu", !ctrl->getValue().asBoolean());
+        });
+    }
     mDeleteTranscriptsBtn = getChild<LLButton>("delete_transcripts");
 
     // <FS:Ansariel> We don't have these buttons
@@ -1105,6 +1130,9 @@ void LLFloaterPreference::cancel(const std::vector<std::string> settings_to_skip
 
 void LLFloaterPreference::onOpen(const LLSD& key)
 {
+    if (auto* compact = findChild<LLCheckBoxCtrl>("forme_compact_header"))
+        compact->setValue(!gSavedSettings.getBOOL("ForMeShowFullMenu"));
+
     // this variable and if that follows it are used to properly handle do not disturb mode response message
     static bool initialized = false;
     // if user is logged in and we haven't initialized do not disturb mode response yet, do it

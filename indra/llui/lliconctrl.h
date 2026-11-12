@@ -79,6 +79,7 @@ public:
 
     std::string getImageName() const;
 
+    const LLUIColor& getImageColor() const { return mColor; }
     void            setColor(const LLUIColor& color) { mColor = color; }
     void            setImage(LLPointer<LLUIImage> image) { mImagep = image; }
     const LLPointer<LLUIImage> getImage() { return mImagep; }

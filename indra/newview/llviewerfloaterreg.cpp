@@ -599,6 +599,7 @@ void LLViewerFloaterReg::registerFloaters()
     //LLFloaterReg::add("search", "floater_search.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<LLFloaterSearch>);
     LLFloaterReg::add("legacy_search", "floater_directory.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<LLFloaterDirectory>);
     LLFloaterReg::add("profile", "floater_profile.xml",(LLFloaterBuildFunc)&LLFloaterReg::build<LLFloaterProfile>);
+    LLFloaterReg::add("profile_details", "floater_profile_details.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<LLFloaterProfile>);
     LLFloaterReg::add("slapp_test", "floater_test_slapp.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<LLFloaterSLappTest>);
 
     LLFloaterUIPreviewUtil::registerFloater();

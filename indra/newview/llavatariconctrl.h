@@ -103,7 +103,8 @@ public:
     struct Params : public LLInitParam::Block<Params, LLIconCtrl::Params>
     {
         Optional<LLUUID>        avatar_id;
-        Optional<bool>          draw_tooltip;
+        Optional<bool>          draw_tooltip,
+                                circular;
         Optional<std::string>   default_icon_name;
         Optional<S32>           symbol_hpad,
                                 symbol_vpad,
@@ -125,6 +126,7 @@ public:
 // [/SL:KB]
 
     virtual void setValue(const LLSD& value);
+    void draw() override;
 
     // LLAvatarPropertiesProcessor observer trigger
     virtual void processProperties(void* data, EAvatarProcessorType type);
@@ -138,6 +140,7 @@ protected:
     LLUUID                      mAvatarId;
     std::string                 mFullName;
     bool                        mDrawTooltip;
+    bool                        mCircular;
     std::string                 mDefaultIconName;
     S32                         mSymbolHpad,
                                 mSymbolVpad,

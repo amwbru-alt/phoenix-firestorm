@@ -200,7 +200,7 @@ second_life_profile = resource('panel_profile_secondlife.xml')
 assert int(child(second_life_profile, 'name_holder').get('width')) == 430
 assert int(child(second_life_profile, 'set_name').get('left')) == 520
 assert int(child(second_life_profile, 'forme_profile_about_card').get('width')) == 482
-assert int(child(second_life_profile, 'sl_description_edit').get('width')) == 462
+assert int(child(second_life_profile, 'sl_description_edit').get('width')) == 388
 assert int(child(second_life_profile, 'buttonstack').get('width')) == 202
 picks_profile = resource('panel_profile_picks.xml')
 picks_header = child(picks_profile, 'buttons_header')
@@ -342,14 +342,15 @@ assert child(inventory, 'forme_inventory_item_actions').get('right') == '-33'
 assert child(people, 'panel_radar').get('right') == child(people, 'panel_radar').get('bottom') == '-1'
 camera = resource('floater_camera.xml')
 assert int(camera.get('min_height')) == int(camera.get('height')) + int(camera.get('header_height'))
-assert camera.get('can_resize') == 'false' and int(camera.get('width')) <= 400
+assert camera.get('can_resize') == 'false' and int(camera.get('width')) == 520
 for block in ('buttons_panel', 'zoom', 'preset_buttons_panel'):
     fits(child(camera, block), camera)
 for item in child(camera, 'buttons_panel'):
-    fits(item, child(camera, 'buttons_panel'))
+    if item.get('visible') != 'false':
+        fits(item, child(camera, 'buttons_panel'))
 assert child(camera, 'cam_rotate_stick').tag == 'joystick_rotate'
 assert child(camera, 'cam_track_stick').tag == 'joystick_track'
-assert int(child(camera, 'zoom').get('left')) < int(child(camera, 'preset_buttons_panel').get('left'))
+assert int(child(camera, 'zoom').get('top')) + int(child(camera, 'zoom').get('height')) <= int(child(camera, 'preset_buttons_panel').get('top'))
 # Fail if a new icon binding is missing in any modified native resource.
 for path in XUI.rglob('*.xml'):
     root = ET.parse(path).getroot()
@@ -437,7 +438,7 @@ assert int(child(im_panels, 'speakers_list_panel').get('width')) == 170
 assert int(child(im_panels, 'right_part_holder').get('min_width')) == 300
 # Notification Center's tab list and footer flex inside the resizable shell.
 notifications = resource('floater_notifications_tabbed.xml')
-assert int(notifications.get('min_width')) == 480
+assert int(notifications.get('min_width')) == 560
 notification_stack = child(notifications, 'TabButtonsStack')
 assert notification_stack.get('width') is None and notification_stack.get('height') is None
 assert notification_stack.get('right') == '-16' and notification_stack.get('bottom') == '-16'
@@ -445,8 +446,8 @@ notification_content = child(notification_stack, 'TabButtonsLayoutPanel')
 assert notification_content.get('auto_resize') == 'true'
 assert notification_content.get('height') is None and notification_content.get('follows') == 'all'
 notification_tabs = child(notification_content, 'notifications_tab_container')
-assert notification_tabs.get('height') is None and notification_tabs.get('bottom') == '-36'
-assert int(notification_tabs.get('tab_min_width')) == 104
+assert notification_tabs.get('height') is None and notification_tabs.get('bottom') == '-42'
+assert int(notification_tabs.get('tab_min_width')) == 156
 notification_actions = child(notification_content, 'ButtonsStack')
 assert notification_actions.get('bottom') == '-1'
 assert notification_actions.get('follows') == 'left|right|bottom'
@@ -511,5 +512,5 @@ appearance = resource('floater_my_appearance.xml')
 assert int(appearance.get('width')) <= 480
 assert appearance.get('rect_control_suffix') == '_forme_compact_v2'
 for item in resource('floater_camera.xml').findall('.//panel_camera_item'):
-    assert item.find('panel_camera_item.text').get('visible') == 'false'
+    assert item.find('panel_camera_item.text').get('visible') == ('true' if item.get('name') in {'front_view','group_view','rear_view'} else 'false')
 print('PASS commerce anchors, unique top-level HUD labels, compact dock icons and outfit geometry')

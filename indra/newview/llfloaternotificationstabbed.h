@@ -73,6 +73,7 @@ public:
     LLFloaterNotificationsTabbed(const LLSD& key);
     virtual ~LLFloaterNotificationsTabbed();
     bool postBuild();
+    void applyReadFilter();
 
     // other interface functions
     // check is window empty
@@ -159,6 +160,7 @@ private:
     void onItemClose(LLNotificationListItem* item);
     // ID of a toast loaded by user (by clicking notification well item)
     LLUUID mLoadedToastId;
+    std::set<LLUUID> mReadNotifications;
 
     LLNotificationListView* mGroupInviteMessageList;
     LLNotificationListView* mGroupNoticeMessageList;

@@ -27,6 +27,7 @@
 #include "llviewerprecompiledheaders.h"
 
 #include "llfloatercamera.h"
+#include "llmoveview.h"
 
 // Library includes
 #include "llfloaterreg.h"
@@ -458,6 +459,13 @@ void LLFloaterCamera::handleAvatarEditingAppearance(bool editing)
 
 void LLFloaterCamera::update()
 {
+    if (auto* walk = findChild<LLButton>("forme_camera_walk"))
+    {
+        walk->setToggleState(!gAgent.getFlying() && !gAgent.getAlwaysRun());
+        getChild<LLButton>("forme_camera_run")->setToggleState(!gAgent.getFlying() && gAgent.getAlwaysRun());
+        getChild<LLButton>("forme_camera_fly")->setToggleState(gAgent.getFlying());
+    }
+
     ECameraControlMode mode = determineMode();
     if (mode != mCurrMode)
     {
@@ -587,6 +595,18 @@ LLFloaterCamera::LLFloaterCamera(const LLSD& val)
 // virtual
 bool LLFloaterCamera::postBuild()
 {
+    for (const auto& mode : {"walk", "run", "fly"})
+    {
+        const std::string name(mode);
+        if (auto* button = findChild<LLButton>("forme_camera_" + name))
+            button->setClickedCallback([name]() {
+                auto* move = LLFloaterReg::getTypedInstance<LLFloaterMove>("moveview");
+                if (move) move->getChild<LLButton>("mode_" + name + "_btn")->onCommit();
+            });
+    }
+    if (auto* reset = findChild<LLButton>("forme_camera_reset"))
+        reset->setClickedCallback([]() { LLFloaterCamera::onClickCameraItem(LLSD("reset_view")); });
+
     mControls = getChild<LLPanel>("controls");
     mAgentCameraInfo = getChild<LLPanel>("agent_camera_info");
     mViewerCameraInfo = getChild<LLPanel>("viewer_camera_info");

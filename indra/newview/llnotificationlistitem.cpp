@@ -101,6 +101,40 @@ bool LLNotificationListItem::postBuild()
     mCondensedHeight = (S32)atoi(condensed_height_str.c_str());
 
     setExpanded(false);
+    // Only simple, non-monetary offers expose inline responses. Other forms keep
+    // their complete native dialog, including fees, maturity warnings and inputs.
+    if (mNotificationName == "OfferFriendship" || mNotificationName == "TeleportOffered")
+    {
+        if (auto notification = LLNotifications::instance().find(mParams.notification_id))
+        {
+            auto form = notification->getForm();
+            S32 x = 0;
+            auto* actions = getChild<LLPanel>("forme_notification_actions");
+            for (S32 i = 0; i < form->getNumElements(); ++i)
+            {
+                const LLSD element = form->getElement(i);
+                if (element["type"].asString() != "button") continue;
+                const std::string option = element["name"].asString();
+                LLButton::Params params;
+                params.name = "forme_response_" + option;
+                params.label = element["text"].asString();
+                params.rect = LLRect(x, 28, x + 114, 0);
+                params.follows.flags = FOLLOWS_LEFT | FOLLOWS_TOP;
+                auto* button = LLUICtrlFactory::create<LLButton>(params);
+                const LLUUID id = mParams.notification_id;
+                button->setClickedCallback([id, option]() {
+                    if (auto current = LLNotifications::instance().find(id))
+                    {
+                        LLSD response = current->getResponseTemplate();
+                        response[option] = true;
+                        current->respond(response);
+                    }
+                });
+                actions->addChild(button);
+                x += 122;
+            }
+        }
+    }
 
     return rv;
 }

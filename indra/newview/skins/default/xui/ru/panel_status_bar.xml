@@ -1,48 +1,56 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel name="status">
-	<panel name="parcel_info_panel">
-		<button name="buy_land_btn" tool_tip="Участок для продажи"/>
-		<text tool_tip="Имя земельного участка, на котором вы стоите. Нажмите о земле." name="parcel_info_text" value="(загрузка...)"/>
-	</panel>
-	    <panel.string name="forme_weather_clear">Ясно</panel.string>
-    <panel.string name="forme_weather_cloudy">Облачно</panel.string>
-    <panel.string name="forme_weather_fog">Туман</panel.string>
-    <panel.string name="forme_weather_rain">Дождь</panel.string>
-    <panel.string name="forme_weather_storm">Шторм</panel.string>
-    <panel.string name="forme_weather_snow">Снег</panel.string>
-    <panel.string name="forme_region_connected">Подключено</panel.string>
-    <panel.string name="forme_region_disconnected">Нет связи с регионом</panel.string>
-    <panel.string name="packet_loss_tooltip">
+  <panel name="parcel_info_panel">
+    <button name="buy_land_btn" tool_tip="Участок для продажи" />
+    <text tool_tip="Имя земельного участка, на котором вы стоите. Нажмите о земле." name="parcel_info_text" value="(загрузка...)" />
+  </panel>
+  <panel.string name="forme_weather_clear">Ясно</panel.string>
+  <panel.string name="forme_weather_cloudy">Облачно</panel.string>
+  <panel.string name="forme_weather_fog">Туман</panel.string>
+  <panel.string name="forme_weather_rain">Дождь</panel.string>
+  <panel.string name="forme_weather_storm">Шторм</panel.string>
+  <panel.string name="forme_weather_snow">Снег</panel.string>
+  <panel.string name="forme_region_connected">Подключено</panel.string>
+  <panel.string name="forme_region_disconnected">Нет связи с регионом</panel.string>
+  <panel.string name="packet_loss_tooltip">
 		Потеря пакетов
 	</panel.string>
-	<panel.string name="bandwidth_tooltip">
+  <panel.string name="bandwidth_tooltip">
 		Ширина полосы
 	</panel.string>
-	<panel.string name="time">
+  <panel.string name="time">
 		[hour, datetime, slt]:[min, datetime, slt]:[second, datetime, slt] [timezone,datetime, slt]
 	</panel.string>
-	<panel.string name="timeTooltip">
+  <panel.string name="timeTooltip">
 		[weekday, datetime, slt], [day, datetime, slt] [month, datetime, slt] [year, datetime, slt]
 	</panel.string>
-	<panel.string name="buycurrencylabel">
+  <panel.string name="buycurrencylabel">
 		[AMT] L$
 	</panel.string>
-	<panel name="menu_search_panel">
-		<search_editor label="Поиск в Меню" name="search_menu_edit" tool_tip="Введите интересующий вас термин для поиска здесь. Результаты будут отображены для частичного совпадения полного текста в меню."/>
-	</panel>
-	<panel name="parcel_info_panel">
-		<button name="buy_land_btn" tool_tip="Участок для продажи"/>
-		<button name="status_lightshare_btn" tool_tip="Настройки освещения"/>
-		<text tool_tip="Имя земельного участка, на котором вы стоите. Нажмите о земле." name="parcel_info_text" value="(загрузка...)"/>
-	</panel>
-	<panel name="balance_bg">
-		<text name="balance" tool_tip="Нажмите, для обновления баланса"/>
-		<button label="Купить L$" name="buyL" tool_tip="Нажмите, чтобы купить L$"/>
-	</panel>
-	<panel name="time_and_media_bg">
-		<text name="TimeText" tool_tip="Текущее время (Тихоокеанское)"/>
-		<button name="stream_toggle_btn" tool_tip="Включить/Выключить воспроизведение потокового аудио"/>
-		<button name="media_toggle_btn" tool_tip="Включить/Выключить воспроизведение всего медиа (Музыка, Видео, Web)"/>
-		<text name="FPSText" tool_tip="Кадров в секунду"/>
-	</panel>
+  <panel name="menu_search_panel">
+    <search_editor label="Поиск в Меню" name="search_menu_edit" tool_tip="Введите интересующий вас термин для поиска здесь. Результаты будут отображены для частичного совпадения полного текста в меню." />
+  </panel>
+  <panel name="parcel_info_panel">
+    <button name="buy_land_btn" tool_tip="Участок для продажи" />
+    <button name="status_lightshare_btn" tool_tip="Настройки освещения" />
+    <text tool_tip="Имя земельного участка, на котором вы стоите. Нажмите о земле." name="parcel_info_text" value="(загрузка...)" />
+  </panel>
+  <panel name="balance_bg">
+    <text name="balance" tool_tip="Нажмите, для обновления баланса" />
+    <button label="Купить L$" name="buyL" tool_tip="Нажмите, чтобы купить L$" />
+  </panel>
+  <panel name="time_and_media_bg">
+    <text name="TimeText" tool_tip="Текущее время (Тихоокеанское)" />
+    <button name="stream_toggle_btn" tool_tip="Включить/Выключить воспроизведение потокового аудио" />
+    <button name="media_toggle_btn" tool_tip="Включить/Выключить воспроизведение всего медиа (Музыка, Видео, Web)" />
+    <text name="FPSText" tool_tip="Кадров в секунду" />
+  </panel>
+  <panel name="forme_tools_row">
+    <button name="forme_tools_map" label="Карта" />
+    <button name="forme_tools_people" label="Люди" />
+    <button name="forme_tools_inventory" label="Инвентарь" />
+    <button name="forme_tools_market" label="Маркет" />
+    <search_editor name="forme_world_search" label="Поиск мест…" />
+    <button name="forme_tools_settings" tool_tip="Настройки" />
+  </panel>
 </panel>

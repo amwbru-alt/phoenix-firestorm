@@ -29,6 +29,8 @@
 #include "llavatariconctrl.h"
 
 #include <boost/signals2.hpp>
+#include <cmath>
+#include "llrender.h"
 
 // viewer includes
 #include "llagent.h"
@@ -157,6 +159,7 @@ void LLAvatarIconIDCache::remove    (const LLUUID& avatar_id)
 LLAvatarIconCtrl::Params::Params()
 :   avatar_id("avatar_id"),
     draw_tooltip("draw_tooltip", true),
+    circular("circular", false),
     default_icon_name("default_icon_name"),
     symbol_hpad("symbol_hpad"),
     symbol_vpad("symbol_vpad"),
@@ -174,6 +177,7 @@ LLAvatarIconCtrl::LLAvatarIconCtrl(const LLAvatarIconCtrl::Params& p)
     mAvatarId(),
     mFullName(),
     mDrawTooltip(p.draw_tooltip),
+    mCircular(p.circular),
     mDefaultIconName(p.default_icon_name),
     mAvatarNameCacheConnection(),
     mSymbolHpad(p.symbol_hpad),
@@ -355,3 +359,34 @@ bool LLAvatarIconCtrl::handleToolTip(S32 x, S32 y, MASK mask)
     return LLIconCtrl::handleToolTip(x, y, mask);
 }
 // [/SL:KB]
+
+void LLAvatarIconCtrl::draw()
+{
+    if (!mCircular) { LLIconCtrl::draw(); return; }
+    LLGLSUIDefault gls_ui;
+    // A textured disc clips the photograph without touching shared stencil state.
+    if (auto image = getImage())
+    {
+        const LLRectf& uv = image->getClipRegion();
+        const F32 cx = getRect().getWidth() * 0.5f;
+        const F32 cy = getRect().getHeight() * 0.5f;
+        const F32 radius = llmin(cx, cy);
+        const F32 u = (uv.mLeft + uv.mRight) * 0.5f;
+        const F32 v = (uv.mBottom + uv.mTop) * 0.5f;
+        const F32 alpha = mUseDrawContextAlpha ? getDrawContext().mAlpha : getCurrentTransparency();
+        const LLColor4 color = getImageColor().get() % alpha;
+        gGL.getTexUnit(0)->bind(image->getImage());
+        gGL.color4fv(color.mV);
+        gGL.begin(LLRender::TRIANGLE_FAN);
+        gGL.texCoord2f(u, v); gGL.vertex2f(cx, cy);
+        for (S32 i = 0; i <= 64; ++i)
+        {
+            const F32 angle = F_TWO_PI * i / 64.f;
+            const F32 x = std::cos(angle), y = std::sin(angle);
+            gGL.texCoord2f(u + x * uv.getWidth() * 0.5f, v + y * uv.getHeight() * 0.5f);
+            gGL.vertex2f(cx + radius * x, cy + radius * y);
+        }
+        gGL.end();
+    }
+    LLUICtrl::draw();
+}

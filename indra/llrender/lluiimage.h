@@ -55,6 +55,8 @@ public:
     LLUIImage(const std::string& name, LLPointer<LLTexture> image);
     virtual ~LLUIImage();
 
+    const LLRectf& getClipRegion() const { return mClipRegion; }
+
     LL_FORCE_INLINE void setClipRegion(const LLRectf& region)
     {
         mClipRegion = region;

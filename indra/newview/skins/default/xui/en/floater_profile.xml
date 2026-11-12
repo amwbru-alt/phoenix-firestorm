@@ -1,13 +1,18 @@
 <?xml version='1.0' encoding='utf-8'?>
-<floater name="avatarinfo" height="744" width="760" layout="topleft" can_close="true" can_resize="true" min_height="744" min_width="760" positioning="centered" save_rect="true" title="Profile" header_height="44" header_vpad="10" header_icon="Forme_UI_Profile" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD" legacy_header_height="0">
-  <panel name="panel_profile_view" follows="all" class="panel_profile" layout="topleft" width="728" height="716" left="16" top="12">
-    <tab_container name="panel_profile_tabs" height="716" width="728" follows="all" layout="topleft" halign="center" tab_position="top" left="0" top="0" tab_height="36" tab_min_width="112" tab_max_width="174">
-      <panel name="panel_profile_secondlife" label="2nd Life" layout="topleft" class="panel_profile_secondlife" filename="panel_profile_secondlife.xml" />
+<floater name="avatarinfo" height="520" width="420" layout="topleft" can_close="true" can_resize="true" min_height="520" min_width="420" positioning="specified" save_rect="true" title="Profile" header_height="44" header_vpad="10" header_icon="Forme_UI_Profile" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD" legacy_header_height="0" right="-16" top="76" rect_control_suffix="_forme_card_v3">
+  <panel name="panel_profile_view" follows="all" class="panel_profile" layout="topleft" width="388" height="492" left="16" top="12">
+    <avatar_icon name="forme_profile_avatar" layout="topleft" left="0" top="0" width="80" height="80" mouse_opaque="false" default_icon_name="Generic_Person" circular="true" />
+    <text name="forme_profile_name" layout="topleft" left="96" top="8" width="286" height="26" font="SansSerifLarge" use_ellipses="true" parse_urls="false" />
+    <text name="forme_profile_badge" layout="topleft" left="96" top="44" width="270" height="26" font="SansSerif" visible="false" parse_urls="false" use_ellipses="true" />
+    <tab_container name="panel_profile_tabs" height="332" width="388" follows="all" layout="topleft" halign="center" tab_position="top" left="0" top="112" tab_height="36" tab_min_width="188" tab_max_width="194" bottom="-48">
+      <panel name="panel_profile_secondlife" label="About" layout="topleft" class="panel_profile_secondlife" filename="panel_profile_secondlife.xml" />
       <panel name="panel_profile_web" label="Feed" layout="topleft" class="panel_profile_web" filename="panel_profile_web.xml" />
-      <panel name="panel_profile_picks" label="Picks" layout="topleft" class="panel_profile_picks" filename="panel_profile_picks.xml" />
+      <panel name="panel_profile_picks" label="Places" layout="topleft" class="panel_profile_picks" filename="panel_profile_picks.xml" />
       <panel name="panel_profile_classifieds" label="Classifieds" layout="topleft" class="panel_profile_classifieds" filename="panel_profile_classifieds.xml" />
       <panel name="panel_profile_firstlife" label="1st Life" layout="topleft" class="panel_profile_firstlife" filename="panel_profile_firstlife.xml" />
       <panel name="panel_profile_notes" label="Notes" layout="topleft" class="panel_profile_notes" filename="panel_profile_notes.xml" />
     </tab_container>
+    <button name="forme_profile_message" layout="topleft" left="0" top="452" width="332" height="34" follows="left|right|bottom" label="Message" image_overlay="Forme_UI_Chat" image_overlay_alignment="left" image_overlay_max_size="20" pad_left="12" />
+    <button name="forme_profile_details" layout="topleft" left="340" top="452" width="48" height="34" follows="right|bottom" label="…" tool_tip="Full profile and actions" />
   </panel>
 </floater>

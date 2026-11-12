@@ -24,6 +24,14 @@
     <layout_panel name="forme_inventory_size_panel">
       <button name="forme_inventory_size" tool_tip="Переключить компактный и широкий вид" />
     </layout_panel>
+    <layout_panel name="forme_inventory_view_panel">
+      <combo_box name="forme_inventory_view">
+        <combo_box.item label="Все" value="All Items" />
+        <combo_box.item label="Недавние" value="Recent Items" />
+        <combo_box.item label="Надето" value="Worn Items" />
+        <combo_box.item label="Избранное" value="Favorites" />
+      </combo_box>
+    </layout_panel>
   </layout_stack>
   <layout_stack name="ctrl_stack">
     <layout_panel name="collapse_expand_buttons">

@@ -28,6 +28,9 @@
 #include "llviewerprecompiledheaders.h"
 
 #include "llstatusbar.h"
+#include "llfloatertools.h"
+#include "lltoolcomp.h"
+#include "fscreatoraccess.h"
 
 // viewer includes
 #include "llagent.h"
@@ -331,7 +334,7 @@ void LLStatusBar::draw()
     const bool full_menu = gSavedSettings.getBOOL("ForMeShowFullMenu");
     if (getParent())
     {
-        const S32 height = full_menu ? 62 : 38;
+        const S32 height = full_menu ? 106 : 82;
         if (getParent()->getRect().getHeight() != height)
             getParent()->reshape(getParent()->getRect().getWidth(), height, false);
     }
@@ -342,6 +345,13 @@ void LLStatusBar::draw()
     }
     for (LLView* child : *getChildList())
         child->setVisible(child->getName().rfind("forme_", 0) == 0);
+    if (auto* tools = findChild<LLPanel>("forme_tools_row"))
+    {
+        tools->setVisible(getRect().getWidth() >= 980);
+        for (const auto& target : {std::make_pair("map", "world_map"), std::make_pair("people", "people"), std::make_pair("inventory", "inventory")})
+            getChild<LLButton>(std::string("forme_tools_") + target.first)->setToggleState(LLFloaterReg::instanceVisible(target.second));
+    }
+
     if (auto* location = findChild<LLTextBox>("forme_hud_location"))
     {
         LLViewerRegion* region = gAgent.getRegion();
@@ -368,6 +378,25 @@ bool LLStatusBar::handleRightMouseDown(S32 x, S32 y, MASK mask)
 
 bool LLStatusBar::postBuild()
 {
+    if (auto* rotate = findChild<LLButton>("forme_tools_rotate"))
+        rotate->setClickedCallback([]() {
+            if (!ForMeCreatorAccess::allowed() || gRlvHandler.hasBehaviour(RLV_BHVR_EDIT)) return;
+            if (LLFloaterReg::showInstance("build"))
+                LLFloaterTools::setEditTool(LLToolCompRotate::getInstance());
+        });
+
+    if (auto* search = findChild<LLSearchEditor>("forme_world_search"))
+        search->setCommitCallback([](LLUICtrl* ctrl, const LLSD&) {
+            if (gRlvHandler.hasBehaviour(RLV_BHVR_SHOWWORLDMAP)) return;
+            auto* map = LLFloaterReg::showInstance("world_map");
+            if (map)
+                if (auto* location = map->findChild<LLUICtrl>("location"))
+                {
+                    location->setValue(ctrl->getValue());
+                    location->onCommit();
+                }
+        });
+
     gMenuBarView->setRightMouseDownCallback(boost::bind(&show_navbar_context_menu, _1, _2, _3));
 
     mTextTime = getChild<LLTextBox>("TimeText" );

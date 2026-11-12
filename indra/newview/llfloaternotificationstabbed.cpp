@@ -25,6 +25,8 @@
 
 #include "llviewerprecompiledheaders.h" // must be first include
 #include "llfloaternotificationstabbed.h"
+#include "llcheckboxctrl.h"
+#include <algorithm>
 
 #include "llchiclet.h"
 #include "llchicletbar.h"
@@ -65,13 +67,25 @@ bool LLFloaterNotificationsTabbed::postBuild()
     mGroupNoticeMessageList = getChild<LLNotificationListView>("group_notice_notification_list");
     mTransactionMessageList = getChild<LLNotificationListView>("transaction_notification_list");
     mSystemMessageList = getChild<LLNotificationListView>("system_notification_list");
-    mNotificationsSeparator->initTaggedList(LLNotificationListItem::getGroupInviteTypes(), mGroupInviteMessageList);
-    mNotificationsSeparator->initTaggedList(LLNotificationListItem::getGroupNoticeTypes(), mGroupNoticeMessageList);
-    mNotificationsSeparator->initTaggedList(LLNotificationListItem::getTransactionTypes(), mTransactionMessageList);
+    auto requests = LLNotificationListItem::getGroupInviteTypes();
+    requests.insert("OfferFriendship");
+    requests.insert("TeleportOffered");
+    requests.insert("TeleportOffered_SLUrl");
+    mNotificationsSeparator->initTaggedList(requests, mGroupInviteMessageList);
     mNotificationsSeparator->initUnTaggedList(mSystemMessageList);
     mNotificationsTabContainer = getChild<LLTabContainer>("notifications_tab_container");
     // <FS:Ansariel> Remember last tab used
-    mNotificationsTabContainer->selectTab(gSavedPerAccountSettings.getS32("FSLastNotificationsTab"));
+    mNotificationsTabContainer->setTabVisibility(getChild<LLPanel>("transaction_notifications_tab"), false);
+    mNotificationsTabContainer->setTabVisibility(getChild<LLPanel>("group_notice_notifications_tab"), false);
+    mNotificationsTabContainer->selectTabPanel(getChild<LLPanel>("group_invite_notifications_tab"));
+    getChild<LLCheckBoxCtrl>("forme_unread_only")->setCommitCallback([this](LLUICtrl*, const LLSD&) { applyReadFilter(); });
+    getChild<LLButton>("forme_mark_read")->setClickedCallback([this]() {
+        std::vector<LLPanel*> items;
+        getAllItemsOnCurrentTab(items);
+        for (auto* panel : items)
+            if (auto* item = dynamic_cast<LLNotificationListItem*>(panel)) mReadNotifications.insert(item->getID());
+        applyReadFilter();
+    });
 
     mDeleteAllBtn = getChild<LLButton>("delete_all_button");
     mDeleteAllBtn->setClickedCallback(boost::bind(&LLFloaterNotificationsTabbed::onClickDeleteAllBtn,this));
@@ -212,7 +226,7 @@ void LLFloaterNotificationsTabbed::setVisible(bool visible)
     }
 
     // do not show empty window
-    if (NULL == mNotificationsSeparator || isWindowEmpty()) visible = false;
+    if (NULL == mNotificationsSeparator) visible = false;
 
     LLTransientDockableFloater::setVisible(visible);
 
@@ -284,6 +298,7 @@ void LLFloaterNotificationsTabbed::updateNotificationCounter(S32 panelIndex, S32
 //---------------------------------------------------------------------------------
 void LLFloaterNotificationsTabbed::updateNotificationCounters()
 {
+    applyReadFilter();
     updateNotificationCounter(0, mSystemMessageList->size(), "system_tab_title");
     updateNotificationCounter(1, mTransactionMessageList->size(), "transactions_tab_title");
     updateNotificationCounter(2, mGroupInviteMessageList->size(), "group_invitations_tab_title");
@@ -484,6 +499,8 @@ void LLFloaterNotificationsTabbed::onStoreToast(LLPanel* info_panel, LLUUID id)
 void LLFloaterNotificationsTabbed::onItemClick(LLNotificationListItem* item)
 {
     LLUUID id = item->getID();
+    mReadNotifications.insert(id);
+    applyReadFilter();
     if (item->showPopup())
     {
         LLFloaterReg::showInstance("inspect_toast", id);
@@ -534,7 +551,8 @@ void LLFloaterNotificationsTabbed::onClickCollapseAllBtn()
 void LLNotificationSeparator::initTaggedList(const std::string& tag, LLNotificationListView* list)
 {
     mNotificationListMap.insert(notification_list_map_t::value_type(tag, list));
-    mNotificationLists.push_back(list);
+    if (std::find(mNotificationLists.begin(), mNotificationLists.end(), list) == mNotificationLists.end())
+        mNotificationLists.push_back(list);
 }
 
 //---------------------------------------------------------------------------------
@@ -653,3 +671,10 @@ LLNotificationSeparator::LLNotificationSeparator()
 //---------------------------------------------------------------------------------
 LLNotificationSeparator::~LLNotificationSeparator()
 {}
+
+void LLFloaterNotificationsTabbed::applyReadFilter()
+{
+    const bool unread = getChild<LLCheckBoxCtrl>("forme_unread_only")->getValue().asBoolean();
+    if (mSystemMessageList) mSystemMessageList->filterReadNotifications(mReadNotifications, unread);
+    if (mGroupInviteMessageList) mGroupInviteMessageList->filterReadNotifications(mReadNotifications, unread);
+}

@@ -139,7 +139,8 @@ public:
     struct Params
     :   public LLInitParam::Block<Params, LLJoystick::Params>
     {
-        Params()
+        Optional<bool> forme_ring;
+        Params() : forme_ring("forme_ring", false)
         {
             changeDefault(held_down_delay.seconds, 0.0);
         }
@@ -169,6 +170,7 @@ protected:
     bool            mInCenter;
 
     std::string     mCenterImageName;
+    bool            mFormeRing;
 };
 
 
