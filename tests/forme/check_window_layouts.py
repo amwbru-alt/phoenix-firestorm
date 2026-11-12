@@ -211,6 +211,33 @@ for name in ('new_btn', 'delete_btn'):
     assert int(child(classified_header, name).get('width')) == 96
 assert int(child(classified_profile, 'tab_classifieds').get('left')) == 8
 assert int(child(classified_profile, 'classifieds_panel_text').get('left')) == 24
+# Contacts use a stable list column and one consistently anchored action rail.
+friends_panel = resource('panel_fs_contacts_friends.xml')
+for name in ('im_btn', 'profile_btn', 'offer_teleport_btn', 'map_btn',
+             'pay_btn', 'remove_btn', 'add_btn'):
+    action = child(friends_panel, name)
+    assert action.get('right') == '-1', name
+    assert action.get('follows') == 'top|right', name
+assert child(friends_panel, 'friend_count').get('bottom') == '-4'
+groups_panel = resource('panel_fs_contacts_groups.xml')
+groups_list = child(groups_panel, 'group_list')
+assert groups_list.get('left') == '7' and groups_list.get('right') == '-92'
+assert groups_list.get('top') == '30' and groups_list.get('bottom') == '-29'
+assert child(groups_panel, 'info_border').get('right') == '-92'
+for name in ('chat_btn', 'info_btn', 'titles_btn', 'activate_btn',
+             'favorite_btn', 'leave_btn', 'create_btn', 'search_btn', 'invite_btn'):
+    assert child(groups_panel, name).get('right') == '-1', name
+assert child(groups_panel, 'groupcount').get('bottom') == '-5'
+contact_sets = resource('panel_fs_contacts_sets.xml')
+contact_list = child(contact_sets, 'contact_list')
+assert contact_list.get('left') == '6' and contact_list.get('right') == '-92'
+assert contact_list.get('top') == '53' and contact_list.get('bottom') == '-29'
+for name in ('add_btn', 'move_btn', 'remove_btn', 'profile_btn', 'start_im_btn',
+             'offer_teleport_btn', 'set_pseudonym_btn', 'remove_pseudonym_btn',
+             'remove_displayname_btn'):
+    action = child(contact_sets, name)
+    assert action.get('right') == '-6' and action.get('height') == '22', name
+assert child(contact_sets, 'member_count').get('right') == '-92'
 profile_texture = resource('floater_profile_texture.xml')
 assert profile_texture.get('bg_opaque_image') == 'Forme_Round_Window'
 
