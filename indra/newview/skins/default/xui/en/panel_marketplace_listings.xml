@@ -3,7 +3,7 @@
   label="Marketplace"
   name="Marketplace Panel"
   follows="all"
-  layout="topleft" right="-0">
+  layout="topleft" right="-0" bottom="-0">
   <panel
     name="tool_panel"
     follows="left|top|right"
