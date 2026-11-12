@@ -10,7 +10,7 @@
  layout="topleft"
  min_height="128"
  min_width="128"
- name="profile_texture">
+ name="profile_texture" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White">
     <layout_stack
      name="preview_stack"
      top="0"
