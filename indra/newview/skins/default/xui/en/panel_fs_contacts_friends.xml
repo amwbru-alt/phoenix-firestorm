@@ -130,6 +130,7 @@
 	 label="Profile"
 	 name="profile_btn"
 	 tool_tip="Show picture, groups, and other information"
+	 right="-1"
 	 width="80" />
 	<button
 	 top_pad="3"
@@ -139,6 +140,7 @@
 	 label="Teleport..."
 	 name="offer_teleport_btn"
 	 tool_tip="Offer this friend a teleport to your current location"
+	 right="-1"
 	 width="80" />
 	<button
 	 top_pad="3"
@@ -148,6 +150,7 @@
 	 label="Map..."
 	 name="map_btn"
 	 tool_tip="Show current location of friend on the map"
+	 right="-1"
 	 width="80" />
 	<button
 	 top_pad="3"
@@ -157,6 +160,7 @@
 	 label="Pay..."
 	 name="pay_btn"
 	 tool_tip="Give Linden dollars (L$) to this friend"
+	 right="-1"
 	 width="80" />
 	<button
 	 top_pad="3"
@@ -166,6 +170,7 @@
 	 label="Remove..."
 	 name="remove_btn"
 	 tool_tip="Remove this person from your friends list"
+	 right="-1"
 	 width="80" />
 	<button
 	 top_pad="3"
@@ -175,11 +180,12 @@
 	 label="Add..."
 	 name="add_btn"
 	 tool_tip="Offer friendship to a resident"
+	 right="-1"
 	 width="80" />
 	<text
-	 top_pad="10"
-	 left_delta="2"
-	 follows="top|right"
+	 bottom="-4"
+	 right="-1"
+	 follows="right|bottom"
 	 layout="topleft"
 	 height="20"
 	 name="friend_count"
