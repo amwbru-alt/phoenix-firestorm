@@ -88,6 +88,25 @@ for first in nav:
         sw, sh = int(second.get('width')), int(second.get('height'))
         assert x + w <= sx or sx + sw <= x or y + h <= sy or sy + sh <= y
 
+# ForMe social and commerce windows keep their expanded, balanced geometry.
+people_floater = resource('floater_people.xml')
+assert int(people_floater.get('height')) == 580
+assert int(child(people_floater, 'main_panel').get('height')) == 552
+assert int(people.get('height')) == 552
+market_listings = resource('floater_marketplace_listings.xml')
+assert int(market_listings.get('width')) == 440
+assert int(market_listings.get('height')) == 560
+assert int(child(market_listings, 'marketplace_listings_panel').get('width')) == 440
+group_picker = resource('floater_choose_group.xml')
+assert int(group_picker.get('width')) == 360
+assert int(child(group_picker, 'group list').get('width')) == 328
+profile_permissions = resource('floater_profile_permissions.xml')
+assert profile_permissions.get('bg_opaque_image') == 'Forme_Round_Window'
+assert all(int(child(profile_permissions, name).get('width')) == 340
+           for name in ('online_check', 'map_check', 'objects_check'))
+profile_texture = resource('floater_profile_texture.xml')
+assert profile_texture.get('bg_opaque_image') == 'Forme_Round_Window'
+
 item = resource('sidepanel_item_info.xml')
 assert child(item, 'CheckOwnerModify').get('left') != child(item, 'CheckNextOwnerModify').get('left')
 assert child(item, 'item_scroll_container').find("./layout_stack[@name='main_stack']") is not None
