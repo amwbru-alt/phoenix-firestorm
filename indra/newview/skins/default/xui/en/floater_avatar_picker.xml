@@ -204,6 +204,7 @@
              layout="topleft"
              left_pad="0"
              name="meters"
+             top="36"
              width="70">
                 Meters
             </text>
@@ -214,6 +215,7 @@
              height="28"
              width="28"
              name="Refresh"
+             top="30"
              image_overlay="Refresh_Off" />
           <fs_scroll_list
              draw_heading="true"
@@ -275,7 +277,7 @@
              layout="topleft"
              left_pad="5"
              name="FindUUID"
-             width="45" />
+             width="64" />
             <fs_scroll_list
              draw_heading="true" 
              follows="all"
@@ -334,16 +336,15 @@
      label_selected="OK"
      name="ok_btn"
      bottom="-42"
-     right="-236"
+     right="-124"
      width="100" />
     <button
-     follows="left|bottom"
+     follows="right|bottom"
      height="28"
      label="Cancel"
      label_selected="Cancel"
      name="cancel_btn"
      width="100"
-     left_pad="8"
      right="-16"
      bottom="-42" />
 </floater>
