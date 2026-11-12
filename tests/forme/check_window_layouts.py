@@ -238,6 +238,37 @@ for name in ('add_btn', 'move_btn', 'remove_btn', 'profile_btn', 'start_im_btn',
     action = child(contact_sets, name)
     assert action.get('right') == '-6' and action.get('height') == '22', name
 assert child(contact_sets, 'member_count').get('right') == '-92'
+# Marketplace uses the full content width, with a distinct toolbar, tabs and drop zone.
+marketplace = resource('panel_marketplace_listings.xml')
+assert int(marketplace.get('width')) == 420 and int(marketplace.get('height')) == 555
+market_toolbar = child(marketplace, 'tool_panel')
+assert int(market_toolbar.get('width')) == 420
+assert child(market_toolbar, 'audit_btn').get('right') == '-2'
+market_tabs_panel = child(marketplace, 'tab_container_panel')
+assert market_tabs_panel.get('top') == '30' and market_tabs_panel.get('bottom') == '-45'
+assert int(child(market_tabs_panel, 'filter_editor').get('width')) == 420
+market_tabs = child(market_tabs_panel, 'marketplace_filter_tabs')
+assert int(market_tabs.get('height')) == 450 and int(market_tabs.get('width')) == 420
+market_drop = child(marketplace, 'marketplace_drop_zone')
+assert market_drop.get('bottom') == '-4' and int(market_drop.get('width')) == 416
+for name in ('inventory', 'listed', 'unassociated', 'unlisted'):
+    page = resource('panel_marketplace_listings_' + name + '.xml')
+    assert int(page.get('width')) == 420 and int(page.get('height')) == 400, name
+# Search details flex with the window; the action groups share a clean footer row.
+search_window = resource('floater_fs_search.xml')
+search_tabs = child(search_window, 'ls_tabs')
+assert search_tabs.get('right') == '-1' and search_tabs.get('bottom') == '-4'
+search_details = child(search_window, 'panel_ls_details')
+assert search_details.get('left') == '412'
+assert search_details.get('right') == '-2' and search_details.get('bottom') == '-2'
+search_description = child(search_details, 'desc')
+assert search_description.get('bottom') == '-44'
+assert search_description.get('follows') == 'left|top|right|bottom'
+for name in ('people_profile_btn', 'people_message_btn', 'people_friend_btn',
+             'group_profile_btn', 'group_message_btn', 'group_join_btn',
+             'teleport_btn', 'map_btn', 'event_reminder_btn'):
+    action = child(search_details, name)
+    assert int(action.get('height')) == 28 and int(action.get('width')) == 112, name
 profile_texture = resource('floater_profile_texture.xml')
 assert profile_texture.get('bg_opaque_image') == 'Forme_Round_Window'
 
