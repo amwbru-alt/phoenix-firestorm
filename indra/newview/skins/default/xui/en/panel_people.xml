@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<panel follows="all" height="488" label="People" layout="topleft" left="0" min_height="350" name="people_panel" top="0" width="442">
+<panel follows="all" height="552" label="People" layout="topleft" left="0" min_height="350" name="people_panel" top="0" width="442">
   <string name="no_recent_people" value="No recent people." />
   <string name="no_filtered_recent_people" value="Didn't find what you're looking for? Try [fmw:///app/search/people/[SEARCH_TERM] Search]." />
   <string name="no_one_near" value="No one nearby. Looking for people to hang out with? Try [fmw:///app/search/people Search] or the [fmw:///app/worldmap World Map]." />
