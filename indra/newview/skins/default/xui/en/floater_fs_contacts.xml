@@ -32,7 +32,6 @@
      value="Unpin" />
     <tab_container
      follows="all"
-     height="436"
      layout="topleft"
      left="16"
      name="friends_and_groups"
@@ -46,8 +45,7 @@
      use_ellipses="true"
      top="12"
      right="-16"
-     bottom="-16"
-     width="488">
+     bottom="-16">
       <first_tab
        tab_bottom_image_flash="Toolbar_Left_Flash"/>
       <middle_tab
