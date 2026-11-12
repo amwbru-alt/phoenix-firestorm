@@ -56,23 +56,20 @@
      color="DkGray2"
      opaque="true"
      follows="all"
-     height="502"
      layout="topleft"
      left="10"
      top_pad="10"
      name="profile_scroll"
-     reserve_scroll_corner="false"
-     width="312">
+     reserve_scroll_corner="false" right="-10" bottom="-48">
     <panel
      name="scroll_content_panel"
-     follows="left|top"
+     follows="left|top|right"
      min_height="300"
      layout="topleft"
      top="0"
      background_visible="false"
      height="610"
-     left="0"
-     width="285">
+     left="0" right="-27">
         <panel
          name="snapshot_panel"
          layout="topleft"
@@ -382,9 +379,8 @@
      follows="left|right|bottom"
      height="35"
      layout="topleft"
-     top_pad="5"
      left="9"
-     name="buttons">
+     name="buttons" bottom="-5" right="-9">
      	
      	<layout_stack
 		  follows="bottom|left|right"
@@ -393,8 +389,7 @@
 		  name="layout_stack1"
 		  left="0"
 		  orientation="horizontal"
-		  top_pad="0"
-		  width="309">
+		  top_pad="0" right="-1">
 		  
 		  <layout_panel
 			  follows="bottom|left|right"
