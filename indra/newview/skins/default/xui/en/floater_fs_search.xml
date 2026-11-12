@@ -58,8 +58,7 @@
 		bottom="-4"
 		name="ls_tabs"
 		tab_min_width="90"
-		tab_position="top"
-		follows="all">
+		tab_position="top">
 		<panel
 			class="panel_ls_web"
 			filename="panel_fs_search_legacy_web.xml"
