@@ -64,3 +64,5 @@ jobs:
         run: python3 tests/forme/check_chat_names.py
       - name: Check CI license compatibility and complete PR ranges
         run: python3 tests/forme/test_ci_validation.py
+      - name: Check verified package cache and failed download isolation
+        run: python3 tests/forme/test_package_cache.py

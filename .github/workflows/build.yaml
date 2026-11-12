@@ -570,6 +570,9 @@ jobs:
           echo "PYTHON=$(command -v python)" >> "$GITHUB_ENV"
           mkdir -p forme-macos-logs
           xcodebuild -version
+      - name: Cache public WebRTC with paced download retries
+        shell: bash
+        run: python scripts/forme_cache_package.py webrtc darwin64
       - name: Configure public ForMe.World build
         shell: bash
         run: |
