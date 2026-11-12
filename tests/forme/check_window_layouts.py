@@ -172,6 +172,26 @@ assert int(child(inner_history_stack, 'bottom_bar_ls1').get('width')) == 448
 history_button_stack = child(inner_history_stack, 'bottom_bar_ls1')
 for name, width in (('teleport_btn_lp', 132), ('chat_btn_lp', 112), ('profile_btn_lp', 172)):
     assert int(child(history_button_stack, name).get('width')) == width, name
+first_life_profile = resource('panel_profile_firstlife.xml')
+first_life_photo = child(first_life_profile, 'real_world_pic')
+assert int(first_life_photo.get('width')) == 220
+assert int(first_life_photo.get('height')) == 220
+for name in ('fl_upload_image', 'fl_change_image', 'fl_remove_image', 'btn_preview'):
+    control = child(first_life_profile, name)
+    assert control.get('left') == '250' or control.get('left_delta') == '0'
+    assert int(control.get('height')) == 28
+first_life_description = child(first_life_profile, 'fl_description_edit')
+assert first_life_description.get('top') == '242'
+assert first_life_description.get('bottom') == '-54'
+for name in ('fl_save_changes', 'fl_discard_changes'):
+    action = child(first_life_profile, name)
+    assert action.get('bottom') == '-14' and int(action.get('height')) == 28
+profile_notes = resource('panel_profile_notes.xml')
+assert child(profile_notes, 'status_message').get('top') == '10'
+assert child(profile_notes, 'notes_edit').get('bottom') == '-54'
+for name in ('notes_save_changes', 'notes_discard_changes'):
+    action = child(profile_notes, name)
+    assert action.get('bottom') == '-14' and int(action.get('height')) == 28
 profile_texture = resource('floater_profile_texture.xml')
 assert profile_texture.get('bg_opaque_image') == 'Forme_Round_Window'
 
