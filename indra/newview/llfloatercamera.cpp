@@ -117,22 +117,27 @@ LLPanelCameraItem::LLPanelCameraItem(const LLPanelCameraItem::Params& p)
 :   LLPanel(p)
 {
     LLIconCtrl::Params icon_params = p.picture;
+    LLView::applyXUILayout(icon_params, this);
     mPicture = LLUICtrlFactory::create<LLIconCtrl>(icon_params);
     addChild(mPicture);
 
     icon_params = p.icon_over;
+    LLView::applyXUILayout(icon_params, this);
     mIconOver = LLUICtrlFactory::create<LLIconCtrl>(icon_params);
     addChild(mIconOver);
 
     icon_params = p.icon_selected;
+    LLView::applyXUILayout(icon_params, this);
     mIconSelected = LLUICtrlFactory::create<LLIconCtrl>(icon_params);
     addChild(mIconSelected);
 
     icon_params = p.selected_picture;
+    LLView::applyXUILayout(icon_params, this);
     mPictureSelected = LLUICtrlFactory::create<LLIconCtrl>(icon_params);
     addChild(mPictureSelected);
 
     LLTextBox::Params text_params = p.text;
+    LLView::applyXUILayout(text_params, this);
     mText = LLUICtrlFactory::create<LLTextBox>(text_params);
     addChild(mText);
 

@@ -178,6 +178,7 @@ bool LLFloater::KeyCompare::equate(const LLSD& a, const LLSD& b)
 LLFloater::Params::Params()
 :   title("title"),
     short_title("short_title"),
+    rect_control_suffix("rect_control_suffix"),
     single_instance("single_instance", false),
     reuse_instance("reuse_instance", false),
     can_resize("can_resize", false),
@@ -2094,7 +2095,7 @@ void LLFloater::initRectControl()
     // save_rect and save_visibility only apply to registered floaters
     if (mSaveRect)
     {
-        std::string ctrl_name = getControlName(mInstanceName, mKey);
+        std::string ctrl_name = getControlName(mInstanceName, mKey) + mRectControlSuffix;
         mRectControl = LLFloaterReg::declareRectControl(ctrl_name);
         mPosXControl = LLFloaterReg::declarePosXControl(ctrl_name);
         mPosYControl = LLFloaterReg::declarePosYControl(ctrl_name);
@@ -3688,6 +3689,15 @@ void LLFloater::initFromParams(const LLFloater::Params& p)
     mDragOnLeft = p.can_drag_on_left;
     mHeaderHeight = p.header_height;
     mLegacyHeaderHeight = p.legacy_header_height;
+    // Registered floaters are constructed before their XML is parsed. Refresh
+    // the handle so the final header icon, font and padding take effect.
+    if (mDragHandle)
+    {
+        removeChild(mDragHandle);
+        delete mDragHandle;
+        mDragHandle = nullptr;
+    }
+    addDragHandle(p);
     mSingleInstance = p.single_instance;
     mReuseInstance = p.reuse_instance.isProvided() ? p.reuse_instance : p.single_instance;
 
@@ -3705,6 +3715,7 @@ void LLFloater::initFromParams(const LLFloater::Params& p)
     mDropShadow = p.drop_shadow;
 
     mSaveRect = p.save_rect;
+    mRectControlSuffix = p.rect_control_suffix;
     if (p.save_visibility)
     {
         mVisibilityControl = "t"; // flag to build mVisibilityControl name once mInstanceName is set

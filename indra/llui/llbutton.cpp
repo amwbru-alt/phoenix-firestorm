@@ -84,6 +84,7 @@ LLButton::Params::Params()
     image_pressed_selected("image_pressed_selected"),
     image_overlay("image_overlay"),
     image_overlay_alignment("image_overlay_alignment", std::string("center")),
+    image_overlay_max_size("image_overlay_max_size", 0),
     image_top_pad("image_top_pad"),
     image_bottom_pad("image_bottom_pad"),
     imgoverlay_label_space("imgoverlay_label_space", 1),
@@ -168,6 +169,7 @@ LLButton::LLButton(const LLButton::Params& p)
     mImageOverlayDisabledColor(p.image_overlay_disabled_color()),
     mImageOverlaySelectedColor(p.image_overlay_selected_color()),
     mImageOverlayAlignment(LLFontGL::hAlignFromName(p.image_overlay_alignment)),
+    mImageOverlayMaxSize(p.image_overlay_max_size),
     mImageOverlayTopPad(p.image_top_pad),
     mImageOverlayBottomPad(p.image_bottom_pad),
     mImgOverlayLabelSpace(p.imgoverlay_label_space),
@@ -731,6 +733,11 @@ void LLButton::getOverlayImageSize(S32& overlay_width, S32& overlay_height)
     overlay_height = mImageOverlay->getHeight();
 
     F32 scale_factor = llmin((F32)getRect().getWidth() / (F32)overlay_width, (F32)getRect().getHeight() / (F32)overlay_height, 1.f);
+    if (mImageOverlayMaxSize > 0)
+    {
+        scale_factor = llmin(scale_factor,
+            (F32)mImageOverlayMaxSize / (F32)llmax(overlay_width, overlay_height));
+    }
     overlay_width = ll_round((F32)overlay_width * scale_factor);
     overlay_height = ll_round((F32)overlay_height * scale_factor);
 }

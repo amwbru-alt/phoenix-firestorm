@@ -110,6 +110,7 @@ public:
         Optional<S32>           pad_bottom; // under text label
 
         //image overlay paddings
+        Optional<S32>           image_overlay_max_size;
         Optional<S32>           image_top_pad;
         Optional<S32>           image_bottom_pad;
         Optional<S32>           image_overlay_right_delta;
@@ -395,6 +396,7 @@ protected:
     S32                         mRightHPad;
     S32                         mBottomVPad;    // under text label
 
+    S32                         mImageOverlayMaxSize;
     S32                         mImageOverlayTopPad;
     S32                         mImageOverlayBottomPad;
 

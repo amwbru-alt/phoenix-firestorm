@@ -157,7 +157,8 @@ public:
     :   public LLInitParam::Block<Params, LLPanel::Params>
     {
         Optional<std::string>   title,
-                                short_title;
+                                short_title,
+                                rect_control_suffix;
 
         Optional<bool>          single_instance,
                                 reuse_instance,
@@ -490,6 +491,7 @@ public:
 protected:
     bool            mSaveRect;
     bool            mDefaultRectForGroup;
+    std::string     mRectControlSuffix;
     std::string     mRectControl;
     std::string     mPosXControl;
     std::string     mPosYControl;

@@ -198,8 +198,9 @@ void LLDragHandleTop::draw()
     {
         const S32 top = getRect().getHeight();
         const F32 alpha = getDrawContext().mAlpha;
-        mTitleIcon->draw(16, top - 34, 22, 22, LLColor4(0.80f, 0.64f, 0.94f, alpha));
-        gl_rect_2d(16, top - 43, getRect().getWidth() - 16, top - 44,
+        mTitleIcon->draw(16, top - mLabelVPad - 22, 22, 22, LLColor4(0.80f, 0.64f, 0.94f, alpha));
+        const S32 header_height = mLabelVPad >= 8 ? 44 : 28;
+        gl_rect_2d(16, top - header_height + 1, getRect().getWidth() - 16, top - header_height,
             LLColor4(0.50f, 0.47f, 0.52f, 0.30f * alpha));
     }
     LLView::draw();

@@ -98,7 +98,7 @@ assert int(market_listings.get('width')) == 440
 assert int(market_listings.get('height')) == 560
 marketplace_shell = child(market_listings, 'marketplace_listings_panel')
 assert marketplace_shell.get('width') is None and marketplace_shell.get('height') is None
-assert marketplace_shell.get('right') == '-0' and marketplace_shell.get('bottom') == '-0'
+assert marketplace_shell.get('right') == '-1' and marketplace_shell.get('bottom') == '-1'
 group_picker = resource('floater_choose_group.xml')
 assert int(group_picker.get('width')) == 360
 assert int(child(group_picker, 'group list').get('width')) == 328
@@ -245,25 +245,25 @@ assert child(contact_sets, 'member_count').get('right') == '-92'
 # Marketplace uses the full content width, with a distinct toolbar, tabs and drop zone.
 marketplace = resource('panel_marketplace_listings.xml')
 assert marketplace.get('width') is None and marketplace.get('height') is None
-assert marketplace.get('right') == '-0' and marketplace.get('bottom') == '-0'
+assert marketplace.get('right') == '-1' and marketplace.get('bottom') == '-1'
 market_toolbar = child(marketplace, 'tool_panel')
-assert market_toolbar.get('width') is None and market_toolbar.get('right') == '-0'
+assert market_toolbar.get('width') is None and market_toolbar.get('right') == '-1'
 assert child(market_toolbar, 'audit_btn').get('right') == '-2'
 market_tabs_panel = child(marketplace, 'tab_container_panel')
 assert market_tabs_panel.get('top') == '30' and market_tabs_panel.get('bottom') == '-45'
 assert market_tabs_panel.get('height') is None
 market_filter = child(market_tabs_panel, 'filter_editor')
-assert market_filter.get('width') is None and market_filter.get('right') == '-0'
+assert market_filter.get('width') is None and market_filter.get('right') == '-1'
 market_tabs = child(market_tabs_panel, 'marketplace_filter_tabs')
 assert market_tabs.get('height') is None and market_tabs.get('width') is None
-assert market_tabs.get('right') == '-0' and market_tabs.get('bottom') == '-0'
+assert market_tabs.get('right') == '-1' and market_tabs.get('bottom') == '-1'
 market_drop = child(marketplace, 'marketplace_drop_zone')
 assert market_drop.get('bottom') == '-4' and market_drop.get('width') is None
 assert market_drop.get('right') == '-2'
 for name in ('inventory', 'listed', 'unassociated', 'unlisted'):
     page = resource('panel_marketplace_listings_' + name + '.xml')
     assert page.get('width') is None and page.get('height') is None, name
-    assert page.get('right') == '-0' and page.get('bottom') == '-0', name
+    assert page.get('right') == '-1' and page.get('bottom') == '-1', name
 # Search details flex with the window; the action groups share a clean footer row.
 search_window = resource('floater_fs_search.xml')
 search_tabs = child(search_window, 'ls_tabs')
@@ -398,27 +398,27 @@ marketplace_window = resource('floater_marketplace_listings.xml')
 assert int(marketplace_window.get('min_width')) == 380
 marketplace_shell = child(marketplace_window, 'marketplace_listings_panel')
 assert marketplace_shell.get('width') is None and marketplace_shell.get('height') is None
-assert marketplace_shell.get('right') == '-0'
+assert marketplace_shell.get('right') == '-1'
 market_background = child(marketplace_shell, 'background_panel')
 assert market_background.get('width') is None and market_background.get('height') is None
-assert market_background.get('right') == '-10' and market_background.get('bottom') == '-0'
+assert market_background.get('right') == '-10' and market_background.get('bottom') == '-1'
 market_placeholder = child(market_background, 'marketplace_listings_inventory_placeholder_panel')
 assert market_placeholder.get('width') is None and market_placeholder.get('height') is None
-assert child(market_background, 'panel_marketplace_listing').get('right') == '-0'
+assert child(market_background, 'panel_marketplace_listing').get('right') == '-1'
 market_progress = child(marketplace_shell, 'initialization_progress_indicator')
 assert market_progress.get('width') is None and market_progress.get('height') is None
 market_progress_row = market_progress.find("./layout_panel[@height='24']/layout_stack[@orientation='horizontal']")
 assert market_progress_row is not None and market_progress_row.get('width') is None
 market_panel = resource('panel_marketplace_listings.xml')
 assert market_panel.get('width') is None and market_panel.get('height') is None
-assert market_panel.get('right') == '-0' and market_panel.get('bottom') == '-0'
+assert market_panel.get('right') == '-1' and market_panel.get('bottom') == '-1'
 market_tabs_panel = child(market_panel, 'tab_container_panel')
-assert market_tabs_panel.get('width') is None and market_tabs_panel.get('right') == '-0'
+assert market_tabs_panel.get('width') is None and market_tabs_panel.get('right') == '-1'
 market_filter = child(market_tabs_panel, 'filter_editor')
-assert market_filter.get('width') is None and market_filter.get('right') == '-0'
+assert market_filter.get('width') is None and market_filter.get('right') == '-1'
 market_tabs = child(market_tabs_panel, 'marketplace_filter_tabs')
 assert market_tabs.get('width') is None and market_tabs.get('height') is None
-assert market_tabs.get('right') == '-0' and market_tabs.get('bottom') == '-0'
+assert market_tabs.get('right') == '-1' and market_tabs.get('bottom') == '-1'
 assert child(market_panel, 'marketplace_drop_zone').get('width') is None
 # Contacts tabs follow the resizable shell down to the declared minimum width.
 contacts = resource('floater_fs_contacts.xml')
@@ -491,3 +491,25 @@ for name in ('lbl7', 'view_subject', 'view_message', 'view_inventory_name'):
 group_land = resource('panel_group_land_money.xml')
 assert int(group_land.get('width')) == 313
 print(f'PASS {framed} registered frames, {len(aliases)} line-icon aliases, native category/tab navigation and retained joystick classes')
+
+# A negative-zero anchor becomes integer zero in LLView::applyXUILayout,
+# collapsing the content to its parent's near edge. Check every commerce layer.
+for path in XUI.glob('*marketplace_listings*.xml'):
+    for node in ET.parse(path).iter():
+        assert node.get('right') != '-0' and node.get('bottom') != '-0', (path, node.get('name'))
+        if node.get('left') is not None and node.get('right') is not None:
+            left, right = int(node.get('left')), int(node.get('right'))
+            # Parent-relative right edges must produce positive widths at minimum size.
+            if left >= 0 and right < 0:
+                assert 380 + right > left, (path, node.get('name'))
+status = resource('panel_status_bar.xml')
+for name in ('forme_hud_brand', 'forme_hud_location'):
+    assert len(status.findall(".//*[@name='%s']" % name)) == 1, name
+    assert status.find("./*[@name='%s']" % name) is not None, name
+assert child(resource('panel_toolbar_view.xml'), 'toolbar_bottom').find('button_icon_and_text').get('image_overlay_max_size') == '26'
+appearance = resource('floater_my_appearance.xml')
+assert int(appearance.get('width')) <= 480
+assert appearance.get('rect_control_suffix') == '_forme_compact_v2'
+for item in resource('floater_camera.xml').findall('.//panel_camera_item'):
+    assert item.find('panel_camera_item.text').get('visible') == 'false'
+print('PASS commerce anchors, unique top-level HUD labels, compact dock icons and outfit geometry')

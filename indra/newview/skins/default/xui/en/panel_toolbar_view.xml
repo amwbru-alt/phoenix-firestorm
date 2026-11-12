@@ -170,7 +170,7 @@
              min_girth="36"
              max_rows="2"
              visible="true">
-      <button_icon_and_text desired_height="58"
+      <button_icon_and_text image_overlay_max_size="26" desired_height="58"
                             button_width.min="82"
                             button_width.max="108"
                             image_overlay_alignment="center"

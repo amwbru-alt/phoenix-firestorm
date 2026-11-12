@@ -3,14 +3,14 @@
   label="Marketplace"
   name="Marketplace Panel"
   follows="all"
-  layout="topleft" right="-0" bottom="-0">
+  layout="topleft" right="-1" bottom="-1">
   <panel
     name="tool_panel"
     follows="left|top|right"
     layout="topleft"
     height="30"
     top="0"
-    left="0" right="-0">
+    left="0" right="-1">
     <menu_button
       name="sort_btn"
       tool_tip="View/sort options"
@@ -53,7 +53,7 @@
     layout="topleft"
     default_tab_group="1"
     top="30"
-    bottom="-45" right="-0">
+    bottom="-45" right="-1">
   <filter_editor
     text_pad_left="10"
     follows="left|top|right"
@@ -63,7 +63,7 @@
     left="0"
     max_length_chars="300"
     name="filter_editor"
-    top="0"  right="-0"/>
+    top="0"  right="-1"/>
   <tab_container
     name="marketplace_filter_tabs"
     follows="all"
@@ -75,7 +75,7 @@
     tab_height="30"
     tab_group="1"
     tab_position="top"
-    tab_min_width="50" right="-0" bottom="-0">
+    tab_min_width="50" right="-1" bottom="-1">
   </tab_container>
   </panel>
   <panel
