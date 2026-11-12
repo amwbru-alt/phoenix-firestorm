@@ -15,9 +15,9 @@
   <string name="title_notification_tabbed_window">
     Notifications
   </string>
-  <layout_stack height="564" enabled="true" orientation="vertical" name="TabButtonsStack" follows="left|top|right|bottom" left="16" top="12" right="-16" bottom="-16" width="668" layout="topleft">
-    <layout_panel height="482" enabled="true" name="TabButtonsLayoutPanel">
-      <tab_container follows="left|top|right|bottom" halign="center" layout="topleft" tab_position="top" left="0" top="7" right="-1" height="443" mouse_opaque="true" name="notifications_tab_container" tab_height="36" tab_min_width="118" tab_max_width="170">
+  <layout_stack enabled="true" orientation="vertical" name="TabButtonsStack" follows="left|top|right|bottom" left="16" top="12" right="-16" bottom="-16" layout="topleft">
+    <layout_panel enabled="true" name="TabButtonsLayoutPanel" follows="all" auto_resize="true">
+      <tab_container follows="left|top|right|bottom" halign="center" layout="topleft" tab_position="top" left="0" top="7" right="-1" mouse_opaque="true" name="notifications_tab_container" tab_height="36" tab_min_width="104" tab_max_width="150" bottom="-36">
         <panel border="true" bevel_style="none" follows="left|top|right|bottom" label="System (0)" layout="topleft" name="system_notification_list_tab">
           <notification_list_view color="FloaterDefaultBackgroundColor" follows="all" layout="topleft" name="system_notification_list" left="0" top="5" height="0" right="-1" />
         </panel>
@@ -31,7 +31,7 @@
           <notification_list_view color="FloaterDefaultBackgroundColor" follows="all" layout="topleft" name="group_notice_notification_list" left="0" top="5" height="0" right="-1" />
         </panel>
       </tab_container>
-      <layout_stack left="0" right="-1" height="26" enabled="true" orientation="horizontal" follows="left|right" name="ButtonsStack">
+      <layout_stack left="0" right="-1" height="26" enabled="true" orientation="horizontal" follows="left|right|bottom" name="ButtonsStack" bottom="-1">
         <layout_panel width="103" height="30" enabled="true" name="CondenseAllButtonPanel" auto_resize="false">
           <button width="100" height="21" left="2" label="Collapse all" name="collapse_all_button">
         </button>
