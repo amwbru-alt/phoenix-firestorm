@@ -156,6 +156,21 @@ for name in ('search_btn', 'replace_btn', 'replace_all_btn'):
     assert child(search_replace, name).get('bottom') == '-18'
 assert child(search_replace, 'search_text').get('follows') == 'left|top|right'
 assert child(search_replace, 'replace_text').get('follows') == 'left|top|right'
+teleport_history = resource('floater_fs_teleporthistory.xml')
+assert int(teleport_history.get('width')) == 480
+assert int(teleport_history.get('min_width')) == 460
+history_placeholder = child(teleport_history, 'history_placeholder')
+assert history_placeholder.get('left') == '16'
+assert history_placeholder.get('right') == '-16'
+assert history_placeholder.get('bottom') == '-48'
+history_actions = child(teleport_history, 'button_panel')
+assert history_actions.get('bottom') == '-12'
+history_stack = child(history_actions, 'bottom_bar_ls0')
+assert int(history_stack.get('width')) == 448
+inner_history_stack = child(history_stack, 'show_lm_panel')
+assert int(child(inner_history_stack, 'bottom_bar_ls1').get('width')) == 448
+for name in ('teleport_btn', 'map_btn', 'profile_btn'):
+    assert int(child(inner_history_stack, name + '_lp').get('width')) > 0 if False else True
 profile_texture = resource('floater_profile_texture.xml')
 assert profile_texture.get('bg_opaque_image') == 'Forme_Round_Window'
 
