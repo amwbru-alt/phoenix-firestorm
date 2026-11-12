@@ -5,10 +5,8 @@
   layout="topleft"
   top="3"
   left="3"
-  width="200"
-  height="300"
   label="Experiences"
-  follows="all">
+  follows="all" right="-3" bottom="-3">
   <string
     name="loading_experiences"
     value="Loading experiences..."/>
