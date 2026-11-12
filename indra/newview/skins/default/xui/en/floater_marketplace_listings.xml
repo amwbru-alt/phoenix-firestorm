@@ -18,26 +18,20 @@
     follows="all"
     layout="topleft"
     left="0"
-    top="0"
-    height="555"
-    width="440">
+    top="0" right="-0">
     <panel
       name="background_panel"
       follows="all"
       left="10"
-      height="555"
-      width="420"
       top="0"
-      bg_opaque_color="InventoryBackgroundColor">
+      bg_opaque_color="InventoryBackgroundColor" right="-10" bottom="-0">
       <panel
         name="marketplace_listings_inventory_placeholder_panel"
         follows="all"
         layout="topleft"
         top="0"
         left="0"
-        width="420"
-        height="555"
-        bg_opaque_color="InventoryBackgroundColor">
+        bg_opaque_color="InventoryBackgroundColor" right="-0" bottom="-0">
         <text
           name="marketplace_listings_inventory_placeholder_title"
           type="string"
@@ -45,11 +39,10 @@
           layout="topleft"
           top="10"
           left="0"
-          width="400"
           height="25"
           wrap="true"
           halign="center"
-          font="SansSerifBold">
+          font="SansSerifBold" right="-10">
             Loading...
         </text>
         <text
@@ -59,25 +52,23 @@
           layout="topleft"
           top="35"
           left="0"
-          width="420"
           height="130"
           wrap="true"
-          halign="left" />
+          halign="left"  right="-0"/>
       </panel>
       <panel
         name="panel_marketplace_listing"
         filename="panel_marketplace_listings.xml"
         class="llpanelmarketplacelistings"
         top="0"
-        follows="all"/>
+        follows="all" right="-0" bottom="-0"/>
       </panel>
     <panel
       name="marketplace_panel_status"
       follows="bottom|left|right"
       layout="topleft"
       left="10"
-      width="420"
-      height="20">
+      height="20" right="-10" bottom="-0">
       <text
         name="marketplace_status"
         type="string"
@@ -85,14 +76,13 @@
         layout="topleft"
         top="0"
         left="5"
-        width="150"
         height="20"
         wrap="true"
         halign="left"
         valign="center"
-        font="SansSerif"/>
+        font="SansSerif" right="-5"/>
     </panel>
-    <layout_stack name="initialization_progress_indicator" orientation="vertical" left="0" height="555" top="0" width="440" follows="all" visible="false">
+    <layout_stack name="initialization_progress_indicator" orientation="vertical" left="0" top="0" follows="all" visible="false" right="-0" bottom="-0">
       <layout_panel />
       <layout_panel height="24" auto_resize="false">
         <layout_stack orientation="horizontal" left="0" height="24" top="0" width="440" follows="all">
