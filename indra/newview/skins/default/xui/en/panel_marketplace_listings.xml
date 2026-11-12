@@ -3,17 +3,14 @@
   label="Marketplace"
   name="Marketplace Panel"
   follows="all"
-  layout="topleft"
-  width="420"
-  height="555">
+  layout="topleft" right="-0">
   <panel
     name="tool_panel"
     follows="left|top|right"
     layout="topleft"
     height="30"
-    width="420"
     top="0"
-    left="0">
+    left="0" right="-0">
     <menu_button
       name="sort_btn"
       tool_tip="View/sort options"
@@ -55,9 +52,8 @@
     follows="all"
     layout="topleft"
     default_tab_group="1"
-    width="420"
     top="30"
-    bottom="-45">
+    bottom="-45" right="-0">
   <filter_editor
     text_pad_left="10"
     follows="left|top|right"
@@ -67,8 +63,7 @@
     left="0"
     max_length_chars="300"
     name="filter_editor"
-    top="0"
-    width="420" />
+    top="0"  right="-0"/>
   <tab_container
     name="marketplace_filter_tabs"
     follows="all"
@@ -76,13 +71,11 @@
     top="30"
     left="0"
     top_pad="0"
-    width="420"
-    height="450"
     halign="center"
     tab_height="30"
     tab_group="1"
     tab_position="top"
-    tab_min_width="50">
+    tab_min_width="50" right="-0" bottom="-0">
   </tab_container>
   </panel>
   <panel
@@ -90,7 +83,6 @@
       mouse_opaque="true"
       follows="bottom|left|right"
       left="2"
-      width="416"
       height="40"
       bottom="-4"
       background_visible="true"
@@ -100,7 +92,7 @@
       bg_opaque_image="Marketplace_Dropzone_Background"
       border="true"
       bevel_style="in"
-      visible="true">
+      visible="true" right="-2">
       <text
           name="drop_zone_label"
           type="string"
@@ -109,10 +101,9 @@
           top="13"
           height="20"
           left="2"
-          width="412"
           halign="center"
           font_shadow="hard"
-          valign="top">
+          valign="top" right="-2">
           Drop folders here to create new listings
       </text>
   </panel>
