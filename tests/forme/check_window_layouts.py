@@ -98,7 +98,7 @@ assert int(market_listings.get('width')) == 440
 assert int(market_listings.get('height')) == 560
 marketplace_shell = child(market_listings, 'marketplace_listings_panel')
 assert marketplace_shell.get('width') is None and marketplace_shell.get('height') is None
-assert marketplace_shell.get('right') == '-0'
+assert marketplace_shell.get('right') == '-0' and marketplace_shell.get('bottom') == '-0'
 group_picker = resource('floater_choose_group.xml')
 assert int(group_picker.get('width')) == 360
 assert int(child(group_picker, 'group list').get('width')) == 328
