@@ -246,6 +246,7 @@ assert int(market_toolbar.get('width')) == 420
 assert child(market_toolbar, 'audit_btn').get('right') == '-2'
 market_tabs_panel = child(marketplace, 'tab_container_panel')
 assert market_tabs_panel.get('top') == '30' and market_tabs_panel.get('bottom') == '-45'
+assert market_tabs_panel.get('height') is None
 assert int(child(market_tabs_panel, 'filter_editor').get('width')) == 420
 market_tabs = child(market_tabs_panel, 'marketplace_filter_tabs')
 assert int(market_tabs.get('height')) == 450 and int(market_tabs.get('width')) == 420
