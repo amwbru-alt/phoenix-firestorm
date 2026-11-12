@@ -4,9 +4,7 @@
     name="Active Items"
    
     layout="topleft"
-    follows="all"
-    width="420"
-    height="400"
+    follows="all" right="-0" bottom="-0"
     left_delta="0"
     start_folder.name="Marketplace listings"
     show_empty_message="true"
