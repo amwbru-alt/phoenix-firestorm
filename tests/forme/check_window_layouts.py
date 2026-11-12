@@ -367,7 +367,8 @@ assert group_footer.get('right') == '-6' and group_footer.get('width') is None
 group_experiences = resource('panel_experiences.xml')
 assert group_experiences.get('right') == '-3' and group_experiences.get('bottom') == '-3'
 assert group_experiences.get('width') is None and group_experiences.get('height') is None
-experiences_stack = child(group_experiences, 'layout_stack')
+experiences_stack = group_experiences.find('layout_stack')
+assert experiences_stack is not None
 assert experiences_stack.get('right') == '-1' and experiences_stack.get('bottom') == '-4'
 # Classified detail view can resize without covering its persistent action footer.
 classified_window = resource('floater_classified.xml')
