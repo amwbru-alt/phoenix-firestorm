@@ -115,9 +115,10 @@ assert child(group_titles, 'filter_input').get('left') == '16'
 assert child(group_titles, 'filter_input').get('right') == '-16'
 assert child(group_titles, 'title_list').get('top') == '52'
 assert child(group_titles, 'title_list').get('bottom') == '-88'
-for name in ('btnSetRegion', 'btnSetRegionManual', 'btnClearRegion',
-             'btnInfo', 'btnActivate', 'btnRefresh'):
+for name in ('btnSetRegion', 'btnInfo', 'btnActivate', 'btnRefresh'):
     assert child(group_titles, name).get('bottom') == '-52', name
+for name in ('btnSetRegionManual', 'btnClearRegion'):
+    assert child(group_titles, name).get('follows') == 'left|bottom', name
 assert child(group_titles, 'use_default_title').get('bottom') == '-20'
 assert child(group_titles, 'btnSetDefault').get('bottom') == '-18'
 contact_add = resource('floater_fs_contact_add.xml')
