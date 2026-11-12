@@ -56,7 +56,6 @@
     layout="topleft"
     default_tab_group="1"
     width="420"
-    height="480"
     top="30"
     bottom="-45">
   <filter_editor
