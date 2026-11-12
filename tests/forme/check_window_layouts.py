@@ -386,6 +386,14 @@ classified_footer = child(classified, 'buttons')
 assert classified_footer.get('bottom') == '-5' and classified_footer.get('right') == '-9'
 classified_actions = child(classified_footer, 'layout_stack1')
 assert classified_actions.get('right') == '-1' and classified_actions.get('width') is None
+# Contacts tabs follow the resizable shell down to the declared minimum width.
+contacts = resource('floater_fs_contacts.xml')
+assert int(contacts.get('min_width')) == 420
+contacts_tabs = child(contacts, 'friends_and_groups')
+assert contacts_tabs.get('width') is None and contacts_tabs.get('height') is None
+assert contacts_tabs.get('follows') == 'all'
+assert contacts_tabs.get('left') == '16' and contacts_tabs.get('right') == '-16'
+assert contacts_tabs.get('top') == '12' and contacts_tabs.get('bottom') == '-16'
 # IM session cannot shrink below the combined speakers and conversation columns.
 im_session = resource('floater_im_session.xml')
 assert int(im_session.get('min_width')) == 480
