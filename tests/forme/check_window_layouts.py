@@ -129,8 +129,9 @@ display_name = resource('floater_display_name.xml')
 assert int(display_name.get('width')) == 500
 assert int(child(display_name, 'display_name_editor').get('width')) == 460
 assert int(child(display_name, 'display_name_confirm').get('width')) == 330
-assert all(int(child(display_name, name).get('height')) == 28
-           for name in ('reset_btn', 'save_btn', 'cancel_btn'))
+assert int(child(display_name, 'reset_btn').get('height')) == 28
+assert all(int(child(display_name, name).get('height')) == 23
+           for name in ('save_btn', 'cancel_btn'))
 resident_picker = resource('floater_avatar_picker.xml')
 assert int(resident_picker.get('width')) == 560
 assert int(resident_picker.get('height')) == 460
