@@ -54,11 +54,12 @@
 		follows="all"
 		top="1"
 		left="0"
+		right="-1"
+		bottom="-4"
 		name="ls_tabs"
 		tab_min_width="90"
 		tab_position="top"
-		width="780"
-		height="585">
+		follows="all">
 		<panel
 			class="panel_ls_web"
 			filename="panel_fs_search_legacy_web.xml"
@@ -106,11 +107,11 @@
 	<panel
 		border="true"
 		follows="top|right|bottom"
-		height="508"
 		layout="topleft"
 		left="412"
+		right="-2"
 		top="80"
-		width="366"
+		bottom="-2"
 		name="panel_ls_details">
 		<text_editor
 		left="12"
@@ -217,10 +218,10 @@
 		<text_editor
 		left="20"
 		top_pad="12"
-		height="154"
+		bottom="-44"
 		width="324"
 		layout="topleft"
-		follows="left|top|right"
+		follows="left|top|right|bottom"
 		name="desc"
 		bg_visible="false"
 		border_visible="false"
@@ -235,78 +236,78 @@
 		<button
 		layout="topleft"
 		follows="left|bottom"
-		height="23"
+		height="28"
 		label="Open Profile"
 		name="people_profile_btn"
-		top="484"
-		left="3"
-		width="120" />
+		bottom="-8"
+		left="8"
+		width="112" />
 		<button
 		layout="topleft"
 		follows="left|bottom"
-		height="23"
+		height="28"
 		label="Send Message"
 		name="people_message_btn"
-		width="120"
-		left_pad="1" />
+		width="112"
+		left_pad="4" />
 		<button
 		layout="topleft"
 		follows="left|bottom"
-		height="23"
+		height="28"
 		label="Add Friend"
 		name="people_friend_btn"
-		width="120"
-		left_pad="1" />
+		width="112"
+		left_pad="4" />
 		<button
 		layout="topleft"
 		follows="left|bottom"
-		height="23"
+		height="28"
 		label="Open Profile"
 		name="group_profile_btn"
-		top="484"
-		left="3"
-		width="120" />
+		bottom="-8"
+		left="8"
+		width="112" />
 		<button
 		layout="topleft"
 		follows="left|bottom"
-		height="23"
+		height="28"
 		label="Join Chat"
 		name="group_message_btn"
-		width="120"
-		left_pad="1" />
+		width="112"
+		left_pad="4" />
 		<button
 		layout="topleft"
 		follows="left|bottom"
-		height="23"
+		height="28"
 		label="Join Group"
 		name="group_join_btn"
-		width="120"
-		left_pad="1" />
+		width="112"
+		left_pad="4" />
 		<button
 		layout="topleft"
 		follows="left|bottom"
-		height="23"
+		height="28"
 		label="Teleport"
 		name="teleport_btn"
-		top="484"
-		left="3"
-		width="120" />
+		bottom="-8"
+		left="8"
+		width="112" />
 		<button
 		layout="topleft"
 		follows="left|bottom"
-		height="23"
+		height="28"
 		label="Show on Map"
 		name="map_btn"
-		width="120"
-		left_pad="1" />
+		width="112"
+		left_pad="4" />
 		<button
 		layout="topleft"
 		follows="left|bottom"
-		height="23"
+		height="28"
 		label="Remind me"
 		name="event_reminder_btn"
-		width="120"
-		left_pad="1" />
+		width="112"
+		left_pad="4" />
 		<loading_indicator
 		left="134"
 		top="320"
