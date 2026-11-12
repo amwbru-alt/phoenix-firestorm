@@ -105,7 +105,6 @@
 	 layout="topleft"
 	 height="22"
 	 label="Add..."
-	 left="269"
 	 name="add_btn"
 	 tool_tip="Add an avatar to the current contact set"
 	 right="-6"
