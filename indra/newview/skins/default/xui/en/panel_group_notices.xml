@@ -5,7 +5,7 @@
  default_tab_group="1"
  left="0"
  top="0"
- width="470"
+ width="313"
  height="420"
  layout="topleft"
  follows="all">
@@ -115,11 +115,10 @@ Maximum 200 per group daily
      tab_group="1"
      left="0"
      bottom="-1"
-     width="470"
      height="234"
      visible="false"
      follows="all"
-     layout="topleft">
+     layout="topleft" right="-1" width="313">
 
         <text
          follows="left|top"
@@ -158,8 +157,7 @@ Maximum 200 per group daily
          max_length_chars="63"
          name="create_subject"
          prevalidator="ascii"
-         spellcheck="true"
-         width="371" />
+         spellcheck="true"  right="-4"/>
 
         <text
          follows="left|top"
@@ -181,10 +179,9 @@ Maximum 200 per group daily
          name="create_message"
          spellcheck="true"
          top_delta="0"
-         width="369"
          word_wrap="true"
          follows="all"
-         layout="topleft" />
+         layout="topleft"  right="-4"/>
 
         <text
          top_pad="2"
@@ -201,14 +198,13 @@ Maximum 200 per group daily
 
         <line_editor
          left_pad="1"
-         width="371"
          height="19"
          enabled="false"
          max_length_chars="90"
          mouse_opaque="false"
          name="create_inventory_name"
          follows="bottom|left|right"
-         layout="topleft" />
+         layout="topleft"  right="-4"/>
 
         <text
          name="drag_and_drop_help"
@@ -279,10 +275,9 @@ Maximum 200 per group daily
          tool_tip="Drag an inventory item onto this target box to send it with this notice. You must have permission to copy and transfer the item in order to attach it."
          left="4"
          bottom="-4"
-         width="360"
          height="94"
          follows="bottom|left|right"
-         layout="topleft" />
+         layout="topleft"  right="-4"/>
 
     </panel>
 
@@ -297,8 +292,7 @@ Maximum 200 per group daily
      left="0"
      right="-1"
      visible="false"
-     name="panel_view_past_notice"
-     width="400">
+     name="panel_view_past_notice">
         <text
          type="string"
          height="16"
@@ -320,8 +314,7 @@ Maximum 200 per group daily
          left_delta="0"
          name="lbl7"
          top_pad="2"
-         follows="top|left"
-         width="390">
+         follows="left|top|right" right="-10">
         To send a new notice, click the + button
         </text>
         <text
@@ -341,7 +334,6 @@ Maximum 200 per group daily
          border_style="line"
          border_thickness="1"
          enabled="false"
-         width="380"
          height="20"
          layout="topleft"
          left_pad="4"
@@ -351,7 +343,7 @@ Maximum 200 per group daily
          top_delta="-1"
          visible="true"
          follows="left|right|top"
-         />
+          right="-10"/>
         <text
          type="string"
          halign="left"
@@ -368,7 +360,6 @@ Maximum 200 per group daily
         <text_editor
          top_pad="-16"
          left_pad="4"
-         width="380"
          height="100"
          enabled="false"
          layout="topleft"
@@ -376,7 +367,7 @@ Maximum 200 per group daily
          name="view_message"
          spellcheck="true"
          word_wrap="true"
-         follows="all" />
+         follows="all"  right="-10"/>
         <text
          type="string"
          halign="left"
@@ -397,8 +388,7 @@ Maximum 200 per group daily
          max_length_chars="63"
          mouse_opaque="false"
          name="view_inventory_name"
-         width="380"
-         follows="bottom|left|right" />
+         follows="bottom|left|right"  right="-10"/>
 
         <button
          follows="bottom|left"
