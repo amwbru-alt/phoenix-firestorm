@@ -103,7 +103,7 @@
 				 left="0"
 				 orientation="horizontal"
 				 top="0"
-				 width="188">
+				 width="448">
 					<layout_panel
 					 follows="bottom|left|right"
 					 height="23"
