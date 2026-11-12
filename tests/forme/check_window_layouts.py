@@ -169,8 +169,9 @@ history_stack = child(history_actions, 'bottom_bar_ls0')
 assert int(history_stack.get('width')) == 448
 inner_history_stack = child(history_stack, 'show_lm_panel')
 assert int(child(inner_history_stack, 'bottom_bar_ls1').get('width')) == 448
-for name in ('teleport_btn', 'map_btn', 'profile_btn'):
-    assert int(child(inner_history_stack, name + '_lp').get('width')) > 0 if False else True
+history_button_stack = child(inner_history_stack, 'bottom_bar_ls1')
+for name, width in (('teleport_btn_lp', 132), ('chat_btn_lp', 112), ('profile_btn_lp', 172)):
+    assert int(child(history_button_stack, name).get('width')) == width, name
 profile_texture = resource('floater_profile_texture.xml')
 assert profile_texture.get('bg_opaque_image') == 'Forme_Round_Window'
 
