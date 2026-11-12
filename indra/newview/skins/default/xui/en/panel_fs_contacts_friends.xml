@@ -118,7 +118,7 @@
 	 layout="topleft"
 	 height="22"
 	 label="IM/Call"
-	 left_delta="270"
+	 right="-1"
 	 name="im_btn"
 	 tool_tip="Open Instant Message session"
 	 width="80" />
