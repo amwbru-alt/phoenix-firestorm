@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <floater
  background_visible="true"
- height="355"
+ height="420"
 
  layout="topleft"
  name="panel_im"
@@ -10,10 +10,10 @@
  can_close="true"
  save_rect="true"
  visible="false"
- width="394"
+ width="520"
  can_resize="true"
  can_tear_off="false"
- min_height="190"
+ min_height="260"
  positioning="relative" header_height="44" header_vpad="10" header_icon="Forme_UI_Chat" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD" legacy_header_height="0">
     <floater.string name="call_btn_start">Conv_toolbar_open_call</floater.string>
     <floater.string name="call_btn_stop">Conv_toolbar_hang_up</floater.string>
@@ -238,7 +238,7 @@
                 </layout_stack>
             </layout_panel>
             <layout_panel
-             height="30"
+             height="38"
              auto_resize="false"
              name="chat_layout_panel">
                 <layout_stack
@@ -288,7 +288,7 @@
                          expand_lines_count="5"
                          follows="left|right|bottom"
                          font="SansSerifSmall"
-                         height="20"
+                         height="28"
                          is_expandable="true"
                          text_tentative_color="TextFgTentativeColor"
                          bg_writeable_color="ScriptBackground"
@@ -296,8 +296,8 @@
                          max_length="1023"
                          spellcheck="true"
                          tab_group="3"
-                         bottom="-3"
-                         left_pad="5"
+                         bottom="-4"
+                         left_pad="8"
                          right="-30"
                          wrap="true" />
                         <button
@@ -309,19 +309,19 @@
                          image_selected="Toolbar_Middle_Selected"
                          image_unselected="Toolbar_Middle_Off"
                          image_overlay="Emoji_Picker_Icon"
-                         bottom="-2"
+                         bottom="-3"
                          right="-1"
-                         height="25"
-                         width="25"/>
+                         height="30"
+                         width="30"/>
                     </layout_panel>
                     <layout_panel
                      auto_resize="false"
                      name="input_button_layout_panel"
-                     width="32">
+                     width="38">
                         <button
                          left="1"
                          top="4"
-                         height="25"
+                         height="30"
                          follows="left|right|top"
                          image_hover_unselected="Toolbar_Middle_Over"
                          image_overlay="Conv_expand_one_line"
@@ -329,7 +329,7 @@
                          image_unselected="Toolbar_Middle_Off"
                          name="minz_btn"
                          tool_tip="Shows/hides message panel"
-                         width="28" />
+                         width="34" />
                     </layout_panel>
                 </layout_stack>
             </layout_panel>
