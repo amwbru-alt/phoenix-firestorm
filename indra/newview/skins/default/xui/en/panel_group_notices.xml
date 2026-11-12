@@ -118,7 +118,7 @@ Maximum 200 per group daily
      height="234"
      visible="false"
      follows="all"
-     layout="topleft" right="-1" width="313">
+     layout="topleft" right="-1">
 
         <text
          follows="left|top"
