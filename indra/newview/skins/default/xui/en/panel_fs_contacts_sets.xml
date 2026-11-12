@@ -108,6 +108,7 @@
 	 left="269"
 	 name="add_btn"
 	 tool_tip="Add an avatar to the current contact set"
+	 right="-6"
 	 width="80" />
     <button
      top_pad="3"
@@ -117,7 +118,8 @@
      label="Move..."
      name="move_btn"
      tool_tip="Move this avatar to another contact set"
-     width="80" />
+     right="-6"
+	 width="80" />
     <button
      top_pad="3"
      follows="top|right"
@@ -126,7 +128,8 @@
      label="Remove..."
      name="remove_btn"
      tool_tip="Remove this avatar from the current contact set"
-     width="80" />
+     right="-6"
+	 width="80" />
 	<button
 	 top_pad="3"
 	 follows="top|right"
@@ -135,6 +138,7 @@
 	 label="Profile..."
 	 name="profile_btn"
 	 tool_tip="Open this avatar's profile"
+	 right="-6"
 	 width="80" />
     <button
      top_pad="3"
@@ -144,7 +148,8 @@
      label="IM..."
      name="start_im_btn"
      tool_tip="Begin an instant message conversation"
-     width="80" />
+     right="-6"
+	 width="80" />
 	<button
 	 top_pad="3"
 	 follows="top|right"
@@ -153,6 +158,7 @@
 	 label="Teleport..."
 	 name="offer_teleport_btn"
 	 tool_tip="Offer a teleport to your current location"
+	 right="-6"
 	 width="80" />
 	<button
 	 top_pad="10"
@@ -162,6 +168,7 @@
 	 label="Set Alias..."
 	 name="set_pseudonym_btn"
 	 tool_tip="Give this avatar a pseudonym"
+	 right="-6"
 	 width="80" />
 	<button
 	 top_pad="3"
@@ -171,6 +178,7 @@
 	 label="Rem Alias..."
 	 name="remove_pseudonym_btn"
 	 tool_tip="Remove an avatar's pseudonym"
+	 right="-6"
 	 width="80" />
 	<button
 	 top_pad="3"
@@ -180,11 +188,13 @@
 	 label="Rem DN..."
 	 name="remove_displayname_btn"
 	 tool_tip="Remove an avatar's display name"
+	 right="-6"
 	 width="80" />
     <text
      bottom="-4"
      left="6"
-     follows="bottom|left"
+     right="-92"
+     follows="bottom|left|right"
      layout="topleft"
      height="14"
      name="member_count"
