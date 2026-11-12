@@ -348,4 +348,33 @@ for path in XUI.rglob('*.xml'):
         for key, value in node.attrib.items():
             if value.startswith('Forme_UI_'):
                 assert value in textures, (path.name, node.get('name'), key, value)
+# Group Profile accordion and footer stay inside the actual side-tray width.
+group_profile = resource('panel_group_info_sidetray.xml')
+group_content = child(group_profile, 'group_info_content')
+group_layout = child(group_content, 'layout')
+assert group_layout.get('right') == '-8' and group_layout.get('width') is None
+group_accordions = child(group_layout, 'group_accordions')
+assert group_accordions.get('right') == '-1'
+assert group_accordions.get('width') is None and group_accordions.get('height') == '506'
+group_tabs = child(group_accordions, 'groups_accordion')
+assert group_tabs.get('right') == '-1'
+assert group_tabs.get('width') is None and group_tabs.get('height') == '506'
+group_footer = child(group_profile, 'button_row_ls')
+assert group_footer.get('right') == '-6' and group_footer.get('width') is None
+# Classified detail view can resize without covering its persistent action footer.
+classified_window = resource('floater_classified.xml')
+assert classified_window.get('can_resize') == 'true'
+assert classified_window.get('width') == '420' and classified_window.get('height') == '680'
+assert classified_window.get('min_width') == '380' and classified_window.get('min_height') == '520'
+classified = resource('panel_classified_info.xml')
+classified_scroll = child(classified, 'profile_scroll')
+assert classified_scroll.get('follows') == 'all'
+assert classified_scroll.get('right') == '-10' and classified_scroll.get('bottom') == '-48'
+assert classified_scroll.get('width') is None and classified_scroll.get('height') is None
+classified_content = child(classified_scroll, 'scroll_content_panel')
+assert classified_content.get('right') == '-27' and classified_content.get('width') is None
+classified_footer = child(classified, 'buttons')
+assert classified_footer.get('bottom') == '-5' and classified_footer.get('right') == '-9'
+classified_actions = child(classified_footer, 'layout_stack1')
+assert classified_actions.get('right') == '-1' and classified_actions.get('width') is None
 print(f'PASS {framed} registered frames, {len(aliases)} line-icon aliases, native category/tab navigation and retained joystick classes')
