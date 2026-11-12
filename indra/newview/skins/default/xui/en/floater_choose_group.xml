@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <floater
  legacy_header_height="0"
- height="258"
+ height="340"
  layout="topleft"
  name="groups"
 
  title="Groups"
- width="280" header_height="44" header_vpad="10" header_icon="Forme_UI_People" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD">
+ width="360" header_height="44" header_vpad="10" header_icon="Forme_UI_People" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD">
     <text
      type="string"
      length="1"
      follows="left|top"
      height="16"
      layout="topleft"
-     left="12"
+     left="16"
      name="groupdesc"
      top="24"
-     width="248">
+     width="328">
         Choose a group:
     </text>
     <scroll_list
-     height="165"
+     height="215"
      layout="topleft"
-     left_delta="0"
+     left="16"
      name="group list"
      top_pad="8"
-     width="248">
+     width="328">
         <scroll_list.columns
          name="name"
-         width="248" />
+         width="328" />
     </scroll_list>
     <button
      height="20"
      label="OK"
      label_selected="OK"
      layout="topleft"
-     left_delta="0"
+     left="16"
      name="OK"
      top_pad="8"
      width="80" />
