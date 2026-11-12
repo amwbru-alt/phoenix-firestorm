@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<floater legacy_header_height="0" positioning="centered" default_tab_group="2" height="664" layout="topleft" name="Preferences" save_rect="true" single_instance="true" title="Preferences" width="852" header_height="44" header_vpad="10" header_icon="Forme_UI_Settings" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD" min_width="852" min_height="664">
-  <button follows="right|bottom" label="OK" label_selected="OK" layout="topleft" name="OK" left="-226" top="618" width="98" height="34">
+<floater legacy_header_height="0" positioning="centered" default_tab_group="2" height="700" layout="topleft" name="Preferences" save_rect="true" single_instance="true" title="Preferences" width="900" header_height="44" header_vpad="10" header_icon="Forme_UI_Settings" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD" min_width="900" min_height="700">
+  <button follows="right|bottom" label="OK" label_selected="OK" layout="topleft" name="OK" left="-226" top="654" width="98" height="36">
     <button.commit_callback function="Pref.OK" />
   </button>
-  <button follows="right|bottom" label="Cancel" label_selected="Cancel" layout="topleft" name="Cancel" left="-116" top="618" width="100" height="34">
+  <button follows="right|bottom" label="Cancel" label_selected="Cancel" layout="topleft" name="Cancel" left="-116" top="654" width="100" height="36">
     <button.commit_callback function="Pref.Cancel" />
   </button>
   <panel name="search_panel" layout="topleft" follows="left|top|right" tab_group="2" left="16" top="26" height="40" right="-16">
@@ -16,7 +16,7 @@
       <button.commit_callback function="Pref.CopySearchAsSLURL" />
     </button>
   </panel>
-  <tab_container follows="all" halign="left" layout="topleft" name="pref core" tab_group="1" tab_position="left" tab_width="184" tab_padding_right="14" left="16" top="80" width="820" height="526" tab_height="34" label_pad_left="10" use_ellipses="true">
+  <tab_container follows="all" halign="left" layout="topleft" name="pref core" tab_group="1" tab_position="left" tab_width="184" tab_padding_right="14" left="16" top="80" width="868" height="562" tab_height="34" label_pad_left="10" use_ellipses="true">
     <panel class="panel_preference" filename="panel_preferences_general.xml" label="General" layout="topleft" name="general" />
     <panel class="panel_preference" filename="panel_preferences_chat.xml" label="Chat" layout="topleft" name="chat" />
     <panel class="panel_preference_graphics" filename="panel_preferences_graphics1.xml" label="Graphics" layout="topleft" name="display" />
