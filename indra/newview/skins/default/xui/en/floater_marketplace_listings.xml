@@ -85,7 +85,7 @@
     <layout_stack name="initialization_progress_indicator" orientation="vertical" left="0" top="0" follows="all" visible="false" right="-0" bottom="-0">
       <layout_panel />
       <layout_panel height="24" auto_resize="false">
-        <layout_stack orientation="horizontal" left="0" height="24" top="0" width="440" follows="all">
+        <layout_stack orientation="horizontal" left="0" height="24" top="0" follows="all" right="-0">
           <layout_panel width="0" />
           <layout_panel width="24" auto_resize="false">
             <loading_indicator
