@@ -102,7 +102,7 @@
         follows="left|top"
         height="22"
         layout="topleft"
-        left="51"
+        left="75"
         name="reload"
         top_delta="0"
         width="22">
@@ -121,7 +121,7 @@
         combo_editor.select_on_focus="true"
         tool_tip="Enter URL here"
         top_delta="0"
-        width="672">
+        right="-26">
         <combo_box.commit_callback
           function="WebContent.EnterAddress" />
       </combo_box>
