@@ -363,6 +363,12 @@ assert group_tabs.get('right') == '-1'
 assert group_tabs.get('width') is None and group_tabs.get('height') == '506'
 group_footer = child(group_profile, 'button_row_ls')
 assert group_footer.get('right') == '-6' and group_footer.get('width') is None
+# Group Experiences uses the full accordion width and height instead of a 200x300 box.
+group_experiences = resource('panel_experiences.xml')
+assert group_experiences.get('right') == '-3' and group_experiences.get('bottom') == '-3'
+assert group_experiences.get('width') is None and group_experiences.get('height') is None
+experiences_stack = child(group_experiences, 'layout_stack')
+assert experiences_stack.get('right') == '-1' and experiences_stack.get('bottom') == '-4'
 # Classified detail view can resize without covering its persistent action footer.
 classified_window = resource('floater_classified.xml')
 assert classified_window.get('can_resize') == 'true'
