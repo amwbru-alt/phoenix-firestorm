@@ -192,6 +192,26 @@ assert child(profile_notes, 'notes_edit').get('bottom') == '-54'
 for name in ('notes_save_changes', 'notes_discard_changes'):
     action = child(profile_notes, name)
     assert action.get('bottom') == '-14' and int(action.get('height')) == 28
+second_life_profile = resource('panel_profile_secondlife.xml')
+assert int(child(second_life_profile, 'name_holder').get('width')) == 430
+assert int(child(second_life_profile, 'set_name').get('left')) == 520
+assert int(child(second_life_profile, 'forme_profile_about_card').get('width')) == 482
+assert int(child(second_life_profile, 'sl_description_edit').get('width')) == 462
+assert int(child(second_life_profile, 'buttonstack').get('width')) == 202
+picks_profile = resource('panel_profile_picks.xml')
+assert int(child(picks_profile, 'main_stack').get('height')) if child(picks_profile, 'main_stack').get('height') else True
+picks_header = child(picks_profile, 'buttons_header')
+assert int(child(picks_header, 'new_btn').get('height')) == 24
+assert int(child(picks_header, 'delete_btn').get('height')) == 24
+assert int(child(picks_profile, 'tab_picks').get('left')) == 8
+assert int(child(picks_profile, 'picks_panel_text').get('left')) == 24
+classified_profile = resource('panel_profile_classifieds.xml')
+classified_header = child(classified_profile, 'buttons_header')
+for name in ('new_btn', 'delete_btn'):
+    assert int(child(classified_header, name).get('height')) == 28
+    assert int(child(classified_header, name).get('width')) == 96
+assert int(child(classified_profile, 'tab_classifieds').get('left')) == 8
+assert int(child(classified_profile, 'classifieds_panel_text').get('left')) == 24
 profile_texture = resource('floater_profile_texture.xml')
 assert profile_texture.get('bg_opaque_image') == 'Forme_Round_Window'
 
