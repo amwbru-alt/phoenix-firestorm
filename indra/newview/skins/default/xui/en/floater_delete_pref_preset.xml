@@ -31,20 +31,19 @@
      top="58"
      right="-20"/>
     <button
-     follows="top|left"
+     follows="right|bottom"
      height="28"
      label="Delete"
      layout="topleft"
      bottom="-18"
-     right="-188"
+     right="-128"
      name="delete"
      width="100"/>
     <button
-     follows="top|left"
+     follows="right|bottom"
      height="28"
      label="Cancel"
      layout="topleft"
-     left_pad="8"
      right="-20"
      bottom="-18"
      name="cancel"
