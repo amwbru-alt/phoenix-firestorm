@@ -79,7 +79,6 @@
     top_pad="0"
     width="420"
     height="450"
-    bottom="-4"
     halign="center"
     tab_height="30"
     tab_group="1"
