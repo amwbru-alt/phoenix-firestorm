@@ -5,16 +5,16 @@
  can_minimize="false"
  can_resize="true"
  can_tear_off="true"
- height="390"
+ height="460"
  layout="topleft"
- min_height="240"
- min_width="260"
+ min_height="320"
+ min_width="420"
  name="imcontacts"
  save_rect="true"
  save_visibility="true"
  single_instance="true"
  title="Contacts"
- width="396" header_height="44" header_vpad="10" header_icon="Forme_UI_Window" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD" legacy_header_height="0">
+ width="520" header_height="44" header_vpad="10" header_icon="Forme_UI_Window" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD" legacy_header_height="0">
  	<string
 	 name="no_friends"
 	 value="No friends" />
@@ -32,9 +32,9 @@
      value="Unpin" />
     <tab_container
      follows="all"
-     height="390"
+     height="436"
      layout="topleft"
-     left="0"
+     left="16"
      name="friends_and_groups"
      tab_position="top"
      tab_width="90"
@@ -44,8 +44,10 @@
      tab_icon_ctrl_pad="2"
      halign="left"
      use_ellipses="true"
-     top="1"
-     width="393">
+     top="12"
+     right="-16"
+     bottom="-16"
+     width="488">
       <first_tab
        tab_bottom_image_flash="Toolbar_Left_Flash"/>
       <middle_tab
