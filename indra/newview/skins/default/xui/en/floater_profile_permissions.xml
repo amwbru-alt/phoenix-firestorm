@@ -41,7 +41,7 @@
    top_pad="5"
    left="16"
    height="16"
-   width="293"
+   width="340"
    follows="top|left"
    layout="topleft"
     />
@@ -51,7 +51,7 @@
    top_pad="5"
    left="16"
    height="16"
-   width="293"
+   width="340"
    follows="top|left"
    layout="topleft"
     />
