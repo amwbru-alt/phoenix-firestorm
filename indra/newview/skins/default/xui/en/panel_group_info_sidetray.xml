@@ -49,12 +49,11 @@ background_visible="false"
 
     <panel
       name="group_info_top"
-      follows="top|left"
+      follows="top|left|right"
       top="0"
       left="0"
       height="29"
-      width="313"
-      layout="topleft">
+      layout="topleft" right="-1">
     <button
      follows="top|right"
      height="24"
@@ -117,8 +116,7 @@ background_visible="false"
      left="8"
      top_pad="0"
      height="506"
-     width="292"
-     border_size="0">
+     border_size="0" right="-8">
    <layout_panel
        bg_alpha_color="SL-Background_66"
        bg_opaque_color="SL-Background_66"
@@ -129,8 +127,7 @@ background_visible="false"
        layout="topleft"
        auto_resize="true"
        user_resize="true"
-       height="513"
-       width="333">
+       height="506" right="-1">
    <accordion
      left="0"
      top="0"
@@ -139,8 +136,7 @@ background_visible="false"
      follows="all"
      layout="topleft"
      name="groups_accordion"
-     height="513"
-     width="333">
+     height="506" right="-1">
          <accordion_tab
             expanded="true"
             layout="topleft"
@@ -235,8 +231,7 @@ background_visible="false"
 			name="button_row_ls"
 			left="6"
 			orientation="horizontal"
-			top_pad="5"
-			width="297">
+			top_pad="5" right="-6">
 	
 				<layout_panel
 				follows="bottom|left|right"
