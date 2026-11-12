@@ -130,6 +130,32 @@ assert int(child(display_name, 'display_name_editor').get('width')) == 460
 assert int(child(display_name, 'display_name_confirm').get('width')) == 460
 assert all(int(child(display_name, name).get('height')) == 28
            for name in ('reset_btn', 'save_btn', 'cancel_btn'))
+resident_picker = resource('floater_avatar_picker.xml')
+assert int(resident_picker.get('width')) == 560
+assert int(resident_picker.get('height')) == 460
+resident_tabs = child(resident_picker, 'ResidentChooserTabs')
+assert resident_tabs.get('left') == '16' and resident_tabs.get('right') == '-16'
+for name in ('SearchPanel', 'FriendsPanel', 'NearMePanel', 'SearchPanelUUID', 'ContactSetsPanel'):
+    panel = child(resident_tabs, name)
+    assert panel.get('follows') == 'all' and panel.get('right') == '-4', name
+for name in ('SearchResults', 'Friends', 'NearMe', 'SearchResultsUUID'):
+    listing = child(resident_tabs, name)
+    assert listing.get('right') == '-4' and int(listing.get('height')) >= 250, name
+assert child(resident_tabs, 'Find').get('width') == '64'
+assert child(resident_tabs, 'FindUUID').get('width') == '64'
+for name in ('ok_btn', 'cancel_btn'):
+    assert child(resident_picker, name).get('bottom') == '-42'
+delete_preset = resource('floater_delete_pref_preset.xml')
+assert int(delete_preset.get('width')) == 360 and int(delete_preset.get('height')) == 190
+for name in ('delete', 'cancel'):
+    assert child(delete_preset, name).get('follows') == 'right|bottom'
+    assert child(delete_preset, name).get('bottom') == '-18'
+search_replace = resource('floater_search_replace.xml')
+assert int(search_replace.get('width')) == 500 and int(search_replace.get('height')) == 190
+for name in ('search_btn', 'replace_btn', 'replace_all_btn'):
+    assert child(search_replace, name).get('bottom') == '-18'
+assert child(search_replace, 'search_text').get('follows') == 'left|top|right'
+assert child(search_replace, 'replace_text').get('follows') == 'left|top|right'
 profile_texture = resource('floater_profile_texture.xml')
 assert profile_texture.get('bg_opaque_image') == 'Forme_Round_Window'
 
