@@ -67,7 +67,7 @@
 							<button name="emoji_recent_panel_toggle_btn" tool_tip="顯示/隱藏最近使用的表情符號" />
 						</layout_panel>
 						<layout_panel name="input_button_layout_panel">
-							<button name="send_chat" label="傳送" tool_tip="傳送這條訊息" />
+							<button name="send_chat" label="" tool_tip="傳送這條訊息" />
 						</layout_panel>
 					</layout_stack>
 				</layout_panel>

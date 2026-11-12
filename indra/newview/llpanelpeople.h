@@ -28,6 +28,7 @@
 #define LL_LLPANELPEOPLE_H
 
 #include <llpanel.h>
+#include "llframetimer.h"
 
 #include "llcallingcard.h" // for avatar tracker
 #include "llfloaterwebcontent.h"
@@ -64,6 +65,7 @@ public:
     virtual ~LLPanelPeople();
 
     bool postBuild() override;
+    void draw() override;
     void onOpen(const LLSD& key) override;
     void reshape(S32 width, S32 height, bool called_from_parent = true) override;
     bool notifyChildren(const LLSD& info) override;
@@ -88,6 +90,7 @@ public:
     bool updateNearbyArrivalTime();
 
 private:
+    LLFrameTimer mForMeNearbyTimer;
 
     typedef enum e_sort_oder {
         E_SORT_BY_NAME = 0,

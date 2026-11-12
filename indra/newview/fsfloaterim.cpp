@@ -30,6 +30,9 @@
 #include "llviewerprecompiledheaders.h"
 
 #include "fsfloaterim.h"
+#include "fsavatarbadges.h"
+#include "llavatariconctrl.h"
+#include "lltextbox.h"
 
 #include "fschathistory.h"
 #include "fschatoptionsmenu.h"
@@ -1565,6 +1568,7 @@ void FSFloaterIM::updateMessages()
     if (messages.size())
     {
         LLSD chat_args;
+        chat_args["forme_im_bubbles"] = true;
         chat_args["use_plain_text_chat_history"] = gSavedSettings.getBOOL("PlainTextChatHistory");
         chat_args["show_names_for_p2p_conv"] = gSavedSettings.getBOOL("IMShowNamesForP2PConv");
         chat_args["show_time"] = gSavedSettings.getBOOL("FSShowTimestampsIM");
@@ -2689,3 +2693,21 @@ F32 FSFloaterIM::onGetChatEditorOpacityCallback(ETypeTransparency type, F32 alph
     return alpha;
 }
 // </FS:TJ>
+
+void FSFloaterIM::draw()
+{
+    if (auto* avatar = findChild<LLAvatarIconCtrl>("forme_dialog_avatar"))
+    {
+        const bool visible = isP2PChat() && mOtherParticipantUUID.notNull()
+            && RlvActions::canShowName(RlvActions::SNC_DEFAULT, mOtherParticipantUUID);
+        avatar->setVisible(visible);
+        if (visible && avatar->getAvatarId() != mOtherParticipantUUID) avatar->setValue(LLSD(mOtherParticipantUUID));
+        const auto* session = LLIMModel::instance().findIMSession(mSessionID);
+        getChild<LLTextBox>("forme_dialog_name")->setText(session && (!isP2PChat() || visible) ? session->mName : std::string());
+        const auto badge = visible ? ForMeAvatarBadges::get(mOtherParticipantUUID) : ForMeBadge::Data();
+        auto* label = getChild<LLTextBox>("forme_dialog_badge"); label->setVisible(badge.valid);
+        label->setText(badge.valid ? badge.label : std::string());
+        if (badge.valid) label->setColor(ForMeAvatarBadges::color(badge.badgeColor));
+    }
+    LLTransientDockableFloater::draw();
+}

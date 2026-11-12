@@ -833,6 +833,8 @@ void LLGroupListItem::setGroupID(const LLUUID& group_id)
 
     mID = group_id;
     mGroupID = group_id;
+    if (auto* active = findChild<LLTextBox>("forme_group_active"))
+        active->setVisible(mForAgent && group_id.notNull() && group_id == gAgent.getGroupID());
 
     if (mForAgent)
     {

@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='utf-8'?>
+<panel follows="all" height="552" label="People" layout="topleft" left="0" min_height="350" name="people_panel" top="0" width="442">
+  <string name="no_recent_people" value="No recent people." />
+  <string name="no_filtered_recent_people" value="Didn't find what you're looking for? Try [fmw:///app/search/people/[SEARCH_TERM] Search]." />
+  <string name="no_one_near" value="No one nearby. Looking for people to hang out with? Try [fmw:///app/search/people Search] or the [fmw:///app/worldmap World Map]." />
+  <string name="no_one_filtered_near" value="Didn't find what you're looking for? Try [fmw:///app/search/people/[SEARCH_TERM] Search]." />
+  <string name="no_friends_online" value="No friends online" />
+  <string name="no_friends" value="No friends" />
+  <string name="no_friends_msg">
+      To add someone as a friend, right-click on their avatar or their name.
+
+Looking for places with more people?
+
+[fmw:///app/floater/destinations Destination Guide] has locations chosen by the grid operator staff.
+
+[fmw:///app/search/ Search] lets you search all the grid for certain keywords.
+    </string>
+  <string name="no_filtered_friends_msg">
+         Didn't find what you're looking for? Try [fmw:///app/search/people/[SEARCH_TERM] Search].
+    </string>
+  <string name="no_filtered_groups_msg" value="Didn't find what you're looking for? Try [fmw:///app/search/groups/[SEARCH_TERM] Search]." />
+  <string name="no_groups_msg">
+You are not a member of any groups.
+
+Learn about [https://community.secondlife.com/knowledgebase/joining-and-participating-in-groups-r51/ groups].
+  </string>
+  <string name="MiniMapToolTipMsg" value="[REGION] (Double-click to open Map, shift-drag to pan)" />
+  <string name="AltMiniMapToolTipMsg" value="[REGION] (Double-click to teleport, shift-drag to pan)" />
+  <string name="GroupCountWithInfo" value="You belong to [COUNT] groups, and can join [REMAINING] more.  [fmw:/// Raise your limit]" />
+  <panel.string name="empty_list">
+    This contact set is empty.
+    </panel.string>
+  <panel.string name="no_sets">
+    No sets
+    </panel.string>
+  <panel.string name="all_sets">
+    All sets
+    </panel.string>
+  <panel.string name="pseudonyms">
+    Aliases
+    </panel.string>
+  <panel.string name="AllFriendsTitle">
+    All ([ALL])
+    </panel.string>
+  <panel.string name="OnlineFriendsTitle">
+    Online ([ONLINE])
+    </panel.string>
+  <tab_container follows="all" layout="topleft" name="tabs" tab_min_width="105" tab_height="34" tab_position="top" halign="center" tab_max_width="180" use_ellipses="true" hide_tabs="true" left="0" top="0" right="-1" bottom="-1">
+    <panel background_opaque="false" background_visible="false" bottom="-1" follows="all" label="Nearby" layout="topleft" left="0" name="nearby_panel" right="-1" top="0">
+      <panel class="fs_panel_radar" name="panel_radar" filename="panel_fs_radar.xml" follows="all" layout="topleft" left="0" top="2" right="-1" bottom="-1" visible="false" />
+      <search_editor name="forme_nearby_search" layout="topleft" left="0" top="0" right="-90" height="32" follows="left|right|top" label="Search people…" />
+      <button name="forme_radar_toggle" layout="topleft" right="-1" top="0" width="84" height="32" follows="right|top" label="Details" />
+      <avatar_list name="forme_nearby_list" layout="topleft" left="0" top="42" right="-1" bottom="-44" follows="all" show_icons="true" show_speaking_indicator="true" allow_select="true" />
+      <button name="forme_nearby_profile" layout="topleft" label="Profile" left="0" bottom="-4" height="32" width="132" follows="left|bottom" image_selected="Forme_Round_Accent" image_unselected="Forme_Round_Field" />
+      <button name="forme_nearby_message" layout="topleft" label="Message" left="140" bottom="-4" height="32" width="196" follows="left|bottom" image_selected="Forme_Round_Accent" image_unselected="Forme_Round_Field" />
+      <button name="forme_nearby_friend" layout="topleft" label="+" left="344" bottom="-4" height="32" width="96" follows="left|bottom" image_selected="Forme_Round_Accent" image_unselected="Forme_Round_Field" />
+    </panel>
+    <panel background_opaque="false" background_visible="false" bottom="-1" follows="all" label="Friends" layout="topleft" left="0" name="friends_panel" right="-1" top="0">
+      <panel follows="left|top|right" height="27" label="bottom_panel" layout="topleft" left="0" name="friends_buttons_panel" right="-1" top="0">
+        <filter_editor follows="left|top|right" height="23" layout="topleft" left="6" label="Filter People" max_length_chars="300" name="friends_filter_input" top="4" right="-175" use_bg_color="false" background_image="Forme_Round_Field" background_image_focused="Forme_Round_Field" background_image_highlight="Forme_Round_Field" />
+        <button commit_callback.function="People.Gear" follows="right" height="25" image_hover_unselected="Toolbar_Middle_Over" image_overlay="OptionsMenu_Off" image_selected="Toolbar_Middle_Selected" image_unselected="Toolbar_Middle_Off" layout="topleft" left_pad="8" name="gear_btn" tool_tip="Actions on selected person" top="3" width="31" />
+        <menu_button follows="right" height="25" image_hover_unselected="Toolbar_Middle_Over" image_overlay="Conv_toolbar_sort" image_selected="Toolbar_Middle_Selected" image_unselected="Toolbar_Middle_Off" layout="topleft" left_pad="2" menu_filename="menu_people_friends_view.xml" menu_position="bottomleft" name="friends_view_btn" tool_tip="View/sort options" top_delta="0" width="31" />
+        <button follows="right" height="25" image_hover_unselected="Toolbar_Middle_Over" image_overlay="AddItem_Off" image_selected="Toolbar_Middle_Selected" image_unselected="Toolbar_Middle_Off" layout="topleft" left_pad="2" name="friends_add_btn" tool_tip="Offer friendship to a resident" top_delta="0" width="31">
+          <commit_callback function="People.AddFriendWizard" />
+        </button>
+        <button follows="right" height="25" image_hover_unselected="Toolbar_Middle_Over" image_overlay="Permission_Visible_Online" image_selected="Toolbar_Middle_Selected" image_unselected="Toolbar_Middle_Off" control_name="GlobalOnlineStatusToggle" is_toggle="true" layout="topleft" left_pad="2" name="GlobalOnlineStatusToggle" tool_tip="Toggle global online status visibility" width="31" />
+        <dnd_button follows="right" height="25" image_hover_unselected="Toolbar_Middle_Over" image_overlay="TrashItem_Off" image_selected="Toolbar_Middle_Selected" image_unselected="Toolbar_Middle_Off" left_pad="2" layout="topleft" name="friends_del_btn" tool_tip="Remove selected person as a friend" top_delta="0" width="31">
+          <commit_callback function="People.DelFriend" />
+        </dnd_button>
+      </panel>
+      <tab_container name="friends_accordion" follows="all" background_visible="false" bg_alpha_color="Transparent" bg_opaque_color="Transparent" layout="topleft" tab_group="1" tab_position="top" halign="center" right="-1" left="0" top="29" bottom="-1">
+        <panel layout="topleft" height="372" width="420" name="tab_online" follows="all" title="Online">
+          <avatar_list allow_select="true" follows="all" layout="topleft" multi_select="true" name="avatars_online" keep_one_selected="false" show_permissions_granted="true" left="0" top="0" right="-1" bottom="-1" />
+        </panel>
+        <panel layout="topleft" height="372" width="420" name="tab_all" follows="all" title="All">
+          <avatar_list allow_select="true" follows="all" layout="topleft" multi_select="true" name="avatars_all" keep_one_selected="false" show_permissions_granted="true" left="0" top="0" right="-1" bottom="-1" />
+        </panel>
+      </tab_container>
+      <text follows="all" left="13" name="no_friends_help_text" right="-13" top="37" wrap="true" bottom="-6" />
+    </panel>
+    <panel background_opaque="false" background_visible="false" bottom="-1" follows="all" label="Groups" layout="topleft" left="0" name="groups_panel" right="-1" top="0">
+      <panel follows="left|top|right" height="27" label="bottom_panel" layout="topleft" left="0" name="groups_buttons_panel" right="-1" top="0">
+        <filter_editor follows="left|top|right" height="23" layout="topleft" left="6" label="Filter Groups" max_length_chars="300" name="groups_filter_input" top="4" right="-142" use_bg_color="false" background_image="Forme_Round_Field" background_image_focused="Forme_Round_Field" background_image_highlight="Forme_Round_Field" />
+        <menu_button follows="right" height="25" image_hover_unselected="Toolbar_Middle_Over" image_overlay="OptionsMenu_Off" image_selected="Toolbar_Middle_Selected" image_unselected="Toolbar_Middle_Off" layout="topleft" left_pad="8" name="groups_gear_btn" tool_tip="Actions on selected group" top="3" width="31" />
+        <menu_button follows="right" height="25" image_hover_unselected="Toolbar_Middle_Over" image_overlay="Conv_toolbar_sort" image_selected="Toolbar_Middle_Selected" image_unselected="Toolbar_Middle_Off" layout="topleft" left_pad="2" menu_filename="menu_people_groups_view.xml" menu_position="bottomleft" name="groups_view_btn" tool_tip="View/sort options" top_delta="0" width="31" />
+        <menu_button follows="right" height="25" image_hover_unselected="Toolbar_Middle_Over" image_overlay="AddItem_Off" image_selected="Toolbar_Middle_Selected" image_unselected="Toolbar_Middle_Off" layout="topleft" left_pad="2" menu_filename="menu_group_plus.xml" menu_position="bottomleft" name="plus_btn" tool_tip="Join group/Create new group" top_delta="0" width="31">
+          <validate_callback function="People.Group.Plus.Validate" />
+        </menu_button>
+        <dnd_button follows="right" height="25" image_hover_unselected="Toolbar_Middle_Over" image_overlay="TrashItem_Off" image_selected="Toolbar_Middle_Selected" image_unselected="Toolbar_Middle_Off" left_pad="2" layout="topleft" name="minus_btn" tool_tip="Leave selected group" top_delta="0" width="31">
+          <commit_callback function="People.Group.Minus" />
+        </dnd_button>
+      </panel>
+      <text type="string" length="1" follows="left|top|right" height="14" layout="topleft" right="-10" top_pad="4" left="3" use_ellipses="true" skip_link_underline="true" name="groupcount">
+              You belong to [COUNT] groups ([REMAINING] remaining).
+            </text>
+      <group_list allow_select="true" follows="all" layout="topleft" left="3" keep_one_selected="false" name="group_list" right="-2" top="49" bottom="-1" />
+    </panel>
+    <panel background_opaque="false" background_visible="false" follows="all" label="Recent" layout="topleft" left="0" name="recent_panel" right="-1" top="0" bottom="-1">
+      <panel follows="left|top|right" height="27" label="bottom_panel" layout="topleft" left="0" name="recent_buttons_panel" right="-1" top="0">
+        <filter_editor follows="left|top|right" height="23" layout="topleft" left="6" label="Filter People" max_length_chars="300" name="recent_filter_input" top="4" right="-142" use_bg_color="false" background_image="Forme_Round_Field" background_image_focused="Forme_Round_Field" background_image_highlight="Forme_Round_Field" />
+        <button commit_callback.function="People.Gear" follows="right" height="25" image_hover_unselected="Toolbar_Middle_Over" image_overlay="OptionsMenu_Off" image_selected="Toolbar_Middle_Selected" image_unselected="Toolbar_Middle_Off" layout="topleft" left_pad="8" name="gear_btn" tool_tip="Actions on selected person" top="3" width="31" />
+        <menu_button follows="right" height="25" image_hover_unselected="Toolbar_Middle_Over" image_overlay="Conv_toolbar_sort" image_selected="Toolbar_Middle_Selected" image_unselected="Toolbar_Middle_Off" layout="topleft" left_pad="2" menu_filename="menu_people_recent_view.xml" menu_position="bottomleft" name="recent_view_btn" tool_tip="View/sort options" top_delta="0" width="31" />
+        <button follows="right" height="25" image_hover_unselected="Toolbar_Middle_Over" image_overlay="AddItem_Off" image_selected="Toolbar_Middle_Selected" image_unselected="Toolbar_Middle_Off" layout="topleft" left_pad="2" name="add_friend_btn" tool_tip="Offer friendship to a resident" top_delta="0" width="31">
+          <commit_callback function="People.AddFriend" />
+        </button>
+        <dnd_button enabled="false" follows="right" height="25" image_hover_unselected="Toolbar_Middle_Over" image_overlay="TrashItem_Off" image_selected="Toolbar_Middle_Selected" image_unselected="Toolbar_Middle_Off" left_pad="2" layout="topleft" name="recent_del_btn" tool_tip="Remove selected person as a friend" top_delta="0" width="31">
+          <commit_callback function="People.DelFriend" />
+        </dnd_button>
+      </panel>
+      <avatar_list allow_select="true" follows="all" layout="topleft" left="0" multi_select="true" name="avatar_list" show_last_interaction_time="true" keep_one_selected="false" right="-1" top="31" bottom="-1" />
+    </panel>
+    <panel background_opaque="false" background_visible="false" follows="all" label="Blocked" layout="topleft" left="0" name="blocked_panel" right="-1" top="0" bottom="-1">
+      <panel class="fs_panel_block_list_sidetray" name="panel_block_list_sidetray" filename="panel_fs_block_list_sidetray.xml" follows="all" label="Blocked Residents &amp; Objects" layout="topleft" left="0" font="SansSerifBold" top="0" right="-1" bottom="-1" />
+    </panel>
+    <panel background_opaque="false" background_visible="false" follows="all" label="Contact Sets" layout="topleft" left="0" name="contact_sets_panel" right="-1" top="0" bottom="-1">
+      <panel name="panel_people_contacts_sidetray" filename="panel_people_contact_sets.xml" follows="all" label="Contact Sets" layout="topleft" left="0" font="SansSerifBold" top="0" right="-1" bottom="-1" />
+    </panel>
+  </tab_container>
+  <panel name="forme_people_navigation" layout="topleft" left="0" top="0" width="442" height="104" follows="left|right|top" visible="false">
+    <button name="forme_people_tab_0" label="Nearby" tool_tip="Nearby" layout="topleft" left="0" top="0" width="144" height="30" image_overlay="Forme_UI_Pin" image_overlay_alignment="left" pad_left="6" halign="left" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" use_ellipses="true">
+      <button.commit_callback function="ForMePeople.SelectTab" parameter="nearby_panel" />
+      <button.is_toggled_callback function="ForMePeople.SelectedTab" parameter="nearby_panel" />
+    </button>
+    <button name="forme_people_tab_1" label="Friends" tool_tip="Friends" layout="topleft" left="148" top="0" width="144" height="30" image_overlay="Forme_UI_People" image_overlay_alignment="left" pad_left="6" halign="left" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" use_ellipses="true">
+      <button.commit_callback function="ForMePeople.SelectTab" parameter="friends_panel" />
+      <button.is_toggled_callback function="ForMePeople.SelectedTab" parameter="friends_panel" />
+    </button>
+    <button name="forme_people_tab_2" label="Groups" tool_tip="Groups" layout="topleft" left="296" top="0" width="144" height="30" image_overlay="Forme_UI_People" image_overlay_alignment="left" pad_left="6" halign="left" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" use_ellipses="true">
+      <button.commit_callback function="ForMePeople.SelectTab" parameter="groups_panel" />
+      <button.is_toggled_callback function="ForMePeople.SelectedTab" parameter="groups_panel" />
+    </button>
+    <button name="forme_people_tab_3" label="Recent" tool_tip="Recent" layout="topleft" left="0" top="34" width="144" height="30" image_overlay="Forme_UI_Clock" image_overlay_alignment="left" pad_left="6" halign="left" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" use_ellipses="true">
+      <button.commit_callback function="ForMePeople.SelectTab" parameter="recent_panel" />
+      <button.is_toggled_callback function="ForMePeople.SelectedTab" parameter="recent_panel" />
+    </button>
+    <button name="forme_people_tab_4" label="Blocked" tool_tip="Blocked" layout="topleft" left="148" top="34" width="144" height="30" image_overlay="Forme_UI_Shield" image_overlay_alignment="left" pad_left="6" halign="left" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" use_ellipses="true">
+      <button.commit_callback function="ForMePeople.SelectTab" parameter="blocked_panel" />
+      <button.is_toggled_callback function="ForMePeople.SelectedTab" parameter="blocked_panel" />
+    </button>
+    <button name="forme_people_tab_5" label="Contact Sets" tool_tip="Contact Sets" layout="topleft" left="296" top="34" width="144" height="30" image_overlay="Forme_UI_Profile" image_overlay_alignment="left" pad_left="6" halign="left" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" use_ellipses="true">
+      <button.commit_callback function="ForMePeople.SelectTab" parameter="contact_sets_panel" />
+      <button.is_toggled_callback function="ForMePeople.SelectedTab" parameter="contact_sets_panel" />
+    </button>
+    <button name="forme_people_find" layout="topleft" label="Search" left="0" top="70" width="216" height="30" />
+    <button name="forme_people_groups_window" layout="topleft" label="Groups window" left="224" top="70" width="216" height="30" />
+  </panel>
+  <view name="forme_groups_only" layout="topleft" visible="false" width="1" height="1" />
+</panel>

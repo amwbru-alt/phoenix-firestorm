@@ -5,7 +5,7 @@
   default_tab_group="1"
   show_title="true"
   follows="all"
-  height="332"
+  height="396"
   layout="topleft"
   left="0"
   name="panel_im"
@@ -18,7 +18,7 @@
   can_resize="true"
   min_width="250"
   save_rect="true"
-  min_height="150" header_height="44" header_vpad="10" header_icon="Forme_UI_Chat" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD" legacy_header_height="0">
+  min_height="240" header_height="44" header_vpad="10" header_icon="Forme_UI_Chat" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD" legacy_header_height="0" rect_control_suffix="_forme_dialog_v2">
     <floater.string
      name="participant_added"
      value="[NAME] was invited to the conversation."/>
@@ -37,7 +37,7 @@
     layout="topleft"
     orientation="horizontal"
     name="ls_control_panel"
-    top="2"
+    top="62"
     left="3">
     <layout_panel
       auto_resize="false"
@@ -534,7 +534,7 @@
     layout="topleft"
     orientation="horizontal"
     name="chat_stack"
-    top="22"
+    top="86"
     left="0">
     <layout_panel
       name="im_control_panel_holder"
@@ -614,7 +614,7 @@
         <layout_panel
           tab_group="3"
           top_delta="0"
-          height="26"
+          height="38"
           bottom="-1"
           auto_resize="false"
           name="chat_layout_panel">
@@ -637,8 +637,8 @@
               layout="topleft"
               expand_lines_count="5"
               follows="left|right|bottom"
-              font="SansSerifSmall"
-              height="20"
+              font="SansSerif"
+              height="32"
               is_expandable="true"
               text_tentative_color="TextFgTentativeColor"
               name="chat_editor"
@@ -704,8 +704,8 @@
               height="24"
               follows="left|right|bottom"
               name="send_chat"
-              label="Send"
-              tool_tip="Sends the IM" />
+              label=""
+              tool_tip="Sends the IM"  image_overlay="Forme_HUD_Send" image_overlay_max_size="22" image_selected="Forme_Round_Accent" image_unselected="Forme_Round_Accent"/>
             </layout_panel>
           </layout_stack>
         </layout_panel>
@@ -737,4 +737,10 @@
       </layout_stack>
     </layout_panel>
   </layout_stack>
+
+  <panel name="forme_dialog_header" layout="topleft" left="8" top="4" height="52" right="-8" follows="left|right|top">
+    <avatar_icon default_icon_name="Generic_Person" name="forme_dialog_avatar" layout="topleft" left="0" top="2" width="44" height="44" circular="true" />
+    <text name="forme_dialog_name" layout="topleft" left="58" top="2" height="24" right="-8" follows="left|right|top" font="SansSerifBold" parse_urls="false" use_ellipses="true" />
+    <text name="forme_dialog_badge" layout="topleft" left="58" top="28" height="22" right="-8" follows="left|right|top" parse_urls="false" use_ellipses="true" visible="false" />
+  </panel>
 </floater>

@@ -68,6 +68,7 @@ public:
 
     // LLView overrides
     bool postBuild() override;
+    void draw() override;
     void setVisible(bool visible) override;
     bool getVisible();
     void setMinimized(bool b) override;

@@ -111,6 +111,14 @@ def main():
             if (result.returncode == 0) != expected:
                 errors.append('LLTextBox type regression probe failed: ' + result.stderr)
 
+    # Run the standalone recovery/URL policy probe without building the viewer.
+    with tempfile.TemporaryDirectory() as temp:
+        binary = pathlib.Path(temp) / 'market_policy'
+        subprocess.run(['c++', '-std=c++20', '-Wall', '-Wextra', '-Werror',
+                        '-I', str(ROOT / 'indra/newview'),
+                        str(ROOT / 'tests/forme/market_policy_test.cpp'), '-o', str(binary)], check=True)
+        subprocess.run([str(binary)], check=True)
+
     if errors:
         print('\n'.join(errors), file=sys.stderr)
         return 1

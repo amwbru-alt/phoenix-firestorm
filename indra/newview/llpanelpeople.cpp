@@ -42,6 +42,9 @@
 #include "lluictrlfactory.h"
 
 #include "llpanelpeople.h"
+#include "fsradar.h"
+#include "llsearcheditor.h"
+#include "llfloateravatarpicker.h"
 
 // newview
 #include "llaccordionctrl.h"
@@ -710,6 +713,23 @@ void LLPanelPeople::removePicker()
 
 bool LLPanelPeople::postBuild()
 {
+    if (auto* list = findChild<LLAvatarList>("forme_nearby_list"))
+    {
+        list->setRlvCheckShowNames(true);
+        list->setShowIcons("NearbyListShowIcons");
+        getChild<LLSearchEditor>("forme_nearby_search")->setCommitCallback([list](LLUICtrl* ctrl, const LLSD&) { list->setNameFilter(ctrl->getValue().asString()); });
+        getChild<LLButton>("forme_nearby_profile")->setClickedCallback([list]() { if (list->getSelectedUUID().notNull()) LLAvatarActions::showProfile(list->getSelectedUUID()); });
+        getChild<LLButton>("forme_nearby_message")->setClickedCallback([list]() { if (list->getSelectedUUID().notNull()) LLAvatarActions::startIM(list->getSelectedUUID()); });
+        getChild<LLButton>("forme_nearby_friend")->setClickedCallback([list]() { if (list->getSelectedUUID().notNull()) LLAvatarActions::requestFriendshipDialog(list->getSelectedUUID()); });
+        getChild<LLButton>("forme_radar_toggle")->setClickedCallback([this, list]() {
+            auto* radar = getChild<LLPanel>("panel_radar");
+            const bool detailed = !radar->getVisible(); radar->setVisible(detailed); list->setVisible(!detailed);
+            radar->setShape(list->getRect());
+        });
+        getChild<LLButton>("forme_people_find")->setClickedCallback([]() { LLFloaterAvatarPicker::show([](const uuid_vec_t& ids, const std::vector<LLAvatarName>&) { if (!ids.empty()) LLAvatarActions::showProfile(ids.front()); }, false, true); });
+        getChild<LLButton>("forme_people_groups_window")->setClickedCallback([]() { LLSD key; key["people_panel_tab_name"] = "groups_panel"; LLFloaterReg::showInstance("forme_groups", key); });
+    }
+
     // <FS:Ansariel> Don't bother with "want more?" advertisement
     //S32 max_premium = LLAgentBenefitsMgr::get("Premium").getGroupMembershipLimit();
     // </FS:Ansariel>
@@ -1769,6 +1789,12 @@ void LLPanelPeople::reshape(S32 width, S32 height, bool called_from_parent)
 
 void LLPanelPeople::onOpen(const LLSD& key)
 {
+    if (hasChild("forme_groups_only"))
+    {
+        getChildView("forme_people_navigation")->setVisible(false);
+        mTabContainer->selectTabByName("groups_panel"); return;
+    }
+
     std::string tab_name = key["people_panel_tab_name"];
     if (!tab_name.empty())
     {
@@ -2328,3 +2354,28 @@ bool LLPanelPeople::handleKeyHere(KEY key, MASK mask)
 }
 // </FS:Ansariel>
 // EOF
+
+void LLPanelPeople::draw()
+{
+    if (auto* list = findChild<LLAvatarList>("forme_nearby_list"))
+    {
+        if (list->isInVisibleChain() && mForMeNearbyTimer.hasExpired())
+        {
+            mForMeNearbyTimer.setTimerExpirySec(1.f); mForMeNearbyTimer.start();
+            std::vector<LLSD> rows; LLSD stats; FSRadar::getInstance()->getCurrentData(rows, stats);
+            uuid_vec_t ids;
+            for (const auto& row : rows) { const auto id = row["entry"]["id"].asUUID(); if (id.notNull() && id != gAgent.getID()) ids.push_back(id); }
+            if (ids != list->getIDs()) { list->getIDs() = ids; list->setDirty(); }
+            for (const auto& row : rows)
+                if (auto* item = list->getItemByValue(row["entry"]["id"]))
+                    if (auto* distance = item->findChild<LLTextBox>("forme_presence")) {
+                        distance->setVisible(true);
+                        distance->setText(row["entry"]["range"].asString() + " m");
+                    }
+
+        }
+        const bool selected = list->getVisible() && list->getSelectedUUID().notNull();
+        for (const auto& action : {"forme_nearby_profile", "forme_nearby_message", "forme_nearby_friend"}) getChild<LLButton>(action)->setEnabled(selected);
+    }
+    LLPanel::draw();
+}

@@ -285,6 +285,13 @@ void LLAvatarListItem::changed(U32 mask)
 
 void LLAvatarListItem::setOnline(bool online)
 {
+    if (auto* presence = findChild<LLTextBox>("forme_presence"))
+    {
+        const bool known = LLAvatarTracker::instance().getBuddyInfo(mAvatarId) != nullptr;
+        presence->setVisible(known);
+        presence->setText(known ? getString(online ? "forme_online" : "forme_offline") : std::string());
+    }
+
     // *FIX: setName() overrides font style set by setOnline(). Not an issue ATM.
 
     if (mOnlineStatus != E_UNKNOWN && (bool) mOnlineStatus == online)

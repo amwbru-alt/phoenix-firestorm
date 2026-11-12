@@ -72,7 +72,7 @@ for button in buttons:
     assert button.find('button.is_toggled_callback').get('function') == 'ForMeInventory.CategorySelected'
 people = resource('panel_people.xml')
 native_tabs = {x.get('name') for x in child(people, 'tabs').findall('panel')}
-nav = child(people, 'forme_people_navigation').findall('button')
+nav = [x for x in child(people, 'forme_people_navigation').findall('button') if x.get('name', '').startswith('forme_people_tab_')]
 assert len(nav) == 6
 assert {x.find('button.commit_callback').get('parameter') for x in nav} == native_tabs
 assert child(people, 'tabs').get('hide_tabs') == 'true'

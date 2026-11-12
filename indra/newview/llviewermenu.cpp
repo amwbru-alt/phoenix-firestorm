@@ -8867,19 +8867,7 @@ class FSLoadSLMarketplace : public view_listener_t
 {
     bool handleEvent(const LLSD& userdata)
     {
-        static LLCachedControl<std::string> marketplace_url(gSavedSettings, "MarketplaceURL", "https://marketplace.secondlife.com/");
-        if (LLWeb::useExternalBrowser(marketplace_url))
-        {
-            LLWeb::loadURL(marketplace_url);
-        }
-        else
-        {
-            LLFloaterReg::showInstanceOrBringToFront("marketplace");
-            if (LLFloaterMarketplace* marketplace = LLFloaterReg::getTypedInstance<LLFloaterMarketplace>("marketplace"))
-            {
-                marketplace->openMarketplace();
-            }
-        }
+        LLFloaterReg::showInstance("market_catalog");
         return true;
     }
 };
@@ -13167,7 +13155,7 @@ void initialize_menus()
     enable.add("Avatar.IsMyProfileOpen", boost::bind(&my_profile_visible));
     enable.add("Avatar.IsPicksTabOpen", boost::bind(&picks_tab_visible));
 
-    commit.add("Avatar.OpenMarketplace", boost::bind(&LLWeb::loadURLExternal, gSavedSettings.getString("MarketplaceURL")));
+    commit.add("Avatar.OpenMarketplace", [](LLUICtrl*, const LLSD&) { LLFloaterReg::showInstance("market_catalog"); });
 
 // <AS:Chanayane> Compass floater
     commit.add("Avatar.AlignToggle", [](LLUICtrl*, const LLSD&) {

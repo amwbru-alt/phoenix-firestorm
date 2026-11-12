@@ -4,4 +4,6 @@
 	<button name="notices_btn" tool_tip="Групповые уведомления"/>
 	<button name="info_btn" tool_tip="Дополнительная информация"/>
 	<button name="profile_btn" tool_tip="Просмотреть профиль"/>
+
+  <text name="forme_group_active" value="Активная группа" />
 </panel>

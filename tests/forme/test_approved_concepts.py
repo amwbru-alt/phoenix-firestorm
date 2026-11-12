@@ -78,6 +78,36 @@ class ApprovedConcepts(unittest.TestCase):
         child(root, 'forme_mark_read')
         self.assertEqual('false', child(root, 'DeleteAllButtonPanel').get('visible'))
 
+    def test_new_commerce_forms_fit_and_keep_cancel_default(self):
+        for filename in ('floater_market_catalog.xml', 'floater_market_product.xml', 'floater_market_cart.xml'):
+            root = resource(filename)
+            width, height = int(root.get('width')), int(root.get('height'))
+            for control in root:
+                if all(control.get(k) is not None for k in ('left', 'top', 'width', 'height')):
+                    self.assertLessEqual(int(control.get('left')) + int(control.get('width')), width, control.get('name'))
+                    self.assertLessEqual(int(control.get('top')) + int(control.get('height')), height, control.get('name'))
+        notifications = resource('notifications.xml')
+        for name in ('ForMeMarketConfirm', 'ForMeMarketRecover'):
+            self.assertEqual('true', child(child(notifications, name), 'Cancel').get('default'))
+        state = ET.parse(ROOT / 'indra/newview/app_settings/settings_per_account.xml').getroot()
+        self.assertIn('ForMeNativeMarket', [key.text for key in state.findall('./map/key')])
+
+    def test_communication_sections_keep_real_native_controls(self):
+        session = resource('floater_fs_im_session.xml')
+        self.assertEqual('fs_chat_history', child(session, 'chat_history').tag)
+        self.assertEqual('chat_editor', child(session, 'chat_editor').tag)
+        header, tools, chat = [child(session, name) for name in ('forme_dialog_header', 'ls_control_panel', 'chat_stack')]
+        self.assertLessEqual(int(header.get('top')) + int(header.get('height')), int(tools.get('top')))
+        self.assertLessEqual(int(tools.get('top')) + int(tools.get('height')), int(chat.get('top')))
+        for filename in ('panel_people.xml', 'panel_forme_groups.xml'):
+            panel = resource(filename)
+            for name in ('group_list', 'avatars_all', 'avatars_online', 'forme_nearby_list'):
+                child(panel, name)
+        for path in XUI.glob('*/floater_fs_im_session.xml'):
+            send = ET.parse(path).getroot().find(".//button[@name='send_chat']")
+            if send is not None:
+                self.assertEqual('', send.get('label'), str(path))
+
 
 if __name__ == '__main__':
     unittest.main()

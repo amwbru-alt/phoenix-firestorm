@@ -1099,11 +1099,7 @@ void LLStatusBar::onClickBuyCurrency()
 
 void LLStatusBar::onClickShop()
 {
-    LLFloaterReg::showInstanceOrBringToFront("marketplace");
-    if (LLFloaterMarketplace* marketplace = LLFloaterReg::getTypedInstance<LLFloaterMarketplace>("marketplace"))
-    {
-        marketplace->openMarketplace();
-    }
+    LLFloaterReg::showInstance("market_catalog");
 }
 
 void LLStatusBar::onMouseEnterPresetsCamera()

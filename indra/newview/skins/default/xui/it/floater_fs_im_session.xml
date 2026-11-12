@@ -67,7 +67,7 @@
 							<button name="emoji_recent_panel_toggle_btn" tool_tip="Mostra/nascondi emoji recenti" />
 						</layout_panel>
 						<layout_panel name="input_button_layout_panel">
-							<button name="send_chat" label="Invia" tool_tip="Invia un messaggio IM" />
+							<button name="send_chat" label="" tool_tip="Invia un messaggio IM" />
 						</layout_panel>
 					</layout_stack>
 				</layout_panel>

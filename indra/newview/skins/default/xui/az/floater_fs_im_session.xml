@@ -67,7 +67,7 @@
 				<layout_panel name="chat_layout_panel">
 					<layout_stack name="input_panels">
 						<layout_panel name="input_button_layout_panel">
-							<button name="send_chat" label="Göndər" tool_tip="Mesaj göndərir" />
+							<button name="send_chat" label="" tool_tip="Mesaj göndərir" />
 						</layout_panel>
 					</layout_stack>
 				</layout_panel>

@@ -3495,6 +3495,7 @@ void LLViewerRegionImpl::buildCapabilityNames(LLSD& capabilityNames)
     capabilityNames.append("ForMePremium");
     capabilityNames.append("ForMeWeather");
     capabilityNames.append("ForMeChanges");
+    capabilityNames.append("ForMeMarketplace");
     capabilityNames.append("EnvironmentSettings");
     capabilityNames.append("EstateAccess");
 // <FS:CR> Aurora Sim

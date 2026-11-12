@@ -516,6 +516,7 @@ set(viewer_SOURCE_FILES
     llmaniprotate.cpp
     llmanipscale.cpp
     llmaniptranslate.cpp
+    fsmarketbrowser.cpp
     llfloatermarketplace.cpp
     llmarketplacefunctions.cpp
     llmarketplacenotifications.cpp
@@ -1234,6 +1235,8 @@ set(viewer_HEADER_FILES
     llfloaterlinkreplace.h
     llfloaterloadprefpreset.h
     llfloatermap.h
+    formemarketpolicy.h
+    fsmarketbrowser.h
     llfloatermarketplace.h
     llfloatermarketplacelistings.h
     llfloatermediasettings.h

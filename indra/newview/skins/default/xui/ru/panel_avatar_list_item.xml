@@ -16,4 +16,7 @@
     <button name="info_btn" tool_tip="Больше информации" />
     <button name="profile_btn" tool_tip="Просмотреть профиль" />
     <output_monitor name="speaking_indicator" tool_tip="Отображает, что аватар находится в диапазоне голосового чата и уровень громкости, если говорит." />
+
+  <panel.string name="forme_online">В сети</panel.string>
+  <panel.string name="forme_offline">Не в сети</panel.string>
 </panel>

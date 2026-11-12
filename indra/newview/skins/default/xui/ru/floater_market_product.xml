@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<floater name="market_product" title="Товар">
+  <button name="refresh" label="Обновить" />
+  <button name="website" label="На сайт" />
+  <button name="buy" label="Купить" />
+  <button name="add" label="В корзину" />
+  <text name="delivery" value="Доставка в ваш инвентарь" />
+</floater>

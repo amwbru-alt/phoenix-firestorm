@@ -175,12 +175,32 @@ public:
         }
     }
 
+    void setSecondaryText(const std::string& text, const std::string& stamp)
+    {
+        if (!mSecondary)
+        {
+            LLTextBox::Params p;
+            p.name = "tab_secondary_text"; p.font = LLFontGL::getFontSansSerifSmall();
+            p.mouse_opaque = false; p.parse_urls = false; p.use_ellipses = true;
+            mSecondary = LLUICtrlFactory::create<LLTextBox>(p); addChild(mSecondary);
+            p.name = "tab_timestamp";
+            mTimestamp = LLUICtrlFactory::create<LLTextBox>(p); addChild(mTimestamp);
+            mBottomVPad = 10;
+        }
+        mSecondary->setText(text); mTimestamp->setText(stamp);
+        mSecondary->setRect(LLRect(mLeftHPad, 25, getRect().getWidth() - 8, 7));
+        mTimestamp->setRect(LLRect(getRect().getWidth() - 54, getRect().getHeight() - 8, getRect().getWidth() - 4, getRect().getHeight() - 26));
+        setRightHPad(58);
+    }
+
     LLIconCtrl* getIconCtrl() const
     {
         return mIcon;
     }
 
 private:
+    LLTextBox* mSecondary = nullptr;
+    LLTextBox* mTimestamp = nullptr;
     LLIconCtrl* mIcon;
     LLFontGL::HAlign mIconAlignment;
     S32 mIconCtrlPad;
@@ -1883,6 +1903,12 @@ void LLTabContainer::setTabImage(LLPanel* child, const LLUUID& image_id, const L
         tuple->mButton->setImageOverlay(image_id, LLFontGL::LEFT, color);
         reshapeTuple(tuple);
     }
+}
+
+void LLTabContainer::setTabSecondaryText(LLPanel* child, const std::string& text, const std::string& stamp)
+{
+    if (auto* tab = getTabByPanel(child))
+        if (auto* button = dynamic_cast<LLCustomButtonIconCtrl*>(tab->mButton)) button->setSecondaryText(text, stamp);
 }
 
 void LLTabContainer::setTabImage(LLPanel* child, LLIconCtrl* icon)

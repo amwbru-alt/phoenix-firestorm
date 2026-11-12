@@ -662,6 +662,7 @@ void LLFloaterIMSessionTab::appendMessage(const LLChat& chat, const LLSD& args)
     tmp_chat.mFromName = chat.mFromName;
 
     LLSD chat_args = args;
+    chat_args["forme_im_bubbles"] = true;
     chat_args["use_plain_text_chat_history"] =
             gSavedSettings.getBOOL("PlainTextChatHistory");
     chat_args["show_time"] = gSavedSettings.getBOOL("IMShowTime");

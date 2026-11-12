@@ -14,6 +14,9 @@ contract = json.loads((ROOT / 'tests/forme/ui_functions_contract.json').read_tex
 for name, expected in contract['resources'].items():
     root = ET.parse(BASE / 'xui/en' / name).getroot()
     def semantic_nodes(node):
+        if node.tag == 'notification' and node.get('name') in {'ForMeMarketConfirm', 'ForMeMarketRecover'}:
+            assert node.find("./form/button[@name='Cancel']").get('default') == 'true'
+            return []
         # Camera style parameter blocks configure existing constructor-owned
         # children; they do not add controls or change native command bindings.
         if name == 'floater_camera.xml' and node.tag in ('panel_camera_item.text', 'panel_camera_item.icon_over', 'panel_camera_item.icon_selected'):

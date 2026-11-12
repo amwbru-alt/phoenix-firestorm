@@ -67,7 +67,7 @@
 							<button name="emoji_recent_panel_toggle_btn" tool_tip="最近表示した絵文字を表示／非表示します。"/>
 						</layout_panel>
 						<layout_panel name="input_button_layout_panel">
-							<button name="send_chat" label="送信" tool_tip="ＩＭを送信します。"/>
+							<button name="send_chat" label="" tool_tip="ＩＭを送信します。"/>
 						</layout_panel>
 					</layout_stack>
 				</layout_panel>

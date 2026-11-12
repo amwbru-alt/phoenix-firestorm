@@ -15545,4 +15545,16 @@ Folder names cannot contain / or \.
   </notification>
   <!-- </FS:Amy> Favorite Wearables folders -->
 
+<notification name="ForMeMarketConfirm" type="alertmodal">Оплатить [PRICE]? Товары будут доставлены в ваш инвентарь.<form name="form">
+      <button index="0" name="Proceed" text="Оплатить" />
+      <button index="1" name="Cancel" text="Отмена" default="true" />
+    </form>
+  </notification>
+
+<notification name="ForMeMarketRecover" type="alertmodal">Проверить результат предыдущего заказа? Новый заказ не создаётся.<form name="form">
+      <button index="0" name="Proceed" text="Проверить" />
+      <button index="1" name="Cancel" text="Отмена" default="true" />
+    </form>
+  </notification>
+
 </notifications>

@@ -70,7 +70,7 @@
 							<button name="emoji_recent_panel_toggle_btn" tool_tip="Mostrar/ocultar emojis recentes"/>
 						</layout_panel>
 						<layout_panel name="input_button_layout_panel">
-							<button name="send_chat" label="Enviar"/>
+							<button name="send_chat" label=""/>
 						</layout_panel>
 					</layout_stack>
 				</layout_panel>

@@ -230,6 +230,8 @@ public:
     void        setTabImage(LLPanel* child, std::string img_name, const LLColor4& color = LLColor4::white);
     void        setTabImage(LLPanel* child, const LLUUID& img_id, const LLColor4& color = LLColor4::white);
     void        setTabImage(LLPanel* child, LLIconCtrl* icon);
+    // Optional second line and timestamp for conversation-style custom tabs.
+    void        setTabSecondaryText(LLPanel* child, const std::string& text, const std::string& stamp);
     // <FS:Ansariel> Custom tab image overlay button alignment
     void        setTabImage(LLPanel* child, std::string img_name, LLFontGL::HAlign alignment, const LLColor4& color = LLColor4::white, const LLColor4& selected_color = LLColor4::white);
     // </FS:Ansariel>

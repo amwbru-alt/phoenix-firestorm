@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<floater name="market_cart" layout="topleft" title="Cart" width="740" height="422" min_width="740" min_height="422" header_height="44" legacy_header_height="0" header_vpad="10" header_icon="Forme_HUD_Market" can_resize="false" can_minimize="false" can_close="true" save_rect="true" rect_control_suffix="_forme_market_v1" single_instance="true" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White">
+  <text name="status" layout="topleft" left="16" top="344" width="708" height="36" use_ellipses="true" parse_urls="false" wrap="true" />
+  <button name="refresh" layout="topleft" label="Refresh" left="16" top="384" width="104" height="32" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" />
+  <button name="website" layout="topleft" label="Website" left="128" top="384" width="104" height="32" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" />
+  <scroll_container name="cart_scroll" layout="topleft" left="16" top="12" width="708" height="258" opaque="false" reserve_scroll_corner="true">
+    <panel name="cart_rows" layout="topleft" left="0" top="0" width="684" height="84" background_visible="false" />
+  </scroll_container>
+  <text name="delivery" layout="topleft" left="16" top="286" width="708" height="24" use_ellipses="true" parse_urls="false" value="Products will appear in your inventory" />
+  <text name="total" layout="topleft" left="246" top="384" width="278" height="30" use_ellipses="true" parse_urls="false" font="SansSerifBold" />
+  <button name="checkout" layout="topleft" label="Proceed to payment" left="532" top="380" width="192" height="32" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" />
+</floater>

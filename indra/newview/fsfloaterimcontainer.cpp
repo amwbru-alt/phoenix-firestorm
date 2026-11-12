@@ -30,6 +30,9 @@
 #include "llviewerprecompiledheaders.h"
 
 #include "fsfloaterimcontainer.h"
+#include "llavatariconctrl.h"
+#include "llsearcheditor.h"
+#include "rlvactions.h"
 
 #include "fsfloatercontacts.h"
 #include "fsfloaterim.h"
@@ -80,6 +83,16 @@ FSFloaterIMContainer::~FSFloaterIMContainer()
 
 bool FSFloaterIMContainer::postBuild()
 {
+    if (auto* search = findChild<LLSearchEditor>("forme_conversation_search"))
+        search->setCommitCallback([this](LLUICtrl* ctrl, const LLSD&) {
+            std::string query = utf8str_tolower(ctrl->getValue().asString());
+            for (S32 i = 0; i < mTabContainer->getTabCount(); ++i) {
+                auto* panel = mTabContainer->getPanelByIndex(i); auto* floater = dynamic_cast<LLFloater*>(panel);
+                const std::string title = utf8str_tolower(floater ? floater->getTitle() : panel->getLabel());
+                mTabContainer->setTabButtonVisible(panel, query.empty() || title.find(query) != std::string::npos);
+            }
+        });
+
     mNewMessageConnection = LLIMModel::instance().mNewMsgSignal.connect(boost::bind(&FSFloaterIMContainer::onNewMessageReceived, this, _1));
     // Do not call base postBuild to not connect to mCloseSignal to not close all floaters via Close button
     // mTabContainer will be initialized in LLMultiFloater::addChild()
@@ -377,6 +390,12 @@ void FSFloaterIMContainer::addFloater(LLFloater* floaterp,
 
     LLUUID session_id = floaterp->getKey();
     mSessions[session_id] = floaterp;
+    if (const auto* session = LLIMModel::instance().findIMSession(session_id))
+        if (session->mType == IM_NOTHING_SPECIAL && session->mOtherParticipantID.notNull()) {
+            LLAvatarIconCtrl::Params p; p.name = "forme_conversation_avatar_" + session_id.asString(); p.avatar_id = session->mOtherParticipantID; p.default_icon_name = "Generic_Person"; p.circular = true; p.rect = LLRect(0, 40, 40, 0);
+            mTabContainer->setTabImage(floaterp, LLUICtrlFactory::create<LLAvatarIconCtrl>(p));
+        }
+
     floaterp->mCloseSignal.connect(boost::bind(&FSFloaterIMContainer::onCloseFloater, this, session_id));
 }
 
@@ -648,6 +667,28 @@ void FSFloaterIMContainer::draw()
         mForceVoiceStateUpdate = false;
         mActiveVoiceFloater = current_voice_floater;
         mActiveVoiceUpdateTimer.setTimerExpirySec(VOICE_STATUS_UPDATE_INTERVAL);
+    }
+
+    for (const auto& entry : mSessions)
+    {
+        const auto* session = LLIMModel::instance().findIMSession(entry.first);
+        if (!session || !entry.second) continue;
+        const bool show_identity = session->mType != IM_NOTHING_SPECIAL
+            || RlvActions::canShowName(RlvActions::SNC_DEFAULT, session->mOtherParticipantID);
+        if (auto* avatar = mTabContainer->findChild<LLAvatarIconCtrl>("forme_conversation_avatar_" + entry.first.asString()))
+            avatar->setVisible(show_identity);
+        std::string preview, stamp;
+        if (show_identity && !session->mMsgs.empty())
+        {
+            const LLSD& latest = session->mMsgs.front();
+            preview = latest["message"].asString();
+            LLStringUtil::replaceChar(preview, '\n', ' '); LLStringUtil::replaceChar(preview, '\r', ' ');
+            if (preview.size() > 256) preview = wstring_to_utf8str(utf8str_to_wstring(preview).substr(0, 128));
+            stamp = latest["time"].asString();
+            if (stamp.size() >= 5) stamp = stamp.substr(stamp.size() - 5);
+            if (session->mNumUnread > 0) preview = "● " + preview;
+        }
+        mTabContainer->setTabSecondaryText(entry.second, preview, stamp);
     }
 
     LLMultiFloater::draw();

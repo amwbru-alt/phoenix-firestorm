@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <panel
  follows="top|right|left"
- height="30"
+ height="62"
  layout="topleft"
  left="0"
  name="avatar_list_item"
@@ -26,7 +26,7 @@
     -->
     <icon
      follows="top|right|left"
-     height="30"
+     height="62"
      image_name="ListItem_Over"
      layout="topleft"
      left="0"
@@ -35,7 +35,7 @@
      visible="false"
      width="360" />
     <icon
-     height="30"
+     height="62"
      follows="top|right|left"
      image_name="ListItem_Select"
      layout="topleft"
@@ -46,21 +46,21 @@
      width="360" />
     <avatar_icon
      follows="top|left"
-     height="20"
+     height="42"
      default_icon_name="Generic_Person"
      layout="topleft"
      left="5"
      mouse_opaque="true"
-     top="4"
-     width="20" />
+     top="10"
+     width="42"  circular="true"/>
     <text
      follows="left|right"
-     font="SansSerifSmall"
-     height="15"
+     font="SansSerif"
+     height="24"
      layout="topleft"
      left_pad="5"
      name="avatar_name"
-     top="8"
+     top="14"
      clip_partial="false"
      parse_urls="false"
      use_ellipses="true"
@@ -85,8 +85,8 @@
      left_pad="3"
      right="-222"
      name="permission_edit_theirs_icon"
-     tool_tip="You can edit this friend&apos;s objects"
-     top="7"
+     tool_tip="You can edit this friend's objects"
+     top="21"
      width="16" />
     <button
      height="16"
@@ -99,7 +99,7 @@
      name="permission_edit_mine_btn"
      tool_tip="This friend can edit, delete or take your objects"
      top_delta="0"
-     width="16" />
+     width="16"  top="21"/>
     <button
      height="16"
      follows="right"
@@ -111,7 +111,7 @@
      right="-184"
      name="permission_map_btn"
      top_delta="0"
-     width="16" />
+     width="16"  top="21"/>
     <button
      height="16"
      follows="right"
@@ -121,9 +121,9 @@
      left_pad="3"
      right="-165"
      name="permission_online_btn"
-     tool_tip="This friend can see when you&apos;re online"
+     tool_tip="This friend can see when you're online"
      top_delta="0"
-     width="16" />
+     width="16"  top="21"/>
     <slider
      visible="false"
      enabled="true"
@@ -151,7 +151,7 @@
      tool_tip="More info"
      tab_stop="false"
      top_delta="0"
-     width="16" />
+     width="16"  top="21"/>
     <button
      follows="right"
      height="20"
@@ -163,7 +163,7 @@
      tab_stop="false"
      tool_tip="View profile"
      top_delta="-2"
-     width="20" />
+     width="20"  top="21"/>
     <output_monitor
      auto_update="true"
      follows="right"
@@ -176,5 +176,9 @@
      name="speaking_indicator"
      tool_tip="Voice volume"
      visible="true"
-     width="20" />
+     width="20"  top="21"/>
+
+  <panel.string name="forme_online">Online</panel.string>
+  <panel.string name="forme_offline">Offline</panel.string>
+  <text name="forme_presence" layout="topleft" left="56" top="38" right="-24" height="18" follows="left|right|top" font="SansSerifSmall" parse_urls="false" use_ellipses="true" visible="false" />
 </panel>

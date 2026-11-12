@@ -1376,5 +1376,17 @@
             <key>Value</key>
             <map/>
         </map>
+
+<key>ForMeNativeMarket</key>
+<map>
+      <key>Comment</key>
+      <string>Personal native marketplace cart, favorites and uncertain order recovery.</string>
+      <key>Persist</key>
+      <integer>1</integer>
+      <key>Type</key>
+      <string>LLSD</string>
+      <key>Value</key>
+      <map />
     </map>
+</map>
 </llsd>

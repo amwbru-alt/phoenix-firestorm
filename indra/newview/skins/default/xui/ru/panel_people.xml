@@ -44,6 +44,11 @@
         <button name="add_friend_btn" tool_tip="Предложить жителю дружбу" />
         <dnd_button name="nearby_del_btn" tool_tip="Удалить выбранного пользователя из друзей" />
       </panel>
+      <search_editor name="forme_nearby_search" label="Поиск людей…" />
+      <button name="forme_radar_toggle" label="Радар" />
+      <button name="forme_nearby_profile" label="Профиль" />
+      <button name="forme_nearby_message" label="Написать" />
+      <button name="forme_nearby_friend" label="+" />
     </panel>
     <panel label="Друзья" name="friends_panel">
       <panel name="friends_buttons_panel">
@@ -95,5 +100,7 @@
     <button name="forme_people_tab_3" label="Недавние" tool_tip="Недавние" />
     <button name="forme_people_tab_4" label="Блокировки" tool_tip="Блокировки" />
     <button name="forme_people_tab_5" label="Контакты" tool_tip="Контакты" />
+    <button name="forme_people_find" label="Поиск" />
+    <button name="forme_people_groups_window" label="Окно групп" />
   </panel>
 </panel>

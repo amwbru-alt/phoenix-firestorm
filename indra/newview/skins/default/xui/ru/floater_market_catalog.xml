@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<floater name="market_catalog" title="Маркет">
+  <button name="refresh" label="Обновить" />
+  <button name="website" label="На сайт" />
+  <button name="cart" label="Корзина" />
+  <button name="all" label="Все" />
+  <button name="clothes" label="Одежда" />
+  <button name="home" label="Дом" />
+  <button name="accessories" label="Аксессуары" />
+  <search_editor name="query" label="Найти товар…" />
+</floater>

@@ -1,2 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<multi_floater name="floater_im_box" title="Разговоры"/>
+<?xml version='1.0' encoding='utf-8'?>
+<multi_floater name="floater_im_box" title="Личные сообщения">
+  <search_editor name="forme_conversation_search" label="Поиск диалогов…" />
+</multi_floater>

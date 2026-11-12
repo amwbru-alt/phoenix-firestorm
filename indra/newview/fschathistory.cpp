@@ -38,6 +38,7 @@
 #include "llimview.h"
 #include "llcommandhandler.h"
 #include "llpanel.h"
+#include "lltextbox.h"
 #include "lluictrlfactory.h"
 #include "llscrollcontainer.h"
 #include "llagent.h"
@@ -1488,6 +1489,39 @@ std::string applyModeratorStyle(U32 moderator_style)
 
 static LLTrace::BlockTimerStatHandle FTM_APPEND_MESSAGE("Append Chat Message");
 
+// The inline row keeps the original message in the document for history/copy.
+// Reflow recalculates both alignment and wrapped height after a window resize.
+namespace
+{
+class ForMeMessageBubbleSegment final : public LLInlineViewSegment
+{
+public:
+    ForMeMessageBubbleSegment(const Params& params, S32 start, S32 end,
+        const LLTextBase& history, LLPanel* row, LLPanel* bubble, LLTextBox* body, bool self)
+        : LLInlineViewSegment(params, start, end), mHistory(history), mRow(row),
+          mBubble(bubble), mBody(body), mSelf(self) {}
+
+    bool getDimensionsF32(S32 first, S32 count, F32& width, S32& height) override
+    {
+        const S32 available = llmax(120, mHistory.getVisibleTextRect().getWidth() - mHistory.getHPad() * 2);
+        const S32 bubble_width = llmax(100, available * 3 / 4);
+        mBody->reshape(bubble_width - 20, mBody->getRect().getHeight());
+        const S32 bubble_height = llmax(22, mBody->getTextPixelHeight()) + 20;
+        mRow->reshape(available, bubble_height);
+        mBubble->setRect(LLRect(mSelf ? available - bubble_width : 0, bubble_height,
+            mSelf ? available : bubble_width, 0));
+        mBody->setRect(LLRect(10, bubble_height - 10, bubble_width - 10, 10));
+        return LLInlineViewSegment::getDimensionsF32(first, count, width, height);
+    }
+private:
+    const LLTextBase& mHistory;
+    LLPanel* mRow;
+    LLPanel* mBubble;
+    LLTextBox* mBody;
+    bool mSelf;
+};
+}
+
 void FSChatHistory::appendMessage(const LLChat& chat, const LLSD &args, const LLStyle::Params& input_append_params)
 {
     LL_RECORD_BLOCK_TIME(FTM_APPEND_MESSAGE);
@@ -1978,7 +2012,48 @@ void FSChatHistory::appendMessage(const LLChat& chat, const LLSD &args, const LL
         setContentTrusted(chat.mFromID.isNull() && is_p2p); // <FS:Ansariel> Set trusted content temporarily for system messages
         setNearbyChatContent(is_local); // <FS:PP> Use the nearby-chat labeled-link setting for local/object chat
         setPlainText((use_plain_text_chat_history && is_p2p) ? chat.mFromID.notNull() : use_plain_text_chat_history);
-        appendText(message, prependNewLineState, body_message_params);  // <FS:Zi> FIRE-8600: TAB out of chat history
+        if (args["forme_im_bubbles"].asBoolean() && !is_local && !use_plain_text_chat_history
+            && chat.mSourceType == CHAT_SOURCE_AGENT && !irc_me && message.size() <= 4096)
+        {
+            const S32 available = llmax(120, getDocumentView()->getRect().getWidth() - getHPad() * 2);
+            const S32 width = llmax(100, available * 3 / 4);
+            LLPanel::Params panel_params;
+            panel_params.name = "forme_message_bubble";
+            panel_params.rect = LLRect(0, 40, width, 0);
+            panel_params.background_visible = true;
+            panel_params.bg_alpha_image = LLUI::getUIImage(from_me ? "Forme_Round_Accent" : "Forme_Round_Field");
+            panel_params.bg_alpha_color = LLColor4::white;
+            auto* bubble = LLUICtrlFactory::create<LLPanel>(panel_params);
+            LLTextBox::Params text_params;
+            text_params.name = "forme_message_body";
+            text_params.rect = LLRect(10, 30, width - 10, 10);
+            text_params.font = getFont();
+            text_params.wrap = true;
+            text_params.parse_urls = true;
+            text_params.trusted_content = false;
+            text_params.follows.flags = FOLLOWS_LEFT | FOLLOWS_RIGHT | FOLLOWS_TOP;
+            auto* body = LLUICtrlFactory::create<LLTextBox>(text_params);
+            body->setText(message, body_message_params);
+            const S32 height = llmax(22, body->getTextPixelHeight()) + 20;
+            bubble->reshape(width, height);
+            body->setRect(LLRect(10, height - 10, width - 10, 10));
+            bubble->addChild(body);
+            LLPanel::Params row_params;
+            row_params.name = "forme_message_row";
+            row_params.rect = LLRect(0, height, available, 0);
+            auto* row = LLUICtrlFactory::create<LLPanel>(row_params);
+            row->addChild(bubble);
+            LLInlineViewSegment::Params params;
+            params.view = row; params.force_newline = true;
+            params.top_pad = 4; params.bottom_pad = 8;
+            // Preserve the original text for history selection and copy. Native
+            // notification forms, /me and plain-text mode keep their old renderer.
+            const LLWString wide = utf8str_to_wstring(message);
+            segment_vec_t segments;
+            segments.push_back(new ForMeMessageBubbleSegment(params, getLength(), getLength() + static_cast<S32>(wide.size()), *this, row, bubble, body, from_me));
+            insertStringNoUndo(getLength(), wide, &segments);
+        }
+        else appendText(message, prependNewLineState, body_message_params);
         setContentTrusted(is_trusted);
         setNearbyChatContent(false); // <FS:PP> Use the nearby-chat labeled-link setting for local/object chat
         setPlainText(use_plain_text_chat_history);
