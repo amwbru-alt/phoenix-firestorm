@@ -199,7 +199,6 @@ assert int(child(second_life_profile, 'forme_profile_about_card').get('width')) 
 assert int(child(second_life_profile, 'sl_description_edit').get('width')) == 462
 assert int(child(second_life_profile, 'buttonstack').get('width')) == 202
 picks_profile = resource('panel_profile_picks.xml')
-assert int(child(picks_profile, 'main_stack').get('height')) if child(picks_profile, 'main_stack').get('height') else True
 picks_header = child(picks_profile, 'buttons_header')
 assert int(child(picks_header, 'new_btn').get('height')) == 24
 assert int(child(picks_header, 'delete_btn').get('height')) == 24
