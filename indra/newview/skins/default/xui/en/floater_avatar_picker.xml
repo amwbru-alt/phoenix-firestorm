@@ -3,15 +3,15 @@
  positioning="cascading"
  legacy_header_height="0"
  can_resize="true"
- height="350"
+ height="460"
  layout="topleft"
- min_height="200"
- min_width="400"
+ min_height="380"
+ min_width="500"
  name="avatarpicker"
 
  save_rect="true"
  title="Choose Resident"
- width="500" header_height="44" header_vpad="10" header_icon="Forme_UI_Window" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD">
+ width="560" header_height="44" header_vpad="10" header_icon="Forme_UI_Window" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD">
     <floater.string
      name="not_found">
         &apos;[TEXT]&apos; not found
@@ -40,22 +40,22 @@
     <string name="Close">Close</string>
     <tab_container
      follows="all"
-     height="300"
+     height="380"
      layout="topleft"
-     left="0"
+     left="16"
      name="ResidentChooserTabs"
      tab_position="top"
-     top="20"
-     width="500">
+     top="54"
+     right="-16">
         <panel
-         height="150"
+         height="340"
          label="Search"
          layout="topleft"
-         left="6"
-        
+         left="0"
+         follows="all"
          name="SearchPanel"
-         top="150"
-         width="132">
+         top="0"
+         right="-4">
             <text
              type="string"
              length="1"
@@ -64,8 +64,8 @@
              layout="topleft"
              left="10"
              name="InstructSearchResidentName"
-             top="8"
-             width="300">
+             top="12"
+             width="480">
                 Type part of a person&apos;s name:
             </text>
             <line_editor
@@ -76,8 +76,8 @@
              height="23"
              left_delta="0"
              name="Edit"
-             top_pad="0"
-             width="65" />
+             top="34"
+             width="420" />
             <button
              follows="top|right"
              height="23"
@@ -86,16 +86,16 @@
              layout="topleft"
              left_pad="5"
              name="Find"
-             width="45" />
+             width="64" />
           <fs_scroll_list
             draw_heading="true" 
            follows="all"
-           height="98"
+           height="270"
            layout="topleft"
            left="0"
            name="SearchResults"
-           top="52"
-           width="132">
+           top="68"
+           right="-4">
             <columns
               label="Name"
               name="name"
@@ -107,14 +107,14 @@
           </fs_scroll_list>
         </panel>
         <panel
-         height="150"
+         height="340"
          label="Friends"
          layout="topleft"
-         left="6"
-        
+         left="0"
+         follows="all"
          name="FriendsPanel"
-         top="150"
-         width="132">
+         top="0"
+         right="-4">
             <text
              type="string"
              length="1"
@@ -123,15 +123,15 @@
              layout="topleft"
              left="10"
              name="InstructSelectFriend"
-             top="8"
-             width="200">
+             top="12"
+             width="440">
                 Select a person:
             </text>
             <button
              follows="top|right"
              layout="topleft"
-             right="-5"
-             top ="5"
+             right="-8"
+             top ="8"
              height="20"
              width="20"
              name="RefreshFriends"
@@ -142,13 +142,13 @@
             <fs_scroll_list
              draw_heading="true"
              follows="all"
-             height="120"
+             height="292"
              layout="topleft"
              left="0"
              name="Friends"
              sort_column="0"
-             top_pad="5"
-             width="132">
+             top="38"
+             right="-4">
             <columns
               label="Name"
               name="name"
@@ -161,14 +161,14 @@
         </panel>
 
         <panel
-         height="150"
+         height="340"
          label="Near Me"
          layout="topleft"
-         left="6"
-        
+         left="0"
+         follows="all"
          name="NearMePanel"
-         top="150"
-         width="132">
+         top="0"
+         right="-4">
             <text
              type="string"
              length="1"
@@ -177,8 +177,8 @@
              layout="topleft"
              left="10"
              name="InstructSelectResident"
-             top="8"
-             width="220">
+             top="10"
+             width="440">
                 Select a person nearby:
             </text>
             <slider
@@ -194,8 +194,8 @@
              max_val="130"
              min_val="5"
              name="near_me_range"
-             top_pad="0"
-             width="160" />
+             top="34"
+             width="300" />
             <text
              type="string"
              length="1"
@@ -204,7 +204,7 @@
              layout="topleft"
              left_pad="0"
              name="meters"
-             width="60">
+             width="70">
                 Meters
             </text>
             <button
@@ -218,13 +218,13 @@
           <fs_scroll_list
              draw_heading="true"
              follows="all"
-             height="100"
+             height="250"
              layout="topleft"
              left="0"
              name="NearMe"
              sort_column="0"
-             top="52"
-             width="132">
+             top="78"
+             right="-4">
             <columns
               label="Name"
               name="name"
@@ -237,14 +237,14 @@
         </panel>
 
         <panel
-         height="150"
+         height="340"
          label="Search by UUID"
          layout="topleft"
-         left="6"
-        
+         left="0"
+         follows="all"
          name="SearchPanelUUID"
-         top="150"
-         width="132">
+         top="0"
+         right="-4">
             <text
              type="string"
              length="1"
@@ -253,8 +253,8 @@
              layout="topleft"
              left="10"
              name="SearchByUUIDLabel"
-             top="8"
-             width="220">
+             top="12"
+             width="440">
                 Enter a person&apos;s UUID:
             </text>
             <line_editor
@@ -265,8 +265,8 @@
              height="23"
              left_delta="0"
              name="EditUUID"
-             top_pad="0"
-             width="65" />
+             top="34"
+             width="420" />
             <button
              follows="top|right"
              height="23"
@@ -279,12 +279,12 @@
             <fs_scroll_list
              draw_heading="true" 
              follows="all"
-             height="98"
+             height="270"
              layout="topleft"
              left="0"
              name="SearchResultsUUID"
-             top="52"
-             width="132">
+             top="68"
+             right="-4">
              <columns
               label="Name"
               name="nameUUID"
@@ -297,14 +297,14 @@
         </panel>
 
         <panel
-         height="150"
+         height="340"
          label="Contact Sets"
          layout="topleft"
-         left="6"
-        
+         left="0"
+         follows="all"
          name="ContactSetsPanel"
-         top="150"
-         width="132">
+         top="0"
+         right="-4">
             <text
              type="string"
              length="1"
@@ -313,8 +313,8 @@
              layout="topleft"
              left="10"
              name="SelectContactSetLabel"
-             top="8"
-             width="350">
+             top="12"
+             width="440">
                 Select a contact set:
             </text>
             <combo_box
@@ -323,25 +323,27 @@
              layout="topleft"
              left_delta="0"
              name="ContactSetSelector"
-             top_pad="2"
-             width="100"/>
+             top="38"
+             width="440"/>
         </panel>
     </tab_container>
     <button
      follows="left|bottom"
-     height="23"
+     height="28"
      label="OK"
      label_selected="OK"
      name="ok_btn"
-     top_pad="3"
-     left="10"
+     bottom="-42"
+     right="-236"
      width="100" />
     <button
      follows="left|bottom"
-     height="23"
+     height="28"
      label="Cancel"
      label_selected="Cancel"
      name="cancel_btn"
      width="100"
-     left_pad="5" />
+     left_pad="8"
+     right="-16"
+     bottom="-42" />
 </floater>
