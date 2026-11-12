@@ -386,6 +386,21 @@ classified_footer = child(classified, 'buttons')
 assert classified_footer.get('bottom') == '-5' and classified_footer.get('right') == '-9'
 classified_actions = child(classified_footer, 'layout_stack1')
 assert classified_actions.get('right') == '-1' and classified_actions.get('width') is None
+# Notification Center's tab list and footer flex inside the resizable shell.
+notifications = resource('floater_notifications_tabbed.xml')
+assert int(notifications.get('min_width')) == 480
+notification_stack = child(notifications, 'TabButtonsStack')
+assert notification_stack.get('width') is None and notification_stack.get('height') is None
+assert notification_stack.get('right') == '-16' and notification_stack.get('bottom') == '-16'
+notification_content = child(notification_stack, 'TabButtonsLayoutPanel')
+assert notification_content.get('auto_resize') == 'true'
+assert notification_content.get('height') is None and notification_content.get('follows') == 'all'
+notification_tabs = child(notification_content, 'notifications_tab_container')
+assert notification_tabs.get('height') is None and notification_tabs.get('bottom') == '-36'
+assert int(notification_tabs.get('tab_min_width')) == 104
+notification_actions = child(notification_content, 'ButtonsStack')
+assert notification_actions.get('bottom') == '-1'
+assert notification_actions.get('follows') == 'left|right|bottom'
 # Group Profile tabs fit the 313px content column without fixed-width overflow.
 group_general = resource('panel_group_general.xml')
 assert int(group_general.get('width')) == 313
