@@ -109,7 +109,7 @@ assert int(experience_picker.get('width')) >= int(experience_picker.get('min_wid
 group_titles = resource('floater_fs_group_titles.xml')
 assert int(group_titles.get('width')) == 600
 assert int(group_titles.get('height')) == 420
-assert int(child(group_titles, 'title_list').get('height')) == 330
+assert child(group_titles, 'title_list').get('height') is None
 # Dialog controls use explicit anchors and balanced action rows, not only larger shells.
 assert child(group_titles, 'filter_input').get('left') == '16'
 assert child(group_titles, 'filter_input').get('right') == '-16'
