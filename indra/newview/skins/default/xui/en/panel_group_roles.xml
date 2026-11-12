@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <panel
- width="470"
+ width="313"
  height="420"
  label="Members &amp; Roles"
  layout="topleft"
@@ -118,7 +118,7 @@ clicking on their names.
              label="Invite"
              left="3"
              top_pad="4"
-             width="100"
+             width="70"
              height="23"
              follows="bottom|left"
              layout="topleft" />
@@ -127,7 +127,7 @@ clicking on their names.
              name="member_eject"
              label="Eject"
              left_pad="4"
-             width="100"
+             width="60"
              height="23"
              follows="bottom|left"
              layout="topleft" />
@@ -138,14 +138,14 @@ clicking on their names.
              follows="bottom|left"
              left_pad="4"
              name="member_ban"
-             width="100"
+             width="90"
              layout="topleft" />
 
             <button
              name="export_list"
              label="Export List"
              left_pad="4"
-             width="100"
+             width="70"
              height="23"
              follows="bottom|left"
              layout="topleft" />
@@ -242,7 +242,7 @@ including the Everyone and Owner Roles.
              label="New Role"
              left="3"
              top_pad="4"
-             width="100"
+             width="88"
              height="23"
              follows="bottom|left"
              layout="topleft" />
@@ -254,13 +254,13 @@ including the Everyone and Owner Roles.
              layout="topleft"
              left_pad="4"
              name="role_copy"
-             width="100" />
+             width="88" />
 
             <button
              name="role_delete"
              label="Delete Role"
              left_pad="4"
-             width="100"
+             width="88"
              height="23"
              follows="bottom|left"
              layout="topleft" />
@@ -350,8 +350,7 @@ things in this group. There&apos;s a broad variety of Abilities.
     
      name="banlist_sub_tab"
      class="panel_group_banlist_subtab"
-     tool_tip="View the banned residents from this group."
-     width="310">
+     tool_tip="View the banned residents from this group.">
       <panel.string
        name="help_text">
         Any resident on the ban list will be unable to join the group.
@@ -664,7 +663,6 @@ things in this group. There&apos;s a broad variety of Abilities.
          name="role_description"
          top_pad="0"
          left="5"
-         width="300"
          word_wrap="true">
         </text_editor>
 
