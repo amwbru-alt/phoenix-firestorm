@@ -27,7 +27,6 @@
 	 name="info_border" />
 	<group_list
 	 allow_select="true"
-	 follows="all"
 	 left="7"
 	 right="-92"
 	 top="30"
