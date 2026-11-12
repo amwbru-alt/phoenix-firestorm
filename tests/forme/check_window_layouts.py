@@ -396,12 +396,16 @@ for name in ('list_groups_in_profile', 'receive_notices', 'receive_chat'):
     assert int(child(general_content, name).get('width')) == 140, name
 group_roles = resource('panel_group_roles.xml')
 assert int(group_roles.get('width')) == 313
+roles_tabs = child(group_roles, 'roles_tab_container')
+members_tab = child(roles_tabs, 'members_sub_tab')
+roles_tab = child(roles_tabs, 'roles_sub_tab')
 for name, width in (('member_invite', 70), ('member_eject', 60),
-                    ('member_ban', 90), ('export_list', 70),
-                    ('role_create', 88), ('role_copy', 88), ('role_delete', 88)):
-    assert int(child(group_roles, name).get('width')) == width, name
+                    ('member_ban', 90), ('export_list', 70)):
+    assert int(child(members_tab, name).get('width')) == width, name
+for name in ('role_create', 'role_copy', 'role_delete'):
+    assert int(child(roles_tab, name).get('width')) == 88, name
 assert child(group_roles, 'banlist_sub_tab').get('width') is None
-assert child(group_roles, 'role_description').get('width') is None
+assert child(child(group_roles, 'roles_footer'), 'role_description').get('width') is None
 group_notices = resource('panel_group_notices.xml')
 assert int(group_notices.get('width')) == 313
 notice_composer = child(group_notices, 'panel_create_new_notice')
