@@ -96,7 +96,9 @@ assert int(people.get('height')) == 552
 market_listings = resource('floater_marketplace_listings.xml')
 assert int(market_listings.get('width')) == 440
 assert int(market_listings.get('height')) == 560
-assert int(child(market_listings, 'marketplace_listings_panel').get('width')) == 440
+marketplace_shell = child(market_listings, 'marketplace_listings_panel')
+assert marketplace_shell.get('width') is None and marketplace_shell.get('height') is None
+assert marketplace_shell.get('right') == '-0'
 group_picker = resource('floater_choose_group.xml')
 assert int(group_picker.get('width')) == 360
 assert int(child(group_picker, 'group list').get('width')) == 328
@@ -242,21 +244,26 @@ for name in ('add_btn', 'move_btn', 'remove_btn', 'profile_btn', 'start_im_btn',
 assert child(contact_sets, 'member_count').get('right') == '-92'
 # Marketplace uses the full content width, with a distinct toolbar, tabs and drop zone.
 marketplace = resource('panel_marketplace_listings.xml')
-assert int(marketplace.get('width')) == 420 and int(marketplace.get('height')) == 555
+assert marketplace.get('width') is None and marketplace.get('height') is None
+assert marketplace.get('right') == '-0' and marketplace.get('bottom') == '-0'
 market_toolbar = child(marketplace, 'tool_panel')
-assert int(market_toolbar.get('width')) == 420
+assert market_toolbar.get('width') is None and market_toolbar.get('right') == '-0'
 assert child(market_toolbar, 'audit_btn').get('right') == '-2'
 market_tabs_panel = child(marketplace, 'tab_container_panel')
 assert market_tabs_panel.get('top') == '30' and market_tabs_panel.get('bottom') == '-45'
 assert market_tabs_panel.get('height') is None
-assert int(child(market_tabs_panel, 'filter_editor').get('width')) == 420
+market_filter = child(market_tabs_panel, 'filter_editor')
+assert market_filter.get('width') is None and market_filter.get('right') == '-0'
 market_tabs = child(market_tabs_panel, 'marketplace_filter_tabs')
-assert int(market_tabs.get('height')) == 450 and int(market_tabs.get('width')) == 420
+assert market_tabs.get('height') is None and market_tabs.get('width') is None
+assert market_tabs.get('right') == '-0' and market_tabs.get('bottom') == '-0'
 market_drop = child(marketplace, 'marketplace_drop_zone')
-assert market_drop.get('bottom') == '-4' and int(market_drop.get('width')) == 416
+assert market_drop.get('bottom') == '-4' and market_drop.get('width') is None
+assert market_drop.get('right') == '-2'
 for name in ('inventory', 'listed', 'unassociated', 'unlisted'):
     page = resource('panel_marketplace_listings_' + name + '.xml')
-    assert int(page.get('width')) == 420 and int(page.get('height')) == 400, name
+    assert page.get('width') is None and page.get('height') is None, name
+    assert page.get('right') == '-0' and page.get('bottom') == '-0', name
 # Search details flex with the window; the action groups share a clean footer row.
 search_window = resource('floater_fs_search.xml')
 search_tabs = child(search_window, 'ls_tabs')
