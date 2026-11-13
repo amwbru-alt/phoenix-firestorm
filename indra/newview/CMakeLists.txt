@@ -1235,6 +1235,7 @@ set(viewer_HEADER_FILES
     llfloaterlinkreplace.h
     llfloaterloadprefpreset.h
     llfloatermap.h
+    formegrouppaging.h
     formemarketpolicy.h
     fsmarketbrowser.h
     llfloatermarketplace.h

@@ -119,6 +119,13 @@ def main():
                         str(ROOT / 'tests/forme/market_policy_test.cpp'), '-o', str(binary)], check=True)
         subprocess.run([str(binary)], check=True)
 
+    with tempfile.TemporaryDirectory() as temp:
+        binary = pathlib.Path(temp) / 'group_paging'
+        subprocess.run(['c++', '-std=c++20', '-Wall', '-Wextra', '-Werror',
+                        '-I', str(ROOT / 'indra/newview'),
+                        str(ROOT / 'tests/forme/group_paging_test.cpp'), '-o', str(binary)], check=True)
+        subprocess.run([str(binary)], check=True)
+
     if errors:
         print('\n'.join(errors), file=sys.stderr)
         return 1

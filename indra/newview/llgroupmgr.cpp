@@ -43,6 +43,7 @@
 // </FS:ND>
 
 #include "llgroupmgr.h"
+#include "formegrouppaging.h"
 
 #include <vector>
 #include <algorithm>
@@ -2177,7 +2178,7 @@ void LLGroupMgr::processGroupBanRequest(const LLSD& content)
     LLGroupMgr::getInstance()->notifyObservers(GC_BANLIST);
 }
 
-void LLGroupMgr::groupMembersRequestCoro(std::string url, LLUUID group_id, U32 page_size, U32 page_start, U32 sort_column, bool sort_descending)
+void LLGroupMgr::groupMembersRequestCoro(std::string url, LLUUID group_id, U32 page_size, U32 page_start, U32 sort_column, bool sort_descending, LLUUID request_id)
 {
     LL_INFOS("GrpMgr") << "group_id: '" << group_id << "'"
         << ", page_size: " << page_size << ", page_start: " << page_start
@@ -2221,11 +2222,13 @@ void LLGroupMgr::groupMembersRequestCoro(std::string url, LLUUID group_id, U32 p
     if (!status)
     {
         LL_WARNS("GrpMgr") << "Error receiving group member data " << LL_ENDL;
+        LLGroupMgrGroupData* data = getGroupData(group_id);
+        if (data && data->mMemberRequestID == request_id) data->mMemberRequestID.setNull();
         return;
     }
 
     response.erase(LLCoreHttpUtil::HttpCoroutineAdapter::HTTP_RESULTS);
-    processCapGroupMembersResponse(response, url, page_size, page_start, sort_column, sort_descending);
+    processCapGroupMembersResponse(response, url, page_size, page_start, sort_column, sort_descending, group_id, request_id);
 }
 
 void LLGroupMgr::sendCapGroupMembersRequest(const LLUUID& group_id, U32 page_size, U32 page_start, const std::string& sort_column_name, bool sort_descending)
@@ -2269,6 +2272,9 @@ void LLGroupMgr::sendCapGroupMembersRequest(const LLUUID& group_id, U32 page_siz
 
     LLGroupMgrGroupData* group_datap = createGroupData(group_id); //make sure group exists
     group_datap->mMemberRequestID.generate(); // mark as pending
+    const LLUUID request_id = group_datap->mMemberRequestID;
+    group_datap->mMemberDataComplete = false;
+    page_size = ForMeGroups::boundedPageSize(page_size);
 
     lastGroupMemberRequestFrame = gFrameCount;
 
@@ -2288,30 +2294,28 @@ void LLGroupMgr::sendCapGroupMembersRequest(const LLUUID& group_id, U32 page_siz
         }
     }
 
-    LLCoros::instance().launch("LLGroupMgr::groupMembersRequestCoro", [&]()
+    LLCoros::instance().launch("LLGroupMgr::groupMembersRequestCoro", [this, cap_url, group_id, page_size, page_start, sort_column, sort_descending, request_id]()
         {
-            groupMembersRequestCoro(cap_url, group_id, page_size, page_start, sort_column, sort_descending);
+            groupMembersRequestCoro(cap_url, group_id, page_size, page_start, sort_column, sort_descending, request_id);
         });
 }
 
-void LLGroupMgr::processCapGroupMembersResponse(const LLSD& response, const std::string& url, U32 page_size, U32 page_start, U32 sort_column, bool sort_descending)
+void LLGroupMgr::processCapGroupMembersResponse(const LLSD& response, const std::string& url, U32 page_size, U32 page_start, U32 sort_column, bool sort_descending, const LLUUID& group_id, const LLUUID& request_id)
 {
-    LLUUID group_id = response["group_id"].asUUID();
     LL_INFOS("GrpMgr") << "group_id: '" << group_id << "'"
         << ", page_size: " << page_size << ", page_start: " << page_start
         << ", sort_column: " << sort_column << ", sort_descending: " << sort_descending << LL_ENDL;
 
-    // Did we get anything in content?
-    if (!response.size())
+    LLGroupMgrGroupData* group_datap = getGroupData(group_id);
+    if (!group_datap || group_datap->mMemberRequestID != request_id)
     {
-        LL_INFOS("GrpMgr") << "No group member data received." << LL_ENDL;
+        LL_WARNS("GrpMgr") << "Received incorrect, possibly stale, group or request id" << LL_ENDL;
         return;
     }
 
-    LLGroupMgrGroupData* group_datap = getGroupData(group_id);
-    if (!group_datap)
+    if (response["group_id"].asUUID() != group_id)
     {
-        LL_WARNS("GrpMgr") << "Received incorrect, possibly stale, group or request id" << LL_ENDL;
+        group_datap->mMemberRequestID.setNull();
         return;
     }
 
@@ -2319,6 +2323,18 @@ void LLGroupMgr::processCapGroupMembersResponse(const LLSD& response, const std:
     LLSD titles = response["titles"];
     LLSD defaults = response["defaults"];
 
+    if (!members.isMap() || !titles.isArray() || !defaults.isMap())
+    {
+        group_datap->mMemberRequestID.setNull();
+        return;
+    }
+    if (page_start == 0)
+    {
+        group_datap->removeRoleMemberData();
+        group_datap->mRoleMembersRequestID.setNull();
+        group_datap->mPendingRoleMemberRequest = true;
+        group_datap->removeMemberData();
+    }
     size_t members_before = group_datap->mMembers.size();
     size_t members_loaded = members.size();
 
@@ -2375,20 +2391,10 @@ void LLGroupMgr::processCapGroupMembersResponse(const LLSD& response, const std:
         LLGroupMemberData* data = new LLGroupMemberData(member_id,
             donated_square_meters, member_powers, title, online_status, is_owner);
 
-        if (group_datap->mRoleMemberDataComplete)
+        auto previous = group_datap->mMembers.find(member_id);
+        if (previous != group_datap->mMembers.end())
         {
-            if (LLGroupMemberData* member_old = group_datap->mMembers[member_id])
-            {
-                auto role_end = member_old->roleEnd();
-                for (auto role_it = member_old->roleBegin(); role_it != role_end; ++role_it)
-                {
-                    data->addRole(role_it->first, role_it->second);
-                }
-            }
-            else
-            {
-                group_datap->mRoleMemberDataComplete = false;
-            }
+            delete previous->second;
         }
 
         group_datap->mMembers[member_id] = data;
@@ -2396,9 +2402,12 @@ void LLGroupMgr::processCapGroupMembersResponse(const LLSD& response, const std:
 
     U32 member_count = (U32)group_datap->mMembers.size();
 
-    group_datap->mMemberCount = (S32)member_count;
-    group_datap->mMemberDataComplete = true;
-    group_datap->mMemberRequestID.setNull();
+    const U32 total = response.has("member_count") ? (U32)llmax(0, response["member_count"].asInteger()) : 0;
+    const auto page = ForMeGroups::advancePage(page_start, page_size, (U32)members_loaded,
+        member_count > members_before, total);
+    group_datap->mMemberCount = (S32)llmax(total, member_count);
+    group_datap->mMemberDataComplete = page.complete;
+    if (page.complete) group_datap->mMemberRequestID.setNull();
     group_datap->mMemberVersion.generate();
 
     LL_INFOS("GrpMgr") << "members before: " << members_before
@@ -2417,16 +2426,17 @@ void LLGroupMgr::processCapGroupMembersResponse(const LLSD& response, const std:
         sendGroupTitlesRequest(group_id);
     }
 
-    if (page_size && members_loaded >= page_size && member_count > members_before)
+    if (!page.complete)
     {
-        LLCoros::instance().launch("LLGroupMgr::groupMembersRequestCoro", [&]()
+        const U32 next_start = page.next;
+        LLCoros::instance().launch("LLGroupMgr::groupMembersRequestCoro", [this, url, group_id, page_size, next_start, sort_column, sort_descending, request_id]()
             {
-                groupMembersRequestCoro(url, group_id, page_size, page_start, sort_column, sort_descending);
+                groupMembersRequestCoro(url, group_id, page_size, next_start, sort_column, sort_descending, request_id);
             });
     }
 
     // Make the role-member data request
-    if (group_datap->mPendingRoleMemberRequest || !group_datap->mRoleMemberDataComplete)
+    if (page.complete && (group_datap->mPendingRoleMemberRequest || !group_datap->mRoleMemberDataComplete))
     {
         group_datap->mPendingRoleMemberRequest = false;
         sendGroupRoleMembersRequest(group_id);

@@ -447,8 +447,8 @@ public:
     void clearGroupData(const LLUUID& group_id);
 
 private:
-    void groupMembersRequestCoro(std::string url, LLUUID group_id, U32 page_size, U32 page_start, U32 sort_column, bool sort_descending);
-    void processCapGroupMembersResponse(const LLSD& response, const std::string& url, U32 page_size, U32 page_start, U32 sort_column, bool sort_descending);
+    void groupMembersRequestCoro(std::string url, LLUUID group_id, U32 page_size, U32 page_start, U32 sort_column, bool sort_descending, LLUUID request_id);
+    void processCapGroupMembersResponse(const LLSD& response, const std::string& url, U32 page_size, U32 page_start, U32 sort_column, bool sort_descending, const LLUUID& group_id, const LLUUID& request_id);
 
     void getGroupBanRequestCoro(std::string url, LLUUID group_id);
     void postGroupBanRequestCoro(std::string url, LLUUID group_id, U32 action, uuid_vec_t ban_list, bool update);
