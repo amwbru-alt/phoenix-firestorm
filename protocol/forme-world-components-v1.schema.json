@@ -1,0 +1,1463 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:forme.world:components:1",
+  "title": "ForMe.World component data contracts v1",
+  "description": "Validation of references, cycles, ownership, normalized rotations and backend capabilities is also performed by server policy. A component contract does not enable its runtime solver.",
+  "type": "object",
+  "maxProperties": 64,
+  "propertyNames": {
+    "anyOf": [
+      {
+        "enum": [
+          "transform",
+          "geometry",
+          "visual_material",
+          "physical_material",
+          "collider",
+          "rigid_body",
+          "deformable_body",
+          "skeleton",
+          "animation",
+          "interaction",
+          "fluid_interaction",
+          "environment",
+          "ownership",
+          "permissions",
+          "persistence",
+          "replication",
+          "audio",
+          "script",
+          "lod",
+          "asset_reference"
+        ]
+      },
+      {
+        "pattern": "^custom\\.[A-Za-z0-9_.-]{1,93}$"
+      }
+    ]
+  },
+  "properties": {
+    "transform": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "data"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "data": {
+          "$ref": "#/$defs/transform"
+        }
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "data"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "data": {
+          "$ref": "#/$defs/geometry"
+        }
+      }
+    },
+    "visual_material": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "data"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "data": {
+          "$ref": "#/$defs/visual_material"
+        }
+      }
+    },
+    "physical_material": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "data"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "data": {
+          "$ref": "#/$defs/physical_material"
+        }
+      }
+    },
+    "collider": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "data"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "data": {
+          "$ref": "#/$defs/collider"
+        }
+      }
+    },
+    "rigid_body": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "data"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "data": {
+          "$ref": "#/$defs/rigid_body"
+        }
+      }
+    },
+    "deformable_body": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "data"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "data": {
+          "$ref": "#/$defs/deformable_body"
+        }
+      }
+    },
+    "skeleton": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "data"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "data": {
+          "$ref": "#/$defs/skeleton"
+        }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "data"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "data": {
+          "$ref": "#/$defs/animation"
+        }
+      }
+    },
+    "interaction": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "data"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "data": {
+          "$ref": "#/$defs/interaction"
+        }
+      }
+    },
+    "fluid_interaction": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "data"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "data": {
+          "$ref": "#/$defs/fluid_interaction"
+        }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "data"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "data": {
+          "$ref": "#/$defs/environment"
+        }
+      }
+    },
+    "ownership": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "data"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "data": {
+          "$ref": "#/$defs/ownership"
+        }
+      }
+    },
+    "permissions": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "data"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "data": {
+          "$ref": "#/$defs/permissions"
+        }
+      }
+    },
+    "persistence": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "data"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "data": {
+          "$ref": "#/$defs/persistence"
+        }
+      }
+    },
+    "replication": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "data"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "data": {
+          "$ref": "#/$defs/replication"
+        }
+      }
+    },
+    "audio": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "data"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "data": {
+          "$ref": "#/$defs/audio"
+        }
+      }
+    },
+    "script": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "data"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "data": {
+          "$ref": "#/$defs/script"
+        }
+      }
+    },
+    "lod": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "data"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "data": {
+          "$ref": "#/$defs/lod"
+        }
+      }
+    },
+    "asset_reference": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "data"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "data": {
+          "$ref": "#/$defs/asset_reference"
+        }
+      }
+    }
+  },
+  "additionalProperties": {
+    "type": "object",
+    "required": [
+      "schemaVersion",
+      "data"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "schemaVersion": {
+        "const": 1
+      },
+      "data": {
+        "type": "object"
+      }
+    }
+  },
+  "$defs": {
+    "transform": {
+      "type": "object",
+      "required": [
+        "position",
+        "rotation",
+        "scale",
+        "space"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "position": {
+          "type": "object",
+          "required": [
+            "x",
+            "y",
+            "z"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            },
+            "z": {
+              "type": "number"
+            }
+          }
+        },
+        "rotation": {
+          "type": "object",
+          "required": [
+            "x",
+            "y",
+            "z",
+            "w"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "x": {
+              "type": "number",
+              "minimum": -1.001,
+              "maximum": 1.001
+            },
+            "y": {
+              "type": "number",
+              "minimum": -1.001,
+              "maximum": 1.001
+            },
+            "z": {
+              "type": "number",
+              "minimum": -1.001,
+              "maximum": 1.001
+            },
+            "w": {
+              "type": "number",
+              "minimum": -1.001,
+              "maximum": 1.001
+            }
+          }
+        },
+        "scale": {
+          "type": "object",
+          "required": [
+            "x",
+            "y",
+            "z"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            },
+            "z": {
+              "type": "number"
+            }
+          }
+        },
+        "space": {
+          "const": "region"
+        }
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "required": [
+        "kind",
+        "assetId",
+        "version",
+        "bounds"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "primitive",
+            "mesh",
+            "compatibility-primitive",
+            "compatibility-mesh"
+          ]
+        },
+        "assetId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "bounds": {
+          "type": "object",
+          "required": [
+            "x",
+            "y",
+            "z"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            },
+            "z": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "visual_material": {
+      "type": "object",
+      "required": [
+        "baseColor",
+        "metallic",
+        "roughness",
+        "emissive",
+        "baseColorTexture",
+        "normalTexture",
+        "materialAsset",
+        "alphaMode",
+        "alphaCutoff",
+        "doubleSided"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "baseColor": {
+          "type": "object",
+          "required": [
+            "r",
+            "g",
+            "b",
+            "a"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "r": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "g": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "b": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "a": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          }
+        },
+        "metallic": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "roughness": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "emissive": {
+          "type": "object",
+          "required": [
+            "x",
+            "y",
+            "z"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            },
+            "z": {
+              "type": "number"
+            }
+          }
+        },
+        "baseColorTexture": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "normalTexture": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "materialAsset": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "alphaMode": {
+          "enum": [
+            "opaque",
+            "mask",
+            "blend"
+          ]
+        },
+        "alphaCutoff": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "doubleSided": {
+          "type": "boolean"
+        }
+      }
+    },
+    "physical_material": {
+      "type": "object",
+      "required": [
+        "density",
+        "friction",
+        "restitution",
+        "stiffness",
+        "damping",
+        "thickness",
+        "moistureAbsorption",
+        "thermalConductivity"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "density": {
+          "type": "number",
+          "minimum": 0.001,
+          "maximum": 10000000.0
+        },
+        "friction": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "restitution": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "stiffness": {
+          "type": "number",
+          "minimum": 0.001,
+          "maximum": 1000000000000.0
+        },
+        "damping": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10000
+        },
+        "thickness": {
+          "type": "number",
+          "minimum": 1e-06,
+          "maximum": 100
+        },
+        "moistureAbsorption": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "thermalConductivity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1000000.0
+        }
+      }
+    },
+    "collider": {
+      "type": "object",
+      "required": [
+        "kind",
+        "size",
+        "assetId",
+        "layer",
+        "contactMask",
+        "continuous",
+        "trigger"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "box",
+            "sphere",
+            "capsule",
+            "convex",
+            "triangle",
+            "sdf"
+          ]
+        },
+        "size": {
+          "type": "object",
+          "required": [
+            "x",
+            "y",
+            "z"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            },
+            "z": {
+              "type": "number"
+            }
+          }
+        },
+        "assetId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "layer": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 31
+        },
+        "contactMask": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "continuous": {
+          "type": "boolean"
+        },
+        "trigger": {
+          "type": "boolean"
+        }
+      }
+    },
+    "rigid_body": {
+      "type": "object",
+      "required": [
+        "mode",
+        "mass",
+        "velocity",
+        "angularVelocity"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "enum": [
+            "static",
+            "dynamic",
+            "kinematic",
+            "deformable",
+            "cloth",
+            "hair",
+            "articulated",
+            "fluid",
+            "character"
+          ]
+        },
+        "mass": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1000000000.0
+        },
+        "velocity": {
+          "type": "object",
+          "required": [
+            "x",
+            "y",
+            "z"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            },
+            "z": {
+              "type": "number"
+            }
+          }
+        },
+        "angularVelocity": {
+          "type": "object",
+          "required": [
+            "x",
+            "y",
+            "z"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            },
+            "z": {
+              "type": "number"
+            }
+          }
+        },
+        "gravityModifier": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 28
+        },
+        "massPending": {
+          "type": "boolean"
+        }
+      }
+    },
+    "deformable_body": {
+      "type": "object",
+      "required": [
+        "topologyAsset",
+        "mass",
+        "compliance",
+        "damping",
+        "maximumStrain",
+        "solverIterations",
+        "selfCollision"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "topologyAsset": {
+          "type": "string",
+          "format": "uuid",
+          "not": {
+            "const": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "mass": {
+          "type": "number",
+          "minimum": 1e-06,
+          "maximum": 1000000000.0
+        },
+        "compliance": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1000000.0
+        },
+        "damping": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10000
+        },
+        "maximumStrain": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "solverIterations": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 64
+        },
+        "selfCollision": {
+          "type": "boolean"
+        }
+      }
+    },
+    "skeleton": {
+      "type": "object",
+      "required": [
+        "bones"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "bones": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "name",
+              "parent",
+              "translation",
+              "rotation",
+              "scale"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 80
+              },
+              "parent": {
+                "type": "integer",
+                "minimum": -1,
+                "maximum": 255
+              },
+              "translation": {
+                "type": "object",
+                "required": [
+                  "x",
+                  "y",
+                  "z"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "x": {
+                    "type": "number"
+                  },
+                  "y": {
+                    "type": "number"
+                  },
+                  "z": {
+                    "type": "number"
+                  }
+                }
+              },
+              "rotation": {
+                "type": "object",
+                "required": [
+                  "x",
+                  "y",
+                  "z",
+                  "w"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "minimum": -1.001,
+                    "maximum": 1.001
+                  },
+                  "y": {
+                    "type": "number",
+                    "minimum": -1.001,
+                    "maximum": 1.001
+                  },
+                  "z": {
+                    "type": "number",
+                    "minimum": -1.001,
+                    "maximum": 1.001
+                  },
+                  "w": {
+                    "type": "number",
+                    "minimum": -1.001,
+                    "maximum": 1.001
+                  }
+                }
+              },
+              "scale": {
+                "type": "object",
+                "required": [
+                  "x",
+                  "y",
+                  "z"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "x": {
+                    "type": "number"
+                  },
+                  "y": {
+                    "type": "number"
+                  },
+                  "z": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          },
+          "maxItems": 256
+        }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "required": [
+        "layers"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "layers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "clipAsset",
+              "channel",
+              "weight",
+              "speed",
+              "loop"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "clipAsset": {
+                "type": "string",
+                "format": "uuid",
+                "not": {
+                  "const": "00000000-0000-0000-0000-000000000000"
+                }
+              },
+              "channel": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 80
+              },
+              "weight": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "speed": {
+                "type": "number",
+                "minimum": -16,
+                "maximum": 16
+              },
+              "loop": {
+                "type": "boolean"
+              }
+            }
+          },
+          "maxItems": 16
+        }
+      }
+    },
+    "interaction": {
+      "type": "object",
+      "required": [
+        "actions"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "actions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "verb",
+              "distance",
+              "targetEntity",
+              "permission"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64
+              },
+              "verb": {
+                "enum": [
+                  "use",
+                  "sit",
+                  "lie",
+                  "open",
+                  "close",
+                  "grab",
+                  "release",
+                  "touch"
+                ]
+              },
+              "distance": {
+                "type": "number",
+                "minimum": 0.01,
+                "maximum": 64
+              },
+              "targetEntity": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "permission": {
+                "enum": [
+                  "everyone",
+                  "owner",
+                  "group",
+                  "creator"
+                ]
+              }
+            }
+          },
+          "maxItems": 32
+        }
+      }
+    },
+    "fluid_interaction": {
+      "type": "object",
+      "required": [
+        "displacedVolume",
+        "linearDrag",
+        "angularDrag",
+        "absorption",
+        "dryingRate",
+        "buoyancy"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "displacedVolume": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1000000000.0
+        },
+        "linearDrag": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1000000.0
+        },
+        "angularDrag": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1000000.0
+        },
+        "absorption": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1000
+        },
+        "dryingRate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1000
+        },
+        "buoyancy": {
+          "type": "boolean"
+        }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "required": [
+        "wetness",
+        "temperature",
+        "snowCover"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "wetness": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "temperature": {
+          "type": "number",
+          "minimum": -273.15,
+          "maximum": 10000
+        },
+        "snowCover": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "ownership": {
+      "type": "object",
+      "required": [
+        "ownerId",
+        "creatorId",
+        "groupId"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "ownerId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "creatorId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "groupId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    "permissions": {
+      "type": "object",
+      "required": [
+        "base",
+        "current",
+        "nextOwner",
+        "group",
+        "everyone"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "base": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "current": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "nextOwner": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "group": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "everyone": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        }
+      }
+    },
+    "persistence": {
+      "type": "object",
+      "required": [
+        "policy",
+        "saveTransform",
+        "savePhysics",
+        "stateVersion"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "policy": {
+          "enum": [
+            "region",
+            "inventory",
+            "ephemeral"
+          ]
+        },
+        "saveTransform": {
+          "type": "boolean"
+        },
+        "savePhysics": {
+          "type": "boolean"
+        },
+        "stateVersion": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        }
+      }
+    },
+    "replication": {
+      "type": "object",
+      "required": [
+        "authority",
+        "updateHz",
+        "priority",
+        "interestRadius",
+        "visualOnly"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "authority": {
+          "enum": [
+            "server",
+            "client-visual"
+          ]
+        },
+        "updateHz": {
+          "type": "number",
+          "minimum": 0.1,
+          "maximum": 120
+        },
+        "priority": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "interestRadius": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 4096
+        },
+        "visualOnly": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "hair",
+              "cloth",
+              "particles",
+              "waves",
+              "visual_deformation"
+            ]
+          },
+          "maxItems": 16
+        }
+      }
+    },
+    "audio": {
+      "type": "object",
+      "required": [
+        "kind",
+        "soundAsset",
+        "streamUrl",
+        "gain",
+        "radius",
+        "loop"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "ambient",
+            "region-stream"
+          ]
+        },
+        "soundAsset": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "streamUrl": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 2048
+        },
+        "gain": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "radius": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1024
+        },
+        "loop": {
+          "type": "boolean"
+        }
+      }
+    },
+    "script": {
+      "type": "object",
+      "required": [
+        "assetId",
+        "runtime",
+        "permissions",
+        "enabled"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "assetId": {
+          "type": "string",
+          "format": "uuid",
+          "not": {
+            "const": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "runtime": {
+          "enum": [
+            "lsl",
+            "forme-sandbox"
+          ]
+        },
+        "permissions": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "world.read",
+              "object.state",
+              "object.motion",
+              "chat.local",
+              "inventory.read",
+              "timer",
+              "interaction"
+            ]
+          },
+          "maxItems": 32
+        },
+        "enabled": {
+          "type": "boolean"
+        }
+      }
+    },
+    "lod": {
+      "type": "object",
+      "required": [
+        "levels"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "levels": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "distance",
+              "geometryAsset",
+              "triangleBudget"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "distance": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1000000.0
+              },
+              "geometryAsset": {
+                "type": "string",
+                "format": "uuid",
+                "not": {
+                  "const": "00000000-0000-0000-0000-000000000000"
+                }
+              },
+              "triangleBudget": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 10000000
+              }
+            }
+          },
+          "maxItems": 8
+        }
+      }
+    },
+    "asset_reference": {
+      "type": "object",
+      "required": [
+        "assetId",
+        "mediaType",
+        "version",
+        "sha256",
+        "compatibility"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "assetId": {
+          "type": "string",
+          "format": "uuid",
+          "not": {
+            "const": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "mediaType": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "sha256": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "compatibility": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

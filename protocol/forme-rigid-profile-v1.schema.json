@@ -1,0 +1,53 @@
+{
+  "type": "object",
+  "required": [
+    "mode",
+    "shape",
+    "density",
+    "friction",
+    "restitution",
+    "gravityModifier",
+    "phantom"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "mode": {
+      "enum": [
+        "static",
+        "dynamic"
+      ]
+    },
+    "shape": {
+      "enum": [
+        "primitive",
+        "convex"
+      ]
+    },
+    "density": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 22587
+    },
+    "friction": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 255
+    },
+    "restitution": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "gravityModifier": {
+      "type": "number",
+      "minimum": -1,
+      "maximum": 28
+    },
+    "phantom": {
+      "type": "boolean"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:forme.world:rigid-profile:1",
+  "title": "ForMe.World active rigid object profile v1"
+}

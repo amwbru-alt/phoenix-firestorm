@@ -6,6 +6,9 @@
 #include <functional>
 namespace ForMeWorldEntities
 {
+using EntityCallback = std::function<void(bool,const LLSD&)>;
+void readPhysicalObject(const LLUUID& id, EntityCallback done);
+void setPhysicsProfile(const LLUUID& id, const std::string& revision, const LLSD& profile, EntityCallback done);
 void update();
 LLSD entity(const LLUUID& id);
 std::string capability();

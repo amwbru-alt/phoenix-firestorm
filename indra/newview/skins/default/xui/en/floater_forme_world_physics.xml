@@ -1,20 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<floater name="forme_world_physics" title="ForMe.World • Physics" width="440" height="348" can_resize="false" single_instance="true" save_rect="true" rect_control_suffix="_forme_physics_v1" layout="topleft" header_height="36" header_icon="Forme_UI_Cube" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" forme_creator_only="true">
+<floater name="forme_world_physics" title="ForMe.World • Object physics" width="480" height="438" can_resize="false" single_instance="true" save_rect="true" rect_control_suffix="_forme_physics_v2" layout="topleft" header_height="36" header_icon="Forme_UI_Cube" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" forme_creator_only="true">
   <floater.string name="select_object">Select an object you can modify.</floater.string>
-  <floater.string name="await_entity">Waiting for entity data. Refresh in a few seconds.</floater.string>
-  <floater.string name="ready">Current region backend: rigid objects.</floater.string>
+  <floater.string name="await_entity">This server has not supplied a physical profile.</floater.string>
+  <floater.string name="loading">Reading the selected object from the server…</floater.string>
+  <floater.string name="ready">Adjust collision shape, material and object movement.</floater.string>
   <floater.string name="saving">Saving on the server…</floater.string>
-  <floater.string name="saved">Saved. Refresh to load the new revision.</floater.string>
+  <floater.string name="saved">Profile saved and confirmed by the server.</floater.string>
   <floater.string name="conflict">Object changed. Refresh before applying again.</floater.string>
-  <floater.string name="failed">Could not save. Refresh and check your permissions.</floater.string>
-  <text name="id_label" top="46" left="16" width="78" height="18">Entity</text>
-  <text name="entity_id" top="46" left="96" width="328" height="18" font="SansSerifSmall" use_ellipses="true"/>
-  <text name="revision_label" top="72" left="16" width="78" height="18">Revision</text>
-  <text name="revision" top="72" left="96" width="328" height="18"/>
-  <spinner name="density" label="Density, kg/m³" label_width="210" top="110" left="16" width="408" height="26" min_val="1" max_val="22587" increment="10" decimal_digits="2"/>
-  <spinner name="friction" label="Friction" label_width="210" top="148" left="16" width="408" height="26" min_val="0" max_val="255" increment="0.05" decimal_digits="3"/>
-  <spinner name="restitution" label="Restitution" label_width="210" top="186" left="16" width="408" height="26" min_val="0" max_val="1" increment="0.05" decimal_digits="3"/>
-  <text name="status" top="232" left="16" width="408" height="54" word_wrap="true"/>
-  <button name="refresh" label="Selected object" top="302" left="16" width="196" height="30"/>
-  <button name="apply" label="Apply" top="302" left="228" width="196" height="30" enabled="false"/>
+  <floater.string name="limits">Object size or physical part count exceeds the region limit.</floater.string>
+  <floater.string name="unsupported">Dynamic objects are unavailable in this region. Choose static mode.</floater.string>
+  <floater.string name="temporary">Use a permanent object before editing its physical profile.</floater.string>
+  <floater.string name="volume">A scripted sensor controls collisions. Keep the collision option unchanged.</floater.string>
+  <floater.string name="failed">Could not load or save. Refresh and check object/land permissions.</floater.string>
+  <text name="id_label" top="46" left="16" width="70" height="18">Entity</text>
+  <text name="entity_id" top="46" left="90" width="374" height="18" font="SansSerifSmall" use_ellipses="true"/>
+  <text name="revision_label" top="70" left="16" width="70" height="18">Revision</text>
+  <text name="revision" top="70" left="90" width="374" height="18"/>
+  <text name="mode_label" top="96" left="16" width="212" height="18">Body mode</text>
+  <text name="shape_label" top="96" left="252" width="212" height="18">Collision shape</text>
+  <combo_box name="mode" top="116" left="16" width="212" height="28">
+    <combo_box.item name="static" label="Static" value="static"/>
+    <combo_box.item name="dynamic" label="Dynamic" value="dynamic"/>
+  </combo_box>
+  <combo_box name="shape" top="116" left="252" width="212" height="28">
+    <combo_box.item name="primitive" label="Standard geometry" value="primitive"/>
+    <combo_box.item name="convex" label="Convex hull" value="convex"/>
+  </combo_box>
+  <text name="preset_label" top="158" left="16" width="116" height="20">Material preset</text>
+  <combo_box name="preset" top="154" left="140" width="324" height="28">
+    <combo_box.item name="custom" label="Custom" value="custom"/>
+    <combo_box.item name="wood" label="Wood" value="wood"/>
+    <combo_box.item name="metal" label="Metal" value="metal"/>
+    <combo_box.item name="rubber" label="Rubber" value="rubber"/>
+    <combo_box.item name="stone" label="Stone" value="stone"/>
+    <combo_box.item name="ice" label="Ice" value="ice"/>
+  </combo_box>
+  <spinner name="density" label="Density, kg/m³" label_width="120" top="198" left="16" width="212" height="26" min_val="1" max_val="22587" initial_value="1000" increment="10" decimal_digits="2"/>
+  <spinner name="friction" label="Friction" label_width="120" top="198" left="252" width="212" height="26" min_val="0" max_val="255" increment="0.05" decimal_digits="3"/>
+  <spinner name="restitution" label="Restitution" label_width="120" top="240" left="16" width="212" height="26" min_val="0" max_val="1" increment="0.05" decimal_digits="3"/>
+  <spinner name="gravity" label="Gravity factor" label_width="120" top="240" left="252" width="212" height="26" min_val="-1" max_val="28" initial_value="1" increment="0.1" decimal_digits="2"/>
+  <check_box name="collidable" label="Collisions enabled" top="282" left="16" width="448" height="22" initial_value="true"/>
+  <text name="status" top="318" left="16" width="448" height="56" word_wrap="true"/>
+  <button name="refresh" label="Selected object" top="390" left="16" width="212" height="30"/>
+  <button name="apply" label="Apply profile" top="390" left="252" width="212" height="30" enabled="false"/>
 </floater>

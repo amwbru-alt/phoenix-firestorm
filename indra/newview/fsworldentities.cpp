@@ -99,6 +99,35 @@ LLSD entity(const LLUUID& id)
     if (uri.empty() || uri != capability() || minimumRevisions.contains(id.asString()) || Clock::now() - fresh > std::chrono::seconds(10)) return LLSD();
     const auto& entities = cache.entities(); auto it = entities.find(id.asString()); return it == entities.end() ? LLSD() : it->second.data;
 }
+namespace
+{
+void physicalRequest(const LLUUID& id, LLSD body, bool mutation, EntityCallback done)
+{
+    const std::string cap = capability();
+    if (cap.empty() || cap != uri || editing || (mutation && !ForMeCreatorAccess::allowed())) { LLSD error; error["code"]="unavailable";done(false,error);return; }
+    if (mutation) editing = true;
+    body["entityId"] = id.asString();
+    LLCoros::instance().launch("ForMeWorldPhysicalObject", [id,body,mutation,done,cap,version=generation]() {
+        auto adapter = std::make_shared<LLCoreHttpUtil::HttpCoroutineAdapter>("ForMeWorldPhysicalObject", LLCore::HttpRequest::DEFAULT_POLICY_ID);
+        auto request = std::make_shared<LLCore::HttpRequest>();LLSD result;
+        try { result = adapter->postJsonAndSuspend(request,cap,body); } catch (...) { result = LLSD(); }
+        if (version != generation || cap != capability()) { LLSD error;error["code"]="session";done(false,error);return; }
+        if (mutation) editing = false;
+        auto status = LLCoreHttpUtil::HttpCoroutineAdapter::getStatusFromLLSD(result[LLCoreHttpUtil::HttpCoroutineAdapter::HTTP_RESULTS]);
+        ForMeWorldProtocol::Entity<LLSD> validated;
+        bool success = status && result["entityId"].asString()==id.asString() && validEntity(result,validated);
+        if (success && mutation) { if (minimumRevisions.size()>=256) minimumRevisions.clear(); minimumRevisions[id.asString()]=validated.revision; }
+        next = Clock::now()+std::chrono::seconds(1);
+        done(success,result);
+    });
+}
+}
+void readPhysicalObject(const LLUUID& id, EntityCallback done)
+{ LLSD request;request["action"]="physics_read";physicalRequest(id,request,false,done); }
+void setPhysicsProfile(const LLUUID& id,const std::string& revision,const LLSD& profile,EntityCallback done)
+{
+    LLSD request;request["action"]="physics_profile";request["expectedRevision"]=revision;request["profile"]=profile;physicalRequest(id,request,true,done);
+}
 void setMaterial(const LLUUID& id, const LLSD& material, std::function<void(bool,const std::string&)> done)
 {
     const LLSD target = entity(id); const std::string cap = capability();

@@ -18,6 +18,10 @@ jobs:
         run: |
           g++ -std=c++20 -Wall -Wextra -Werror -pedantic -Iindra/llcommon tests/forme/world_replica_test.cpp -o "$RUNNER_TEMP/world-replica-test"
           "$RUNNER_TEMP/world-replica-test"
+      - name: Compile and execute physical profile tests
+        run: |
+          g++ -std=c++20 -Wall -Wextra -Werror -pedantic -Iindra/llcommon tests/forme/world_physics_test.cpp -o "$RUNNER_TEMP/world-physics-test"
+          "$RUNNER_TEMP/world-physics-test"
       - name: Check grid boundaries and all shipped preference skins
         run: python3 tests/forme/check_grid_integration.py
       - name: Compile and execute production badge parser tests

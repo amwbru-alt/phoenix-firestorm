@@ -11,7 +11,11 @@ public:
 private:
     void refresh();
     void apply();
+    void preset();
+    void populate(const LLSD& entity);
+    void controls(bool enabled);
     LLUUID mTarget;
+    LLSD mEntity;
     bool mPending = false;
 };
 #endif
