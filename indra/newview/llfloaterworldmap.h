@@ -279,7 +279,7 @@ private:
     static constexpr S32 REGION_DETAIL_PHOTO = 3;
     struct RegionPhoto
     {
-        std::array<std::string, 3> urls;
+        std::string url;
         U64 request = 0;
         bool pending = false;
         bool loaded = false;

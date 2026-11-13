@@ -33,6 +33,7 @@
 #include "llviewerprecompiledheaders.h"
 
 #include "llfloaterworldmap.h"
+#include "formeregionphoto.h"
 
 #include "llagent.h"
 #include "llagentcamera.h"
@@ -2433,21 +2434,6 @@ void LLFloaterWorldMap::selectRegionCard(S32 index)
 
 namespace
 {
-std::string portalRegionImageUrl(std::string path)
-{
-    const std::string origin = ForMeGrid::LoginURI;
-    if (path.starts_with(origin))
-        path = "/" + path.substr(origin.size());
-
-    if ((!path.starts_with("/web/assets/img/") && !path.starts_with("/map/map-") &&
-         !path.starts_with("/map-")) || path.find("..") != std::string::npos ||
-        path.find("//") != std::string::npos ||
-        path.find_first_not_of("/ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_.") != std::string::npos)
-        return {};
-
-    return origin + path.substr(1);
-}
-
 LLPointer<LLImageRaw> decodeRegionPhoto(const LLSD::Binary& bytes)
 {
     if (bytes.size() < 8 || bytes.size() > 4 * 1024 * 1024)
@@ -2481,28 +2467,15 @@ std::string regionPhotoControl(S32 slot)
 
 void LLFloaterWorldMap::loadRegionPhoto(S32 slot, const LLSD& row)
 {
-    const std::string photo = portalRegionImageUrl(row["photo"].asString());
-    std::string tile = portalRegionImageUrl(row["map_image_url"].asString());
-    if (tile.empty() && row["x"].isInteger() && row["y"].isInteger() &&
-        row["x"].asInteger() >= 0 && row["y"].asInteger() >= 0)
-    {
-        tile = std::string(ForMeGrid::LoginURI) + "map/map-1-" +
-            row["x"].asString() + "-" + row["y"].asString() + "-objects.jpg";
-    }
-    const std::string map_prefix = std::string(ForMeGrid::LoginURI) + "map/map-";
-    const std::string legacy_tile = tile.starts_with(map_prefix)
-        ? std::string(ForMeGrid::LoginURI) + tile.substr(map_prefix.size() - 4) : std::string();
-    const std::array<std::string, 3> urls{
-        photo, tile == photo ? std::string() : tile, legacy_tile == photo ? std::string() : legacy_tile
-    };
+    const std::string photo = ForMeRegionPhoto::url(row["photo"].asString());
     auto& state = mRegionPhotos[slot];
-    if (state.urls == urls && (state.pending || state.loaded || LLFrameTimer::getTotalSeconds() < state.retryAt))
+    if (state.url == photo && (state.pending || state.loaded || LLFrameTimer::getTotalSeconds() < state.retryAt))
         return;
 
-    state.urls = urls;
+    state.url = photo;
     state.loaded = false;
     state.retryAt = 0.;
-    state.pending = !photo.empty() || !tile.empty();
+    state.pending = !photo.empty();
     const U64 request_id = ++state.request;
     const auto control = regionPhotoControl(slot);
     getChild<LLIconCtrl>(control)->setImage(LLUIImagePtr());
@@ -2511,7 +2484,7 @@ void LLFloaterWorldMap::loadRegionPhoto(S32 slot, const LLSD& row)
         return;
 
     const auto handle = getHandle();
-    LLCoros::instance().launch("ForMeRegionPhoto", [handle, slot, control, request_id, urls]
+    LLCoros::instance().launch("ForMeRegionPhoto", [handle, slot, control, request_id, photo]
     {
         auto adapter = std::make_shared<LLCoreHttpUtil::HttpCoroutineAdapter>(
             "ForMeRegionPhoto", LLCore::HttpRequest::DEFAULT_POLICY_ID);
@@ -2521,16 +2494,15 @@ void LLFloaterWorldMap::loadRegionPhoto(S32 slot, const LLSD& row)
         options->setTimeout(8);
         options->setRetries(0);
 
-        for (const auto& url : urls)
+        // One source for both photo slots; failure keeps the placeholder.
+        do
         {
-            if (url.empty())
-                continue;
             auto* map = dynamic_cast<LLFloaterWorldMap*>(handle.get());
             if (!map || map->mRegionPhotos[slot].request != request_id)
                 return;
 
             LLSD result;
-            try { result = adapter->getRawAndSuspend(request, url, options, nullptr); }
+            try { result = adapter->getRawAndSuspend(request, photo, options, nullptr); }
             catch (...) { result = LLSD(); }
 
             map = dynamic_cast<LLFloaterWorldMap*>(handle.get());
@@ -2539,27 +2511,27 @@ void LLFloaterWorldMap::loadRegionPhoto(S32 slot, const LLSD& row)
 
             using Http = LLCoreHttpUtil::HttpCoroutineAdapter;
             if (!Http::getStatusFromLLSD(result[Http::HTTP_RESULTS]))
-                continue;
+                break;
             const LLSD& response = result;
             auto raw = decodeRegionPhoto(response[Http::HTTP_RESULTS_RAW].asBinary());
             if (!raw)
-                continue;
+                break;
 
             const F32 aspect = static_cast<F32>(raw->getWidth()) / raw->getHeight();
             // Preserve the source aspect for cropping before scaling to GPU texture dimensions.
             raw->biasedScaleToPowerOfTwo(1024);
             if (raw->isBufferInvalid())
-                continue;
+                break;
             const auto texture = LLViewerTextureManager::getLocalTexture(raw.get(), false);
             if (!texture || !texture->isGLTextureCreated())
-                continue;
+                break;
 
             auto* icon = map->getChild<LLIconCtrl>(control);
             const LLRect& rect = icon->getRect();
             const F32 viewport = static_cast<F32>(rect.getWidth()) / rect.getHeight();
             const F32 u = std::min(1.f, viewport / aspect);
             const F32 v = std::min(1.f, aspect / viewport);
-            LLUIImagePtr image = new LLUIImage(url, texture);
+            LLUIImagePtr image = new LLUIImage(photo, texture);
             image->setClipRegion(LLRectf((1.f - u) / 2.f, (1.f + v) / 2.f,
                                          (1.f + u) / 2.f, (1.f - v) / 2.f));
             icon->setImage(image);
@@ -2568,7 +2540,7 @@ void LLFloaterWorldMap::loadRegionPhoto(S32 slot, const LLSD& row)
             state.pending = false;
             state.loaded = true;
             return;
-        }
+        } while (false);
 
         auto* map = dynamic_cast<LLFloaterWorldMap*>(handle.get());
         if (map && map->mRegionPhotos[slot].request == request_id)
