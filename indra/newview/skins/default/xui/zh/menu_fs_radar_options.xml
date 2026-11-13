@@ -10,7 +10,7 @@
 		<menu_item_check label="使用者名稱（顯示名）" name="radarFmtUNDN" />
 	</context_menu>
 	<context_menu label="顯示內容欄" name="visible_columns">
-		<menu_item_check label="語音" name="voice_level" />
+
 		<menu_item_check label="同一區域" name="in_region" />
 		<menu_item_check label="輸入狀態" name="typing_status" />
 		<menu_item_check label="坐姿狀態" name="sitting_status" />

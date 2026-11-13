@@ -32,7 +32,7 @@
 #include <chrono>
 #include <atomic>
 
-// Audio device mutex to be shared between audio engine and Voice systems to
+// Audio device mutex shared by audio engine threads to
 // syncronize on when audio hardware accessed for disconnected/connecting hardware
 // Uses Timed Mutex so as to not lockup the threads forever.
 inline std::timed_mutex gAudioDeviceMutex;

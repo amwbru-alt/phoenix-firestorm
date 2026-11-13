@@ -39,16 +39,7 @@
          function="ParticipantList.EnableItem"
          parameter="can_im" />
     </menu_item_call>
-    <menu_item_call
-     label="Call"
-     layout="topleft"
-     name="Call">
-        <on_click
-         function="Avatar.Call" />
-        <on_enable
-         function="ParticipantList.EnableItem"
-         parameter="can_call" />
-    </menu_item_call>
+
     <menu_item_call
      label="Share"
      layout="topleft"
@@ -120,19 +111,7 @@
     </menu_item_check>
     <menu_item_separator
      layout="topleft" />
-    <menu_item_check
-     label="Block Voice"
-     layout="topleft"
-     name="Block/Unblock">
-        <on_check
-         function="ParticipantList.CheckItem"
-         parameter="is_blocked" />
-        <on_click
-         function="Avatar.BlockUnblock" />
-        <on_enable
-         function="ParticipantList.EnableItem"
-         parameter="can_block" />
-    </menu_item_check>
+
     <menu_item_check
      label="Block Text"
      layout="topleft"
@@ -163,9 +142,7 @@
              function="ParticipantList.EnableItem"
              parameter="can_eject" />
         </menu_item_call>
-        <menu_item_separator
-         layout="topleft"
-         name="moderate_voice_separator" />
+
         <menu_item_call
          label="Allow text chat"
          layout="topleft"
@@ -194,50 +171,8 @@
              function="ParticipantList.VisibleItem"
              parameter="can_allow_text_chat" />
         </menu_item_call>
-        <menu_item_call
-         label="Mute this participant"
-         layout="topleft"
-         name="ModerateVoiceMuteSelected">
-            <on_click
-             function="ParticipantList.ModerateVoice"
-             parameter="selected" />
-            <on_enable
-             function="ParticipantList.EnableItem.Moderate"
-             parameter="can_moderate_voice" />
-        </menu_item_call>
-        <menu_item_call
-         label="Unmute this participant"
-         layout="topleft"
-         name="ModerateVoiceUnMuteSelected">
-            <on_click
-             function="ParticipantList.ModerateVoice"
-             parameter="selected" />
-            <on_enable
-             function="ParticipantList.EnableItem.Moderate"
-             parameter="can_moderate_voice" />
-        </menu_item_call>
-        <menu_item_call
-         label="Mute everyone"
-         layout="topleft"
-         name="ModerateVoiceMute">
-            <on_click
-             function="ParticipantList.ModerateVoice"
-             parameter="mute_all" />
-            <on_enable
-             function="ParticipantList.EnableItem.Moderate"
-             parameter="can_moderate_voice" />
-        </menu_item_call>
-        <menu_item_call
-         label="Unmute everyone"
-         layout="topleft"
-         name="ModerateVoiceUnmute">
-            <on_click
-             function="ParticipantList.ModerateVoice"
-             parameter="unmute_all" />
-            <on_enable
-             function="ParticipantList.EnableItem.Moderate"
-             parameter="can_moderate_voice" />
-        </menu_item_call>
+
+
     </context_menu>
 	<menu_item_separator layout="topleft" name="Group Ban Separator"/>
 	<menu_item_call

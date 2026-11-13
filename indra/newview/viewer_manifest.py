@@ -620,11 +620,6 @@ class Windows_x86_64_Manifest(ViewerManifest):
         # Get shared libs from the shared libs staging directory
         with self.prefix(src=os.path.join(self.args['build'], os.pardir,
                                           'sharedlibs', self.args['buildtype'])):
-            # WebRTC libraries
-            for libfile in (
-                    'llwebrtc.dll',
-            ):
-                self.path(libfile)
 
             if self.args['discord'] == 'ON':
                 self.path("discord_partner_sdk.dll")
@@ -1135,11 +1130,9 @@ class Darwin_x86_64_Manifest(ViewerManifest):
                                 # ):
                         # self.path(libfile)
 
-                # # WebRTC libraries
                 # with self.prefix(src=os.path.join(self.args['build'], os.pardir,
                                           # 'sharedlibs', self.args['buildtype'], 'Resources')):
                     # for libfile in (
-                            # 'libllwebrtc.dylib',
                     # ):
                         # self.path(libfile)
 
@@ -1277,14 +1270,10 @@ class Darwin_x86_64_Manifest(ViewerManifest):
                                 # ):
                     # dylibs += path_optional(os.path.join(relpkgdir, libfile), libfile)
 
-                # # SLVoice executable
                 # with self.prefix(src=os.path.join(pkgdir, 'bin', 'release')):
-                    # self.path("SLVoice")
 
-                # # Vivox libraries
                 # for libfile in (
                                 # 'libortp.dylib',
-                                # 'libvivoxsdk.dylib',
                                 # ):
                     # self.path2basename(relpkgdir, libfile)
 
@@ -1371,17 +1360,6 @@ class Darwin_x86_64_Manifest(ViewerManifest):
                                 ):
                         self.path(libfile)
 
-                # WebRTC libraries
-                with self.prefix(src=os.path.join(self.args['build'], os.pardir,
-                                          'sharedlibs', self.args['buildtype'], 'Resources')):
-                    for libfile in (
-                            'libllwebrtc.dylib',
-                    ):
-                        self.path(libfile)
-
-            with self.prefix(dst="MacOS"):
-                executable = self.dst_path_of(CHANNEL_VENDOR_BASE)
-                if self.args.get('bugsplat'):
                     # According to Apple Technical Note TN2206:
                     # https://developer.apple.com/library/archive/technotes/tn2206/_index.html#//apple_ref/doc/uid/DTS40007919-CH1-TNTAG207
                     # "If an app uses @rpath or an absolute path to link to a
@@ -1980,7 +1958,6 @@ class LinuxManifest(ViewerManifest):
         with self.prefix("linux_tools"):
             self.path("client-readme.txt","README-linux.txt")
             self.path("FIRESTORM_DESKTOPINSTALL.txt","FIRESTORM_DESKTOPINSTALL.txt")
-            self.path("client-readme-voice.txt","README-linux-voice.txt")
             self.path("client-readme-joystick.txt","README-linux-joystick.txt")
             self.path("wrapper.sh","firestorm")
             with self.prefix(dst="etc"):
@@ -2078,17 +2055,6 @@ class LinuxManifest(ViewerManifest):
 
             self.path_optional("libjemalloc.so*")
 
-        # WebRTC libraries
-        with self.prefix(src=os.path.join(self.args['build'], os.pardir,
-                        'sharedlibs', 'lib'), dst='lib'):
-            for libfile in (
-                'libllwebrtc.so',
-            ):
-                self.path(libfile)
-
-
-    def package_finish(self):
-        # a standard map of strings for replacing in the templates
 
         # <FS:TJ> Make sure all our package names look similar
         #installer_name = self.installer_base_name()
@@ -2166,8 +2132,6 @@ class Linux_i686_Manifest(LinuxManifest):
             self.path("libalut.so*")
             self.path("libopenal.so*")
 
-            # <FS:ND> Linking this breaks voice as stock openal.so does not have alcGetMixedBuffer
-            #self.path("libopenal.so", "libvivoxoal.so.1") # vivox's sdk expects this soname
             # </FS:ND>
 
             # KLUDGE: As of 2012-04-11, the 'fontconfig' package installs
@@ -2226,12 +2190,9 @@ class Linux_x86_64_Manifest(LinuxManifest):
 
         with self.prefix(src=os.path.join(pkgdir, 'lib', 'release'), dst="lib"):
             #self.path("libffi*.so*")
-            # vivox 32-bit hack.
             # one has to extract libopenal.so from the 32-bit openal package, or official LL viewer, and rename it to libopenal32.so
             # and place it in the prebuilt lib/release directory
             # <FS:TS> No, we don't need to dink with this. A usable library
-            # is now in the slvoice package, and we need to just use it as is.
-            # self.path("libopenal32.so", "libvivoxoal.so.1") # vivox's sdk expects this soname
 
             # if self.args['fmodstudio'] == 'ON':
             if self.args['fmodstudio'].lower() == 'on':

@@ -11,6 +11,6 @@
 	<check_box name="enable_music" tool_tip="啟用串流音樂" />
 	<slider label="媒體" name="Media Volume" />
 	<check_box name="enable_media" tool_tip="啟用串串流媒體" />
-	<slider label="語音" name="Voice Volume" />
-	<check_box name="enable_voice_check" tool_tip="啟用語音聊天" />
+
+
 </panel>

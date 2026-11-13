@@ -37,7 +37,6 @@
 #include "llcallingcard.h" // for LLFriendObserver
 
 class LLAvatarIconCtrl;
-class LLOutputMonitorCtrl;
 class LLAvatarName;
 class LLIconCtrl;
 class LLUICtrl;
@@ -48,13 +47,7 @@ class LLAvatarListItem : public LLPanel, public LLFriendObserver
 public:
     struct Params : public LLInitParam::Block<Params, LLPanel::Params>
     {
-        Optional<LLStyle::Params>   default_style,
-                                    voice_call_invited_style,
-                                    voice_call_joined_style,
-                                    voice_call_left_style,
-                                    online_style,
-                                    offline_style,
-                                    group_moderator_style;
+        Optional<LLStyle::Params>   default_style, online_style, offline_style, group_moderator_style;
 
 
         Optional<S32>               name_right_pad;
@@ -64,9 +57,6 @@ public:
 
     typedef enum e_item_state_type {
         IS_DEFAULT,
-        IS_VOICE_INVITED,
-        IS_VOICE_JOINED,
-        IS_VOICE_LEFT,
         IS_ONLINE,
         IS_OFFLINE,
         IS_GROUPMOD,
@@ -91,7 +81,6 @@ public:
      */
     // <FS:Ansariel> LL refactoring error
     //virtual void handleVisibilityChange ( bool new_visibility );
-    virtual void onVisibilityChange ( bool new_visibility );
     // </FS:Ansariel>
     virtual S32 notifyParent(const LLSD& info);
     virtual void onMouseLeave(S32 x, S32 y, MASK mask);
@@ -110,8 +99,8 @@ public:
     //Show/hide profile/info btn, translating speaker indicator and avatar name coordinates accordingly
     void setShowProfileBtn(bool show);
     void setShowInfoBtn(bool show);
-    void setShowVoiceVolume(bool show);
-    void showSpeakingIndicator(bool show);
+
+
     void showDisplayName(bool show, bool updateName = true);
     void showUsername(bool show, bool updateName = true);
     void setShowPermissions(bool show);
@@ -132,7 +121,6 @@ public:
     bool getShowingBothNames() const;
 
     void onInfoBtnClick();
-    void onVolumeChange(const LLSD& data);
     void onProfileBtnClick();
     void onPermissionOnlineClick();
     void onPermissionEditMineClick();
@@ -145,10 +133,7 @@ public:
 // [/SL:KB]
 
 protected:
-    /**
-     * Contains indicator to show voice activity.
-     */
-    LLOutputMonitorCtrl* mSpeakingIndicator;
+
 
     LLAvatarIconCtrl* mAvatarIcon;
 
@@ -169,9 +154,7 @@ protected:
     bool mShowUsername;
 
     // <FS:Ansariel> Add callback for user volume change
-    boost::signals2::connection mVoiceLevelChangeCallbackConnection;
-    void onUserVoiceLevelChange(const LLUUID& avatar_id);
-    void updateVoiceLevelSlider();
+
 
 private:
 
@@ -246,7 +229,7 @@ private:
 
     LLButton* mInfoBtn;
     LLButton* mProfileBtn;
-    LLUICtrl* mVoiceSlider;
+
 
     LLUUID mAvatarId;
     std::string mHighlihtSubstring; // substring to highlight
@@ -254,7 +237,7 @@ private:
     //Flag indicating that info/profile button shouldn't be shown at all.
     //Speaker indicator and avatar name coords are translated accordingly
     bool mShowInfoBtn;
-    bool mShowVoiceVolume;
+
     bool mShowProfileBtn;
 // [RLVa:KB] - Checked: RLVa-1.2.0
     bool mRlvCheckShowNames;

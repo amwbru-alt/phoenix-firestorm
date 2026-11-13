@@ -27,6 +27,7 @@
 // Original file: LLChatHistory.cpp
 
 #include "llviewerprecompiledheaders.h"
+#include "llmutelist.h"
 #include "formeviewbranding.h"
 #include "fsavatarbadges.h" // <FS:ForMe> Authoritative server badges.
 
@@ -239,11 +240,7 @@ public:
     bool onObjectIconContextMenuItemVisible(const LLSD& userdata)
     {
         std::string level = userdata.asString();
-        if (level == "is_blocked")
-        {
-            return LLMuteList::getInstance()->isMuted(getAvatarId(), mFrom, LLMute::flagTextChat);
-        }
-        else if (level == "not_blocked")
+        if (level == "not_blocked")
         {
             return !LLMuteList::getInstance()->isMuted(getAvatarId(), mFrom, LLMute::flagTextChat);
         }
@@ -361,7 +358,7 @@ public:
             return false;
         }
 
-        // Is session a group call/chat?
+        // Is this a group text session?
         if(gAgent.isInGroup(mSessionID))
         {
             LLSpeaker * speakerp = speaker_mgr->findSpeaker(gAgentID).get();
@@ -393,21 +390,8 @@ public:
             return false;
         }
 
-        bool voice_channel = speakerp->isInVoiceChannel();
 
-        if ("can_moderate_voice" == userdata)
-        {
-            return voice_channel;
-        }
-        else if ("can_mute" == userdata)
-        {
-            return voice_channel && (speakerp->mStatus != LLSpeaker::STATUS_MUTED);
-        }
-        else if ("can_unmute" == userdata)
-        {
-            return speakerp->mStatus == LLSpeaker::STATUS_MUTED;
-        }
-        else if ("can_allow_text_chat" == userdata)
+        if ("can_allow_text_chat" == userdata)
         {
             return true;
         }
@@ -438,10 +422,6 @@ public:
         else if (param == "request_teleport")
         {
             LLAvatarActions::teleportRequest(getAvatarId());
-        }
-        else if (param == "voice_call")
-        {
-            LLAvatarActions::startCall(getAvatarId());
         }
         else if (param == "chat_history")
         {
@@ -533,10 +513,6 @@ public:
             }
             LLFloaterReporter::showFromChat(mAvatarID, mFrom, time_string, mText);
         }
-        else if (param == "block_unblock")
-        {
-            LLAvatarActions::toggleMute(getAvatarId(), LLMute::flagVoiceChat);
-        }
         else if (param == "mute_unmute")
         {
             LLAvatarActions::toggleMute(getAvatarId(), LLMute::flagTextChat);
@@ -556,7 +532,7 @@ public:
             LLIMSpeakerMgr* speaker_mgr = LLIMModel::getInstance()->getSpeakerManager(mSessionID);
             if (speaker_mgr)
             {
-                speaker_mgr->moderateVoiceParticipant(getAvatarId(), false);
+
             }
         }
         else if (param == "group_unmute")
@@ -564,7 +540,7 @@ public:
             LLIMSpeakerMgr* speaker_mgr = LLIMModel::getInstance()->getSpeakerManager(mSessionID);
             if (speaker_mgr)
             {
-                speaker_mgr->moderateVoiceParticipant(getAvatarId(), true);
+
             }
         }
         else if (param == "ban_member")
@@ -585,10 +561,7 @@ public:
     {
         std::string param = userdata.asString();
 
-        if (param == "is_blocked")
-        {
-            return LLMuteList::getInstance()->isMuted(getAvatarId(), LLMute::flagVoiceChat);
-        }
+
         if (param == "is_muted")
         {
             return LLMuteList::getInstance()->isMuted(getAvatarId(), LLMute::flagTextChat);
@@ -614,11 +587,7 @@ public:
     {
         std::string param = userdata.asString();
 
-        if (param == "can_allow_text_chat" || param == "can_mute" || param == "can_unmute")
-        {
-            return canModerate(userdata);
-        }
-        else if (param == "report_abuse")
+        if (param == "report_abuse")
         {
             return gAgentID != mAvatarID;
         }
@@ -635,38 +604,7 @@ public:
         return false;
     }
 
-    bool onAvatarIconContextMenuItemVisible(const LLSD& userdata)
-    {
-        std::string param = userdata.asString();
 
-        if (param == "show_mute")
-        {
-            LLSpeakerMgr * speaker_mgr = LLIMModel::getInstance()->getSpeakerManager(mSessionID);
-            if (speaker_mgr)
-            {
-                LLSpeaker * speakerp = speaker_mgr->findSpeaker(getAvatarId()).get();
-                if (speakerp)
-                {
-                    return speakerp->isInVoiceChannel() && speakerp->mStatus != LLSpeaker::STATUS_MUTED;
-                }
-            }
-            return false;
-        }
-        else if (param == "show_unmute")
-        {
-            LLSpeakerMgr * speaker_mgr = LLIMModel::getInstance()->getSpeakerManager(mSessionID);
-            if (speaker_mgr)
-            {
-                LLSpeaker * speakerp = speaker_mgr->findSpeaker(getAvatarId()).get();
-                if (speakerp)
-                {
-                    return speakerp->mStatus == LLSpeaker::STATUS_MUTED;
-                }
-            }
-            return false;
-        }
-        return false;
-    }
 
     bool postBuild()
     {
@@ -1097,7 +1035,6 @@ protected:
             registrar.add("AvatarIcon.Action", boost::bind(&FSChatHistoryHeader::onAvatarIconContextMenuItemClicked, this, _2));
             registrar_enable.add("AvatarIcon.Check", boost::bind(&FSChatHistoryHeader::onAvatarIconContextMenuItemChecked, this, _2));
             registrar_enable.add("AvatarIcon.Enable", boost::bind(&FSChatHistoryHeader::onAvatarIconContextMenuItemEnabled, this, _2));
-            registrar_enable.add("AvatarIcon.Visible", boost::bind(&FSChatHistoryHeader::onAvatarIconContextMenuItemVisible, this, _2));
 
             registrar.add("Mention.CopyURI", boost::bind(&FSChatHistoryHeader::copyURLToClipboard, this));
             registrar.add("Mention.Chat", boost::bind(&FSChatHistoryHeader::insertMentionAtCursor, this));
@@ -1133,7 +1070,7 @@ protected:
                 menu->setItemEnabled("Offer Teleport",false);
                 menu->setItemEnabled("Request Teleport",false);
                 menu->setItemEnabled("Teleport to",false);
-                menu->setItemEnabled("Voice Call", false);
+
                 menu->setItemEnabled("Chat History", false);
                 menu->setItemEnabled("Add Contact Set", false);
                 menu->setItemEnabled("Invite Group", false);
@@ -1153,7 +1090,7 @@ protected:
                 menu->setItemEnabled("Teleport to", FSCommon::checkIsActionEnabled(mAvatarID, EFSRegistrarFunctionActionType::FS_RGSTR_ACT_TELEPORT_TO));
                 menu->setItemEnabled("Offer Teleport", LLAvatarActions::canOfferTeleport(mAvatarID));
                 menu->setItemEnabled("Request Teleport", LLAvatarActions::canRequestTeleport(mAvatarID));
-                menu->setItemEnabled("Voice Call", LLAvatarActions::canCall());
+
                 menu->setItemEnabled("Zoom In", FSCommon::checkIsActionEnabled(mAvatarID, EFSRegistrarFunctionActionType::FS_RGSTR_ACT_ZOOM_IN));
                 menu->setItemEnabled("track", FSCommon::checkIsActionEnabled(mAvatarID, EFSRegistrarFunctionActionType::FS_RGSTR_ACT_TRACK_AVATAR));
                 menu->setItemEnabled("Block Unblock", LLAvatarActions::canBlock(mAvatarID));

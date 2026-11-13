@@ -192,8 +192,6 @@ public:
     void onClickResetSoundCache();
     // </FS:Ansariel>
 
-    // <FS:Ansariel> FIRE-2912: Reset voice button
-    void onClickResetVoice();
 
     void onClickSetCache();
     void changeCachePath(const std::vector<std::string>& filenames, std::string proposed_name);

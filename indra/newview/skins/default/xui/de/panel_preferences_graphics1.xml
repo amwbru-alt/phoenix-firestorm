@@ -191,7 +191,7 @@
 		<text name="World Updating">
 			Welt-Aktualisierung:
 		</text>
-		<check_box label="Aktualisierung der Welt einfrieren (alles pausieren)" tool_tip="Aktivieren, um alle Aktualisierungen durch den Server einzufrieren - stoppt alle Aktionen Inworld, hat aber keine Auswirkungen auf Chat, IMs und Voice-Chat." name="WorldPause"/>
+        <check_box label="Aktualisierung der Welt einfrieren (alles pausieren)" name="WorldPause"/>
 		<check_box label="Framerate begrenzen" name="FSLimitFramerate"/>
 		<slider name="MaxFPS" label="FPS:"/>
 		<check_box label="VSync aktivieren" name="vsync" tool_tip="Synchronisiert die Bilder pro Sekunde mit der Bildwiederholrate des Monitors, was in einer gleichmäßigeren Performance resultiert."/>

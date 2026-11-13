@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "llcallingcard.h"
 
 #if 0
 
@@ -192,10 +193,7 @@ bool LLParticipantList::onSpeakerMuteEvent(LLPointer<LLOldEvents::LLEvent> event
     if (speakerp.isNull()) return false;
 
     // update UI on confirmation of moderator mutes
-    if (event->getValue().asString() == "voice")
-    {
-        setParticipantIsMuted(speakerp->mID, speakerp->mModeratorMutedVoice);
-    }
+
     return true;
 }
 
@@ -207,23 +205,13 @@ void LLParticipantList::addAvatarIDExceptAgent(const LLUUID& avatar_id)
         return;
     }
 
-    bool is_avatar = LLVoiceClient::getInstance()->isParticipantAvatar(avatar_id);
 
     LLConversationItemParticipant* participant = NULL;
 
-    if (is_avatar)
     {
+
         // Create a participant view model instance
-        LLAvatarName avatar_name;
-        bool has_name = LLAvatarNameCache::get(avatar_id, &avatar_name);
-        participant = new LLConversationItemParticipant(!has_name ? LLTrans::getString("AvatarNameWaiting") : avatar_name.getDisplayName() , avatar_id, mRootViewModel);
-        participant->fetchAvatarName();
-    }
-    else
-    {
-        std::string display_name = LLVoiceClient::getInstance()->getDisplayName(avatar_id);
-        // Create a participant view model instance
-        participant = new LLConversationItemParticipant(display_name.empty() ? LLTrans::getString("AvatarNameWaiting") : display_name, avatar_id, mRootViewModel);
+
     }
 
     // *TODO : Need to update the online/offline status of the participant

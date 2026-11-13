@@ -6,7 +6,7 @@
 				<layout_panel name="conversations_pane_buttons_expanded">
 					<menu_button name="sort_btn" tool_tip="Options d'affichage/de tri"/>
 					<button name="add_btn" tool_tip="Démarrer une nouvelle conversation"/>
-					<button name="speak_btn" tool_tip="Parler aux personnes en utilisant votre micro"/>
+
 				</layout_panel>
 				<layout_panel name="conversations_pane_buttons_collapsed"><button name="expand_collapse_btn" tool_tip="Réduire/Développer cette liste"/></layout_panel>
 			</layout_stack>

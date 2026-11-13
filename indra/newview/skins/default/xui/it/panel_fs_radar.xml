@@ -17,7 +17,7 @@
 					<layout_panel name="radarlayout">
 						<radar_list name="radar_list">
 							<radar_list.columns label="Nome" name="name" tool_tip="[TOTAL] avatar, [IN_REGION] nella stessa regione, [IN_CHAT_RANGE] nel raggio della chat"/>
-							<radar_list.columns name="voice_level" tool_tip="Usa la voce"/>
+
 							<radar_list.columns name="in_region" tool_tip="È nella stessa regione (verde) o nella stessa parcella (verde-giallo)"/>
 							<radar_list.columns name="typing_status" tool_tip="Attualmente sta scrivendo"/>
 							<radar_list.columns name="sitting_status" tool_tip="Attualmente è seduto"/>

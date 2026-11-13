@@ -4,8 +4,8 @@
 	<floater.string name="multiple_participants_added" value="[NAME] zostali zaproszeni do rozmowy." />
 	<floater.string name="tooltip_to_separate_window" value="Przenieś rozmowę do osobnego okna" />
 	<floater.string name="tooltip_to_main_window" value="Przenieś rozmowę z powrotem do głównego okna" />
-	<floater.string name="start_call_button_tooltip" value="Rozpocznij rozmowę głosową" />
-	<floater.string name="end_call_button_tooltip" value="Zakończ rozmowę głosową" />
+
+
 	<floater.string name="expcol_button_not_tearoff_tooltip" value="Zwiń ten panel" />
 	<floater.string name="expcol_button_tearoff_and_expanded_tooltip" value="Zwiń listę uczestników" />
 	<floater.string name="expcol_button_tearoff_and_collapsed_tooltip" value="Rozwiń listę uczestników" />
@@ -15,7 +15,7 @@
 				<menu_button name="view_options_btn" tool_tip="Opcje widoku/sortowania" />
 				<menu_button name="gear_btn" tool_tip="Akcje dotyczące wybranej osoby" />
 				<button name="add_btn" tool_tip="Dodaj osobę do tej rozmowy" />
-				<button name="voice_call_btn" tool_tip="Rozpocznij rozmowę głosową" />
+
 				<button name="close_btn" tool_tip="Zakończ tą rozmowę" />
 				<button name="expand_collapse_btn" tool_tip="Zwiń/Rozwiń ten panel" />
 			</layout_panel>

@@ -305,25 +305,7 @@ background_visible="true"
 				     width="71" />		
 				</layout_panel>
 				
-				<layout_panel
-				follows="bottom|left|right"
-				height="23"
-				layout="bottomleft"
-				left_pad="3"
-				name="call_btn_lp"
-			    auto_resize="true"
-				width="72">
-					<button
-			         follows="bottom|left|right"
-			         left="1"
-			         height="23"
-				     name="btn_call"
-				     label="Group Call"
-			         layout="topleft"
-			         tool_tip="Call this group"
-			         top="0"
-			         width="71" />		
-				</layout_panel>
+
 				
 				<layout_panel
 				follows="bottom|left|right"

@@ -86,7 +86,6 @@ Versão do decodificador J2C: [J2C_VERSION]
 Versão do driver de áudio: [AUDIO_DRIVER_VERSION]
 [LIBCEF_VERSION]
 Versão do LibVLC: [LIBVLC_VERSION]
-Versão do servidor de voz: [VOICE_VERSION]
 	</string>
 	<string name="AboutTraffic">
 		Pacotes perdidos: [PACKETS_LOST,number,0]/[PACKETS_IN,number,0] ([PACKETS_PCT,number,1]%)
@@ -1211,21 +1210,12 @@ https://www.firestormviewer.org/support para obter ajuda com este problema.
 	<string name="shout">
 		grita:
 	</string>
-	<string name="ringing">
-		Conectando ao voice chat inworld...
-	</string>
+
 	<string name="connected">
 		Conectado
 	</string>
-	<string name="unavailable">
-		O local atual não oferece suporte à comunicação por voz
-	</string>
-	<string name="hang_up">
-		Desconectado do voice chat inworld
-	</string>
-	<string name="reconnect_nearby">
-		Conectando você novamente ao chat próximo
-	</string>
+
+
 	<string name="ScriptQuestionCautionChatGranted">
 		"[OBJECTNAME]", um objeto de "[OWNERNAME]", em [REGIONNAME] [REGIONPOS], recebeu permissão para: [PERMISSIONS].
 	</string>
@@ -4541,9 +4531,7 @@ Reinstale o Viewer de [DOWNLOAD_URL] e entre em contato com [SUPPORT_SITE] se o 
 	<string name="LocationCtrlForSaleTooltip">
 		Comprar este terreno
 	</string>
-	<string name="LocationCtrlVoiceTooltip">
-		Voz não disponível aqui
-	</string>
+
 	<string name="LocationCtrlFlyTooltip">
 		Voar não é permitido
 	</string>
@@ -4622,12 +4610,8 @@ Reinstale o Viewer de [DOWNLOAD_URL] e entre em contato com [SUPPORT_SITE] se o 
 	<string name="Unnamed">
 		(Anônimo)
 	</string>
-	<string name="IM_moderated_chat_label">
-		(Moderado: Voz desativado por padrão)
-	</string>
-	<string name="IM_unavailable_text_label">
-		Bate-papo de texto não está disponível para esta chamada.
-	</string>
+
+
 	<string name="IM_muted_text_label">
 		Seu bate- papo de texto foi desabilitado por um Moderador do Grupo.
 	</string>
@@ -4643,9 +4627,7 @@ Reinstale o Viewer de [DOWNLOAD_URL] e entre em contato com [SUPPORT_SITE] se o 
 	<string name="Saved_message">
 		(Salvo em [LONG_TIMESTAMP])
 	</string>
-	<string name="IM_unblock_only_groups_friends">
-		Para visualizar esta mensagem, você deve desmarcar &quot;Apenas amigos e grupos podem me ligar ou enviar MIs&quot; em Preferências/Privacidade.
-	</string>
+
 	<string name="OnlineStatus">
 		Conectado
 	</string>
@@ -4667,30 +4649,11 @@ Reinstale o Viewer de [DOWNLOAD_URL] e entre em contato com [SUPPORT_SITE] se o 
 	<string name="IM_autoresponse_item_sent">
 		Item de resposta automática enviado: [ITEM_NAME]
 	</string>
-	<string name="answered_call">
-		Ligação atendida
-	</string>
-	<string name="you_started_call">
-		Você iniciou uma ligação de voz
-	</string>
-	<string name="you_joined_call">
-		Você entrou na ligação
-	</string>
-	<string name="you_auto_rejected_call-im">
-		Você recusou automaticamente a chamada de voz enquanto &quot;Ocupado&quot; estava ativado.
-	</string>
-	<string name="name_started_call">
-		[NAME] iniciou uma ligação de voz
-	</string>
-	<string name="ringing-im">
-		Entrando em ligação de voz...
-	</string>
-	<string name="connected-im">
-		Conectado. Para sair, clique em Desligar
-	</string>
-	<string name="hang_up-im">
-		Saiu da ligação de voz
-	</string>
+
+
+
+
+
 	<string name="answering-im">
 		Conectando...
 	</string>
@@ -4728,9 +4691,7 @@ Saiba mais em https://second.life/scripted-agents.
 	<string name="offline_message">
 		[NAME] está offline.
 	</string>
-	<string name="invite_message">
-		Clique no botão [BUTTON NAME] para aceitar/ conectar a este bate-papo em voz.
-	</string>
+
 	<string name="muted_message">
 		Você bloqueou este residente.  Se quiser retirar o bloqueio, basta enviar uma mensagem.
 	</string>
@@ -4977,9 +4938,7 @@ Denúncia de abuso
 	<string name="Other Gestures">
 		Outros gestos
 	</string>
-	<string name="Speech Gestures">
-		Gestos de fala
-	</string>
+
 	<string name="Common Gestures">
 		Gestos comuns
 	</string>
@@ -5458,9 +5417,7 @@ Coloque o caminho do editor entre aspas
 	<string name="Command_View_Label">
 		Controles da câmera
 	</string>
-	<string name="Command_Voice_Label">
-		Vozes próximas
-	</string>
+
 	<string name="Command_Quickprefs_Label">
 		Configurações rápidas
 	</string>
@@ -5659,15 +5616,11 @@ Coloque o caminho do editor entre aspas
 	<string name="Command_Snapshot_Tooltip">
 		Tirar uma foto (Ctrl+Shift+S)
 	</string>
-	<string name="Command_Speak_Tooltip">
-		Fale com pessoas próximas usando seu microfone
-	</string>
+
 	<string name="Command_View_Tooltip">
 		Alterar o ângulo da câmera
 	</string>
-	<string name="Command_Voice_Tooltip">
-		Controle de volume para chamadas e pessoas perto de você no SL
-	</string>
+
 	<string name="Command_Quickprefs_Tooltip">
 		Configurações rápidas para alterar configurações com frequência
 	</string>

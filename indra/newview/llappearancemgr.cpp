@@ -3677,7 +3677,6 @@ const std::string ROOT_GESTURES_FOLDER = "Gestures";
 const std::string COMMON_GESTURES_FOLDER = "Common Gestures";
 const std::string MALE_GESTURES_FOLDER = "Male Gestures";
 const std::string FEMALE_GESTURES_FOLDER = "Female Gestures";
-const std::string SPEECH_GESTURES_FOLDER = "Speech Gestures";
 const std::string OTHER_GESTURES_FOLDER = "Other Gestures";
 
 void LLAppearanceMgr::copyLibraryGestures()
@@ -3697,7 +3696,6 @@ void LLAppearanceMgr::copyLibraryGestures()
     gesture_folders_to_copy.push_back(MALE_GESTURES_FOLDER);
     gesture_folders_to_copy.push_back(FEMALE_GESTURES_FOLDER);
     gesture_folders_to_copy.push_back(COMMON_GESTURES_FOLDER);
-    gesture_folders_to_copy.push_back(SPEECH_GESTURES_FOLDER);
     gesture_folders_to_copy.push_back(OTHER_GESTURES_FOLDER);
 
     for(std::vector<std::string>::iterator it = gesture_folders_to_copy.begin();

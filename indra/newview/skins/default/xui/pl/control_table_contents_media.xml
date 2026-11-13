@@ -9,12 +9,8 @@
 	<rows name="toggle_enable_media">
 		<columns name="lst_action" value="Odtwórz / zatrzymaj wszystkie media" />
 	</rows>
-	<rows name="voice_follow_key">
-		<columns name="lst_action" value="Głos" />
-	</rows>
-	<rows name="toggle_voice">
-		<columns name="lst_action" value="Przełącz głos" />
-	</rows>
+
+
 	<rows name="start_chat">
 		<columns name="lst_action" value="Rozpocznij czat" />
 	</rows>

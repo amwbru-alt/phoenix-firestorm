@@ -10,7 +10,7 @@
 		<menu_item_check label="ユーザー名（表示名）" name="radarFmtUNDN"/>
 	</context_menu>
 	<context_menu label="表示する項目" name="visible_columns">
-		<menu_item_check label="ボイス" name="voice_level"/>
+
 		<menu_item_check label="同一リージョン" name="in_region"/>
 		<menu_item_check label="入力状況" name="typing_status"/>
 		<menu_item_check label="着席状況" name="sitting_status"/>

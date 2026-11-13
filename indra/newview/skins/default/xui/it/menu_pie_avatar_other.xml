@@ -20,7 +20,7 @@
         <pie_menu name="Avatar Pie More 2" label="Altro &gt;">
             <pie_slice label="Vedi texture" name="Debug..."/>
             <pie_slice label="Info script" name="ScriptInfo"/>
-            <pie_slice label="Chiama" name="Call"/>
+
             <pie_slice label="Inquadra" name="Zoom In"/>
             <pie_slice label="Ricar. texture" name="Texture Refresh"/>
             <pie_menu name="ResetMenu" label="Ripristina &gt;">

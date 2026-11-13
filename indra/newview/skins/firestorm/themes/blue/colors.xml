@@ -111,15 +111,8 @@
     <color
      name="AvatarListItemIconOfflineColor"
      value="0.5 0.5 0.5 0.5" />
-    <color
-     name="AvatarListItemIconVoiceInvitedColor"
-     reference="AvatarListItemIconOfflineColor" />
-    <color
-     name="AvatarListItemIconVoiceJoinedColor"
-     reference="AvatarListItemIconOnlineColor" />
-    <color
-     name="AvatarListItemIconVoiceLeftColor"
-     reference="AvatarListItemIconOfflineColor" />
+
+
     <color
      name="BadgeImageColor"
      value="0.7 0.25 0.67 1.0" />

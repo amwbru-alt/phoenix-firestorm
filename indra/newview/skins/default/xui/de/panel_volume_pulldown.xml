@@ -11,6 +11,6 @@
 	<check_box name="enable_music" tool_tip="Streaming-Musik aktivieren"/>
 	<slider label="Medien" label_width="88" name="Media Volume" width="185"/>
 	<check_box name="enable_media" tool_tip="Streaming-Medien aktivieren"/>
-	<slider label="Voice" label_width="88" name="Voice Volume" width="185"/>
-	<check_box name="enable_voice_check" tool_tip="Voice-Chat aktivieren"/>
+
+
 </panel>

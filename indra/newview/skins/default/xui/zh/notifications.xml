@@ -214,10 +214,7 @@
 		儲存全部服裝或身體部位的變更？
 		<usetemplate canceltext="取消" name="yesnocancelbuttons" notext="不要儲存" yestext="全部儲存"/>
 	</notification>
-	<notification name="FriendsAndGroupsOnly">
-		不是朋友的人不會知道你選擇忽略他們的通話要求和私聊。
-		<usetemplate name="okbutton" yestext="確定"/>
-	</notification>
+
 	<notification name="FavoritesOnLogin">
 		注意：你一旦同意這選項，任何使用這部電腦的人都可看到你有哪些「最愛」地點。
 		<usetemplate name="okbutton" yestext="確定"/>
@@ -2472,9 +2469,7 @@ URL:[UNTRUSTED_URL]
 可能需要稍候一段時間，地圖才會反映這個變更。
 		<usetemplate name="okbutton" yestext="確定"/>
 	</notification>
-	<notification label="聲音版本不相符" name="VoiceVersionMismatch">
-		這版本的 [APP_NAME] 和本區域的語音聊天功能不相容。 想要語音聊天正常運作，你必須更新 [APP_NAME]。
-	</notification>
+
 	<notification label="無法購買物件" name="BuyObjectOneOwner">
 		無法同時向不同物主購買物件。
 請只選擇一個物件，再試一次。
@@ -3237,9 +3232,7 @@ URL：[AUDIOURL]
 	<notification name="PushRestricted">
 		這區域不允許推撞。 除非你擁有這塊土地，否則你不能推撞別人。
 	</notification>
-	<notification name="NoVoice">
-		這區域封鎖語音聊天。 你將不會聽到任何人說話。
-	</notification>
+
 	<notification name="NoBuild">
 		這區域禁止建造物件。 你不能在此建造或產生物件。
 	</notification>
@@ -3650,9 +3643,6 @@ URL：[AUDIOURL]
 在決定是否允許此訪問之前，請務必了解該物件的性質以及它為何提出這樣的請求。此外，仔細考慮你是否信任這個物件的創造者。如果你對此沒有把握，請點擊「拒絕」以防止任何未經授權的資金提取。
 
 
-
-
-
 		<form name="form">
 			<button name="Grant" text="允許全權存取"/>
 			<button name="Deny" text="拒絕"/>
@@ -3695,15 +3685,7 @@ URL：[AUDIOURL]
 	<notification name="MaxListSelectMessage">
 		你最多隻能從這個清單中選擇 [MAX_SELECT] 個物件。
 	</notification>
-	<notification name="VoiceInviteP2P">
-		[NAME] 正邀請你加入語音聊天。
-點選「接受」加入通話，或「謝絕」邀請。 點選「封鎖」便可封鎖這個發送者。
-		<form name="form">
-			<button name="Accept" text="接受"/>
-			<button name="Decline" text="謝絕"/>
-			<button name="Mute" text="封鎖"/>
-		</form>
-	</notification>
+
 	<notification name="AutoUnmuteByIM">
 		[NAME] 已收到一則私聊，並已被自動解除封鎖。
 	</notification>
@@ -3713,81 +3695,8 @@ URL：[AUDIOURL]
 	<notification name="AutoUnmuteByInventory">
 		[NAME] 已得知你要贈送庫存物件，並已被自動解除封鎖。
 	</notification>
-	<notification name="VoiceInviteGroup">
-		[NAME] 已加入和群組 [GROUP] 的語音聊天通話。
-點選「接受」加入通話，或「謝絕」邀請。 點選「靜音」便可永久封鎖該發送者的所有資訊。
-		<form name="form">
-			<button name="Accept" text="接受"/>
-			<button name="Decline" text="謝絕"/>
-			<button name="Mute" text="靜音"/>
-		</form>
-	</notification>
-	<notification name="VoiceInviteAdHoc">
-		[NAME] 已加入多方語音通話。
-點選「接受」加入通話，或「謝絕」邀請。 點選「靜音」便可永久封鎖該發送者的所有資訊。
-		<form name="form">
-			<button name="Accept" text="接受"/>
-			<button name="Decline" text="謝絕"/>
-			<button name="Mute" text="靜音"/>
-		</form>
-	</notification>
-	<notification name="InviteAdHoc">
-		[NAME] 正邀請你加入多方通話。
-點選「接受」加入通話，或「謝絕」邀請。 點選「靜音」便可永久封鎖該發送者的所有資訊。
-		<form name="form">
-			<button name="Accept" text="接受"/>
-			<button name="Decline" text="謝絕"/>
-			<button name="Mute" text="靜音"/>
-		</form>
-	</notification>
-	<notification name="VoiceChannelFull">
-		你試圖加入 [VOICE_CHANNEL_NAME] 語音通話，不過它已達負載上限。 請稍候再試一次。
-	</notification>
-	<notification name="ProximalVoiceChannelFull">
-		很抱歉。  這區域已達語音通話的負載上限。  請到另一個區域使用語音。
-	</notification>
-	<notification name="VoiceChannelDisconnected">
-		你的 [VOICE_CHANNEL_NAME] 通話已經中斷。  現在你將重新連線到附近的語音聊天。
-	</notification>
-	<notification name="VoiceChannelDisconnectedP2P">
-		[VOICE_CHANNEL_NAME] 語音通話已結束。  現在你將重新連線到附近的語音聊天。
-	</notification>
-	<notification name="P2PCallDeclined">
-		[VOICE_CHANNEL_NAME] 拒絕你加入語音通話。  現在你將重新連線到附近的語音聊天。
-	</notification>
-	<notification name="P2PCallNoAnswer">
-		[VOICE_CHANNEL_NAME] 無法接通你的通話。  現在你將重新連線到附近的語音聊天。
-	</notification>
-	<notification name="VoiceChannelJoinFailed">
-		無法連線 [VOICE_CHANNEL_NAME],，請稍候再試。  現在你將重新連線到附近的語音聊天。
-	</notification>
-	<notification name="VoiceEffectsExpired">
-		至少一個你訂閱的變聲效果已經過期。
-[[URL] 點擊這裡] 繼續訂閱。
 
-付費使用者請[[PREMIUM_URL] 點擊這裡]領取免費變聲工具。
-	</notification>
-	<notification name="VoiceEffectsExpiredInUse">
-		使用中的變聲效果已經過期，已用你平時的聲音設定替換。
-[[URL] 點擊這裡]繼續訂閱。
 
-付費使用者請[[PREMIUM_URL] 點擊這裡]領取免費變聲工具。
-		<usetemplate ignoretext="提醒我語音變聲即將過期" name="okignore" yestext="確定"/>
-	</notification>
-	<notification name="VoiceEffectsWillExpire">
-		至少一個你訂閱的變聲效果將在 [INTERVAL] 天后到期。
-[[URL] 點擊這裡]繼續訂閱。
-
-付費使用者請[[PREMIUM_URL] 點擊這裡]領取免費變聲工具。
-	</notification>
-	<notification name="VoiceEffectsNew">
-		新的變聲效果上市了！
-	</notification>
-	<notification name="VoiceEffectsNotSupported">
-		此檢視器不支援語音變聲功能。
-有關其他語音變形工具的更多資訊，請參見[[FAQ_URL] 這篇文章]。
-		<usetemplate ignoretext="提醒我語音變聲不被支援" name="okignore" yestext="確定"/>
-	</notification>
 	<notification name="Cannot enter parcel: not a group member">
 		只有某特定群組的成員才能進入這區域。
 	</notification>
@@ -3797,12 +3706,8 @@ URL：[AUDIOURL]
 	<notification name="Cannot enter parcel: not on access list">
 		無法進入這地塊，你不在出入許可名單中。
 	</notification>
-	<notification name="VoiceNotAllowed">
-		你無權連線 [VOICE_CHANNEL_NAME] 語音聊天。
-	</notification>
-	<notification name="VoiceCallGenericError">
-		試圖連線 [VOICE_CHANNEL_NAME] 語音聊天時發生錯誤。  請稍候再試一次。
-	</notification>
+
+
 	<notification name="UnsupportedCommandSLURL">
 		你所點擊的 SLurl 位置並不被支援。
 	</notification>
@@ -3870,17 +3775,8 @@ URL：[AUDIOURL]
 		主持人已設定封鎖你的文字聊天內容。
 		<usetemplate name="okbutton" yestext="確定"/>
 	</notification>
-	<notification name="VoiceIsMutedByModerator">
-		主持人已將你的語音靜音。
-		<usetemplate name="okbutton" yestext="確定"/>
-	</notification>
-	<notification name="NearbyVoiceMutedByModerator">
-		管理員已將你的附近語音靜音。
-該區域的其他人將無法聽到你說話。
-	</notification>
-	<notification name="NearbyVoiceUnmutedByModerator">
-		你現在可以被該區域的其他人聽到了。
-	</notification>
+
+
 	<notification name="FailedToGetBenefits">
 		很遺憾，我們無法為這次會話取得到福利資訊。在正常的生產環境中，這不應該發生。請聯繫支援部門。這次會話將無法正常進行，我們建議重新開始會話。
 		<usetemplate name="okbutton" yestext="OK"/>
@@ -4010,30 +3906,8 @@ URL：[AUDIOURL]
 請檢查你的網路和防火墻設定。
 		<usetemplate name="okbutton" yestext="確定"/>
 	</notification>
-	<notification name="NoVoiceConnect">
-		無法連線語音伺服器：
 
-&lt;nolink&gt;[HOSTID]&lt;/nolink&gt;
 
-必須允許語音的數據埠如下：
-:TCP: 80, 443
-:UDP: 3478, 3479, 5060, 5062, 6250, 12000-32000
-
-請檢查你的網路和防火墻設定。
-關閉路由器中的SIP ALG功能。
-
-將無法用語音通訊。
-https://wiki.firestormviewer.org/fs_voice
-		<usetemplate ignoretext="當檢視器無法連線到語音伺服器時警告我" name="okignore" yestext="確定"/>
-	</notification>
-	<notification name="NoVoiceConnect-GIAB">
-		試圖連線語音伺服器時出了問題。
-
-將無法用語音通訊。
-請檢查你的網路和防火墻設定。
-[https://wiki.firestormviewer.org/fs_voice]
-		<usetemplate name="okbutton" yestext="確定"/>
-	</notification>
 	<notification name="AvatarRezLeftNotification">
 		（存在 [EXISTENCE] 秒鐘）
 化身 '[NAME]' 在完全綵現狀況下離開。
@@ -4103,35 +3977,15 @@ https://wiki.firestormviewer.org/fs_voice
 		<usetemplate ignoretext="貼上：您新增了一個具有限制許可權的紋理。" name="notifyignore"/>
 		<usetemplate name="okbutton" yestext="確定"/>
 	</notification>
-	<notification name="ConfirmLeaveCall">
-		你確定要結束這段通話？
-		<usetemplate ignoretext="掛斷前進行確認" name="okcancelignore" notext="否" yestext="是"/>
-	</notification>
-	<notification name="ConfirmLeaveAdhoc">
-		你確定要離開此臨時會議嗎？
-		<usetemplate ignoretext="離開臨時會議前要求確認" name="okcancelignore" notext="否" yestext="是" />
-	</notification>
-	<notification name="ConfirmMuteAll">
-		你已選擇要將所有參與群組通話的人靜音。
-這將導致後來加入通話的所有居民同樣被
-靜音，即使在你離開通話后也一樣。
 
-把所有人靜音？
-		<usetemplate ignoretext="在我對所有群組通話的參與者予以靜音前確認" name="okcancelignore" notext="取消" yestext="確定"/>
-	</notification>
+
 	<notification label="聊天" name="HintChat">
 		若要加入聊天，請在下方的聊天欄裡打字。
 	</notification>
 	<notification label="站立" name="HintSit">
 		若要中止坐姿站起身來，請按「站立」按鈕。
 	</notification>
-	<notification label="說話" name="HintSpeak">
-		點擊「說話」按鈕來打開或關閉麥克風。
 
-點擊向上箭頭鍵，可顯示聲音控制台。
-
-隱藏「說話」按鈕將停用語音功能。
-	</notification>
 	<notification label="探索世界" name="HintDestinationGuide">
 		目的地指南包含上千個值得探索的新地點。 選擇一個地點，然後「瞬間傳送」前往，開始你的探索！
 	</notification>
@@ -4247,10 +4101,7 @@ https://wiki.firestormviewer.org/fs_voice
 		只有進階模式才能檢視世界地圖。 你是否想要結束離開，以便變更模式？ 你可在登錄畫面選擇想要的模式。
 		<usetemplate name="okcancelbuttons" notext="不要結束退出" yestext="結束退出"/>
 	</notification>
-	<notification name="NoVoiceCall">
-		只有進階模式才能使用語音通話。 你是否要登出並且變更模式？
-		<usetemplate name="okcancelbuttons" notext="不要結束退出" yestext="結束退出"/>
-	</notification>
+
 	<notification name="NoAvatarShare">
 		只有進階模式才能使用分享功能。 你是否要登出並且變更模式？
 		<usetemplate name="okcancelbuttons" notext="不要結束退出" yestext="結束退出"/>

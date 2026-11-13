@@ -40,9 +40,7 @@ UtilityBar::UtilityBar() :
     mAOInterfaceButton(nullptr),
     mVolumeControlsInterfaceButton(nullptr),
     mParcelMediaPlayButton(nullptr),
-    mParcelStreamPlayButton(nullptr),
-    mTalkButton(nullptr),
-    mPTTButton(nullptr)
+    mParcelStreamPlayButton(nullptr)
 {
     // Tried to do this cleanly with callbacks and controls, but ran into dead ends on every approach.
     // This helper class works, but I am not at all satisfied with it. -Zi
@@ -61,10 +59,10 @@ void UtilityBar::init()
 
     mParcelStreamPlayButton = rootView->findChild<LLButton>("utility_parcel_audio_stream_button");
     mParcelMediaPlayButton = rootView->findChild<LLButton>("utility_parcel_media_button");
-    mTalkButton = rootView->findChild<LLButton>("utility_talk_button");
+
     mAOInterfaceButton = rootView->findChild<LLButton>("show_ao_interface_button");
     mVolumeControlsInterfaceButton = rootView->findChild<LLButton>("show_volume_controls_button");
-    mPTTButton = rootView->findChild<LLButton>("utility_push_to_talk_lock_button");
+
 
     if (mParcelStreamPlayButton)
     {
@@ -75,20 +73,13 @@ void UtilityBar::init()
         mParcelMediaPlayButton->setCommitCallback(boost::bind(&UtilityBar::onParcelMediaClicked, this));
     }
 
-    if (mTalkButton)
-    {
-        mTalkButton->setMouseDownCallback(boost::bind(&LLAgent::pressMicrophone, _2));
-        mTalkButton->setMouseUpCallback(boost::bind(&LLAgent::releaseMicrophone, _2));
-    }
 
     mEventTimer.start();
 }
 
 // PushToTalkToggle
-//  commit.add("Agent.PressMicrophone", boost::bind(&LLAgent::pressMicrophone, _2));
-//  commit.add("Agent.ReleaseMicrophone", boost::bind(&LLAgent::releaseMicrophone, _2));
-//  commit.add("Agent.ToggleMicrophone", boost::bind(&LLAgent::toggleMicrophone, _2));
-//  enable.add("Agent.IsMicrophoneOn", boost::bind(&LLAgent::isMicrophoneOn, _2));
+
+
 //  enable.add("Agent.IsActionAllowed", boost::bind(&LLAgent::isActionAllowed, _2));
 
 void UtilityBar::onParcelStreamClicked()
@@ -142,15 +133,6 @@ bool UtilityBar::tick()
         mParcelStreamPlayButton->setImageOverlay(inst->isParcelAudioPlaying() ? "icn_pause.tga" : "icn_play.tga");
     }
 
-    if (mTalkButton)
-    {
-        mTalkButton->setValue(gAgent.isMicrophoneOn(LLSD()));
-        mTalkButton->setEnabled(LLAgent::isActionAllowed(LLSD("speak")));
-    }
-    if (mPTTButton)
-    {
-        mPTTButton->setEnabled(LLAgent::isActionAllowed(LLSD("speak")));
-    }
 
     return false;
 }

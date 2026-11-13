@@ -90,7 +90,6 @@ J2C-Decoderversion: [J2C_VERSION]
 Audio-Treiberversion: [AUDIO_DRIVER_VERSION]
 [LIBCEF_VERSION]
 LibVLC-Version: [LIBVLC_VERSION]
-Voice-Serverversion: [VOICE_VERSION]
 	</string>
 	<string name="AboutTraffic">
 		Paketverlust: [PACKETS_LOST,number,0]/[PACKETS_IN,number,0] ([PACKETS_PCT,number,1]%)
@@ -1251,21 +1250,12 @@ https://www.firestormviewer.org/support für Hilfe zum Lösen des Problems.
 	<string name="shout">
 		ruft:
 	</string>
-	<string name="ringing">
-		Verbindung mit In-Welt-Voice-Chat...
-	</string>
+
 	<string name="connected">
 		Verbunden
 	</string>
-	<string name="unavailable">
-		Der aktuelle Standort unterstützt keine Voice-Kommunikation
-	</string>
-	<string name="hang_up">
-		Verbindung mit In-Welt-Voice-Chat getrennt
-	</string>
-	<string name="reconnect_nearby">
-		Sie werden nun wieder mit dem Chat in Ihrer Nähe verbunden
-	</string>
+
+
 	<string name="ScriptQuestionCautionChatGranted">
 		Dem Objekt „[OBJECTNAME]“, ein Objekt von „[OWNERNAME]“, in [REGIONNAME] [REGIONPOS], wurde folgende Berechtigung erteilt: [PERMISSIONS].
 	</string>
@@ -4739,9 +4729,7 @@ Bitte installieren Sie den Viewer von [DOWNLOAD_URL] erneut und wenden Sie sich 
 	<string name="LocationCtrlForSaleTooltip">
 		Dieses Land kaufen
 	</string>
-	<string name="LocationCtrlVoiceTooltip">
-		Voice hier nicht möglich
-	</string>
+
 	<string name="LocationCtrlFlyTooltip">
 		Fliegen ist unzulässig
 	</string>
@@ -4820,12 +4808,8 @@ Bitte installieren Sie den Viewer von [DOWNLOAD_URL] erneut und wenden Sie sich 
 	<string name="Unnamed">
 		(Nicht benannt)
 	</string>
-	<string name="IM_moderated_chat_label">
-		(Moderiert: Stimmen in der Standardeinstellung stummgeschaltet)
-	</string>
-	<string name="IM_unavailable_text_label">
-		Für diese Verbindung ist kein Text-Chat verfügbar.
-	</string>
+
+
 	<string name="IM_muted_text_label">
 		Ihr Text-Chat wurde von einem Gruppenmoderator deaktiviert.
 	</string>
@@ -4841,9 +4825,7 @@ Bitte installieren Sie den Viewer von [DOWNLOAD_URL] erneut und wenden Sie sich 
 	<string name="Saved_message">
 		(Gespeichert am [LONG_TIMESTAMP])
 	</string>
-	<string name="IM_unblock_only_groups_friends">
-		Wenn Sie diese Meldung sehen, müssen Sie unter „Einstellungen“ &gt; „Privatsphäre“ die Option „Nur IMs und Anrufe von Freunden oder Gruppen durchstellen“ deaktivieren.
-	</string>
+
 	<string name="IM_announce_incoming">
 		Ankommende Instant Message von [NAME]
 	</string>
@@ -4865,30 +4847,11 @@ Bitte installieren Sie den Viewer von [DOWNLOAD_URL] erneut und wenden Sie sich 
 	<string name="not_online_inventory">
 		Benutzer nicht online - Inventar gespeichert.
 	</string>
-	<string name="answered_call">
-		Ihr Anruf wurde entgegengenommen
-	</string>
-	<string name="you_started_call">
-		Sie haben einen Voice-Anruf begonnen
-	</string>
-	<string name="you_joined_call">
-		Sie sind dem Gespräch beigetreten
-	</string>
-	<string name="you_auto_rejected_call-im">
-		Sie haben den Voice-Anruf automatisch abgelehnt, während der Nicht-stören-Modus aktiviert war.
-	</string>
-	<string name="name_started_call">
-		[NAME] hat einen Voice-Anruf begonnen
-	</string>
-	<string name="ringing-im">
-		Verbindung wird hergestellt...
-	</string>
-	<string name="connected-im">
-		Verbunden. Klicken Sie auf Anruf beenden, um die Verbindung zu trennen
-	</string>
-	<string name="hang_up-im">
-		Anruf wurde beendet
-	</string>
+
+
+
+
+
 	<string name="answering-im">
 		Wird verbunden...
 	</string>
@@ -4926,9 +4889,7 @@ Erfahren Sie mehr unter https://second.life/scripted-agents.
 	<string name="offline_message">
 		[NAME] ist offline.
 	</string>
-	<string name="invite_message">
-		Klicken Sie auf [BUTTON NAME], um eine Verbindung zu diesem Voice-Chat herzustellen.
-	</string>
+
 	<string name="muted_message">
 		Sie haben diesen Einwohner ignoriert. Wenn Sie eine Nachricht senden, wird dieser freigeschaltet.
 	</string>
@@ -4997,12 +4958,8 @@ Falls die Nachricht nicht innerhalb der nächsten Minuten erscheint, wurde sie v
 	<string name="Home position set.">
 		Position für Zuhause festgelegt.
 	</string>
-	<string name="voice_morphing_url">
-		https://secondlife.com/destination/voice-island?lang=de-DE
-	</string>
-	<string name="premium_voice_morphing_url">
-		https://secondlife.com/destination/voice-morphing-premium?lang=de-DE
-	</string>
+
+
 	<string name="lindenhomes_get_home_url">
 		https://secondlife.com/land/lindenhomes/member.php?lang=de-DE
 	</string>
@@ -5191,9 +5148,7 @@ Missbrauchsbericht
 	<string name="Other Gestures">
 		Andere Gesten
 	</string>
-	<string name="Speech Gestures">
-		Sprachgesten
-	</string>
+
 	<string name="Common Gestures">
 		Häufig verwendete Gesten
 	</string>
@@ -5993,13 +5948,8 @@ Setzen Sie den Editorpfad in Anführungszeichen
 	<string name="Command_View_Label">
 		Kamerasteuerungen
 	</string>
-<!-- Ansariel: Renamed for FS (FIRE-5019)
-	<string name="Command_Voice_Label">
-		Voice-Einstellungen
-	</string> -->
-	<string name="Command_Voice_Label">
-		Stimmen in der Nähe
-	</string>
+
+
 	<string name="Command_Quickprefs_Label">
 		Schnelleinstellungen
 	</string>
@@ -6207,18 +6157,14 @@ Setzen Sie den Editorpfad in Anführungszeichen
 	<string name="Command_Social_Tooltip">
 		Auf Facebook posten
 	</string>
-	<string name="Command_Speak_Tooltip">
-		Über Ihr Mikrofon mit Leuten in der Nähe sprechen
-	</string>
+
 	<string name="Command_Twitter_Tooltip">
 		Twitter
 	</string>
 	<string name="Command_View_Tooltip">
 		Kamerawinkel ändern
 	</string>
-	<string name="Command_Voice_Tooltip">
-		Lautstärkeregler für Anrufe und Leute in Ihrer Nähe in SL
-	</string>
+
 	<string name="Command_Quickprefs_Tooltip">
 		Schnelleinstellungen zum Ändern oft benötigter Einstellungen
 	</string>

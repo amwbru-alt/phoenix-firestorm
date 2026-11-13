@@ -108,9 +108,7 @@
 #include "rlvmodifiers.h"
 // [/RLVa:KB]
 
-#include "llgesturemgr.h" //needed to trigger the voice gesticulations
-#include "llvoiceclient.h"
-#include "llvoicevisualizer.h" // Ventrella
+#include "llgesturemgr.h"
 
 #include "lldebugmessagebox.h"
 #include "llsdutil.h"
@@ -758,9 +756,8 @@ LLVOAvatar::LLVOAvatar(const LLUUID& id,
     //VTResume();  // VTune
     setHoverOffset(LLVector3(0.0, 0.0, 0.0));
 
-    // mVoiceVisualizer is created by the hud effects manager and uses the HUD Effects pipeline
-    const bool needsSendToSim = false; // currently, this HUD effect doesn't need to pack and unpack data to do its job
-    mVoiceVisualizer = ( LLVoiceVisualizer *)LLHUDManager::getInstance()->createViewerEffect( LLHUDObject::LL_HUD_EFFECT_VOICE_VISUALIZER, needsSendToSim );
+
+
 
     LL_DEBUGS("Avatar","Message") << "LLVOAvatar Constructor (0x" << this << ") id:" << mID << LL_ENDL;
     mPelvisp = NULL;
@@ -803,9 +800,7 @@ LLVOAvatar::LLVOAvatar(const LLUUID& id,
     mStepOnLand = true;
     mStepMaterial = 0;
 
-    mLipSyncActive = false;
-    mOohMorph      = NULL;
-    mAahMorph      = NULL;
+
 
     mCurrentGesticulationLevel = 0;
 
@@ -957,7 +952,7 @@ void LLVOAvatar::markDead()
         mNameText = NULL;
         sNumVisibleChatBubbles--;
     }
-    mVoiceVisualizer->markDead();
+
     LLLoadedCallbackEntry::cleanUpCallbackList(&mCallbackTextureList) ;
     LLViewerObject::markDead();
 }
@@ -1461,7 +1456,6 @@ void LLVOAvatar::initInstance()
 
     //VTPause();  // VTune
 
-    mVoiceVisualizer->setVoiceEnabled( LLVoiceClient::getInstance()->getVoiceEnabled( mID ) );
 
     mInitFlags |= 1<<1;
 }
@@ -2427,7 +2421,6 @@ bool LLVOAvatar::lineSegmentIntersect(const LLVector4a& start, const LLVector4a&
     }
 
 
-
     LLVector4a position;
     if (mNameText.notNull() && mNameText->lineSegmentIntersect(start, end, position))
     {
@@ -2546,26 +2539,6 @@ void LLVOAvatar::buildCharacter()
     // set head offset from pelvis
     //-------------------------------------------------------------------------
     updateHeadOffset();
-
-    //-------------------------------------------------------------------------
-    // initialize lip sync morph pointers
-    //-------------------------------------------------------------------------
-    mOohMorph     = getVisualParam( "Lipsync_Ooh" );
-    mAahMorph     = getVisualParam( "Lipsync_Aah" );
-
-    // If we don't have the Ooh morph, use the Kiss morph
-    if (!mOohMorph)
-    {
-        LL_WARNS() << "Missing 'Ooh' morph for lipsync, using fallback." << LL_ENDL;
-        mOohMorph = getVisualParam( "Express_Kiss" );
-    }
-
-    // If we don't have the Aah morph, use the Open Mouth morph
-    if (!mAahMorph)
-    {
-        LL_WARNS() << "Missing 'Aah' morph for lipsync, using fallback." << LL_ENDL;
-        mAahMorph = getVisualParam( "Express_Open_Mouth" );
-    }
 
     // Currently disabled for control avatars (animated objects), enabled for all others.
     if (mEnableDefaultMotions)
@@ -3152,7 +3125,7 @@ void LLVOAvatar::idleUpdate(LLAgent &agent, const F64 &time)
             sNumVisibleChatBubbles--;
         }
         deleteParticleSource();
-        mVoiceVisualizer->setVoiceEnabled(false);
+
 
         return;
     }
@@ -3271,18 +3244,15 @@ void LLVOAvatar::idleUpdate(LLAgent &agent, const F64 &time)
     mLastRootPos = mRoot->getWorldPosition();
     bool detailed_update = updateCharacter(agent);
 
-    static LLUICachedControl<bool> visualizers_in_calls("ShowVoiceVisualizersInCalls", false);
-    bool voice_enabled = (visualizers_in_calls || LLVoiceClient::getInstance()->inProximalChannel()) &&
-                         LLVoiceClient::getInstance()->getVoiceEnabled(mID);
 
     LLVector3 hud_name_pos = idleCalcNameTagPosition(mLastRootPos);
 
-    idleUpdateVoiceVisualizer(voice_enabled, hud_name_pos);
+
     idleUpdateMisc( detailed_update );
     idleUpdateAppearanceAnimation();
     if (detailed_update)
     {
-        idleUpdateLipSync( voice_enabled );
+
         idleUpdateLoadingEffect();
         idleUpdateBelowWater(); // wind effect uses this
         idleUpdateWindEffect();
@@ -3328,111 +3298,6 @@ void LLVOAvatar::idleUpdate(LLAgent &agent, const F64 &time)
     idleUpdateDebugInfo();
 }
 
-void LLVOAvatar::idleUpdateVoiceVisualizer(bool voice_enabled, const LLVector3 &position)
-{
-    bool render_visualizer = voice_enabled;
-
-    // Don't render the user's own voice visualizer when in mouselook, or when opening the mic is disabled.
-    if(isSelf())
-    {
-        static LLCachedControl<bool> voice_disable_mic(gSavedSettings, "VoiceDisableMic");
-        static LLCachedControl<bool> fsShowMyOwnVoiceVisualizer(gSavedSettings, "FSShowMyOwnVoiceVisualizer"); // <FS:PP> FIRE-21210: Don't show my voice visualizer
-        if (gAgentCamera.cameraMouselook() || voice_disable_mic || !fsShowMyOwnVoiceVisualizer)
-        {
-            render_visualizer = false;
-        }
-    }
-
-    // <FS:Ansariel> FIRE-1916: Hide voice dots over avatars
-    static LLCachedControl<bool> voiceVisualizerEnabled(gSavedSettings, "VoiceVisualizerEnabled");
-    if (!voiceVisualizerEnabled)
-    {
-        render_visualizer = false;
-    }
-    // </FS:Ansariel>
-
-    mVoiceVisualizer->setVoiceEnabled(render_visualizer);
-
-    if ( voice_enabled )
-    {
-        //----------------------------------------------------------------
-        // Only do gesture triggering for your own avatar, and only when you're in a proximal channel.
-        //----------------------------------------------------------------
-        if( isSelf() )
-        {
-            //----------------------------------------------------------------------------------------
-            // The following takes the voice signal and uses that to trigger gesticulations.
-            //----------------------------------------------------------------------------------------
-            int lastGesticulationLevel = mCurrentGesticulationLevel;
-            mCurrentGesticulationLevel = mVoiceVisualizer->getCurrentGesticulationLevel();
-
-            //---------------------------------------------------------------------------------------------------
-            // If "current gesticulation level" changes, we catch this, and trigger the new gesture
-            //---------------------------------------------------------------------------------------------------
-            if ( lastGesticulationLevel != mCurrentGesticulationLevel )
-            {
-                if ( mCurrentGesticulationLevel != VOICE_GESTICULATION_LEVEL_OFF )
-                {
-                    std::string gestureString = "unInitialized";
-                    if ( mCurrentGesticulationLevel == 0 )  { gestureString = "/voicelevel1";   }
-                    else    if ( mCurrentGesticulationLevel == 1 )  { gestureString = "/voicelevel2";   }
-                    else    if ( mCurrentGesticulationLevel == 2 )  { gestureString = "/voicelevel3";   }
-                    else    { LL_INFOS() << "oops - CurrentGesticulationLevel can be only 0, 1, or 2"  << LL_ENDL; }
-
-                    // this is the call that Karl S. created for triggering gestures from within the code.
-                    LLGestureMgr::instance().triggerAndReviseString( gestureString );
-                }
-            }
-
-        } //if( isSelf() )
-
-        //-----------------------------------------------------------------------------------------------------------------
-        // If the avatar is speaking, then the voice amplitude signal is passed to the voice visualizer.
-        // Also, here we trigger voice visualizer start and stop speaking, so it can animate the voice symbol.
-        //
-        // Notice the calls to "gAwayTimer.reset()". This resets the timer that determines how long the avatar has been
-        // "away", so that the avatar doesn't lapse into away-mode (and slump over) while the user is still talking.
-        //-----------------------------------------------------------------------------------------------------------------
-        if (LLVoiceClient::getInstance()->getIsSpeaking( mID ) && (!isInMuteList() || isSelf()))
-        {
-            if (!mVoiceVisualizer->getCurrentlySpeaking())
-            {
-                mVoiceVisualizer->setStartSpeaking();
-
-                //printf( "gAwayTimer.reset();\n" );
-            }
-
-            mVoiceVisualizer->setSpeakingAmplitude( LLVoiceClient::getInstance()->getCurrentPower( mID ) );
-
-            if( isSelf() )
-            {
-                gAgent.clearAFK();
-            }
-        }
-        else
-        {
-            if ( mVoiceVisualizer->getCurrentlySpeaking() )
-            {
-                mVoiceVisualizer->setStopSpeaking();
-
-                if ( mLipSyncActive )
-                {
-                    // <FS:Ansariel> [Legacy Bake]
-                    //if( mOohMorph ) mOohMorph->setWeight(mOohMorph->getMinWeight());
-                    //if( mAahMorph ) mAahMorph->setWeight(mAahMorph->getMinWeight());
-                    if( mOohMorph ) mOohMorph->setWeight(mOohMorph->getMinWeight(), false);
-                    if( mAahMorph ) mAahMorph->setWeight(mAahMorph->getMinWeight(), false);
-                    // </FS:Ansariel> [Legacy Bake]
-
-                    mLipSyncActive = false;
-                    LLCharacter::updateVisualParams();
-                    dirtyMesh();
-                }
-            }
-        }
-        mVoiceVisualizer->setPositionAgent(position);
-    }//if ( voiceEnabled )
-}
 
 static void override_bbox(LLDrawable* drawable, LLVector4a* extents)
 {
@@ -3681,44 +3546,6 @@ F32 LLVOAvatar::calcMorphAmount() const
     return morph_amt;
 }
 
-void LLVOAvatar::idleUpdateLipSync(bool voice_enabled)
-{
-    // Use the Lipsync_Ooh and Lipsync_Aah morphs for lip sync
-    if (voice_enabled
-        && mLastRezzedStatus > 0 // no point updating lip-sync for clouds
-        && LLVoiceVisualizer::getLipSyncEnabled()
-        && LLVoiceClient::getInstance()->getIsSpeaking(mID))
-    {
-        F32 ooh_morph_amount = 0.0f;
-        F32 aah_morph_amount = 0.0f;
-
-        mVoiceVisualizer->lipSyncOohAah( ooh_morph_amount, aah_morph_amount );
-
-        if (mOohMorph)
-        {
-            F32 ooh_weight = mOohMorph->getMinWeight()
-                + ooh_morph_amount * (mOohMorph->getMaxWeight() - mOohMorph->getMinWeight());
-
-            // <FS:Ansariel> [Legacy Bake]
-            //mOohMorph->setWeight( ooh_weight);
-            mOohMorph->setWeight( ooh_weight, false);
-        }
-
-        if (mAahMorph)
-        {
-            F32 aah_weight = mAahMorph->getMinWeight()
-                + aah_morph_amount * (mAahMorph->getMaxWeight() - mAahMorph->getMinWeight());
-
-            // <FS:Ansariel> [Legacy Bake]
-            //mAahMorph->setWeight( aah_weight);
-            mAahMorph->setWeight( aah_weight, false);
-        }
-
-        mLipSyncActive = true;
-        LLCharacter::updateVisualParams();
-        dirtyMesh();
-    }
-}
 
 void LLVOAvatar::idleUpdateLoadingEffect()
 {
@@ -4411,7 +4238,6 @@ void LLVOAvatar::idleUpdateNameTagText(bool new_name)
         LLStringFn::replace_ascii_controlchars(mTitle,LL_UNKNOWN_CHAR);
         new_name = true;
     }
-
 
 
     if (mVisibleChat || mVisibleTyping)
@@ -10378,7 +10204,6 @@ void LLVOAvatar::updateMeshTextures()
     }
 
 
-
 }
 
 // virtual
@@ -13425,7 +13250,6 @@ const std::string LLVOAvatar::getBakedStatusForPrintout() const
     }
     return line;
 }
-
 
 
 //virtual

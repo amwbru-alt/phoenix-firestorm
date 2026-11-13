@@ -146,7 +146,7 @@ void LLConversationItem::buildParticipantMenuOptions(menuentry_vec_t& items, U32
     {
         items.push_back(std::string("im"));
         items.push_back(std::string("offer_teleport"));
-        items.push_back(std::string("voice_call"));
+
         items.push_back(std::string("remove_friends"));
     }
     else
@@ -158,18 +158,13 @@ void LLConversationItem::buildParticipantMenuOptions(menuentry_vec_t& items, U32
 
         if (getType() != CONV_SESSION_1_ON_1)
         {
-            items.push_back(std::string("voice_call"));
+
         }
         else
         {
-            LLVoiceChannel* voice_channel = LLIMModel::getInstance() ? LLIMModel::getInstance()->getVoiceChannel(this->getUUID()) : NULL;
-            if(voice_channel != LLVoiceChannel::getCurrentVoiceChannel())
+
             {
-                items.push_back(std::string("voice_call"));
-            }
-            else
-            {
-                items.push_back(std::string("disconnect_from_voice"));
+
             }
         }
 
@@ -193,11 +188,8 @@ void LLConversationItem::buildParticipantMenuOptions(menuentry_vec_t& items, U32
             items.push_back(std::string("Moderator Options Separator"));
             items.push_back(std::string("Moderator Options"));
             items.push_back(std::string("AllowTextChat"));
-            items.push_back(std::string("moderate_voice_separator"));
-            items.push_back(std::string("ModerateVoiceMuteSelected"));
-            items.push_back(std::string("ModerateVoiceUnMuteSelected"));
-            items.push_back(std::string("ModerateVoiceMute"));
-            items.push_back(std::string("ModerateVoiceUnmute"));
+
+
         }
 
         if ((getType() != CONV_SESSION_1_ON_1) && mDisplayGroupBanOptions)
@@ -395,7 +387,7 @@ void LLConversationItemSession::setParticipantIsMuted(const LLUUID& participant_
     LLConversationItemParticipant* participant = findParticipant(participant_id);
     if (participant)
     {
-        participant->moderateVoice(is_muted);
+
     }
 }
 
@@ -441,13 +433,13 @@ void LLConversationItemSession::buildContextMenu(LLMenuGL& menu, U32 flags)
     if(this->getType() == CONV_SESSION_1_ON_1)
     {
         items.push_back(std::string("close_conversation"));
-        items.push_back(std::string("separator_disconnect_from_voice"));
+
         buildParticipantMenuOptions(items, flags);
     }
     else if(this->getType() == CONV_SESSION_GROUP)
     {
         items.push_back(std::string("close_conversation"));
-        addVoiceOptions(items);
+
         items.push_back(std::string("chat_history"));
         items.push_back(std::string("separator_chat_history"));
         items.push_back(std::string("group_profile"));
@@ -457,7 +449,7 @@ void LLConversationItemSession::buildContextMenu(LLMenuGL& menu, U32 flags)
     else if(this->getType() == CONV_SESSION_AD_HOC)
     {
         items.push_back(std::string("close_conversation"));
-        addVoiceOptions(items);
+
         items.push_back(std::string("chat_history"));
     }
     else if(this->getType() == CONV_SESSION_NEARBY)
@@ -468,19 +460,6 @@ void LLConversationItemSession::buildContextMenu(LLMenuGL& menu, U32 flags)
     hide_context_entries(menu, items, disabled_items);
 }
 
-void LLConversationItemSession::addVoiceOptions(menuentry_vec_t& items)
-{
-    LLVoiceChannel* voice_channel = LLIMModel::getInstance() ? LLIMModel::getInstance()->getVoiceChannel(this->getUUID()) : NULL;
-
-    if(voice_channel != LLVoiceChannel::getCurrentVoiceChannel())
-    {
-        items.push_back(std::string("open_voice_conversation"));
-    }
-    else
-    {
-        items.push_back(std::string("disconnect_from_voice"));
-    }
-}
 
 // The time of activity of a session is the time of the most recent activity, session and participants included
 const bool LLConversationItemSession::getTime(F64& time) const
@@ -629,7 +608,7 @@ LLConversationItemSession* LLConversationItemParticipant::getParentSession()
 
 void LLConversationItemParticipant::dumpDebugData()
 {
-    LL_INFOS() << "Merov debug : participant, uuid = " << mUUID << ", name = " << mName << ", display name = " << mDisplayName << ", muted = " << isVoiceMuted() << ", moderator = " << mIsModerator << LL_ENDL;
+
 }
 
 void LLConversationItemParticipant::setDisplayModeratorRole(bool displayRole)
@@ -641,10 +620,6 @@ void LLConversationItemParticipant::setDisplayModeratorRole(bool displayRole)
     }
 }
 
-bool LLConversationItemParticipant::isVoiceMuted()
-{
-    return mIsModeratorMuted || LLMuteList::getInstance()->isMuted(mUUID, LLMute::flagVoiceChat);
-}
 
 //
 // LLConversationSort

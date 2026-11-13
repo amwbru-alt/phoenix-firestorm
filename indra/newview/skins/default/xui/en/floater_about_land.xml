@@ -469,12 +469,8 @@ Only large parcels can be listed in search.
           </text>
       <check_box height="16" label="Everyone" layout="topleft" left_pad="0" name="all av sound check" top_delta="0" width="130" />
       <check_box height="16" label="Group" layout="topleft" left_pad="0" name="group av sound check" top_delta="0" width="70" />
-      <text type="string" length="1" follows="left|top" height="16" layout="topleft" left="10" mouse_opaque="false" name="Voice settings:" top_pad="10" width="100">
-                Voice:
-            </text>
-      <check_box height="16" label="Enable Voice" layout="topleft" left_pad="0" name="parcel_enable_voice_channel" width="300" />
-      <check_box enabled="false" height="16" label="Enable Voice (established by the Estate)" layout="topleft" left="110" name="parcel_enable_voice_channel_is_estate_disabled" top_delta="0" width="300" />
-      <check_box height="16" label="Restrict Voice to this parcel" layout="topleft" left="110" name="parcel_enable_voice_channel_local" width="300" />
+
+
       <text type="string" length="1" follows="left|top" height="16" layout="topleft" left="10" mouse_opaque="false" name="media" top_pad="10" width="100">
                 Media:
             </text>

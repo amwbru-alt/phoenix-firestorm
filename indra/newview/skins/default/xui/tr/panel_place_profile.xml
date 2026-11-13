@@ -62,8 +62,8 @@
 					<panel name="parcel_characteristics_panel">
 						<text name="rating_label" value="Seviye:"/>
 						<text name="rating_value" value="bilinmiyor"/>
-						<text name="voice_label" value="Sesli:"/>
-						<text name="voice_value" value="Açık"/>
+
+
 						<text name="fly_label" value="Uçma:"/>
 						<text name="fly_value" value="Açık"/>
 						<text name="push_label" value="İtme:"/>

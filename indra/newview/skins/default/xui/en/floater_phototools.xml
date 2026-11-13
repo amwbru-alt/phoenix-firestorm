@@ -1878,22 +1878,7 @@
 				 name="FocusPointRenderToggle"
 				 tool_tip="Toggle the focus point crosshair display. The crosshair is yellow when free and red when locked."
 				 width="19"/>
-				<check_box
-				 follows="top|left"
-				 layout="topleft"
-				 left="3"
-				 top_pad="0"
-				 height="16"
-				 label="Show the Current FOV of Viewer Screen"
-				 tool_tip="Displays an on-screen overlay showing the current vertical Field of View (FOV) of the camera, helping you visualize how different FOV settings affect composition and perspective. A smaller FOV simulates a longer focal length, similar to zooming in with a telephoto lens—for example, a standard 50mm lens corresponds to an vertical FOV of approximately 27°, creating a narrower view with background compression. A larger FOV mimics wide-angle lenses, capturing more of the scene while exaggerating spatial relationships. You can adjust the FOV using the zoom slider below to fine-tune your framing. For more details on the relationship between vertical FOV and focal length, refer to this table."
-				 name="MIC_Show_FOV">
-					<check_box.on_check
-					 function="Advanced.CheckHUDInfo"
-					 parameter="fov"/>
-					<check_box.check_button.commit_callback
-					 function="Advanced.ToggleHUDInfo"
-					 parameter="fov"/>
-				</check_box>
+
 			</panel>
 
 			<panel

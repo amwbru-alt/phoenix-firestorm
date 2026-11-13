@@ -924,10 +924,6 @@ F32 LLViewerRegion::getWaterHeight() const
     return mImpl->mLandp->getWaterHeight();
 }
 
-bool LLViewerRegion::isVoiceEnabled() const
-{
-    return getRegionFlag(REGION_FLAGS_ALLOW_VOICE);
-}
 
 void LLViewerRegion::setRegionFlags(U64 flags)
 {
@@ -3560,10 +3556,10 @@ void LLViewerRegionImpl::buildCapabilityNames(LLSD& capabilityNames)
     capabilityNames.append("ObjectMediaNavigate");
     capabilityNames.append("ObjectNavMeshProperties");
     capabilityNames.append("ParcelPropertiesUpdate");
-    capabilityNames.append("ParcelVoiceInfoRequest");
+
     capabilityNames.append("ProductInfoRequest");
-    capabilityNames.append("ProvisionVoiceAccountRequest");
-    capabilityNames.append("VoiceSignalingRequest");
+
+
     capabilityNames.append("ReadOfflineMsgs"); // Requires to respond reliably: AcceptFriendship, AcceptGroupInvite, DeclineFriendship, DeclineGroupInvite
     capabilityNames.append("RegionObjects");
     capabilityNames.append("RegionSchedule");
@@ -3581,7 +3577,7 @@ void LLViewerRegionImpl::buildCapabilityNames(LLSD& capabilityNames)
     capabilityNames.append("SetDisplayName");
     capabilityNames.append("SimConsoleAsync");
     capabilityNames.append("SimulatorFeatures");
-    capabilityNames.append("SpatialVoiceModerationRequest");
+
     capabilityNames.append("StartGroupProposal");
     capabilityNames.append("TerrainNavMeshProperties");
     capabilityNames.append("TextureStats");
@@ -4115,15 +4111,6 @@ std::string LLViewerRegion::getSimHostName()
     return std::string("...");
 }
 
-
-bool LLViewerRegion::isRegionWebRTCEnabled()
-{
-    if (mSimulatorFeaturesReceived && mSimulatorFeatures.has("VoiceServerType"))
-    {
-        return mSimulatorFeatures["VoiceServerType"].asString() == "webrtc";
-    }
-    return false;
-}
 
 void LLViewerRegion::applyCacheMiscExtras(LLViewerObject* obj)
 {

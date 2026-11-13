@@ -368,15 +368,8 @@
     <color
      name="AvatarListItemIconOfflineColor"
      reference="SL-MidDkGray_50" />
-    <color
-     name="AvatarListItemIconVoiceInvitedColor"
-     reference="AvatarListItemIconOfflineColor" />
-    <color
-     name="AvatarListItemIconVoiceJoinedColor"
-     reference="AvatarListItemIconOnlineColor" />
-    <color
-     name="AvatarListItemIconVoiceLeftColor"
-     reference="AvatarListItemIconOfflineColor" />
+
+
     <color
      name="BadgeImageColor"
      value="0.44 0.69 0.56 1.0" />
@@ -1123,15 +1116,8 @@
     <color
      name="ChatNameObjectColor"
      reference="AccentColor" />
-  <color
-      name="VoiceConnectedColor"
-      reference="Green" />
-  <color
-      name="VoiceErrorColor"
-      reference="Red" />
-  <color
-      name="VoiceNotConnectedColor"
-      reference="Yellow" />
+
+
   <color
       name="FSChatHistoryBackground"
       reference="Transparent" />

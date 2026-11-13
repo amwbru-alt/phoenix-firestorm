@@ -200,7 +200,6 @@ for female avatars.
     </panel>
 
 		
-		
       <panel
        name="physics_butt_tab_holder"
        title="Butt Bounce"
@@ -239,7 +238,6 @@ for female avatars.
     </panel>
 
 		
-		
       <panel
        name="physics_butt_leftright_tab_holder"
        title="Butt Sway"
@@ -276,7 +274,6 @@ for female avatars.
 		</accordion_tab>
     </accordion>
     </panel>
-
 		
 		
       <panel

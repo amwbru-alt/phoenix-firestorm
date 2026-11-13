@@ -185,8 +185,7 @@
 				tool_tip="Ümumiyyətlə, sahənin dərinliyi hətta yuxarıda qeyd qutusu qoyulsa belə, su altında qeyri-aktiv edilir. Bu parametr bu məhdudiyyəti aradan qaldıracaq. Nəzərə alın ki, su altında olarkən onların üzərinə klikləməklə kameranı əl ilə istədiyiniz obyektlərə yönəltməlisiniz. " />
 				<check_box label="Diqqətləşdirmə Nöqtəsi Göstəricini izləyir" name="FSFocusPointFollowsPointer"
 				tool_tip="DoF diqqətləşdirmə siçan kursorunu izləyəcək, bu davranış uçan kameradan istifadə edərkən müşahidə olunanlara uyğundur. Sahənin Dərinliyi diqqətləşdirmə kilidi ilə istifadə edin"/>
-				<check_box name="MIC_Show_FOV" label="Ekranda Baxış Sahəsini (FOV) göstər"
-				tool_tip="Bu, sizə Kameranın FOV-unu göstərəcək. İzləyicinin içərisində siz real həyatda olduğu kimi obyektiv uzunluğunu dəyişə bilərsiniz. FOV dəyəri nə qədər kiçik olsa, kameranın obyektivi də bir o qədər uzun olar. 50 mm obyektiv 27,0 dərəcə FOV-ə malikdir. Bucağı tənzimləmək üçün Baxış Bucağı ilə obyektiv fokus uzunluğu (mm) arasındakı əlaqəni göstərən cədvəl üçün http://en.wikipedia.org/wiki/Angle_of_view baxmaq üçün aşağıdakı Böyütmə çubuğundan istifadə edin. !"/>
+
 			</panel>
 
 			<panel name="P_Zoom">

@@ -177,9 +177,7 @@ Scegli solo un oggetto e riprova.
 		Salva tutte le modifiche alle parti del corpo/abiti?
 		<usetemplate canceltext="Annulla" name="yesnocancelbuttons" notext="Non salvare" yestext="Salva tutto"/>
 	</notification>
-	<notification name="FriendsAndGroupsOnly">
-		Chi non è tuo amico non saprà che hai scelto di ignorare le loro chiamate e IM.
-	</notification>
+
 	<notification name="FavoritesOnLogin">
 		Nota: Se attivi questa opzione, chiunque usa questo computer può vedere l&apos;elenco di luoghi preferiti.
 	</notification>
@@ -2232,9 +2230,7 @@ Pubblica questo annuncio adesso per [AMOUNT]L$?
 		La classificazione di questa regione è stata modificata.
 Prima che questa modifica venga integrata nella mappa potrebbe essere necessario un po&apos; di tempo.
 	</notification>
-	<notification label="Versione voce non compatibile" name="VoiceVersionMismatch">
-		Questa versione di [APP_NAME] non è compatibile con la funzionalità di chat vocale in questa regione. Affinché la chat vocale funzioni correttamente, dovrai aggiornare [APP_NAME].
-	</notification>
+
 	<notification label="Impossibile comprare oggetti" name="BuyObjectOneOwner">
 		Impossibile comprare oggetti da proprietari diversi nello stesso momento.
 Seleziona solo un oggetto e riprova.
@@ -2929,9 +2925,7 @@ Qui non puoi volare.
 	<notification name="PushRestricted">
 		Questa zona non consente le spinte. Non puoi spingere gli altri a meno che tu non sia il proprietario del terreno.
 	</notification>
-	<notification name="NoVoice">
-		Questa zona ha la chat vocale disattivata. Non puoi sentire nessuno parlare.
-	</notification>
+
 	<notification name="NoBuild">
 		In questa zona è proibita la costruzione. Qui non puoi costruire né posare oggetti.
 	</notification>
@@ -3373,15 +3367,7 @@ Gli oggetti che costruisci qui verranno eliminati dopo che te ne sei andato, per
 	<notification name="MaxListSelectMessage">
 		È possibile selezionare solo fino a [MAX_SELECT] oggetti da questa lista.
 	</notification>
-	<notification name="VoiceInviteP2P">
-		[NAME] ti sta invitando ad una chiamata in chat vocale.
-Clicca su Accetta per unirti alla chiamata oppure su Rifiuta per declinare l&apos;invito. Clicca su Blocca per bloccare questo chiamante.
-		<form name="form">
-			<button name="Accept" text="Accetta"/>
-			<button name="Decline" text="Rifiuta"/>
-			<button name="Mute" text="Blocca"/>
-		</form>
-	</notification>
+
 	<notification name="AutoUnmuteByIM">
 		[NAME] ha ricevuto un IM ed è stato automaticamente sbloccato.
 	</notification>
@@ -3391,83 +3377,8 @@ Clicca su Accetta per unirti alla chiamata oppure su Rifiuta per declinare l&apo
 	<notification name="AutoUnmuteByInventory">
 		[NAME] ha ricevuto un&apos;offerta di inventario ed è stato automaticamente sbloccato.
 	</notification>
-	<notification name="VoiceInviteGroup">
-		[NAME] si è aggiunto alla chiamata in chat vocale con il gruppo [GROUP].
-Clicca su Accetta per unirti alla chiamata oppure su Rifiuta per declinare l&apos;invito. Clicca su Blocca per bloccare questo chiamante.
-		<form name="form">
-			<button name="Accept" text="Accetta"/>
-			<button name="Decline" text="Rifiuta"/>
-			<button name="Mute" text="Blocca"/>
-		</form>
-	</notification>
-	<notification name="VoiceInviteAdHoc">
-		[NAME] si è aggiunto alla chiamata in chat vocale con una conferenza.
-Clicca su Accetta per unirti alla chiamata oppure su Rifiuta per declinare l&apos;invito. Clicca su Blocca per bloccare questo chiamante.
-		<form name="form">
-			<button name="Accept" text="Accetta"/>
-			<button name="Decline" text="Rifiuta"/>
-			<button name="Mute" text="Blocca"/>
-		</form>
-	</notification>
-	<notification name="InviteAdHoc">
-		[NAME] ti sta invitando ad una conferenza in chat.
-Clicca su Accetta per unirti alla chat oppure su Rifiuta per declinare l&apos;invito. Clicca su Blocca per bloccare questo chiamante.
-		<form name="form">
-			<button name="Accept" text="Accetta"/>
-			<button name="Decline" text="Rifiuta"/>
-			<button name="Mute" text="Blocca"/>
-		</form>
-	</notification>
-	<notification name="VoiceChannelFull">
-		La chiamata vocale a cui stai cercando di unirti, [VOICE_CHANNEL_NAME], ha raggiunto la capacità massima. Si prega di riprovare più tardi.
-	</notification>
-	<notification name="ProximalVoiceChannelFull">
-		Siamo spiacenti. Questa area ha raggiunto la capacità massima per le chiamate voce. Si prega di provare ad usare la voce in un&apos;altra area.
-	</notification>
-	<notification name="VoiceChannelDisconnected">
-		Sei stato scollegato da [VOICE_CHANNEL_NAME].  Verrai ora ricollegato alla chat vocale nei dintorni.
-	</notification>
-	<notification name="VoiceChannelDisconnectedP2P">
-		[VOICE_CHANNEL_NAME] ha chiuso la chiamata.  Verrai ora ricollegato alla chat vocale nei dintorni.
-	</notification>
-	<notification name="P2PCallDeclined">
-		[VOICE_CHANNEL_NAME] ha rifiutato la tua chiamata.  Verrai ora ricollegato alla chat vocale nei dintorni.
-	</notification>
-	<notification name="P2PCallNoAnswer">
-		[VOICE_CHANNEL_NAME] non è disponibile per la tua chiamata.  Verrai ora ricollegato alla chat vocale nei dintorni.
-	</notification>
-	<notification name="VoiceChannelJoinFailed">
-		Collegamento a [VOICE_CHANNEL_NAME] non riuscito, riprova più tardi. Verrai ora ricollegato alla chat vocale nei dintorni.
-	</notification>
-	<notification name="VoiceLoginRetry">
-		Stiamo creando una canale voce per te. Questo può richiedere fino a un minuto.
-	</notification>
-	<notification name="VoiceEffectsExpired">
-		Almeno una delle manipolazioni vocali alle quali sei iscritto è scaduta. 
-[[URL] Fai clic qui] per rinnovare l&apos;abbonamento. 
 
-Se sei un utente Premium, [[PREMIUM_URL] clic qui] per ricevere la tua offerta di manipolazioni vocali.
-	</notification>
-	<notification name="VoiceEffectsExpiredInUse">
-		Poiché la manipolazione vocale attiva è scaduta, sono state applicate le tue impostazioni normali. 
-[[URL] Fai clic qui] per rinnovare l&apos;abbonamento. 
 
-Se sei un utente Premium, [[PREMIUM_URL] clic qui] per ricevere la tua offerta di manipolazioni vocali.
-	</notification>
-	<notification name="VoiceEffectsWillExpire">Almeno una delle tue manipolazioni vocali scadrà tra meno di [INTERVAL] giorni. 
-[[URL] Fai clic qui] per rinnovare l'abbonamento. 
-
-Se sei un membro Premium, [[PREMIUM_URL] fai clic qui] per ricevere in regalo la manipolazione vocale.
-		<usetemplate ignoretext="Avvisami quando scade la trasformazione vocale" name="okignore" />
-	</notification>
-	<notification name="VoiceEffectsNew">
-		Sono disponibili nuove manipolazioni vocali.
-	</notification>
-	<notification name="VoiceEffectsNotSupported">
-		La trasformazione vocale non è supportata da questo viewer. 
-Per maggiori informazioni su altri strumenti di trasformazione vocale, consulta [[FAQ_URL] questo articolo].
-		<usetemplate ignoretext="Avvisami se la trasformazione vocale non è supportata" name="okignore" />
-	</notification>
 	<notification name="Cannot enter parcel: not a group member">
 		Soltanto i membri di un determinato gruppo possono visitare questa zona.
 	</notification>
@@ -3477,12 +3388,8 @@ Per maggiori informazioni su altri strumenti di trasformazione vocale, consulta 
 	<notification name="Cannot enter parcel: not on access list">
 		Non puoi entrare nel terreno, non fai parte della lista di accesso.
 	</notification>
-	<notification name="VoiceNotAllowed">
-		Non hai il permesso di collegarti ad una chat vocale con [VOICE_CHANNEL_NAME].
-	</notification>
-	<notification name="VoiceCallGenericError">
-		Si è verificato un errore durante il tentativo di collegarti ad una chat vocale con [VOICE_CHANNEL_NAME]. Riprova più tardi.
-	</notification>
+
+
 	<notification name="UnsupportedCommandSLURL">
 		Lo SLurl su cui hai cliccato non è valido.
 	</notification>
@@ -3537,9 +3444,7 @@ Per sicurezza, verranno bloccati per alcuni secondi.
 	<notification name="TextChatIsMutedByModerator">
 		La tua chat di testo è stata interrotta dal moderatore.
 	</notification>
-	<notification name="VoiceIsMutedByModerator">
-		La tua voce è stata interrotta dal moderatore.
-	</notification>
+
 	<notification name="FailedToGetBenefits">
 		Purtroppo non siamo stati in grado di ottenere informazioni utili per questa sessione. Questo non dovrebbe accadere in un normale ambiente di produzione. Si prega di contattare il supporto. Questa sessione non funzionerà correttamente, si consiglia di riavviare.
 	</notification>
@@ -3656,29 +3561,8 @@ L&apos;avatar &apos;[NAME]&apos; ha lasciato la modalità modifica aspetto.
 		Ci sono problemi di connessione tramite [PROTOCOL] &lt;nolink&gt;[HOSTID]&lt;/nolink&gt;.
 Consigliamo di controllare le impostazioni di rete e del firewall.
 	</notification>
-	<notification name="NoVoiceConnect">
-		Problemi di connessione al server vocale a:
 
-&lt;nolink&gt;[HOSTID]&lt;/nolink&gt;
 
-Le porte che devono essere abilitate per la voce sono:
-:TCP: 80, 443
-:UDP: 3478, 3479, 5060, 5062, 6250, 12000-32000
-
-Consigliamo di controllare le impostazioni di rete e del firewall.
-Disabilitare tutte le funzioni SIP ALG sul router.
-
-Le comunicazioni tramite voce non saranno disponibili.
-https://wiki.firestormviewer.org/fs_voice
-		<usetemplate ignoretext="Avvisami quando non è possibile la connessione con il server voce" name="okignore"/>
-	</notification>
-	<notification name="NoVoiceConnect-GIAB">
-		Problemi di connessione al server vocale.
-
-Le comunicazioni tramite voce non saranno disponibili.
-Consigliamo di controllare le impostazioni di rete e del firewall.
-[https://wiki.firestormviewer.org/fs_voice]
-	</notification>
 	<notification name="AvatarRezLeftNotification">
 		( presente da [EXISTENCE] secondi )
 Avatar &apos;[NAME]&apos; è partito completamente caricato.
@@ -3744,31 +3628,15 @@ Hai aggiornato localmente una texture [RESOLUTION] completata per &apos;[BODYREG
 		<usetemplate ignoretext="Incolla: hai applicato una texture con permessi limitati" name="notifyignore"/>
 		<usetemplate name="okbutton" yestext="Ok"/>
 	</notification>
-	<notification name="ConfirmLeaveCall">
-		Uscire dalla chiamata?
-		<usetemplate ignoretext="Conferma prima di uscire dalla chiamata" name="okcancelignore" notext="No" yestext="Sì"/>
-	</notification>
-	<notification name="ConfirmMuteAll">
-		Hai scelto di disattivare l&apos;audio di tutti i partecipanti alla chiamata di gruppo.
-In questo modo verrà disattivato l&apos;audio anche di tutti gli utenti che si
-uniscono alla chiamata in un secondo momento, anche dopo che tu ti fossi scollegato.
 
-Disattiva audio di tutti?
-		<usetemplate ignoretext="Conferma prima di disattivare l&apos;audio di tutti i partecipanti alla chiamata di gruppo" name="okcancelignore" notext="Annulla" />
-	</notification>
+
 	<notification label="Chat" name="HintChat">
 		Per partecipare alla conversazione, digita nel campo chat in basso.
 	</notification>
 	<notification label="Alzati" name="HintSit">
 		Per alzarti ed uscire dalla posizione seduta, clicca sul pulsante Alzati.
 	</notification>
-	<notification label="Parla" name="HintSpeak">
-		Clicca sul pulsante Parla per attivare o disattivare il microfono.
 
-Clicca sul tasto freccia su per visualizzare il pannello di controllo voce.
-
-Se nascondi il tasto Parla viene disattivata la funzione voce.
-	</notification>
 	<notification label="Esplora il mondo" name="HintDestinationGuide">
 		La Guida alle destinazioni contiene migliaia di nuovi luoghi da scoprire. Seleziona una destinazione e scegli Teleport per iniziare a esplorare.
 	</notification>
@@ -3874,10 +3742,7 @@ Confermare l&apos;uscita?
 		La visualizzazione della mappa del mondo è disponibile solo in modalità Avanzata. Uscire e cambiare la modalità? Sulla schermata di accesso si può selezionare la modalità.
 		<usetemplate name="okcancelbuttons" notext="Non uscire" yestext="Esci"/>
 	</notification>
-	<notification label="" name="NoVoiceCall">
-		Le chiamate Voce sono disponibili solo in modalità Avanzata. Eseguire il logout e cambiare la modalità?
-		<usetemplate name="okcancelbuttons" notext="Non uscire" yestext="Esci"/>
-	</notification>
+
 	<notification label="" name="NoAvatarShare">
 		La condivisione è disponibile solo in modalità Avanzata. Eseguire il logout e cambiare la modalità?
 		<usetemplate name="okcancelbuttons" notext="Non uscire" yestext="Esci"/>

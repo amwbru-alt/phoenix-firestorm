@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "llmutelist.h"
 
 #include "llpanelblockedlist.h"
 

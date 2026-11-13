@@ -42,7 +42,6 @@
 #include "llfloaterreg.h"
 #include "llviewercontrol.h"    // for gSavedSettings
 #include "llviewermenu.h"       // for gMenuHolder
-#include "llvoiceclient.h"
 // [RLVa:KB] - Checked: RLVa-2.0.3
 #include "rlvactions.h"
 // [/RLVa:KB]
@@ -578,10 +577,6 @@ bool LLGroupList::onContextMenuItemClick(const LLSD& userdata)
     {
         LLGroupActions::startIM(selected_group);
     }
-    else if (action == "call")
-    {
-        LLGroupActions::startCall(selected_group);
-    }
     else if (action == "activate")
     {
         LLGroupActions::activate(selected_group);
@@ -625,8 +620,7 @@ bool LLGroupList::onContextMenuItemEnable(const LLSD& userdata)
 //  if (userdata.asString() == "activate")
 //      return gAgent.getGroupID() != selected_group_id;
 
-    if (userdata.asString() == "call")
-      return real_group_selected && LLVoiceClient::getInstance()->voiceEnabled() && LLVoiceClient::getInstance()->isVoiceWorking();
+
 
     // <FS:PP> Group favorites / pinning
     if (userdata.asString() == "favorite" || userdata.asString() == "unfavorite")

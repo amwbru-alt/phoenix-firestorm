@@ -224,10 +224,7 @@ La inicialización del mercado ha fallado por un error del sistema o de la red. 
 		¿Guardar todos los cambios en la ropa y partes del cuerpo?
 		<usetemplate canceltext="Cancelar" name="yesnocancelbuttons" notext="No guardarlos" yestext="Guardarlos todos"/>
 	</notification>
-	<notification name="FriendsAndGroupsOnly">
-		Quienes no sean tus amigos no sabrán que has elegido ignorar sus llamadas y mensajes instantáneos.
-		<usetemplate name="okbutton" yestext="Aceptar"/>
-	</notification>
+
 	<notification name="FavoritesOnLogin">
 		Nota: Al activar esta opción, cualquiera que utilice este ordenador podrá ver tu lista de lugares favoritos.
 		<usetemplate name="okbutton" yestext="Aceptar"/>
@@ -2231,9 +2228,7 @@ Se cambiarán miles de regiones, y se provocará un colapso en el espacio del se
 Puede que lleve algún tiempo hasta que el cambio se vea reflejado en el mapa.
 		<usetemplate name="okbutton" yestext="Aceptar"/>
 	</notification>
-	<notification label="Voice Version Mismatch" name="VoiceVersionMismatch">
-		Esta versión de [APP_NAME] no es compatible con la caracterítica de voz de esta región. Para que el chat de voz funcione correctamente debes actualizar [APP_NAME].
-	</notification>
+
 	<notification label="No se pudo comprar los objetos" name="BuyObjectOneOwner">
 		No se pueden comprar a la vez objetos de propietarios diferentes.
 Por favor, selecciona sólo un objeto y vuelve a intentarlo.
@@ -2880,9 +2875,7 @@ Aquí no puedes volar.
 	<notification name="PushRestricted">
 		Este terreno tiene desactivada la capacidad de empujar. No puedes hacerlo a menos que seas el propetario del terreno.
 	</notification>
-	<notification name="NoVoice">
-		Este terreno tiene desactivado el chat de voz. No podrás oír hablar a nadie.
-	</notification>
+
 	<notification name="NoBuild">
 		Este terreno tiene desactivada la capacidad para construir. Aquí no puedes ni construir ni crear objetos.
 	</notification>
@@ -3323,15 +3316,7 @@ Los objetos que construyas aquí serán eliminados cuando la abandones; por tant
 	<notification name="MaxListSelectMessage">
 		Puedes seleccionar un máximo de [MAX_SELECT] items de esta lista.
 	</notification>
-	<notification name="VoiceInviteP2P">
-		[NAME] te está invitando a un chat de voz.
-Pulsa Aceptar o Rehusar para contestar o no la llamada. Pulsa Bloquear para bloquear al que llama.
-		<form name="form">
-			<button name="Accept" text="Aceptar"/>
-			<button name="Decline" text="Rehusar"/>
-			<button name="Mute" text="Bloquear"/>
-		</form>
-	</notification>
+
 	<notification name="AutoUnmuteByIM">
 		[NAME] ha dejado automáticamente de estar bloqueado al enviarle un mensaje instantáneo.
 	</notification>
@@ -3341,73 +3326,8 @@ Pulsa Aceptar o Rehusar para contestar o no la llamada. Pulsa Bloquear para bloq
 	<notification name="AutoUnmuteByInventory">
 		[NAME] ha dejado automáticamente de estar bloqueado al ofrecerle inventario.
 	</notification>
-	<notification name="VoiceInviteGroup">
-		[NAME] ha empezado un chat de voz con el grupo [GROUP].
-Pulsa Aceptar o Rehusar para coger o no la llamada. Pulsa Bloquear para ignorar al que llama.
-		<form name="form">
-			<button name="Accept" text="Aceptar"/>
-			<button name="Decline" text="Rehusar"/>
-			<button name="Mute" text="Bloquear"/>
-		</form>
-	</notification>
-	<notification name="VoiceInviteAdHoc">
-		[NAME] ha empezado un chat de voz en multiconferencia.
-Pulsa Aceptar o Rehusar para coger o no la llamada. Pulsa Ignorar para ignorar al que llama.
-		<form name="form">
-			<button name="Accept" text="Aceptar"/>
-			<button name="Decline" text="Rehusar"/>
-			<button name="Mute" text="Bloquear"/>
-		</form>
-	</notification>
-	<notification name="InviteAdHoc">
-		NAME] te está invitando a un chat en multiconferencia.
-Pulsa Aceptar o Rehusar para coger o no la llamada. Pulsa Bloquear para ignorar al que llama.
-		<form name="form">
-			<button name="Accept" text="Aceptar"/>
-			<button name="Decline" text="Rehusar"/>
-			<button name="Mute" text="Bloquear"/>
-		</form>
-	</notification>
-	<notification name="VoiceChannelFull">
-		El chat de voz al que estás intentando entrar, [VOICE_CHANNEL_NAME], ha llegado a su capacidad máxima. Por favor, vuelve a intentarlo más tarde.
-	</notification>
-	<notification name="ProximalVoiceChannelFull">
-		Lo sentimos. Este área ha llegado a su capacidad máxima de conversaciones por voz. Por favor, intenta usar la voz en otra zona.
-	</notification>
-	<notification name="VoiceChannelDisconnected">
-		Has sido desconectado de [VOICE_CHANNEL_NAME]. Vas a ser reconectado al chat de voz.
-	</notification>
-	<notification name="VoiceChannelDisconnectedP2P">
-		[VOICE_CHANNEL_NAME] ha colgado la llamada. Vas a ser reconectado al chat de voz.
-	</notification>
-	<notification name="P2PCallDeclined">
-		[VOICE_CHANNEL_NAME] ha rehusado tu llamada. Vas a ser reconectado al chat de voz.
-	</notification>
-	<notification name="P2PCallNoAnswer">
-		[VOICE_CHANNEL_NAME] no está disponible para coger tu llamada. Vas a ser reconectado al chat de voz.
-	</notification>
-	<notification name="VoiceChannelJoinFailed">
-		Fallo al conectar a [VOICE_CHANNEL_NAME]; por favor, inténtalo más tarde. Vas a ser reconectado al chat de voz.
-	</notification>
-	<notification name="VoiceEffectsExpired">
-		Una o más de las transformaciones de voz a las que estás suscrito han caducado. 
-[[URL] Pulsa aquí] para renovar la suscripción. 
 
-Si eres un miembro Premium [[PREMIUM_URL] pulsa aquí] para recibir tu beneficio de transformación de voz.
-	</notification>
-	<notification name="VoiceEffectsExpiredInUse">
-		La transformación de voz activa ha caducado y se ha aplicado tu configuración de voz normal. 
-[[URL] Pulsa aquí] para renovar la suscripción. 
 
-Si eres un miembro Premium [[PREMIUM_URL] pulsa aquí] para recibir tu beneficio de transformación de voz.
-	</notification>
-	<notification name="VoiceEffectsWillExpire">Una o más de tus transformaciones de voz caducarán en menos de [INTERVAL] días. 
-[[URL] Pulsa aquí] para renovar la suscripción 
-
-Si eres un miembro Premium [[PREMIUM_URL] pulsa aquí] para recibir tu beneficio de transformación de voz.</notification>
-	<notification name="VoiceEffectsNew">
-		Están disponibles nuevos filtros de voz.
-	</notification>
 	<notification name="Cannot enter parcel: not a group member">
 		Sólo los miembros de un grupo determinado pueden visitar esta zona.
 	</notification>
@@ -3417,12 +3337,8 @@ Si eres un miembro Premium [[PREMIUM_URL] pulsa aquí] para recibir tu beneficio
 	<notification name="Cannot enter parcel: not on access list">
 		No puedes entrar en esta parcela, no estás en la lista de acceso.
 	</notification>
-	<notification name="VoiceNotAllowed">
-		No tienes permiso para conectarte al chat de voz de [VOICE_CHANNEL_NAME].
-	</notification>
-	<notification name="VoiceCallGenericError">
-		Se ha producido un error al intentar conectarte al [VOICE_CHANNEL_NAME]. Por favor, inténtalo más tarde.
-	</notification>
+
+
 	<notification name="UnsupportedCommandSLURL">
 		No se admite el formato de la SLurl que has pulsado.
 	</notification>
@@ -3476,10 +3392,7 @@ Por tu seguridad, serán bloqueadas durante unos segundos.
 		Un moderador ha silenciado tu chat de texto.
 		<usetemplate name="okbutton" yestext="Aceptar"/>
 	</notification>
-	<notification name="VoiceIsMutedByModerator">
-		Un moderador ha silenciado tu voz.
-		<usetemplate name="okbutton" yestext="Aceptar"/>
-	</notification>
+
 	<notification name="FailedToGetBenefits">
 		Desafortunadamente no fuimos capaces de obtener información sobre los beneficios para esta sesión. Esto no debería suceder en un espacio de producción normal. Por favor contacte con soporte. Esta sesión no funcionara normalmente y recomendamos reiniciar.
 		<usetemplate name="okbutton" yestext="OK"/>
@@ -3597,25 +3510,8 @@ El avatar &apos;[NAME]&apos; salió del modo de edición de apariencia.
 Comprueba la configuración de la red y del servidor de seguridad.
 		<usetemplate name="okbutton" yestext="Aceptar"/>
 	</notification>
-	<notification name="NoVoiceConnect">
-		No se pudo establecer una conexión con el servidor de voz: 
 
-&lt;nolink&gt;[HOSTID]&lt;/nolink&gt;
 
-Los puertos que deben estar activos para el servicio de voz son: 
-:TCP:  80, 443 
-:UDP: 3478, 3479, 5060, 5062, 6250, 12000-32000 
-
-Comprueba la configuración de la red y del servidor de seguridad. 
-Desactiva las funciones SIP ALG de tu router. 
-
-No podrás establecer comunicaciones de voz.
-		<usetemplate ignoretext="Avísame cuando el visor no pueda conectar al servidor de voz" name="okignore" yestext="Aceptar"/>
-	</notification>
-	<notification name="NoVoiceConnect-GIAB">
-		Tenemos problemas de conexión con tu servidor de voz: No podrás establecer comunicaciones de voz. Comprueba la configuración de la red y del servidor de seguridad.
-		<usetemplate name="okbutton" yestext="Aceptar"/>
-	</notification>
 	<notification name="AvatarRezLeftNotification">
 		( [EXISTENCE] segundos vivo )
 El avatar &apos;[NAME]&apos; ya estaba totalmente cargado al salir.
@@ -3636,30 +3532,15 @@ Has actualizado de manera local una textura obtenida mediante bake de [RESOLUTIO
 		No podemos mostrar una previsualización de esta textura porque no es copiable y/o no es transferible.
 		<usetemplate ignoretext="Adviérteme que la previsualización no está disponible para las texturas no copiables y/o no transferibles" name="okignore" yestext="Aceptar"/>
 	</notification>
-	<notification name="ConfirmLeaveCall">
-		¿Estás seguro de que deseas salir de esta multiconferencia?
-		<usetemplate ignoretext="Confirma antes de salir de la llamada" name="okcancelignore" notext="No" yestext="Sí"/>
-	</notification>
-	<notification name="ConfirmMuteAll">
-		Has seleccionado silenciar a todos los participantes en una multiconferencia.
-Si lo haces, todos los residentes que se unan posteriormente a la llamada también serán silenciados, incluso cuando abandones la conferencia.
 
-¿Deseas silenciar a todos?
-		<usetemplate ignoretext="Confirma que deseas silenciar a todos los participantes en una multiconferencia." name="okcancelignore" notext="Cancelar" yestext="Aceptar"/>
-	</notification>
+
 	<notification label="Chat" name="HintChat">
 		Para unirte a la conversación, escribe en el campo de chat que aparece a continuación.
 	</notification>
 	<notification label="Levantarme" name="HintSit">
 		Para levantarte y salir de la posición de sentado, haz clic en el botón Levantarme.
 	</notification>
-	<notification label="Hablar" name="HintSpeak">
-		Pulsa en el botón Hablar para conectar y desconectar el micrófono.
 
-Pulsa en el cursor arriba para ver el panel de control de voz.
-
-Al ocultar el botón Hablar se desactiva la función de voz.
-	</notification>
 	<notification label="Explora el mundo" name="HintDestinationGuide">
 		La Guía de destinos contiene miles de nuevos lugares por descubrir. Selecciona una ubicación y elige Teleportarme para iniciar la exploración.
 	</notification>
@@ -3773,10 +3654,7 @@ Al ocultar el botón Hablar se desactiva la función de voz.
 		La visualización del mapa del mundo sólo está disponible en el modo Avanzado. ¿Quieres salir y cambiar de modo? El selector de modo se encuentra en la pantalla de inicio de sesión.
 		<usetemplate name="okcancelbuttons" notext="No salir" yestext="Salir"/>
 	</notification>
-	<notification label="" name="NoVoiceCall">
-		Las llamadas de voz sólo están disponibles en el modo Avanzado. ¿Quieres cerrar sesión y cambiar de modo?
-		<usetemplate name="okcancelbuttons" notext="No salir" yestext="Salir"/>
-	</notification>
+
 	<notification label="" name="NoAvatarShare">
 		Compartir sólo está disponible en el modo Avanzado. ¿Quieres cerrar sesión y cambiar de modo?
 		<usetemplate name="okcancelbuttons" notext="No salir" yestext="Salir"/>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <toggleable_menu name="Chat Options Menu">
 	<menu_item_check label="Показать Радар..." name="nearby_people"/>
-	<menu_item_check label="Показать Голоса..." name="nearby_voice"/>
+
 	<menu_item_check label="Показать Черный список..." name="block_list"/>
 	<menu_item_check label="Использовать стиль V1 для чата" name="plain_text_chat_history"/>
 	<menu_item_check label="Показывать значки профиля в заголовках чата" name="chat_header_icons"/>

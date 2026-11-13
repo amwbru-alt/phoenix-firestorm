@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "llcallingcard.h"
 #include "fsmarketplacelistings.h"
 #include "fscreatoraccess.h"
 
@@ -95,7 +96,6 @@
 #include "llfasttimerview.h"
 #include "llvector4a.h"
 #include "llviewermenufile.h"
-#include "llvoicechannel.h"
 #include "llvoavatarself.h"
 #include "llurlmatch.h"
 #include "lltextutil.h"
@@ -119,7 +119,6 @@
 
 #include "llweb.h"
 // <FS:Ansariel> [FS communication UI]
-#include "fsfloatervoicecontrols.h"
 // </FS:Ansariel> [FS communication UI]
 // [SL:KB] - Patch: Build-ScriptRecover | Checked: 2011-11-24 (Catznip-3.2.0)
 #include "llfloaterscriptrecover.h"
@@ -881,7 +880,6 @@ bool LLAppViewer::init()
     LLVOPartGroup::initClass();
 
 
-
     // set skin search path to default, will be overridden later
     // this allows simple skinned file lookups to work
 // [SL:KB] - Patch: Viewer-Skins | Checked: 2012-12-26 (Catznip-3.4)
@@ -1448,11 +1446,10 @@ bool LLAppViewer::init()
 
     // Note: this is where gLocalSpeakerMgr and gActiveSpeakerMgr used to be instantiated.
 
-    LLVoiceChannel::initClass();
-    LLVoiceClient::initParamSingleton(gServicePump);
+
     // <FS:Ansariel> [FS communication UI]
-    // LLVoiceChannel::setCurrentVoiceChannelChangedCallback(boost::bind(&LLFloaterIMContainer::onCurrentChannelChanged, _1), true);
-    LLVoiceChannel::setCurrentVoiceChannelChangedCallback( boost::bind( &FSFloaterVoiceControls::sOnCurrentChannelChanged, _1 ), true );
+
+
     // </FS:Ansariel> [FS communication UI]
 
     joystick = LLViewerJoystick::getInstance();
@@ -1762,10 +1759,6 @@ bool LLAppViewer::doFrame()
                 pauseMainloopTimeout();
                 saveFinalSnapshot();
 
-                if (LLVoiceClient::instanceExists())
-                {
-                    LLVoiceClient::getInstance()->terminate();
-                }
 
                 disconnectViewer();
                 resumeMainloopTimeout("df snapshot n disconnect");
@@ -1940,11 +1933,6 @@ bool LLAppViewer::doFrame()
             saveFinalSnapshot();
         }
 
-        pingMainloopTimeout("Main:TerminateVoice");
-        if (LLVoiceClient::instanceExists())
-        {
-            LLVoiceClient::getInstance()->terminate();
-        }
 
         pingMainloopTimeout("Main:TerminatePump");
         delete gServicePump;
@@ -2532,7 +2520,7 @@ bool LLAppViewer::cleanup()
     LLViewerStatsRecorder::deleteSingleton();
     LLViewerEventRecorder::deleteSingleton();
     LLWorld::deleteSingleton();
-    LLVoiceClient::deleteSingleton();
+
     LLUI::deleteSingleton();
 
     // It's not at first obvious where, in this long sequence, a generic cleanup
@@ -3095,7 +3083,7 @@ bool LLAppViewer::initConfiguration()
 //  LLFirstUse::addConfigVariable("FirstFlexible");
 //  LLFirstUse::addConfigVariable("FirstDebugMenus");
 //  LLFirstUse::addConfigVariable("FirstSculptedPrim");
-//  LLFirstUse::addConfigVariable("FirstVoice");
+
 //  LLFirstUse::addConfigVariable("FirstMedia");
 
     // - read command line settings.
@@ -3542,23 +3530,23 @@ bool LLAppViewer::initConfiguration()
         return false;
     }
 
-    // <FS:Ansariel> Voice in multiple instances
+
     //if (mSecondInstance)
     //{
     //    // This is the second concurrent instance of SL.
-    //    // Disable voice for this session only, user should
-    //    // be able to enable voice manually, after that it
+
+
     //    // works the same way as on primary instance.
-    //    LLControlVariable* enable_voice = gSavedSettings.getControl("EnableVoiceChat");
-    //    if (enable_voice && enable_voice->getValue().asBoolean())
+
+
     //    {
-    //        LL_DEBUGS("AppInit") << "Disabling voice for this session only" << LL_ENDL;
+
     //        // Will be saved as mValues[2] which does not get written to the file.
     //        // This feels like a hack, but otherwise way too many controls have to
     //        // be tracked manually instead of using xmls' control_name.
     //        const bool DO_NOT_PERSIST = false;
     //        LLSD::Boolean new_value = false;
-    //        enable_voice->setValue(new_value, DO_NOT_PERSIST);
+
     //    }
     //}
     // </FS:Ansariel>
@@ -4141,25 +4129,8 @@ LLSD LLAppViewer::getViewerInfo() const
     info["J2C_VERSION"] = LLImageJ2C::getEngineInfo();
     bool want_fullname = true;
     info["AUDIO_DRIVER_VERSION"] = gAudiop ? LLSD(gAudiop->getDriverName(want_fullname)) : "Undefined";
-    if(LLStartUp::getStartupState() == STATE_STARTED && LLVoiceClient::getInstance()->voiceEnabled()) // <FS:Beq/> Calling this too earli leads to a nasty crash loop
     {
-        LLVoiceVersionInfo version = LLVoiceClient::getInstance()->getVersion();
-        const std::string build_version = version.mBuildVersion;
-        std::ostringstream version_string;
-        if (std::equal(version.mBuildVersion.begin(), version.mBuildVersion.begin() + version.serverVersion.size(),
-                       version.serverVersion.begin()))
-        {  // Normal case: Show type and build version.
-            version_string << version.voiceServerType << " " << version.mBuildVersion << std::endl;
-        }
-        else
-        {  // Mismatch: Show both versions.
-            version_string << version.voiceServerType << " " << version.serverVersion << "/" << version.mBuildVersion << std::endl;
-        }
-        info["VOICE_VERSION"] = version_string.str();
-    }
-    else
-    {
-        info["VOICE_VERSION"] = LLTrans::getString("NotConnected");
+
     }
 
     // ForMe.World opens web content in the external browser; CEF is not bundled.
@@ -6448,7 +6419,7 @@ void LLAppViewer::sendLogoutRequest()
         gLogoutMaxTime = LOGOUT_REQUEST_TIME;
         mLogoutRequestSent = true;
 
-        LLVoiceClient::setVoiceEnabled(false);
+
     }
 }
 

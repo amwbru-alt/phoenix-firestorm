@@ -9,7 +9,7 @@
 		<menu_item_call label="Beholdning" name="NewInventoryWindow"/>
 		<menu_item_check label="Min beholdning" name="Inventory"/>
 		<menu_item_check label="Mine bevægelser" name="Gestures"/>
-		<menu_item_check label="Min stemme" name="ShowVoice"/>
+
 		<menu label="Bevægelser" name="Movement">
 			<menu_item_call label="Sid ned" name="Sit Down Here"/>
 			<menu_item_check label="Flyv" name="Fly"/>

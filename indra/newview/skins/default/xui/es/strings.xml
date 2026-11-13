@@ -75,7 +75,6 @@ Versión de J2C Decoder: [J2C_VERSION]
 Versión de Audio Driver: [AUDIO_DRIVER_VERSION]
 [LIBCEF_VERSION]
 Versión LibVLC: [LIBVLC_VERSION] 
-Versión del servidor de voz: [VOICE_VERSION]
 	</string>
 	<string name="AboutTraffic">
 		Paquetes perdidos: [PACKETS_LOST,number,0]/[PACKETS_IN,number,0] ([PACKETS_PCT,number,1]%)
@@ -1087,21 +1086,12 @@ pueden adjuntarse a las notas.
 	<string name="shout">
 		grita:
 	</string>
-	<string name="ringing">
-		Conectando al chat de voz...
-	</string>
+
 	<string name="connected">
 		Conectado
 	</string>
-	<string name="unavailable">
-		La voz no está disponible en tu localización actual
-	</string>
-	<string name="hang_up">
-		Desconectado del chat de voz
-	</string>
-	<string name="reconnect_nearby">
-		Vas a ser reconectado al chat de voz con la gente cercana
-	</string>
+
+
 	<string name="ScriptQuestionCautionChatGranted">
 		'[OBJECTNAME]', un objeto propiedad de '[OWNERNAME]', localizado en [REGIONNAME] con la posición [REGIONPOS], ha recibido permiso para: [PERMISSIONS].
 	</string>
@@ -4409,9 +4399,7 @@ Si sigues recibiendo este mensaje, contacta con [SUPPORT_SITE].
 	<string name="LocationCtrlForSaleTooltip">
 		Comprar este terreno
 	</string>
-	<string name="LocationCtrlVoiceTooltip">
-		Voz no disponible aquí
-	</string>
+
 	<string name="LocationCtrlFlyTooltip">
 		No se permite volar
 	</string>
@@ -4490,12 +4478,8 @@ Si sigues recibiendo este mensaje, contacta con [SUPPORT_SITE].
 	<string name="Unnamed">
 		(sin nombre)
 	</string>
-	<string name="IM_moderated_chat_label">
-		(Moderado: por defecto, desactivada la voz)
-	</string>
-	<string name="IM_unavailable_text_label">
-		No está permitido el chat de text para esta llamada.
-	</string>
+
+
 	<string name="IM_muted_text_label">
 		Un moderador del grupo ha desactivado tu chat de texto.
 	</string>
@@ -4523,39 +4507,18 @@ Si sigues recibiendo este mensaje, contacta con [SUPPORT_SITE].
 	<string name="not_online_inventory">
 		El usuario no está conectado: el inventario se ha guardado.
 	</string>
-	<string name="IM_unblock_only_groups_friends">
-		Para ver este mensaje, debes desmarcar &apos;Sólo mis amigos y grupos pueden llamarme o enviarme MI&apos; en Preferencias/Privacidad.
-	</string>
+
 	<string name="IM_announce_incoming">
 		Mensaje entrante de  [NAME]
 	</string>
 	<string name="IM_autoresponse_sent">
 		Autorrespuesta enviada: [MESSAGE]
 	</string>
-	<string name="answered_call">
-		Han respondido a tu llamada
-	</string>
-	<string name="you_started_call">
-		Has iniciado una llamada de voz
-	</string>
-	<string name="you_joined_call">
-		Has entrado en la llamada de voz
-	</string>
-	<string name="you_auto_rejected_call-im">
-		Rechazaste la llamada de voz automáticamente porque estaba activado el modo &apos;No disponible&apos;.
-	</string>
-	<string name="name_started_call">
-		[NAME] inició una llamada de voz
-	</string>
-	<string name="ringing-im">
-		Haciendo la llamada de voz...
-	</string>
-	<string name="connected-im">
-		Conectado, pulsa Colgar para salir
-	</string>
-	<string name="hang_up-im">
-		Se colgó la llamada de voz
-	</string>
+
+
+
+
+
 	<string name="conference-title">
 		Chat multi-persona
 	</string>
@@ -4596,9 +4559,7 @@ Más información en https://second.life/scripted-agents.
 	<string name="offline_message">
 		[NAME] está desconectado(a).
 	</string>
-	<string name="invite_message">
-		Pulsa el botón [BUTTON NAME] para aceptar/conectar a este chat de voz.
-	</string>
+
 	<string name="muted_message">
 		Has bloqueado a este residente. Enviándole un mensaje lo desbloquearás.
 	</string>
@@ -4664,12 +4625,8 @@ Si el mensaje no aparece en los próximos minutos, puede haber sido descartado p
 	<string name="Home position set.">
 		Posición inicial establecida.
 	</string>
-	<string name="voice_morphing_url">
-		https://secondlife.com/destination/voice-island
-	</string>
-	<string name="premium_voice_morphing_url">
-		https://secondlife.com/destination/voice-morphing-premium
-	</string>
+
+
 	<string name="paid_you_ldollars">
 		[NAME] te ha pagado [AMOUNT] L$ [REASON].
 	</string>
@@ -4846,9 +4803,7 @@ Denuncia de infracción
 	<string name="Other Gestures">
 		Otros gestos
 	</string>
-	<string name="Speech Gestures">
-		Gestos al hablar
-	</string>
+
 	<string name="Common Gestures">
 		Gestos corrientes
 	</string>
@@ -5596,9 +5551,7 @@ Inténtalo incluyendo la ruta de acceso al editor entre comillas
 	<string name="Command_View_Label">
 		Controles de la cámara
 	</string>
-	<string name="Command_Voice_Label">
-		Configuración de voz
-	</string>
+
 	<string name="Command_Quickprefs_Label">
 		Preferencias rápidas
 	</string>
@@ -5755,18 +5708,14 @@ Inténtalo incluyendo la ruta de acceso al editor entre comillas
 	<string name="Command_Social_Tooltip">
 		Publicar en Facebook
 	</string>
-	<string name="Command_Speak_Tooltip">
-		Utiliza el micrófono para hablar con la gente próxima
-	</string>
+
 	<string name="Command_Twitter_Tooltip">
 		Twitter
 	</string>
 	<string name="Command_View_Tooltip">
 		Cambiar el ángulo de la cámara
 	</string>
-	<string name="Command_Voice_Tooltip">
-		Controles de volumen para las llamadas y la gente que se encuentre cerca de ti en el mundo virtual
-	</string>
+
 	<string name="Command_Quickprefs_Tooltip">Preferencias rápidas para cambiar configuraciones de uso frecuente</string>
 	<string name="Command_AO_Tooltip">Animation Overrider</string>
 	<string name="Command_Webbrowser_Tooltip">Abre el navegador web interno</string>

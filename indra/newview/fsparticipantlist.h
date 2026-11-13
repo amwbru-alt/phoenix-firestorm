@@ -61,7 +61,7 @@ public:
                       bool exclude_agent = true,
                       bool can_toggle_icons = true);
     ~FSParticipantList();
-    void setSpeakingIndicatorsVisible(bool visible);
+
 
     enum EParticipantSortOrder
     {
@@ -173,12 +173,10 @@ protected:
     public:
         FSParticipantListMenu(FSParticipantList& parent):mParent(parent){};
         /*virtual*/ LLContextMenu* createMenu();
-        /*virtual*/ void show(LLView* spawning_view, const uuid_vec_t& uuids, S32 x, S32 y);
     protected:
         FSParticipantList& mParent;
     private:
         bool enableContextMenuItem(const LLSD& userdata);
-        bool enableModerateContextMenuItem(const LLSD& userdata);
         bool checkContextMenuItem(const LLSD& userdata);
         bool visibleContextMenuItem(const LLSD& userdata);
 
@@ -186,10 +184,10 @@ protected:
         void allowTextChat(const LLSD& userdata);
         void toggleMute(const LLSD& userdata, U32 flags);
         void toggleMuteText(const LLSD& userdata);
-        void toggleMuteVoice(const LLSD& userdata);
+
 
         /**
-         * Return true if Agent is group moderator(and moderator of group call).
+         * Return true if Agent is group text moderator.
          */
         bool isGroupModerator();
 
@@ -197,50 +195,12 @@ protected:
         bool canBanSelectedMember(const LLUUID& participant_uuid);
         void banSelectedMember(const LLUUID& participant_uuid);
 
-        // Voice moderation support
+
         /**
          * Check whether specified by argument avatar is muted for group chat or not.
          */
-        bool isMuted(const LLUUID& avatar_id);
 
-        /**
-         * Processes Voice moderation menu items.
-         *
-         * It calls either moderateVoiceParticipant() or moderateVoiceParticipant() depend on
-         * passed parameter.
-         *
-         * @param userdata can be "selected" or "others".
-         *
-         * @see moderateVoiceParticipant()
-         * @see moderateVoiceAllParticipants()
-         */
-        void moderateVoice(const LLSD& userdata);
 
-        /**
-         * Mutes/Unmutes avatar for current group voice chat.
-         *
-         * It only marks avatar as muted for session and does not use local Agent's Block list.
-         * It does not mute Agent itself.
-         *
-         * @param[in] avatar_id UUID of avatar to be processed
-         * @param[in] unmute if true - specified avatar will be muted, otherwise - unmuted.
-         *
-         * @see moderateVoiceAllParticipants()
-         */
-        void moderateVoiceParticipant(const LLUUID& avatar_id, bool unmute);
-
-        /**
-         * Mutes/Unmutes all avatars for current group voice chat.
-         *
-         * It only marks avatars as muted for session and does not use local Agent's Block list.
-         *
-         * @param[in] unmute if true - avatars will be muted, otherwise - unmuted.
-         *
-         * @see moderateVoiceParticipant()
-         */
-        void moderateVoiceAllParticipants(bool unmute);
-
-        static void confirmMuteAllCallback(const LLSD& notification, const LLSD& response);
 
         void handleAddToContactSet();
 

@@ -61,9 +61,7 @@
 						<row name="restore_per_account_row_toolbars">
 							<column name="restore_per_account_files_label">Barras de herramientas</column>
 						</row>
-						<row name="restore_per_account_row_volumes">
-							<column name="restore_per_account_files_label">Volúmenes de chat de voz</column>
-						</row>
+
 						<row name="restore_per_account_row_tphistory">
 							<column name="restore_per_account_files_label">Historial de teleportes</column>
 						</row>

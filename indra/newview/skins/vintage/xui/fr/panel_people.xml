@@ -62,7 +62,7 @@ Vous voulez rencontrer des gens ? Essayez d'utiliser la [fmw:///app/worldmap Car
 									<combo_box.item name="RadarNameFormat_userdisplay" label="Nom du compte (Nom d'affichage)" />
 								</combo_box>
 								<text name="columns_label" value="Colonnes visibles :" />
-								<check_box label="Conversations vocales" name="column_voice" />
+
 								<check_box label="Temps" name="column_seen" />
 								<check_box label="Âge" name="column_age" />
 								<check_box label="Dans la même région" name="column_region" />

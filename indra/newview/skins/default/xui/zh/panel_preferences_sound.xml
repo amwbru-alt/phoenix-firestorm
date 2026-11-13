@@ -66,18 +66,14 @@
 	<panel.string name="textFSHealthReductionM">
 		男性角色受傷：
 	</panel.string>
-	<panel.string name="textFSIncomingVoiceCall">
-		語音通話：
-	</panel.string>
+
 	<panel.string name="textFSInvalidOp">
 		無效操作：
 	</panel.string>
 	<panel.string name="textFSInventoryOffer">
 		庫存物品提供：
 	</panel.string>
-	<panel.string name="textFSMicToggle">
-		麥克風切換：
-	</panel.string>
+
 	<panel.string name="textFSMoneyChangeDown">
 		支付貨幣：
 	</panel.string>
@@ -196,8 +192,8 @@
 			<check_box label="啟用" name="enable_music" />
 			<slider label="媒體" name="Media Volume" />
 			<check_box label="啟用" name="enable_media" />
-			<slider label="語音聊天" name="Voice Volume" />
-			<check_box label="啟用" name="enable_voice_check_volume" />
+
+
 			<text name="Listen media from">
 				收聽以下媒體和聲音：
 			</text>
@@ -262,39 +258,7 @@
 			</radio_group>
 			<check_box name="StreamMetadataAnnounceToChat" label="向頻道通告音樂標題：" />
 		</panel>
-		<panel label="語音聊天" name="Media Voice tab">
-			<check_box label="啟用語音聊天" name="enable_voice_check" />
-			<button tool_tip="重設設定" name="reset_voice_button" />
-			<radio_group name="ear_location">
-				<radio_item label="從相機位置聽" name="0" />
-				<radio_item label="從化身位置聽" name="1" />
-				<radio_item label="以相同音量收聽附近的語音聊天（僅限Opensim）" name="2" />
-			</radio_group>
-			<check_box label="我說話時播放化身嘴部動畫" name="enable_lip_sync" />
-			<check_box label="在化身上方顯示語音指示器" tool_tip="顯示語音聊天活動的指示器" name="FSShowVoiceVisualizer" />
-			<check_box label="在我的化身上方顯示語音指示器" name="FSShowMyOwnVoiceVisualizer" />
-			<check_box label="顯示帶點的語音指示器" name="FSShowVoiceVisualizerWithDot" tool_tip="如果啟用此選項，語音指示器中的白點將被顯示。如果禁用，僅會顯示說話時的波浪符號。" />
-			<check_box label="在私人或群組語音聊天中顯示語音指示器" tool_tip="在私人或組語音聊天中顯示語音聊天活動的指示器和播放嘴部動畫" name="Show_Voice_Visualizers_In_Calls" />
-			<check_box label="在聊天索引標籤中顯示語音狀態" tool_tip="在聊天索引標籤中顯示語音狀態指示器" name="FSShowConversationVoiceStateIndicator" />
-			<check_box label="自動拒絕群組語音聊天" name="VoiceCallsRejectGroup" />
-			<check_box label="自動拒絕私人語音聊天" name="VoiceCallsRejectAdHoc" />
-			<check_box label="自動拒絕化身到化身語音通話" name="VoiceCallsRejectP2P" />
-			<check_box label="通過工具列按鈕切換語音開/關" name="push_to_talk_toggle_check" tool_tip="啟用此選項後，僅在按下相應鍵後才會開啟麥克風。要保持靜音，只需再次按下該鍵。" />
-			<check_box label="自動增益控制" name="voice_automatic_gain_control" />
-			<check_box label="回聲消除" name="enable_echo_cancellation" />
-			<text name="noise_suppression_label">
-				噪聲抑制：
-			</text>
-			<combo_box name="noise_suppression_combo">
-				<item label="關" name="noise_suppression_none" />
-				<item label="低" name="noise_suppression_low" />
-				<item label="中" name="noise_suppression_moderate" />
-				<item label="高" name="noise_suppression_high" />
-				<item label="最大" name="noise_suppression_max" />
-			</combo_box>
-			<button label="音訊裝置設定" name="device_settings_btn" />
-			<panel label="裝置設定" name="device_settings_panel" />
-		</panel>
+
 		<panel label="介面音效" name="UI Sounds tab">
 			<text name="textFSExplanation_tab1">您可以在此處修改界面產生的每個聲音，並決定是否啟用它們。
 將其 UUID 輸入或將滑鼠懸停在欄位上檢視其預設值。

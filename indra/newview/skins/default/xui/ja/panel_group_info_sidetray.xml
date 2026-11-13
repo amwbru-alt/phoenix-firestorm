@@ -47,9 +47,7 @@
 				<layout_panel name="btn_chat_lp">
 					<button label="チャット" name="btn_chat"/>
 				</layout_panel>
-				<layout_panel name="call_btn_lp">
-					<button label="グループコール" name="btn_call" tool_tip="このグループへコールします。"/>
-				</layout_panel>
+
 				<layout_panel name="btn_apply_lp">
 					<button label="保存" label_selected="保存" name="btn_apply"/>
 				</layout_panel>

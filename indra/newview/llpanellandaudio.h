@@ -56,9 +56,8 @@ private:
 
 private:
     LLCheckBoxCtrl* mCheckSoundLocal;
-    LLCheckBoxCtrl* mCheckParcelEnableVoice;
-    LLCheckBoxCtrl* mCheckEstateDisabledVoice;
-    LLCheckBoxCtrl* mCheckParcelVoiceLocal;
+
+
 // <FS:CR> FIRE-593 - Use a combobox, also add buttons so we can add/remove items from it.
     //LLLineEditor* mMusicURLEdit;
     LLComboBox* mMusicURLEdit;

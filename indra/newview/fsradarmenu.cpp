@@ -67,7 +67,7 @@ LLContextMenu* FSRadarMenu::createMenu()
         registrar.add("Avatar.AddFriend",                       boost::bind(&LLAvatarActions::requestFriendshipDialog,      id));
         registrar.add("Avatar.RemoveFriend",                    boost::bind(&LLAvatarActions::removeFriendDialog,           id));
         registrar.add("Avatar.IM",                              boost::bind(&LLAvatarActions::startIM,                      id));
-        registrar.add("Avatar.Call",                            boost::bind(&LLAvatarActions::startCall,                    id));
+
         registrar.add("Avatar.OfferTeleport",                   boost::bind(&FSRadarMenu::offerTeleport,                    this));
         registrar.add("Avatar.TeleportRequest",                 boost::bind(&LLAvatarActions::teleportRequest,              id));
         registrar.add("Avatar.GroupInvite",                     boost::bind(&LLAvatarActions::inviteToGroup,                id));
@@ -117,7 +117,7 @@ LLContextMenu* FSRadarMenu::createMenu()
         registrar.add("Avatar.IM",                              boost::bind(&LLAvatarActions::startConference,                      mUUIDs, LLUUID::null));
         // <FS:ND>
 
-        registrar.add("Avatar.Call",                            boost::bind(&LLAvatarActions::startAdhocCall,                       mUUIDs, LLUUID::null));
+
         registrar.add("Avatar.OfferTeleport",                   boost::bind(&FSRadarMenu::offerTeleport,                            this));
         registrar.add("Avatar.RemoveFriend",                    boost::bind(&LLAvatarActions::removeFriendsDialog,                  mUUIDs));
         // registrar.add("Avatar.Share",                        boost::bind(&LLAvatarActions::startIM,                              mUUIDs)); // *TODO: unimplemented
@@ -207,10 +207,6 @@ bool FSRadarMenu::enableContextMenuItem(const LLSD& userdata)
         }
 
         return result;
-    }
-    else if (item == std::string("can_call"))
-    {
-        return LLAvatarActions::canCall();
     }
     else if (item == std::string("can_show_on_map"))
     {

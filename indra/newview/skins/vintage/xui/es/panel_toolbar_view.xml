@@ -20,14 +20,7 @@
 						<button name="show_volume_controls_button" tool_tip="Muestra los controles de volumen"/>
 					</panel>
 				</layout_panel>
-				<layout_panel name="voice_chat_controls_layout_panel">
-					<panel name="voice_chat_controls_panel">
-						<button name="show_voice_controls_button" tool_tip="Muestra a los usuarios de voz cercanos y los controles de voz"/>
-						<button name="utility_talk_button" tool_tip="Pulsa este botón para hablar. Pulsa el candado para conmutar el modo Pulsa-Para-Hablar." label="         Hablar" width="70"/>
-						<button name="utility_push_to_talk_lock_button" tool_tip="Conmuta la función Pulsa-Para-Hablar" left_delta="2"/>
-						<nearby_voice_monitor name="nearby_voice_output_monitor" tool_tip="Actividad actual en el canal de voz" left_pad="46"/>
-					</panel>
-				</layout_panel>
+
 				<layout_panel name="quick_preferences_button_layout_panel">
 					<panel name="quick_preferences_button_panel">
 						<button name="enable_disable_ao_button" tool_tip="Activa/desactiva el Animation Overrider"/>

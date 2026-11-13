@@ -75,7 +75,7 @@ public:
 
     void sessionAdded(const LLUUID& session_id, const std::string& name, const LLUUID& other_participant_id, bool has_offline_msg) override;
     void sessionActivated(const LLUUID& session_id, const std::string& name, const LLUUID& other_participant_id) override {};
-    void sessionVoiceOrIMStarted(const LLUUID& session_id) override {};
+
     void sessionRemoved(const LLUUID& session_id) override;
     void sessionIDUpdated(const LLUUID& old_session_id, const LLUUID& new_session_id) override;
 
@@ -95,22 +95,7 @@ public:
     // </FS:PP>
 
 private:
-    enum eVoiceState
-    {
-        VOICE_STATE_NONE,
-        VOICE_STATE_UNKNOWN,
-        VOICE_STATE_CONNECTED,
-        VOICE_STATE_NOT_CONNECTED,
-        VOICE_STATE_ERROR
-    };
 
-    LLFloater*  getCurrentVoiceFloater();
-    void        onVoiceStateIndicatorChanged(const LLSD& data);
-
-    LLFloater*  mActiveVoiceFloater;
-    LLTimer     mActiveVoiceUpdateTimer;
-    eVoiceState mCurrentVoiceState;
-    bool        mForceVoiceStateUpdate;
 
     typedef std::map<LLUUID, LLFloater*> avatarID_panel_map_t;
     avatarID_panel_map_t mSessions;

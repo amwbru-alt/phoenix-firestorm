@@ -108,7 +108,6 @@ J2C Decoder Version: [J2C_VERSION]
 Audio Driver Version: [AUDIO_DRIVER_VERSION]
 [LIBCEF_VERSION]
 LibVLC Version: [LIBVLC_VERSION]
-Voice Server Version: [VOICE_VERSION]
 	</string>
 	<string name="AboutTraffic">
 		Packets Lost: [PACKETS_LOST,number,0]/[PACKETS_IN,number,0] ([PACKETS_PCT,number,1]%)
@@ -1294,21 +1293,12 @@ support@secondlife.com.
 	<string name="shout">
 		吶喊：
 	</string>
-	<string name="ringing">
-		正在連線虛擬世內語音聊天...
-	</string>
+
 	<string name="connected">
 		已聯接
 	</string>
-	<string name="unavailable">
-		你當前所在位置無法使用語音聊天
-	</string>
-	<string name="hang_up">
-		虛擬世界內語音聊天已中斷
-	</string>
-	<string name="reconnect_nearby">
-		已將你重新連線到附近語音聊天
-	</string>
+
+
 	<string name="ScriptQuestionCautionChatGranted">
 		物件「[OBJECTNAME]'」（所有者「[OWNERNAME]」，位於「[REGIONNAME]」，方位「[REGIONPOS]」）已獲得下列權限：[PERMISSIONS]。
 	</string>
@@ -4896,9 +4886,7 @@ support@secondlife.com.
 	<string name="LocationCtrlForSaleTooltip">
 		購買這塊土地
 	</string>
-	<string name="LocationCtrlVoiceTooltip">
-		此地並不允許語音
-	</string>
+
 	<string name="LocationCtrlFlyTooltip">
 		不允許飛行
 	</string>
@@ -4980,12 +4968,8 @@ support@secondlife.com.
 	<string name="Unnamed">
 		(未命名)
 	</string>
-	<string name="IM_moderated_chat_label">
-		(有人主持：預設關閉語音)
-	</string>
-	<string name="IM_unavailable_text_label">
-		這次通話無法使用文字聊天。
-	</string>
+
+
 	<string name="IM_muted_text_label">
 		群組主持人已禁止你進行文字聊天。
 	</string>
@@ -5001,9 +4985,7 @@ support@secondlife.com.
 	<string name="Saved_message">
 		(於 [LONG_TIMESTAMP] 儲存)
 	</string>
-	<string name="IM_unblock_only_groups_friends">
-		要察看這訊息，你必須到「偏好設定 / 隱私」，取消勾選「只有我的朋友和群組可以私聊或與我通話」。
-	</string>
+
 	<string name="OnlineStatus">
 		上線
 	</string>
@@ -5026,31 +5008,12 @@ support@secondlife.com.
 	<string name="IM_autoresponse_item_sent">
 		已傳送自動回復物件：[ITEM_NAME]
 	</string>
-	<!-- voice calls -->
-	<string name="answered_call">
-		你的通話已經接通
-	</string>
-	<string name="you_started_call">
-		你發起了語音通話
-	</string>
-	<string name="you_joined_call">
-		你加入了語音通話
-	</string>
-	<string name="you_auto_rejected_call-im">
-		因為處於「請勿打擾」模式，你已自動拒聽這通語音來電。
-	</string>
-	<string name="name_started_call">
-		[NAME] 發起了語音通話
-	</string>
-	<string name="ringing-im">
-		加入語音通話...
-	</string>
-	<string name="connected-im">
-		已接通，要掛斷請按「離開通話」
-	</string>
-	<string name="hang_up-im">
-		離開語音通話
-	</string>
+
+
+
+
+
+
 	<string name="answering-im">
 		連線中...
 	</string>
@@ -5088,9 +5051,7 @@ support@secondlife.com.
 	<string name="offline_message">
 		[NAME] 已離線。
 	</string>
-	<string name="invite_message">
-		點擊 [BUTTON NAME] 鈕接受並連通到這個語音聊天。
-	</string>
+
 	<string name="muted_message">
 		你已經封鎖這位居民。 傳送訊息將會自動解除封鎖。
 	</string>
@@ -5159,9 +5120,7 @@ support@secondlife.com.
 	<string name="Home position set.">
 		我的家位置已設定。
 	</string>
-	<string name="voice_morphing_url">
-		https://secondlife.com/destination/voice-island
-	</string>
+
 	<string name="paid_you_ldollars">
 		[NAME] 支付你 [AMOUNT] L$ 因為：[REASON].
 	</string>
@@ -5342,9 +5301,7 @@ support@secondlife.com.
 	<string name="Other Gestures">
 		其他手勢
 	</string>
-	<string name="Speech Gestures">
-		演說手勢
-	</string>
+
 	<string name="Common Gestures">
 		一般手勢
 	</string>
@@ -6169,13 +6126,8 @@ support@secondlife.com.
 	<string name="Command_View_Label">
 		相機控制
 	</string>
-	<!-- Ansariel: Renamed for FS (FIRE-5019)
-  <string name="Command_Voice_Label">
-		Voice settings
-	</string>-->
-	<string name="Command_Voice_Label">
-		附近的聲音
-	</string>
+
+
 	<!-- Firestorm commands -->
 	<string name="Command_Quickprefs_Label">
 		快速存取
@@ -6378,15 +6330,11 @@ support@secondlife.com.
 	<string name="Command_Snapshot_Tooltip">
 		拍張相片 (CTRL+SHIFT+S)
 	</string>
-	<string name="Command_Speak_Tooltip">
-		使用麥克風與附近的人聊天
-	</string>
+
 	<string name="Command_View_Tooltip">
 		調整攝影機角度
 	</string>
-	<string name="Command_Voice_Tooltip">
-		在虛擬世界裡與附近的人語音通話的音量控制
-	</string>
+
 	<!-- Firestorm commands -->
 	<string name="Command_Quickprefs_Tooltip">
 		快速更改常用首選設定

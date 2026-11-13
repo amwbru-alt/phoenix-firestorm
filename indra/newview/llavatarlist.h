@@ -54,14 +54,7 @@ public:
 
     struct Params : public LLInitParam::Block<Params, LLFlatListViewEx::Params>
     {
-        Optional<bool>  ignore_online_status, // show all items as online
-                        show_last_interaction_time, // show most recent interaction time. *HACK: move this to a derived class
-                        show_info_btn,
-                        show_profile_btn,
-                        show_speaking_indicator,
-                        show_permissions_granted,
-                        show_icons,
-                        show_voice_volume;
+        Optional<bool>  ignore_online_status, show_last_interaction_time, show_info_btn, show_profile_btn, show_permissions_granted, show_icons;
         Params();
     };
 
@@ -84,11 +77,11 @@ public:
     const LLUUID& getSessionID() { return mSessionID; }
 
     void toggleIcons();
-    void setSpeakingIndicatorsVisible(bool visible);
+
     void showPermissions(bool visible);
     void showDisplayName(bool visible);
     void showUsername(bool visible);
-    void showVoiceVolume(bool visible);
+
     void setUseContactSetColors(bool use_colors); // <FS:PP> FIRE-32748 Colorize Friends List with Contact Sets
     void setUseContactSetListStyle(bool use_style); // <FS:PP> FIRE-31733: Make contact sets lists more readable
     // <FS:Ansariel> [FS Communication UI]
@@ -162,8 +155,8 @@ private:
     bool mShowIcons;
     bool mShowInfoBtn;
     bool mShowProfileBtn;
-    bool mShowVoiceVolume;
-    bool mShowSpeakingIndicator;
+
+
     bool mShowPermissions;
     bool mShowCompleteName;
     bool mForceCompleteName;
@@ -188,7 +181,7 @@ private:
     mouse_signal_t mItemClickedSignal;
     avatar_drop_cb_t mAvatarDropCallback; // <FS:PP> FIRE-31146 Contact Sets - drag-and-drop support
 
-    // <FS:Ansariel> Update voice volume slider on RLVa shownames restriction update
+
     boost::signals2::connection mRlvBehaviorCallbackConnection;
     void updateRlvRestrictions(ERlvBehaviour behavior);
     // </FS:Ansariel>

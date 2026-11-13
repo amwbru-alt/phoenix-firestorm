@@ -50,7 +50,7 @@ Learn about [https://community.secondlife.com/knowledgebase/joining-and-particip
       <panel class="fs_panel_radar" name="panel_radar" filename="panel_fs_radar.xml" follows="all" layout="topleft" left="0" top="2" right="-1" bottom="-1" visible="false" />
       <search_editor name="forme_nearby_search" layout="topleft" left="0" top="0" right="-90" height="32" follows="left|right|top" label="Search people…" />
       <button name="forme_radar_toggle" layout="topleft" right="-1" top="0" width="84" height="32" follows="right|top" label="Details" />
-      <avatar_list name="forme_nearby_list" layout="topleft" left="0" top="42" right="-1" bottom="-44" follows="all" show_icons="true" show_speaking_indicator="true" allow_select="true" />
+      <avatar_list name="forme_nearby_list" layout="topleft" left="0" top="42" right="-1" bottom="-44" follows="all" show_icons="true" allow_select="true" />
       <button name="forme_nearby_profile" layout="topleft" label="Profile" left="0" bottom="-4" height="32" width="132" follows="left|bottom" image_selected="Forme_Round_Accent" image_unselected="Forme_Round_Field" />
       <button name="forme_nearby_message" layout="topleft" label="Message" left="140" bottom="-4" height="32" width="196" follows="left|bottom" image_selected="Forme_Round_Accent" image_unselected="Forme_Round_Field" />
       <button name="forme_nearby_friend" layout="topleft" label="+" left="344" bottom="-4" height="32" width="96" follows="left|bottom" image_selected="Forme_Round_Accent" image_unselected="Forme_Round_Field" />

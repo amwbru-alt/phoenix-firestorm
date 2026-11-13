@@ -68,7 +68,6 @@ extern const LLUUID ANIM_AGENT_TARGET;
 extern const LLUUID ANIM_AGENT_WALK_ADJUST;
 
 class LLViewerWearable;
-class LLVoiceVisualizer;
 class LLHUDNameTag;
 class LLHUDEffectSpiral;
 class LLTexGlobalColor;
@@ -291,10 +290,10 @@ public:
     void            updateTimeStep();
     void            updateRootPositionAndRotation(LLAgent &agent, F32 speed, bool was_sit_ground_constrained);
 
-    void            idleUpdateVoiceVisualizer(bool voice_enabled, const LLVector3 &position);
+
     void            idleUpdateMisc(bool detailed_update);
     virtual void    idleUpdateAppearanceAnimation();
-    void            idleUpdateLipSync(bool voice_enabled);
+
     void            idleUpdateLoadingEffect();
     void            idleUpdateWindEffect();
     void            idleUpdateNameTag(const LLVector3& root_pos_last);
@@ -1161,14 +1160,6 @@ private:
     bool            mVisibleTyping;
 
     //--------------------------------------------------------------------
-    // Lip synch morphs
-    //--------------------------------------------------------------------
-private:
-    bool            mLipSyncActive; // we're morphing for lip sync
-    LLVisualParam*  mOohMorph; // cached pointers morphs for lip sync
-    LLVisualParam*  mAahMorph; // cached pointers morphs for lip sync
-
-    //--------------------------------------------------------------------
     // Flight
     //--------------------------------------------------------------------
 public:
@@ -1300,12 +1291,11 @@ private:
  **/
 
     //--------------------------------------------------------------------
-    // Voice visualizer
+
     //--------------------------------------------------------------------
 public:
-    // Responsible for detecting the user's voice signal (and when the
-    // user speaks, it puts a voice symbol over the avatar's head) and gesticulations
-    LLPointer<LLVoiceVisualizer>  mVoiceVisualizer;
+
+
     int                 mCurrentGesticulationLevel;
 
     //--------------------------------------------------------------------

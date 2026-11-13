@@ -26,8 +26,8 @@
 	<icon name="permission_edit_mine_btn" tool_tip="Este amigo pode editar, excluir e pegar seus objetos"/>
 	<icon name="permission_map_btn" tool_tip="Este amigo pode localizá-lo no mapa"/>
 	<icon name="permission_online_btn" tool_tip="Este amigo pode ver quando você está online"/>
-	<slider name="volume_slider" tool_tip="Volume da voz"/>
+
 	<button name="info_btn" tool_tip="Mais informações"/>
 	<button name="profile_btn" tool_tip="Ver perfil"/>
-	<output_monitor name="speaking_indicator" tool_tip="Volume da voz"/>
+
 </panel>

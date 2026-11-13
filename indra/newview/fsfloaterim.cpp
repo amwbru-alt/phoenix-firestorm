@@ -28,6 +28,7 @@
 // Original file: llimfloater.cpp
 
 #include "llviewerprecompiledheaders.h"
+#include "llcallingcard.h"
 
 #include "fsfloaterim.h"
 #include "fsavatarbadges.h"
@@ -81,7 +82,6 @@
 #include "llviewerchat.h"
 #include "llviewerregion.h"
 #include "llviewerwindow.h"
-#include "llvoicechannel.h"
 #include "rlvactions.h"
 #include "rlvhandler.h"
 
@@ -131,7 +131,7 @@ FSFloaterIM::FSFloaterIM(const LLUUID& session_id)
     mInputPanels(NULL),
     mChatLayoutPanelHeight(0),
     mAvatarNameCacheConnection(),
-    mVoiceChannel(NULL),
+
     mMeTypingTimer(),
     mOtherTypingTimer(),
     mRefreshNameTimer(),
@@ -247,8 +247,7 @@ void FSFloaterIM::onClose(bool app_quitting)
 
 
     // AO: Make sure observers are removed on close
-    mVoiceChannelStateChangeConnection.disconnect();
-    LLVoiceClient::removeObserver((LLVoiceClientStatusObserver*)this);
+
 
     //<FS:ND> FIRE-6077 et al: Always clean up observers when the floater dies
     LLAvatarTracker::instance().removeParticularFriendObserver(mOtherParticipantUUID, this);
@@ -267,19 +266,7 @@ void FSFloaterIM::onSnooze()
         return;
     }
 
-    bool is_call_with_chat = session->isGroupSessionType()
-            || session->isAdHocSessionType() || session->isP2PSessionType();
 
-    LLVoiceChannel* voice_channel = LLIMModel::getInstance()->getVoiceChannel(mSessionID);
-
-    if (is_call_with_chat && voice_channel && voice_channel->isActive())
-    {
-        LLSD payload;
-        payload["session_id"] = mSessionID;
-        payload["snooze"] = true;
-        LLNotificationsUtil::add("ConfirmLeaveCall", LLSD(), payload, confirmLeaveCallCallback);
-        return;
-    }
 
     confirmSnooze();
 }
@@ -349,21 +336,6 @@ void FSFloaterIM::newIMCallback(const LLSD& data){
         {
             floater->updateMessages();
         }
-    }
-}
-
-void FSFloaterIM::onVisibilityChange(bool new_visibility)
-{
-    LLVoiceChannel* voice_channel = LLIMModel::getInstance()->getVoiceChannel(mSessionID);
-
-    if (new_visibility && voice_channel &&
-        voice_channel->getState() == LLVoiceChannel::STATE_CONNECTED)
-    {
-        LLFloaterReg::showInstance("voice_call", mSessionID);
-    }
-    else
-    {
-        LLFloaterReg::hideInstance("voice_call", mSessionID);
     }
 }
 
@@ -641,8 +613,7 @@ FSFloaterIM::~FSFloaterIM()
     mEventTimer.stop();
 
     LLTransientFloaterMgr::getInstance()->removeControlView(LLTransientFloaterMgr::IM, (LLView*)this);
-    mVoiceChannelStateChangeConnection.disconnect();
-    LLVoiceClient::removeObserver((LLVoiceClientStatusObserver*)this);
+
 
     LLIMModel::LLIMSession* pIMSession = LLIMModel::instance().findIMSession(mSessionID);
     if ((pIMSession) && (pIMSession->mSessionType == LLIMModel::LLIMSession::P2P_SESSION))
@@ -666,11 +637,6 @@ FSFloaterIM::~FSFloaterIM()
     LLFloaterChatMentionPicker::removeParticipantSource(this);
 }
 
-void FSFloaterIM::onVoiceChannelStateChanged(const LLVoiceChannel::EState& old_state, const LLVoiceChannel::EState& new_state)
-{
-    LL_DEBUGS("FSFloaterIM") << "FSFloaterIM::onVoiceChannelStateChanged" << LL_ENDL;
-    updateButtons(new_state >= LLVoiceChannel::STATE_CALL_STARTED);
-}
 
 void FSFloaterIM::doToSelected(const LLSD& userdata)
 {
@@ -706,15 +672,15 @@ void FSFloaterIM::doToSelected(const LLSD& userdata)
     }
     else if (command == "call")
     {
-        gIMMgr->startCall(mSessionID);
+
     }
     else if (command == "end_call")
     {
-        gIMMgr->endCall(mSessionID);
+
     }
     else if (command == "volume")
     {
-        LLFloaterReg::showInstance("fs_voice_controls");
+
     }
     else if (command == "add_friend")
     {
@@ -809,46 +775,10 @@ void FSFloaterIM::onSysinfoButtonVisibilityChanged(const LLSD& yes)
 }
 // support sysinfo button -Zi
 
-void FSFloaterIM::onChange(EStatusType status, const LLSD& channelInfo, bool proximal)
-{
-    if(status == STATUS_JOINING || status == STATUS_LEFT_CHANNEL)
-    {
-        return;
-    }
 
-    updateCallButton();
-}
 
-void FSFloaterIM::updateCallButton()
-{
-    // hide/show call button
-    bool voice_enabled = LLVoiceClient::getInstance()->voiceEnabled() && LLVoiceClient::getInstance()->isVoiceWorking();
-    LLIMModel::LLIMSession* session = LLIMModel::instance().findIMSession(mSessionID);
 
-    if (!session)
-    {
-        getChild<LLButton>("call_btn")->setEnabled(false);
-        return;
-    }
 
-    bool session_initialized = session->mSessionInitialized;
-    bool callback_enabled = session->mCallBackEnabled;
-
-    bool enable_connect = session_initialized
-    && voice_enabled
-    && callback_enabled;
-
-    getChild<LLButton>("call_btn")->setEnabled(enable_connect);
-}
-
-void FSFloaterIM::updateButtons(bool is_call_started)
-{
-    LL_DEBUGS("FSFloaterIM") << "FSFloaterIM::updateButtons" << LL_ENDL;
-    getChildView("end_call_btn_panel")->setVisible( is_call_started);
-    getChildView("voice_ctrls_btn_panel")->setVisible( is_call_started);
-    getChildView("call_btn_panel")->setVisible( ! is_call_started);
-    updateCallButton();
-}
 
 void FSFloaterIM::changed(U32 mask)
 {
@@ -858,7 +788,7 @@ void FSFloaterIM::changed(U32 mask)
     {
         bool is_online = LLAvatarTracker::instance().isBuddyOnline(mOtherParticipantUUID);
         getChild<LLButton>("teleport_btn")->setEnabled(is_online);
-        getChild<LLButton>("call_btn")->setEnabled(is_online);
+
         getChild<LLButton>("add_friend_btn")->setEnabled(false);
     }
     else
@@ -866,7 +796,7 @@ void FSFloaterIM::changed(U32 mask)
         // If friendship dissolved, enable buttons by default because we don't
         // know about their online status anymore
         getChild<LLButton>("teleport_btn")->setEnabled(true);
-        getChild<LLButton>("call_btn")->setEnabled(true);
+
         getChild<LLButton>("add_friend_btn")->setEnabled(true);
     }
 }
@@ -913,8 +843,8 @@ bool FSFloaterIM::postBuild()
                 LL_DEBUGS("FSFloaterIM") << "LLIMModel::LLIMSession::P2P_SESSION" << LL_ENDL;
                 getChild<LLLayoutPanel>("slide_panel")->setVisible(false);
                 getChild<LLLayoutPanel>("gprofile_panel")->setVisible(false);
-                getChild<LLLayoutPanel>("end_call_btn_panel")->setVisible(false);
-                getChild<LLLayoutPanel>("voice_ctrls_btn_panel")->setVisible(false);
+
+
 
                 LL_DEBUGS("FSFloaterIM") << "adding FSFloaterIM removing/adding particularfriendobserver" << LL_ENDL;
                 LLAvatarTracker::instance().removeParticularFriendObserver(mOtherParticipantUUID, this);
@@ -949,8 +879,8 @@ bool FSFloaterIM::postBuild()
                 getChild<LLLayoutPanel>("tp_panel")->setVisible(false);
                 getChild<LLLayoutPanel>("share_panel")->setVisible(false);
                 getChild<LLLayoutPanel>("pay_panel")->setVisible(false);
-                getChild<LLLayoutPanel>("end_call_btn_panel")->setVisible(false);
-                getChild<LLLayoutPanel>("voice_ctrls_btn_panel")->setVisible(false);
+
+
                 getChild<LLLayoutPanel>("add_participant_panel")->setVisible(false);
 
                 LL_DEBUGS("FSFloaterIM") << "LLIMModel::LLIMSession::GROUP_SESSION end" << LL_ENDL;
@@ -965,30 +895,20 @@ bool FSFloaterIM::postBuild()
                 getChild<LLLayoutPanel>("tp_panel")->setVisible(false);
                 getChild<LLLayoutPanel>("share_panel")->setVisible(false);
                 getChild<LLLayoutPanel>("pay_panel")->setVisible(false);
-                getChild<LLLayoutPanel>("end_call_btn_panel")->setVisible(false);
-                getChild<LLLayoutPanel>("voice_ctrls_btn_panel")->setVisible(false);
+
+
                 LL_DEBUGS("FSFloaterIM") << "LLIMModel::LLIMSession::ADHOC_SESSION end" << LL_ENDL;
                 break;
             }
             default:
                 LL_DEBUGS("FSFloaterIM") << "default buttons start" << LL_ENDL;
-                getChild<LLLayoutPanel>("end_call_btn_panel")->setVisible(false);
-                getChild<LLLayoutPanel>("voice_ctrls_btn_panel")->setVisible(false);
+
+
                 LL_DEBUGS("FSFloaterIM") << "default buttons end" << LL_ENDL;
                 break;
         }
     }
-    mVoiceChannel = LLIMModel::getInstance()->getVoiceChannel(mSessionID);
-    if(mVoiceChannel)
-    {
-        LL_DEBUGS("FSFloaterIM") << "voice_channel start" << LL_ENDL;
-        mVoiceChannelStateChangeConnection = mVoiceChannel->setStateChangedCallback(boost::bind(&FSFloaterIM::onVoiceChannelStateChanged, this, _1, _2));
 
-        //call (either p2p, group or ad-hoc) can be already in started state
-        updateButtons(mVoiceChannel->getState() >= LLVoiceChannel::STATE_CALL_STARTED);
-        LL_DEBUGS("FSFloaterIM") << "voice_channel end" << LL_ENDL;
-    }
-    LLVoiceClient::addObserver((LLVoiceClientStatusObserver*)this);
 
     // </AO>
 
@@ -1527,15 +1447,6 @@ void FSFloaterIM::sessionInitReplyReceived(const LLUUID& im_session_id)
         mSessionID = im_session_id;
         setKey(im_session_id);
         mControlPanel->setSessionId(im_session_id);
-    }
-
-    // updating "Call" button from group/ad-hoc control panel here to enable it without placing into draw() (EXT-4796)
-    if (LLIMModel::LLIMSession* session = LLIMModel::instance().findIMSession(im_session_id); session)
-    {
-        if ((session->isGroupSessionType() && gAgent.isInGroup(im_session_id)) || session->isAdHocSessionType() || session->isP2PSessionType())
-        {
-            updateCallButton();
-        }
     }
 
     //*TODO here we should remove "starting session..." warning message if we added it in postBuild() (IB)
@@ -2312,19 +2223,7 @@ void FSFloaterIM::onClickCloseBtn(bool app_quitting)
         return;
     }
 
-    bool is_call_with_chat = session->isGroupSessionType()
-            || session->isAdHocSessionType() || session->isP2PSessionType();
 
-    LLVoiceChannel* voice_channel = LLIMModel::getInstance()->getVoiceChannel(mSessionID);
-
-    if (is_call_with_chat && voice_channel != NULL && voice_channel->isActive())
-    {
-        LLSD payload;
-        payload["session_id"] = mSessionID;
-        payload["snooze"] = false;
-        LLNotificationsUtil::add("ConfirmLeaveCall", LLSD(), payload, confirmLeaveCallCallback);
-        return;
-    }
 
     session->mCloseAction = LLIMModel::LLIMSession::CLOSE_DEFAULT;
 
@@ -2485,10 +2384,6 @@ void FSFloaterIM::addP2PSessionParticipants(const LLSD& notification, const LLSD
         return;
     }
 
-    LLVoiceChannel* voice_channel = LLIMModel::getInstance()->getVoiceChannel(mSessionID);
-
-    // first check whether this is a voice session
-    bool is_voice_call = voice_channel && voice_channel->isActive();
 
     uuid_vec_t temp_ids;
     uuid_vec_t invited_ids;
@@ -2510,13 +2405,8 @@ void FSFloaterIM::addP2PSessionParticipants(const LLSD& notification, const LLSD
         onClose(false);
     }
 
-    // Start a new ad hoc voice call if we invite new participants to a P2P call,
+
     // or start a text chat otherwise.
-    if (is_voice_call)
-    {
-        session_id = LLAvatarActions::startAdhocCall(temp_ids, session_id);
-    }
-    else
     {
         session_id = LLAvatarActions::startConference(temp_ids, session_id);
     }

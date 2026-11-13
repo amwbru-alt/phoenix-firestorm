@@ -25,7 +25,7 @@
 			<!-- ## Zi: Is this the right thing to use for avatar textures? -->
 			<pie_slice label="テクスチャ" name="Debug..."/>
 			<pie_slice label="スクリプト情報" name="ScriptInfo"/>
-			<pie_slice label="コール" name="Call"/>
+
 			<pie_slice label="ズームイン" name="Zoom In"/>
 			<pie_slice label="テクスチャ更新" name="Texture Refresh"/>
 			<pie_menu name="ResetMenu" label="リセット　＞">

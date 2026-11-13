@@ -137,7 +137,7 @@ static FMOD_RESULT F_CALL systemCallback(FMOD_SYSTEM *system, FMOD_SYSTEM_CALLBA
                 // Attempt to lock the access to the audio device, wait up to 1 second for other threads to unlock.
                 std::unique_lock lock(gAudioDeviceMutex, 1s);
                 // If the lock could not be accessed, return as we don't have hardware access and will need to try again another pass.
-                // Prevents threads from interacting with the hardware at the same time as other audio/voice threads.
+                // Prevents threads from interacting with the hardware at the same time as other audio threads.
                 if (!lock.owns_lock())
                 {
                     LL_INFOS() << "Could not access the audio device mutex, trying again later" << LL_ENDL;
@@ -432,7 +432,7 @@ void LLAudioEngine_FMODSTUDIO::setDevice(const LLUUID& device_uuid)
     // Attempt to lock the access to the audio device, wait up to 1 second for other threads to unlock.
     std::unique_lock lock(gAudioDeviceMutex, 1s);
     // If the lock could not be accessed, return as we don't have hardware access and will need to try again another pass.
-    // Prevents threads from interacting with the hardware at the same time as other audio/voice threads.
+    // Prevents threads from interacting with the hardware at the same time as other audio threads.
     if (!lock.owns_lock())
     {
         LL_INFOS() << "Could not access the audio device mutex, trying again later" << LL_ENDL;

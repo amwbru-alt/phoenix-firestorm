@@ -24,18 +24,7 @@
      tool_tip="Press Enter to say, Ctrl+Enter to shout"
      top="2"
      width="283" />
-    <output_monitor
-     auto_update="true"
-     follows="right"
-     draw_border="false"
-     height="16"
-     layout="topleft"
-     left_pad="-24"
-     mouse_opaque="true"
-     name="chat_zone_indicator"
-     top="6"
-     visible="true"
-     width="20" />
+
     <button
      follows="right"
      is_toggle="true"

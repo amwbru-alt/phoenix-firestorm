@@ -459,15 +459,15 @@ bool LLStatusBar::postBuild()
     LLHints::getInstance()->registerHintTarget("linden_balance", getChild<LLView>("balance_bg")->getHandle());
 
     gSavedSettings.getControl("MuteAudio")->getSignal()->connect(boost::bind(&LLStatusBar::onVolumeChanged, this, _2));
-    // <FS:Ansariel> Fix LL voice disabled on 2nd instance nonsense
-    //gSavedSettings.getControl("EnableVoiceChat")->getSignal()->connect(boost::bind(&LLStatusBar::onVoiceChanged, this, _2));
+
+
     // <FS:Ansariel> Prefer custom FS balance hiding method
     //gSavedSettings.getControl("ObscureBalanceInStatusBar")->getSignal()->connect(boost::bind(&LLStatusBar::onObscureBalanceChanged, this, _2));
 
-    //if (!gSavedSettings.getBOOL("EnableVoiceChat") && LLAppViewer::instance()->isSecondInstance())
+
     //{
     //    // Indicate that second instance started without sound
-    //    mBtnVolume->setImageUnselected(LLUI::getUIImage("VoiceMute_Off"));
+
     //}
     // </FS:Ansariel>
     //mObscureBalance = gSavedSettings.getBOOL("ObscureBalanceInStatusBar"); // <FS:Ansariel> Prefer custom FS balance hiding method
@@ -1344,12 +1344,11 @@ void LLStatusBar::onVolumeChanged(const LLSD& newvalue)
     refresh();
 }
 
-// <FS:Ansariel> Fix LL voice disabled on 2nd instance nonsense
-//void LLStatusBar::onVoiceChanged(const LLSD& newvalue)
+
 //{
 //    if (newvalue.asBoolean())
 //    {
-//        // Second instance starts with "VoiceMute_Off" icon, fix it
+
 //        mBtnVolume->setImageUnselected(LLUI::getUIImage("Audio_Off"));
 //    }
 //    refresh();
@@ -1506,7 +1505,7 @@ void LLStatusBar::onBandwidthGraphButtonClicked()
 
 void LLStatusBar::initParcelIcons()
 {
-    mParcelIcon[VOICE_ICON] = getChild<LLIconCtrl>("voice_icon");
+
     mParcelIcon[FLY_ICON] = getChild<LLIconCtrl>("fly_icon");
     mParcelIcon[PUSH_ICON] = getChild<LLIconCtrl>("push_icon");
     mParcelIcon[BUILD_ICON] = getChild<LLIconCtrl>("build_icon");
@@ -1516,7 +1515,7 @@ void LLStatusBar::initParcelIcons()
     mParcelIcon[PATHFINDING_DIRTY_ICON] = getChild<LLIconCtrl>("pathfinding_dirty_icon");
     mParcelIcon[PATHFINDING_DISABLED_ICON] = getChild<LLIconCtrl>("pathfinding_disabled_icon");
 
-    mParcelIcon[VOICE_ICON]->setMouseDownCallback(boost::bind(&LLStatusBar::onParcelIconClick, this, VOICE_ICON));
+
     mParcelIcon[FLY_ICON]->setMouseDownCallback(boost::bind(&LLStatusBar::onParcelIconClick, this, FLY_ICON));
     mParcelIcon[PUSH_ICON]->setMouseDownCallback(boost::bind(&LLStatusBar::onParcelIconClick, this, PUSH_ICON));
     mParcelIcon[BUILD_ICON]->setMouseDownCallback(boost::bind(&LLStatusBar::onParcelIconClick, this, BUILD_ICON));
@@ -1755,7 +1754,7 @@ void LLStatusBar::updateParcelIcons()
 #ifdef OPENSIM
         is_opensim = LLGridManager::getInstance()->isInOpenSim();
 #endif // OPENSIM
-        bool allow_voice    = vpm->allowAgentVoice(agent_region, current_parcel);
+
         bool allow_fly      = vpm->allowAgentFly(agent_region, current_parcel);
         bool allow_push     = vpm->allowAgentPush(agent_region, current_parcel);
         bool allow_build    = vpm->allowAgentBuild(current_parcel); // true when anyone is allowed to build. See EXT-4610.
@@ -1783,7 +1782,7 @@ void LLStatusBar::updateParcelIcons()
         }
 
         // Most icons are "block this ability"
-        mParcelIcon[VOICE_ICON]->setVisible(   !allow_voice );
+
         mParcelIcon[FLY_ICON]->setVisible(     !allow_fly );
         mParcelIcon[PUSH_ICON]->setVisible(    !allow_push );
         mParcelIcon[BUILD_ICON]->setVisible(   !allow_build );
@@ -1870,9 +1869,7 @@ void LLStatusBar::onParcelIconClick(EParcelIcon icon)
 {
     switch (icon)
     {
-    case VOICE_ICON:
-        LLNotificationsUtil::add("NoVoice");
-        break;
+
     case FLY_ICON:
         LLNotificationsUtil::add("NoFly");
         break;

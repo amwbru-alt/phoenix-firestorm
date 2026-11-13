@@ -224,7 +224,6 @@ private:
 };
 
 
-
 bool estate_dispatch_initialized = false;
 
 
@@ -2600,7 +2599,7 @@ bool LLPanelEstateInfo::postBuild()
     initCtrl("limit_payment");
     initCtrl("limit_age_verified");
     initCtrl("limit_bots");
-    initCtrl("voice_chat_check");
+
     initCtrl("parcel_access_override");
 
     childSetAction("message_estate_btn", boost::bind(&LLPanelEstateInfo::onClickMessageEstate, this));
@@ -2641,7 +2640,7 @@ void LLPanelEstateInfo::refreshFromEstate()
     setOwnerName(LLSLURL("agent", estate_info.getOwnerID(), "inspect").getSLURLString());
 
     getChild<LLUICtrl>("externally_visible_radio")->setValue(estate_info.getIsExternallyVisible() ? "estate_public_access" : "estate_restricted_access");
-    getChild<LLUICtrl>("voice_chat_check")->setValue(estate_info.getAllowVoiceChat());
+
     getChild<LLUICtrl>("allow_direct_teleport")->setValue(estate_info.getAllowDirectTeleport());
     getChild<LLUICtrl>("limit_payment")->setValue(estate_info.getDenyAnonymous());
     getChild<LLUICtrl>("limit_age_verified")->setValue(estate_info.getDenyAgeUnverified());
@@ -2688,7 +2687,7 @@ bool LLPanelEstateInfo::callbackChangeLindenEstate(const LLSD& notification, con
             estate_info.setAllowDirectTeleport(getChild<LLUICtrl>("allow_direct_teleport")->getValue().asBoolean());
             estate_info.setDenyAnonymous(getChild<LLUICtrl>("limit_payment")->getValue().asBoolean());
             estate_info.setDenyAgeUnverified(getChild<LLUICtrl>("limit_age_verified")->getValue().asBoolean());
-            estate_info.setAllowVoiceChat(getChild<LLUICtrl>("voice_chat_check")->getValue().asBoolean());
+
             estate_info.setAllowAccessOverride(getChild<LLUICtrl>("parcel_access_override")->getValue().asBoolean());
             estate_info.setDenyScriptedAgents(getChild<LLUICtrl>("limit_bots")->getValue().asBoolean());
             // JIGGLYPUFF

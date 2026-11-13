@@ -8,7 +8,7 @@
 				<layout_panel name="conversations_pane_buttons_expanded">
 					<menu_button name="sort_btn" tool_tip="Параметры просмотра/сортировки"/>
 					<button name="add_btn" tool_tip="Начать разговор"/>
-					<button name="speak_btn" tool_tip="Разговаривать через микрофон"/>
+
 				</layout_panel>
 				<layout_panel name="conversations_pane_buttons_collapsed">
 					<button name="expand_collapse_btn" tool_tip="Свернуть/развернуть этот список"/>

@@ -181,9 +181,7 @@ Zəhmət olmasa, bir element seçin və yenidən cəhd edin.
 		Paltarda/bədən hissələrində bütün dəyişikliklər yadda saxlanılsın?
 		<usetemplate canceltext="Ləğv et" name="yesnocancelbuttons" notext="Yadda saxlama" yestext="Hamısını saxla"/>
 	</notification>
-	<notification name="FriendsAndGroupsOnly">
-		Dostlarınız olmayan sakinlər onların zənglərinə və mesajlarına məhəl qoymadığınızı bilməyəcəklər.
-	</notification>
+
 	<notification name="FavoritesOnLogin">
 		Qeyd. Bu seçimi aktiv etdikdən sonra bu kompüterin bütün istifadəçiləri sevimli yerlərinizin siyahısını görə biləcəklər.
 	</notification>
@@ -2281,9 +2279,7 @@ Bu elanı indi L$[AMOUNT] ödəməklə dərc etmək istəyirsiniz?
 		Bu regionun reytinqi dəyişdirilib.
 Bu dəyişikliyin xəritədə görünməsi bir qədər vaxt ala bilər.
 	</notification>
-	<notification label="Səs versiyası uyğunsuzluğu" name="VoiceVersionMismatch">
-		[APP_NAME] tətbiqinin bu versiyası bu regionda səsli söhbət funksiyası ilə uyğun deyil. Səsli söhbətin düzgün işləməsi üçün [APP_NAME] yenilənməlidir.
-	</notification>
+
 	<notification label="Əşyaları almaq mümkün deyil" name="BuyObjectOneOwner">
 		Eyni zamanda müxtəlif sahiblərdən obyektləri ala bilməzsiniz.
 Zəhmət olmasa, bir obyekt seçin və yenidən cəhd edin.
@@ -2959,9 +2955,7 @@ Burada uça bilməzsiniz.
 	<notification name="PushRestricted">
 		Bu ərazidə itələmək qadağandır. Burada siz torpağın sahibi olmasanız, heç kimi itələyə bilməzsiniz.
 	</notification>
-	<notification name="NoVoice">
-		Bu ərazidə səsli söhbətə icazə verilmir. Burada səs eşitməyəcəksiniz.
-	</notification>
+
 	<notification name="NoBuild">
 		Bu ərazidə tikinti aparmaq qadağandır. Burada siz obyektlər tikə və ya yerləşdirə bilməyəcəksiniz.
 	</notification>
@@ -3411,15 +3405,7 @@ Burada qurduğunuz şeylər siz getdikdən sonra silinəcək, ona görə də ele
 	<notification name="MaxListSelectMessage">
 		Siz bu siyahıdan yalnız [MAX_SELECT] element seçə bilərsiniz.
 	</notification>
-	<notification name="VoiceInviteP2P">
-		[NAME] sizi səsli söhbətə dəvət edir
-Söhbətə qoşulmaq üçün &quot;Qəbul et&quot;, dəvəti rədd etmək üçün isə &quot;Rədd et&quot; üzərinə basın. Bu zəng edənin bütün mesajlarını həmişəlik bloklamaq üçün &quot;Blokla&quot; basın.
-		<form name="form">
-			<button name="Accept" text="Qəbul et"/>
-			<button name="Decline" text="Rədd et"/>
-			<button name="Mute" text="Blokla"/>
-		</form>
-	</notification>
+
 	<notification name="AutoUnmuteByIM">
 		[NAME] adlı sakinə ani mesaj göndərildi və avtomatik olaraq blokdan çıxarıldı.
 	</notification>
@@ -3429,69 +3415,8 @@ Söhbətə qoşulmaq üçün &quot;Qəbul et&quot;, dəvəti rədd etmək üçü
 	<notification name="AutoUnmuteByInventory">
 		[NAME] avadanlıq siyahısı elementi təklif edildi və avtomatik blokdan çıxarıldı.
 	</notification>
-	<notification name="VoiceInviteGroup">
-		[NAME] adlı sakin [GROUP] qrupu ilə səsli söhbətə qoşuldu.
-Söhbətə qoşulmaq üçün &quot;Qəbul et&quot;, dəvəti rədd etmək üçün isə &quot;Rədd et&quot; üzərinə basın. Bu zəng edənin bütün mesajlarını həmişəlik bloklamaq üçün &quot;Blokla&quot; basın.
-		<form name="form">
-			<button name="Accept" text="Qəbul et"/>
-			<button name="Decline" text="Rədd et"/>
-			<button name="Mute" text="Blokla"/>
-		</form>
-	</notification>
-	<notification name="VoiceInviteAdHoc">
-		[NAME] adlı sakin konfrans ilə səsli söhbətə qoşuldu.
-Söhbətə qoşulmaq üçün &quot;Qəbul et&quot;, dəvəti rədd etmək üçün isə &quot;Rədd et&quot; üzərinə basın. Bu zəng edənin bütün mesajlarını həmişəlik bloklamaq üçün &quot;Blokla&quot; basın.
-		<form name="form">
-			<button name="Accept" text="Qəbul et"/>
-			<button name="Decline" text="Rədd et"/>
-			<button name="Mute" text="Blokla"/>
-		</form>
-	</notification>
-	<notification name="InviteAdHoc">
-		[NAME] adlı sakin sizi konfrans ilə səsli söhbətə dəvət edir.
-Söhbətə qoşulmaq üçün &quot;Qəbul et&quot;, dəvəti rədd etmək üçün isə &quot;Rədd et&quot; üzərinə basın. Bu zəng edənin bütün mesajlarını həmişəlik bloklamaq üçün &quot;Blokla&quot; basın.
-		<form name="form">
-			<button name="Accept" text="Qəbul et"/>
-			<button name="Decline" text="Rədd et"/>
-			<button name="Mute" text="Blokla"/>
-		</form>
-	</notification>
-	<notification name="VoiceChannelFull">
-		Siz artıq maksimal tutumuna çatmış [VOICE_CHANNEL_NAME] səsli söhbətə qoşulmağa çalışırsınız. Zəhmət olmasa bir az sonra yenə cəhd edin.
-	</notification>
-	<notification name="ProximalVoiceChannelFull">
-		Bu sahə səsli söhbətlər üçün maksimum tutuma çatıb. Zəhmət olmasa, səsli söhbətdən başqa sahədə istifadə etməyə çalışın.
-	</notification>
-	<notification name="VoiceChannelDisconnected">
-		[VOICE_CHANNEL_NAME] ilə əlaqəniz kəsildi. Ümumi səsli söhbətə əlaqə qurulacaq.
-	</notification>
-	<notification name="VoiceChannelDisconnectedP2P">
-		[VOICE_CHANNEL_NAME] zəngi bitirdi. Ümumi səsli söhbətə əlaqə qurulacaq.
-	</notification>
-	<notification name="P2PCallDeclined">
-		[VOICE_CHANNEL_NAME] zənginizi rədd etdi. Ümumi səsli söhbətə əlaqə qurulacaq.
-	</notification>
-	<notification name="P2PCallNoAnswer">
-		[VOICE_CHANNEL_NAME] zənginizi qəbul edə bilməz. Ümumi səsli söhbətə əlaqə qurulacaq.
-	</notification>
-	<notification name="VoiceChannelJoinFailed">
-		[VOICE_CHANNEL_NAME] kanalına qoşulmaq alınmadı, sonra yenidən cəhd edin. Ümumi səsli söhbətə əlaqə qurulacaq.
-	</notification>
-	<notification name="VoiceEffectsExpired">
-		Bir və ya bir neçə növ animasiyalı səs dəyişikliyinə abunəliyiniz başa çatıb.
-Abunəliyi yeniləmək üçün [[URL] buraya basın].
 
-Əgər siz premium hesab sahibisinizsə, zəhmət olmasa animasiyalı səs dəyişikliyinin hüququnu almaq üçün [[PREMIUM_URL] bura basın].
-	</notification>
-	<notification name="VoiceEffectsExpiredInUse">
-		Animasiyalı səs dəyişdiricisinin müddəti bitdi, normal səs seçimləriniz qüvvədədir.
-Abunəliyi yeniləmək üçün [[URL] buraya basın].
 
-Əgər siz premium hesab sahibisinizsə, zəhmət olmasa animasiyalı səs dəyişikliyinin hüququnu almaq üçün [[PREMIUM_URL] bura basın].
-	</notification>
-	<notification name="VoiceEffectsNew">
-		Səs dəyişikliklərinin yeni növləri var!
-	</notification>
 	<notification name="Cannot enter parcel: not a group member">
 		Bu sahəyə yalnız müəyyən qrupun üzvləri baş çəkə bilər.
 	</notification>
@@ -3501,12 +3426,8 @@ Abunəliyi yeniləmək üçün [[URL] buraya basın].
 	<notification name="Cannot enter parcel: not on access list">
 		Sahəyə daxil olmaq mümkün deyil, siz giriş siyahısında deyilsiniz.
 	</notification>
-	<notification name="VoiceNotAllowed">
-		Sizin [VOICE_CHANNEL_NAME] üçün səsli söhbətə qoşulmaq icazəniz yoxdur.
-	</notification>
-	<notification name="VoiceCallGenericError">
-		[VOICE_CHANNEL_NAME] üçün səsli söhbətə qoşulmaqda xəta baş verdi.  Zəhmət olmasa bir az sonra yenə cəhd edin.
-	</notification>
+
+
 	<notification name="UnsupportedCommandSLURL">
 		Üzərinə basdığınız SLurl dəstəklənmir.
 	</notification>
@@ -3565,9 +3486,7 @@ Təhlükəsizliyiniz üçün onlar bir neçə saniyə bloklanacaqlar.
 	<notification name="TextChatIsMutedByModerator">
 		Mətn söhbətiniz moderator tərəfindən bloklanıb.
 	</notification>
-	<notification name="VoiceIsMutedByModerator">
-		Səsiniz moderator tərəfindən bloklanıb.
-	</notification>
+
 	<notification name="FailedToGetBenefits">
 		Təəssüf ki, bu sessiya üçün hesab faydaları haqqında məlumat əldə edə bilmədik. Bu normal iş mühitində baş verməməlidir. Zəhmət olmasa dəstək ilə əlaqə saxlayın. Bu seans normal işləməyəcək və biz sizə proqramın yenidən başlamağınızı tövsiyə edirik.
 		<usetemplate name="okbutton" yestext="Bəli"/>
@@ -3694,29 +3613,8 @@ Görünüş yeniləmənizi [TIME] saniyə ərzində təqdim etdiniz.
 		[PROTOCOL] &lt;nolink&gt;[HOSTID]&lt;/nolink&gt; istifadə edərkən qoşulmaqda problem yarandı.
 Zəhmət olmasa şəbəkənizi və təhlükəsizlik divarı quraşdırmanızı yoxlayın.
 	</notification>
-	<notification name="NoVoiceConnect">
-		Səs serverinə qoşulmaq mümkün deyil:
 
-&lt;nolink&gt;[HOSTID]&lt;/nolink&gt;
 
-Səs üçün icazə verilməli olan portlar:
-:TCP: 80, 443
-:UDP: 3478, 3479, 5060, 5062, 6250, 12000-32000
-
-Zəhmət olmasa şəbəkənizi və təhlükəsizlik divarı quraşdırmanızı yoxlayın.
-Routerinizdə hər hansı SIP ALG funksiyasını söndürün.
-
-Səsli rabitə mövcud olmayacaq.
-https://wiki.firestormviewer.org/fs_voice
-		<usetemplate ignoretext="Səs serverinə qoşulma zamanı problemlər yarandı" name="okignore" yestext="Bəli"/>
-	</notification>
-	<notification name="NoVoiceConnect-GIAB">
-		Səs serverinə qoşulmaq mümkün deyil:
-
-Səsli rabitə mövcud olmayacaq.
-Zəhmət olmasa şəbəkənizi və təhlükəsizlik divarı quraşdırmanızı yoxlayın.
-[https://wiki.firestormviewer.org/fs_voice]
-	</notification>
 	<notification name="AvatarRezLeftNotification">
 		( [EXISTENCE] san. canlı )
 &quot;[NAME]&quot; avatarı tam yüklənib.
@@ -3737,31 +3635,15 @@ Siz [TIME] saniyədən sonra '[BODYREGION]' üçün [RESOLUTION] bişmiş tekstu
 		Bu teksturaya baxmaq mümkün deyil, çünki onu köçürmək və/və ya paylaşmaq qadağandır.
 		<usetemplate ignoretext="Kopyalamağa və/və ya paylaşmağa icazə verilməyən teksturalar üçün canlı görüntü mövcud olmadıqda xəbərdar edin" name="okignore" yestext="Bəli"/>
 	</notification>
-	<notification name="ConfirmLeaveCall">
-		Bu söhbəti tərk etmək istədiyinizə əminsiniz?
-		<usetemplate ignoretext="Söhbəti tərk etməzdən əvvəl təsdiqləyin" name="okcancelignore" notext="Xeyr" yestext="Bəli"/>
-	</notification>
-	<notification name="ConfirmMuteAll">
-		Siz qrup zəngindəki bütün iştirakçıların səsini söndürməyi seçmisiniz.
-Bu, hətta siz zəngi tərk etdikdən sonra belə zəngə sonradan qoşulan bütün
-sakinlərin səssiz qalmasına səbəb olacaq.
 
-Hamının səsi kəsilsin?
-		<usetemplate ignoretext="Qrup söhbətindəki bütün iştirakçıların səsini kəsməzdən əvvəl təsdiqləyin" name="okcancelignore" notext="Ləğv et" yestext="Bəli"/>
-	</notification>
+
 	<notification label="Söhbət" name="HintChat">
 		Söhbətə qoşulmaq üçün aşağıdakı söhbət sahəsinə sözləri daxil edin.
 	</notification>
 	<notification label="Dur" name="HintSit">
 		Ayağa qalxmaq və oturma mövqeyindən çıxmaq üçün &quot;Dur&quot; düyməsini basın.
 	</notification>
-	<notification label="Danış" name="HintSpeak">
-		Mikrofonu yandırıb söndürmək üçün Danış düyməsini basın.
 
-Səsli idarəetmə panelini görmək üçün yuxarı oxu basın.
-
-Danış düyməsini gizlətmək səs funksiyasını deaktiv edəcək.
-	</notification>
 	<notification label="Dünyanı kəşf edin" name="HintDestinationGuide">
 		Təyinat Bələdçisi kəşf ediləcək minlərlə yeni yerləri ehtiva edir. Yer seçin və kəşfiyyata başlamaq üçün Teleport seçin.
 	</notification>
@@ -3865,10 +3747,7 @@ Görünüş sahəsini fırlatmaq üçün dünyanın istənilən yerinə basın v
 		Dünya xəritəsinə baxmaq yalnız Qabaqcıl rejimdə mümkündür. Çıxmaq və rejimləri dəyişmək istərdinizmi? Rejim seçicisi giriş ekranında tapıla bilər.
 		<usetemplate name="okcancelbuttons" notext="Çıxma" yestext="Çıx"/>
 	</notification>
-	<notification label="" name="NoVoiceCall">
-		Səsli zənglər yalnız Qabaqcıl rejimdə mümkündür. Çıxış etmək və rejimləri dəyişmək istərdinizmi?
-		<usetemplate name="okcancelbuttons" notext="Çıxma" yestext="Çıx"/>
-	</notification>
+
 	<notification label="" name="NoAvatarShare">
 		Paylaşım yalnız Qabaqcıl rejimdə mümkündür. Çıxış etmək və rejimləri dəyişmək istərdinizmi?
 		<usetemplate name="okcancelbuttons" notext="Çıxma" yestext="Çıx"/>

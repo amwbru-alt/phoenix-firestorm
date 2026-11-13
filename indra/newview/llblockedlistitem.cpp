@@ -28,6 +28,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "llmutelist.h"
 
 #include "llblockedlistitem.h"
 

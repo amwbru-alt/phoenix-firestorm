@@ -459,12 +459,8 @@ Somente lotes grandes podem ser listados na busca.
 			</text>
 			<check_box label="Todos" name="all av sound check"/>
 			<check_box label="Grupo" name="group av sound check"/>
-			<text name="Voice settings:">
-				Voz:
-			</text>
-			<check_box label="Ativar voz" name="parcel_enable_voice_channel"/>
-			<check_box label="Ativar voz (definido pela propriedade)" name="parcel_enable_voice_channel_is_estate_disabled"/>
-			<check_box label="Limitar voz a este lote" name="parcel_enable_voice_channel_local"/>
+
+
 			<text name="media">
 				Mídia:
 			</text>

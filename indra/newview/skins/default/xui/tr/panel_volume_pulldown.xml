@@ -9,6 +9,6 @@
 	<check_box name="enable_music" tool_tip="Müzik Akışını Etkinleştir"/>
 	<slider label="Ortam" name="Media Volume"/>
 	<check_box name="enable_media" tool_tip="Akış Ortamını Etkinleştir"/>
-	<slider label="Ses" name="Voice Volume"/>
-	<check_box name="enable_voice_check" tool_tip="Sesli Sohbeti Etkinleştir"/>
+
+
 </panel>

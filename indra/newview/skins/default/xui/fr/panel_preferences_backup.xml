@@ -64,9 +64,7 @@
 						<row name="restore_per_account_row_toolbars">
 							<column name="restore_per_account_files_label">Barres d'outils</column>
 						</row>
-						<row name="restore_per_account_row_volumes">
-							<column name="restore_per_account_files_label">Volumes du  chat vocal</column>
-						</row>
+
 						<row name="restore_per_account_row_tphistory">
 							<column name="restore_per_account_files_label">Historique de téléportation</column>
 						</row>

@@ -69,7 +69,7 @@
 									<combo_box.item name="RadarNameFormat_userdisplay" label="ユーザ名（表示名）"/>
 								</combo_box>
 								<text name="columns_label" value="表示カラム："/>
-								<check_box label="ボイス" name="column_voice"/>
+
 								<check_box label="表示時間" name="column_seen"/>
 								<check_box label="年齢" name="column_age"/>
 								<check_box label="同一ＳＩＭ" name="column_region"/>

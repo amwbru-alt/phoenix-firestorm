@@ -329,28 +329,15 @@ bool LLAgent::isActionAllowed(const LLSD& sdname)
 
     if (param == "speak")
     {
-        bool allow_agent_voice = false;
-        LLVoiceChannel* channel = LLVoiceChannel::getCurrentVoiceChannel();
-        if (channel != NULL)
+
+
+        if (false != NULL)
         {
-            if (channel->getSessionName().empty() && channel->getSessionID().isNull())
             {
-                // default channel
-                allow_agent_voice = LLViewerParcelMgr::getInstance()->allowAgentVoice();
-            }
-            else
-            {
-                allow_agent_voice = channel->isActive();
+
             }
         }
 
-        if (gAgent.isVoiceConnected() &&
-            allow_agent_voice &&
-            !LLVoiceClient::getInstance()->inTuningMode())
-        {
-            retval = true;
-        }
-        else
         {
             retval = false;
         }
@@ -368,30 +355,16 @@ bool LLAgent::isActionAllowed(const LLSD& sdname)
 }
 
 // static
-void LLAgent::pressMicrophone(const LLSD& name)
-{
-    LLFirstUse::speak(false);
 
-     LLVoiceClient::getInstance()->inputUserControlState(true);
-}
 
 // static
-void LLAgent::releaseMicrophone(const LLSD& name)
-{
-    LLVoiceClient::getInstance()->inputUserControlState(false);
-}
+
 
 // static
-void LLAgent::toggleMicrophone(const LLSD& name)
-{
-    LLVoiceClient::getInstance()->toggleUserPTTState();
-}
+
 
 // static
-bool LLAgent::isMicrophoneOn(const LLSD& sdname)
-{
-    return LLVoiceClient::getInstance()->getUserPTTState();
-}
+
 
 // ************************************************************
 // Enabled this definition to compile a 'hacked' viewer that
@@ -505,7 +478,6 @@ LLAgent::LLAgent() :
     mFirstLogin(false),
     mOutfitChosen(false),
 
-    mVoiceConnected(false),
 
     // <FS:Ansariel> [Legacy Bake]
     mAppearanceSerialNum(0),
@@ -3080,11 +3052,11 @@ boost::signals2::connection LLAgent::setMouselookModeOutCallback( const camera_s
 //-----------------------------------------------------------------------------
 void LLAgent::heardChat(const LLUUID& id)
 {
-    // log text and voice chat to speaker mgr
+
     // for keeping track of active speakers, etc.
     LLLocalSpeakerMgr::getInstance()->speakerChatted(id);
 
-    // don't respond to your own voice
+
     if (id == getID()) return;
 
     if (ll_rand(2) == 0)
@@ -4895,10 +4867,7 @@ void LLAgent::restartFailedTeleportRequest()
 
 void LLAgent::clearTeleportRequest()
 {
-    if(LLVoiceClient::instanceExists())
-    {
-        LLVoiceClient::getInstance()->setHidden(false);
-    }
+
     mTeleportRequest.reset();
     mTPNeedsNeabyChatSeparator = false;
 }
@@ -4925,10 +4894,7 @@ bool LLAgent::hasPendingTeleportRequest()
 void LLAgent::startTeleportRequest()
 {
     LL_INFOS("Teleport") << "Agent handling start teleport request." << LL_ENDL; // <FS:Beq> fix mistyped tag
-    if(LLVoiceClient::instanceExists())
-    {
-        LLVoiceClient::getInstance()->setHidden(true);
-    }
+
     if (hasPendingTeleportRequest())
     {
         LLUIUsage::instance().logCommand("Agent.StartTeleportRequest");
@@ -5008,10 +4974,7 @@ void LLAgent::handleTeleportFinished()
 void LLAgent::handleTeleportFailed()
 {
     LL_WARNS("Teleport") << "Agent handling teleport failure!" << LL_ENDL;
-    if(LLVoiceClient::instanceExists())
-    {
-        LLVoiceClient::getInstance()->setHidden(false);
-    }
+
 
     setTeleportState(LLAgent::TELEPORT_NONE);
     // Unlock the UI if the progress bar has been shown.

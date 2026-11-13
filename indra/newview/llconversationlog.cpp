@@ -24,6 +24,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "llcallingcard.h"
 
 #include "llagent.h"
 #include "llavatarnamecache.h"
@@ -600,7 +601,7 @@ bool LLConversationLog::loadFromFile(const std::string& filename)
     S32 has_offline_ims;
     S32 stype;
     S64 time;
-    // before CHUI-348 it was a flag of conversation voice state
+
     int prereserved_unused;
 
     memset(buffer, '\0', UTF_BUFFER);

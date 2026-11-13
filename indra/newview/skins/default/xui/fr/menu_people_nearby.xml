@@ -4,7 +4,7 @@
 	<menu_item_call label="Envoyer un IM" name="im"/>
 	<menu_item_call label="Téléporter" name="offer_teleport"/>
 	<menu_item_call label="Se Téléporter vers" name="request_teleport"/>
-	<menu_item_call label="Appel vocal" name="voice_call"/>
+
 	<menu_item_call label="Voir l'historique de conversations" name="chat_history"/>
 	<menu_item_call label="Devenir amis" name="add_friend"/>
 	<menu_item_call label="Ajouter à un cercle" name="Add to Set"/>

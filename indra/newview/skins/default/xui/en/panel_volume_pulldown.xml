@@ -295,53 +295,6 @@
 	 control_name="AudioStreamingMedia"
 	 label_text.halign="left"
 	/>
-	<slider
-	 name="Voice Volume"
-	 label="Voice"
-	 top_pad="4"
-	 left="10"
-	 height="15"
-	 width="160"
-	 follows="left|top"
-	 layout="topleft"
-	 control_name="AudioLevelVoice"
-	 disabled_control="MuteAudio"
-	 increment="0.025"
-	 initial_value="0.5"
-	 label_width="60"
-	 show_text="false"
-	 volume="true"
-	>
-		<slider.commit_callback
-		 function="Pref.setControlFalse"
-		 parameter="MuteVoice"
-		/>
-	</slider>
-	<button
-	 name="mute_audio"
-	 left_pad="5"
-	 height="16"
-	 width="16"
-	 follows="top|left"
-	 layout="topleft"
-	 control_name="MuteVoice"
-	 disabled_control="MuteAudio"
-	 image_selected="AudioMute_Off"
-	 image_unselected="Audio_Off"
-	 is_toggle="true"
-	 tab_stop="false"
-	/>
-	<check_box
-	 name="enable_voice_check"
-	 tool_tip="Enable Voice Chat"
-	 top_delta="2"
-	 left_pad="5"
-	 height="16"
-	 width="16"
-	 follows="left|top"
-	 layout="topleft"
-	 control_name="EnableVoiceChat"
-	 disabled_control="CmdLineDisableVoice"
-	 label_text.halign="left"
-	/>
+
+
 </panel>

@@ -34,10 +34,10 @@
 	<true/>
 	<key>NSAppSleepDisabled</key>
 	<true/>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Доступ к микрофону нужен для голосового общения.</string>
+
+
 	<key>NSLocalNetworkUsageDescription</key>
-	<string>Для установки голосового соединения WebRTC может потребоваться доступ к локальной сети.</string>
+    <string>ForMe.World подключается к серверам мира и потоковому аудио региона в локальной сети.</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>${MACOSX_BUNDLE_COPYRIGHT}</string>
 	<key>CFBundleURLTypes</key>

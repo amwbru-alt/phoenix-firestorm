@@ -460,12 +460,8 @@ Nur große Parzellen können in der Suche aufgeführt werden.
 			</text>
 			<check_box label="Jeder" name="all av sound check"/>
 			<check_box label="Gruppe" name="group av sound check"/>
-			<text name="Voice settings:">
-				Voice:
-			</text>
-			<check_box label="Voice aktivieren" name="parcel_enable_voice_channel"/>
-			<check_box label="Voice aktivieren (vom Grundbesitz eingerichtet)" name="parcel_enable_voice_channel_is_estate_disabled"/>
-			<check_box label="Voice auf diese Parzelle beschränken" name="parcel_enable_voice_channel_local"/>
+
+
 			<text name="media">
 				Medien:
 			</text>

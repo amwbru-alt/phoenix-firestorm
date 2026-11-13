@@ -324,7 +324,6 @@ things in this group. There&apos;s a broad variety of Abilities.
          layout="topleft">
 
 
-
             <scroll_list.columns
              label=""
              name="icon"

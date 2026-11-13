@@ -15,8 +15,8 @@
  can_tear_off="false"
  min_height="260"
  positioning="relative" header_height="44" header_vpad="10" header_icon="Forme_UI_Chat" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD" legacy_header_height="0">
-    <floater.string name="call_btn_start">Conv_toolbar_open_call</floater.string>
-    <floater.string name="call_btn_stop">Conv_toolbar_hang_up</floater.string>
+
+
     <floater.string
      name="collapseline_icon"
      value="Conv_collapse_to_one_line"/>
@@ -47,12 +47,8 @@
     <floater.string
      name="tooltip_to_main_window"
      value="Move this conversation back to main window"/>
-    <floater.string
-     name="start_call_button_tooltip"
-     value="Open voice connection"/>
-    <floater.string
-     name="end_call_button_tooltip"
-     value="Close voice connection"/>
+
+
     <floater.string
      name="expcol_button_not_tearoff_tooltip"
      value="Collapse this pane"/>
@@ -129,19 +125,7 @@
                  name="add_btn"
                  tool_tip="Add someone to this conversation"
                  width="31"/>
-                <button
-                 follows="top|left"
-                 height="25"
-                 image_hover_unselected="Toolbar_Middle_Over"
-                 image_overlay="Conv_toolbar_open_call"
-                 image_selected="Toolbar_Middle_Selected"
-                 image_unselected="Toolbar_Middle_Off"
-                 layout="topleft"
-                 top="1"
-                 left_pad="2"
-                 name="voice_call_btn"
-                 tool_tip="Open voice connection"
-                 width="31"/>                
+
                 <button
                  follows="right|top"
                  height="25"

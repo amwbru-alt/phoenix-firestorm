@@ -113,7 +113,7 @@
 		<menu_item_call label="Discord..." name="Discord"/>
 		<menu_item_check label="Gesten..." name="Gestures"/>
 		<menu_item_check label="Unterhaltungsprotokoll..." name="Conversation Log..."/>
-		<menu_item_check label="Stimmen in der Nähe" name="Nearby Voice"/>
+
 		<menu_item_call label="Blockierliste" name="Block List"/>
 		<menu_item_check label="Chat-Konsole anzeigen" name="Show On-screen Console"/>
 	</menu>

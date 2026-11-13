@@ -292,13 +292,6 @@
       <string>NoVerifySSLCert</string>
     </map>
 
-    <key>novoice</key>
-    <map>
-      <key>desc</key>
-      <string>Disable voice.</string>
-      <key>map-to</key>
-      <string>CmdLineDisableVoice</string>
-    </map>
 
     <key>outbw</key>
     <map>

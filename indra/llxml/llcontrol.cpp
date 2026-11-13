@@ -31,6 +31,7 @@
 #include <algorithm>
 
 #include "llcontrol.h"
+#include "formeretiredsettings.h"
 
 #include "llstl.h"
 
@@ -907,6 +908,11 @@ U32 LLControlGroup::loadFromFileLegacy(const std::string& filename, bool require
     while(child_nodep)
     {
         name = child_nodep->getName();
+        if (ForMeSettings::retired(name))
+        {
+            child_nodep = rootp->getNextChild();
+            continue;
+        }
 
         bool declared = controlExists(name);
 
@@ -1135,6 +1141,21 @@ U32 LLControlGroup::loadFromFile(const std::string& filename, bool set_default_v
         bool can_backup = true;     // <FS:Zi> Backup Settings
         std::string const & name = itr->first;
         LLSD const & control_map = itr->second;
+        // Retired controls must not be re-declared from an older user profile.
+        if (ForMeSettings::retired(name))
+        {
+            const std::string replacement = ForMeSettings::replacement(name);
+            if (!set_default_values && !replacement.empty() && !settings.has(replacement))
+            {
+                if (LLControlVariable* control = getControl(replacement))
+                {
+                    control->setValue(control_map["Value"], save_values);
+                    ++validitems;
+                }
+            }
+            continue;
+        }
+
 
         if(control_map.has("Persist"))
         {

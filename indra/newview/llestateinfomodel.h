@@ -54,7 +54,7 @@ public:
     bool                getAllowDirectTeleport()    const;
     bool                getDenyAnonymous()          const;
     bool                getDenyAgeUnverified()      const;
-    bool                getAllowVoiceChat()         const;
+
     bool                getAllowAccessOverride()    const;
     bool                getAllowEnvironmentOverride() const;
     bool                getDenyScriptedAgents()     const;
@@ -70,7 +70,7 @@ public:
     void setAllowDirectTeleport(bool val);
     void setDenyAnonymous(bool val);
     void setDenyAgeUnverified(bool val);
-    void setAllowVoiceChat(bool val);
+
     void setAllowAccessOverride(bool val);
     void setAllowEnvironmentOverride(bool val);
     void setDenyScriptedAgents(bool val);

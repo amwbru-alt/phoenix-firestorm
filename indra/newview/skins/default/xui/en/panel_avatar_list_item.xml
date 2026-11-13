@@ -124,21 +124,7 @@
      tool_tip="This friend can see when you're online"
      top_delta="0"
      width="16"  top="21"/>
-    <slider
-     visible="false"
-     enabled="true"
-     follows="right"
-     height="16"
-     increment="0.01"
-     left_pad="3"
-     right="-72"
-     max_val="1.0"
-     min_val="0.0"
-     name="volume_slider"
-     show_text="false"
-     tool_tip="Voice volume"
-     value="0.5"
-     width="90"/>
+
     <button
      follows="right"
      height="16"
@@ -164,19 +150,7 @@
      tool_tip="View profile"
      top_delta="-2"
      width="20"  top="21"/>
-    <output_monitor
-     auto_update="true"
-     follows="right"
-     draw_border="false"
-     height="16"
-     layout="topleft"
-     left_pad="5"
-     right="-3"
-     mouse_opaque="true"
-     name="speaking_indicator"
-     tool_tip="Voice volume"
-     visible="true"
-     width="20"  top="21"/>
+
 
   <panel.string name="forme_online">Online</panel.string>
   <panel.string name="forme_offline">Offline</panel.string>

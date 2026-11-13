@@ -47,10 +47,8 @@ protected:
 
     LLButton* mParcelStreamPlayButton;
     LLButton* mParcelMediaPlayButton;
-    LLButton* mTalkButton;
     LLButton* mAOInterfaceButton;
     LLButton* mVolumeControlsInterfaceButton;
-    LLButton* mPTTButton;
 };
 
 #endif // UTILITYBAR_H

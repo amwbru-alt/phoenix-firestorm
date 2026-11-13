@@ -71,7 +71,6 @@
 #include "llviewercontrol.h"        // for gSavedSettings
 #include "llviewermenu.h"           // for gMenuHolder
 #include "llviewerregion.h"
-#include "llvoiceclient.h"
 #include "llworld.h"
 #include "llspeakers.h"
 #include "llfloaterwebcontent.h"
@@ -235,8 +234,8 @@ public:
 protected:
     virtual bool doCompare(const LLAvatarListItem* item1, const LLAvatarListItem* item2) const
     {
-        LLPointer<LLSpeaker> lhs = LLActiveSpeakerMgr::instance().findSpeaker(item1->getAvatarId());
-        LLPointer<LLSpeaker> rhs = LLActiveSpeakerMgr::instance().findSpeaker(item2->getAvatarId());
+        LLPointer<LLSpeaker> lhs = LLLocalSpeakerMgr::instance().findSpeaker(item1->getAvatarId());
+        LLPointer<LLSpeaker> rhs = LLLocalSpeakerMgr::instance().findSpeaker(item2->getAvatarId());
         if ( lhs.notNull() && rhs.notNull() )
         {
             // Compare by last speaking time
@@ -392,7 +391,7 @@ public:
         LLAvatarTracker::instance().addObserver(this);
 
         // For notification when SIP online status changes.
-        LLVoiceClient::addObserver(this);
+
         // <FS:Ansariel> Disconnect LLFriendCardsManager
         if (gSavedSettings.getBOOL("FSCreateCallingCards"))
             mInvObserver = new LLInventoryFriendCardObserver(this);
@@ -402,7 +401,7 @@ public:
     {
         // will be deleted by ~LLInventoryModel
         //delete mInvObserver;
-        LLVoiceClient::removeObserver(this);
+
         LLAvatarTracker::instance().removeObserver(this);
     }
 
@@ -668,8 +667,8 @@ LLPanelPeople::~LLPanelPeople()
     delete mRecentListUpdater;
 
     // <FS:PP> FIRE-21531: Sort Contact Sets by Online Status
-    // LLVoiceClient::removeObserver(this);
-    LLVoiceClient::removeObserver(static_cast<LLVoiceClientStatusObserver*>(this));
+
+
     // </FS:PP>
 
     mNearbyFilterCommitConnection.disconnect();
@@ -924,8 +923,8 @@ bool LLPanelPeople::postBuild()
     mTabContainer->selectTabByName(NEARBY_TAB_NAME);
 
     // <FS:PP> FIRE-21531: Sort Contact Sets by Online Status
-    // LLVoiceClient::addObserver(this);
-    LLVoiceClient::addObserver(static_cast<LLVoiceClientStatusObserver*>(this));
+
+
     // </FS:PP> FIRE-21531: Sort Contact Sets by Online Status
 
     // call this method in case some list is empty and buttons can be in inconsistent state
@@ -940,22 +939,7 @@ bool LLPanelPeople::postBuild()
 }
 
 // virtual
-void LLPanelPeople::onChange(EStatusType status, const LLSD& channelInfo, bool proximal)
-{
-    if(status == STATUS_JOINING || status == STATUS_LEFT_CHANNEL)
-    {
-        return;
-    }
 
-    // <FS:PP> FIRE-21531: Sort Contact Sets by Online Status
-    if (mContactSetList && shouldSortByOnlineStatusForCurrentSet())
-    {
-        mContactSetList->sort();
-    }
-    // </FS:PP>
-
-    updateButtons();
-}
 
 // <FS:PP> FIRE-21531: Sort Contact Sets by Online Status
 void LLPanelPeople::changed(U32 mask)
@@ -1089,7 +1073,7 @@ void LLPanelPeople::updateNearbyList()
 #endif
 
     DISTANCE_COMPARATOR.updateAvatarsPositions(positions, mNearbyList->getIDs());
-    LLActiveSpeakerMgr::instance().update(true);
+    LLLocalSpeakerMgr::instance().update(true);
 }
 
 void LLPanelPeople::updateRecentList()

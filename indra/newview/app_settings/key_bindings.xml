@@ -21,7 +21,7 @@
     <binding key="ENTER" mask="NONE" command="start_chat"/>
     <binding key="DIVIDE" mask="NONE" command="start_gesture"/>
 
-    <binding key="" mask="NONE" mouse="MMB" command="toggle_voice"/>
+
 
     <binding key="" mask="NONE" mouse="LMB" command="script_trigger_lbutton"/>
   </first_person>
@@ -88,7 +88,7 @@
     <binding key="UP" mask="CTL_ALT_SHIFT" command="pan_up"/>
     <binding key="DOWN" mask="CTL_ALT_SHIFT" command="pan_down"/>
 
-    <binding key="" mask="NONE" mouse="MMB" command="toggle_voice"/>
+
 
     <binding key="" mask="NONE" mouse="LMB" command="script_trigger_lbutton"/>
   </third_person>
@@ -166,7 +166,7 @@
     <binding key="ENTER" mask="NONE" command="start_chat"/>
     <binding key="DIVIDE" mask="NONE" command="start_gesture"/>
 
-    <binding key="" mask="NONE" mouse="MMB" command="toggle_voice"/>
+
 
     <binding key="" mask="NONE" mouse="LMB" command="script_trigger_lbutton"/>
   </sitting>
@@ -187,7 +187,7 @@
     <binding key="ENTER" mask="NONE" command="start_chat"/>
     <binding key="DIVIDE" mask="NONE" command="start_gesture"/>
 
-    <binding key="" mask="NONE" mouse="MMB" command="toggle_voice"/>
+
 
     <binding key="" mask="NONE" mouse="LMB" command="script_trigger_lbutton"/>
   </edit_avatar>

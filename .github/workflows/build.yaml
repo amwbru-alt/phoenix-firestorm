@@ -435,7 +435,7 @@ jobs:
           application: ${{ needs.build.outputs.viewer_channel }}
           version: ${{ needs.build.outputs.viewer_version }}
           directory: _artifacts
-          files: "**/{SecondLifeViewer.exe,llwebrtc.dll,*.pdb}"
+          files: "**/{SecondLifeViewer.exe,*.pdb}"
           node-version: "22"
           dumpSyms: false
 
@@ -570,9 +570,6 @@ jobs:
           echo "PYTHON=$(command -v python)" >> "$GITHUB_ENV"
           mkdir -p forme-macos-logs
           xcodebuild -version
-      - name: Cache public WebRTC with paced download retries
-        shell: bash
-        run: python scripts/forme_cache_package.py webrtc darwin64
       - name: Configure public ForMe.World build
         shell: bash
         run: |

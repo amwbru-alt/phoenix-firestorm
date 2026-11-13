@@ -362,22 +362,7 @@ Looking for people to hang out with? Use the search box to find topics or conten
 						top_pad="4"
 						height="16"
 						width="120"/>
-					<check_box
-						label="Voice"
-						left="10"
-						top_pad="2"
-						name="column_voice"
-						width="100"
-						height="16"
-						layout="topleft"
-						follows="left|top">
-						<check_box.on_check
-							function="People.EnableColumn"
-							parameter="voice_level"/>
-						<check_box.commit_callback
-							function="People.ToggleColumn"
-							parameter="voice_level"/>
-					</check_box>
+
 					<check_box
 						label="Time"
 						left="10"
@@ -560,8 +545,7 @@ Looking for people to hang out with? Use the search box to find topics or conten
 					left="0" top="0" width="0" />
 	<button	 	follows="top|left" height="0" layout="topleft" name="im_btn"
 					left="0" top="0" width="0" />
-	<button	 	follows="top|left" height="0" layout="topleft" name="call_btn"
-					left="0" top="0" width="0" />
+
 	<button	 	follows="top|left" height="0" layout="topleft" name="share_btn"
 					left="0" top="0" width="0"  forme_creator_only="true"/>
 	<button	 	follows="top|left" height="0" layout="topleft" name="teleport_btn"
@@ -570,8 +554,7 @@ Looking for people to hang out with? Use the search box to find topics or conten
 					left="0" top="0" width="0" />
 	<button	 	follows="top|left" height="0" layout="topleft" name="chat_btn"
 					left="0" top="0" width="0" />
-	<button	 	follows="top|left" height="0" layout="topleft" name="group_call_btn"
-					left="0" top="0" width="0" />
+
 	<group_list 	follows="top|left" height="0" layout="topleft" name="group_list"
 					left="0" top="0" width="0" />
 	<panel			follows="top|left" height="0" layout="topleft" name="groups_panel"
@@ -606,10 +589,8 @@ Looking for people to hang out with? Use the search box to find topics or conten
 					left="0" top="0" width="0" />
 	<button	 	follows="top|left" height="0" layout="topleft" name="im_btn"
 					left="0" top="0" width="0" />
-	<button	 	follows="top|left" height="0" layout="topleft" name="call_btn"
-					left="0" top="0" width="0" />
-	<button	 	follows="top|left" height="0" layout="topleft" name="group_call_btn"
-					left="0" top="0" width="0" />
+
+
 	<button	 	follows="top|left" height="0" layout="topleft" name="teleport_btn"
 					left="0" top="0" width="0" />
 	<button	 	follows="top|left" height="0" layout="topleft" name="share_btn"

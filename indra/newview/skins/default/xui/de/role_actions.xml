@@ -67,10 +67,10 @@
 		<action description="Mitteilungen senden" longdescription="Mitglieder in einer Rolle mit dieser Fähigkeit können Mitteilungen im Abschnitt Gruppe &gt; Mitteilungen senden." name="notices send" value="42"/>
 		<action description="Mitteilungen erhalten und ältere Mitteilungen anzeigen" longdescription="Mitglieder in einer Rolle mit dieser Fähigkeit können Mitteilungen erhalten und im Abschnitt Gruppe &gt; Mitteilungen ältere Mitteilungen anzeigen." name="notices receive" value="43"/>
 	</action_set>
-	<action_set description="Diese Fähigkeiten ermöglichen es, den Zugang zu Gruppen-Chat und Gruppen-Voice-Chat zu steuern." name="Chat">
-		<action description="Gruppen-Chat beitreten" longdescription="Mitglieder in einer Rolle mit dieser Fähigkeit können Gruppen-Chat und Gruppen-Voice-Chat beitreten." name="join group chat" value="16"/>
-		<action description="Gruppen-Voice-Chat beitreten" longdescription="Mitglieder in einer Rolle mit dieser Fähigkeit können Gruppen-Voice-Chat beitreten. HINWEIS: Sie benötigen die Fähigkeit „Gruppen-Chat beitreten“, um Zugang zu dieser Voice-Chat-Sitzung zu erhalten." name="join voice chat" value="27"/>
-		<action description="Gruppen-Chat moderieren" longdescription="Mitglieder in einer Rolle mit dieser Fähigkeit können den Zugang zu und die Teilnahme an Gruppen-Chat- und Voice-Chat-Sitzungen steuern." name="moderate group chat" value="37"/>
+    <action_set description="Zugriff und Teilnahme am Textchat der Gruppe verwalten." name="Chat">
+        <action description="Gruppen-Chat beitreten" longdescription="Zugriff und Teilnahme am Textchat der Gruppe verwalten." name="join group chat" value="16"/>
+
+        <action description="Gruppen-Chat moderieren" longdescription="Zugriff und Teilnahme am Textchat der Gruppe verwalten." name="moderate group chat" value="37"/>
 	</action_set>
 	<action_set description="Diese Fähigkeiten enthalten die Berechtigung, die Erlebnisse zu ändern, die dieser Gruppe gehören." name="experience_tools_experience">
 		<action description="Erlebnis-Administrator" longdescription="Mitglieder in einer Rolle mit dieser Fähigkeit können die Metadaten für ein Erlebnis ändern." name="experience admin" value="49"/>

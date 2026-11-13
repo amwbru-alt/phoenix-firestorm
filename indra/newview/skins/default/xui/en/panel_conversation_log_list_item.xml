@@ -27,18 +27,7 @@
      top="0"
      visible="false"
      width="380" />
-    <icon
-     follows="top|left"
-     height="20"
-     layout="topleft"
-     left="5"
-     image_name="Conv_toolbar_open_call"
-     mouse_opaque="true"
-     name="voice_session_icon"
-     tool_tip="Included a voice conversation"
-     top="2"
-     visible="false"
-     width="20" />
+
     <icon
      follows="top|left"
      height="20"

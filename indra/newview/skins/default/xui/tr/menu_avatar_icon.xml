@@ -7,8 +7,8 @@
 	<menu_item_call label="Arkadaşı Çıkar..." name="Remove Friend"/>
 	<context_menu label="Moderatör Seçenekleri" name="Moderator Options">
 		<menu_item_check label="Metin sohbetine izin ver" name="AllowTextChat"/>
-		<menu_item_call label="Bu katılımcıyı sessize al" name="ModerateVoiceMuteSelected"/>
-		<menu_item_call label="Bu katılımcının sesini aç" name="ModerateVoiceUnMuteSelected"/>
+
+
 	</context_menu>
 	<menu_item_call label="Üyeyi yasakla" name="BanMember"/>
 </toggleable_menu>

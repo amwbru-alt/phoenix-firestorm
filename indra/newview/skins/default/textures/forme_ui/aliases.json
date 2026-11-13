@@ -467,18 +467,6 @@
       "bottom": 938
     }
   ],
-  "Command_Speak_Icon": [
-    "forme_ui/Icons.png",
-    "Mic",
-    18,
-    18,
-    {
-      "left": 644,
-      "right": 662,
-      "top": 700,
-      "bottom": 682
-    }
-  ],
   "Command_View_Icon": [
     "forme_ui/Icons.png",
     "Eye",
@@ -489,18 +477,6 @@
       "right": 406,
       "top": 828,
       "bottom": 810
-    }
-  ],
-  "Command_Voice_Icon": [
-    "forme_ui/Icons.png",
-    "Sound",
-    18,
-    18,
-    {
-      "left": 900,
-      "right": 918,
-      "top": 508,
-      "bottom": 490
     }
   ],
   "Command_RegionTracker_Icon": [
@@ -551,18 +527,6 @@
       "bottom": 810
     }
   ],
-  "Conv_toolbar_call_log": [
-    "forme_ui/Icons.png",
-    "Clock",
-    16,
-    16,
-    {
-      "left": 324,
-      "right": 340,
-      "top": 956,
-      "bottom": 940
-    }
-  ],
   "Conv_toolbar_close": [
     "forme_ui/Icons.png",
     "Close",
@@ -607,18 +571,6 @@
     {
       "left": 836,
       "right": 858,
-      "top": 636,
-      "bottom": 618
-    }
-  ],
-  "Conv_toolbar_open_call": [
-    "forme_ui/Icons.png",
-    "Phone",
-    18,
-    18,
-    {
-      "left": 772,
-      "right": 790,
       "top": 636,
       "bottom": 618
     }
@@ -2769,18 +2721,6 @@
       "right": 922,
       "top": 636,
       "bottom": 614
-    }
-  ],
-  "Forme_UI_Mic": [
-    "forme_ui/Icons.png",
-    "Mic",
-    22,
-    22,
-    {
-      "left": 708,
-      "right": 730,
-      "top": 700,
-      "bottom": 678
     }
   ],
   "Forme_UI_Play": [

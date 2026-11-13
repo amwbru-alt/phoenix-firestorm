@@ -73,7 +73,6 @@ J2Cデコーダーのバージョン：[J2C_VERSION]
 オーディオドライバのバージョン：[AUDIO_DRIVER_VERSION]
 [LIBCEF_VERSION]
 LibVLCのバージョン：[LIBVLC_VERSION]
-ボイスサーバーのバージョン：[VOICE_VERSION]
 	</string>
 	<string name="AboutTraffic">
 		パケット損失：[PACKETS_LOST,number,0]／[PACKETS_IN,number,0]（[PACKETS_PCT,number,1]％）
@@ -1158,21 +1157,12 @@ https://secondlife.com/viewer-access-faq
 	<string name="shout">
 		のシャウト：
 	</string>
-	<string name="ringing">
-		インワールドボイスチャットに接続しています…
-	</string>
+
 	<string name="connected">
 		接続しました
 	</string>
-	<string name="unavailable">
-		現在の場所では、ボイスを利用できません。
-	</string>
-	<string name="hang_up">
-		インワールドボイスチャットの通信が切断されました。
-	</string>
-	<string name="reconnect_nearby">
-		「近くのボイスチャット」に再接続されます。
-	</string>
+
+
 	<string name="ScriptQuestionCautionChatGranted">
 		リージョン「[REGIONNAME]」の「[REGIONPOS]」という場所にある、「[OWNERNAME]」が所有する「[OBJECTNAME]」というオブジェクトは、以下の権限を許可しました：[PERMISSIONS]
 	</string>
@@ -4727,9 +4717,7 @@ www.secondlife.com から最新バージョンをダウンロードしてくだ�
 	<string name="LocationCtrlForSaleTooltip">
 		この土地を購入する
 	</string>
-	<string name="LocationCtrlVoiceTooltip">
-		ここではボイスを利用できません。
-	</string>
+
 	<string name="LocationCtrlFlyTooltip">
 		飛行は禁止されています。
 	</string>
@@ -4811,12 +4799,8 @@ www.secondlife.com から最新バージョンをダウンロードしてくだ�
 	<string name="Unnamed">
 		（名前なし）
 	</string>
-	<string name="IM_moderated_chat_label">
-		（モデレート：デフォルトでボイスはオフ）
-	</string>
-	<string name="IM_unavailable_text_label">
-		このコールでは文字チャットが利用できません。
-	</string>
+
+
 	<string name="IM_muted_text_label">
 		グループのモデレータが、あなたの文字チャットを使用禁止にしました。
 	</string>
@@ -4832,9 +4816,7 @@ www.secondlife.com から最新バージョンをダウンロードしてくだ�
 	<string name="Saved_message">
 		（保存日時：[LONG_TIMESTAMP]）
 	</string>
-	<string name="IM_unblock_only_groups_friends">
-		このメッセージを表示するには、「初期設定」の「プライバシー」で「フレンドとグループ以外からはコールとＩＭを受信しない」チェックボックスをオフにします。
-	</string>
+
 	<string name="OnlineStatus">
 		オンライン
 	</string>
@@ -4851,31 +4833,12 @@ www.secondlife.com から最新バージョンをダウンロードしてくだ�
 	<string name="IM_announce_incoming">[NAME]からメッセージが届いています</string>
 	<string name="IM_autoresponse_sent">自動応答が送られました：[MESSAGE]</string>
 	<string name="IM_autoresponse_item_sent">自動応答でアイテムが送られました：[ITEM_NAME]</string>
-	<!-- voice calls -->
-	<string name="answered_call">
-		相手がコールを受けました。
-	</string>
-	<string name="you_started_call">
-		ボイスコールを開始します。
-	</string>
-	<string name="you_joined_call">
-		ボイスコールに参加しました。
-	</string>
-	<string name="you_auto_rejected_call-im">
-		「通知を受けない」がオンのときに、自動的にボイスコールを拒否しました。
-	</string>
-	<string name="name_started_call">
-		[NAME]はボイスコールを開始します
-	</string>
-	<string name="ringing-im">
-		ボイスコールに参加…
-	</string>
-	<string name="connected-im">
-		接続しました。「通話終了」をクリックして切断します。
-	</string>
-	<string name="hang_up-im">
-		ボイスコールから退席しました
-	</string>
+
+
+
+
+
+
 	<string name="answering-im">
 		接続中…
 	</string>
@@ -4913,9 +4876,7 @@ www.secondlife.com から最新バージョンをダウンロードしてくだ�
 	<string name="offline_message">
 		[NAME]はオフラインです。
 	</string>
-	<string name="invite_message">
-		このボイスチャットに応答・接続する場合は、[BUTTON NAME]をクリックしてください。
-	</string>
+
 	<string name="muted_message">
 		この住人をブロックしています。メッセージを送ると、ブロックが自動的に解除されます。
 	</string>
@@ -5177,9 +5138,7 @@ www.secondlife.com から最新バージョンをダウンロードしてくだ�
 	<string name="Other Gestures">
 		その他のジェスチャー
 	</string>
-	<string name="Speech Gestures">
-		会話ジェスチャー
-	</string>
+
 	<string name="Common Gestures">
 		一般的ジェスチャー
 	</string>
@@ -5689,9 +5648,8 @@ www.secondlife.com から最新バージョンをダウンロードしてくだ�
 	<string name="Command_View_Label">
 		カメラ操作
 	</string>
-	<!-- Ansariel: Renamed for FS (FIRE-5019)
-	<string name="Command_Voice_Label">Voice settings</string>-->
-	<string name="Command_Voice_Label">近くのボイス</string>
+
+
 	<!-- Firestorm commands -->
 	<string name="Command_Quickprefs_Label">簡易設定</string>
 	<string name="Command_AO_Label">アニメーションオーバーライド</string>
@@ -5815,15 +5773,11 @@ www.secondlife.com から最新バージョンをダウンロードしてくだ�
 	<string name="Command_Snapshot_Tooltip">
 		スナップショット画像を撮ります。
 	</string>
-	<string name="Command_Speak_Tooltip">
-		マイクを使って近くの人と話します。
-	</string>
+
 	<string name="Command_View_Tooltip">
 		カメラアングルを調整します。
 	</string>
-	<string name="Command_Voice_Tooltip">
-		インワールドでのコールや近くにいる人物の音量調整します。
-	</string>
+
 	<!-- Firestorm commands -->
 	<string name="Command_Quickprefs_Tooltip">よく使用する設定を変更するための簡易設定を開きます。</string>
 	<string name="Command_AO_Tooltip">アニメーションオーバーライド</string>

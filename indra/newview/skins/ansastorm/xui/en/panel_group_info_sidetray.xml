@@ -43,9 +43,7 @@
         <layout_panel follows="bottom|left|right" height="23" layout="bottomleft" left_pad="3" name="btn_chat_lp" user_resize="false" auto_resize="true" width="72">
           <button layout="topleft" follows="bottom|left|right" label="Chat" name="btn_chat" left="1" height="23" top="0" width="71" />
         </layout_panel>
-        <layout_panel follows="bottom|left|right" height="23" layout="bottomleft" left_pad="3" name="call_btn_lp" user_resize="false" auto_resize="true" width="72">
-          <button follows="bottom|left|right" left="1" height="23" name="btn_call" label="Group Call" layout="topleft" tool_tip="Call this group" top="0" width="71" />
-        </layout_panel>
+
         <layout_panel follows="bottom|left|right" height="23" layout="bottomleft" left_pad="3" name="btn_apply_lp" user_resize="false" auto_resize="true" width="72">
           <button follows="bottom|left|right" height="23" label="Save" label_selected="Save" name="btn_apply" left="1" top="0" width="71" />
         </layout_panel>

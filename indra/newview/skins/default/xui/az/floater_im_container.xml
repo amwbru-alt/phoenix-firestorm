@@ -8,7 +8,7 @@
 				<layout_panel name="conversations_pane_buttons_expanded">
 					<menu_button name="sort_btn" tool_tip="Baxış/Sıralama tənzimləmələri"/>
 					<button name="add_btn" tool_tip="Söhbət başlat"/>
-					<button name="speak_btn" tool_tip="Mikrofon vasitəsilə söhbət et"/>
+
 				</layout_panel>
 				<layout_panel name="conversations_pane_buttons_collapsed">
 					<button name="expand_collapse_btn" tool_tip="Bu siyahını arxadan bağlama/qabağa açma"/>

@@ -10,6 +10,6 @@
 	<check_box name="enable_music" tool_tip="Включить потоковую музыку"/>
 	<slider label="Медиа" name="Media Volume"/>
 	<check_box name="enable_media" tool_tip="Включить потоковое медиа"/>
-	<slider label="Голос" name="Voice Volume"/>
-	<check_box name="enable_voice_check" tool_tip="Включить голосовой чат"/>
+
+
 </panel>

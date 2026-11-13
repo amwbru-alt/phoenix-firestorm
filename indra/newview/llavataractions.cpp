@@ -315,85 +315,15 @@ void LLAvatarActions::endIM(const LLUUID& id)
     }
 }
 
-static void on_avatar_name_cache_start_call(const LLUUID& agent_id,
-                                            const LLAvatarName& av_name)
-{
-    std::string name = av_name.getDisplayName();
-    LLUUID session_id = gIMMgr->addSession(name, IM_NOTHING_SPECIAL, agent_id, LLSD());
-    gIMMgr->autoStartCallOnStartup(session_id);
-    make_ui_sound("UISndStartIM");
-}
+
 
 // static
-void LLAvatarActions::startCall(const LLUUID& id)
-{
-    if (id.isNull())
-    {
-        return;
-    }
 
-// [RLVa:KB] - Checked: 2013-05-09 (RLVa-1.4.9)
-    if (!RlvActions::canStartIM(id))
-    {
-        make_ui_sound("UISndInvalidOp");
-        RlvUtil::notifyBlocked(RlvStringKeys::Blocked::StartIm, LLSD().with("RECIPIENT", LLSLURL("agent", id, "completename").getSLURLString()));
-        return;
-    }
-// [/RLVa:KB]
-
-    LLAvatarNameCache::get(id, boost::bind(&on_avatar_name_cache_start_call, _1, _2));
-}
 
 // static
 // <FS:Ansariel> [FS Communication UI]
 //void LLAvatarActions::startAdhocCall(const uuid_vec_t& ids, const LLUUID& floater_id)
-const LLUUID LLAvatarActions::startAdhocCall(const uuid_vec_t& ids, const LLUUID& floater_id)
-// </FS:Ansariel>
-{
-    if (ids.size() == 0)
-    {
-        // <FS:Ansariel> [FS Communication UI]
-        //return;
-        return LLUUID::null;
-        // </FS:Ansariel>
-    }
 
-    // convert vector into std::vector for addSession
-    std::vector<LLUUID> id_array;
-    id_array.reserve(ids.size());
-    for (uuid_vec_t::const_iterator it = ids.begin(); it != ids.end(); ++it)
-    {
-// [RLVa:KB] - Checked: 2011-04-11 (RLVa-1.3.0)
-        const LLUUID& idAgent = *it;
-        if (!RlvActions::canStartIM(idAgent))
-        {
-            make_ui_sound("UISndInvalidOp");
-            RlvUtil::notifyBlocked(RlvStringKeys::Blocked::StartConference);
-            return LLUUID::null;
-        }
-        id_array.push_back(idAgent);
-// [/RLVa:KB]
-//      id_array.push_back(*it);
-    }
-
-    // create the new ad hoc voice session
-    const std::string title = LLTrans::getString("conference-title");
-    LLUUID session_id = gIMMgr->addSession(title, IM_SESSION_CONFERENCE_START, ids[0], id_array, LLSD(), floater_id);
-    if (session_id == LLUUID::null)
-    {
-        // <FS:Ansariel> [FS Communication UI]
-        //return;
-        return session_id;
-        // </FS:Ansariel>
-    }
-
-    gIMMgr->autoStartCallOnStartup(session_id);
-
-    make_ui_sound("UISndStartIM");
-
-    // <FS:Ansariel> [FS Communication UI]
-    return session_id;
-}
 
 /* AD *TODO: Is this function needed any more?
     I fixed it a bit(added check for canCall), but it appears that it is not used
@@ -411,10 +341,7 @@ bool LLAvatarActions::isCalling(const LLUUID &id)
 }*/
 
 //static
-bool LLAvatarActions::canCall()
-{
-    return LLVoiceClient::getInstance()->voiceEnabled() && LLVoiceClient::getInstance()->isVoiceWorking();
-}
+
 
 // static
 // <FS:Ansariel> [FS Communication UI]
@@ -1442,10 +1369,7 @@ void LLAvatarActions::toggleMute(const LLUUID& id, U32 flags)
 }
 
 // static
-void LLAvatarActions::toggleMuteVoice(const LLUUID& id)
-{
-    toggleMute(id, LLMute::flagVoiceChat);
-}
+
 
 // static
 bool LLAvatarActions::canOfferTeleport(const LLUUID& id)
@@ -1908,10 +1832,7 @@ bool LLAvatarActions::isBlocked(const LLUUID& id)
 }
 
 // static
-bool LLAvatarActions::isVoiceMuted(const LLUUID& id)
-{
-    return LLMuteList::getInstance()->isMuted(id, LLMute::flagVoiceChat);
-}
+
 
 // static
 bool LLAvatarActions::canBlock(const LLUUID& id)

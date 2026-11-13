@@ -33,7 +33,6 @@
 
 #include "llavatariconctrl.h"
 #include "llbutton.h"
-#include "lloutputmonitorctrl.h"
 
 class LLTextBox;
 class LLFloater;
@@ -42,7 +41,6 @@ class LLConversationItem;
 class LLConversationViewSession;
 class LLConversationViewParticipant;
 
-class LLVoiceClientStatusObserver;
 
 // Implementation of conversations list session widgets
 
@@ -88,7 +86,6 @@ public:
     void setVisibleIfDetached(bool visible);
     LLConversationViewParticipant* findParticipant(const LLUUID& participant_id);
 
-    void showVoiceIndicator(bool visible);
 
     virtual void refresh();
 
@@ -96,21 +93,19 @@ public:
     void setHighlightState(bool hihglight_state);
 
     LLFloater* getSessionFloater();
-    bool isInActiveVoiceChannel();
-    void updateConversationIndicators();
+
 
     bool highlightFriendTitle(LLConversationItem* vmi);
 
 private:
 
-    void onCurrentVoiceSessionChanged(const LLUUID& session_id);
+
     void startFlashing();
     void selectConversationItem();
 
     LLPanel*                mItemPanel;
-    LLPanel*                mCallIconLayoutPanel;
     LLTextBox*              mSessionTitle;
-    LLOutputMonitorCtrl*    mSpeakingIndicator;
+
     LLFlashTimer*           mFlashTimer;
     bool                    mFlashStateOn;
     bool                    mFlashStarted;
@@ -119,11 +114,7 @@ private:
     bool                    mCollapsedMode;
     bool                    mHasArrow;
 
-    bool                    mIsInActiveVoiceChannel;
 
-    LLVoiceClientStatusObserver* mVoiceClientObserver;
-
-    boost::signals2::connection mActiveVoiceChannelConnection;
 };
 
 // Implementation of conversations list participant (avatar) widgets
@@ -139,7 +130,7 @@ public:
         Optional<LLUUID>                        participant_id;
         Optional<LLAvatarIconCtrl::Params>      avatar_icon;
         Optional<LLButton::Params>              info_button;
-        Optional<LLOutputMonitorCtrl::Params>   output_monitor;
+
 
         Params();
     };
@@ -156,7 +147,7 @@ public:
 
     /*virtual*/ S32 getLabelXPos();
     /*virtual*/ bool handleMouseDown( S32 x, S32 y, MASK mask );
-    void allowSpeakingIndicator(bool val);
+
 
 protected:
     friend class LLUICtrlFactory;
@@ -172,7 +163,7 @@ private:
 
     LLAvatarIconCtrl* mAvatarIcon;
     LLButton * mInfoBtn;
-    LLOutputMonitorCtrl* mSpeakingIndicator;
+
     LLUUID mUUID;       // UUID of the participant
 
     typedef enum e_avatar_item_child {
@@ -187,7 +178,7 @@ private:
     void updateChildren();
     LLView* getItemChildView(EAvatarListItemChildIndex child_view_index);
 
-    boost::signals2::connection mActiveVoiceChannelConnection;
+
 };
 
 #endif // LL_LLCONVERSATIONVIEW_H

@@ -369,13 +369,8 @@
 				</map>
 
 				<!-- Client to server -->
-				<key>ParcelVoiceInfoRequest</key>
-				<map>
-					<key>flavor</key>
-					<string>llsd</string>
-					<key>trusted-sender</key>
-					<boolean>false</boolean>
-				</map>
+
+
 
 				<!-- Server to client -->
 				<key>DisplayNameUpdate</key>
@@ -403,13 +398,8 @@
 					<boolean>true</boolean>
 				</map>
 
-				<key>ParcelVoiceInfo</key>
-				<map>
-					<key>flavor</key>
-					<string>llsd</string>
-					<key>trusted-sender</key>
-					<boolean>true</boolean>
-				</map>
+
+
 				
 				<key>ParcelNavigateMedia</key>
 				<map>
@@ -515,29 +505,14 @@
 					<boolean>false</boolean>
 				</map>
 				
-				<key>ProvisionVoiceAccountRequest</key>
-				<map>
-					<key>flavor</key>
-					<string>llsd</string>
-					<key>trusted-sender</key>
-					<boolean>false</boolean>
-				</map>
 
-				<key>VoiceSignalingRequest</key>
-				<map>
-					<key>flavor</key>
-					<string>llsd</string>
-					<key>trusted-sender</key>
-					<boolean>false</boolean>
-				</map>
+
+
+
+
 				<!-- Server to client -->
-				<key>RequiredVoiceVersion</key>
-				<map>
-					<key>flavor</key>
-					<string>llsd</string>
-					<key>trusted-sender</key>
-					<boolean>true</boolean>
-				</map>
+
+
 				
 				<key>EnableSimulator</key>
 				<map>
@@ -704,17 +679,17 @@
 			<key>SendPostcard3</key>
 			<boolean>true</boolean>
 
-			<key>ParcelVoiceInfoRequest</key>
-			<boolean>false</boolean>
+
+
 
 			<key>ChatSessionRequest</key>
 			<boolean>false</boolean>
 
-			<key>ProvisionVoiceAccountRequest</key>
-			<boolean>false</boolean>
 
-			<key>VoiceSignalingRequest</key>
-			<boolean>false</boolean>
+
+
+
+
 			
 			<key>RemoteParcelRequest</key>
 			<boolean>false</boolean>

@@ -29,14 +29,5 @@
      right="-28"
      name="info_btn"
      width="16" />
-<output_monitor
-	follows="right"
-	auto_update="true"
-	draw_border="false"
-	height="16"
-	right="-3"
-	mouse_opaque="true"
-	name="speaking_indicator"
-	visible="true"
-	width="20" />	 
+
 </conversation_view_participant>

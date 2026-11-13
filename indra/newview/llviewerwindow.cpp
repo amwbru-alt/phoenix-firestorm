@@ -1111,7 +1111,7 @@ bool LLViewerWindow::handleAnyMouseClick(LLWindow *window, LLCoordGL pos, MASK m
     x = ll_round((F32)x / mDisplayScale.mV[VX]);
     y = ll_round((F32)y / mDisplayScale.mV[VY]);
 
-    // Handle non-consuming global keybindings, like voice
+
     gViewerInput.handleGlobalBindsMouse(clicktype, mask, down);
 
     // only send mouse clicks to UI if UI is visible
@@ -1677,7 +1677,7 @@ void LLViewerWindow::handleFocusLost(LLWindow *window)
 
 bool LLViewerWindow::handleTranslatedKeyDown(KEY key,  MASK mask, bool repeated)
 {
-    // Handle non-consuming global keybindings, like voice
+
     // Never affects event processing.
     gViewerInput.handleGlobalBindsKeyDown(key, mask);
 
@@ -1709,7 +1709,7 @@ bool LLViewerWindow::handleTranslatedKeyDown(KEY key,  MASK mask, bool repeated)
 
 bool LLViewerWindow::handleTranslatedKeyUp(KEY key,  MASK mask)
 {
-    // Handle non-consuming global keybindings, like voice
+
     // Never affects event processing.
     gViewerInput.handleGlobalBindsKeyUp(key, mask);
 
@@ -1729,8 +1729,6 @@ void LLViewerWindow::handleScanKey(KEY key, bool key_down, bool key_up, bool key
     gViewerInput.scanKey(key, key_down, key_up, key_level);
     return; // Be clear this function returns nothing
 }
-
-
 
 
 bool LLViewerWindow::handleActivate(LLWindow *window, bool activated)
@@ -5817,7 +5815,6 @@ LLVector3 LLViewerWindow::mouseDirectionCamera(const S32 x, const S32 y) const
 
     return mouse_vector;
 }
-
 
 
 bool LLViewerWindow::mousePointOnPlaneGlobal(LLVector3d& point, const S32 x, const S32 y,

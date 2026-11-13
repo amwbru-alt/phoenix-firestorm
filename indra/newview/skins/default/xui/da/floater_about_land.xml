@@ -444,12 +444,8 @@ Kun større parceller kan vises i søgning.
       </text>
       <check_box label="Alle beboere" name="all av sound check" />
       <check_box label="Gruppe" name="group av sound check" />
-      <text name="Voice settings:">
-        Stemme:
-      </text>
-			<check_box label="Tillad stemmer" name="parcel_enable_voice_channel"/>
-			<check_box label="Tillad stemmer (håndteret af estate)" name="parcel_enable_voice_channel_is_estate_disabled"/>
-			<check_box label="Begræns stemme chat til denne parcel" name="parcel_enable_voice_channel_local"/>
+
+
 		</panel>
 		<panel label="ADGANG" name="land_access_panel">
 			<panel.string name="access_estate_defined">

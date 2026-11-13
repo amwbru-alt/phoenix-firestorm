@@ -425,12 +425,8 @@ Sadece büyük parseller aramada görünür.
 			</text>
 			<check_box label="Herkes" name="all av sound check"/>
 			<check_box label="Grup" name="group av sound check"/>
-			<text name="Voice settings:">
-				Sesli:
-			</text>
-			<check_box label="Sesi Etkinleştir" name="parcel_enable_voice_channel"/>
-			<check_box label="Sesi Etkinleştir (Gayrimenkul tarafından belirlenir)" name="parcel_enable_voice_channel_is_estate_disabled"/>
-			<check_box label="Sesi bu parselle sınırla" name="parcel_enable_voice_channel_local"/>
+
+
 		</panel>
 		<panel label="ERİŞİM" name="land_access_panel">
 			<panel.string name="access_estate_defined">

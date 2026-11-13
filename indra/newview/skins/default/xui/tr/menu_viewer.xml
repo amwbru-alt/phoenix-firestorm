@@ -35,7 +35,7 @@
 	<menu label="İletişim Kur" name="Communicate">
 		<menu_item_check label="Sohbetler..." name="Conversations"/>
 		<menu_item_check label="Yakındaki Sohbet..." name="Nearby Chat"/>
-		<menu_item_check label="Konuş" name="Speak"/>
+
 		<menu_item_check label="Sohbet Günlüğü..." name="Conversation Log..."/>
 		<menu_item_check label="Mimikler..." name="Gestures"/>
 		<menu_item_check label="Arkadaşlar" name="My Friends"/>

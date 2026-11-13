@@ -13,12 +13,9 @@
 	<text name="user_details">
 		Dette er min ForMe.World beskrivelse og jeg synes den er rigtig god. Men af en eller ande grund er min beskrivelse meget lang fordi jeg taler en hel masse
 	</text>
-	<slider name="volume_slider" tool_tip="Stemme lydstyrke" value="0.5"/>
+
 	<button label="Tilføj ven" name="add_friend_btn"/>
 	<button label="IM" name="im_btn"/>
 	<button label="Profil" name="view_profile_btn"/>
-	<panel name="moderator_panel">
-		<button label="Slå stemme-chat fra" name="disable_voice"/>
-		<button label="Slå stemme-chat til" name="enable_voice"/>
-	</panel>
+
 </floater>

@@ -28,6 +28,7 @@
 #define LL_LLAGENT_H
 
 #include "indra_constants.h"
+#include "llcallingcard.h"
 #include "llevent.h"                // LLObservable base class
 #include "llagentdata.h"            // gAgentID, gAgentSessionID
 #include "llcharacter.h"
@@ -59,7 +60,6 @@ class LLAgentAccess;
 class LLSLURL;
 class LLUIColor;
 class LLTeleportRequest;
-
 
 
 typedef std::shared_ptr<LLTeleportRequest> LLTeleportRequestPtr;
@@ -380,20 +380,15 @@ public:
     static bool     isSitting();
 
     //--------------------------------------------------------------------
-    // Voice
+
     //--------------------------------------------------------------------
 public:
-    bool            isVoiceConnected() const { return mVoiceConnected; }
-    void            setVoiceConnected(const bool b) { mVoiceConnected = b; }
 
-    static void     pressMicrophone(const LLSD& name);
-    static void     releaseMicrophone(const LLSD& name);
-    static void     toggleMicrophone(const LLSD& name);
-    static bool     isMicrophoneOn(const LLSD& sdname);
+
     static bool     isActionAllowed(const LLSD& sdname);
 
 private:
-    bool            mVoiceConnected;
+
 
     //--------------------------------------------------------------------
     // Chat
@@ -844,7 +839,6 @@ public:
 private:
     static void     setCanEditParcel();
     bool            mCanEditParcel;
-
 
 
 /********************************************************************************

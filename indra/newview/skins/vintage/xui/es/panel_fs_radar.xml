@@ -8,7 +8,7 @@
 			<layout_panel name="radarlayout">
 				<radar_list name="radar_list">
 					<radar_list.columns label="Nombre" name="name" tool_tip="[TOTAL] avatares, [IN_REGION] en la misma región, [IN_CHAT_RANGE] en alcance de chat"/>
-					<radar_list.columns name="voice_level" tool_tip="Está usando voz"/>
+
 					<radar_list.columns label="Dist." name="range"/>
 					<radar_list.columns label="Visto" name="seen"/>
 					<radar_list.columns label="Edad" name="age"/>

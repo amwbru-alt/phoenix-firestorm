@@ -38,18 +38,8 @@
 					<!-- Utility Bar panel -->
 				</layout_panel>
 				<!-- Utility Bar layout panel -->
-				<!-- Voice Chat layout panel -->
-				<layout_panel name="voice_chat_controls_layout_panel" width="166">
-					<!-- Voice Chat panel -->
-					<panel name="voice_chat_controls_panel" width="163">
-						<button name="show_voice_controls_button" tool_tip="Voice-Einstellungen und Sprecher in der Nähe anzeigen"/>
-						<button name="utility_talk_button" tool_tip="Zum Sprechen diesen Button drücken. Push-to-Talk-Funktion über das Schloss-Symbol aktivieren bzw. deaktivieren." label="Sprechen" width="85"/>
-						<button name="utility_push_to_talk_lock_button" tool_tip="Push-to-Talk-Funktion umschalten"/>
-						<nearby_voice_monitor name="nearby_voice_output_monitor" tool_tip="Aktivität auf dem aktuellen Voice-Kanal" left_pad="68"/>
-					</panel>
-					<!-- Voice Chat panel -->
-				</layout_panel>
-				<!-- Voice Chat layout panel -->
+
+
 				<!-- Quick Preferences Button layout panel -->
 				<layout_panel name="quick_preferences_button_layout_panel">
 					<!-- Quick Preferences Button panel -->

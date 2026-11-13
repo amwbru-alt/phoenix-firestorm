@@ -16,7 +16,7 @@
 					<layout_panel name="radarlayout">
 						<radar_list name="radar_list">
 							<radar_list.columns label="名字" name="name" tool_tip="[TOTAL]個化身，[IN_REGION]在同一區域， [IN_CHAT_RANGE] 在聊天範圍內" />
-							<radar_list.columns tool_tip="正在使用語音" name="voice_level" />
+
 							<radar_list.columns name="in_region" tool_tip="位於同一區域（綠色）或同一地塊（黃綠色）" />
 							<radar_list.columns name="typing_status" tool_tip="正在輸入中" />
 							<radar_list.columns name="sitting_status" tool_tip="正在坐著" />

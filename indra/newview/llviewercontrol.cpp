@@ -26,6 +26,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "llcallingcard.h"
 
 #include "llviewercontrol.h"
 
@@ -56,7 +57,6 @@
 #include "llviewerthrottle.h"
 #include "llviewerwindow.h"
 #include "llvoavatarself.h"
-#include "llvoiceclient.h"
 #include "llvotree.h"
 #include "llvovolume.h"
 #include "llworld.h"
@@ -667,14 +667,6 @@ bool handleHighResSnapshotChanged(const LLSD& newvalue)
     return true;
 }
 
-bool handleVoiceClientPrefsChanged(const LLSD& newvalue)
-{
-    if (LLVoiceClient::instanceExists())
-    {
-        LLVoiceClient::getInstance()->updateSettings();
-    }
-    return true;
-}
 
 // NaCl - Antispam Registry
 bool handleNaclAntiSpamGlobalQueueChanged(const LLSD& newvalue)
@@ -1375,11 +1367,11 @@ void settings_setup_listeners()
     setting_setup_signal_listener(gSavedSettings, "AudioLevelAmbient", handleAudioVolumeChanged);
     setting_setup_signal_listener(gSavedSettings, "AudioLevelMusic", handleAudioVolumeChanged);
     setting_setup_signal_listener(gSavedSettings, "AudioLevelMedia", handleAudioVolumeChanged);
-    setting_setup_signal_listener(gSavedSettings, "AudioLevelVoice", handleAudioVolumeChanged);
+
     setting_setup_signal_listener(gSavedSettings, "MuteAudio", handleAudioVolumeChanged);
     setting_setup_signal_listener(gSavedSettings, "MuteMusic", handleAudioVolumeChanged);
     setting_setup_signal_listener(gSavedSettings, "MuteMedia", handleAudioVolumeChanged);
-    setting_setup_signal_listener(gSavedSettings, "MuteVoice", handleAudioVolumeChanged);
+
     setting_setup_signal_listener(gSavedSettings, "MuteAmbient", handleAudioVolumeChanged);
     setting_setup_signal_listener(gSavedSettings, "MuteUI", handleAudioVolumeChanged);
     setting_setup_signal_listener(gSavedSettings, "WLSkyDetail", handleWLSkyDetailChanged);
@@ -1432,18 +1424,8 @@ void settings_setup_listeners()
     setting_setup_signal_listener(gSavedSettings, "UserLogFile", handleLogFileChanged);
     setting_setup_signal_listener(gSavedSettings, "RenderHideGroupTitle", handleHideGroupTitleChanged);
     setting_setup_signal_listener(gSavedSettings, "HighResSnapshot", handleHighResSnapshotChanged);
-    setting_setup_signal_listener(gSavedSettings, "EnableVoiceChat", handleVoiceClientPrefsChanged);
-    setting_setup_signal_listener(gSavedSettings, "PTTCurrentlyEnabled", handleVoiceClientPrefsChanged);
-    setting_setup_signal_listener(gSavedSettings, "PushToTalkButton", handleVoiceClientPrefsChanged);
-    setting_setup_signal_listener(gSavedSettings, "PushToTalkToggle", handleVoiceClientPrefsChanged);
-    setting_setup_signal_listener(gSavedSettings, "VoiceEarLocation", handleVoiceClientPrefsChanged);
-    setting_setup_signal_listener(gSavedSettings, "VoiceEchoCancellation", handleVoiceClientPrefsChanged);
-    setting_setup_signal_listener(gSavedSettings, "VoiceAutomaticGainControl", handleVoiceClientPrefsChanged);
-    setting_setup_signal_listener(gSavedSettings, "VoiceNoiseSuppressionLevel", handleVoiceClientPrefsChanged);
-    setting_setup_signal_listener(gSavedSettings, "VoiceInputAudioDevice", handleVoiceClientPrefsChanged);
-    setting_setup_signal_listener(gSavedSettings, "VoiceOutputAudioDevice", handleVoiceClientPrefsChanged);
-    setting_setup_signal_listener(gSavedSettings, "AudioLevelMic", handleVoiceClientPrefsChanged);
-    setting_setup_signal_listener(gSavedSettings, "LipSyncEnabled", handleVoiceClientPrefsChanged);
+
+
     setting_setup_signal_listener(gSavedSettings, "VelocityInterpolate", handleVelocityInterpolate);
     setting_setup_signal_listener(gSavedSettings, "QAMode", show_debug_menus);
     setting_setup_signal_listener(gSavedSettings, "UseDebugMenus", show_debug_menus);

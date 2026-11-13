@@ -13,8 +13,8 @@
 	<button name="permission_edit_mine_btn" tool_tip="Vous pouvez modifier, supprimer ou vous approprier les objets de cette personne"/>
 	<button tool_tip="La personne peut vous localiser" name="permission_map_btn"/>
 	<button name="permission_online_btn" tool_tip="La personne peut savoir quand vous êtes connecté"/>
-	<slider name="volume_slider" tool_tip="Volume de la voix"/>
+
 	<button name="info_btn" tool_tip="Plus d'informations"/>
 	<button name="profile_btn" tool_tip="Voir le profil"/>
-	<output_monitor name="speaking_indicator" tool_tip="Volume de la voix"/>
+
 </panel>

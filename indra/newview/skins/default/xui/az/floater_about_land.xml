@@ -416,12 +416,8 @@ Yalnız daha böyük kvadrata malik olan sahələr axtarışda çıxa bilər.
             </text>
             <check_box label="Hamısı" name="all av sound check"/>
             <check_box label="Qrup" name="group av sound check"/>
-            <text name="Voice settings:">
-                Səs(avaz):
-            </text>
-            <check_box label="Səsi aktivləşdirin" name="parcel_enable_voice_channel"/>
-            <check_box label="Səsi aktivləşdirin (adanın sahibi tərəfindən təyin olunur)" name="parcel_enable_voice_channel_is_estate_disabled" width="300" />
-            <check_box label="Bu sahənin sərhəddi ilə səsi məhdudlaşdırın" name="parcel_enable_voice_channel_local"/>
+
+
             <text name="media">
                 Media:
             </text>

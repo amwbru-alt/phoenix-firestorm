@@ -193,7 +193,7 @@
 		<usetemplate canceltext="Отмена" name="yesnocancelbuttons" notext="Не сохранять" yestext="Сохранить все" />
     </notification>
     <notification name="FriendsAndGroupsOnly">
-		Жители, которые не являются вашими друзьями, не будут знать, что вы игнорируете их звонки и сообщения.
+		Пользователи вне списка друзей не получат уведомление о том, что вы игнорируете их личные сообщения.
 	</notification>
     <notification name="FavoritesOnLogin">
 		Примечание. После включения этой опции все пользователи данного компьютера смогут увидеть список ваших избранных мест.
@@ -1860,7 +1860,6 @@ URL: [UNTRUSTED_URL]
 
 - Другие жители будут получать ваш ответ, установленный для режима "Не беспокоить" (Настройки &gt; Приватность &gt; Автоответ).
 - Предложения телепортации будут отклоняться.
-- Голосовые вызовы будут отклоняться.
 		<usetemplate ignoretext="Смена моего статуса на режим &quot;Не беспокоить&quot;" name="okignore" yestext="Да" />
     </notification>
     <notification name="AutorespondModeSet">
@@ -2358,9 +2357,7 @@ URL: [UNTRUSTED_URL]
 		Рейтинг для этого региона был изменен.
 Отображение этого изменения на карте может занять некоторое время.
 	</notification>
-    <notification label="Несоответствие версии голоса" name="VoiceVersionMismatch">
-		Данная версия [APP_NAME] несовместима с функцией голосового чата в этом регионе. Для правильной работы голосового чата необходимо обновить [APP_NAME].
-	</notification>
+
     <notification label="Нельзя купить объекты" name="BuyObjectOneOwner">
 		Нельзя купить объекты одновременно у разных владельцев.
 Выберите один объект и повторите попытку.
@@ -3103,9 +3100,7 @@ URL: [AUDIOURL]
     <notification name="PushRestricted">
 		В этой области запрещено толкаться. Здесь вы не можете никого толкать, только если не являетесь владельцем земли.
 	</notification>
-    <notification name="NoVoice">
-		В этой области запрещен голосовой чат. Здесь вы не услышите голос.
-	</notification>
+
     <notification name="NoBuild">
 		В этой области запрещено строительство. Здесь вы не сможете строить или выкладывать объекты.
 	</notification>
@@ -3555,15 +3550,7 @@ URL: [AUDIOURL]
     <notification name="MaxListSelectMessage">
 		В этом списке можно выбрать не более [MAX_SELECT] пунктов.
 	</notification>
-    <notification name="VoiceInviteP2P">
-		[NAME] приглашает вас в голосовой чат.
-Нажмите кнопку "Принять" для присоединения к чату или "Отклонить" для отказа от приглашения. Нажмите "Блок" для блокировки этого абонента.
-		<form name="form">
-            <button name="Accept" text="Принять" />
-            <button name="Decline" text="Отклонить" />
-            <button name="Mute" text="Блок" />
-        </form>
-    </notification>
+
     <notification name="AutoUnmuteByIM">
 		[NAME] было отправлено мгновенное сообщение и был автоматически разблокирован.
 	</notification>
@@ -3573,80 +3560,8 @@ URL: [AUDIOURL]
     <notification name="AutoUnmuteByInventory">
 		[NAME] предложен инвентарь и был автоматически разблокирован.
 	</notification>
-    <notification name="VoiceInviteGroup">
-		[NAME] вступил(а) в голосовой чат с группой [GROUP].
-Нажмите кнопку "Принять" для присоединения к чату или "Отклонить" для отказа от приглашения. Нажмите "Блок" для блокировки этого абонента.
-		<form name="form">
-            <button name="Accept" text="Принять" />
-            <button name="Decline" text="Отклонить" />
-            <button name="Mute" text="Блок" />
-        </form>
-    </notification>
-    <notification name="VoiceInviteAdHoc">
-		[NAME] вступил(а) в голосовой чат с конференцией.
-Нажмите кнопку "Принять" для присоединения к чату или "Отклонить" для отказа от приглашения. Нажмите "Блок" для блокировки этого абонента.
-		<form name="form">
-            <button name="Accept" text="Принять" />
-            <button name="Decline" text="Отклонить" />
-            <button name="Mute" text="Блок" />
-        </form>
-    </notification>
-    <notification name="InviteAdHoc">
-		[NAME] приглашает вас в чат с конференцией.
-Нажмите кнопку "Принять" для присоединения к чату или "Отклонить" для отказа от приглашения. Нажмите "Блок" для блокировки этого абонента.
-		<form name="form">
-            <button name="Accept" text="Принять" />
-            <button name="Decline" text="Отклонить" />
-            <button name="Mute" text="Блок" />
-        </form>
-    </notification>
-    <notification name="VoiceChannelFull">
-		Вы пытаетесь подключиться к голосовому чату [VOICE_CHANNEL_NAME], в котором уже достигнута максимальная емкость. Повторите попытку позже.
-	</notification>
-    <notification name="ProximalVoiceChannelFull">
-		Приносим извинения.  В этой области уже достигнута максимальная емкость голосовых чатов.  Попробуйте использовать голос в другой области.
-	</notification>
-    <notification name="VoiceChannelDisconnected">
-		Вы были отключены от [VOICE_CHANNEL_NAME]. Будет установлено подключение к общему голосовому чату.
-	</notification>
-    <notification name="VoiceChannelDisconnectedP2P">
-		[VOICE_CHANNEL_NAME] завершил вызов. Будет установлено подключение к общему голосовому чату.
-	</notification>
-    <notification name="P2PCallDeclined">
-		[VOICE_CHANNEL_NAME] отклонил ваш вызов. Будет установлено подключение к общему голосовому чату.
-	</notification>
-    <notification name="P2PCallNoAnswer">
-		[VOICE_CHANNEL_NAME] не может принять ваш вызов. Будет установлено подключение к общему голосовому чату.
-	</notification>
-    <notification name="VoiceChannelJoinFailed">
-		Не удалось подключиться к [VOICE_CHANNEL_NAME], повторите попытку позже. Будет установлено подключение к общему голосовому чату.
-	</notification>
-    <notification name="VoiceEffectsExpired">
-		Истек срок действия подписки на один или несколько типов анимационного изменения голоса.
-[[URL] Щелкните здесь], чтобы обновить подписку.
 
-Если вы - владелец премиум-аккаунта, [[PREMIUM_URL] щелкните здесь], чтобы получить право на анимационное изменение голоса.
-	</notification>
-    <notification name="VoiceEffectsExpiredInUse">
-		Истек срок действия анимационного изменения голоса, действуют настройки вашего обычного голоса.
-[[URL] Щелкните здесь], чтобы обновить подписку.
 
-Если вы - владелец премиум-аккаунта, [[PREMIUM_URL] щелкните здесь], чтобы получить право на анимационное изменение голоса.
-	</notification>
-    <notification name="VoiceEffectsWillExpire">
-		Срок действия одного или нескольких ваших типов анимационного изменения голоса истекает через [INTERVAL] дней или раньше.
-[[URL] Щелкните здесь], чтобы обновить подписку.
-
-Если вы - владелец премиум-аккаунта, [[PREMIUM_URL] щелкните здесь], чтобы получить право на анимационное изменение голоса.
-	</notification>
-    <notification name="VoiceEffectsNew">
-		Появились новые типы изменения голоса!
-	</notification>
-    <notification name="VoiceEffectsNotSupported">
-Функция изменения голоса не поддерживается данным средством просмотра.
-Более подробную информацию о других инструментах для изменения голоса см. в [[FAQ_URL]этой статье].
-		<usetemplate name="okignore" ignoretext="Предупредить о том, что голосовая трансформация не поддерживается" yestext="OK" />
-    </notification>
     <notification name="Cannot enter parcel: not a group member">
 		Эту область могут посещать только участники определенной группы.
 	</notification>
@@ -3656,12 +3571,8 @@ URL: [AUDIOURL]
     <notification name="Cannot enter parcel: not on access list">
 		Нельзя войти на участок, вас нет в списке доступа.
 	</notification>
-    <notification name="VoiceNotAllowed">
-		У вас нет разрешения на подключение к голосовому чату для [VOICE_CHANNEL_NAME].
-	</notification>
-    <notification name="VoiceCallGenericError">
-		Ошибка при попытке подключения к голосовому чату для [VOICE_CHANNEL_NAME].  Повторите попытку позже.
-	</notification>
+
+
     <notification name="UnsupportedCommandSLURL">
 		Нажатие на неподдерживаемом SLurl.
 	</notification>
@@ -3719,9 +3630,7 @@ URL: [AUDIOURL]
     <notification name="TextChatIsMutedByModerator">
 		Ваш текстовый чат заблокирован модератором.
 	</notification>
-    <notification name="VoiceIsMutedByModerator">
-		Ваш голос заблокирован модератором.
-	</notification>
+
     <notification name="FailedToGetBenefits">
 		К сожалению, в этой сессии мы не смогли получить информацию о преимуществах аккаунта. Такое не должно происходить в нормально работающей среде. Пожалуйста, свяжитесь со службой поддержки. Эта сессия работает некорректно, поэтому мы рекомендуем вам перезапустить программу.
 		<usetemplate name="okbutton" yestext="Да" />
@@ -3848,29 +3757,8 @@ URL: [AUDIOURL]
 		Возникли проблемы соединения при использовании [PROTOCOL] &lt;nolink&gt;[HOSTID]&lt;/nolink&gt;.
 Проверьте настройки сети и брандмауэра.
 	</notification>
-    <notification name="NoVoiceConnect">
-		Нет связи с речевым сервером:
 
-&lt;nolink&gt;[HOSTID]&lt;/nolink&gt;
 
-Порты, которые должны быть разрешены:
-:TCP: 80, 443
-:UDP: 3478, 3479, 5060, 5062, 6250, 12000-32000
-
-Проверьте настройки сети и брандмауэра.
-Отключите любую функцию SIP ALG в вашем маршрутизаторе.
-
-Голосовая связь будет недоступна.
-https://wiki.firestormviewer.org/fs_voice
-		<usetemplate ignoretext="Возникли проблемы соединения с голосовым сервером" name="okignore" yestext="Да" />
-    </notification>
-    <notification name="NoVoiceConnect-GIAB">
-		Проблемы соединения с речевым сервером:
-
-Голосовое общение будет недоступно.
-Проверьте настройки сети и брандмауэра.
-[https://wiki.firestormviewer.org/fs_voice]
-	</notification>
     <notification name="AvatarRezLeftNotification">
 		( [EXISTENCE] сек. жизни )
 Аватар "[NAME]" полностью загружен.
@@ -3916,31 +3804,15 @@ https://wiki.firestormviewer.org/fs_voice
 		<usetemplate ignoretext="Вставить: Вы применили текстуру с ограниченными разрешениями" name="notifyignore" />
         <usetemplate name="okbutton" yestext="OK" />
     </notification>
-    <notification name="ConfirmLeaveCall">
-		Вы уверены, что хотите покинуть этот разговор?
-		<usetemplate ignoretext="Подтвердить перед выходом из разговора" name="okcancelignore" notext="Нет" yestext="Да" />
-    </notification>
-    <notification name="ConfirmMuteAll">
-		Вы решили заблокировать всех участников группового разговора.
-В результате будут заглушены также все жители, которые присоединились к разговору
-позже, даже после того, как вы покинули разговор.
 
-Заблокировать всех?
-		<usetemplate ignoretext="Подтвердить перед заглушением всех участников группового разговора" name="okcancelignore" notext="Отмена" yestext="Да" />
-    </notification>
+
     <notification label="Чат" name="HintChat">
 		Чтобы присоединиться к чату, введите слова в поле чата ниже.
 	</notification>
     <notification label="Встать" name="HintSit">
 		Чтобы встать на ноги и покинуть сидячее положение, нажмите кнопку "Встать".
 	</notification>
-    <notification label="Говорить" name="HintSpeak">
-		Нажмите кнопку "Говорить", чтобы включить или выключить микрофон.
 
-Щелкните направленную вверх стрелку, чтобы открыть панель управления голосом.
-
-При скрытии кнопки "Говорить" голосовая функция отключается.
-	</notification>
     <notification label="Исследование мира" name="HintDestinationGuide">
 		Путеводитель по пунктам назначения содержит тысячи новых мест, в которых вы можете побывать. Выберите место и нажмите кнопку "Телепортация", чтобы начать исследование.
 	</notification>
@@ -4044,10 +3916,7 @@ https://wiki.firestormviewer.org/fs_voice
 		Просмотр карты мира доступен только в расширенном режиме. Выйти из программы и сменить режим? Меню смены режима находится на экране входа.
 		<usetemplate name="okcancelbuttons" notext="Не выходить" yestext="Выйти" />
     </notification>
-    <notification label="" name="NoVoiceCall">
-		Голосовые вызовы доступны только в расширенном режиме. Выйти из программы и сменить режим?
-		<usetemplate name="okcancelbuttons" notext="Не выходить" yestext="Выйти" />
-    </notification>
+
     <notification label="" name="NoAvatarShare">
 		Общее пользование доступно только в расширенном режиме. Выйти из программы и сменить режим?
 		<usetemplate name="okcancelbuttons" notext="Не выходить" yestext="Выйти" />
@@ -5658,4 +5527,5 @@ https://wiki.firestormviewer.org/antivirus_whitelisting
 		<usetemplate name="okbutton" yestext="OK" />
     </notification>
     <notification name="UsavedMaterialChanges">У вас есть несохраненные изменения.</notification>
+<notification name="ForMeTextChatInvitation" type="notify" icon="notify.tga">[NAME] приглашает вас в текстовый чат «[SESSION]».<form name="form"><button name="Join" index="0" text="Присоединиться"/><button name="Decline" index="1" text="Отклонить"/></form></notification>
 </notifications>

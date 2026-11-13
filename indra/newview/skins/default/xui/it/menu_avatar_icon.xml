@@ -5,7 +5,7 @@
 	<menu_item_call label="TP alla sua posizione" name="Teleport to"/>
 	<menu_item_call label="Offri teleport" name="Offer Teleport"/>
 	<menu_item_call label="Richiedi teleport" name="Request Teleport"/>
-	<menu_item_call label="Chiama" name="Voice Call"/>
+
 	<menu_item_call label="Cronologia chat" name="Chat History"/>
 	<menu_item_call label="Aggiungi agli amici" name="Add Friend"/>
 	<menu_item_call label="Rimuovi dagli amici" name="Remove Friend"/>
@@ -19,13 +19,13 @@
 	<menu_item_call label="Copia nome in appunti" name="copy name"/>
 	<menu_item_call label="Copia URL in appunti" name="copy url"/>
 	<menu_item_call label="Segnala abuso" name="Report Abuse" />
-	<menu_item_check label="Blocca voce" name="Block Unblock"/>
+
 	<menu_item_check label="Blocca chat" name="Mute Text"/>
 	<context_menu label="Opzioni moderatore" name="Moderator Options">
 		<menu_item_call label="Consenti chat di testo" name="AllowTextChat"/>
 		<menu_item_call label="Blocca chat di testo" name="ForbidTextChat" />
-		<menu_item_call label="Disattiva audio a questo participante" name="ModerateVoiceMuteSelected" />
-		<menu_item_call label="Riattiva audio a questo participante" name="ModerateVoiceUnMuteSelected" />
+
+
 	</context_menu>
 	<menu_item_call label="Ban dal gruppo" name="BanMember"/>
 </toggleable_menu>

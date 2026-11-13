@@ -36,9 +36,7 @@
 						<layout_panel name="btn_chat_lp">
 							<button label="Söhbət" name="btn_chat"/>
 						</layout_panel>
-						<layout_panel name="call_btn_lp">
-							<button label="Zəng" name="btn_call" tool_tip="Bu qrupla səsli konfrans qurmaq"/>
-						</layout_panel>
+
 						<layout_panel name="btn_apply_lp">
 							<button label="Yadda Saxla" label_selected="Yadda Saxla" name="btn_apply"/>
 						</layout_panel>

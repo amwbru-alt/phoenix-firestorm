@@ -21,15 +21,9 @@
 		<layout_panel name="pay_panel">
 			<button name="pay_btn" tool_tip="Wyślij pieniądze temu rezydentowi"/>
 		</layout_panel>
-		<layout_panel name="call_btn_panel">
-			<button name="call_btn" tool_tip="Dodaj rozmowę głosową do tego czata"/>
-		</layout_panel>
-		<layout_panel name="end_call_btn_panel">
-			<button name="end_call_btn" tool_tip="Zakończ rozmowę głosową"/>
-		</layout_panel>
-		<layout_panel name="voice_ctrls_btn_panel">
-			<button name="voice_ctrls_btn" tool_tip="Właściwości głosu"/>
-		</layout_panel>
+
+
+
 		<layout_panel name="im_history_btn_panel">
 			<button name="im_history_btn" tool_tip="Otwórz logi tej konwersacji"/>
 		</layout_panel>

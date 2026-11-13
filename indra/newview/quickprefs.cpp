@@ -29,6 +29,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "formeretiredsettings.h"
 
 #include "quickprefs.h"
 
@@ -729,6 +730,12 @@ void FloaterQuickPrefs::loadSavedSettingsFromFile(const std::string& settings_pa
             // add the elements from the XML file to the internal list of controls
             for (const QuickPrefsXMLEntry& xml_entry : xml.entries)
             {
+                if (ForMeSettings::retired(xml_entry.control_name.getValue()))
+                {
+                    save_settings = true;
+                    continue;
+                }
+
                 // get the label
                 std::string label = xml_entry.label;
 

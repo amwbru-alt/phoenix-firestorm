@@ -63,8 +63,8 @@
 					<panel name="parcel_characteristics_panel">
 						<text name="rating_label" value="レーティング："/>
 						<text name="rating_value" value="不明"/>
-						<text name="voice_label" value="ボイス："/>
-						<text name="voice_value" value="オン"/>
+
+
 						<text name="fly_label" value="飛行："/>
 						<text name="fly_value" value="オン"/>
 						<text name="push_label" value="プッシュ："/>

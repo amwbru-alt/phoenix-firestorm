@@ -201,7 +201,7 @@ LLLocationInputCtrl::Params::Params()
     for_sale_button("for_sale_button"),
     info_button("info_button"),
     maturity_button("maturity_button"),
-    voice_icon("voice_icon"),
+
     fly_icon("fly_icon"),
     push_icon("push_icon"),
     build_icon("build_icon"),
@@ -318,12 +318,7 @@ LLLocationInputCtrl::LLLocationInputCtrl(const LLLocationInputCtrl::Params& p)
     // Parcel property icons
     // Must be mouse-opaque so cursor stays as an arrow when hovering to
     // see tooltip.
-    LLIconCtrl::Params voice_icon = p.voice_icon;
-    voice_icon.tool_tip = LLTrans::getString("LocationCtrlVoiceTooltip");
-    voice_icon.mouse_opaque = true;
-    mParcelIcon[VOICE_ICON] = LLUICtrlFactory::create<LLIconCtrl>(voice_icon);
-    mParcelIcon[VOICE_ICON]->setMouseDownCallback(boost::bind(&LLLocationInputCtrl::onParcelIconClick, this, VOICE_ICON));
-    addChild(mParcelIcon[VOICE_ICON]);
+
 
     LLIconCtrl::Params fly_icon = p.fly_icon;
     fly_icon.tool_tip = LLTrans::getString("LocationCtrlFlyTooltip");
@@ -922,7 +917,7 @@ void LLLocationInputCtrl::refreshParcelIcons()
             current_parcel = agent_parcel;
         }
 
-        bool allow_voice    = vpm->allowAgentVoice(agent_region, current_parcel);
+
         bool allow_fly      = vpm->allowAgentFly(agent_region, current_parcel);
         bool allow_push     = vpm->allowAgentPush(agent_region, current_parcel);
         bool allow_build    = vpm->allowAgentBuild(current_parcel); // true when anyone is allowed to build. See EXT-4610.
@@ -938,7 +933,7 @@ void LLLocationInputCtrl::refreshParcelIcons()
 // </FS:CR>
 
         // Most icons are "block this ability"
-        mParcelIcon[VOICE_ICON]->setVisible(   !allow_voice );
+
         mParcelIcon[FLY_ICON]->setVisible(     !allow_fly );
         mParcelIcon[PUSH_ICON]->setVisible(    !allow_push );
         mParcelIcon[BUILD_ICON]->setVisible(   !allow_build );
@@ -1326,9 +1321,7 @@ void LLLocationInputCtrl::onParcelIconClick(EParcelIcon icon)
 {
     switch (icon)
     {
-    case VOICE_ICON:
-        LLNotificationsUtil::add("NoVoice");
-        break;
+
     case FLY_ICON:
         LLNotificationsUtil::add("NoFly");
         break;

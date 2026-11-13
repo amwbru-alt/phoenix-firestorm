@@ -6,7 +6,7 @@
 				<layout_panel name="conversations_pane_buttons_expanded">
 					<menu_button name="sort_btn" tool_tip="Opciones de vista/orden"/>
 					<button name="add_btn" tool_tip="Iniciar una nueva conversación"/>
-					<button name="speak_btn" tool_tip="Utiliza el micrófono para hablar con otros residentes"/>
+
 				</layout_panel>
 				<layout_panel name="conversations_pane_buttons_collapsed">
 					<button name="expand_collapse_btn" tool_tip="Contraer/expandir esta lista"/>

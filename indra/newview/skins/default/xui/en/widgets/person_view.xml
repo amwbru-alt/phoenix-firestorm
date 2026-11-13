@@ -103,15 +103,6 @@
       top="2"
       visible="false"
       width="20" />
-    <output_monitor
-      auto_update="true"
-      follows="right"
-      draw_border="false"
-      height="16"
-      right="-3"
-      mouse_opaque="true"
-      name="speaking_indicator"
-      visible="false"
-      width="20" />
+
  </person_view>
 

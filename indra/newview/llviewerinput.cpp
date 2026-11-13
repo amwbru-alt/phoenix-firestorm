@@ -53,7 +53,6 @@
 #include "llselectmgr.h"
 #include "llfloaterwebcontent.h"
 #include "fsfloatersearch.h"
-#include "llvoiceclient.h"
 
 //
 // Constants
@@ -955,31 +954,6 @@ bool teleport_to(EKeystate s)
     return LLToolPie::getInstance()->teleportToClickedLocation();
 }
 
-bool toggle_voice(EKeystate s)
-{
-    if (KEYSTATE_DOWN != s) return true;
-    if (!LLAgent::isActionAllowed("speak")) return false;
-    LLVoiceClient::getInstance()->toggleUserPTTState();
-    return true;
-}
-
-bool voice_follow_key(EKeystate s)
-{
-    if (KEYSTATE_DOWN == s)
-    {
-        if (!LLAgent::isActionAllowed("speak")) return false;
-        if (!LLVoiceClient::getInstance()->getUserPTTState()) make_ui_sound("UISndMicToggle"); // <FS:PP> FIRE-33249 Mic toggle
-        LLVoiceClient::getInstance()->setUserPTTState(true);
-        return true;
-    }
-    else if (KEYSTATE_UP == s && LLVoiceClient::getInstance()->getUserPTTState())
-    {
-        LLVoiceClient::getInstance()->setUserPTTState(false);
-        make_ui_sound("UISndMicToggle"); // <FS:PP> FIRE-33249 Mic toggle
-        return true;
-    }
-    return false;
-}
 
 bool script_trigger_lbutton(EKeystate s)
 {
@@ -1039,7 +1013,7 @@ bool agent_control_lbutton_handle(EKeystate s)
 
 // In-world keybindings, like walking or camera
 #define REGISTER_KEYBOARD_ACTION(KEY, ACTION) LLREGISTER_STATIC(LLKeyboardActionRegistry, KEY, LLKeybindFunctionData(ACTION, false));
-// Global keybindings that should work even with floaters focused, like voice
+
 #define REGISTER_KEYBOARD_GLOBAL_ACTION(KEY, ACTION) LLREGISTER_STATIC(LLKeyboardActionRegistry, KEY, LLKeybindFunctionData(ACTION, true));
 REGISTER_KEYBOARD_ACTION("jump", agent_jump);
 REGISTER_KEYBOARD_ACTION("push_down", agent_push_down);
@@ -1095,8 +1069,8 @@ REGISTER_KEYBOARD_ACTION("toggle_pause_media", toggle_pause_media);
 REGISTER_KEYBOARD_ACTION("toggle_enable_media", toggle_enable_media);
 REGISTER_KEYBOARD_ACTION("teleport_to", teleport_to);
 REGISTER_KEYBOARD_ACTION("walk_to", walk_to);
-REGISTER_KEYBOARD_GLOBAL_ACTION("toggle_voice", toggle_voice);
-REGISTER_KEYBOARD_GLOBAL_ACTION("voice_follow_key", voice_follow_key);
+
+
 REGISTER_KEYBOARD_ACTION(script_mouse_handler_name, script_trigger_lbutton);
 #undef REGISTER_KEYBOARD_ACTION
 

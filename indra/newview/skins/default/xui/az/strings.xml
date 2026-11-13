@@ -93,7 +93,6 @@ J2C dekoder versiyası: [J2C_VERSION]
 Səsli sürücü versiyası: [AUDIO_DRIVER_VERSION]
 [LIBCEF_VERSION]
 LibVLC versiyası: [LIBVLC_VERSION]
-Səs serveri versiyası: [VOICE_VERSION]
 	</string>
 	<string name="AboutTraffic">
 		Paket itki: [PACKETS_LOST,number,0]/[PACKETS_IN,number,0] ([PACKETS_PCT,number,1]%)
@@ -1217,21 +1216,12 @@ etmək haqqında kömək almaq üçün http://secondlife.com/support ünvanına 
 	<string name="shout">
 		qışqırır:
 	</string>
-	<string name="ringing">
-		Səsli söhbətə bağlantı gedir...
-	</string>
+
 	<string name="connected">
 		Bağlantı quruldu
 	</string>
-	<string name="unavailable">
-		Bu məkanda səsli rabitə mövcud deyil
-	</string>
-	<string name="hang_up">
-		Ümumi səsli söhbətdən ayırılma
-	</string>
-	<string name="reconnect_nearby">
-		Yerli səsli söhbətə əlaqə qurulacaq
-	</string>
+
+
 	<string name="ScriptQuestionCautionChatGranted">
 		«[OWNERNAME]» istifadəçisinə məxsus olan və «[REGIONNAME]» regionunda [REGIONPOS] ərazisində yerləşən «[OBJECTNAME]» obyektinə icazə verilib: [PERMISSIONS].
 	</string>
@@ -4591,9 +4581,7 @@ Bu mesaj göstərilməyə davam edərsə, [SUPPORT_SITE] saytına daxil olun.
 	<string name="LocationCtrlForSaleTooltip">
 		Bu torpağı al
 	</string>
-	<string name="LocationCtrlVoiceTooltip">
-		Səsli ünsiyyət burada mövcud deyil
-	</string>
+
 	<string name="LocationCtrlFlyTooltip">
 		Uçuş qadağandır
 	</string>
@@ -4672,12 +4660,8 @@ Bu mesaj göstərilməyə davam edərsə, [SUPPORT_SITE] saytına daxil olun.
 	<string name="Unnamed">
 		(Adsız)
 	</string>
-	<string name="IM_moderated_chat_label">
-		(Moderator: səslər susmaya görə olaraq deaktivdir)
-	</string>
-	<string name="IM_unavailable_text_label">
-		Bu zəng zamanı mətn söhbəti mövcud deyil.
-	</string>
+
+
 	<string name="IM_muted_text_label">
 		Mətn söhbətiniz qrup moderatoru tərəfindən deaktiv edilib.
 	</string>
@@ -4693,9 +4677,7 @@ Bu mesaj göstərilməyə davam edərsə, [SUPPORT_SITE] saytına daxil olun.
 	<string name="Saved_message">
 		(Saxlanıldı [LONG_TIMESTAMP])
 	</string>
-	<string name="IM_unblock_only_groups_friends">
-		Bu mesaja baxmaq üçün «Seçimlər/Məxfilik» pəncərəsində «Yalnız dostlar və qruplar mənə zəng edib IM göndərə bilər» işarəsini çıxarın.
-	</string>
+
 	<string name="OnlineStatus">
 		daxil olub
 	</string>
@@ -4717,30 +4699,11 @@ Bu mesaj göstərilməyə davam edərsə, [SUPPORT_SITE] saytına daxil olun.
 	<string name="IM_autoresponse_item_sent">
 		[ITEM_NAME] elementi avtomatik cavabla göndərildi
 	</string>
-	<string name="answered_call">
-		Zənginizə cavab verildi
-	</string>
-	<string name="you_started_call">
-		Səsli söhbətə başladınız
-	</string>
-	<string name="you_joined_call">
-		Siz səsli söhbətə qoşuldunuz
-	</string>
-	<string name="you_auto_rejected_call-im">
-		Səsli zəng avtomatik olaraq rədd edilir, çünki «Narahat etməyin» rejimi aktivdir.
-	</string>
-	<string name="name_started_call">
-		[NAME] sakini səsli söhbətə başladı
-	</string>
-	<string name="ringing-im">
-		Səsli söhbətə qoşulur...
-	</string>
-	<string name="connected-im">
-		Bağlantı quruldu. Telefonu bağlamaq üçün «Zəngi bitir» seçin
-	</string>
-	<string name="hang_up-im">
-		Səsli zəng kəsildi
-	</string>
+
+
+
+
+
 	<string name="answering-im">
 		Qoşulur...
 	</string>
@@ -4774,9 +4737,7 @@ Bu mesaj göstərilməyə davam edərsə, [SUPPORT_SITE] saytına daxil olun.
 	<string name="offline_message">
 		[NAME] çıxıb.
 	</string>
-	<string name="invite_message">
-		Bu səsli söhbətdə iştirak etmək üçün [BUTTON NAME] düyməsini basın.
-	</string>
+
 	<string name="muted_message">
 		Siz bu sakini blokladınız. Ona mesaj göndərsəniz, blok avtomatik olaraq silinəcək.
 	</string>
@@ -5021,9 +4982,7 @@ Mesaj növbəti bir neçə dəqiqə ərzində görünməzsə, o, server tərəfi
 	<string name="Other Gestures">
 		Qalan jestlər
 	</string>
-	<string name="Speech Gestures">
-		Söhbət jestləri
-	</string>
+
 	<string name="Common Gestures">
 		Standart jestlər
 	</string>
@@ -5542,9 +5501,7 @@ Dəyişdiricinin yolunu qoşa dırnaq içərisində qoymağa çalışın
 	<string name="Command_View_Label">
 		Kameraları idarə etmək
 	</string>
-	<string name="Command_Voice_Label">
-		Yaxındakı səs
-	</string>
+
 	<string name="Command_Quickprefs_Label">
 		Sürətli seçimlər
 	</string>
@@ -5725,15 +5682,11 @@ Dəyişdiricinin yolunu qoşa dırnaq içərisində qoymağa çalışın
 	<string name="Command_Snapshot_Tooltip">
 		Şəkil çəkmək (CTRL+SHIFT+S)
 	</string>
-	<string name="Command_Speak_Tooltip">
-		Mikrofondan istifadə edərək ətrafınızdakı insanlarla danışın
-	</string>
+
 	<string name="Command_View_Tooltip">
 		Kamera bucağının seçimi
 	</string>
-	<string name="Command_Voice_Tooltip">
-		Yaxınlıqdakı insanlarla zənglərin və söhbətlərin həcmini tənzimləyin
-	</string>
+
 	<string name="Command_Quickprefs_Tooltip">
 		Tez-tez tənzimləmələri dəyişmək üçün cəld seçimlər
 	</string>

@@ -28,11 +28,11 @@
 #define LL_LLIMVIEW_H
 
 #include "lldockablefloater.h"
+#include "llcallingcard.h"
 #include "lleventtimer.h"
 #include "llinstantmessage.h"
 
 #include "lllogchat.h"
-#include "llvoicechannel.h"
 #include "llinitdestroyclass.h"
 
 #include "llcoros.h"
@@ -40,7 +40,7 @@
 
 class LLAvatarName;
 class LLFriendObserver;
-class LLCallDialogManager;
+
 class LLIMSpeakerMgr;
 
 /**
@@ -89,10 +89,9 @@ public:
 // [/SL:KB]
 
         LLIMSession(const LLUUID& session_id, const std::string& name,
-            const EInstantMessage& type, const LLUUID& other_participant_id, const LLSD& voiceChannelInfo, const uuid_vec_t& ids, bool has_offline_msg);
+            const EInstantMessage& type, const LLUUID& other_participant_id, const LLSD& session_options, const uuid_vec_t& ids, bool has_offline_msg);
         virtual ~LLIMSession();
 
-        void initVoiceChannel(const LLSD &voiceChannelInfo = LLSD());
 
         void sessionInitReplyReceived(const LLUUID& new_session_id);
         void addMessagesFromHistoryCache(const std::list<LLSD>& history);        // From local file
@@ -107,7 +106,6 @@ public:
                         const bool is_region_msg,
                         U32 timestamp);
 
-        void onVoiceChannelStateChanged(const LLVoiceChannel::EState& old_state, const LLVoiceChannel::EState& new_state, const LLVoiceChannel::EDirection& direction);
 
         /** @deprecated */
         static void chatFromLogFile(LLLogChat::ELogLineType type, const LLSD& msg, void* userdata);
@@ -147,8 +145,6 @@ public:
         std::string mLastHistoryCacheDateTime;
         chat_message_list_t mLastHistoryCacheMsgs;
 
-        // connection to voice channel state change signal
-        boost::signals2::connection mVoiceChannelStateChangeConnection;
 
         //does NOT include system messages and agent's messages
         S32 mParticipantUnreadMessageCount;
@@ -158,21 +154,17 @@ public:
 
         chat_message_list_t mMsgs;
 
-        LLVoiceChannel* mVoiceChannel;
+
         LLIMSpeakerMgr* mSpeakers;
-        bool            mP2PAsAdhocCall;
+
 
         bool mSessionInitialized;
 
         //true if calling back the session URI after the session has closed is possible.
-        //Currently this will be false only for PSTN P2P calls.
-        bool mCallBackEnabled;
+
 
         bool mTextIMPossible;
-        bool mStartCallOnInitialize;
 
-        //if IM session is created for a voice call
-        bool mStartedAsIMCall;
 
         bool mHasOfflineMessage;
 
@@ -184,7 +176,6 @@ public:
         static LLUUID generateHash(const std::set<LLUUID>& sorted_uuids);
         boost::signals2::connection mAvatarNameCacheConnection;
     };
-
 
 
     // <FS:Ansariel> [FS communication UI] Re-added to not toast if our IM floater is active
@@ -227,10 +218,10 @@ public:
      * @param name session name should not be empty, will return false if empty
      */
     bool newSession(const LLUUID& session_id, const std::string& name, const EInstantMessage& type, const LLUUID& other_participant_id,
-        const uuid_vec_t& ids, const LLSD& voiceChannelInfo = LLSD(), bool has_offline_msg = false);
+        const uuid_vec_t& ids, const LLSD& session_options = LLSD(), bool has_offline_msg = false);
 
     bool newSession(const LLUUID& session_id, const std::string& name, const EInstantMessage& type, const LLUUID &other_participant_id,
-                    const LLSD &voiceChannelInfo = LLSD(), bool has_offline_msg = false);
+                    const LLSD &session_options = LLSD(), bool has_offline_msg = false);
 
     /**
      * Remove all session data associated with a session specified by session_id
@@ -325,11 +316,6 @@ public:
      */
     EInstantMessage getType(const LLUUID& session_id) const;
 
-    /**
-     * Get voice channel for the session specified by session_id
-     * Returns NULL if the session does not exist
-     */
-    LLVoiceChannel* getVoiceChannel(const LLUUID& session_id) const;
 
     /**
     * Get im speaker manager for the session specified by session_id
@@ -341,7 +327,7 @@ public:
 
     static void sendLeaveSession(const LLUUID& session_id, const LLUUID& other_participant_id);
     static bool sendStartSession(const LLUUID& temp_session_id, const LLUUID& other_participant_id,
-                          const uuid_vec_t& ids, EInstantMessage dialog, bool p2p_as_adhoc_call);
+                          const uuid_vec_t& ids, EInstantMessage dialog);
     static void sendTypingState(LLUUID session_id, LLUUID other_participant_id, bool typing);
     static void sendMessage(const std::string& utf8_text, const LLUUID& im_session_id,
                                 const LLUUID& other_participant_id, EInstantMessage dialog);
@@ -380,7 +366,7 @@ public:
     virtual ~LLIMSessionObserver() {}
     virtual void sessionAdded(const LLUUID& session_id, const std::string& name, const LLUUID& other_participant_id, bool has_offline_msg) = 0;
     virtual void sessionActivated(const LLUUID& session_id, const std::string& name, const LLUUID& other_participant_id) = 0;
-    virtual void sessionVoiceOrIMStarted(const LLUUID& session_id) = 0;
+
     virtual void sessionRemoved(const LLUUID& session_id) = 0;
     virtual void sessionIDUpdated(const LLUUID& old_session_id, const LLUUID& new_session_id) = 0;
 };
@@ -395,7 +381,6 @@ public:
     enum EInvitationType
     {
         INVITATION_TYPE_INSTANT_MESSAGE = 0,
-        INVITATION_TYPE_VOICE = 1,
         INVITATION_TYPE_IMMEDIATE = 2
     };
 
@@ -433,7 +418,7 @@ public:
     LLUUID addSession(const std::string& name,
                       EInstantMessage dialog,
                       const LLUUID& other_participant_id,
-                      const LLSD& voiceChannelInfo = LLSD());
+                      const LLSD& session_options = LLSD());
 
     // Adds a session using a specific group of starting agents
     // the dialog type is assumed correct. Returns the uuid of the session.
@@ -442,17 +427,9 @@ public:
                       EInstantMessage dialog,
                       const LLUUID& other_participant_id,
                       const std::vector<LLUUID> &ids,
-                      const LLSD& voiceChannelInfo = LLSD(),
+                      const LLSD& session_options = LLSD(),
                       const LLUUID& floater_id = LLUUID::null);
 
-    /**
-     * Creates a P2P session with the requisite handle for responding to voice calls.
-     *
-     * @param name session name, cannot be null
-     * @param caller_uri - sip URI of caller. It should be always be passed into the method to avoid
-     * incorrect working of LLVoiceChannel instances. See EXT-2985.
-     */
-    LLUUID addP2PSession(const std::string &name, const LLUUID &other_participant_id, const LLSD &voice_call_info);
 
     /**
      * Leave the session with session id. Send leave session notification
@@ -468,14 +445,14 @@ public:
         const std::string& caller_name,
         EInstantMessage type,
         EInvitationType inv_type,
-        const LLSD &voice_channel_info = LLSD()
+        const LLSD &session_options = LLSD()
     );
 
     void processIMTypingStart(const LLUUID& from_id, const EInstantMessage im_type);
     void processIMTypingStop(const LLUUID& from_id, const EInstantMessage im_type);
 
     // automatically start a call once the session has initialized
-    void autoStartCallOnStartup(const LLUUID& session_id);
+
 
     // Calc number of all unread IMs
     S32 getNumberOfUnreadIM();
@@ -519,19 +496,6 @@ public:
     void showSessionForceClose(const std::string& reason, const LLUUID session_id);
     static bool onConfirmForceCloseError(const LLSD& notification, const LLSD& response);
 
-    /**
-     * Start call in a session
-     * @return false if voice channel doesn't exist
-     **/
-    bool startCall(const LLUUID& session_id, LLVoiceChannel::EDirection direction = LLVoiceChannel::OUTGOING_CALL, const LLSD& voice_channel_info = LLSD());
-
-    /**
-     * End call in a session
-     * @return false if voice channel doesn't exist
-     **/
-    bool endCall(const LLUUID& session_id);
-
-    bool isVoiceCall(const LLUUID& session_id);
 
     void updateDNDMessageStatus();
 
@@ -559,12 +523,11 @@ private:
 
     void processIMTypingCore(const LLUUID& from_id, const EInstantMessage im_type, bool typing);
 
-    static void onInviteNameLookup(LLSD payload, const LLUUID& id, const LLAvatarName& name);
 
     void notifyObserverSessionAdded(const LLUUID& session_id, const std::string& name, const LLUUID& other_participant_id, bool has_offline_msg);
     //Triggers when a session has already been added
     void notifyObserverSessionActivated(const LLUUID& session_id, const std::string& name, const LLUUID& other_participant_id);
-    void notifyObserverSessionVoiceOrIMStarted(const LLUUID& session_id);
+
     void notifyObserverSessionRemoved(const LLUUID& session_id);
     void notifyObserverSessionIDUpdated(const LLUUID& old_session_id, const LLUUID& new_session_id);
 
@@ -590,116 +553,6 @@ private:
 // [/SL:KB]
 };
 
-class LLCallDialogManager : public LLSingleton<LLCallDialogManager>
-{
-    LLSINGLETON(LLCallDialogManager);
-    ~LLCallDialogManager();
-public:
-    // static for convinience
-    static void onVoiceChannelChanged(const LLUUID &session_id);
-    static void onVoiceChannelStateChanged(const LLVoiceChannel::EState& old_state, const LLVoiceChannel::EState& new_state, const LLVoiceChannel::EDirection& direction, bool ended_by_agent);
-
-private:
-    void initSingleton() override;
-    void onVoiceChannelChangedInt(const LLUUID &session_id);
-    void onVoiceChannelStateChangedInt(const LLVoiceChannel::EState& old_state, const LLVoiceChannel::EState& new_state, const LLVoiceChannel::EDirection& direction, bool ended_by_agent);
-
-protected:
-    std::string mPreviousSessionlName;
-    std::string mCurrentSessionlName;
-    LLIMModel::LLIMSession* mSession;
-    LLVoiceChannel::EState mOldState;
-
-    boost::signals2::connection mVoiceChannelChanged;
-};
-
-class LLCallDialog : public LLDockableFloater
-{
-public:
-    LLCallDialog(const LLSD& payload);
-    virtual ~LLCallDialog();
-
-    virtual bool postBuild();
-
-    void dockToToolbarButton(const std::string& toolbarButtonName);
-
-    // check timer state
-    /*virtual*/ void draw();
-    /*virtual*/ void onOpen(const LLSD& key);
-
-protected:
-    // lifetime timer for a notification
-    LLTimer mLifetimeTimer;
-    // notification's lifetime in seconds
-    S32     mLifetime;
-    static const S32 DEFAULT_LIFETIME = 5;
-    virtual bool lifetimeHasExpired();
-    virtual void onLifetimeExpired();
-
-    /**
-     * Sets icon depend on session.
-     *
-     * If passed session_id is a group id group icon will be shown, otherwise avatar icon for participant_id
-     *
-     * @param session_id - UUID of session
-     * @param participant_id - UUID of other participant
-     */
-    void setIcon(const LLSD& session_id, const LLSD& participant_id);
-
-    LLSD mPayload;
-
-private:
-    LLDockControl::DocAt getDockControlPos(const std::string& toolbarButtonName);
-};
-
-class LLIncomingCallDialog : public LLCallDialog
-{
-public:
-    LLIncomingCallDialog(const LLSD& payload);
-    ~LLIncomingCallDialog()
-    {
-        if (mAvatarNameCacheConnection.connected())
-        {
-            mAvatarNameCacheConnection.disconnect();
-        }
-    }
-
-    /*virtual*/ bool postBuild();
-    /*virtual*/ void onOpen(const LLSD& key);
-
-    static void onAccept(void* user_data);
-    static void onReject(void* user_data);
-    static void onStartIM(void* user_data);
-
-    static void processCallResponse(S32 response, const LLSD& payload);
-private:
-    void setCallerName(const std::string& ui_title,
-        const std::string& ui_label,
-        const std::string& call_type);
-    void onAvatarNameCache(const LLUUID& agent_id,
-        const LLAvatarName& av_name,
-        const std::string& call_type);
-
-    boost::signals2::connection mAvatarNameCacheConnection;
-
-    /*virtual*/ void onLifetimeExpired();
-};
-
-class LLOutgoingCallDialog : public LLCallDialog
-{
-public:
-    LLOutgoingCallDialog(const LLSD& payload);
-
-    /*virtual*/ bool postBuild();
-    void show(const LLSD& key);
-
-    static void onCancel(void* user_data);
-    static const LLUUID OCD_KEY;
-
-private:
-    // hide all text boxes
-    void hideAllText();
-};
 
 // Globals
 extern LLIMMgr *gIMMgr;

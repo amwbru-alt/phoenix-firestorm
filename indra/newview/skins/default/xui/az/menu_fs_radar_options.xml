@@ -10,7 +10,7 @@
 		<menu_item_check label="İstifadəçi adı (Göstərilən ad)" name="radarFmtUNDN"/>
 	</context_menu>
 	<context_menu label="Göstərilən sütunlar" name="visible_columns">
-		<menu_item_check label="Səs" name="voice_level"/>
+
 		<menu_item_check label="Bu regionda" name="in_region"/>
 		<menu_item_check label="Yazı yazanın göstəricisi" name="typing_status"/>
 		<menu_item_check label="Oturur vəziyyəti" name="sitting_status"/>

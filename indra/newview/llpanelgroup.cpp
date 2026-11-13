@@ -65,7 +65,6 @@
 static LLPanelInjector<LLPanelGroup> t_panel_group("panel_group_info_sidetray");
 
 
-
 LLPanelGroupTab::LLPanelGroupTab()
     : LLPanel(),
       mAllowEdit(true),
@@ -105,7 +104,7 @@ LLPanelGroup::LLPanelGroup()
 LLPanelGroup::~LLPanelGroup()
 {
     LLGroupMgr::getInstance()->removeObserver(this);
-    LLVoiceClient::removeObserver(this);
+
 }
 
 void LLPanelGroup::onOpen(const LLSD& key)
@@ -220,7 +219,7 @@ bool LLPanelGroup::postBuild()
     mButtonApply->setVisible(true);
     mButtonApply->setEnabled(false);
 
-    mButtonCall = getChild<LLButton>("btn_call");
+
     mButtonCall->setClickedCallback(onBtnGroupCallClicked, this);
 
     mButtonChat = getChild<LLButton>("btn_chat");
@@ -275,7 +274,6 @@ bool LLPanelGroup::postBuild()
         // </FS:Ansariel>
     }
 
-    LLVoiceClient::addObserver(this);
 
     // <FS:Ansariel> TabContainer switch
     mIsUsingTabContainer = (findChild<LLTabContainer>("groups_accordion") != nullptr);
@@ -384,15 +382,7 @@ void LLPanelGroup::changed(LLGroupChange gc)
 }
 
 // virtual
-void LLPanelGroup::onChange(EStatusType status, const LLSD& channelInfo, bool proximal)
-{
-    if(status == STATUS_JOINING || status == STATUS_LEFT_CHANNEL)
-    {
-        return;
-    }
 
-    mButtonCall->setEnabled(LLVoiceClient::getInstance()->voiceEnabled() && LLVoiceClient::getInstance()->isVoiceWorking());
-}
 
 void LLPanelGroup::notifyObservers()
 {
@@ -748,7 +738,7 @@ void LLPanelGroup::refreshData()
 
 void LLPanelGroup::callGroup()
 {
-    LLGroupActions::startCall(getID());
+
 }
 
 void LLPanelGroup::chatGroup()

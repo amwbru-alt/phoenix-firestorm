@@ -12,10 +12,8 @@
          name="howto"/>
         <command
          name="chat" />
-        <command
-         name="speak" />
-        <command
-         name="voice" />
+
+
         <command
          name="move" />
         <command

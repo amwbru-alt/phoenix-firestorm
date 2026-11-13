@@ -20,14 +20,7 @@
   <button name="show_volume_controls_button" tool_tip="Pokaż kontrolę głośności" />
   </panel>
   </layout_panel>
-  <layout_panel name="voice_chat_controls_layout_panel">
-  <panel name="voice_chat_controls_panel">
-  <button name="show_voice_controls_button" tool_tip="Pokaż rozmowy głosowe w pobliżu" />
-  <button name="utility_talk_button" tool_tip="Naciśnij przycisk aby mówić. Kliknij na kłódkę aby ustawić naciśnij-by-mówić." label="Mów" />
-  <button name="utility_push_to_talk_lock_button" tool_tip="Przełącza funkcję naciśnij-by-mówić" />
-  <nearby_voice_monitor name="nearby_voice_output_monitor" tool_tip="Obecna aktywność kanału głosowego" />
-  </panel>
-  </layout_panel>
+
   <layout_panel name="quick_preferences_button_layout_panel">
   <panel name="quick_preferences_button_panel">
   <button name="enable_disable_ao_button" tool_tip="Włącz/wyłącz Animatora w kliencie" />

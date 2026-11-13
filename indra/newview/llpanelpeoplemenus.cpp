@@ -76,7 +76,7 @@ LLContextMenu* PeopleContextMenu::createMenu()
         registrar.add("Avatar.AddFriend",       boost::bind(&LLAvatarActions::requestFriendshipDialog,  id));
         registrar.add("Avatar.RemoveFriend",    boost::bind(&LLAvatarActions::removeFriendDialog,       id));
         registrar.add("Avatar.IM",              boost::bind(&LLAvatarActions::startIM,                  id));
-        registrar.add("Avatar.Call",            boost::bind(&LLAvatarActions::startCall,                id));
+
         registrar.add("Avatar.OfferTeleport",   boost::bind(&PeopleContextMenu::offerTeleport,          this));
         // <FS:CR> CHUI merge - Make GCC happy
         //registrar.add("Avatar.ZoomIn",            boost::bind(&handle_zoom_to_object,                     id));
@@ -117,7 +117,7 @@ LLContextMenu* PeopleContextMenu::createMenu()
 
         // registrar.add("Avatar.AddFriend",    boost::bind(&LLAvatarActions::requestFriendshipDialog,  mUUIDs)); // *TODO: unimplemented
         registrar.add("Avatar.IM",              boost::bind(&PeopleContextMenu::startConference,        this));
-        registrar.add("Avatar.Call",            boost::bind(&LLAvatarActions::startAdhocCall,           mUUIDs, LLUUID::null));
+
         registrar.add("Avatar.OfferTeleport",   boost::bind(&PeopleContextMenu::offerTeleport,          this));
         registrar.add("Avatar.RemoveFriend",    boost::bind(&LLAvatarActions::removeFriendsDialog,      mUUIDs));
         // registrar.add("Avatar.Share",        boost::bind(&LLAvatarActions::startIM,                  mUUIDs)); // *TODO: unimplemented
@@ -144,7 +144,7 @@ void PeopleContextMenu::buildContextMenu(class LLMenuGL& menu, U32 flags)
         items.push_back(std::string("add_friends"));
         items.push_back(std::string("remove_friends"));
         items.push_back(std::string("im"));
-        items.push_back(std::string("call"));
+
         items.push_back(std::string("share"));
         items.push_back(std::string("pay"));
         items.push_back(std::string("offer_teleport"));
@@ -157,7 +157,7 @@ void PeopleContextMenu::buildContextMenu(class LLMenuGL& menu, U32 flags)
         items.push_back(std::string("im"));
         items.push_back(std::string("offer_teleport"));
         items.push_back(std::string("request_teleport"));
-        items.push_back(std::string("voice_call"));
+
         items.push_back(std::string("chat_history"));
         items.push_back(std::string("separator_chat_history"));
         items.push_back(std::string("add_friend"));
@@ -252,10 +252,6 @@ bool PeopleContextMenu::enableContextMenuItem(const LLSD& userdata)
         }
 
         return result;
-    }
-    else if (item == std::string("can_call"))
-    {
-        return LLAvatarActions::canCall();
     }
     else if (item == std::string("can_zoom_in"))
     {
@@ -487,7 +483,7 @@ void NearbyPeopleContextMenu::buildContextMenu(class LLMenuGL& menu, U32 flags)
         items.push_back(std::string("add_friends"));
         items.push_back(std::string("remove_friends"));
         items.push_back(std::string("im"));
-        items.push_back(std::string("call"));
+
         items.push_back(std::string("share"));
         items.push_back(std::string("pay"));
         items.push_back(std::string("offer_teleport"));
@@ -498,7 +494,7 @@ void NearbyPeopleContextMenu::buildContextMenu(class LLMenuGL& menu, U32 flags)
         items.push_back(std::string("im"));
         items.push_back(std::string("offer_teleport"));
         items.push_back(std::string("request_teleport"));
-        items.push_back(std::string("voice_call"));
+
         items.push_back(std::string("chat_history"));
         items.push_back(std::string("separator_chat_history"));
         items.push_back(std::string("add_friend"));

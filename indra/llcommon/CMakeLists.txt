@@ -113,6 +113,8 @@ set(llcommon_SOURCE_FILES
     
 set(llcommon_HEADER_FILES
     formecreatorpolicy.h
+    formestreamurl.h
+    formeretiredsettings.h
     formeavatarbadge.h
     formeviewbranding.h
     formehudlayout.h

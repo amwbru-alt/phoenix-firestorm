@@ -69,7 +69,7 @@
 	</action_set>
 	<action_set description="Queste Abilità permettono di concedere o limitare l&apos;accesso alle sessioni di chat e di chat vocale nel gruppo." name="Chat">
 		<action description="Partecipare alla Chat di gruppo" longdescription="I membri con questo ruolo e abilità possono partecipare alle sessioni di chat, sia scritte che vocale." name="join group chat"/>
-		<action description="Partecipa alla Chat vocale di gruppo" longdescription=" I membri con questo ruolo e abilità possono partecipare alle sessioni di Chat vocale nel gruppo. NOTA: per poter partecipare alla Chat di gruppo è necessario accedere alla sessione di chat vocale." name="join voice chat"/>
+
 		<action description="Moderare la Chat di gruppo" longdescription="I membri con questo ruolo e abilità possono gestire l&apos;accesso e la partecipazione alle sessioni di chat scritta e di chat vocale nel gruppo." name="moderate group chat"/>
 	</action_set>
 	<action_set description="Queste Abilità includono la capacità di modificare le esperienze che appartengono al gruppo." name="experience_tools_experience">

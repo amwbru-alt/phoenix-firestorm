@@ -84,7 +84,6 @@ constexpr U64 REGION_FLAGS_ALLOW_PARCEL_CHANGES     = (1ULL << 26);
 
 constexpr U64 REGION_FLAGS_BLOCK_FLYOVER = (1ULL << 27);
 
-constexpr U64 REGION_FLAGS_ALLOW_VOICE = (1ULL << 28);
 
 constexpr U64 REGION_FLAGS_BLOCK_PARCEL_SEARCH = (1ULL << 29);
 constexpr U64 REGION_FLAGS_DENY_AGEUNVERIFIED   = (1ULL << 30);
@@ -93,8 +92,7 @@ constexpr U64 REGION_FLAGS_DENY_BOTS = (1ULL << 31);
 
 constexpr U64 REGION_FLAGS_DEFAULT = REGION_FLAGS_ALLOW_LANDMARK |
                                      REGION_FLAGS_ALLOW_SET_HOME |
-                                     REGION_FLAGS_ALLOW_PARCEL_CHANGES |
-                                     REGION_FLAGS_ALLOW_VOICE;
+                                     REGION_FLAGS_ALLOW_PARCEL_CHANGES;
 
 
 constexpr U64 REGION_FLAGS_PRELUDE_SET = REGION_FLAGS_RESET_HOME_ON_TELEPORT;

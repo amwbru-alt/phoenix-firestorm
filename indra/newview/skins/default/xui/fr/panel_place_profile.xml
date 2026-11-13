@@ -42,8 +42,8 @@
 					<panel name="parcel_characteristics_panel">
 						<text name="rating_label" value="Classification :"/>
 						<text name="rating_value" value="inconnue"/>
-						<text name="voice_label" value="Vocal :"/>
-						<text name="voice_value" value="Oui"/>
+
+
 						<text name="fly_label" value="Voler :"/>
 						<text name="fly_value" value="Oui"/>
 						<text name="push_label" value="Bousculades :"/>

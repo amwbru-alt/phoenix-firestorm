@@ -67,10 +67,10 @@
 		<action description="Enviar avisos" longdescription="Membros em um cargo com esta habilidade podem enviar avisos em Grupo &gt; Enviar avisos." name="notices send" value="42"/>
 		<action description="Receber avisos e ver avisos antigos" longdescription="Membros em um cargo com esta habilidade podem receber avisos e ver avisos antigos em Grupo &gt; Avisos." name="notices receive" value="43"/>
 	</action_set>
-	<action_set description="Estas habilidades permitem controlar o acesso ao chat de grupo e ao voice chat de grupo." name="Chat">
-		<action description="Entrar no chat de grupo" longdescription="Membros em um cargo com esta habilidade podem entrar no chat de grupo e no voice chat de grupo." name="join group chat" value="16"/>
-		<action description="Entrar no voice chat de grupo" longdescription="Membros em um cargo com esta habilidade podem entrar no voice chat de grupo. OBSERVAÇÃO: você precisa da habilidade &quot;Entrar no chat de grupo&quot; para ter acesso a esta sessão de voice chat." name="join voice chat" value="27"/>
-		<action description="Moderar chat de grupo" longdescription="Membros em um cargo com esta habilidade podem controlar o acesso e a participação em sessões de chat de grupo e voice chat." name="moderate group chat" value="37"/>
+    <action_set description="Controlar o acesso e a participação no chat de texto do grupo." name="Chat">
+        <action description="Entrar no chat de grupo" longdescription="Controlar o acesso e a participação no chat de texto do grupo." name="join group chat" value="16"/>
+
+        <action description="Moderar chat de grupo" longdescription="Controlar o acesso e a participação no chat de texto do grupo." name="moderate group chat" value="37"/>
 	</action_set>
 	<action_set description="Estas habilidades incluem permissão para alterar experiências pertencentes a este grupo." name="experience_tools_experience">
 		<action description="Administrador de experiência" longdescription="Membros em um cargo com esta habilidade podem alterar os metadados de uma experiência." name="experience admin" value="49"/>

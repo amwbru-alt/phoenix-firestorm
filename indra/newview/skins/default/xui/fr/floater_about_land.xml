@@ -424,12 +424,8 @@ musique :
 			</text>
 			<check_box label="Tout le monde" name="all av sound check"/>
 			<check_box label="Groupe" name="group av sound check"/>
-			<text name="Voice settings:">
-				Voix :
-			</text>
-			<check_box label="Activer le chat vocal" name="parcel_enable_voice_channel"/>
-			<check_box label="Activer la voix (contrôlé par le domaine)" name="parcel_enable_voice_channel_is_estate_disabled"/>
-			<check_box label="Limiter le chat vocal à cette parcelle" name="parcel_enable_voice_channel_local"/>
+
+
 			<text name="media">
 				Média:
 			</text>

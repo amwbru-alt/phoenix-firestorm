@@ -81,16 +81,7 @@
 	<context_menu
 	 label="Displayed Columns"
 	 name="visible_columns">
-		<menu_item_check
-		 label="Voice"
-		 name="voice_level">
-			<menu_item_check.on_check
-			 function="Radar.EnableColumn"
-			 parameter="voice_level"/>
-			<menu_item_check.on_click
-			 function="Radar.ToggleColumn"
-			 parameter="voice_level"/>
-		</menu_item_check>
+
 		<menu_item_check
 		 label="Same Region"
 		 name="in_region">

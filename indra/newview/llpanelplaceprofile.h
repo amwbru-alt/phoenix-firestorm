@@ -80,8 +80,8 @@ private:
 
     LLIconCtrl*         mParcelRatingIcon;
     LLTextBox*          mParcelRatingText;
-    LLIconCtrl*         mVoiceIcon;
-    LLTextBox*          mVoiceText;
+
+
     LLIconCtrl*         mFlyIcon;
     LLTextBox*          mFlyText;
     LLIconCtrl*         mPushIcon;

@@ -61,7 +61,7 @@ Procurando pessoas? Use o [fmw:///app/worldmap Mapa].
 									<combo_box.item name="RadarNameFormat_userdisplay" label="Nome de usuário (nome de exibição)" />
 								</combo_box>
 								<text name="columns_label" value="Colunas exibidas:" />
-								<check_box label="Voz" name="column_voice" />
+
 								<check_box label="Hora" name="column_seen" />
 								<check_box label="Idade" name="column_age" />
 								<check_box label="Mesma região" name="column_region" />

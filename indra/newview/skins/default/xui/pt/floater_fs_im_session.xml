@@ -24,15 +24,9 @@
 		<layout_panel name="pay_panel">
 			<button name="pay_btn" tool_tip="Enviar dinheiro para este residente"/>
 		</layout_panel>
-		<layout_panel name="call_btn_panel">
-			<button name="call_btn" tool_tip="Adicionar voz a este chat"/>
-		</layout_panel>
-		<layout_panel name="end_call_btn_panel">
-			<button name="end_call_btn" tool_tip="Encerrar chamada de voz"/>
-		</layout_panel>
-		<layout_panel name="voice_ctrls_btn_panel">
-			<button name="voice_ctrls_btn" tool_tip="Propriedades de voz"/>
-		</layout_panel>
+
+
+
 		<layout_panel name="im_history_btn_panel">
 			<button name="im_history_btn" tool_tip="Abrir histórico desta conversa"/>
 		</layout_panel>

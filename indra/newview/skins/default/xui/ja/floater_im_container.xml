@@ -6,7 +6,7 @@
 				<layout_panel name="conversations_pane_buttons_expanded">
 					<menu_button name="sort_btn" tool_tip="表示／並べ替えのオプションを表示します。"/>
 					<button name="add_btn" tool_tip="新しい会話を開始します"/>
-					<button name="speak_btn" tool_tip="マイクを使って人と話します。"/>
+
 				</layout_panel>
 				<layout_panel name="conversations_pane_buttons_collapsed">
 					<button name="expand_collapse_btn" tool_tip="このリストを最大化／最小化します。"/>

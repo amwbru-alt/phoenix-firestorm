@@ -54,13 +54,6 @@
 #include "llviewercontrol.h"    // <FS:CR> FIRE-593 - Needed for gSavedSettings where we store our media list
 #include "llclipboard.h"
 
-// Values for the parcel voice settings radio group
-enum
-{
-    kRadioVoiceChatEstate = 0,
-    kRadioVoiceChatPrivate = 1,
-    kRadioVoiceChatDisable = 2
-};
 
 //---------------------------------------------------------------------------
 // LLPanelLandAudio
@@ -83,14 +76,9 @@ bool LLPanelLandAudio::postBuild()
     mCheckSoundLocal = getChild<LLCheckBoxCtrl>("check sound local");
     childSetCommitCallback("check sound local", onCommitAny, this);
 
-    mCheckParcelEnableVoice = getChild<LLCheckBoxCtrl>("parcel_enable_voice_channel");
-    childSetCommitCallback("parcel_enable_voice_channel", onCommitAny, this);
 
     // This one is always disabled so no need for a commit callback
-    mCheckEstateDisabledVoice = getChild<LLCheckBoxCtrl>("parcel_enable_voice_channel_is_estate_disabled");
 
-    mCheckParcelVoiceLocal = getChild<LLCheckBoxCtrl>("parcel_enable_voice_channel_local");
-    childSetCommitCallback("parcel_enable_voice_channel_local", onCommitAny, this);
 
 // <FS:CR> FIRE-593 - We use a combobox now, not a line editor, also set callbacks for new add/remove stream buttons
     //mMusicURLEdit = getChild<LLLineEditor>("music_url");
@@ -139,33 +127,16 @@ void LLPanelLandAudio::refresh()
         mCheckSoundLocal->set( parcel->getSoundLocal() );
         mCheckSoundLocal->setEnabled( can_change_media );
 
-        bool allow_voice = parcel->getParcelFlagAllowVoice();
 
         LLViewerRegion* region = LLViewerParcelMgr::getInstance()->getSelectionRegion();
-        if (region && region->isVoiceEnabled())
         {
-            mCheckEstateDisabledVoice->setVisible(false);
 
-            mCheckParcelEnableVoice->setVisible(true);
-            mCheckParcelEnableVoice->setEnabled( can_change_media );
-            mCheckParcelEnableVoice->set(allow_voice);
 
-            mCheckParcelVoiceLocal->setEnabled( can_change_media && allow_voice );
-        }
-        else
-        {
-            // Voice disabled at estate level, overrides parcel settings
-            // Replace the parcel voice checkbox with a disabled one
             // labelled with an explanatory message
-            mCheckEstateDisabledVoice->setVisible(true);
 
-            mCheckParcelEnableVoice->setVisible(false);
-            mCheckParcelEnableVoice->setEnabled(false);
-            mCheckParcelVoiceLocal->setEnabled(false);
+
         }
 
-        mCheckParcelEnableVoice->set(allow_voice);
-        mCheckParcelVoiceLocal->set(!parcel->getParcelFlagUseEstateVoiceChannel());
 
 // <FS:CR> FIRE-593 - Populate the audio combobox with our saved urls, then add the parcel's current url up top.
         //mMusicURLEdit->setText(parcel->getMusicURL());
@@ -236,8 +207,6 @@ void LLPanelLandAudio::onCommitAny(LLUICtrl*, void *userdata)
     std::string music_url = self->mMusicURLEdit->getSimple();
 // </FS:CR>
 
-    bool voice_enabled = self->mCheckParcelEnableVoice->get();
-    bool voice_estate_chan = !self->mCheckParcelVoiceLocal->get();
 
     bool any_av_sound       = self->mCheckAVSoundAny->get();
     bool group_av_sound     = true;     // If set to "Everyone" then group is checked as well
@@ -263,8 +232,8 @@ void LLPanelLandAudio::onCommitAny(LLUICtrl*, void *userdata)
     // </FS:Testy>
 
     // Push data into current parcel
-    parcel->setParcelFlag(PF_ALLOW_VOICE_CHAT, voice_enabled);
-    parcel->setParcelFlag(PF_USE_ESTATE_VOICE_CHAN, voice_estate_chan);
+
+
     parcel->setParcelFlag(PF_SOUND_LOCAL, sound_local);
     parcel->setMusicURL(music_url);
     parcel->setAllowAnyAVSounds(any_av_sound);

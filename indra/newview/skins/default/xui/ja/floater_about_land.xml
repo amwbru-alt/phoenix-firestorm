@@ -445,12 +445,8 @@
 			</text>
 			<check_box label="全員" name="all av sound check"/>
 			<check_box label="グループ" name="group av sound check"/>
-			<text name="Voice settings:">
-				ボイス：
-			</text>
-			<check_box label="ボイスチャットを有効にする" name="parcel_enable_voice_channel"/>
-			<check_box label="ボイスチャットを有効にする（不動産設定）" name="parcel_enable_voice_channel_is_estate_disabled"/>
-			<check_box label="ボイスチャットをこの区画内に限定する" name="parcel_enable_voice_channel_local"/>
+
+
 			<text name="media">
 				メディア：
 			</text>

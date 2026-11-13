@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <panel background_opaque="true" background_visible="true" bg_opaque_color="0.15 0.145 0.155 0.98" chrome="true" follows="top|right" height="82" layout="topleft" left="0" mouse_opaque="false" name="status" tab_stop="false" top="19" width="1000">
   <panel height="18" left="500" width="95" top="0" follows="left|top" name="parcel_info_panel" bg_visible="false" background_opaque="false">
-    <icon enabled="true" follows="right|top" height="18" image_name="Parcel_VoiceNo_Dark" name="voice_icon" top="0" left="16" visible="true" width="22" scale_image="false" />
+
     <icon follows="right|top" height="18" image_name="Parcel_FlyNo_Dark" name="fly_icon" top="0" left="38" visible="true" width="22" scale_image="false" />
     <icon follows="right|top" height="18" image_name="Parcel_PushNo_Dark" name="push_icon" top="0" left="60" visible="true" width="22" scale_image="false" />
     <icon follows="right|top" height="18" image_name="Parcel_BuildNo_Dark" name="build_icon" top="0" left="82" visible="true" width="22" scale_image="false" />

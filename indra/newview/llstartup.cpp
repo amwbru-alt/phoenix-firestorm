@@ -192,7 +192,6 @@
 #include "llfasttimerview.h"
 #include "llfloatermap.h"
 #include "llweb.h"
-#include "llvoiceclient.h"
 #include "llnamelistctrl.h"
 #include "llnamebox.h"
 #include "llnameeditor.h"
@@ -202,7 +201,6 @@
 #include "llinventorybridge.h"
 #include "llappearancemgr.h"
 #include "llavatariconctrl.h"
-#include "llvoicechannel.h"
 #include "llpathfindingmanager.h"
 #include "llremoteparcelrequest.h"
 // [RLVa:KB] - Checked: RLVa-1.2.0
@@ -1982,10 +1980,9 @@ bool idle_startup()
                 gSavedSettings.setString("LastConnectedGrid", current_grid);
 // </AW: crash report grid correctness>
 
-                // Pass the user information to the voice chat server interface.
-                LLVoiceClient::getInstance()->userAuthorized(gUserCredential->userID(), gAgentID);
+
                 // create the default proximal channel
-                LLVoiceChannel::initClass();
+
 
                 if (gSavedSettings.getBOOL("FSRememberUsername"))
                 {
@@ -2308,19 +2305,14 @@ bool idle_startup()
         LLStartUp::initNameCache();
         do_startup_frame();
 
-        // update the voice settings *after* gCacheName initialization
-        // so that we can construct voice UI that relies on the name cache
-        if (LLVoiceClient::instanceExists())
-        {
-            LLVoiceClient::getInstance()->updateSettings();
-        }
+
         do_startup_frame();
 
         // <FS:Ansariel> OpenSim support: Init with defaults - we get the OpenSimExtras later during login
         LFSimFeatureHandler::instance();
 
         // create a container's instance for start a controlling conversation windows
-        // by the voice's events
+
         // <FS:Ansariel> [FS communication UI]
         //LLFloaterIMContainer *im_inst = LLFloaterIMContainer::getInstance();
         //if(gAgent.isFirstLogin() && im_inst)
@@ -3688,7 +3680,6 @@ bool first_run_dialog_callback(const LLSD& notification, const LLSD& response)
 }
 
 
-
 void set_startup_status(const F32 frac, const std::string& string, const std::string& msg)
 {
     gViewerWindow->setProgressPercent(frac*100);
@@ -4222,10 +4213,6 @@ void reset_login()
     // </FS:Ansariel>
     LLStartUp::setStartupState( STATE_BROWSER_INIT );
 
-    if (LLVoiceClient::instanceExists())
-    {
-        LLVoiceClient::getInstance()->terminate();
-    }
 
     // Clear any verified certs and verify them again on next login
     // to ensure cert matches server instead of just getting reused
@@ -5022,13 +5009,6 @@ bool process_login_success_response(U32 &first_sim_size_x, U32 &first_sim_size_y
 
     }
 
-    // set up the voice configuration.  Ultimately, we should pass this up as part of each voice
-    // channel if we need to move to multiple voice servers per grid.
-    LLSD voice_config_info = response["voice-config"];
-    if(voice_config_info.has("VoiceServerType"))
-    {
-        gSavedSettings.setString("VoiceServerType", voice_config_info["VoiceServerType"].asString());
-    }
 
     // Request the map server url
     std::string map_server_url = ForMeGrid::LoginURI;

@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "llmutelist.h"
 #include "formegridpolicy.h" // <FS:ForMe> Fixed-grid policy.
 #include "llviewermessage.h"
 

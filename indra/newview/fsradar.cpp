@@ -25,6 +25,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "llcallingcard.h"
 
 #include "fsradar.h"
 
@@ -52,7 +53,6 @@
 #include "llviewercontrol.h"        // for gSavedSettings
 #include "llviewerparcelmgr.h"
 #include "llvoavatar.h"
-#include "llvoiceclient.h"
 #include "llworld.h"
 #include "llspeakers.h"
 #include "llviewerregion.h"
@@ -183,7 +183,7 @@ void FSRadar::updateRadarList()
     FSAssetBlacklist* blacklist = FSAssetBlacklist::getInstance();
     LGGContactSets* contactsets = LGGContactSets::getInstance();
     LLLocalSpeakerMgr* speakermgr = LLLocalSpeakerMgr::getInstance();
-    LLVoiceClient* voice_client = LLVoiceClient::getInstance();
+
     LLViewerParcelMgr& parcelmgr = LLViewerParcelMgr::instance();
     LLUIColorTable& colortable = LLUIColorTable::instance();
     LLAvatarTracker& avatartracker = LLAvatarTracker::instance();
@@ -610,35 +610,6 @@ void FSRadar::updateRadarList()
 
         entry_options["name_color"] = name_color.getValue();
 
-        // Voice power level indicator
-        if (voice_client->voiceEnabled() && voice_client->isVoiceWorking())
-        {
-            if (LLSpeaker* speaker = speakermgr->findSpeaker(avId); speaker && speaker->isInVoiceChannel())
-            {
-                EVoicePowerLevel power_level = voice_client->getPowerLevel(avId);
-
-                switch (power_level)
-                {
-                    case VPL_PTT_Off:
-                        entry["voice_level_icon"] = "Radar_VoicePTT_Off";
-                        break;
-                    case VPL_PTT_On:
-                        entry["voice_level_icon"] = "Radar_VoicePTT_On";
-                        break;
-                    case VPL_Level1:
-                        entry["voice_level_icon"] = "Radar_VoicePTT_Lvl1";
-                        break;
-                    case VPL_Level2:
-                        entry["voice_level_icon"] = "Radar_VoicePTT_Lvl2";
-                        break;
-                    case VPL_Level3:
-                        entry["voice_level_icon"] = "Radar_VoicePTT_Lvl3";
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
 
         // Save data for our listeners
         LLSD entry_data;

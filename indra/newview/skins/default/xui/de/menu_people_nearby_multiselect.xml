@@ -4,7 +4,7 @@
 	<menu_item_call label="Zu Kontakt-Set hinzufügen..." name="Add to Set"/>
 	<menu_item_call label="Freunde entfernen" name="remove_friends"/>
 	<menu_item_call label="IM" name="im"/>
-	<menu_item_call label="Anrufen" name="call"/>
+
 	<menu_item_call label="Freigeben" name="share" forme_creator_only="true"/>
 	<menu_item_call label="Bezahlen" name="pay"/>
 	<menu_item_call label="Teleport anbieten" name="offer_teleport"/>

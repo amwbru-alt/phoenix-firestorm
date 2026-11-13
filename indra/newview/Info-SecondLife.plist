@@ -32,10 +32,10 @@
 	<true/>
 	<key>NSHumanReadableCopyright</key>
 	<string>${MACOSX_BUNDLE_COPYRIGHT}</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>For voice chat, you must grant permission for ForMe.World to use the microphone.</string>
+
+
 	<key>NSLocalNetworkUsageDescription</key>
-	<string>ForMe.World uses WebRTC for voice chat, which may require local network access while establishing the voice connection.</string>
+    <string>ForMe.World connects to world services and region audio streams on the local network.</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>

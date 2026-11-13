@@ -74,7 +74,6 @@ private:
 
     enum EParcelIcon
     {
-        VOICE_ICON = 0,
         FLY_ICON,           // 1
         PUSH_ICON,          // 2
         BUILD_ICON,         // 3

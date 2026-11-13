@@ -250,7 +250,7 @@
 				<check_box label="Ativar profundidade de campo" name="UseDepthofField" tool_tip="Esta opção ativa a profundidade de campo, que define a faixa da imagem que permanece nítida. Se não for necessário, desative para melhorar o FPS. Se não for possível ativar ou se não houver efeito visível, ative “Modelo de iluminação avançado” na aba “Luz”."/>
 				<check_box label="Foco DoF segue o mouse" name="FSFocusPointFollowsPointer" tool_tip="O foco da profundidade de campo segue o mouse, de forma similar ao uso de flycam. Use em conjunto com foco DoF fixo."/>
 				<button name="FocusPointRenderToggle" tool_tip="Alterna a exibição da mira do ponto de foco. A mira fica amarela quando livre e vermelha quando fixada."/>
-				<check_box label="Mostrar FOV atual da câmera" name="MIC_Show_FOV" tool_tip="Mostra o campo de visão vertical atual da câmera. No viewer, assim como na vida real, é possível alterar a distância focal da lente. Quanto menor o campo de visão, maior a distância focal. Uma lente de 50mm tem FOV de 27,0 graus. Veja também https://pt.wikipedia.org/wiki/%C3%82ngulo_de_vis%C3%A3o para mais informações. ATENÇÃO: DESATIVE ISSO ANTES DE FOTOGRAFAR, OU VAI APARECER NA IMAGEM!"/>
+
 			</panel>
 
 			<panel name="P_Zoom">

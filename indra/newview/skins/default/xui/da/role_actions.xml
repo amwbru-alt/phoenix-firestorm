@@ -67,7 +67,7 @@
 	</action_set>
 	<action_set description="Disse rettigheder styrer hvem der kan deltage i gruppe-chat og gruppe stemme-chat." name="Chat">
 		<action description="Deltage i gruppe-chat" longdescription="Medlemmer med denne rolle kan deltage i gruppe-chat sessioner" name="join group chat" value="16"/>
-		<action description="Deltag i gruppe stemme-chat" longdescription="Medlemmer med denne rolle kan deltage i gruppe stemme-chat sessioner.  BEMÆRK: Medlemmet skal også have rollen &apos;Deltage i gruppe-chat&apos; for at denne rolle har effekt." name="join voice chat" value="27"/>
+
 		<action description="Styr gruppe-chat" longdescription="Medlemmer med denne rolle kan kontrollere adgang og deltagelse i gruppe-chat og gruppe stemme-chat sessioner." name="moderate group chat" value="37"/>
 	</action_set>
 </role_actions>

@@ -425,12 +425,8 @@
             </text>
             <check_box label="Все" name="all av sound check"/>
             <check_box label="Группа" name="group av sound check"/>
-            <text name="Voice settings:">
-                Голос:
-            </text>
-            <check_box label="Включить голос" name="parcel_enable_voice_channel"/>
-            <check_box label="Включить голос (устанавливается владельцем острова)" name="parcel_enable_voice_channel_is_estate_disabled" width="300" />
-            <check_box label="Ограничить голос границами данного участка" name="parcel_enable_voice_channel_local"/>
+
+
             <text name="media">
                 Медиа:
             </text>

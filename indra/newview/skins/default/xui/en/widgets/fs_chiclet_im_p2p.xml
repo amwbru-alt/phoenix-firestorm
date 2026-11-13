@@ -2,7 +2,6 @@
 <fs_chiclet_im_p2p
  height="23"
  name="im_p2p_chiclet"
- show_speaker="false"
  width="25">
     <fs_chiclet_im_p2p.chiclet_button
      height="25"
@@ -11,21 +10,7 @@
      name="chiclet_button"
      tab_stop="false"
      width="25"/>
-    <fs_chiclet_im_p2p.speaker
-      image_mute="Parcel_VoiceNo_Light"
-      image_off="VoicePTT_Off_Dark"
-      image_on="VoicePTT_On_Dark"
-      image_level_1="VoicePTT_Lvl1_Dark"
-      image_level_2="VoicePTT_Lvl2_Dark"
-      image_level_3="VoicePTT_Lvl3_Dark"
-      auto_update="true"
-      draw_border="false"
-      height="24"
-      left="25"
-      bottom="1"
-      name="speaker"
-      visible="false"
-      width="20" />
+
     <fs_chiclet_im_p2p.avatar_icon
      bottom="3"
      color="white"

@@ -33,17 +33,7 @@
      type="string"
      value="(loading...)"
      width="250"/>
-  <icon
-    enabled="true"
-    follows="right|top"
-    height="18"
-    image_name="Parcel_VoiceNo_Dark"
-    name="voice_icon"
-    top="1"
-    visible="true"
-    left="266"
-    width="22"
-    />
+
   <icon
     follows="right|top"
     height="18"

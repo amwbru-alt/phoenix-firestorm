@@ -28,6 +28,7 @@
 // Original file: llpanelblockedlist.cpp
 
 #include "llviewerprecompiledheaders.h"
+#include "llmutelist.h"
 
 #include "fspanelblocklist.h"
 
@@ -295,10 +296,6 @@ void FSPanelBlockList::onCustomAction(const LLSD& userdata)
     {
         showProfile();
     }
-    else if ("block_voice" == command_name)
-    {
-        toggleMute(LLMute::flagVoiceChat);
-    }
     else if ("block_text" == command_name)
     {
         toggleMute(LLMute::flagTextChat);
@@ -343,11 +340,7 @@ bool FSPanelBlockList::isActionChecked(const LLSD& userdata)
 
         LLUUID blocked_id = mBlockedList->getFirstSelected()->getColumn(COL_UUID)->getValue().asUUID();
 
-        if ("block_voice" == command_name)
-        {
-            return LLMuteList::getInstance()->isMuted(blocked_id, LLMute::flagVoiceChat);
-        }
-        else if ("block_text" == command_name)
+        if ("block_text" == command_name)
         {
             return LLMuteList::getInstance()->isMuted(blocked_id, LLMute::flagTextChat);
         }
@@ -372,7 +365,6 @@ bool FSPanelBlockList::isActionEnabled(const LLSD& userdata)
         return (mBlockedList->getNumSelected() > 0);
     }
     else if ("profile_item" == command_name
-        || "block_voice" == command_name
         || "block_text" == command_name
         || "block_particles" == command_name
         || "block_obj_sounds" == command_name)
@@ -388,8 +380,7 @@ bool FSPanelBlockList::isActionVisible(const LLSD& userdata)
 {
     const std::string command_name = userdata.asString();
 
-    if ("block_voice" == command_name
-        || "block_text" == command_name
+    if ("block_text" == command_name
         || "block_particles" == command_name
         || "block_obj_sounds" == command_name)
     {

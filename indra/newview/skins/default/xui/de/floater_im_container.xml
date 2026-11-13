@@ -8,7 +8,7 @@
 				<layout_panel name="conversations_pane_buttons_expanded">
 					<menu_button name="sort_btn" tool_tip="Anzeige-/Sortieroptionen"/>
 					<button name="add_btn" tool_tip="Neue Unterhaltung starten"/>
-					<button name="speak_btn" tool_tip="Über Ihr Mikrofon mit anderen sprechen"/>
+
 				</layout_panel>
 				<layout_panel name="conversations_pane_buttons_collapsed">
 					<button name="expand_collapse_btn" tool_tip="Diese Liste schließen/erweitern"/>

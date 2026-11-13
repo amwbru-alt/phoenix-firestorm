@@ -103,10 +103,6 @@ public:
     /// Returns if the current user is a member of the group
     static bool isInGroup(const LLUUID& group_id);
 
-    /**
-     * Start a group voice call.
-     */
-    static void startCall(const LLUUID& group_id);
 
     /**
      * Returns true if avatar is in group.

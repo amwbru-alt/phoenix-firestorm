@@ -10,6 +10,6 @@
 	<check_box name="enable_music" tool_tip="Abilita streaming musica"/>
 	<slider label="Media" name="Media Volume"/>
 	<check_box name="enable_media" tool_tip="Abilita streaming media"/>
-	<slider label="Voce" name="Voice Volume"/>
-	<check_box name="enable_voice_check" tool_tip="Abilita chat vocale"/>
+
+
 </panel>

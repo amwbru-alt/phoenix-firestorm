@@ -886,7 +886,7 @@ bool LLIMWellWindow::hasIMRow(const LLUUID& session_id)
 
 void LLIMWellWindow::closeAll()
 {
-    // Generate an ignorable alert dialog if there is an active voice IM sesion
+
     bool need_confirmation = false;
     const LLIMModel& im_model = LLIMModel::instance();
     std::vector<LLSD> values;
@@ -897,11 +897,7 @@ void LLIMWellWindow::closeAll()
          iter != iter_end; ++iter)
     {
         LLIMSpeakerMgr* speaker_mgr =  im_model.getSpeakerManager(*iter);
-        if (speaker_mgr && speaker_mgr->isVoiceActive())
-        {
-            need_confirmation = true;
-            break;
-        }
+
     }
     if ( need_confirmation )
     {

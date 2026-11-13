@@ -64,8 +64,8 @@
 					<panel name="parcel_characteristics_panel">
 						<text name="rating_label" value="分級：" />
 						<text name="rating_value" value="未知" />
-						<text name="voice_label" value="語音：" />
-						<text name="voice_value" value="啟用" />
+
+
 						<text name="fly_label" value="飛行：" />
 						<text name="fly_value" value="啟用" />
 						<text name="push_label" value="推撞：" />

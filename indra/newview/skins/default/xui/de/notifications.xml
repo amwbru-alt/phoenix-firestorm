@@ -240,10 +240,7 @@ Wählen Sie ein einzelnes Objekt aus und versuchen Sie es erneut.
 		Änderung an Kleidung/Körperteilen speichern?
 		<usetemplate canceltext="Abbrechen" name="yesnocancelbuttons" notext="Nicht speichern" yestext="Alles speichern"/>
 	</notification>
-	<notification name="FriendsAndGroupsOnly">
-		Personen, die nicht auf Ihrer Freundesliste stehen, werden nicht informiert, dass Sie ihre Anrufe und Instant Messages ignorieren.
-		<usetemplate name="okbutton" yestext="OK"/>
-	</notification>
+
 	<notification name="FavoritesOnLogin">
 		Hinweis: Bei Aktivierung dieser Option sehen alle Personen, die diesen Computer benutzen, Ihre Lieblingsorte.
 		<usetemplate name="okbutton" yestext="OK"/>
@@ -1953,7 +1950,6 @@ Ein erneutes Beitreten ist aktuell kostenlos.
 		Nicht-stören-Modus ist aktiviert:  Sie erhalten keine Benachrichtigung über eingehende Kommunikation.
 
 - Andere Einwohner erhalten Ihre Nicht-stören-Antwort (festgelegt in Einstellungen &gt; Privatsphäre &gt; Automatische Antwort).
-- Voice-Anrufe werden abgelehnt.
 		<usetemplate ignoretext="Ich ändere meinen Status zu „Nicht stören“" name="okignore" yestext="OK"/>
 	</notification>
 	<notification name="AutorespondModeSet">
@@ -2473,9 +2469,7 @@ Anzeige für [AMOUNT] L$ veröffentlichen?
 Es kann eine Weile dauern, bis diese Änderung auf der Karte angezeigt wird.
 		<usetemplate name="okbutton" yestext="OK"/>
 	</notification>
-	<notification label="Falsche Voice-Version" name="VoiceVersionMismatch">
-		Diese Version von [APP_NAME] ist mit der Voice-Chat-Funktion in dieser Region nicht kompatibel. Damit Voice-Chat funktioniert, müssen Sie [APP_NAME] aktualisieren.
-	</notification>
+
 	<notification label="Objekte können nicht gekauft werden" name="BuyObjectOneOwner">
 		Objekte können nicht von mehreren Eigentümern gleichzeitig gekauft werden.
 Wählen Sie ein einzelnes Objekt aus und versuchen Sie es erneut.
@@ -3152,9 +3146,7 @@ Fliegen ist hier nicht möglich.
 	<notification name="PushRestricted">
 		In diesem Bereich ist Stoßen nicht erlaubt. Sie können keine anderen Personen stoßen, außer Ihnen gehört das Land.
 	</notification>
-	<notification name="NoVoice">
-		In diesem Bereich ist Voice deaktiviert. Sie werden niemanden sprechen hören.
-	</notification>
+
 	<notification name="NoBuild">
 		In diesem Bereich ist das Bauen deaktiviert. Sie können keine Objekte bauen oder rezzen.
 	</notification>
@@ -3609,15 +3601,7 @@ Objekte, die Sie hier bauen, werden gelöscht, nachdem Sie den Sandkasten verlas
 		Sie können maximal [MAX_SELECT] Objekte
 von der Liste auswählen.
 	</notification>
-	<notification name="VoiceInviteP2P">
-		[NAME] lädt Sie zu einem Voice-Chat ein.
-Klicken Sie auf  &apos;Akzeptieren &apos;, um dem Gespräch beizutreten, oder auf  &apos;Ablehnen &apos;, um die Einladung auszuschlagen. Klicken Sie auf Ignorieren, um diesen Anrufer zu ignorieren.
-		<form name="form">
-			<button name="Accept" text="Akzeptieren"/>
-			<button name="Decline" text="Ablehnen"/>
-			<button name="Mute" text="Ignorieren"/>
-		</form>
-	</notification>
+
 	<notification name="AutoUnmuteByIM">
 		[NAME] hat eine Instant Message erhalten und wird nicht länger ignoriert.
 	</notification>
@@ -3627,78 +3611,8 @@ Klicken Sie auf  &apos;Akzeptieren &apos;, um dem Gespräch beizutreten, oder au
 	<notification name="AutoUnmuteByInventory">
 		[NAME] wurde ein Inventarobjekt angeboten und wird nicht länger ignoriert.
 	</notification>
-	<notification name="VoiceInviteGroup">
-		[NAME] ist einem Voice-Chat mit der Gruppe &lt;nolink&gt;[GROUP]&lt;/nolink&gt; beigetreten.
-Klicken Sie auf „Annehmen“, um die Einladung zu akzeptieren, oder auf „Ablehnen“, um die Einladung nicht zu akzeptieren. Klicken Sie auf „Ignorieren“, um diesen Anrufer zu ignorieren.
-		<form name="form">
-			<button name="Accept" text="Akzeptieren"/>
-			<button name="Decline" text="Ablehnen"/>
-			<button name="Mute" text="Ignorieren"/>
-		</form>
-	</notification>
-	<notification name="VoiceInviteAdHoc">
-		[NAME] ist einem Voice-Chat mit Konferenzschaltung beigetreten.
-Klicken Sie auf  &apos;Akzeptieren &apos;, um dem Gespräch beizutreten, oder auf  &apos;Ablehnen &apos;, um die Einladung auszuschlagen. Klicken Sie auf Ignorieren, um diesen Anrufer zu ignorieren.
-		<form name="form">
-			<button name="Accept" text="Akzeptieren"/>
-			<button name="Decline" text="Ablehnen"/>
-			<button name="Mute" text="Ignorieren"/>
-		</form>
-	</notification>
-	<notification name="InviteAdHoc">
-		[NAME] lädt Sie zu einem Konferenz-Chat ein.
-Klicken Sie auf  &apos;Akzeptieren &apos;, um dem Chat beizutreten, oder auf  &apos;Ablehnen &apos;, um die Einladung auszuschlagen. Klicken Sie auf Ignorieren, um diesen Anrufer zu ignorieren.
-		<form name="form">
-			<button name="Accept" text="Akzeptieren"/>
-			<button name="Decline" text="Ablehnen"/>
-			<button name="Mute" text="Ignorieren"/>
-		</form>
-	</notification>
-	<notification name="VoiceChannelFull">
-		Der Voice-Chat, dem Sie beitreten möchten, [VOICE_CHANNEL_NAME], hat seine maximale Teilnehmerzahl erreicht. Bitte versuchen Sie es erneut.
-	</notification>
-	<notification name="ProximalVoiceChannelFull">
-		Es tut uns Leid.  Dieses Gebiet hat seine maximale Kapazität für Voice-Gespräche erreicht.  Bitte versuchen Sie es in einem anderen Gebiet.
-	</notification>
-	<notification name="VoiceChannelDisconnected">
-		Die Verbindung zu [VOICE_CHANNEL_NAME] wurde abgebrochen.  Sie werden nun wieder mit dem Chat in Ihrer Nähe verbunden.
-	</notification>
-	<notification name="VoiceChannelDisconnectedP2P">
-		[VOICE_CHANNEL_NAME] hat den Anruf beendet.  Sie werden nun wieder mit dem Chat in Ihrer Nähe verbunden.
-	</notification>
-	<notification name="P2PCallDeclined">
-		[VOICE_CHANNEL_NAME] hat ihren Anruf abgelehnt.  Sie werden nun wieder mit dem Chat in Ihrer Nähe verbunden.
-	</notification>
-	<notification name="P2PCallNoAnswer">
-		[VOICE_CHANNEL_NAME] kann Ihren Anruf nicht entgegennehmen.  Sie werden nun wieder mit dem Chat in Ihrer Nähe verbunden.
-	</notification>
-	<notification name="VoiceChannelJoinFailed">
-		Verbindung zu [VOICE_CHANNEL_NAME] nicht möglich. Bitte versuchen Sie es später.  Sie werden nun wieder mit dem Chat in Ihrer Nähe verbunden.
-	</notification>
-	<notification name="VoiceEffectsExpired">
-		Ein oder mehrere Ihrer Voice-Morph-Abos sind abgelaufen. 
-[[URL] Klicken Sie hier], um Ihr Abo zu erneuern. 
 
-Wenn Sie Premium-Mitglied sind, [[PREMIUM_URL] klicken Sie hier], um Ihren Voice-Morphing-Vorteil zu nutzen.
-	</notification>
-	<notification name="VoiceEffectsExpiredInUse">
-		Das aktive Voice-Morph-Abo ist abgelaufen. Ihre normalen Voice-Einstellungen werden angewendet. 
-[[URL] Klicken Sie hier], um Ihr Abo zu erneuern. 
 
-Wenn Sie Premium-Mitglied sind, [[PREMIUM_URL] klicken Sie hier], um Ihren Voice-Morphing-Vorteil zu nutzen.
-	</notification>
-	<notification name="VoiceEffectsWillExpire">Ein oder mehrere Ihrer Voice-Morph-Abos laufen in weniger als [INTERVAL] Tagen ab. 
-[[URL] Klicken Sie hier], um Ihr Abo zu erneuern. 
-
-Wenn Sie Premium-Mitglied sind, [[PREMIUM_URL] klicken Sie hier], um Ihren Voice-Morphing-Vorteil zu nutzen.</notification>
-	<notification name="VoiceEffectsNew">
-		Neue Voice-Morph-Effekte sind erhältlich!
-	</notification>
-	<notification name="VoiceEffectsNotSupported">
-		Voice-Morph-Effekte werden von diesem Viewer nicht unterstützt.
-Für weitere Informationen zu anderen Voice-Morphing-Tools, lesen Sie bitte [[FAQ_URL] diesen Artikel].
-		<usetemplate ignoretext="Warnen, falls Voice-Morphing nicht unterstützt wird" name="okignore" yestext="OK"/>
-	</notification>
 	<notification name="Cannot enter parcel: not a group member">
 		Nur Mitglieder einer bestimmten Gruppe dürfen diesen Bereich betreten.
 	</notification>
@@ -3708,12 +3622,8 @@ Für weitere Informationen zu anderen Voice-Morphing-Tools, lesen Sie bitte [[FA
 	<notification name="Cannot enter parcel: not on access list">
 		Zugang zur Parzelle verweigert. Sie stehen nicht auf der Zugangsliste.
 	</notification>
-	<notification name="VoiceNotAllowed">
-		Sie sind nicht berechtigt, einem Voice-Chat in [VOICE_CHANNEL_NAME] beizutreten.
-	</notification>
-	<notification name="VoiceCallGenericError">
-		Fehler beim Versuch, eine Voice-Chat-Verbindung zu [VOICE_CHANNEL_NAME] herzustellen.  Bitte versuchen Sie es erneut.
-	</notification>
+
+
 	<notification name="UnsupportedCommandSLURL">
 		Die SLurl, auf die Sie geklickt haben, wird nicht unterstützt.
 	</notification>
@@ -3781,17 +3691,8 @@ Voreinstellung überschreiben oder einen anderen Namen wählen
 		Sie wurden vom Moderator stummgeschaltet.
 		<usetemplate name="okbutton" yestext="OK"/>
 	</notification>
-	<notification name="VoiceIsMutedByModerator">
-		Ihr Sprachchat wurde vom Moderator stummgeschaltet.
-		<usetemplate name="okbutton" yestext="OK"/>
-	</notification>
-	<notification name="NearbyVoiceMutedByModerator">
-		Ihr Sprachchat wurde vom Moderator stummgeschaltet.
-Einwohner an diesem Ort werden Sie nicht hören können.
-	</notification>
-	<notification name="NearbyVoiceUnmutedByModerator">
-		Einwohner an diesem Ort können Ihren Sprachchat jetzt hören.
-	</notification>
+
+
 	<notification name="FailedToGetBenefits">
 		Leider konnten wir für diese Sitzung keine Informationen zu den Leistungen erhalten. Dies sollte in einer normalen Produktionsumgebung nicht passieren. Kontaktiere bitte den Support. Diese Sitzung wird nicht normal laufen, und wir empfehlen, die Sitzung neu zu starten.
 		<usetemplate name="okbutton" yestext="OK"/>
@@ -3921,30 +3822,8 @@ Avatar &apos;[NAME]&apos; hat Modus „Aussehen bearbeiten&quot; verlassen.
 Bitte überprüfen Sie Ihre Netzwerk- und Firewalleinstellungen.
 		<usetemplate name="okbutton" yestext="OK"/>
 	</notification>
-	<notification name="NoVoiceConnect">
-		Wir können uns nicht mit dem Voice-Server verbinden: 
 
-&lt;nolink&gt;[HOSTID]&lt;/nolink&gt;
 
-Folgende Ports müssen für Voice freigegeben werden:
-:TCP: 80, 443
-:UDP: 3478, 3479, 5060, 5062, 6250, 12000-32000
-
-Bitte prüfen Sie Ihre Netzwerk- und Firewall-Konfiguration.
-Deaktivieren Sie alle SIP ALG-Funktionen in Ihrem Router. 
-
-Voice-Kommunikation ist leider nicht verfügbar.
-https://wiki.firestormviewer.org/fs_voice
-		<usetemplate name="okignore" yestext="OK" ignoretext="Warnen, wenn keine Verbindung zum Voice-Server hergestellt werden kann."/>
-	</notification>
-	<notification name="NoVoiceConnect-GIAB">
-		Verbindung mit Voice-Server ist leider nicht möglich:
-
-Voice-Kommunikation ist leider nicht verfügbar.
-Bitte überprüfen Sie Ihr Netzwerk- und Firewall-Setup.
-[https://wiki.firestormviewer.org/fs_voice]
-		<usetemplate name="okignore" yestext="OK"/>
-	</notification>
 	<notification name="AvatarRezLeftNotification">
 		(Seit [EXISTENCE] Sekunden inworld )
 Avatar „[NAME]“ hat als vollständig gerezzter Avatar die Welt verlassen.
@@ -4011,31 +3890,15 @@ Material-Datei kann nicht hochgeladen werden. Die Datei ist möglicherweise besc
 		<usetemplate ignoretext="Einfügen: Sie haben eine Texture mit eingeschränkten Berechtigungen hinzugefügt." name="notifyignore"/>
 		<usetemplate name="okbutton" yestext="OK"/>
 	</notification>
-	<notification name="ConfirmLeaveCall">
-		Möchten Sie dieses Gespräch wirklich verlassen ?
-		<usetemplate ignoretext="Bestätigen, bevor ich den Anruf verlasse." name="okcancelignore" notext="Nein" yestext="Ja"/>
-	</notification>
-	<notification name="ConfirmMuteAll">
-		Die von Ihnen ausgewählten Einstellungen werden alle Teilnehmer eines Gruppengespräches stummschalten.
-Dies bedeutet, dass alle Einwohner, die später dem Gespräch beitreten,
-auch dann stummgeschaltet werden, wenn Sie den Anruf verlassen haben.
 
-Alle stummschalten?
-		<usetemplate ignoretext="Bestätigen, bevor alle Teilnehmer in einem Gruppengespräch stummgeschaltet werden." name="okcancelignore" notext="Abbrechen" yestext="OK"/>
-	</notification>
+
 	<notification label="Chat" name="HintChat">
 		Um mitzureden, geben Sie Text in das Chat-Feld unten ein.
 	</notification>
 	<notification label="Stehen" name="HintSit">
 		Um aufzustehen, klicken Sie auf die Schaltfläche „Stehen“.
 	</notification>
-	<notification label="Sprechen" name="HintSpeak">
-		Auf Schaltfläche „Sprechen“ klicken, um das Mikrofon ein- und auszuschalten.
 
-Auf den Pfeil nach oben klicken, um die Sprachsteuerung zu sehen.
-
-Durch Ausblenden der Schaltfläche „Sprechen“ wird die Sprechfunktion deaktiviert.
-	</notification>
 	<notification label="Welt erkunden" name="HintDestinationGuide">
 		Im Reiseführer finden Sie Tausende von interessanten Orten. Wählen Sie einfach einen Ort aus und klicken Sie auf „Teleportieren“.
 	</notification>
@@ -4151,10 +4014,7 @@ Modus ändern und beenden?
 		Die Anzeige der Weltkarte ist nur im Modus „Erweitert“ möglich. Möchten Sie das Programm beenden und den Modus wechseln? Die Modusauswahl ist auf dem Anmeldebildschirm zu finden.
 		<usetemplate name="okcancelbuttons" notext="Nicht beenden" yestext="Beenden"/>
 	</notification>
-	<notification label="" name="NoVoiceCall">
-		Voice-Anrufe sind nur im Modus „Erweitert“ möglich. Möchten Sie sich abmelden und den Modus wechseln?
-		<usetemplate name="okcancelbuttons" notext="Nicht beenden" yestext="Beenden"/>
-	</notification>
+
 	<notification label="" name="NoAvatarShare">
 		Die Freigabe ist nur im Modus „Erweitert“ möglich. Möchten Sie sich abmelden und den Modus wechseln?
 		<usetemplate name="okcancelbuttons" notext="Nicht beenden" yestext="Beenden"/>

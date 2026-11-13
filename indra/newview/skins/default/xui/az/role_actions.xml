@@ -69,7 +69,7 @@
 	</action_set>
 	<action_set description="Bu qabiliyyətlərə söhbət seanslarına və qrup səsli söhbətinə icazə vermək və ya məhdudlaşdırmaq daxildir." name="Chat">
 		<action description="Qrup söhbətinə qoşulmaq" longdescription="Bu bacarıqla rol iştirakçıları qrup söhbətlərinə (mətn və səsli) qoşula bilərlər." name="join group chat"/>
-		<action description="Qrup səsli söhbətinə qoşulmaq" longdescription="Bu bacarıqla rol iştirakçıları qrup səsli söhbətlərinə qoşula bilərlər. Qeyd edək ki, Söhbət qrupuna qoşulmaq üçün 'Qrup söhbətinə qoşulmaq' bacarığına ehtiyac vardır." name="join voice chat"/>
+
 		<action description="Qrup söhbəti idarəetməsi" longdescription="Bu bacarıqla rol iştirakçıları qrup mətn və səsli söhbətlərində iştirakı və girişini nəzarət edə bilərlər." name="moderate group chat"/>
 	</action_set>
 	<action_set description="Bu qabiliyyətlərə qrupun sahib olduğu macəraları dəyişdirmək hüququ daxildir." name="experience_tools_experience">

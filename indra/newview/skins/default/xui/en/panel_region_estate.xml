@@ -143,14 +143,7 @@
      name="parcel_access_override"
      top_pad="2"
      width="240" />
-    <check_box
-     height="18"
-     label="Allow Voice Chat"
-     layout="topleft"
-     left="20"
-     name="voice_chat_check"
-     top_pad="2"
-     width="240" />
+
     <check_box
      height="18"
      label="Allow Direct Teleport"

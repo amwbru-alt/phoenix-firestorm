@@ -291,8 +291,7 @@ bool LLFloaterIMSessionTab::postBuild()
 
     mGearBtn = getChild<LLButton>("gear_btn");
     mAddBtn = getChild<LLButton>("add_btn");
-    mVoiceButton = getChild<LLButton>("voice_call_btn");
-    mVoiceButton->setClickedCallback([this](LLUICtrl*, const LLSD&) { onCallButtonClicked(); });
+
 
     mParticipantListPanel = getChild<LLLayoutPanel>("speakers_list_panel");
     mRightPartPanel = getChild<LLLayoutPanel>("right_part_holder");
@@ -423,42 +422,7 @@ void LLFloaterIMSessionTab::draw()
     super::draw();
 }
 
-void LLFloaterIMSessionTab::enableDisableCallBtn()
-{
-    if (!mVoiceButton)
-        return;
 
-    bool enable = false;
-
-    if (mSessionID.notNull()
-        && mSession
-        && mSession->mSessionInitialized
-        && mSession->mCallBackEnabled)
-    {
-        if (mVoiceButtonHangUpMode)
-        {
-            // We allow to hang up from any state
-            enable = true;
-        }
-        else
-        {
-            // We allow to start call from this state only
-            if (LLVoiceClient::instanceExists() &&
-                mSession->mVoiceChannel  &&
-                !mSession->mVoiceChannel->callStarted()
-                )
-            {
-                LLVoiceClient* client = LLVoiceClient::getInstance();
-                if (client->voiceEnabled() && client->isVoiceWorking())
-                {
-                    enable = true;
-                }
-            }
-        }
-    }
-
-    mVoiceButton->setEnabled(enable);
-}
 
 // virtual
 void LLFloaterIMSessionTab::onFocusReceived()
@@ -481,21 +445,6 @@ void LLFloaterIMSessionTab::onFocusLost()
     super::onFocusLost();
 }
 
-void LLFloaterIMSessionTab::onCallButtonClicked()
-{
-    if (mVoiceButtonHangUpMode)
-    {
-        // We allow to hang up from any state
-        gIMMgr->endCall(mSessionID);
-    }
-    else
-    {
-        if (mSession->mVoiceChannel && !mSession->mVoiceChannel->callStarted())
-        {
-            gIMMgr->startCall(mSessionID);
-        }
-    }
-}
 
 void LLFloaterIMSessionTab::onInputEditorClicked()
 {
@@ -616,7 +565,7 @@ void LLFloaterIMSessionTab::closeFloater(bool app_quitting)
 void LLFloaterIMSessionTab::deleteAllChildren()
 {
     super::deleteAllChildren();
-    mVoiceButton = NULL;
+
 }
 
 std::string LLFloaterIMSessionTab::appendTime()
@@ -1035,7 +984,6 @@ void LLFloaterIMSessionTab::updateHeaderAndToolbar()
 
     mCloseBtn->setVisible(is_not_torn_off && !mIsNearbyChat);
 
-    enableDisableCallBtn();
 }
 
 void LLFloaterIMSessionTab::forceReshape()
@@ -1096,11 +1044,8 @@ void LLFloaterIMSessionTab::reloadEmptyFloaters()
 
 void LLFloaterIMSessionTab::updateCallBtnState(bool callIsActive)
 {
-    mVoiceButton->setImageOverlay(callIsActive? getString("call_btn_stop") : getString("call_btn_start"));
-    mVoiceButton->setToolTip(callIsActive? getString("end_call_button_tooltip") : getString("start_call_button_tooltip"));
-    mVoiceButtonHangUpMode = callIsActive;
 
-    enableDisableCallBtn();
+
 }
 
 void LLFloaterIMSessionTab::onSlide(LLFloaterIMSessionTab* self)
@@ -1252,22 +1197,21 @@ void LLFloaterIMSessionTab::updateGearBtn()
     {
         LLRect gear_btn_rect =  mGearBtn->getRect();
         LLRect add_btn_rect = mAddBtn->getRect();
-        LLRect call_btn_rect = mVoiceButton->getRect();
-        S32 gap_width = call_btn_rect.mLeft - add_btn_rect.mRight;
-        S32 right_shift = gear_btn_rect.getWidth() + gap_width;
+
+
         if(mGearBtn->getVisible())
         {
             // Move buttons to the right to give space for Gear button
-            add_btn_rect.translate(right_shift,0);
-            call_btn_rect.translate(right_shift,0);
+
+
         }
         else
         {
-            add_btn_rect.translate(-right_shift,0);
-            call_btn_rect.translate(-right_shift,0);
+
+
         }
         mAddBtn->setRect(add_btn_rect);
-        mVoiceButton->setRect(call_btn_rect);
+
     }
 }
 
@@ -1275,15 +1219,10 @@ void LLFloaterIMSessionTab::initBtns()
 {
     LLRect gear_btn_rect =  mGearBtn->getRect();
     LLRect add_btn_rect = mAddBtn->getRect();
-    LLRect call_btn_rect = mVoiceButton->getRect();
-    S32 gap_width = call_btn_rect.mLeft - add_btn_rect.mRight;
-    S32 right_shift = gear_btn_rect.getWidth() + gap_width;
 
-    add_btn_rect.translate(-right_shift,0);
-    call_btn_rect.translate(-right_shift,0);
 
     mAddBtn->setRect(add_btn_rect);
-    mVoiceButton->setRect(call_btn_rect);
+
 }
 
 // static

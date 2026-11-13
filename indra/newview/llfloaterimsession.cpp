@@ -99,7 +99,7 @@ LLFloaterIMSession::LLFloaterIMSession(const LLUUID& session_id)
     mEnableCallbackRegistrar.add("Avatar.EnableGearItem", boost::bind(&LLFloaterIMSession::enableGearMenuItem, this, _2));
     mCommitCallbackRegistrar.add("Avatar.GearDoToSelected", boost::bind(&LLFloaterIMSession::GearDoToSelected, this, _2));
     mEnableCallbackRegistrar.add("Avatar.CheckGearItem", boost::bind(&LLFloaterIMSession::checkGearMenuItem, this, _2));
-    mVoiceChannelChanged = LLVoiceChannel::setCurrentVoiceChannelChangedCallback(boost::bind(&LLFloaterIMSession::onVoiceChannelChanged, this, _1));
+
 
     setDocked(true);
 }
@@ -153,23 +153,7 @@ void LLFloaterIMSession::onClickCloseBtn(bool app_qutting)
 
     LLIMModel::LLIMSession* session = LLIMModel::instance().findIMSession(mSessionID);
 
-    if (session != NULL)
-    {
-        bool is_call_with_chat = session->isGroupSessionType()
-                || session->isAdHocSessionType() || session->isP2PSessionType();
-
-        LLVoiceChannel* voice_channel = LLIMModel::getInstance()->getVoiceChannel(mSessionID);
-
-        if (is_call_with_chat && voice_channel != NULL
-                && voice_channel->isActive())
-        {
-            LLSD payload;
-            payload["session_id"] = mSessionID;
-            LLNotificationsUtil::add("ConfirmLeaveCall", LLSD(), payload, confirmLeaveCallCallback);
-            return;
-        }
-    }
-    else
+    if (session == NULL)
     {
         LL_WARNS() << "Empty session with id: " << (mSessionID.asString()) << LL_ENDL;
     }
@@ -198,16 +182,9 @@ void LLFloaterIMSession::onVisibilityChanged(const LLSD& new_visibility)
 {
     bool visible = new_visibility.asBoolean();
 
-    LLVoiceChannel* voice_channel = LLIMModel::getInstance()->getVoiceChannel(mSessionID);
 
-    if (visible && voice_channel &&
-        voice_channel->getState() == LLVoiceChannel::STATE_CONNECTED)
     {
-        LLFloaterReg::showInstance("voice_call", mSessionID);
-    }
-    else
-    {
-        LLFloaterReg::hideInstance("voice_call", mSessionID);
+
     }
 }
 
@@ -350,13 +327,11 @@ void LLFloaterIMSession::sendMsg(const std::string& msg)
 
 LLFloaterIMSession::~LLFloaterIMSession()
 {
-    mVoiceChannelStateChangeConnection.disconnect();
 
-    LLVoiceClient::removeObserver(this);
 
     LLTransientFloaterMgr::getInstance()->removeControlView(LLTransientFloaterMgr::IM, this);
 
-    mVoiceChannelChanged.disconnect();
+
 }
 
 
@@ -385,7 +360,6 @@ void LLFloaterIMSession::initIMFloater()
         mOtherParticipantUUID = other_party_id;
     }
 
-    boundVoiceChannel();
 
     mTypingStart = LLTrans::getString("IM_typing_start_string");
 
@@ -426,7 +400,6 @@ bool LLFloaterIMSession::postBuild()
     add_btn->setEnabled(isInviteAllowed());
     add_btn->setClickedCallback(boost::bind(&LLFloaterIMSession::onAddButtonClicked, this));
 
-    LLVoiceClient::addObserver(this);
 
     //*TODO if session is not initialized yet, add some sort of a warning message like "starting session...blablabla"
     //see LLFloaterIMPanel for how it is done (IB)
@@ -537,10 +510,6 @@ void LLFloaterIMSession::addP2PSessionParticipants(const LLSD& notification, con
         return;
     }
 
-    LLVoiceChannel* voice_channel = LLIMModel::getInstance()->getVoiceChannel(mSessionID);
-
-    // first check whether this is a voice session
-    bool is_voice_call = voice_channel != NULL && voice_channel->isActive();
 
     uuid_vec_t temp_ids;
 
@@ -561,14 +530,7 @@ void LLFloaterIMSession::addP2PSessionParticipants(const LLSD& notification, con
     mSessionInitialized = false;
 
 
-
-    // Start a new ad hoc voice call if we invite new participants to a P2P call,
     // or start a text chat otherwise.
-    if (is_voice_call)
-    {
-        LLAvatarActions::startAdhocCall(temp_ids, mSessionID);
-    }
-    else
     {
         LLAvatarActions::startConference(temp_ids, mSessionID);
     }
@@ -584,43 +546,9 @@ void LLFloaterIMSession::sendParticipantsAddedNotification(const uuid_vec_t& uui
     sendMsg(getString(uuids.size() > 1 ? "multiple_participants_added" : "participant_added", args));
 }
 
-void LLFloaterIMSession::onVoiceChannelChanged(const LLUUID &session_id)
-{
-    if (session_id == mSessionID)
-    {
-        boundVoiceChannel();
-    }
-}
 
-void LLFloaterIMSession::boundVoiceChannel()
-{
-    LLVoiceChannel* voice_channel = LLIMModel::getInstance()->getVoiceChannel(mSessionID);
-    if(voice_channel)
-    {
-        mVoiceChannelStateChangeConnection.disconnect();
-        mVoiceChannelStateChangeConnection = voice_channel->setStateChangedCallback(
-                boost::bind(&LLFloaterIMSession::onVoiceChannelStateChanged, this, _1, _2));
 
-        //call (either p2p, group or ad-hoc) can be already in started state
-        bool callIsActive = voice_channel->getState() >= LLVoiceChannel::STATE_CALL_STARTED;
-        updateCallBtnState(callIsActive);
-    }
-}
 
-void LLFloaterIMSession::onChange(EStatusType status, const LLSD& channelInfo, bool proximal)
-{
-    if(status != STATUS_JOINING && status != STATUS_LEFT_CHANNEL)
-    {
-        enableDisableCallBtn();
-    }
-}
-
-void LLFloaterIMSession::onVoiceChannelStateChanged(
-        const LLVoiceChannel::EState& old_state, const LLVoiceChannel::EState& new_state)
-{
-    bool callIsActive = new_state >= LLVoiceChannel::STATE_CALL_STARTED;
-    updateCallBtnState(callIsActive);
-}
 
 void LLFloaterIMSession::updateSessionName(const std::string& name)
 {
@@ -1147,30 +1075,7 @@ void LLFloaterIMSession::processAgentListUpdates(const LLSD& body)
                                mInvitedParticipants.end());
 }
 
-void LLFloaterIMSession::processSessionUpdate(const LLSD& session_update)
-{
-    // *TODO : verify following code when moderated mode will be implemented
-    if ( false && session_update.has("moderated_mode") &&
-         session_update["moderated_mode"].has("voice") )
-    {
-        bool voice_moderated = session_update["moderated_mode"]["voice"];
-        const std::string session_label = LLIMModel::instance().getName(mSessionID);
 
-        if (voice_moderated)
-        {
-            setTitle(session_label + std::string(" ")
-                            + LLTrans::getString("IM_moderated_chat_label"));
-        }
-        else
-        {
-            setTitle(session_label);
-        }
-
-        // *TODO : uncomment this when/if LLPanelActiveSpeakers panel will be added
-        //update the speakers dropdown too
-        //mSpeakerPanel->setVoiceModerationCtrlMode(voice_moderated);
-    }
-}
 
 // virtual
 void LLFloaterIMSession::draw()

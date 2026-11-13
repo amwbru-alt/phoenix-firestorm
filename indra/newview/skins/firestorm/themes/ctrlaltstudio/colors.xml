@@ -359,15 +359,8 @@
     <color
      name="AvatarListItemIconOfflineColor"
      reference="SL-MidDkGray_50" />
-    <color
-     name="AvatarListItemIconVoiceInvitedColor"
-     reference="AvatarListItemIconOfflineColor" />
-    <color
-     name="AvatarListItemIconVoiceJoinedColor"
-     reference="AvatarListItemIconOnlineColor" />
-    <color
-     name="AvatarListItemIconVoiceLeftColor"
-     reference="AvatarListItemIconOfflineColor" />
+
+
     <color
      name="BackgroundChatColor"
      reference="DkGray" />

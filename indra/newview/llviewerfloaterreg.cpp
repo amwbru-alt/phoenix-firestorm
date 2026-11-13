@@ -59,7 +59,6 @@
 #include "llfloatercamerapresets.h"
 #include "llfloaterchangeitemthumbnail.h"
 #include "llfloaterchatmentionpicker.h"
-#include "llfloaterchatvoicevolume.h"
 #include "llfloaterclassified.h"
 #include "llfloaterconversationlog.h"
 #include "llfloaterconversationpreview.h"
@@ -151,7 +150,6 @@
 #include "llfloatertoybox.h"
 #include "llfloateruipreview.h"
 #include "llfloaterwebcontent.h"
-#include "llfloatervoicevolume.h"
 #include "llfloaterwhitelistentry.h"
 #include "llfloaterwindowsize.h"
 #include "llfloaterworldmap.h"
@@ -214,7 +212,6 @@
 #include "fsfloaterstatistics.h"
 #include "fsfloaterstreamtitle.h"
 #include "fsfloaterteleporthistory.h"
-#include "fsfloatervoicecontrols.h"
 #include "fsfloatervolumecontrols.h"
 #include "fsfloatervramusage.h"
 #include "fsfloaterwearablefavorites.h"
@@ -420,7 +417,7 @@ void LLViewerFloaterReg::registerFloaters()
     // <FS:Ansariel> Optional small camera floater
     LLFloaterReg::add("fs_camera_small", "floater_fs_camera_small.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<LLFloaterCamera>);
     LLFloaterReg::add("camera_presets", "floater_camera_presets.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<LLFloaterCameraPresets>);
-    LLFloaterReg::add("chat_voice", "floater_voice_chat_volume.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<LLFloaterChatVoiceVolume>);
+
     LLFloaterReg::add("change_item_thumbnail", "floater_change_item_thumbnail.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<LLFloaterChangeItemThumbnail>);
     // <FS:Ansariel> [FS communication UI]
     //LLFloaterReg::add("nearby_chat", "floater_im_session.xml", (LLFloaterBuildFunc)&LLFloaterIMNearbyChat::buildFloater);
@@ -473,7 +470,6 @@ void LLViewerFloaterReg::registerFloaters()
     LLFloaterReg::add("fs_im_container", "floater_fs_im_container.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<FSFloaterIMContainer>);
     // <FS:Ansariel> [FS communication UI]
     LLFloaterReg::add("im_well_window", "floater_sys_well.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<LLIMWellWindow>);
-    LLFloaterReg::add("incoming_call", "floater_incoming_call.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<LLIncomingCallDialog>);
     LLFloaterReg::add("inventory", "floater_my_inventory.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<LLFloaterSidePanelContainer>);
     LLFloaterReg::add("inspect", "floater_inspect.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<LLFloaterInspect>);
     LLFloaterReg::add("inventory_thumbnails_helper", "floater_inventory_thumbnails_helper.xml", (LLFloaterBuildFunc) &LLFloaterReg::build<LLFloaterInventoryThumbnailsHelper>);
@@ -484,7 +480,6 @@ void LLViewerFloaterReg::registerFloaters()
     LLInspectGroupUtil::registerFloater();
     LLInspectObjectUtil::registerFloater();
     LLInspectRemoteObjectUtil::registerFloater();
-    LLFloaterVoiceVolumeUtil::registerFloater();
     LLNotificationsUI::registerFloater();
     LLFloaterDisplayNameUtil::registerFloater();
 
@@ -524,7 +519,6 @@ void LLViewerFloaterReg::registerFloaters()
 
     LLFloaterReg::add("object_weights", "floater_object_weights.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<LLFloaterObjectWeights>);
     LLFloaterReg::add("openobject", "floater_openobject.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<LLFloaterOpenObject>);
-    LLFloaterReg::add("outgoing_call", "floater_outgoing_call.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<LLOutgoingCallDialog>);
     LLFloaterPayUtil::registerFloater();
 
     LLFloaterReg::add("pathfinding_characters", "floater_pathfinding_characters.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<LLFloaterPathfindingCharacters>);
@@ -646,7 +640,7 @@ void LLViewerFloaterReg::registerFloaters()
     LLFloaterReg::add("fs_streamtitle", "floater_fs_streamtitle.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<FSFloaterStreamTitle>);
     LLFloaterReg::add("fs_streamtitlehistory", "floater_fs_streamtitlehistory.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<FSFloaterStreamTitleHistory>);
     LLFloaterReg::add("fs_teleporthistory", "floater_fs_teleporthistory.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<FSFloaterTeleportHistory>);
-    LLFloaterReg::add("fs_voice_controls", "floater_fs_voice_controls.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<FSFloaterVoiceControls>);
+
     LLFloaterReg::add("fs_volume_controls", "floater_fs_volume_controls.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<FSFloaterVolumeControls>);
     LLFloaterReg::add("fs_wearable_favorites", "floater_fs_wearable_favorites.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<FSFloaterWearableFavorites>);
     LLFloaterReg::add("imcontacts", "floater_fs_contacts.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<FSFloaterContacts>);

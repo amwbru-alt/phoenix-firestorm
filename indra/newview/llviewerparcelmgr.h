@@ -182,14 +182,7 @@ public:
 
     // Can this agent speak on the parcel he is on?
     // Used for parcel property icons in nav bar.
-    bool    allowAgentVoice() const;
-    bool    allowAgentVoice(const LLViewerRegion* region, const LLParcel* parcel) const;
 
-    // Returns true if this parcel is using private voice channel
-    bool isVoiceRestricted() const;
-
-    // Can this agent moderate Nearby voice chat on this parcel?
-    bool allowVoiceModeration() const;
 
     // Can this agent start flying on this parcel?
     // Used for parcel property icons in nav bar.

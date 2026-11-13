@@ -21,15 +21,9 @@
 		<layout_panel name="pay_panel">
 			<button name="pay_btn" tool_tip="向居民傳送貨幣" />
 		</layout_panel>
-		<layout_panel name="call_btn_panel">
-			<button name="call_btn" tool_tip="使用語音呼叫居民" />
-		</layout_panel>
-		<layout_panel name="end_call_btn_panel">
-			<button name="end_call_btn" tool_tip="結束呼叫" />
-		</layout_panel>
-		<layout_panel name="voice_ctrls_btn_panel">
-			<button name="voice_ctrls_btn" tool_tip="呼叫屬性" />
-		</layout_panel>
+
+
+
 		<layout_panel name="im_history_btn_panel">
 			<button name="im_history_btn" tool_tip="打開聊天歷史記錄" />
 		</layout_panel>

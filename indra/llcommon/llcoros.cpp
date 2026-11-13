@@ -153,7 +153,7 @@ LLCoros::~LLCoros()
 
 void LLCoros::cleanupSingleton()
 {
-    // Some of the coroutines (like voice) will depend onto
+    // Some of the coroutines (including media) will depend onto
     // origin singletons, so clean coros before deleting those
 
     printActiveCoroutines("at entry to ~LLCoros()");

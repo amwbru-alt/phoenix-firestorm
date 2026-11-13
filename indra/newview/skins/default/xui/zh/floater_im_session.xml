@@ -4,8 +4,8 @@
 	<floater.string name="multiple_participants_added" value="[NAME] 已受邀加入聊天。" />
 	<floater.string name="tooltip_to_separate_window" value="為這個聊天另開新視窗" />
 	<floater.string name="tooltip_to_main_window" value="將這個聊天移回到主視窗" />
-	<floater.string name="start_call_button_tooltip" value="建立語音通話" />
-	<floater.string name="end_call_button_tooltip" value="切斷語音通話" />
+
+
 	<floater.string name="expcol_button_not_tearoff_tooltip" value="收起這個視窗" />
 	<floater.string name="expcol_button_tearoff_and_expanded_tooltip" value="收起參與者清單" />
 	<floater.string name="expcol_button_tearoff_and_collapsed_tooltip" value="展開參與者清單" />
@@ -15,7 +15,7 @@
 				<menu_button name="view_options_btn" tool_tip="顯示/排序選項" />
 				<menu_button name="gear_btn" tool_tip="對選擇的人採取操作" />
 				<button name="add_btn" tool_tip="新增某人到聊天" />
-				<button name="voice_call_btn" tool_tip="建立語音通話" />
+
 				<button name="close_btn" tool_tip="結束該聊天" />
 				<button name="expand_collapse_btn" tool_tip="收起/展開這個視窗" />
 			</layout_panel>

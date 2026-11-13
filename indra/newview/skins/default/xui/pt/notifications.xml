@@ -240,10 +240,7 @@ Selecione um único objeto e tente novamente.
 		Salvar alterações em roupas/partes do corpo?
 		<usetemplate canceltext="Cancelar" name="yesnocancelbuttons" notext="Não salvar" yestext="Salvar tudo"/>
 	</notification>
-	<notification name="FriendsAndGroupsOnly">
-		As pessoas que não estão na sua lista de amigos não serão informadas de que você está ignorando suas ligações e IMs.
-		<usetemplate name="okbutton" yestext="OK"/>
-	</notification>
+
 	<notification name="FavoritesOnLogin">
 		Nota: Se você ativar esta opção, todos que usarem este computador verão seus lugares favoritos.
 		<usetemplate name="okbutton" yestext="OK"/>
@@ -2469,9 +2466,7 @@ Publicar anúncio por [AMOUNT] L$?
 Pode demorar um pouco para que essa alteração apareça no mapa.
 		<usetemplate name="okbutton" yestext="OK"/>
 	</notification>
-	<notification label="Versão de voz incorreta" name="VoiceVersionMismatch">
-		Esta versão do [APP_NAME] não é compatível com o recurso de bate-papo por voz nesta região. Para que o bate-papo por voz funcione, você precisa atualizar [APP_NAME].
-	</notification>
+
 	<notification label="Objetos não podem ser comprados" name="BuyObjectOneOwner">
 		Os itens não podem ser adquiridos por vários proprietários ao mesmo tempo.
 Selecione um único objeto e tente novamente.
@@ -3148,9 +3143,7 @@ Voar não é possível aqui.
 	<notification name="PushRestricted">
 		Empurrar não é permitido nesta área. Você não pode pressionar outras pessoas a menos que seja dono da terra.
 	</notification>
-	<notification name="NoVoice">
-		A voz está desativada nesta área. Você não ouvirá ninguém falando.
-	</notification>
+
 	<notification name="NoBuild">
 		O edifício está desativado nesta área. Você não pode construir ou rez objetos.
 	</notification>
@@ -3604,15 +3597,7 @@ Os objetos que você construir aqui serão excluídos depois que você sair da s
 		Você pode ter no máximo [MAX_SELECT] objetos
 selecione na lista.
 	</notification>
-	<notification name="VoiceInviteP2P">
-		[NAME] convida você para um bate-papo por voz.
-Clique em &apos;Aceitar &apos; para entrar na conversa ou em &apos;Rejeitar &apos; para recusar o convite. Clique em Ignorar para ignorar este chamador.
-		<form name="form">
-			<button name="Accept" text="Aceitar"/>
-			<button name="Decline" text="Recusar"/>
-			<button name="Mute" text="Ignorar"/>
-		</form>
-	</notification>
+
 	<notification name="AutoUnmuteByIM">
 		[NAME] recebeu uma mensagem instantânea e não é mais ignorado.
 	</notification>
@@ -3622,78 +3607,8 @@ Clique em &apos;Aceitar &apos; para entrar na conversa ou em &apos;Rejeitar &apo
 	<notification name="AutoUnmuteByInventory">
 		[NAME] recebeu a oferta de um item de inventário e não será mais ignorado.
 	</notification>
-	<notification name="VoiceInviteGroup">
-		[NAME] entrou em um bate-papo por voz com o grupo &lt;nolink&gt;[GROUP]&lt;/nolink&gt;.
-Clique em Aceitar para aceitar o convite ou em Recusar para não aceitar o convite. Clique em Ignorar para ignorar este chamador.
-		<form name="form">
-			<button name="Accept" text="Aceitar"/>
-			<button name="Decline" text="Recusar"/>
-			<button name="Mute" text="Ignorar"/>
-		</form>
-	</notification>
-	<notification name="VoiceInviteAdHoc">
-		[NAME] entrou em um bate-papo por voz com uma chamada em conferência.
-Clique em &apos;Aceitar &apos; para entrar na conversa ou em &apos;Rejeitar &apos; para recusar o convite. Clique em Ignorar para ignorar este chamador.
-		<form name="form">
-			<button name="Accept" text="Aceitar"/>
-			<button name="Decline" text="Recusar"/>
-			<button name="Mute" text="Ignorar"/>
-		</form>
-	</notification>
-	<notification name="InviteAdHoc">
-		[NAME] convida você para um bate-papo em conferência.
-Clique em &apos;Aceitar &apos; para entrar no bate-papo ou em &apos;Rejeitar &apos; para recusar o convite. Clique em Ignorar para ignorar este chamador.
-		<form name="form">
-			<button name="Accept" text="Aceitar"/>
-			<button name="Decline" text="Recusar"/>
-			<button name="Mute" text="Ignorar"/>
-		</form>
-	</notification>
-	<notification name="VoiceChannelFull">
-		O bate-papo por voz do qual você deseja participar, [VOICE_CHANNEL_NAME], atingiu o número máximo de participantes. Por favor, tente novamente.
-	</notification>
-	<notification name="ProximalVoiceChannelFull">
-		Lamentamos.  Esta área atingiu a sua capacidade máxima para chamadas de voz.  Por favor, tente outra área.
-	</notification>
-	<notification name="VoiceChannelDisconnected">
-		A conexão com [VOICE_CHANNEL_NAME] foi perdida.  Agora você será reconectado ao chat perto de você.
-	</notification>
-	<notification name="VoiceChannelDisconnectedP2P">
-		[VOICE_CHANNEL_NAME] encerrou a chamada.  Agora você será reconectado ao chat perto de você.
-	</notification>
-	<notification name="P2PCallDeclined">
-		[VOICE_CHANNEL_NAME] rejeitou a ligação dela.  Agora você será reconectado ao chat perto de você.
-	</notification>
-	<notification name="P2PCallNoAnswer">
-		[VOICE_CHANNEL_NAME] não pode atender sua chamada.  Agora você será reconectado ao chat perto de você.
-	</notification>
-	<notification name="VoiceChannelJoinFailed">
-		Não é possível conectar-se a [VOICE_CHANNEL_NAME]. Por favor, tente mais tarde.  Agora você será reconectado ao chat perto de você.
-	</notification>
-	<notification name="VoiceEffectsExpired">
-		Uma ou mais de suas assinaturas do Voice Morph expiraram. 
-[[URL] Clique aqui] para renovar sua assinatura. 
 
-Se você for um membro premium, [[PREMIUM_URL] clique aqui] para usar seu benefício de transformação de voz.
-	</notification>
-	<notification name="VoiceEffectsExpiredInUse">
-		A assinatura ativa do Voice Morph expirou. Suas configurações normais de voz serão aplicadas. 
-[[URL] Clique aqui] para renovar sua assinatura. 
 
-Se você for um membro premium, [[PREMIUM_URL] clique aqui] para usar seu benefício de transformação de voz.
-	</notification>
-	<notification name="VoiceEffectsWillExpire">Uma ou mais de suas assinaturas do Voice Morph expirarão em menos de [INTERVAL] dias. 
-[[URL] Clique aqui] para renovar sua assinatura. 
-
-Se você for um membro premium, [[PREMIUM_URL] clique aqui] para usar seu benefício de transformação de voz.</notification>
-	<notification name="VoiceEffectsNew">
-		Novos efeitos de transformação de voz estão disponíveis!
-	</notification>
-	<notification name="VoiceEffectsNotSupported">
-		Os efeitos de transformação de voz não são suportados por este visualizador.
-Para obter mais informações sobre outras ferramentas de transformação de voz, leia este artigo].
-		<usetemplate ignoretext="Avisar se a transformação de voz não for suportada" name="okignore" yestext="OK"/>
-	</notification>
 	<notification name="Cannot enter parcel: not a group member">
 		Somente membros de um grupo específico podem entrar nesta área.
 	</notification>
@@ -3703,12 +3618,8 @@ Para obter mais informações sobre outras ferramentas de transformação de voz
 	<notification name="Cannot enter parcel: not on access list">
 		Acesso ao lote negado. Você não está na lista de acesso.
 	</notification>
-	<notification name="VoiceNotAllowed">
-		Você não está autorizado a participar de um bate-papo por voz em [VOICE_CHANNEL_NAME].
-	</notification>
-	<notification name="VoiceCallGenericError">
-		Erro ao tentar estabelecer uma conexão de chat de voz com [VOICE_CHANNEL_NAME].  Por favor, tente novamente.
-	</notification>
+
+
 	<notification name="UnsupportedCommandSLURL">
 		O SLurl em que você clicou não é compatível.
 	</notification>
@@ -3770,10 +3681,7 @@ Substitua o padrão ou escolha um nome diferente
 		Seu chat de texto foi silenciado por um moderador.
 		<usetemplate name="okbutton" yestext="OK"/>
 	</notification>
-	<notification name="VoiceIsMutedByModerator">
-		Sua voz foi silenciada por um moderador.
-		<usetemplate name="okbutton" yestext="OK"/>
-	</notification>
+
 	<notification name="FailedToGetBenefits">
 		Infelizmente, não foi possível obter informações sobre os benefícios desta sessão. Isso não deveria acontecer em um ambiente de produção normal. Entre em contato com o suporte. Esta sessão não será executada normalmente e recomendamos reiniciá-la.
 		<usetemplate name="okbutton" yestext="OK"/>
@@ -3903,30 +3811,8 @@ O avatar &apos;[NAME]&apos; saiu do modo Editar Aparência&quot;.
 Verifique suas configurações de rede e firewall.
 		<usetemplate name="okbutton" yestext="OK"/>
 	</notification>
-	<notification name="NoVoiceConnect">
-		Não conseguimos nos conectar ao servidor de voz: 
 
-&lt;nolink&gt;[HOSTID]&lt;/nolink&gt;
 
-As seguintes portas devem estar habilitadas para voz:
-:TCP: 80, 443
-:UDP: 3478, 3479, 5060, 5062, 6250, 12000-32000
-
-Verifique a configuração da sua rede e firewall.
-Desative todos os recursos SIP ALG em seu roteador. 
-
-Infelizmente, a comunicação por voz não está disponível.
-https://wiki.firestormviewer.org/fs_voice
-		<usetemplate name="okignore" yestext="OK" ignoretext="Avisar quando não for possível estabelecer uma conexão com o servidor de voz."/>
-	</notification>
-	<notification name="NoVoiceConnect-GIAB">
-		Infelizmente, a ligação ao servidor de voz não é possível:
-
-Infelizmente, a comunicação por voz não está disponível.
-Verifique a configuração da sua rede e firewall.
-[https://wiki.firestormviewer.org/fs_voice]
-		<usetemplate name="okignore" yestext="OK"/>
-	</notification>
 	<notification name="AvatarRezLeftNotification">
 		(Desde [EXISTENCE] segundos no mundo)
 O avatar “[NAME]” deixou o mundo como um avatar totalmente renovado.
@@ -3993,31 +3879,15 @@ O arquivo de material não pode ser carregado. O arquivo pode estar corrompido, 
 		<usetemplate ignoretext="Colar: você adicionou uma textura com permissões limitadas." name="notifyignore"/>
 		<usetemplate name="okbutton" yestext="OK"/>
 	</notification>
-	<notification name="ConfirmLeaveCall">
-		Você realmente quer sair dessa conversa?
-		<usetemplate ignoretext="Confirme antes de sair da ligação." name="okcancelignore" notext="Não" yestext="Sim"/>
-	</notification>
-	<notification name="ConfirmMuteAll">
-		As configurações selecionadas silenciarão todos os participantes de uma conversa em grupo.
-Isto significa que quaisquer residentes que mais tarde se juntem à conversa irão
-ficará mudo mesmo depois de sair da chamada.
 
-Silenciar todos?
-		<usetemplate ignoretext="Confirme antes de silenciar todos os participantes de uma conversa em grupo." name="okcancelignore" notext="Cancelar" yestext="OK"/>
-	</notification>
+
 	<notification label="Chat" name="HintChat">
 		Para participar da conversa, digite o texto na caixa de bate-papo abaixo.
 	</notification>
 	<notification label="Levantar" name="HintSit">
 		Para se levantar, clique no botão Stand.
 	</notification>
-	<notification label="Falar" name="HintSpeak">
-		Clique no botão Falar para ligar e desligar o microfone.
 
-Clique na seta para cima para ver o controle de voz.
-
-Ocultar o botão Falar desativa a função de fala.
-	</notification>
 	<notification label="Explorar o mundo" name="HintDestinationGuide">
 		No guia você encontrará milhares de lugares interessantes. Basta selecionar um local e clicar em “Teletransportar”.
 	</notification>
@@ -4133,10 +4003,7 @@ Alterar modo e sair?
 		A exibição do mapa mundial só é possível no modo “Avançado”. Gostaria de sair do programa e mudar de modo? A seleção do modo pode ser encontrada na tela de login.
 		<usetemplate name="okcancelbuttons" notext="Não Fechar" yestext="Fechar"/>
 	</notification>
-	<notification label="" name="NoVoiceCall">
-		As chamadas de voz só são possíveis no modo Avançado. Gostaria de sair e mudar de modo?
-		<usetemplate name="okcancelbuttons" notext="Não Fechar" yestext="Fechar"/>
-	</notification>
+
 	<notification label="" name="NoAvatarShare">
 		O compartilhamento só é possível no modo “Avançado”. Gostaria de sair e mudar de modo?
 		<usetemplate name="okcancelbuttons" notext="Não Fechar" yestext="Fechar"/>
@@ -6182,17 +6049,8 @@ Gostaria de reproduzi-la?
 	
 Clique para abrir a pasta.
 	</notification>
-	<notification name="NearbyVoiceMutedByModerator">
-		O moderador silenciou seu chat de voz.
-As pessoas neste local não conseguirão ouvi-lo se você falar.
-	</notification>
-	<notification name="NearbyVoiceUnmutedByModerator">
-		Seu chat de voz agora pode ser ouvido pelas pessoas neste local.
-	</notification>
-	<notification name="ConfirmLeaveAdhoc">
-		Tem certeza de que deseja sair deste chat em conferência?
-		<usetemplate ignoretext="Confirmar antes de sair do chat em conferência" name="okcancelignore" notext="Não" yestext="Sim"/>
-	</notification>
+
+
 	<notification name="RenameAOGroup">
 		Especifique um novo nome para este grupo de animações:
 (O nome pode conter qualquer caractere ASCII, exceto ":" ou "|")

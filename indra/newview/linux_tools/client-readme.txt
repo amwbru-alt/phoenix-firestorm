@@ -50,7 +50,6 @@ Minimum requirements:
           you will need its 32-bit compatibility environment installed, but
           this configuration is not currently supported.
     * PulseAudio or ALSA Linux system sound software.  A recent PulseAudio
-      is the recommended configuration; see README-linux-voice.txt for more
       information.
     * Video/Graphics Card:
           o nVidia GeForce 2, GeForce 4mx, or better (recommend one of the
@@ -105,7 +104,6 @@ run from.  Most of this is also replicated in ~/.firestorm/logs/Firestorm.log
 - this is helpful to read when troubleshooting, especially 'WARNING' and
 'ERROR' lines.
 
-VOICE PROBLEMS?  See the separate README-linux-voice.txt file for Voice
   troubleshooting information.
 
 SPACENAVIGATOR OR JOYSTICK PROBLEMS?  See the separate

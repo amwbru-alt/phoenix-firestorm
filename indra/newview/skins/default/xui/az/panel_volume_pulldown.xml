@@ -10,6 +10,6 @@
 	<check_box name="enable_music" tool_tip="Axınan musiqini aktivləşdir"/>
 	<slider label="Media" name="Media Volume"/>
 	<check_box name="enable_media" tool_tip="Axınan medianı aktivləşdir"/>
-	<slider label="Səs" name="Voice Volume"/>
-	<check_box name="enable_voice_check" tool_tip="Səsli Söhbəti Aktivləşdir"/>
+
+
 </panel>

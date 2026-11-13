@@ -3,7 +3,7 @@
 	<menu_item_call label="Voir le profil" name="view_profile"/>
 	<menu_item_call label="Devenir amis" name="add_friend"/>
 	<menu_item_call label="Envoyer un IM" name="im"/>
-	<menu_item_call label="Appel vocal" name="call"/>
+
 	<menu_item_call label="Téléporter" name="teleport"/>
 	<menu_item_call label="Demander une téléportation" name="request_teleport"/>
 	<menu_item_call label="Inviter dans un groupe" name="invite_to_group"/>

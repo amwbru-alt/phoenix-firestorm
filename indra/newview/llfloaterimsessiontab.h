@@ -117,7 +117,7 @@ public:
     virtual void sessionAdded(const LLUUID& session_id, const std::string& name, const LLUUID& other_participant_id, bool has_offline_msg) override {}; // Stub
     virtual void sessionActivated(const LLUUID& session_id, const std::string& name, const LLUUID& other_participant_id) override {}; // Stub
     virtual void sessionRemoved(const LLUUID& session_id) override;
-    virtual void sessionVoiceOrIMStarted(const LLUUID& session_id) override {};                              // Stub
+                                  // Stub
     virtual void sessionIDUpdated(const LLUUID& old_session_id, const LLUUID& new_session_id) override {};   // Stub
 
 protected:
@@ -148,7 +148,6 @@ protected:
     virtual void updateSessionName(const std::string& name);
 
     // set the enable/disable state for the Call button
-    virtual void enableDisableCallBtn();
 
     // process focus events to set a currently active session
     void onFocusReceived() override;
@@ -208,12 +207,11 @@ protected:
     LLButton* mCloseBtn;
     LLButton* mGearBtn;
     LLButton* mAddBtn;
-    LLButton* mVoiceButton;
 
-    // Since mVoiceButton can work in one of two modes, "Start call" or "Hang up",
+
     // (with different images and tooltips depending on the currently chosen mode)
     // we should track the mode we're currently using to react on click accordingly
-    bool mVoiceButtonHangUpMode { false };
+
 
 private:
     // Handling selection and contextual menu
@@ -233,7 +231,6 @@ private:
      */
     void reshapeChatLayoutPanel();
 
-    void onCallButtonClicked();
 
     void onInputEditorClicked();
 

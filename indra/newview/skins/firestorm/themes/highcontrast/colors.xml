@@ -361,15 +361,8 @@
     <color
      name="AvatarListItemBeyondShoutRange"
      reference="Red" />
-    <color
-     name="AvatarListItemIconVoiceInvitedColor"
-     reference="AvatarListItemIconOfflineColor" />
-    <color
-     name="AvatarListItemIconVoiceJoinedColor"
-     reference="AvatarListItemIconOnlineColor" />
-    <color
-     name="AvatarListItemIconVoiceLeftColor"
-     reference="AvatarListItemIconOfflineColor" />
+
+
     <color
      name="BackgroundChatColor"
      reference="DkGray" />

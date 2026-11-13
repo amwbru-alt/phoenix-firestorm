@@ -32,11 +32,10 @@
 #include "llappviewer.h"
 #include "lldeferredsounds.h"
 #include "llvieweraudio.h"
-#include "formegridpolicy.h"
+#include "formestreamurl.h"
 #include "llviewercamera.h"
 #include "llviewercontrol.h"
 #include "llviewerwindow.h"
-#include "llvoiceclient.h"
 #include "llviewermedia.h"
 #include "llviewerregion.h"
 #include "llprogressview.h"
@@ -88,7 +87,7 @@ void LLViewerAudio::registerIdleListener()
 
 void LLViewerAudio::startInternetStreamWithAutoFade(const std::string &streamURI)
 {
-    if (!streamURI.empty() && !ForMeGrid::allowedServiceURI(streamURI)) return;
+    if (!streamURI.empty() && !ForMeStream::allowedURL(streamURI)) return;
     LL_DEBUGS("AudioEngine") << "Start with outo fade: " << streamURI << LL_ENDL;
 
     // Old and new stream are identical
@@ -537,26 +536,7 @@ void audio_update_volume(bool force_update)
     static LLCachedControl<F32> media_volume(gSavedSettings, "AudioLevelMedia");
     LLViewerMedia::getInstance()->setVolume( media_muted() ? 0.0f : (mute_volume * master_volume() * media_volume()));
 
-    // Voice, this is parametric singleton, it gets initialized when ready
-    if (LLVoiceClient::instanceExists())
-    {
-        static LLCachedControl<bool> voice_mute(gSavedSettings, "MuteVoice");
-        static LLCachedControl<F32> voice_volume_setting(gSavedSettings, "AudioLevelVoice");
-        static LLCachedControl<F32> voice_mic_setting(gSavedSettings, "AudioLevelMic");
-        F32 voice_volume = mute_volume * master_volume() * voice_volume_setting();
-        LLVoiceClient *voice_inst = LLVoiceClient::getInstance();
-        voice_inst->setVoiceVolume(voice_mute() ? 0.f : voice_volume);
-        voice_inst->setMicGain(voice_mute() ? 0.f : voice_mic_setting());
 
-        if (!gViewerWindow->getActive() && mute_when_minimized())
-        {
-            voice_inst->setMuteMic(true);
-        }
-        else
-        {
-            voice_inst->setMuteMic(false);
-        }
-    }
 }
 
 void audio_update_listener()

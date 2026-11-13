@@ -3,7 +3,7 @@
 	<menu_item_call label="Profili Göster" name="view_profile"/>
 	<menu_item_call label="Arkadaş Ekle" name="add_friend"/>
 	<menu_item_call label="Aİ" name="im"/>
-	<menu_item_call label="Ara" name="call"/>
+
 	<menu_item_call label="Işınla" name="teleport"/>
 	<menu_item_call label="Gruba Davet Et" name="invite_to_group"/>
 	<menu_item_call label="Engelle" name="block"/>

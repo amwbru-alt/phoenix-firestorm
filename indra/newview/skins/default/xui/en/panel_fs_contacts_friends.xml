@@ -117,7 +117,7 @@
 	 follows="top|right"
 	 layout="topleft"
 	 height="22"
-	 label="IM/Call"
+     label="IM"
 	 right="-1"
 	 name="im_btn"
 	 tool_tip="Open Instant Message session"

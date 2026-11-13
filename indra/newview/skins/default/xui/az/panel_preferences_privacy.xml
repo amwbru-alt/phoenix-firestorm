@@ -20,9 +20,9 @@
 			</text>
 			<check_box label="Axtarış nəticələrində profil məlumatımı göstərin" name="online_searchresults"/>
 			<check_box label="Tək dostlar və qruplar mən onlayn olduğumu görür" name="online_visibility"/>
-			<check_box label="Tək dostlar və qruplar mənə zəng edib IM göndərə bilərlər" name="voice_call_friends_only_check"/>
+
 			<check_box label="Artıq qoşulmuş qruplar üçün dəvətləri göstərin" name="FSShowJoinedGroupInvitations" />
-			<check_box label="Zəngin sonunda mikrofonun səsini söndürün" name="auto_disengage_mic_check"/>
+
 			<check_box label="Skript obyektlərinin mənim cari dil seçimimi görməsinə icazə verin" name="LanguageIsPublic"/>
 			<check_box label="Yeni avadanlıq siyahısı elementlərini avtomatik qəbul edin" name="Auto_Accept_New_Inventory"/>
 			<check_box label="Ümumi söhbətdə avtomatik qəbul edilən elementlərin qeydi" name="FSLogAutoAcceptInventoryToChat" />

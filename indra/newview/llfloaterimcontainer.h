@@ -100,7 +100,7 @@ public:
     // LLIMSessionObserver observe triggers
     /*virtual*/ void sessionAdded(const LLUUID& session_id, const std::string& name, const LLUUID& other_participant_id, bool has_offline_msg);
     /*virtual*/ void sessionActivated(const LLUUID& session_id, const std::string& name, const LLUUID& other_participant_id);
-    /*virtual*/ void sessionVoiceOrIMStarted(const LLUUID& session_id);
+    /*virtual*/
     /*virtual*/ void sessionRemoved(const LLUUID& session_id);
     /*virtual*/ void sessionIDUpdated(const LLUUID& old_session_id, const LLUUID& new_session_id);
 
@@ -136,8 +136,6 @@ private:
     void onExpandCollapseButtonClicked();
     void onStubCollapseButtonClicked();
     void processParticipantsStyleUpdate();
-    void onSpeakButtonPressed();
-    void onSpeakButtonReleased();
     /*virtual*/ void onClickCloseBtn(bool app_quitting = false);
     /*virtual*/ void closeHostedFloater();
 
@@ -164,7 +162,6 @@ private:
     void doToSelectedConversation(const std::string& command, uuid_vec_t& selectedIDS);
     void doToSelectedGroup(const LLSD& userdata);
 
-    static void confirmMuteAllCallback(const LLSD& notification, const LLSD& response);
     bool enableModerateContextMenuItem(const std::string& userdata, bool is_self = false);
     LLSpeaker * getSpeakerOfSelectedParticipant(LLSpeakerMgr * speaker_managerp);
     LLSpeakerMgr * getSpeakerMgrForSelectedParticipant();
@@ -172,10 +169,9 @@ private:
     bool haveAbilityToBan();
     bool canBanSelectedMember(const LLUUID& participant_uuid);
     LLUUID getGroupUIIDForSelectedParticipant();
-    bool isMuted(const LLUUID& avatar_id);
-    void moderateVoice(const std::string& command, const LLUUID& userID);
-    void moderateVoiceAllParticipants(bool unmute);
-    void moderateVoiceParticipant(const LLUUID& avatar_id, bool unmute);
+
+
+
     void toggleAllowTextChat(const LLUUID& participant_uuid);
     void banSelectedMember(const LLUUID& participant_uuid);
     void openNearbyChat();
@@ -187,7 +183,7 @@ private:
 
     LLButton* mExpandCollapseBtn;
     LLButton* mStubCollapseBtn;
-    LLButton* mSpeakBtn;
+
     LLPanel* mStubPanel;
     LLTextBox* mStubTextBox;
     LLLayoutPanel* mMessagesPane;
@@ -209,12 +205,11 @@ public:
     void setTimeNow(const LLUUID& session_id, const LLUUID& participant_id);
     void setNearbyDistances();
     void reSelectConversation();
-    void updateSpeakBtnState();
     static bool isConversationLoggingAllowed();
     void flashConversationItemWidget(const LLUUID& session_id, bool is_flashes, bool alternate_color = false);
     void highlightConversationItemWidget(const LLUUID& session_id, bool is_highlighted);
     bool isScrolledOutOfSight(LLConversationViewSession* conversation_item_widget);
-    boost::signals2::connection mMicroChangedSignal;
+
     S32 getConversationListItemSize() { return static_cast<S32>(mConversationsWidgets.size()); }
     typedef std::list<LLFloater*> floater_list_t;
     void getDetachedConversationFloaters(floater_list_t& floaters);

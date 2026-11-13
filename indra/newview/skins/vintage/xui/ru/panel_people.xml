@@ -62,7 +62,7 @@
 									<combo_box.item name="RadarNameFormat_userdisplay" label="Имя пользователя (Отображаемое имя)" />
 								</combo_box>
 								<text name="columns_label" value="Отображаемые колонки:" width="150"/>
-								<check_box label="Голос" name="column_voice" />
+
 								<check_box label="Время" name="column_seen" />
 								<check_box label="Возраст" name="column_age" />
 								<check_box label="В этом же регионе" name="column_region" />

@@ -113,7 +113,7 @@ public:
 
     // Handle 'global' keybindings that do not consume event,
     // yet need to be processed early
-    // Example: we want voice to toggle even if some floater is focused
+
     bool            handleGlobalBindsKeyDown(KEY key, MASK mask);
     bool            handleGlobalBindsKeyUp(KEY key, MASK mask);
     bool            handleGlobalBindsMouse(EMouseClickType clicktype, MASK mask, bool down);

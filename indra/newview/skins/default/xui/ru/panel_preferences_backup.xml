@@ -67,9 +67,7 @@
 						<row name="restore_per_account_row_toolbars">
 							<column name="restore_per_account_files_label">Панели инструментов</column>
 						</row>
-						<row name="restore_per_account_row_volumes">
-							<column name="restore_per_account_files_label">Громкости голосового чата</column>
-						</row>
+
 						<row name="restore_per_account_row_tphistory">
 							<column name="restore_per_account_files_label">Истории телепорта</column>
 						</row>

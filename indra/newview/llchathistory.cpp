@@ -218,11 +218,7 @@ public:
     bool onObjectIconContextMenuItemVisible(const LLSD& userdata)
     {
         std::string level = userdata.asString();
-        if (level == "is_blocked")
-        {
-            return LLMuteList::getInstance()->isMuted(getAvatarId(), mFrom, LLMute::flagTextChat);
-        }
-        else if (level == "not_blocked")
+        if (level == "not_blocked")
         {
             return !LLMuteList::getInstance()->isMuted(getAvatarId(), mFrom, LLMute::flagTextChat);
         }
@@ -340,7 +336,7 @@ public:
             return false;
         }
 
-        // Is session a group call/chat?
+        // Is this a group text session?
         if(gAgent.isInGroup(mSessionID))
         {
             LLSpeaker * speakerp = speaker_mgr->findSpeaker(gAgentID).get();
@@ -372,21 +368,8 @@ public:
             return false;
         }
 
-        bool voice_channel = speakerp->isInVoiceChannel();
 
-        if ("can_moderate_voice" == userdata)
-        {
-            return voice_channel;
-        }
-        else if ("can_mute" == userdata)
-        {
-            return voice_channel && (speakerp->mStatus != LLSpeaker::STATUS_MUTED);
-        }
-        else if ("can_unmute" == userdata)
-        {
-            return speakerp->mStatus == LLSpeaker::STATUS_MUTED;
-        }
-        else if ("can_allow_text_chat" == userdata)
+        if ("can_allow_text_chat" == userdata)
         {
             return true;
         }
@@ -413,10 +396,6 @@ public:
         else if (level == "request_teleport")
         {
             LLAvatarActions::teleportRequest(getAvatarId());
-        }
-        else if (level == "voice_call")
-        {
-            LLAvatarActions::startCall(getAvatarId());
         }
         else if (level == "chat_history")
         {
@@ -493,10 +472,6 @@ public:
             }
             LLFloaterReporter::showFromChat(mAvatarID, mFrom, time_string, mText);
         }
-        else if(level == "block_unblock")
-        {
-            LLAvatarActions::toggleMute(getAvatarId(), LLMute::flagVoiceChat);
-        }
         else if(level == "mute_unmute")
         {
             LLAvatarActions::toggleMute(getAvatarId(), LLMute::flagTextChat);
@@ -511,7 +486,7 @@ public:
             LLIMSpeakerMgr* speaker_mgr = LLIMModel::getInstance()->getSpeakerManager(mSessionID);
             if (speaker_mgr)
             {
-                speaker_mgr->moderateVoiceParticipant(getAvatarId(), false);
+
             }
         }
         else if(level == "group_unmute")
@@ -519,7 +494,7 @@ public:
             LLIMSpeakerMgr* speaker_mgr = LLIMModel::getInstance()->getSpeakerManager(mSessionID);
             if (speaker_mgr)
             {
-                speaker_mgr->moderateVoiceParticipant(getAvatarId(), true);
+
             }
         }
         else if(level == "ban_member")
@@ -532,10 +507,7 @@ public:
     {
         std::string level = userdata.asString();
 
-        if (level == "is_blocked")
-        {
-            return LLMuteList::getInstance()->isMuted(getAvatarId(), LLMute::flagVoiceChat);
-        }
+
         if (level == "is_muted")
         {
             return LLMuteList::getInstance()->isMuted(getAvatarId(), LLMute::flagTextChat);
@@ -563,11 +535,7 @@ public:
     {
         std::string level = userdata.asString();
 
-        if (level == "can_allow_text_chat" || level == "can_mute" || level == "can_unmute")
-        {
-            return canModerate(userdata);
-        }
-        else if (level == "report_abuse")
+        if (level == "report_abuse")
         {
             return gAgentID != mAvatarID;
         }
@@ -584,38 +552,7 @@ public:
         return false;
     }
 
-    bool onAvatarIconContextMenuItemVisible(const LLSD& userdata)
-    {
-        std::string level = userdata.asString();
 
-        if (level == "show_mute")
-        {
-            LLSpeakerMgr * speaker_mgr = LLIMModel::getInstance()->getSpeakerManager(mSessionID);
-            if (speaker_mgr)
-            {
-                LLSpeaker * speakerp = speaker_mgr->findSpeaker(getAvatarId()).get();
-                if (speakerp)
-                {
-                    return speakerp->isInVoiceChannel() && speakerp->mStatus != LLSpeaker::STATUS_MUTED;
-                }
-            }
-            return false;
-        }
-        else if (level == "show_unmute")
-        {
-            LLSpeakerMgr * speaker_mgr = LLIMModel::getInstance()->getSpeakerManager(mSessionID);
-            if (speaker_mgr)
-            {
-                LLSpeaker * speakerp = speaker_mgr->findSpeaker(getAvatarId()).get();
-                if (speakerp)
-                {
-                    return speakerp->mStatus == LLSpeaker::STATUS_MUTED;
-                }
-            }
-            return false;
-        }
-        return false;
-    }
 
     bool postBuild()
     {
@@ -977,7 +914,6 @@ protected:
             registrar.add("AvatarIcon.Action", boost::bind(&LLChatHistoryHeader::onAvatarIconContextMenuItemClicked, this, _2));
             registrar_enable.add("AvatarIcon.Check", boost::bind(&LLChatHistoryHeader::onAvatarIconContextMenuItemChecked, this, _2));
             registrar_enable.add("AvatarIcon.Enable", boost::bind(&LLChatHistoryHeader::onAvatarIconContextMenuItemEnabled, this, _2));
-            registrar_enable.add("AvatarIcon.Visible", boost::bind(&LLChatHistoryHeader::onAvatarIconContextMenuItemVisible, this, _2));
 
             menu = LLUICtrlFactory::getInstance()->createFromFile<LLMenuGL>("menu_avatar_icon.xml", gMenuHolder, LLViewerMenuHolderGL::child_registry_t::instance());
             if (menu)
@@ -1009,7 +945,7 @@ protected:
                 menu->setItemEnabled("Remove Friend", false);
                 menu->setItemEnabled("Offer Teleport",false);
                 menu->setItemEnabled("Request Teleport",false);
-                menu->setItemEnabled("Voice Call", false);
+
                 menu->setItemEnabled("Chat History", false);
                 menu->setItemEnabled("Invite Group", false);
                 menu->setItemEnabled("Zoom In", true);
@@ -1027,7 +963,7 @@ protected:
             }
                 menu->setItemEnabled("Offer Teleport", LLAvatarActions::canOfferTeleport(mAvatarID));
                 menu->setItemEnabled("Request Teleport", LLAvatarActions::canOfferTeleport(mAvatarID));
-                menu->setItemEnabled("Voice Call", LLAvatarActions::canCall());
+
 
                 // We should only show 'Zoom in' item in a nearby chat
                 bool should_show_zoom = !LLIMModel::getInstance()->findIMSession(currentSessionID);

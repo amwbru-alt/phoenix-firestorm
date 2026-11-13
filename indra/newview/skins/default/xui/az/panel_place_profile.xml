@@ -62,8 +62,8 @@
 					<panel name="parcel_characteristics_panel">
 						<text name="rating_label" value="Reytinq:"/>
 						<text name="rating_value" value="naməlum"/>
-						<text name="voice_label" value="Səs:"/>
-						<text name="voice_value" value="Yan."/>
+
+
 						<text name="fly_label" value="Uçuş:"/>
 						<text name="fly_value" value="Yan."/>
 						<text name="push_label" value="Toqquşma:"/>

@@ -411,17 +411,7 @@ bool LLToolBar::enableCommand(const LLCommandId& commandId, bool enabled)
 
 bool LLToolBar::stopCommandInProgress(const LLCommandId& commandId)
 {
-    //
-    // Note from Leslie:
-    //
-    // This implementation was largely put in place to handle EXP-1348 which is related to
-    // dragging and dropping the "speak" button.  The "speak" button can be in one of two
-    // modes, i.e., either a toggle action or a push-to-talk action.  Because of this it
-    // responds to mouse down and mouse up in different ways, based on which behavior the
-    // button is currently set to obey.  This was the simplest way of getting the button
-    // to turn off the microphone for both behaviors without risking duplicate state.
-    //
-
+    // Stop any continuous command before its button is removed or moved.
     LLToolBarButton * command_button = NULL;
 
     if (commandId != LLCommandId::null)

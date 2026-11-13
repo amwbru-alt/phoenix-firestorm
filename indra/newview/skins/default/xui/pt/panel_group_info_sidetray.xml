@@ -51,9 +51,7 @@
 		<layout_panel name="btn_chat_lp">
 			<button label="Chat" name="btn_chat"/>
 		</layout_panel>
-		<layout_panel name="call_btn_lp">
-			<button label="Ligar para o grupo" name="btn_call" tool_tip="Ligar para este grupo"/>
-		</layout_panel>
+
 		<layout_panel name="btn_apply_lp">
 			<button label="Salvar" label_selected="Salvar" name="btn_apply"/>
 			<button label="Criar grupo" name="btn_create" tool_tip="Criar um novo grupo"/>

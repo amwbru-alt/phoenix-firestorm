@@ -33,7 +33,6 @@
 #include "llpanel.h"
 #include "llpanelavatar.h"
 #include "llmediactrl.h"
-#include "llvoiceclient.h"
 #include "rlvhandler.h"
 
 #include <set> // <FS:PP> FIRE-32401: Contact Sets on groups list in profile
@@ -87,7 +86,7 @@ public:
 class LLPanelProfileSecondLife
     : public LLPanelProfilePropertiesProcessorTab
     , public LLFriendObserver
-    , public LLVoiceClientStatusObserver
+
 {
 public:
     LLPanelProfileSecondLife();
@@ -106,9 +105,8 @@ public:
      */
     void changed(U32 mask) override;
 
-    // Implements LLVoiceClientStatusObserver::onChange() to enable the call
-    // button when voice is available
-    void onChange(EStatusType status, const LLSD& channelInfo, bool proximal) override;
+
+
 
     void setAvatarId(const LLUUID& avatar_id) override;
 
@@ -275,7 +273,7 @@ private:
     LLHandle<LLFloater> mFloaterProfileTextureHandle;
 
     bool                mHasUnsavedDescriptionChanges;
-    bool                mVoiceStatus;
+
     bool                mAllowPublish;
     bool                mPreview; // <AS:Chanayane> Preview button
     bool                mHideAge;

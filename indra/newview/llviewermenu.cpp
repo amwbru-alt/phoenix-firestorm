@@ -25,6 +25,8 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "llmutelist.h"
+#include "llcallingcard.h"
 #include "fsmarketplacelistings.h"
 #include "fscreatoraccess.h"
 
@@ -978,8 +980,6 @@ class LLAdvancedClearGroupCache : public view_listener_t
 };
 
 
-
-
 /////////////////
 // RENDER TYPE //
 /////////////////
@@ -1539,7 +1539,6 @@ class LLAdvancedDumpScriptedCamera : public view_listener_t
 };
 
 
-
 //////////////////////////////
 // DUMP REGION OBJECT CACHE //
 //////////////////////////////
@@ -1705,7 +1704,6 @@ class LLAdvancedDumpSelectMgr : public view_listener_t
 };
 
 
-
 ////////////////////
 // DUMP INVENTORY //
 ////////////////////
@@ -1721,7 +1719,6 @@ class LLAdvancedDumpInventory : public view_listener_t
 };
 
 
-
 ////////////////////////////////
 // PRINT SELECTED OBJECT INFO //
 ////////////////////////////////
@@ -1735,7 +1732,6 @@ class LLAdvancedPrintSelectedObjectInfo : public view_listener_t
         return true;
     }
 };
-
 
 
 //////////////////////
@@ -1776,7 +1772,6 @@ class LLAdvancedCheckDebugClicks : public view_listener_t
 };
 
 
-
 /////////////////
 // DEBUG VIEWS //
 /////////////////
@@ -1801,7 +1796,6 @@ class LLAdvancedCheckDebugViews : public view_listener_t
 };
 
 
-
 ///////////////////
 // DEBUG UNICODE //
 ///////////////////
@@ -1823,7 +1817,6 @@ class LLAdvancedCheckDebugUnicode : public view_listener_t
         return LLView::sDebugUnicode;
     }
 };
-
 
 
 //////////////////
@@ -1850,7 +1843,6 @@ class LLAdvancedCheckDebugCamera : public view_listener_t
 };
 
 
-
 ///////////////////////
 // XUI NAME TOOLTIPS //
 ///////////////////////
@@ -1873,7 +1865,6 @@ class LLAdvancedCheckXUINameTooltips : public view_listener_t
         return new_value;
     }
 };
-
 
 
 ////////////////////////
@@ -1900,7 +1891,6 @@ class LLAdvancedCheckDebugMouseEvents : public view_listener_t
 };
 
 
-
 ////////////////
 // DEBUG KEYS //
 ////////////////
@@ -1923,7 +1913,6 @@ class LLAdvancedCheckDebugKeys : public view_listener_t
         return new_value;
     }
 };
-
 
 
 ///////////////////////
@@ -1964,7 +1953,6 @@ class LLAdvancedLoadUIFromXML : public view_listener_t
         return true;
     }
 };
-
 
 
 ////////////////////
@@ -2158,7 +2146,6 @@ class LLAdvancedAppearanceToXML : public view_listener_t
 };
 
 
-
 ///////////////////////////////
 // TOGGLE CHARACTER GEOMETRY //
 ///////////////////////////////
@@ -2270,7 +2257,6 @@ class LLAdvancedReloadVertexShader : public view_listener_t
 };
 
 
-
 ////////////////////
 // ANIMATION INFO //
 ////////////////////
@@ -2347,7 +2333,6 @@ class LLAdvancedCheckShowLookAt : public view_listener_t
         return (bool)new_value;
     }
 };
-
 
 
 ///////////////////
@@ -2442,7 +2427,6 @@ class LLAdvancedCheckDebugJointUpdates : public view_listener_t
 };
 
 
-
 /////////////////
 // DISABLE LOD //
 /////////////////
@@ -2465,7 +2449,6 @@ class LLAdvancedCheckDisableLOD : public view_listener_t
         return new_value;
     }
 };
-
 
 
 /////////////////////////
@@ -2505,7 +2488,6 @@ class LLAdvancedDumpAttachments : public view_listener_t
         return true;
     }
 };
-
 
 
 /////////////////////
@@ -2693,8 +2675,6 @@ class LLAdvancedViewerEventRecorder : public view_listener_t
 };
 
 
-
-
 /////////////////
 // AGENT PILOT //
 /////////////////
@@ -2726,7 +2706,6 @@ class LLAdvancedAgentPilot : public view_listener_t
         return true;
     }
 };
-
 
 
 //////////////////////
@@ -2777,7 +2756,6 @@ class LLAdvancedCheckShowObjectUpdates : public view_listener_t
 };
 
 
-
 ////////////////////
 // COMPRESS IMAGE //
 ////////////////////
@@ -2791,7 +2769,6 @@ class LLAdvancedCompressImage : public view_listener_t
         return true;
     }
 };
-
 
 
 ////////////////////////
@@ -2826,7 +2803,6 @@ class LLAdvancedShowDebugSettings : public view_listener_t
         return true;
     }
 };
-
 
 
 ////////////////////////
@@ -5214,7 +5190,6 @@ class LLSelfSitDown : public view_listener_t
     };
 
 
-
 bool show_sitdown_self()
 {
     return isAgentAvatarValid() && !gAgentAvatarp->isSitting();
@@ -6169,7 +6144,6 @@ void handle_claim_public_land()
 }
 
 
-
 // HACK for easily testing new avatar geometry
 void handle_god_request_avatar_geometry()
 {
@@ -6710,7 +6684,6 @@ void handle_avatar_show_inspector()
         LLFloaterReg::showInstance("inspect_avatar", params);
     }
 }
-
 
 
 bool confirm_take(const LLSD& notification, const LLSD& response, LLObjectSelectionHandle selection_handle)
@@ -7767,7 +7740,6 @@ class LLEditRedo : public view_listener_t
 };
 
 
-
 void print_object_info()
 {
     LLSelectMgr::getInstance()->selectionDump();
@@ -8791,18 +8763,16 @@ class LLFloaterVisible : public view_listener_t
 };
 
 
-
 // <AW: OpenSim>
 
 // </AW: OpenSim>
-
 
 
 class LLToggleSpeak : public view_listener_t
 {
     bool handleEvent(const LLSD& userdata)
     {
-        LLVoiceClient::getInstance()->toggleUserPTTState();
+
         return true;
     }
 };
@@ -9718,7 +9688,7 @@ class LLAvatarCall : public view_listener_t
         if ( (avatar) && (RlvActions::canShowName(RlvActions::SNC_DEFAULT, avatar->getID())) )
 // [/RLVa:KB]
         {
-            LLAvatarActions::startCall(avatar->getID());
+
         }
         return true;
     }
@@ -9733,7 +9703,7 @@ bool enable_avatar_call()
         if ((!pAvatar) || (!RlvActions::canShowName(RlvActions::SNC_DEFAULT, pAvatar->getID())))
             return false;
     }
-    return LLAvatarActions::canCall();
+    return false;
 }
 // [/RLVa:KB]
 
@@ -10678,7 +10648,6 @@ class LLToolsEnableSaveToObjectInventory : public view_listener_t
         return new_value;
     }
 };
-
 
 
 class LLViewEnableMouselook : public view_listener_t
@@ -12691,10 +12660,8 @@ void initialize_menus()
     commit.add("Agent.toggleFlying", boost::bind(&LLAgent::toggleFlying));
     enable.add("Agent.enableFlyLand", boost::bind(&enable_fly_land));
     enable.add("Agent.enableFlying", boost::bind(&LLAgent::enableFlying)); // <FS:Ansariel> Keep this
-    commit.add("Agent.PressMicrophone", boost::bind(&LLAgent::pressMicrophone, _2));
-    commit.add("Agent.ReleaseMicrophone", boost::bind(&LLAgent::releaseMicrophone, _2));
-    commit.add("Agent.ToggleMicrophone", boost::bind(&LLAgent::toggleMicrophone, _2));
-    enable.add("Agent.IsMicrophoneOn", boost::bind(&LLAgent::isMicrophoneOn, _2));
+
+
     enable.add("Agent.IsActionAllowed", boost::bind(&LLAgent::isActionAllowed, _2));
 
     // File menu

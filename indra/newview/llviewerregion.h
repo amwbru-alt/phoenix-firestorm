@@ -162,7 +162,6 @@ public:
     void rebuildWater();
 // </FS:CR> Aurora Sim
 
-    bool isVoiceEnabled() const;
 
     void setBillableFactor(F32 billable_factor) { mBillableFactor = billable_factor; }
     F32 getBillableFactor()         const   { return mBillableFactor; }
@@ -458,7 +457,6 @@ public:
 
     std::string getSimHostName();
 
-    bool isRegionWebRTCEnabled();
 
     static bool isNewObjectCreationThrottleDisabled() {return sNewObjectCreationThrottle < 0;}
 

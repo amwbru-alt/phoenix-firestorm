@@ -86,7 +86,6 @@ J2C Decoder Version: [J2C_VERSION]
 Audio Driver Version: [AUDIO_DRIVER_VERSION]
 [LIBCEF_VERSION]
 LibVLC Version: [LIBVLC_VERSION]
-Voice Server Version: [VOICE_VERSION]
 	</string>
 	<string name="AboutTraffic">
 		Pacchetti persi: [PACKETS_LOST,number,0]/[PACKETS_IN,number,0] ([PACKETS_PCT,number,1]%)
@@ -1189,21 +1188,12 @@ https://www.firestormviewer.org/support per avere aiuto nella soluzione.
 	<string name="shout">
 		grida:
 	</string>
-	<string name="ringing">
-		Connessione alla chat vocale...
-	</string>
+
 	<string name="connected">
 		Connesso
 	</string>
-	<string name="unavailable">
-		Voce non disponibile nel posto dove ti trovi ora
-	</string>
-	<string name="hang_up">
-		Disconnesso dalla chat vocale
-	</string>
-	<string name="reconnect_nearby">
-		Sarai riconnesso alla chat vocale
-	</string>
+
+
 	<string name="ScriptQuestionCautionChatGranted">
 		A &apos;[OBJECTNAME]&apos;, un oggetto di proprietà di &apos;[OWNERNAME]&apos;, situato in [REGIONNAME] [REGIONPOS], è stato concesso il permesso di: [PERMISSIONS].
 	</string>
@@ -4596,9 +4586,7 @@ Reinstallare il browser da [DOWNLOAD_URL] e contattare [SUPPORT_SITE] se il prob
 	<string name="LocationCtrlForSaleTooltip">
 		Compra questo terreno
 	</string>
-	<string name="LocationCtrlVoiceTooltip">
-		Voce non disponibile qui
-	</string>
+
 	<string name="LocationCtrlFlyTooltip">
 		Volo vietato
 	</string>
@@ -4677,12 +4665,8 @@ Reinstallare il browser da [DOWNLOAD_URL] e contattare [SUPPORT_SITE] se il prob
 	<string name="Unnamed">
 		(anonimo)
 	</string>
-	<string name="IM_moderated_chat_label">
-		(Moderato: Voci disattivate di default)
-	</string>
-	<string name="IM_unavailable_text_label">
-		La chat di testo non è disponibile per questa chiamata.	
-	</string>
+
+
 	<string name="IM_muted_text_label">
 		La chat di testo è stata disabilitata da un moderatore di gruppo.
 	</string>
@@ -4698,9 +4682,7 @@ Reinstallare il browser da [DOWNLOAD_URL] e contattare [SUPPORT_SITE] se il prob
 	<string name="Saved_message">
 		(Salvato [LONG_TIMESTAMP])
 	</string>
-	<string name="IM_unblock_only_groups_friends">
-		Per vedere questo messaggio, devi deselezionare &apos;Solo amici e gruppi possono chiamarmi o mandarmi IM&apos; in Preferenze/Privacy.
-	</string>
+
 	<string name="OnlineStatus">
 		online
 	</string>
@@ -4722,30 +4704,11 @@ Reinstallare il browser da [DOWNLOAD_URL] e contattare [SUPPORT_SITE] se il prob
 	<string name="IM_autoresponse_item_sent">
 		Inviato oggetto auto-risposta: [ITEM_NAME]
 	</string>
-	<string name="answered_call">
-		Risposto alla chiamata
-	</string>
-	<string name="you_started_call">
-		Hai iniziato una chiamata vocale
-	</string>
-	<string name="you_joined_call">
-		Ti sei collegato alla chiamata in voce
-	</string>
-	<string name="you_auto_rejected_call-im">
-		Hai rifiutato automaticamente la chiamata voce in modalità &apos;Non disturbare&apos;.
-	</string>
-	<string name="name_started_call">
-		[NAME] ha iniziato una chiamata vocale
-	</string>
-	<string name="ringing-im">
-		Collegamento alla chiamata vocale...
-	</string>
-	<string name="connected-im">
-		Collegato, clicca Chiudi chiamata per agganciare
-	</string>
-	<string name="hang_up-im">
-		Chiusa la chiamata
-	</string>
+
+
+
+
+
 	<string name="answering-im">
 		Connessione...
 	</string>
@@ -4786,9 +4749,7 @@ Scopri di più su https://second.life/scripted-agents.
 	<string name="offline_message">
 		[NAME] è offline
 	</string>
-	<string name="invite_message">
-		Clicca il tasto [BUTTON NAME] per accettare/connetterti a questa chat vocale.
-	</string>
+
 	<string name="muted_message">
 		Hai bloccato questo residente. Se gli invii un messaggio, verrà automaticamente sbloccato.
 	</string>
@@ -5033,9 +4994,7 @@ Segnala abuso
 	<string name="Other Gestures">
 		Altri gesti
 	</string>
-	<string name="Speech Gestures">
-		Gesti del parlato
-	</string>
+
 	<string name="Common Gestures">
 		Gesti comuni
 	</string>
@@ -5498,9 +5457,7 @@ Prova a racchiudere il percorso dell&apos;editor in doppie virgolette.
 	<string name="Command_View_Label">
 		Controlli Camera
 	</string>
-	<string name="Command_Voice_Label">
-		Voce
-	</string>
+
 	<string name="Command_Quickprefs_Label">
 		Prefer. Rapide
 	</string>
@@ -5681,15 +5638,11 @@ Prova a racchiudere il percorso dell&apos;editor in doppie virgolette.
 	<string name="Command_Snapshot_Tooltip">
 		Scatta una foto
 	</string>
-	<string name="Command_Speak_Tooltip">
-		Parla con persone vicine usando il microfono
-	</string>
+
 	<string name="Command_View_Tooltip">
 		Modifica angolo della telecamera
 	</string>
-	<string name="Command_Voice_Tooltip">
-		I controlli per il volume per le chiamate e per le persone nelle vicinanze nel mondo virtuale
-	</string>
+
 	<string name="Command_Quickprefs_Tooltip">
 		Impostazioni importanti da modificare rapidamente 
 	</string>

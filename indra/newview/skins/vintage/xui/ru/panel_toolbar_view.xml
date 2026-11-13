@@ -20,14 +20,7 @@
   <button name="show_volume_controls_button" tool_tip="Показать управление громкости" />
   </panel>
   </layout_panel>
-  <layout_panel name="voice_chat_controls_layout_panel">
-  <panel name="voice_chat_controls_panel">
-  <button name="show_voice_controls_button" tool_tip="Показать голосовой чат рядом" />
-  <button name="utility_talk_button" tool_tip="Нажмите на кнопку, чтобы поговорить. Нажмите на замок, чтобы установить нажать-для разговора." label="Говорить" />
-  <button name="utility_push_to_talk_lock_button" tool_tip="Переключатель функции нажать-и-говорить" />
-  <nearby_voice_monitor name="nearby_voice_output_monitor" tool_tip="Текущая активность голосового канала" />
-  </panel>
-  </layout_panel>
+
   <layout_panel name="quick_preferences_button_layout_panel">
   <panel name="quick_preferences_button_panel">
   <button name="enable_disable_ao_button" tool_tip="Включить/Выключить АО" />

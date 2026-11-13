@@ -799,21 +799,12 @@ Prøv venligst om lidt igen.
 	<string name="shout">
 		råber:
 	</string>
-	<string name="ringing">
-		Forbinder til stemmechat...
-	</string>
+
 	<string name="connected">
 		Forbundet
 	</string>
-	<string name="unavailable">
-		Stemmechat er ikke tilladt hvor du befinder dig
-	</string>
-	<string name="hang_up">
-		Stemme chat er afbrudt
-	</string>
-	<string name="reconnect_nearby">
-		Du vil nu blive dirigeret til lokal stemme chat
-	</string>
+
+
 	<string name="ScriptQuestionCautionChatGranted">
 		'[OBJECTNAME]', en genstand, ejet af '[OWNERNAME]', lokaliseret i [REGIONNAME] på [REGIONPOS], har fået tilladelse til: [PERMISSIONS].
 	</string>
@@ -3678,12 +3669,8 @@ Hvis du bliver ved med at modtage denne besked, kontakt venligst [SUPPORT_SITE].
 	<string name="Unnamed">
 		(Uden navn)
 	</string>
-	<string name="IM_moderated_chat_label">
-		(Modereret: Stemmer deaktiveret)
-	</string>
-	<string name="IM_unavailable_text_label">
-		Tekst chat er ikke tilgængelig i denne samtale.
-	</string>
+
+
 	<string name="IM_muted_text_label">
 		Din tekst chat er blevet deaktiveret af en gruppe moderator.
 	</string>
@@ -3699,27 +3686,11 @@ Hvis du bliver ved med at modtage denne besked, kontakt venligst [SUPPORT_SITE].
 	<string name="Saved_message">
 		(Gemt [LONG_TIMESTAMP])
 	</string>
-	<string name="answered_call">
-		Dit opkald er blevet besvaret
-	</string>
-	<string name="you_started_call">
-		Du startede dette stemme kald
-	</string>
-	<string name="you_joined_call">
-		Du er nu med i stemme opkald
-	</string>
-	<string name="name_started_call">
-		[NAME] startede et stemmekald
-	</string>
-	<string name="ringing-im">
-		Tilslutter stemme opkald...
-	</string>
-	<string name="connected-im">
-		Forbundet, klik på Forlad for at lægge på
-	</string>
-	<string name="hang_up-im">
-		Forladt stemme opkald
-	</string>
+
+
+
+
+
 	<string name="conference-title-incoming">
 		Konference med [AGENT_NAME]
 	</string>
@@ -3736,9 +3707,7 @@ Læs mere på https://second.life/scripted-agents.
 	<string name="offline_message">
 		[NAME] er logget af.
 	</string>
-	<string name="invite_message">
-		Tryk på [BUTTON NAME] knappen for at acceptére/tilslutte til denne stemme chat.
-	</string>
+
 	<string name="muted_message">
 		Du har blokeret denne beboer. Sendes en besked, vil beboeren fjernes fra blokeringslisten.
 	</string>
@@ -3802,9 +3771,7 @@ Læs mere på https://second.life/scripted-agents.
 	<string name="Home position set.">
 		Hjemmeposition sat.
 	</string>
-	<string name="voice_morphing_url">
-		http://secondlife.com/landing/voicemorphing
-	</string>
+
 	<string name="paid_you_ldollars">
 		[NAME] betalte dig L$[AMOUNT] [REASON].
 	</string>
@@ -3957,9 +3924,7 @@ Krænkelsesanmeldelse
 	<string name="Other Gestures">
 		Andre bevægelser
 	</string>
-	<string name="Speech Gestures">
-		Tale bevægelser
-	</string>
+
 	<string name="Common Gestures">
 		Almindelige bevægelser
 	</string>

@@ -31,11 +31,11 @@
 #define FS_FLOATERIM_H
 
 #include "llchat.h"
+#include "llcallingcard.h"
 #include "llinstantmessage.h"
 #include "lllogchat.h"
 #include "lltooldraganddrop.h"
 #include "lltransientdockablefloater.h"
-#include "llvoicechannel.h"
 #include "fschatparticipants.h"
 
 class FSChatHistory;
@@ -58,7 +58,7 @@ typedef boost::signals2::signal<void(const LLUUID& session_id)> floater_showed_s
  * Individual IM window that appears at the bottom of the screen,
  * optionally "docked" to the bottom tray.
  */
-class FSFloaterIM : public LLTransientDockableFloater, LLVoiceClientStatusObserver, LLFriendObserver, LLEventTimer, FSChatParticipants
+class FSFloaterIM : public LLTransientDockableFloater, LLFriendObserver, LLEventTimer, FSChatParticipants
 {
     LOG_CLASS(FSFloaterIM);
 public:
@@ -103,16 +103,14 @@ public:
     // route to specific floater if it is visible
     static void newIMCallback(const LLSD& data);
 
-    //AO: Callbacks for voice handling formerly in llPanelImControlPanel
-    void onVoiceChannelStateChanged(const LLVoiceChannel::EState& old_state, const LLVoiceChannel::EState& new_state);
-    void onChange(EStatusType status, const LLSD& channelInfo, bool proximal) override;
-    void updateButtons(bool is_call_started);
-    void updateCallButton();
+
+
+
+
     void changed(U32 mask) override;
     // ## Zi: overridden to fix the IM focus bug - FIRE-3989 etc.
     bool focusFirstItem(bool prefer_text_fields = false, bool focus_flash = true ) override;
 
-    void onVisibilityChange(bool new_visibility) override;
     void processIMTyping(const LLUUID& from_id, bool typing);
     void processAgentListUpdates(const LLSD& body);
 
@@ -151,7 +149,6 @@ public:
 
     S32 getLastChatMessageIndex() {return mLastMessageIndex;}
 
-    LLVoiceChannel* getVoiceChannel() { return mVoiceChannel; }
 
     void updateUnreadMessageNotification(S32 unread_messages);
 
@@ -172,7 +169,6 @@ protected:
     bool applyRectControl() override;
 
     // support sysinfo button -Zi
-    void    onSysinfoButtonVisibilityChanged(const LLSD& yes);
     LLButton* mSysinfoButton;
     // support sysinfo button -Zi
 
@@ -206,11 +202,10 @@ private:
 
     // support sysinfo button -Zi
     void onSysinfoButtonClicked();
+    void onSysinfoButtonVisibilityChanged(const LLSD& newvalue);
     bool onSendSysinfo(const LLSD& notification,const LLSD& response);
     // support sysinfo button -Zi
 
-    // connection to voice channel state change signal
-    boost::signals2::connection mVoiceChannelStateChangeConnection;
 
     void            setTyping(bool typing);
     void            onSlide();
@@ -286,7 +281,6 @@ private:
 
     bool mIsP2PChat;
 
-    LLVoiceChannel* mVoiceChannel;
 
     S32 mInputEditorPad;
     S32 mChatLayoutPanelHeight;

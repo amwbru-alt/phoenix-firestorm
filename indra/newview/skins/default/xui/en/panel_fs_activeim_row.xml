@@ -18,15 +18,7 @@
 		left="5"
 		height="25"
 		width="25"
-    visible="false"
-    speaker.name="speaker_p2p"
-    speaker.width="20"
-    speaker.height="25"
-    speaker.left="25"
-    speaker.top="25"
-    speaker.auto_update="true"
-    speaker.draw_border="false"
-    speaker.visible="false">
+    visible="false">
   </fs_chiclet_im_p2p>
   <fs_chiclet_im_group
 		name="group_chiclet"
@@ -36,15 +28,7 @@
 		left="5"
 		height="25"
 		width="25"
-    visible="false"
-    speaker.name="speaker_grp"
-    speaker.width="20"
-    speaker.height="25"
-    speaker.left="25"
-    speaker.top="25"
-    speaker.auto_update="true"
-    speaker.draw_border="false"
-    speaker.visible="false">
+    visible="false">
   </fs_chiclet_im_group>
   <fs_chiclet_im_adhoc
 		name="adhoc_chiclet"
@@ -54,15 +38,7 @@
 		left="5"
 		height="25"
 		width="25"
-    visible="false"
-    speaker.name="speaker_hoc"
-    speaker.width="20"
-    speaker.height="25"
-    speaker.left="25"
-    speaker.top="25"
-    speaker.auto_update="true"
-    speaker.draw_border="false"
-    speaker.visible="false">
+    visible="false">
   </fs_chiclet_im_adhoc>
 	<text
 	    translate="false"

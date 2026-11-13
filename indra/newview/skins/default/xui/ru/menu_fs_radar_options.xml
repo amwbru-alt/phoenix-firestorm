@@ -10,7 +10,7 @@
 		<menu_item_check label="Имя пользователя (Отображаемое имя)" name="radarFmtUNDN"/>
 	</context_menu>
 	<context_menu label="Отображаемые колонки" name="visible_columns">
-		<menu_item_check label="Голос" name="voice_level"/>
+
 		<menu_item_check label="В этом же регионе" name="in_region"/>
 		<menu_item_check label="Индикатор набора" name="typing_status"/>
 		<menu_item_check label="Сидячее состояние" name="sitting_status"/>

@@ -152,14 +152,7 @@
                 <pie_slice.on_enable
                     function="EnableBridgeFunction" />
 	        </pie_slice>
-            <pie_slice
-                label="Call"
-                name="Call">
-                <pie_slice.on_click
-                    function="Avatar.Call" />
-                <pie_slice.on_enable
-                    function="Avatar.EnableCall" />
-            </pie_slice>
+
             <pie_slice
                 label="Zoom In"
                 name="Zoom In">

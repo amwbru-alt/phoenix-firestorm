@@ -212,14 +212,13 @@ public:
 };
 
 
-
 // LLSecAPIBasicCredential class
 class LLSecAPIBasicCredential : public LLCredential
 {
 public:
     LLSecAPIBasicCredential(const std::string& credName) : LLCredential(credName) {}
     virtual ~LLSecAPIBasicCredential() {}
-    // return a value representing the user id, used for server and voice
+
     // (could be guid, name in format "name_resident", whatever)
     virtual std::string userID() const;
 
@@ -358,6 +357,5 @@ bool valueCompareLLSD(const LLSD& lhs, const LLSD& rhs);
 #endif // LL_WINDOWS
 
 #endif // LLSECHANDLER_BASIC
-
 
 

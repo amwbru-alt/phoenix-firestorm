@@ -38,7 +38,6 @@
 #include "llhudeffectpointat.h"
 #include "llhudeffectresetskeleton.h"
 #include "llhudnametag.h"
-#include "llvoicevisualizer.h"
 
 #include "llagent.h"
 
@@ -255,9 +254,7 @@ LLHUDEffect *LLHUDObject::addHUDEffect(const U8 type)
     case LL_HUD_EFFECT_LOOKAT:
         hud_objectp = new LLHUDEffectLookAt(type);
         break;
-    case LL_HUD_EFFECT_VOICE_VISUALIZER:
-        hud_objectp = new LLVoiceVisualizer(type);
-        break;
+
     case LL_HUD_EFFECT_POINTAT:
         hud_objectp = new LLHUDEffectPointAt(type);
         break;

@@ -10,7 +10,7 @@
 		<menu_item_check label="Benutzername (Anzeigename)" name="radarFmtUNDN"/>
 	</context_menu>
 	<context_menu label="Angezeigte Spalten" name="visible_columns">
-		<menu_item_check label="Voice" name="voice_level"/>
+
 		<menu_item_check label="Selbe Region" name="in_region"/>
 		<menu_item_check label="Status Schreiben" name="typing_status"/>
 		<menu_item_check label="Status Sitzen" name="sitting_status"/>

@@ -138,7 +138,6 @@ set(viewer_SOURCE_FILES
     fsfloaterstatistics.cpp
     fsfloaterstreamtitle.cpp
     fsfloaterteleporthistory.cpp
-    fsfloatervoicecontrols.cpp
     fsfloatervolumecontrols.cpp
     fsfloatervramusage.cpp
     fsfloaterwearablefavorites.cpp
@@ -156,7 +155,6 @@ set(viewer_SOURCE_FILES
     fsnearbychatbarlistener.cpp
     fsnearbychatcontrol.cpp
     fsnearbychathub.cpp
-    fsnearbychatvoicemonitor.cpp
     fsnewitemctrl.cpp
     fspanelblocklist.cpp
     fspanelcontactsets.cpp
@@ -331,7 +329,6 @@ set(viewer_SOURCE_FILES
     llfloatercamerapresets.cpp
     llfloaterchangeitemthumbnail.cpp
     llfloaterchatmentionpicker.cpp
-    llfloaterchatvoicevolume.cpp
     llfloaterclassified.cpp
     llfloatercolorpicker.cpp
     llfloaterconversationlog.cpp
@@ -435,7 +432,6 @@ set(viewer_SOURCE_FILES
     llfloatertoybox.cpp
     llfloateruipreview.cpp
     llfloaterurlentry.cpp
-    llfloatervoicevolume.cpp
     llfloaterwebcontent.cpp
     llfloaterwhitelistentry.cpp
     llfloaterwindowsize.cpp
@@ -538,7 +534,6 @@ set(viewer_SOURCE_FILES
     llfloaterimnearbychat.cpp
     llfloaterimnearbychathandler.cpp
     llfloaterimnearbychatlistener.cpp
-    llnearbyvoicemoderation.cpp
     llnetmap.cpp
     llnotificationalerthandler.cpp
     llnotificationgrouphandler.cpp
@@ -554,7 +549,6 @@ set(viewer_SOURCE_FILES
     lloutfitgallery.cpp
     lloutfitslist.cpp
     lloutfitobserver.cpp
-    lloutputmonitorctrl.cpp
     llpanelappearancetab.cpp
     llpanelavatar.cpp
     llpanelavatartag.cpp
@@ -634,7 +628,6 @@ set(viewer_SOURCE_FILES
     llpaneltiptoast.cpp
     #llpaneltopinfobar.cpp # <FS:Zi> unused
     llpanelpulldown.cpp
-    llpanelvoicedevicesettings.cpp
     llpanelvolume.cpp
     llpanelvolumepulldown.cpp
     llpanelwearing.cpp
@@ -712,7 +705,6 @@ set(viewer_SOURCE_FILES
     llspatialpartition.cpp
     llstatslistener.cpp
     llspeakers.cpp
-    llspeakingindicatormanager.cpp
     llsplitbutton.cpp
     llsprite.cpp
     llstartup.cpp
@@ -841,11 +833,6 @@ set(viewer_SOURCE_FILES
     llvoavatarself.cpp
     llvocache.cpp
     llvograss.cpp
-    llvoicecallhandler.cpp
-    llvoicechannel.cpp
-    llvoiceclient.cpp
-    llvoicevisualizer.cpp
-    llvoicewebrtc.cpp
     llvoinventorylistener.cpp
     llvopartgroup.cpp
     llvosky.cpp
@@ -987,7 +974,6 @@ set(viewer_HEADER_FILES
     fsfloaterstatistics.h
     fsfloaterstreamtitle.h
     fsfloaterteleporthistory.h
-    fsfloatervoicecontrols.h
     fsfloatervolumecontrols.h
     fsfloatervramusage.h
     fsfloaterwearablefavorites.h
@@ -1009,7 +995,6 @@ set(viewer_HEADER_FILES
     fsnearbychatbarlistener.h
     fsnearbychatcontrol.h
     fsnearbychathub.h
-    fsnearbychatvoicemonitor.h
     fsnewitemctrl.h
     fspanelblocklist.h
     fspanelcontactsets.h
@@ -1187,7 +1172,6 @@ set(viewer_HEADER_FILES
     llfloaterchangeitemthumbnail.h
     llfloaterchatmentionpicker.h
     llfloatercamera.h
-    llfloaterchatvoicevolume.h
     llfloaterclassified.h
     llfloatercolorpicker.h
     llfloaterconversationlog.h
@@ -1298,7 +1282,6 @@ set(viewer_HEADER_FILES
     llfloatertoybox.h
     llfloateruipreview.h
     llfloaterurlentry.h
-    llfloatervoicevolume.h
     llfloaterwebcontent.h
     llfloaterwhitelistentry.h
     llfloaterwindowsize.h
@@ -1394,7 +1377,6 @@ set(viewer_HEADER_FILES
     llnameeditor.h
     llnamelistctrl.h
     llnavigationbar.h
-    llnearbyvoicemoderation.h
     llnetmap.h
     llnotificationhandler.h
     llnotificationlistitem.h
@@ -1404,7 +1386,6 @@ set(viewer_HEADER_FILES
     lloutfitgallery.h
     lloutfitslist.h
     lloutfitobserver.h
-    lloutputmonitorctrl.h
     llpanelappearancetab.h
     llpanelavatar.h
     llpanelavatartag.h
@@ -1479,7 +1460,6 @@ set(viewer_HEADER_FILES
     llpanelteleporthistory.h
     llpaneltiptoast.h
     llpanelpulldown.h
-    llpanelvoicedevicesettings.h
     #llpaneltopinfobar.h # <FS:Zi> unused
     llpanelvolume.h
     llpanelvolumepulldown.h
@@ -1560,7 +1540,6 @@ set(viewer_HEADER_FILES
     llspatialpartition.h
     llstatslistener.h
     llspeakers.h
-    llspeakingindicatormanager.h
     llsplitbutton.h
     llsprite.h
     llstartup.h
@@ -1693,10 +1672,6 @@ set(viewer_HEADER_FILES
     llvoavatarself.h
     llvocache.h
     llvograss.h
-    llvoicechannel.h
-    llvoiceclient.h
-    llvoicevisualizer.h
-    llvoicewebrtc.h
     llvoinventorylistener.h
     llvopartgroup.h
     llvosky.h
@@ -2294,12 +2269,7 @@ if (WINDOWS)
       app_settings/message.xml
       ${CMAKE_SOURCE_DIR}/../scripts/messages/message_template.msg
       #${SHARED_LIB_STAGING_DIR}/openjp2.dll # <FS:Ansariel> Only copy OpenJPEG dll if needed
-      ${SHARED_LIB_STAGING_DIR}/llwebrtc.dll
       #${SHARED_LIB_STAGING_DIR}/${LL_INTDIR}/libsndfile-1.dll
-      # <FS:TJ> Keep Vivox only for OpenSim viewers
-      #${SHARED_LIB_STAGING_DIR}/${LL_INTDIR}/SLVoice.exe
-      #${SHARED_LIB_STAGING_DIR}/${LL_INTDIR}/vivoxoal.dll
-      # </FS:TJ>
       ${AUTOBUILD_INSTALL_DIR}/ca-bundle.crt
       ${CMAKE_CURRENT_SOURCE_DIR}/licenses-win32.txt
       ${CMAKE_CURRENT_SOURCE_DIR}/featuretable.txt
@@ -2319,22 +2289,6 @@ if (WINDOWS)
             )
     endif (NOT USE_KDU)
     # </FS:Ansariel>
-
-    # <FS:TJ> Keep Vivox only for OpenSim viewers
-    if (OPENSIM)
-        if (ADDRESS_SIZE EQUAL 64)
-           list(APPEND COPY_INPUT_DEPENDENCIES
-                   ${SHARED_LIB_STAGING_DIR}/vivoxsdk_x64.dll
-                   ${SHARED_LIB_STAGING_DIR}/ortp_x64.dll
-                   )
-        else (ADDRESS_SIZE EQUAL 64)
-           list(APPEND COPY_INPUT_DEPENDENCIES
-                   ${SHARED_LIB_STAGING_DIR}/vivoxsdk.dll
-                   ${SHARED_LIB_STAGING_DIR}/ortp.dll
-                   )
-        endif (ADDRESS_SIZE EQUAL 64)
-    endif ()
-    # </FS:TJ>
 
     if (TARGET ll::discord_sdk)
         list(APPEND COPY_INPUT_DEPENDENCIES
@@ -2383,14 +2337,12 @@ if (WINDOWS)
       DEPENDS
         ${CMAKE_CURRENT_SOURCE_DIR}/viewer_manifest.py
         stage_third_party_libs
-        llwebrtc
         ${COPY_INPUT_DEPENDENCIES}
       COMMENT "Performing viewer_manifest copy"
       )
 
     add_custom_target(copy_w_viewer_manifest ALL DEPENDS ${CMAKE_CFG_INTDIR}/copy_touched.bat)
 
-    add_dependencies(${VIEWER_BINARY_NAME} stage_third_party_libs llcommon llwebrtc copy_w_viewer_manifest)
 
     # Useful for remote debugging or profiling if set to target a shared drive. for example, brad sets it to "dist/secondlife" to deploy under
     # the build tree (and then I share that directory) or "f:/dist/secondlife" to deploy to a network mounted drive (although this can be slow).
@@ -2425,7 +2377,6 @@ if (WINDOWS)
             DEPENDS
             ${CMAKE_CURRENT_SOURCE_DIR}/viewer_manifest.py
             stage_third_party_libs
-            llwebrtc
             ${CMAKE_CURRENT_BINARY_DIR}/viewer_version.txt
             ${COPY_INPUT_DEPENDENCIES}
             ${VIEWER_BINARY_NAME}
@@ -2590,7 +2541,6 @@ target_link_libraries(${VIEWER_BINARY_NAME}
         llcorehttp
         llcommon
         llmeshoptimizer
-        llwebrtc
         lllogin
         llprimitive
         llappearance
@@ -2898,12 +2848,10 @@ if (PACKAGE AND (RELEASE_CRASH_REPORTING OR NON_RELEASE_CRASH_REPORTING) AND VIE
           # "cJf"
           # "${VIEWER_CHANNEL}.sym.tar.xz"
           # "${VIEWER_CHANNEL}"
-        # DEPENDS "${VIEWER_BINARY_NAME}" llwebrtc
         # WORKING_DIRECTORY "${SYMBOLS_STAGING_DIR}/.."
         # COMMENT "Packing viewer PDBs into ${VIEWER_APP_SYMBOLS_ARCHIVE}"
         # )
       # add_custom_target(generate_symbols DEPENDS "${VIEWER_APP_SYMBOLS_ARCHIVE}")
-      # add_dependencies(generate_symbols ${VIEWER_BINARY_NAME} llwebrtc)
 
     endif (WINDOWS)
     if (DARWIN)

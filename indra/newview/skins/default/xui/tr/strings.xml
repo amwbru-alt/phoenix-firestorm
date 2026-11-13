@@ -78,7 +78,6 @@ J2C Kod Çözücü Sürümü: [J2C_VERSION]
 Ses Sürücüsü Sürümü: [AUDIO_DRIVER_VERSION] 
 [LIBCEF_VERSION] 
 LibVLC Sürümü: [LIBVLC_VERSION] 
-Ses Sunucusu Sürümü: [VOICE_VERSION]
 	</string>
 	<string name="AboutTraffic">
 		Kaybolan Paketler: [PACKETS_LOST,number,0]/[PACKETS_IN,number,0] ([PACKETS_PCT,number,1]%)
@@ -1090,21 +1089,12 @@ http://secondlife.com/support adresini ziyaret edin.
 	<string name="shout">
 		bağırır:
 	</string>
-	<string name="ringing">
-		SL dünyası içindeki Sesli Sohbete bağlanılıyor...
-	</string>
+
 	<string name="connected">
 		Bağlı
 	</string>
-	<string name="unavailable">
-		Geçerli konumunuzda ses mevcut değil
-	</string>
-	<string name="hang_up">
-		SL dünyası içindeki Sesli Sohbet ile bağlantı kesildi
-	</string>
-	<string name="reconnect_nearby">
-		Şimdi Yakındaki bir Sesli Sohbete yeniden bağlanılacaksınız.
-	</string>
+
+
 	<string name="ScriptQuestionCautionChatGranted">
 		&apos;[OWNERNAME]&apos; adlı kişiye ait, [REGIONPOS] üzerinde [REGIONNAME] içerisinde bulunan &apos;[OBJECTNAME]&apos; nesnesine şunu yapma izni verildi: [PERMISSIONS].
 	</string>
@@ -4411,9 +4401,7 @@ Bu iletiyi almaya devam ederseniz, lütfen [SUPPORT_SITE] bölümüne başvurun.
 	<string name="LocationCtrlForSaleTooltip">
 		Bu araziyi satın al
 	</string>
-	<string name="LocationCtrlVoiceTooltip">
-		Ses burada kullanılamaz
-	</string>
+
 	<string name="LocationCtrlFlyTooltip">
 		Uçmaya izin verilmiyor
 	</string>
@@ -4492,12 +4480,8 @@ Bu iletiyi almaya devam ederseniz, lütfen [SUPPORT_SITE] bölümüne başvurun.
 	<string name="Unnamed">
 		(İsimsiz)
 	</string>
-	<string name="IM_moderated_chat_label">
-		(Yönetilen: Varsayılan durumda sesler kapalı)
-	</string>
-	<string name="IM_unavailable_text_label">
-		Bu aramada metin sohbeti kullanılamaz.
-	</string>
+
+
 	<string name="IM_muted_text_label">
 		Bir Grup Moderatörü tarafından metin sohbetiniz devre dışı bırakıldı.
 	</string>
@@ -4513,9 +4497,7 @@ Bu iletiyi almaya devam ederseniz, lütfen [SUPPORT_SITE] bölümüne başvurun.
 	<string name="Saved_message">
 		(Kaydedildi [LONG_TIMESTAMP])
 	</string>
-	<string name="IM_unblock_only_groups_friends">
-		Bu mesajı görmek için Tercihler/Gizlilik&apos;de &apos;Sadece arkadaşlar ve gruplar beni arasın veya Aİ göndersin&apos; seçeneğinin işaretini kaldırmalısınız.
-	</string>
+
 	<string name="OnlineStatus">
 		Çevrimiçi
 	</string>
@@ -4528,30 +4510,11 @@ Bu iletiyi almaya devam ederseniz, lütfen [SUPPORT_SITE] bölümüne başvurun.
 	<string name="not_online_inventory">
 		Kullanıcı çevrimiçi değil - envanter kaydedildi.
 	</string>
-	<string name="answered_call">
-		Aramanız yanıtlandı
-	</string>
-	<string name="you_started_call">
-		Bir sesli arama başlattınız
-	</string>
-	<string name="you_joined_call">
-		Sesli aramaya katıldınız
-	</string>
-	<string name="you_auto_rejected_call-im">
-		&quot;Rahatsız Etme&quot; seçeneğini devredeyken sesli aramayı otomatik olarak reddettiniz.
-	</string>
-	<string name="name_started_call">
-		[NAME] bir sesli arama başlattı
-	</string>
-	<string name="ringing-im">
-		Sesli aramaya katılınılıyor...
-	</string>
-	<string name="connected-im">
-		Bağlandı, kapatmak için Aramadan Çık üzerine tıklayın
-	</string>
-	<string name="hang_up-im">
-		Sesli aramadan çıkıldı
-	</string>
+
+
+
+
+
 	<string name="answering-im">
 		Bağlanıyor...
 	</string>
@@ -4592,9 +4555,7 @@ Daha fazla bilgi için: https://second.life/scripted-agents.
 	<string name="offline_message">
 		[NAME] çevrim dışı.
 	</string>
-	<string name="invite_message">
-		Bu sesli sohbeti kabul etmek/bağlanmak için [BUTTON NAME] düğmesine tıklayın.
-	</string>
+
 	<string name="muted_message">
 		Bu Sakini engellediniz. Bir ileti gönderdiğinizde engelleme otomatik olarak kaldırılır.
 	</string>
@@ -4658,12 +4619,8 @@ Daha fazla bilgi için: https://second.life/scripted-agents.
 	<string name="Home position set.">
 		Ana konum ayarlandı.
 	</string>
-	<string name="voice_morphing_url">
-		https://secondlife.com/destination/voice-island
-	</string>
-	<string name="premium_voice_morphing_url">
-		https://secondlife.com/destination/voice-morphing-premium
-	</string>
+
+
 	<string name="paid_you_ldollars">
 		[NAME] size [REASON] L$[AMOUNT] ödedi.
 	</string>
@@ -4838,9 +4795,7 @@ Daha fazla bilgi için: https://second.life/scripted-agents.
 	<string name="Other Gestures">
 		Diğer Mimikler
 	</string>
-	<string name="Speech Gestures">
-		Konuşma Mimikleri
-	</string>
+
 	<string name="Common Gestures">
 		Favori Mimikler
 	</string>
@@ -5588,9 +5543,7 @@ Düzenleyici yolunu çift tırnakla çevrelemeyi deneyin.
 	<string name="Command_View_Label">
 		Kamera denetimleri
 	</string>
-	<string name="Command_Voice_Label">
-		Ses ayarları
-	</string>
+
 	<string name="Command_AboutLand_Tooltip">
 		Ziyaret ettiğiniz araziyle ilgili bilgi
 	</string>
@@ -5675,18 +5628,14 @@ Düzenleyici yolunu çift tırnakla çevrelemeyi deneyin.
 	<string name="Command_Snapshot_Tooltip">
 		Resim çekin
 	</string>
-	<string name="Command_Speak_Tooltip">
-		Mikrofonunuzu kullanarak yakındaki kişilerle konuşun
-	</string>
+
 	<string name="Command_Twitter_Tooltip">
 		Twitter
 	</string>
 	<string name="Command_View_Tooltip">
 		Kamera açısını değiştirmek
 	</string>
-	<string name="Command_Voice_Tooltip">
-		Aramalar ve 	SL dünyası içinde size yakın kişiler için ses denetimleri
-	</string>
+
 	<string name="Toolbar_Bottom_Tooltip">
 		şu anda alt araç çubuğunuzda
 	</string>

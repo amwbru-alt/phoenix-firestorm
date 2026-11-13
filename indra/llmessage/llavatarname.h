@@ -76,7 +76,7 @@ public:
     std::string getCompleteName(bool use_parentheses = true, bool force_use_complete_name = false) const;
 
     // Returns "James Linden" or "bobsmith123 Resident" for backwards
-    // compatibility with systems like voice and muting
+    // compatibility with systems like muting
     // *TODO: Eliminate this in favor of username only
     std::string getLegacyName() const;
 
@@ -87,7 +87,7 @@ public:
 
     // Returns "James Linden" or "bobsmith123 Resident"
     // Used where we explicitely prefer or need a non UTF-8 legacy (ASCII) name
-    // Also used for backwards compatibility with systems like voice and muting
+    // Also used for backwards compatibility with systems like muting
     std::string getUserName(bool lowercase = false) const;
 
     // <FS:CR> FIRE-6659 - Returns the same as getUserName() but honors sTrimResidentSurname
@@ -120,7 +120,7 @@ private:
 
     // For "James Linden", "James"
     // For "bobsmith123", "bobsmith123"
-    // Used to communicate with legacy systems like voice and muting which
+    // Used to communicate with legacy systems like muting which
     // rely on old-style names.
     // *TODO: Eliminate this in favor of username only
     std::string mLegacyFirstName;

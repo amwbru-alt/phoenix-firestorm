@@ -58,8 +58,8 @@
                     <panel name="parcel_characteristics_panel">
                         <text name="rating_label" value="Рейтинг:" />
                         <text name="rating_value" value="неизвестен" />
-                        <text name="voice_label" value="Голос:" />
-                        <text name="voice_value" value="Вкл." />
+
+
                         <text name="fly_label" value="Полет:" />
                         <text name="fly_value" value="Вкл." />
                         <text name="push_label" value="Толкание:" />

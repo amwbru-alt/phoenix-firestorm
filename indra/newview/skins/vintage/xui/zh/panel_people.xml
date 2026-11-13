@@ -62,7 +62,7 @@
 									<combo_box.item name="RadarNameFormat_userdisplay" label="使用者名稱（顯示名）" />
 								</combo_box>
 								<text name="columns_label" value="顯示列：" />
-								<check_box label="語音" name="column_voice" />
+
 								<check_box label="時間" name="column_seen" />
 								<check_box label="年齡" name="column_age" />
 								<check_box label="同一區域" name="column_region" />

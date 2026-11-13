@@ -271,18 +271,6 @@ LLTrace::SampleStatHandle<LLUnit<F32, LLUnits::Percent> >  SWAP_FRAME_PCT("swap_
 LLTrace::SampleStatHandle<LLUnit<F32, LLUnits::Percent> >  IDLE_FRAME_PCT("idle_frame_pct");
 
 
-
-LLTrace::SampleStatHandle<U32> WEBRTC_PACKETS_IN_LOST("webrtc_packets_in_lost", "Lost incoming packets"),
-    WEBRTC_PACKETS_IN_RECEIVED("webrtc_packets_in_recv", "Incoming packets received"),
-    WEBRTC_PACKETS_OUT_SENT("webrtc_packets_out_sent", "Outgoing packets sent"),
-    WEBRTC_PACKETS_OUT_LOST("webrtc_packets_out_lost", "Lost outgoing packets");
-
-LLTrace::SampleStatHandle<F32> WEBRTC_JITTER_OUT("webrtc_jitter_out", "Timing variation of outgoing audio"),
-    WEBRTC_JITTER_IN("webrtc_jitter_in", "Timing variation of incoming audio"),
-    WEBRTC_LATENCY("webrtc_latency", "Round-trip audio delay"),
-    WEBRTC_UPLOAD_BANDWIDTH("webrtc_upload_bandwidth", "Estimated upload bandwidth"),
-    WEBRTC_JITTER_BUFFER("webrtc_jitter_buffer", "Average delay added to smooth incoming audio");
-
 }
 
 LLViewerStats::LLViewerStats()
@@ -774,7 +762,6 @@ void send_viewer_stats(bool include_preferences)
     {
         shader_level = 2;
     }
-
 
 
     system["shader_level"] = shader_level;

@@ -207,10 +207,7 @@
 		衣装、身体部位に対する変更をすべて保存しますか？
 		<usetemplate canceltext="キャンセル" name="yesnocancelbuttons" notext="保存しない" yestext="すべて保存"/>
 	</notification>
-	<notification name="FriendsAndGroupsOnly">
-		フレンド以外の人からのコールや、インスタントメッセージを無視する設定にしたことを、相手に知られることはありません。
-		<usetemplate name="okbutton" yestext="ＯＫ"/>
-	</notification>
+
 	<notification name="FavoritesOnLogin">
 		注意：このオプションを有効にすると、このパソコンを使うユーザーは誰でも、あなたのお気に入りの場所を見ることができるようになります。
 		<usetemplate name="okbutton" yestext="ＯＫ"/>
@@ -2383,9 +2380,7 @@ https://community.secondlife.com/knowledgebase/%E6%97%A5%E6%9C%AC%E8%AA%9E%E3%83
 マップにこの変更が反映されるまで数分かかることがあります。
 		<usetemplate name="okbutton" yestext="ＯＫ"/>
 	</notification>
-	<notification label="ボイスバージョンの不一致" name="VoiceVersionMismatch">
-		[APP_NAME]のこのバージョンは、このリージョンにおけるボイスチャットの互換性がありません。ボイスチャットを正常に行うためには、[APP_NAME]のアップデートが必要です。
-	</notification>
+
 	<notification label="オブジェクトを購入できません" name="BuyObjectOneOwner">
 		複数の所有者から同時にオブジェクトを購入することはできません。
 単一のオブジェクトを選択し、もう一度試してください。
@@ -3118,10 +3113,7 @@ Webページにリンクすると、他人がこの場所に簡単にアクセ�
 		このエリアでのプッシュは禁止されています。
 土地所有者以外は他人をプッシュすることはできません。
 	</notification>
-	<notification name="NoVoice">
-		このエリアでのボイスチャットは無効になっています。
-ここではボイスチャットは使用できません。
-	</notification>
+
 	<notification name="NoBuild">
 		このエリアでのビルドは禁止されています。オブジェクトをビルドしたりRezすることはできません。
 	</notification>
@@ -3555,15 +3547,7 @@ Webページにリンクすると、他人がこの場所に簡単にアクセ�
 	<notification name="MaxListSelectMessage">
 		このリストから[MAX_SELECT]個までのアイテムを選択できます。
 	</notification>
-	<notification name="VoiceInviteP2P">
-		[NAME]からボイスチャットコールの招待を受けています。
-通話に参加するには「受け入れる」を、招待を辞退するには「辞退する」をクリックしてください。この発信者からのメッセージを完全にブロックするには、「ミュート」をクリックしてください。
-		<form name="form">
-			<button name="Accept" text="受け入れる"/>
-			<button name="Decline" text="辞退する"/>
-			<button name="Mute" text="ミュート"/>
-		</form>
-	</notification>
+
 	<notification name="AutoUnmuteByIM">
 		[NAME]はインスタントメッセージを受け取り、自動的にブロックが解除されました。
 	</notification>
@@ -3573,86 +3557,8 @@ Webページにリンクすると、他人がこの場所に簡単にアクセ�
 	<notification name="AutoUnmuteByInventory">
 		[NAME]はインベントリを受け取り、自動的にブロックが解除されました。
 	</notification>
-	<notification name="VoiceInviteGroup">
-		[NAME]は、&lt;nolink&gt;[GROUP]&lt;/nolink&gt;のボイスチャットコールに参加しようとしています。
-通話に参加するには「受け入れる」を、招待を辞退するには「辞退する」をクリックしてください。この発信者からのすべてのメッセージを永久にブロックするには、「ミュート」をクリックしてください。
-		<form name="form">
-			<button name="Accept" text="受け入れる"/>
-			<button name="Decline" text="辞退する"/>
-			<button name="Mute" text="ミュート"/>
-		</form>
-	</notification>
-	<notification name="VoiceInviteAdHoc">
-		[NAME]は、会話チャットでのボイスチャットコールへ参加しようとしています。
-通話に参加するには「受け入れる」を、招待を辞退するには「辞退する」をクリックしてください。この発信者からのすべてのメッセージを永久にブロックするには、「ミュート」をクリックしてください。
-		<form name="form">
-			<button name="Accept" text="受け入れる"/>
-			<button name="Decline" text="辞退する"/>
-			<button name="Mute" text="ミュート"/>
-		</form>
-	</notification>
-	<notification name="InviteAdHoc">
-		[NAME]があなたを会話チャットに招待しています。
-チャットに参加するには「受け入れる」を、招待を辞退するには「辞退する」をクリックしてください。この発信者からのメッセージを完全にブロックするには、「ミュート」をクリックしてください。
-		<form name="form">
-			<button name="Accept" text="受け入れる"/>
-			<button name="Decline" text="却下する"/>
-			<button name="Mute" text="ミュート"/>
-		</form>
-	</notification>
-	<notification name="VoiceChannelFull">
-		あなたが参加しようとしているボイスコール[VOICE_CHANNEL_NAME]は、参加者が最大限に達しました。後でもう一度お試しください。
-	</notification>
-	<notification name="ProximalVoiceChannelFull">
-		このエリアは音声通話の上限に達しました。別のエリアで音声通話をお試しください。
-	</notification>
-	<notification name="VoiceChannelDisconnected">
-		[VOICE_CHANNEL_NAME]への接続が切れました。
-「近くのボイスチャット」に再接続されます。
-	</notification>
-	<notification name="VoiceChannelDisconnectedP2P">
-		[VOICE_CHANNEL_NAME]がコールを終了しました。
-「近くのボイスチャット」に再接続されます。
-	</notification>
-	<notification name="P2PCallDeclined">
-		[VOICE_CHANNEL_NAME]があなたのコールを拒否しました。
-「近くのボイスチャット」に再接続されます。
-	</notification>
-	<notification name="P2PCallNoAnswer">
-		[VOICE_CHANNEL_NAME]はあなたのコールを受けることができません。
-「近くのボイスチャット」に再接続されます。
-	</notification>
-	<notification name="VoiceChannelJoinFailed">
-		[VOICE_CHANNEL_NAME]への接続に失敗しました。あとで再度お試しください。
-「近くのボイスチャット」に再接続されます。
-	</notification>
-	<notification name="VoiceEffectsExpired">
-		ボイスモーフィング効果の１つ、または複数の有効期限が終了しました。
-期限を延長・更新するには[[URL] ここ]をクリックしてください。
 
-プレミアム会員の方は、[[PREMIUM_URL] ここ]をクリックしてボイスモーフィング特典をお受け取りください。
-	</notification>
-	<notification name="VoiceEffectsExpiredInUse">
-		ボイスモーフィング効果の有効期限が終了したため、あなたの通常のボイス設定が適用されました。
-期限を延長・更新するには[[URL] ここ]をクリックしてください。
 
-プレミアム会員の方は、[[PREMIUM_URL] ここ]をクリックしてボイスモーフィング特典をお受け取りください。
-	</notification>
-	<notification name="VoiceEffectsWillExpire">
-		ボイスモーフィング効果の１つ、または複数の有効期限が[INTERVAL]日以内に終了します。
-期限を延長・更新するには[[URL] ここ]をクリックしてください。
-
-プレミアム会員の方は、[[PREMIUM_URL] ここ]をクリックしてボイスモーフィング特典をお受け取りください。
-		<usetemplate ignoretext="ボイスモーフィングの有効期限が切れるときの警告" name="okignore" yestext="ＯＫ"/>
-	</notification>
-	<notification name="VoiceEffectsNew">
-		新しいボイスモーフィング効果が登場！
-	</notification>
-	<notification name="VoiceEffectsNotSupported">
-		このビューアはボイスモーフィングをサポートしていません。
-他のボイスモーフィングツールについての情報は、[[FAQ_URL] この記事]を参照してください。
-		<usetemplate ignoretext="ボイスモーフィングをサポートしていないことについての警告" name="okignore" yestext="ＯＫ"/>
-	</notification>
 	<notification name="Cannot enter parcel: not a group member">
 		特定のグループメンバーのみこのエリアを訪問することができます。
 	</notification>
@@ -3662,12 +3568,8 @@ Webページにリンクすると、他人がこの場所に簡単にアクセ�
 	<notification name="Cannot enter parcel: not on access list">
 		アクセスリストに含まれていないため、この区画に入ることができません。
 	</notification>
-	<notification name="VoiceNotAllowed">
-		あなたは、[VOICE_CHANNEL_NAME]のボイスチャットに接続する権限がありません。
-	</notification>
-	<notification name="VoiceCallGenericError">
-		[VOICE_CHANNEL_NAME]のボイスチャットに接続時に、エラーが発生しました。後でもう一度お試しください。
-	</notification>
+
+
 	<notification name="UnsupportedCommandSLURL">
 		クリックしたSLurlはサポートされていません。
 	</notification>
@@ -3736,17 +3638,8 @@ Webページにリンクすると、他人がこの場所に簡単にアクセ�
 		モデレーターは、あなたの文字チャットをミュートしました。
 		<usetemplate name="okbutton" yestext="ＯＫ"/>
 	</notification>
-	<notification name="VoiceIsMutedByModerator">
-		モデレーターは、あなたのボイスをミュートしました。
-		<usetemplate name="okbutton" yestext="ＯＫ"/>
-	</notification>
-	<notification name="NearbyVoiceMutedByModerator">
-		モデレーターは、あなたのボイスチャットをミュートしました。
-この場所では、あなたが話しても誰も聞こえません。
-	</notification>
-	<notification name="NearbyVoiceUnmutedByModerator">
-		あなたのボイスチャットは、この場所にいる人々に聞こえるようになりました。
-	</notification>
+
+
 	<notification name="FailedToGetBenefits">
 		残念ながら、このセッションで特典情報を得ることができませんでした。これは通常の本番環境で起こるものではありません。
 恐れ入りますがサポートまでご連絡ください。このセッションが通常通り作動することはありません。再起動することをお勧めします。
@@ -3874,30 +3767,8 @@ Webページにリンクすると、他人がこの場所に簡単にアクセ�
 お使いのネットワークやファイアウォールの設定を確認してください。
 		<usetemplate name="okbutton" yestext="ＯＫ"/>
 	</notification>
-	<notification name="NoVoiceConnect">
-		ボイスサーバーに接続できません：
 
-&lt;nolink&gt;[HOSTID]&lt;/nolink&gt;
 
-音声に対して許可する必要があるポートは次のとおりです。
-TCP：80, 443
-UDP：3478, 3479, 5060, 5062, 6250, 12000-32000
-
-ネットワークとファイアウォールの設定を確認してください。
-ルーターのSIP ALG機能を無効にします。
-
-音声通話は利用できなくなります。
-https://wiki.firestormviewer.org/fs_voice
-		<usetemplate ignoretext="ビューアが音声サーバーに接続できない場合の警告" name="okignore" yestext="ＯＫ"/>
-	</notification>
-	<notification name="NoVoiceConnect-GIAB">
-		ボイスサーバーに接続できません。
-
-ボイスチャットによるコミュニケーションが利用できません。
-お使いのネットワークやファイアウォールの設定を確認してください。
-[https://wiki.firestormviewer.org/fs_voice]
-		<usetemplate name="okbutton" yestext="ＯＫ"/>
-	</notification>
 	<notification name="AvatarRezLeftNotification">
 		（[EXISTENCE]秒経過）
 アバター「[NAME]」は、完全に読み込まれています。
@@ -3963,35 +3834,15 @@ https://wiki.firestormviewer.org/fs_voice
 		<usetemplate ignoretext="ペースト：権限が制限されているテクスチャを適用した" name="notifyignore"/>
 		<usetemplate name="okbutton" yestext="ＯＫ"/>
 	</notification>
-	<notification name="ConfirmLeaveCall">
-		このコールから抜けてもよろしいですか？
-		<usetemplate ignoretext="コールから抜ける前の確認" name="okcancelignore" notext="いいえ" yestext="はい"/>
-	</notification>
-	<notification name="ConfirmLeaveAdhoc">
-		この会話から抜けてもよろしいですか？
-		<usetemplate ignoretext="会話から抜ける前の確認" name="okcancelignore" notext="いいえ" yestext="はい"/>
-	</notification>
-	<notification name="ConfirmMuteAll">
-		グループコールの参加者全員をミュートしました。
-あとからこのコールに参加する住人もミュートされます。
-あなたがコールを終了しても他の参加者のミュート状態が続きます。
 
-全員をミュートしますか？
-		<usetemplate ignoretext="グループコールの参加者全員をミュートする前の確認" name="okcancelignore" notext="キャンセル" yestext="ＯＫ"/>
-	</notification>
+
 	<notification label="チャット" name="HintChat">
 		チャットに参加するには、画面下のチャットフィールドにテキストを入力します。
 	</notification>
 	<notification label="立ち上がる" name="HintSit">
 		座る姿勢から立ち上がるには、「立ち上がる」ボタンをクリックします。
 	</notification>
-	<notification label="話す" name="HintSpeak">
-		「スピーカー」ボタンをクリックすると、マイクのオン／オフが切り替わります。
 
-上矢印をクリックすると、ボイスコントロールパネルが表示されます。
-
-「スピーカー」ボタンを非表示にすると、ボイス機能も無効になります。
-	</notification>
 	<notification label="ワールドを探検" name="HintDestinationGuide">
 		行き先ガイドには数多くの探索場所が含まれます。どこか行きたい場所をみつけたら、テレポートして探索に出かけましょう。
 	</notification>
@@ -4109,10 +3960,7 @@ https://wiki.firestormviewer.org/fs_voice
 		ワールドマップの表示は高度な操作モードでのみ利用できます。終了してモードを変更しますか？モードはログイン画面で選択できます。
 		<usetemplate name="okcancelbuttons" notext="終了しない" yestext="終了"/>
 	</notification>
-	<notification name="NoVoiceCall">
-		ボイスコールは高度な操作モードでのみ利用できます。ログアウトしてモードを変更しますか？
-		<usetemplate name="okcancelbuttons" notext="終了しない" yestext="終了"/>
-	</notification>
+
 	<notification name="NoAvatarShare">
 		共有は高度な操作モードでのみ利用できます。ログアウトしてモードを変更しますか？
 		<usetemplate name="okcancelbuttons" notext="終了しない" yestext="終了"/>

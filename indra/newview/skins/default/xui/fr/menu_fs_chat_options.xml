@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <toggleable_menu name="Chat Options Menu">
 	<menu_item_check label="Afficher le radar" name="nearby_people"/>
-	<menu_item_check label="Afficher les conversations audio à proximité" name="nearby_voice"/>
+
 	<menu_item_check label="Afficher les Éléments ignorés" name="block_list"/>
 	<menu_item_check label="Utiliser le style V1 des entêtes de chat" name="plain_text_chat_history"/>
 	<context_menu label="Taille de la police..." name="font_size">

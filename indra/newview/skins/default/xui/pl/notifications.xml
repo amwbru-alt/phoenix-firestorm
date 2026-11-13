@@ -188,9 +188,7 @@ Wybierz pojedynczy obiekt i spróbuj jeszcze raz.
 		Zapisać wszystkie zmiany dotyczące ubrania/części ciała?
 		<usetemplate canceltext="Anuluj" name="yesnocancelbuttons" notext="Nie zapisuj" yestext="Zapisz"/>
 	</notification>
-	<notification name="FriendsAndGroupsOnly">
-		Osoby spoza listy znajomych nie będą wiedzieć, że zdecydowałeś/aś się ignorować ich rozmowy głosowe i wiadomości IM.
-	</notification>
+
 	<notification name="FavoritesOnLogin">
 		Pamiętaj: kiedy włączysz tą opcję to każdy kto używa tego komputera będzie mógł zobaczyć Twoją listę ulubionych miejsc.
 	</notification>
@@ -2339,9 +2337,7 @@ Zamieścić tą reklamę za [AMOUNT]L$?
 		Klasyfikacja wieku dla tego regionu została zmieniona.
 Może minąć trochę czasu, zanim zmiana będzie odzwierciedlona na mapie.
 	</notification>
-	<notification label="Wersja Niezgodna z Systemem Rozmów" name="VoiceVersionMismatch">
-		Ta wersja [APP_NAME] nie jest kompatybilna z systemem rozmów w tym Regionie. Musisz zainstalować aktualną wersję [APP_NAME] aby komunikacja głosowa działała poprawnie.
-	</notification>
+
 	<notification label="Nie Można Kupić Obiektów" name="BuyObjectOneOwner">
 		Jednorazowo możesz kupować tylko od jednego właściciela.
 Wybierz pojedynczy obiekt i spróbuj jeszcze raz.
@@ -3062,9 +3058,7 @@ Nie możesz tutaj latać.
 	<notification name="PushRestricted">
 		Popychanie niedozwolone. Nie możesz tutaj popychać innych chyba, że jesteś właścicielem tej działki.
 	</notification>
-	<notification name="NoVoice">
-		Ta działka nie pozwala na rozmowy głosowe. Nie będziesz słyszeć, jak ktoś rozmawia.
-	</notification>
+
 	<notification name="NoBuild">
 		Ta działka nie pozwala na budowanie. Nie możesz tworzyć tutaj obiektów.
 	</notification>
@@ -3511,16 +3505,7 @@ Obiekty które tu zbudujesz zostaną usunięte gdy opuścisz ten obszar, a więc
 	<notification name="MaxListSelectMessage">
 		Maksymalnie możesz wybrać [MAX_SELECT] rzeczy z tej listy.
 	</notification>
-	<notification name="VoiceInviteP2P">
-		[NAME] zaprasza Cię do rozmowy głosowej.
-Wybierz Zaakceptuj żeby rozmawiać albo Odmów żeby nie przyjąć zaproszenia.
-Wybierz Zablokuj żeby wyciszyć wszystkie wiadomości od tej osoby.
-		<form name="form">
-			<button name="Accept" text="Zaakceptuj"/>
-			<button name="Decline" text="Odmów"/>
-			<button name="Mute" text="Zablokuj"/>
-		</form>
-	</notification>
+
 	<notification name="AutoUnmuteByIM">
 		Wysłano [NAME] prywatną wiadomość i ta osoba została automatycznie odblokowana.
 	</notification>
@@ -3530,81 +3515,8 @@ Wybierz Zablokuj żeby wyciszyć wszystkie wiadomości od tej osoby.
 	<notification name="AutoUnmuteByInventory">
 		Zaoferowano [NAME] obiekty i ta osoba została automatycznie odblokowana.
 	</notification>
-	<notification name="VoiceInviteGroup">
-		[NAME] zaczyna rozmowę głosową z grupą &lt;nolink&gt;[GROUP]&lt;/nolink&gt;.
-Wybierz Zaakceptuj żeby rozmawiać albo Odmów żeby nie przyjąć zaproszenia.
-Wybierz Zablokuj żeby wyciszyć dzwoniącą osobę.
-		<form name="form">
-			<button name="Accept" text="Zaakceptuj"/>
-			<button name="Decline" text="Odmów"/>
-			<button name="Mute" text="Zablokuj"/>
-		</form>
-	</notification>
-	<notification name="VoiceInviteAdHoc">
-		[NAME] zaczyna konferencję głosową.
-Wybierz Zaakceptuj żeby rozmawiać albo Odmów żeby nie przyjąć zaproszenia.
-Wybierz Zablokuj żeby wyciszyć dzwoniącą osobę.
-		<form name="form">
-			<button name="Accept" text="Zaakceptuj"/>
-			<button name="Decline" text="Odmów"/>
-			<button name="Mute" text="Zablokuj"/>
-		</form>
-	</notification>
-	<notification name="InviteAdHoc">
-		[NAME] zaprasza Cię do konferencji poprzez Czat/IM.
-Wybierz Zaakceptuj żeby zacząć czat albo Odmów żeby nie przyjąć zaproszenia.
-Wybierz Zablokuj żeby wyciszyć tą osobę.
-		<form name="form">
-			<button name="Accept" text="Zaakceptuj"/>
-			<button name="Decline" text="Odmów"/>
-			<button name="Mute" text="Zablokuj"/>
-		</form>
-	</notification>
-	<notification name="VoiceChannelFull">
-		Rozmowa w której chcesz uczestniczyć, [VOICE_CHANNEL_NAME], nie akceptuje więcej rozmówców. Spróbuj później.
-	</notification>
-	<notification name="ProximalVoiceChannelFull">
-		Przepraszamy. Limit rozmów został przekroczony w tym obszarze. Spróbuj w innym miejscu.
-	</notification>
-	<notification name="VoiceChannelDisconnected">
-		[VOICE_CHANNEL_NAME] odłączył się. Przełączanie do rozmowy w czacie w pobliżu.
-	</notification>
-	<notification name="VoiceChannelDisconnectedP2P">
-		[VOICE_CHANNEL_NAME] skończył rozmowę. Przełączanie do rozmowy w czacie w pobliżu.
-	</notification>
-	<notification name="P2PCallDeclined">
-		[VOICE_CHANNEL_NAME] odmówił połączenia. Przełączanie do rozmowy w czacie w pobliżu.
-	</notification>
-	<notification name="P2PCallNoAnswer">
-		[VOICE_CHANNEL_NAME] nie odpowiada. Przełączanie do rozmowy w czacie w pobliżu.
-	</notification>
-	<notification name="VoiceChannelJoinFailed">
-		Brak połączenia z [VOICE_CHANNEL_NAME], spróbuj później. Przełączanie do rozmowy w czacie w pobliżu.
-	</notification>
-	<notification name="VoiceEffectsExpired">
-		Subskrypcja jednego lub więcej Przekształceń Głosu wygasła.
-[[URL] Kliknij tutaj] oby odnowić subskrypcję.
-Jeśli jesteś użytkownikiem premium, to [[PREMIUM_URL] kliknij tutaj] aby otrzymać swój perk Przekształceń Głosu.
-	</notification>
-	<notification name="VoiceEffectsExpiredInUse">
-		Czas aktywności Przekształcenia Głosu wygasł, normalne ustawienia Twojego głosu zostały zastosowane.
-[[URL] Kliknij tutaj] aby odnowić subskrypcję.
-Jeśli jesteś użytkownikiem premium, to [[PREMIUM_URL] kliknij tutaj] aby otrzymać swój perk Przekształceń Głosu.
-	</notification>
-	<notification name="VoiceEffectsWillExpire">
-		Jedno lub więcej z Twoich Przekształceń Głosu wygaśnie za mniej niż [INTERVAL] dni.
-[[URL] Kliknij tutaj] aby odnowić subskrypcję.
-Jeśli jesteś użytkownikiem premium, to [[PREMIUM_URL] kliknij tutaj] aby otrzymać swój perk Przekształceń Głosu.
-		<usetemplate ignoretext="Ostrzegaj mnie o wygasaniu Przekształcania Głosu" name="okignore" />
-	</notification>
-	<notification name="VoiceEffectsNew">
-		Nowe Przekształcenia Głosu są dostępne!
-	</notification>
-	<notification name="VoiceEffectsNotSupported">
-		Ta przeglądarka nie obsługuje funkcji Przekształcania Głosu.
-Aby uzyskać więcej informacji na temat innych narzędzi do przekształcania głosu, zapoznaj się z [[FAQ_URL] tym artykułem].
-		<usetemplate ignoretext="Ostrzegaj mnie, że Przekształcanie Głosu nie jest obsługiwane" name="okignore" />
-	</notification>
+
+
 	<notification name="Cannot enter parcel: not a group member">
 		Nie masz dostępu do działki, nie należysz do właściwej grupy.
 	</notification>
@@ -3614,12 +3526,8 @@ Aby uzyskać więcej informacji na temat innych narzędzi do przekształcania g�
 	<notification name="Cannot enter parcel: not on access list">
 		Nie masz dostępu do działki, nie jesteś na liście dostępu.
 	</notification>
-	<notification name="VoiceNotAllowed">
-		Nie masz pozwolenia na połączenie z rozmową [VOICE_CHANNEL_NAME].
-	</notification>
-	<notification name="VoiceCallGenericError">
-		Błąd podczas łączenia z rozmową [VOICE_CHANNEL_NAME]. Spróbuj później.
-	</notification>
+
+
 	<notification name="UnsupportedCommandSLURL">
 		Wybrany SLurl nie jest obsługiwany.
 	</notification>
@@ -3684,16 +3592,8 @@ to ustawienie lub wybrać inną nazwę.
 	<notification name="TextChatIsMutedByModerator">
 		Twój czat został wyciszony przez moderatora.
 	</notification>
-	<notification name="VoiceIsMutedByModerator">
-		Twoja rozmowa głosowa została wyciszona przez moderatora.
-	</notification>
-	<notification name="NearbyVoiceMutedByModerator">
-		Moderator wyciszył Twój czat głosowy.
-Osoby w tej lokalizacji nie usłyszą Cię, jeśli będziesz mówić.
-	</notification>
-	<notification name="NearbyVoiceUnmutedByModerator">
-		Twój czat głosowy mogą teraz usłyszeć osoby w tym miejscu.
-	</notification>
+
+
 	<notification name="FailedToGetBenefits">
 		Niestety nie udało nam się uzyskać informacji o korzyściach dla tej sesji. Nie powinno się to zdarzyć w normalnym środowisku produkcyjnym. Skontaktuj się z pomocą techniczną. Ta sesja nie będzie działać normalnie i zalecamy restart.
 	</notification>
@@ -3816,29 +3716,8 @@ Awatar &apos;[NAME]&apos; opuścił edycję wyglądu.
 		Występuje problem z połączeniem [PROTOCOL] &lt;nolink&gt;[HOSTID]&lt;/nolink&gt;.
 Proszę sprawdź swoją sieć i ustawienia firewall.
 	</notification>
-	<notification name="NoVoiceConnect">
-		Nie możemy połączyć się z serwerem głosowym:
 
-&lt;nolink&gt;[HOSTID]&lt;/nolink&gt;
 
-Porty, które muszą być otwarte dla połączeń głosowych, to:
-:TCP: 80, 443
-:UDP: 3478, 3479, 5060, 5062, 6250, 12000-32000
-
-Proszę sprawdź swoją sieć i ustawienia firewall.
-Wyłącz wszelkie funkcjonalności SIP ALG (Application Layer Gateway) w swoim routerze.
-
-https://wiki.firestormviewer.org/fs_voice
-		<usetemplate name="okignore" ignoretext="Ostrzegaj mnie, gdy przeglądarka nie może połączyć się z serwerem głosu" />
-	</notification>
-	<notification name="NoVoiceConnect-GIAB">
-		Występuje problem z Twoim połączeniem głosowym.
-
-Komunikacja głosowa nie będzie dostępna.
-Proszę sprawdź swoją sieć i ustawienia firewall.
-
-[https://wiki.firestormviewer.org/fs_voice]
-	</notification>
 	<notification name="AvatarRezLeftNotification">
 		( [EXISTENCE] sekund w ForMe.World)
 Awatar &apos;[NAME]&apos; pozostał w pełni załadowany.
@@ -3899,35 +3778,15 @@ Wstępnie przetworzone tekstury [RESOLUTION] zostały lokalnie zaktualizowane dl
 		Zastosowano teksturę z ograniczonymi uprawnieniami, obiekt odziedziczy więc te uprawnienia.
 		<usetemplate ignoretext="Wklejanie: zastosowano teksturę z ograniczonymi uprawnieniami" name="notifyignore" />
 	</notification>
-	<notification name="ConfirmLeaveCall">
-		Czy jesteś pewien/pewna, że chcesz zakończyć rozmowę?
-		<usetemplate ignoretext="Potwierdź zanim rozmowa głosowa zostanie zakończona" name="okcancelignore" notext="Nie" yestext="Tak"/>
-	</notification>
-	<notification name="ConfirmLeaveAdhoc">
-		Czy na pewno chcesz opuścić tę konferencję?
-		<usetemplate ignoretext="Potwierdzaj przed opuszczeniem konferencji" name="okcancelignore" notext="Nie" yestext="Tak" />
-	</notification>
-	<notification name="ConfirmMuteAll">
-		Wybrano wyciszenie wszystkich uczestników rozmowy głosowej w grupie.
-To spowoduje również wyciszenie wszystkich Rezydentów, którzy dołączą później
-do rozmowy nawet, jeśli ją zakończysz.
 
-Wyciszyć wszystkich?
-		<usetemplate ignoretext="Potwierdź zanim zostaną wyciszeni wszyscy uczestnicy rozmowy głosowej w grupie" name="okcancelignore" notext="Anuluj" />
-	</notification>
+
 	<notification label="Czat" name="HintChat">
 		W celu przyłączenia się do rozmowy zacznij pisać w poniższym polu czatu.
 	</notification>
 	<notification label="Wstań" name="HintSit">
 		Aby wstać i opuścić pozycję siedzącą, kliknij przycisk Wstań.
 	</notification>
-	<notification label="Mów" name="HintSpeak">
-		Kliknij na przycisku &quot;Mów&quot; aby włączyć i wyłączyć Twój mikrofon.
 
-Kliknij w strzałkę aby zobaczyć panel kontroli głosu.
-
-Ukrycie przycisku &quot;Mów&quot; zdezaktywuje głos.
-	</notification>
 	<notification label="Odkrywaj Świat" name="HintDestinationGuide">
 		Cele podróży (Destination Guide) zawierają tysiące nowych miejsc do odkrycia. Wybierz lokalizację i teleportuj się, aby rozpocząć zwiedzanie.
 	</notification>
@@ -4033,10 +3892,7 @@ Zmienić tryb i wyłączyć program?
 		Oglądanie mapy świata jest możliwe tylko w trybie zaawansowanym. Czy chcesz się wylogować i zmienić tryb? Opcja wyboru trybu życia jest widoczna na ekranie logowania.
 		<usetemplate name="okcancelbuttons" notext="Nie zamykaj" yestext="Zamknij"/>
 	</notification>
-	<notification name="NoVoiceCall">
-		Rozmowy głosowe są możliwe tylko w trybie zaawansowanym. Czy chcesz wylogować się i zmienić tryb? Opcja wyboru trybu życia jest widoczna na ekranie logowania.
-		<usetemplate name="okcancelbuttons" notext="Nie zamykaj" yestext="Zamknij"/>
-	</notification>
+
 	<notification name="NoAvatarShare">
 		Udostępnienie jest możliwe tylko w trybie zaawansowanym. Czy chcesz wylogować się i zmienić tryb? Opcja wyboru trybu życia jest widoczna na ekranie logowania.
 		<usetemplate name="okcancelbuttons" notext="Nie zamykaj" yestext="Zamknij"/>
@@ -5773,7 +5629,6 @@ Nazwa zostanie zweryfikowana przed zapisaniem przypisania.
 			<button name="Cancel" text="Anuluj" />
 		</form>
 	</notification>
-
 
 
 	<notification name="FSWearableFavoritesNewFolder">

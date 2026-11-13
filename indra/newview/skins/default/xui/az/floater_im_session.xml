@@ -4,8 +4,8 @@
 	<floater.string name="multiple_participants_added" value="[NAME] dəvət edildilər."/>
 	<floater.string name="tooltip_to_separate_window" value="Bu söhbəti ayrı bir pəncərədə aç"/>
 	<floater.string name="tooltip_to_main_window" value="Bu söhbəti əsas pəncərəyə daşı"/>
-	<floater.string name="start_call_button_tooltip" value="Səsli bağlantını aç"/>
-	<floater.string name="end_call_button_tooltip" value="Səsli bağlantını bağla"/>
+
+
 	<floater.string name="expcol_button_not_tearoff_tooltip" value="Bu paneli qapalı şəkildə göstər"/>
 	<floater.string name="expcol_button_tearoff_and_expanded_tooltip" value="İştirakçılar siyahısını qapalı şəkildə göstər"/>
 	<floater.string name="expcol_button_tearoff_and_collapsed_tooltip" value="İştirakçılar siyahısını açıq şəkildə göstər"/>
@@ -15,7 +15,7 @@
 				<menu_button name="view_options_btn" tool_tip="Baxış/sıralama seçimləri"/>
 				<menu_button name="gear_btn" tool_tip="Seçilmiş əhalinin əməliyyatları"/>
 				<button name="add_btn" tool_tip="Bu söhbətə iştirakçı əlavə et"/>
-				<button name="voice_call_btn" tool_tip="Səsli bağlantını aç"/>
+
 				<button name="close_btn" tool_tip="Bu söhbəti bağla"/>
 				<button name="expand_collapse_btn" tool_tip="Bu paneli açığa və ya qapalı şəkildə göstər"/>
 			</layout_panel>

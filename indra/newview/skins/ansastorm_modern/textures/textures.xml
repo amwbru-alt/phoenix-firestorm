@@ -147,7 +147,6 @@
 	<texture name="Inv_MaterialsOpen" file_name="forme_ui/Icons.png" preload="true" clip.left="708" clip.right="724" clip.top="764" clip.bottom="748" />
 
 	
-  
 	<texture name="Inv_FolderClosed" file_name="forme_ui/Icons.png" preload="true" clip.left="772" clip.right="788" clip.top="828" clip.bottom="812" />
   
 	<texture name="Inv_FolderOpen" file_name="forme_ui/Icons.png" preload="true" clip.left="900" clip.right="916" clip.top="828" clip.bottom="812" />
@@ -183,16 +182,15 @@
 	<texture name="Parcel_PushNo_Dark"		file_name="legacy/status_no_push.tga" />
 	<texture name="Parcel_Scripts_Dark"		file_name="legacy/status_scripts.png" />
 	<texture name="Parcel_ScriptsNo_Dark"	file_name="legacy/status_no_scripts.tga" />
-	<texture name="Parcel_Voice_Dark"		file_name="legacy/status_voice.png" />
-	<texture name="Parcel_VoiceNo_Dark"		file_name="legacy/status_no_voice.png" />
+
 	
 	<texture name="Parcel_BuildNo_Light"	file_name="legacy/status_no_build.tga" />
 	<texture name="Parcel_FlyNo_Light"		file_name="legacy/status_no_fly.tga" />
 	<texture name="Parcel_ForSale_Light"	file_name="legacy/status_buy_land.tga" />
 	<texture name="Parcel_PushNo_Light"		file_name="legacy/status_no_push.tga" />
 	<texture name="Parcel_ScriptsNo_Light"	file_name="legacy/status_no_scripts.tga" />
-	<texture name="Parcel_Voice_Light"		file_name="legacy/status_voice.png" />
-	<texture name="Parcel_VoiceNo_Light"	file_name="legacy/status_no_voice.png" />
+
+
 	<texture name="Parcel_SeeAVsOff_Dark"	file_name="legacy/status_SeeAVsOff.tga" />
 
 	<texture name="Pathfinding_Dirty_Light" file_name="legacy/Pathfinding_Dirty_Light.png" preload="false" />
@@ -216,11 +214,6 @@
 	<texture name="avatar_in_region"		file_name="icons/green_square.png" preload="true" />
 	<texture name="avatar_on_parcel"		file_name="icons/green_yellow_square.png" preload="false" />
 
-	<texture name="Radar_VoicePTT_Lvl1"		file_name="icons/Radar_Voice_Lvl1.png" preload="false" />
-	<texture name="Radar_VoicePTT_Lvl2"		file_name="icons/Radar_Voice_Lvl2.png" preload="false" />
-	<texture name="Radar_VoicePTT_Lvl3"		file_name="icons/Radar_Voice_Lvl3.png" preload="false" />
-	<texture name="Radar_VoicePTT_Off"		file_name="icons/Radar_Voice_Off.png" preload="false" />
-	<texture name="Radar_VoicePTT_On"		file_name="icons/Radar_Voice_On.png" preload="false" />
 
 	<!-- Flat UI override -->
 	<texture name="PushButton_Selected" file_name="forme_round/Accent.png" preload="true" scale.left="24" scale.top="40" scale.right="40" scale.bottom="24" />
@@ -234,6 +227,4 @@
 	<texture name="Toolbar_Right_IM_Unselected" file_name="forme_round/Button.png" preload="false" scale.left="24" scale.right="40" scale.top="40" scale.bottom="24" />
 
 
-
-  
 </textures>

@@ -449,12 +449,8 @@
 			</text>
 			<check_box label="任何人" name="all av sound check" />
 			<check_box label="群組" name="group av sound check" />
-			<text name="Voice settings:">
-				語音：
-			</text>
-			<check_box label="啟用語音" name="parcel_enable_voice_channel" />
-			<check_box label="啟用聲音（由領地所確立）" name="parcel_enable_voice_channel_is_estate_disabled" />
-			<check_box label="將聲音限制於此地塊" name="parcel_enable_voice_channel_local" />
+
+
 			<text name="media">
 				媒體：
 			</text>

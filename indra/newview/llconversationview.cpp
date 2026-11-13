@@ -51,33 +51,6 @@ static LLDefaultChildRegistry::Register<LLConversationViewSession> r_conversatio
 
 const LLColor4U DEFAULT_WHITE(255, 255, 255);
 
-class LLNearbyVoiceClientStatusObserver : public LLVoiceClientStatusObserver
-{
-public:
-
-    LLNearbyVoiceClientStatusObserver(LLConversationViewSession* conv)
-    :   conversation(conv)
-    {}
-
-    virtual void onChange(EStatusType status, const LLSD& channelInfo, bool proximal)
-    {
-        bool voice_enabled = LLVoiceClient::getInstance()->voiceEnabled() && LLVoiceClient::getInstance()->isVoiceWorking();
-        conversation->showVoiceIndicator(conversation
-            && status != STATUS_JOINING
-            && status != STATUS_LEFT_CHANNEL
-            && voice_enabled);
-
-        static bool s_voice_enabled(false);
-        if (s_voice_enabled != voice_enabled)
-        {
-            s_voice_enabled = voice_enabled;
-            conversation->updateConversationIndicators();
-        }
-    }
-
-private:
-    LLConversationViewSession* conversation;
-};
 
 LLConversationViewSession::Params::Params() :
     container()
@@ -87,13 +60,12 @@ LLConversationViewSession::LLConversationViewSession(const LLConversationViewSes
     LLFolderViewFolder(p),
     mContainer(p.container),
     mItemPanel(NULL),
-    mCallIconLayoutPanel(NULL),
     mSessionTitle(NULL),
-    mSpeakingIndicator(NULL),
-    mVoiceClientObserver(NULL),
+
+
     mCollapsedMode(false),
     mHasArrow(true),
-    mIsInActiveVoiceChannel(false),
+
     mFlashStateOn(false),
     mFlashStarted(false),
     mIsAltFlashColor(false)
@@ -104,13 +76,7 @@ LLConversationViewSession::LLConversationViewSession(const LLConversationViewSes
 
 LLConversationViewSession::~LLConversationViewSession()
 {
-    mActiveVoiceChannelConnection.disconnect();
 
-    if (mVoiceClientObserver)
-    {
-        LLVoiceClient::removeObserver(mVoiceClientObserver);
-        delete mVoiceClientObserver;
-    }
 
     mFlashTimer->unset();
     delete mFlashTimer;
@@ -227,11 +193,9 @@ bool LLConversationViewSession::postBuild()
     }
     addChild(mItemPanel);
 
-    mCallIconLayoutPanel = mItemPanel->getChild<LLPanel>("call_icon_panel");
+
     mSessionTitle = mItemPanel->getChild<LLTextBox>("conversation_title");
 
-    mActiveVoiceChannelConnection = LLVoiceChannel::setCurrentVoiceChannelChangedCallback(boost::bind(&LLConversationViewSession::onCurrentVoiceSessionChanged, this, _1));
-    mSpeakingIndicator = getChild<LLOutputMonitorCtrl>("speaking_indicator");
 
     LLConversationItem* vmi = dynamic_cast<LLConversationItem*>(getViewModelItem());
     if (vmi)
@@ -247,7 +211,7 @@ bool LLConversationViewSession::postBuild()
                 LLAvatarIconCtrl* icon = mItemPanel->getChild<LLAvatarIconCtrl>("avatar_icon");
                 icon->setVisible(true);
                 icon->setValue(session->mOtherParticipantID);
-                mSpeakingIndicator->setSpeakerId(session->mOtherParticipantID, session->mSessionID, true);
+
                 mHasArrow = false;
             }
             break;
@@ -256,7 +220,7 @@ bool LLConversationViewSession::postBuild()
         {
             LLGroupIconCtrl* icon = mItemPanel->getChild<LLGroupIconCtrl>("group_icon");
             icon->setVisible(true);
-            mSpeakingIndicator->setSpeakerId(gAgentID, vmi->getUUID(), true);
+
             break;
         }
         case LLConversationItem::CONV_SESSION_GROUP:
@@ -264,23 +228,14 @@ bool LLConversationViewSession::postBuild()
             LLGroupIconCtrl* icon = mItemPanel->getChild<LLGroupIconCtrl>("group_icon");
             icon->setVisible(true);
             icon->setValue(vmi->getUUID());
-            mSpeakingIndicator->setSpeakerId(gAgentID, vmi->getUUID(), true);
+
             break;
         }
         case LLConversationItem::CONV_SESSION_NEARBY:
         {
             LLIconCtrl* icon = mItemPanel->getChild<LLIconCtrl>("nearby_chat_icon");
             icon->setVisible(true);
-            mSpeakingIndicator->setSpeakerId(gAgentID, LLUUID::null, true);
-            mIsInActiveVoiceChannel = true;
 
-                if (mVoiceClientObserver)
-                {
-                LLVoiceClient::removeObserver(mVoiceClientObserver);
-                    delete mVoiceClientObserver;
-                }
-                mVoiceClientObserver = new LLNearbyVoiceClientStatusObserver(this);
-            LLVoiceClient::addObserver(mVoiceClientObserver);
 
             break;
         }
@@ -369,8 +324,7 @@ bool LLConversationViewSession::handleMouseUp( S32 x, S32 y, MASK mask )
 {
     bool result = LLFolderViewFolder::handleMouseUp(x, y, mask);
 
-    LLFloater* volume_floater = LLFloaterReg::findInstance("floater_voice_volume");
-    LLFloater* chat_volume_floater = LLFloaterReg::findInstance("chat_voice");
+
     if (result
         && getRoot() && (getRoot()->getCurSelectedItem() == this)
         && !(volume_floater && volume_floater->isShown() && volume_floater->hasFocus())
@@ -496,11 +450,6 @@ LLConversationViewParticipant* LLConversationViewSession::findParticipant(const 
     return (iter == getItemsEnd() ? NULL : participant);
 }
 
-void LLConversationViewSession::showVoiceIndicator(bool visible)
-{
-    mCallIconLayoutPanel->setVisible(visible && LLVoiceChannel::getCurrentVoiceChannel()->getSessionID().isNull());
-    requestArrange();
-}
 
 void LLConversationViewSession::refresh()
 {
@@ -522,9 +471,8 @@ void LLConversationViewSession::refresh()
     }
 
     // Update all speaking indicators
-    LLSpeakingIndicatorManager::updateSpeakingIndicators();
 
-    updateConversationIndicators();
+
 
     requestArrange();
     if (vmi)
@@ -534,44 +482,8 @@ void LLConversationViewSession::refresh()
     }
 }
 
-void LLConversationViewSession::updateConversationIndicators()
-{
-    bool is_active_channel = isInActiveVoiceChannel();
 
-    // we should show indicator for specified voice session only if this is current channel. EXT-5562.
-    if (mSpeakingIndicator)
-    {
-        mSpeakingIndicator->setIsActiveChannel(is_active_channel);
-        mSpeakingIndicator->setShowParticipantsSpeaking(is_active_channel);
-    }
 
-    LLConversationViewParticipant* participant = NULL;
-    items_t::const_iterator iter;
-    for (iter = getItemsBegin(); iter != getItemsEnd(); iter++)
-    {
-        participant = dynamic_cast<LLConversationViewParticipant*>(*iter);
-        if (participant)
-        {
-            participant->allowSpeakingIndicator(is_active_channel);
-        }
-    }
-}
-
-void LLConversationViewSession::onCurrentVoiceSessionChanged(const LLUUID& session_id)
-{
-    LLConversationItem* vmi = dynamic_cast<LLConversationItem*>(getViewModelItem());
-
-    if (vmi)
-    {
-        bool old_value = mIsInActiveVoiceChannel;
-        mIsInActiveVoiceChannel = vmi->getUUID() == session_id;
-        mCallIconLayoutPanel->setVisible(isInActiveVoiceChannel() && !LLVoiceChannel::isSuspended());
-        if (old_value != mIsInActiveVoiceChannel)
-        {
-            refresh();
-        }
-    }
-}
 
 bool LLConversationViewSession::highlightFriendTitle(LLConversationItem* vmi)
 {
@@ -589,12 +501,6 @@ bool LLConversationViewSession::highlightFriendTitle(LLConversationItem* vmi)
     return false;
 }
 
-bool LLConversationViewSession::isInActiveVoiceChannel()
-{
-    return mIsInActiveVoiceChannel &&
-           LLVoiceClient::getInstance()->voiceEnabled() &&
-           LLVoiceClient::getInstance()->isVoiceWorking();
-}
 
 //
 // Implementation of conversations list participant (avatar) widgets
@@ -608,22 +514,21 @@ LLConversationViewParticipant::Params::Params() :
 container(),
 participant_id(),
 avatar_icon("avatar_icon"),
-info_button("info_button"),
-output_monitor("output_monitor")
+info_button("info_button")
 {}
 
 LLConversationViewParticipant::LLConversationViewParticipant( const LLConversationViewParticipant::Params& p ):
     LLFolderViewItem(p),
     mAvatarIcon(NULL),
     mInfoBtn(NULL),
-    mSpeakingIndicator(NULL),
+
     mUUID(p.participant_id)
 {
 }
 
 LLConversationViewParticipant::~LLConversationViewParticipant()
 {
-    mActiveVoiceChannelConnection.disconnect();
+
 }
 
 void LLConversationViewParticipant::initFromParams(const LLConversationViewParticipant::Params& params)
@@ -638,10 +543,7 @@ void LLConversationViewParticipant::initFromParams(const LLConversationViewParti
     LLButton * button = LLUICtrlFactory::create<LLButton>(info_button_params);
     addChild(button);
 
-    LLOutputMonitorCtrl::Params output_monitor_params(params.output_monitor());
-    applyXUILayout(output_monitor_params, this);
-    LLOutputMonitorCtrl * outputMonitor = LLUICtrlFactory::create<LLOutputMonitorCtrl>(output_monitor_params);
-    addChild(outputMonitor);
+
 }
 
 bool LLConversationViewParticipant::postBuild()
@@ -652,7 +554,6 @@ bool LLConversationViewParticipant::postBuild()
     mInfoBtn->setClickedCallback(boost::bind(&LLConversationViewParticipant::onInfoBtnClick, this));
     mInfoBtn->setVisible(false);
 
-    mSpeakingIndicator = getChild<LLOutputMonitorCtrl>("speaking_indicator");
 
     if (!sStaticInitialized)
     {
@@ -713,7 +614,7 @@ void LLConversationViewParticipant::draw()
     LLConversationItemParticipant* participant_model = dynamic_cast<LLConversationItemParticipant*>(getViewModelItem());
     if (participant_model)
     {
-        mSpeakingIndicator->setIsModeratorMuted(participant_model->isModeratorMuted());
+
     }
 
     drawHighlight(show_context, mIsSelected, sHighlightBgColor, sFlashBgColor, sFocusOutlineColor, sMouseOverColor);
@@ -751,7 +652,7 @@ void LLConversationViewParticipant::refresh()
         participant_model->resetRefresh();
 
         // *TODO: We should also do something with vmi->isModerator() to echo that state in the UI somewhat
-        mSpeakingIndicator->setIsModeratorMuted(participant_model->isModeratorMuted());
+
 
         // Do the regular upstream refresh
         LLFolderViewItem::refresh();
@@ -775,7 +676,7 @@ void LLConversationViewParticipant::addToFolder(LLFolderViewFolder* folder)
         LLConversationViewSession* session = dynamic_cast<LLConversationViewSession*>(prnt);
         if (session)
         {
-            allowSpeakingIndicator(session->isInActiveVoiceChannel());
+
         }
     }
 }
@@ -786,7 +687,7 @@ void LLConversationViewParticipant::addToSession(const LLUUID& session_id)
     mAvatarIcon->setValue(mUUID);
 
     //Allows the speaker indicator to be activated based on the user and conversation
-    mSpeakingIndicator->setSpeakerId(mUUID, session_id);
+
 }
 
 void LLConversationViewParticipant::onInfoBtnClick()
@@ -839,14 +740,14 @@ S32 LLConversationViewParticipant::getLabelXPos()
 void LLConversationViewParticipant::initChildrenWidths(LLConversationViewParticipant* self)
 {
     //speaking indicator width + padding
-    S32 speaking_indicator_width = self->getRect().getWidth() - self->mSpeakingIndicator->getRect().mLeft;
+
 
     //info btn width + padding
-    S32 info_btn_width = self->mSpeakingIndicator->getRect().mLeft - self->mInfoBtn->getRect().mLeft;
+
 
     S32 index = ALIC_COUNT;
-    sChildrenWidths[--index] = info_btn_width;
-    sChildrenWidths[--index] = speaking_indicator_width;
+
+
     llassert(index == 0);
 }
 
@@ -891,7 +792,7 @@ LLView* LLConversationViewParticipant::getItemChildView(EAvatarListItemChildInde
     switch (child_view_index)
     {
         case ALIC_SPEAKER_INDICATOR:
-            child_view = mSpeakingIndicator;
+
             break;
         case ALIC_INFO_BUTTON:
             child_view = mInfoBtn;
@@ -906,10 +807,6 @@ LLView* LLConversationViewParticipant::getItemChildView(EAvatarListItemChildInde
     return child_view;
 }
 
-void LLConversationViewParticipant::allowSpeakingIndicator(bool val)
-{
-    mSpeakingIndicator->setIsActiveChannel(val);
-}
 
 // EOF
 

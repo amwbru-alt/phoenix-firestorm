@@ -202,10 +202,6 @@
 		 width="150" />
 
 
-
-
-
-
 		<button
 		 label="Adjust proxy settings"
 		 follows="left|top"
@@ -219,7 +215,6 @@
 			<button.commit_callback
 			  function="Pref.Proxy" />
 		</button>
-		
 		
 
     </panel>

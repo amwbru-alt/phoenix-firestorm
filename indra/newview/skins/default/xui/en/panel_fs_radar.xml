@@ -181,11 +181,7 @@
 							 name="name"
 							 tool_tip="[TOTAL] avatars, [IN_REGION] in the same region, [IN_CHAT_RANGE] in chat range"
 							 dynamic_width="true"/>
-							<radar_list.columns
-							 label=""
-							 name="voice_level"
-							 tool_tip="Is talking on voice"
-							 width="20"/>
+
 							<radar_list.columns
 							 label=""
 							 name="in_region"

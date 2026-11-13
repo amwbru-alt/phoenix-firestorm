@@ -9,12 +9,8 @@
 	<rows name="toggle_enable_media">
 		<columns name="lst_action" value="Bütün multimediyanı başlat/dayandır"/>
 	</rows>
-	<rows name="voice_follow_key">
-		<columns name="lst_action" value="Səs"/>
-	</rows>
-	<rows name="toggle_voice">
-		<columns name="lst_action" value="Səsi dəyişdir"/>
-	</rows>
+
+
 	<rows name="start_chat">
 		<columns name="lst_action" value="Çatı başlat"/>
 	</rows>

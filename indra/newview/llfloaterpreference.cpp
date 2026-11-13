@@ -68,7 +68,6 @@
 //#include "llpanellogin.h"
 #include "fspanellogin.h"
 // </FS:Ansariel> [FS Login Panel]
-#include "llpanelvoicedevicesettings.h"
 #include "llradiogroup.h"
 #include "llsearchcombobox.h"
 #include "llsky.h"
@@ -166,10 +165,6 @@
 char const* const VISIBILITY_DEFAULT = "default";
 char const* const VISIBILITY_HIDDEN = "hidden";
 
-//control value for middle mouse as talk2push button
-//const static std::string MIDDLE_MOUSE_CV = "MiddleMouse"; // for voice client and redability
-//const static std::string MOUSE_BUTTON_4_CV = "MouseButton4";
-//const static std::string MOUSE_BUTTON_5_CV = "MouseButton5";
 
 /// This must equal the maximum value set for the IndirectMaxComplexity slider in panel_preferences_graphics1.xml
 static const U32 INDIRECT_MAX_ARC_OFF = 101; // all the way to the right == disabled
@@ -587,8 +582,7 @@ LLFloaterPreference::LLFloaterPreference(const LLSD& key)
     mCommitCallbackRegistrar.add("Pref.ResetSoundCache",                boost::bind(&LLFloaterPreference::onClickResetSoundCache, this));
     // </FS:Ansariel>
 
-    // <FS:Ansariel> FIRE-2912: Reset voice button
-    mCommitCallbackRegistrar.add("Pref.ResetVoice",                     boost::bind(&LLFloaterPreference::onClickResetVoice, this));
+
 }
 
 void LLFloaterPreference::processProperties( void* pData, EAvatarProcessorType type )
@@ -655,6 +649,12 @@ void LLFloaterPreference::saveAvatarPropertiesCoro(const std::string cap_url, bo
 
 bool LLFloaterPreference::postBuild()
 {
+    if (LLUICtrl* text_policy = findChild<LLUICtrl>("im_friends_only_check"))
+    {
+        text_policy->setControlVariable(gSavedPerAccountSettings.getControl("IMFriendsOnly"));
+        text_policy->setEnabled(gAgentID.notNull());
+    }
+
     getChild<LLTabContainer>("pref core")->setCommitCallback([this](LLUICtrl*, const LLSD&) {
         auto* current = getChild<LLTabContainer>("pref core")->getCurrentPanel();
         for (const auto& name : {"general", "display", "audio", "controls", "forme_interface", "im"})
@@ -1130,6 +1130,8 @@ void LLFloaterPreference::cancel(const std::vector<std::string> settings_to_skip
 
 void LLFloaterPreference::onOpen(const LLSD& key)
 {
+    if (LLUICtrl* text_policy = findChild<LLUICtrl>("im_friends_only_check")) text_policy->setEnabled(gAgentID.notNull());
+
     if (auto* compact = findChild<LLCheckBoxCtrl>("forme_compact_header"))
         compact->setValue(!gSavedSettings.getBOOL("ForMeShowFullMenu"));
 
@@ -1758,7 +1760,6 @@ void LLFloaterPreference::onNotificationsChange(const std::string& OptionName)
 }
 
 
-
 // <FS:CR> FIRE-1332 - Sepeate opacity settings for nametag and console chat
 
 // </FS:CR>
@@ -1857,36 +1858,7 @@ void LLFloaterPreference::onClickResetSoundCache()
 }
 // </FS:Ansariel>
 
-// <FS:Ansariel> FIRE-2912: Reset voice button
-class FSResetVoiceTimer : public LLEventTimer
-{
-public:
-    FSResetVoiceTimer() : LLEventTimer(5.f) { }
-    ~FSResetVoiceTimer() { }
 
-    bool tick()
-    {
-        gSavedSettings.setBOOL("EnableVoiceChat", true);
-        LLFloaterPreference* floater = LLFloaterReg::findTypedInstance<LLFloaterPreference>("preferences");
-        if (floater)
-        {
-            floater->childSetEnabled("enable_voice_check", true);
-            floater->childSetEnabled("enable_voice_check_volume", true);
-        }
-        return true;
-    }
-};
-
-void LLFloaterPreference::onClickResetVoice()
-{
-    if (gSavedSettings.getBOOL("EnableVoiceChat") && !gSavedSettings.getBOOL("CmdLineDisableVoice"))
-    {
-        gSavedSettings.setBOOL("EnableVoiceChat", false);
-        childSetEnabled("enable_voice_check", false);
-        childSetEnabled("enable_voice_check_volume", false);
-        new FSResetVoiceTimer();
-    }
-}
 // </FS:Ansariel>
 
 // Performs a wipe of the local settings dir on next restart
@@ -2696,8 +2668,7 @@ void LLFloaterPreference::setPersonalInfo(const std::string& visibility, bool im
     // <FS:Ansariel> Clear Cache button actually clears per-account cache items
     getChildView("clear_webcache")->setEnabled(true);
 
-    getChild<LLUICtrl>("voice_call_friends_only_check")->setEnabled(true);
-    getChild<LLUICtrl>("voice_call_friends_only_check")->setValue(gSavedPerAccountSettings.getBOOL("VoiceCallsFriendsOnly"));
+
 }
 
 void LLFloaterPreference::refreshUI()
@@ -3117,15 +3088,8 @@ void LLFloaterPreference::onLogChatHistorySaved()
 void LLFloaterPreference::updateUISoundsControls()
 {
 #ifdef OPENSIM
-    // <FS:Beq> OpenSim has option to not attenuate nearby local voice by distance
-    auto earPosGroup = findChild<LLRadioGroup>("ear_location");
-    if (earPosGroup)
-    {
-        // It seems there is no better way to do this than with magic numbers short of importing the enums in vivoxvoice (which aren't necessarily the same thing).
-        // Index 2 here is the opensim only option to hear nearby chat without attenuation.
-        constexpr int hearNearbyVoiceFullVolume{2};
-        earPosGroup->setIndexEnabled(hearNearbyVoiceFullVolume, LLGridManager::instance().isInOpenSim());
-    }
+
+
     // <FS:Beq>
 #endif
     getChild<LLComboBox>("UseLSLFlightAssist")->setValue((int)gSavedPerAccountSettings.getF32("UseLSLFlightAssist")); // Flight Assist combo box; Not sound-related, but better to place it here instead of creating whole new void
@@ -3227,9 +3191,6 @@ void LLFloaterPreference::updateSearchableItems()
 {
     mSearchDataDirty = true;
 }
-
-
-
 
 
 void LLFloaterPreference::setCacheLocation(const LLStringExplicit& location)
@@ -3431,13 +3392,12 @@ bool LLPanelPreference::postBuild()
     }
     // </FS:Ansariel>
 
-    ////////////////////// PanelVoice ///////////////////
+
     // <FS:Ansariel> Doesn't exist as of 25-07-2014
-    //if (hasChild("voice_unavailable", true))
+
     //{
-    //  bool voice_disabled = gSavedSettings.getBOOL("CmdLineDisableVoice");
-    //  getChildView("voice_unavailable")->setVisible( voice_disabled);
-    //  getChildView("enable_voice_check")->setVisible( !voice_disabled);
+
+
     //}
     // </FS:Ansariel>
 
@@ -3474,10 +3434,7 @@ bool LLPanelPreference::postBuild()
     {
         getChild<LLCheckBoxCtrl>("media_filter")->set(gSavedSettings.getBOOL("MediaEnableFilter"));
     }
-    if (hasChild("voice_call_friends_only_check", true))
-    {
-        getChild<LLCheckBoxCtrl>("voice_call_friends_only_check")->setCommitCallback(boost::bind(&showFriendsOnlyWarning, _1, _2));
-    }
+
     // <FS:Ansariel> Disable running multiple viewers warning
     //if (hasChild("allow_multiple_viewer_check", true))
     //{
@@ -3606,7 +3563,7 @@ void LLPanelPreference::saveSettings()
 
     if (LLStartUp::getStartupState() == STATE_STARTED)
     {
-        LLControlVariable* control = gSavedPerAccountSettings.getControl("VoiceCallsFriendsOnly");
+        LLControlVariable* control = gSavedPerAccountSettings.getControl("IMFriendsOnly");
         if (control)
         {
             mSavedValues[control] = control->getValue();
@@ -3626,7 +3583,7 @@ void LLPanelPreference::showFriendsOnlyWarning(LLUICtrl* checkbox, const LLSD& v
 {
     if (checkbox)
     {
-        gSavedPerAccountSettings.setBOOL("VoiceCallsFriendsOnly", checkbox->getValue().asBoolean());
+        gSavedPerAccountSettings.setBOOL("IMFriendsOnly", checkbox->getValue().asBoolean());
         if (checkbox->getValue())
         {
             LLNotificationsUtil::add("FriendsAndGroupsOnly");
@@ -3807,7 +3764,7 @@ class LLPanelPreferencePrivacy : public LLPanelPreference
 public:
     LLPanelPreferencePrivacy()
     {
-        mAccountIndependentSettings.push_back("AutoDisengageMic");
+
 
         mAutoresponseItem = gSavedPerAccountSettings.getString("FSAutoresponseItemUUID");
     }

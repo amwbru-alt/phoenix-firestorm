@@ -95,11 +95,7 @@
 								ツールバー
 							</column>
 						</row>
-						<row name="restore_per_account_row_volumes">
-							<column name="restore_per_account_files_label">
-								ボイスチャットの音量
-							</column>
-						</row>
+
 						<row name="restore_per_account_row_tphistory">
 							<column name="restore_per_account_files_label">
 								テレポート履歴

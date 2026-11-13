@@ -25,6 +25,7 @@
 */
 
 #include "llviewerprecompiledheaders.h"
+#include "llcallingcard.h"
 
 #include "llimprocessing.h"
 
@@ -763,7 +764,7 @@ void LLIMProcessing::processNewMessage(LLUUID from_id,
         || (dialog == IM_FROM_TASK && LLMuteList::getInstance()->isMuted(session_id));
     bool is_owned_by_me = false;
     bool is_friend = LLAvatarTracker::instance().getBuddyInfo(from_id) != NULL;
-    static LLCachedControl<bool> accept_im_from_only_friend(gSavedPerAccountSettings, "VoiceCallsFriendsOnly");
+    static LLCachedControl<bool> accept_im_from_only_friend(gSavedPerAccountSettings, "IMFriendsOnly");
     //bool is_linden = chat.mSourceType != CHAT_SOURCE_OBJECT &&
     //      LLMuteList::isLinden(name); <:FS:TM> Bear compile fix - is_linden not referenced
 
@@ -1153,7 +1154,6 @@ void LLIMProcessing::processNewMessage(LLUUID from_id,
                     if (!gIMMgr->isNonFriendSessionNotified(session_id))
                     {
                         // <FS:Ansariel> Disable this - doesn't make sense it will be skipped by LLIMMgr::addMessage() anyway
-                        //std::string message = LLTrans::getString("IM_unblock_only_groups_friends");
                         //gIMMgr->addMessage(session_id, from_id, name, message, IM_OFFLINE == offline);
                         // </FS:Ansariel>
                         gIMMgr->addNotifiedNonFriendSessionID(session_id);
@@ -1982,7 +1982,7 @@ void LLIMProcessing::processNewMessage(LLUUID from_id,
             }
 
             // <FS:PP> FIRE-1245: Option to block/reject teleport offers
-            //else if (gSavedPerAccountSettings.getBOOL("VoiceCallsFriendsOnly") && (LLAvatarTracker::instance().getBuddyInfo(from_id) == NULL))
+            //else if (gSavedPerAccountSettings.getBOOL("IMFriendsOnly") && (LLAvatarTracker::instance().getBuddyInfo(from_id) == NULL))
             //{
             //  return;
             //}

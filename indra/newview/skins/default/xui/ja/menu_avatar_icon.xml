@@ -5,7 +5,7 @@
 	<menu_item_call label="住民の場所にテレポート" name="Teleport to"/>
 	<menu_item_call label="テレポートのオファー" name="Offer Teleport"/>
 	<menu_item_call label="テレポートをリクエスト" name="Request Teleport"/>
-	<menu_item_call label="音声通話" name="Voice Call"/>
+
 	<menu_item_call label="チャット履歴…" name="Chat History"/>
 	<menu_item_call label="フレンドに追加…" name="Add Friend"/>
 	<menu_item_call label="フレンドから削除…" name="Remove Friend"/>
@@ -22,13 +22,13 @@
 	<menu_item_call label="メンション先のＵＲＩをクリップボードにコピー" name="mention_copy_label"/>
 	<!-- </FS:Zi> -->
 	<menu_item_call label="嫌がらせの報告" name="Report Abuse"/>
-	<menu_item_check label="ボイスをブロック" name="Block Unblock"/>
+
 	<menu_item_check label="テキストをブロック" name="Mute Text"/>
 	<context_menu label="モデレーターのオプション" name="Moderator Options">
 		<menu_item_check label="テキストチャットを許可" name="AllowTextChat"/>
 		<menu_item_call label="テキストチャットを禁止" name="ForbidTextChat"/>
-		<menu_item_call label="この参加者をミュートする" name="ModerateVoiceMuteSelected"/>
-		<menu_item_call label="この参加者のミュートを解除する" name="ModerateVoiceUnMuteSelected"/>
+
+
 	</context_menu>
 	<menu_item_call label="メンバーをバン" name="BanMember"/>
 	<menu_item_call label="メンション先のユーザをチャットに" name="mention_in_chat"/>

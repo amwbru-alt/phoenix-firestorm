@@ -34,8 +34,6 @@
 #include "llinstantmessage.h"
 #include "lllogchat.h"
 #include "lltooldraganddrop.h"
-#include "llvoicechannel.h"
-#include "llvoiceclient.h"
 
 class LLAvatarName;
 class LLButton;
@@ -53,8 +51,7 @@ typedef boost::signals2::signal<void(const LLUUID& session_id)> floater_showed_s
  * optionally "docked" to the bottom tray.
  */
 class LLFloaterIMSession
-    : public LLVoiceClientStatusObserver
-    , public LLFloaterIMSessionTab
+    : public LLFloaterIMSessionTab
 {
     LOG_CLASS(LLFloaterIMSession);
 public:
@@ -114,18 +111,14 @@ public:
     void GearDoToSelected(const LLSD& userdata);
     bool checkGearMenuItem(const LLSD& userdata);
 
-    // Implements LLVoiceClientStatusObserver::onChange() to enable the call
-    // button when voice is available
-    void onChange(EStatusType status, const LLSD& channelInfo, bool proximal);
+
+
 
     virtual LLTransientFloaterMgr::ETransientGroup getGroup() { return LLTransientFloaterMgr::IM; }
-    virtual void onVoiceChannelStateChanged(
-            const LLVoiceChannel::EState& old_state,
-            const LLVoiceChannel::EState& new_state);
+
 
     void processIMTyping(const LLUUID& from_id, bool typing);
     void processAgentListUpdates(const LLSD& body);
-    void processSessionUpdate(const LLSD& session_update);
 
     //used as a callback on receiving new IM message
     static void sRemoveTypingIndicator(const LLSD& data);
@@ -161,9 +154,6 @@ private:
     void sendParticipantsAddedNotification(const uuid_vec_t& uuids);
     bool canAddSelectedToChat(const uuid_vec_t& uuids);
 
-    void onVoiceChannelChanged(const LLUUID &session_id);
-
-    void boundVoiceChannel();
 
     // Add the "User is typing..." indicator.
     void addTypingIndicator(const LLUUID& from_id);
@@ -197,11 +187,6 @@ private:
     uuid_vec_t mInvitedParticipants;
     uuid_vec_t mPendingParticipants;
 
-    // notification when the voice channel is swapped out from beneath us.
-    boost::signals2::connection mVoiceChannelChanged;
-
-    // connection to voice channel state change signal
-    boost::signals2::connection mVoiceChannelStateChangeConnection;
 
     LLUUID mImFromId;
 };

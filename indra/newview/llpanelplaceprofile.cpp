@@ -64,8 +64,6 @@ static LLPanelInjector<LLPanelPlaceProfile> t_place_profile("panel_place_profile
 static std::string icon_pg;
 static std::string icon_m;
 static std::string icon_r;
-static std::string icon_voice;
-static std::string icon_voice_no;
 static std::string icon_fly;
 static std::string icon_fly_no;
 static std::string icon_push;
@@ -109,8 +107,8 @@ bool LLPanelPlaceProfile::postBuild()
 
     mParcelRatingIcon = getChild<LLIconCtrl>("rating_icon");
     mParcelRatingText = getChild<LLTextBox>("rating_value");
-    mVoiceIcon = getChild<LLIconCtrl>("voice_icon");
-    mVoiceText = getChild<LLTextBox>("voice_value");
+
+
     mFlyIcon = getChild<LLIconCtrl>("fly_icon");
     mFlyText = getChild<LLTextBox>("fly_value");
     mPushIcon = getChild<LLIconCtrl>("push_icon");
@@ -151,8 +149,8 @@ bool LLPanelPlaceProfile::postBuild()
     icon_pg = getString("icon_PG");
     icon_m = getString("icon_M");
     icon_r = getString("icon_R");
-    icon_voice = getString("icon_Voice");
-    icon_voice_no = getString("icon_VoiceNo");
+
+
     icon_fly = getString("icon_Fly");
     icon_fly_no = getString("icon_FlyNo");
     icon_push = getString("icon_Push");
@@ -192,9 +190,8 @@ void LLPanelPlaceProfile::resetLocation()
     //mParcelRatingIcon->setValue(loading);
     mParcelRatingIcon->setValue(unknown);
     mParcelRatingText->setText(loading);
-    //mVoiceIcon->setValue(loading);
-    mVoiceIcon->setValue(unknown);
-    mVoiceText->setText(loading);
+
+
     //mFlyIcon->setValue(loading);
     mFlyIcon->setValue(unknown);
     mFlyText->setText(loading);
@@ -429,15 +426,9 @@ void LLPanelPlaceProfile::displaySelectedParcelInfo(LLParcel* parcel,
     LLViewerParcelMgr* vpm = LLViewerParcelMgr::getInstance();
 
     // Processing parcel characteristics
-    if (vpm->allowAgentVoice(region, parcel))
     {
-        mVoiceIcon->setValue(icon_voice);
-        mVoiceText->setText(on);
-    }
-    else
-    {
-        mVoiceIcon->setValue(icon_voice_no);
-        mVoiceText->setText(off);
+
+
     }
 
     if (vpm->allowAgentFly(region, parcel))

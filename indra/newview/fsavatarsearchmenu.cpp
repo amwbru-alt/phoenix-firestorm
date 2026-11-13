@@ -52,7 +52,7 @@ LLContextMenu* FSAvatarSearchMenu::createMenu()
         registrar.add("Avatar.AddFriend",                       boost::bind(&LLAvatarActions::requestFriendshipDialog,      id));
         registrar.add("Avatar.RemoveFriend",                    boost::bind(&LLAvatarActions::removeFriendDialog,           id));
         registrar.add("Avatar.IM",                              boost::bind(&LLAvatarActions::startIM,                      id));
-        registrar.add("Avatar.Call",                            boost::bind(&LLAvatarActions::startCall,                    id));
+
         registrar.add("Avatar.OfferTeleport",                   boost::bind(&FSAvatarSearchMenu::offerTeleport,             this));
         registrar.add("Avatar.TeleportRequest",                 boost::bind(&LLAvatarActions::teleportRequest,              id));
         registrar.add("Avatar.GroupInvite",                     boost::bind(&LLAvatarActions::inviteToGroup,                id));
@@ -70,7 +70,7 @@ LLContextMenu* FSAvatarSearchMenu::createMenu()
     {
         // Set up for multi-selected People
         registrar.add("Avatar.IM",                              boost::bind(&LLAvatarActions::startConference,                      mUUIDs, LLUUID::null));
-        registrar.add("Avatar.Call",                            boost::bind(&LLAvatarActions::startAdhocCall,                       mUUIDs, LLUUID::null));
+
         registrar.add("Avatar.OfferTeleport",                   boost::bind(&FSAvatarSearchMenu::offerTeleport,                     this));
         registrar.add("Avatar.RemoveFriend",                    boost::bind(&LLAvatarActions::removeFriendsDialog,                  mUUIDs));
         registrar.add("Avatar.AddToContactSet",                 boost::bind(&FSAvatarSearchMenu::addToContactSet,                   this));
@@ -142,10 +142,6 @@ bool FSAvatarSearchMenu::onContextMenuItemEnable(const LLSD& userdata)
         }
 
         return result;
-    }
-    else if (item == std::string("can_call"))
-    {
-        return LLAvatarActions::canCall();
     }
     else if (item == std::string("can_show_on_map"))
     {

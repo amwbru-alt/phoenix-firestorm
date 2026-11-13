@@ -94,14 +94,15 @@
     name="online_visibility"
     top_pad="3"
     width="350" />
-   <check_box
-    enabled="false"
+    <check_box
+    enabled="true"
     height="16"
-    label="Only friends and groups can call or IM me"
+    label="Accept personal text messages only from friends"
     layout="topleft"
-    name="voice_call_friends_only_check"
+    name="im_friends_only_check"
     top_pad="3"
     width="350" />
+
    <check_box
     control_name="FSShowJoinedGroupInvitations"
     height="16"
@@ -110,15 +111,7 @@
     name="FSShowJoinedGroupInvitations"
     top_pad="3"
     width="350" />
-   <check_box
-    enabled_control="EnableVoiceChat"
-    control_name="AutoDisengageMic"
-    height="16"
-    label="Switch off microphone when ending calls"
-    layout="topleft"
-    name="auto_disengage_mic_check"
-    top_pad="3"
-    width="350" />
+
    <check_box
     control_name="LanguageIsPublic"
     height="16"
@@ -218,6 +211,7 @@
      <button.commit_callback
       function="Pref.BlockList"/>
     </button>
+
     </panel>
 
     <!--Logging-->
@@ -777,4 +771,5 @@
 
     </panel>
 </tab_container>
+
 </panel>

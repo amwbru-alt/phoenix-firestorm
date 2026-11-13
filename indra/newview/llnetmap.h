@@ -235,7 +235,7 @@ private:
 
     bool canAddFriend();
     bool canRemoveFriend();
-    bool canCall();
+
     bool canMap();
     bool canShare();
     bool canOfferTeleport();
@@ -250,7 +250,7 @@ private:
     void handleAddToContactSet();
     void handleRemoveFriend();
     void handleIM();
-    void handleCall();
+
     void handleMap();
     void handleShare();
     void handlePay();

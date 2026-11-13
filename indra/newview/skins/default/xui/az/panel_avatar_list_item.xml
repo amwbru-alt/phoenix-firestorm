@@ -12,8 +12,8 @@
     <button name="permission_edit_mine_btn" tool_tip="Bu dost, sizin obyektlərinizi dəyişdirmə, silmə və götürmə qabiliyyətinə malikdir." />
     <button name="permission_map_btn" tool_tip="Bu dost, sizi xəritədə tapa bilər." />
     <button name="permission_online_btn" tool_tip="Bu dost, siz onlayn olduğunuzu görə bilər." />
-    <slider name="volume_slider" tool_tip="Səs səviyyəsi" />
+
     <button name="info_btn" tool_tip="Daha çox məlumat" />
     <button name="profile_btn" tool_tip="Profili göstər" />
-    <output_monitor name="speaking_indicator" tool_tip="Göstərir ki, avatar səsli söhbətdə və səslilik dərəcəsi olaraq hansı dairədə olduğunu." />
+
 </panel>

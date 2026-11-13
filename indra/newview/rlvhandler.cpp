@@ -70,7 +70,6 @@
 #include "rlvextensions.h"
 
 // <FS:Ansariel> [FS communication UI]
-#include "fsfloatervoicecontrols.h"
 // </FS:Ansariel> [FS communication UI]
 #include "fslslbridge.h"
 #include "fsradar.h"
@@ -2647,21 +2646,7 @@ void RlvBehaviourToggleHandler<RLV_BHVR_SHOWNAMES>::onCommandToggle(ERlvBehaviou
 
     // Refresh the speaker list
     // <FS:Ansariel> [FS communication UI]
-    FSFloaterVoiceControls* pCallFloater = LLFloaterReg::findTypedInstance<FSFloaterVoiceControls>("fs_voice_controls");
-    if (pCallFloater)
-        pCallFloater->getAvatarCallerList()->updateAvatarNames();
-    // </FS:Ansariel> [FS communication UI]
 
-    // Force the use of the "display name" cache so we can filter both display and legacy names (or return back to the user's preference)
-    if (fHasBhvr)
-    {
-        LLAvatarNameCache::instance().setForceDisplayNames(true);
-    }
-    else
-    {
-        LLAvatarNameCache::instance().setForceDisplayNames(false);
-        LLAvatarNameCache::instance().setUseDisplayNames(gSavedSettings.getBOOL("UseDisplayNames"));
-    }
 
     // Refresh all name tags and HUD text
     LLVOAvatar::invalidateNameTags();
@@ -2695,13 +2680,8 @@ ERlvCmdRet RlvBehaviourHandler<RLV_BHVR_SHOWNAMES>::onCommand(const RlvCommand& 
 
         // Refresh the speaker list
         // <FS:Ansariel> [FS communication UI]
-        FSFloaterVoiceControls* pCallFloater = LLFloaterReg::findTypedInstance<FSFloaterVoiceControls>("fs_voice_controls");
-        if (pCallFloater)
-            pCallFloater->getAvatarCallerList()->updateAvatarNames();
-        // </FS:Ansariel> [FS communication UI]
 
-        // Refresh that avatar's name tag and all HUD text
-        LLVOAvatar::invalidateNameTag(idAgent);
+
         LLHUDText::refreshAllObjectText();
     }
     return eRet;
@@ -2764,11 +2744,8 @@ void RlvBehaviourToggleHandler<RLV_BHVR_SHOWNEARBY>::onCommandToggle(ERlvBehavio
     // </FS:Ansariel> [Standalone radar]
 
     // <FS:Ansariel> [FS communication UI]
-    FSFloaterVoiceControls* pCallFloater = LLFloaterReg::findTypedInstance<FSFloaterVoiceControls>("fs_voice_controls");
-    if (pCallFloater)
-    {
-        pCallFloater->toggleRlvShowNearbyRestriction(fHasBhvr);
-    }
+
+
     // </FS:Ansariel> [FS communication UI]
 
     // Refresh that avatar's name tag and all HUD text

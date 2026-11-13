@@ -58,7 +58,7 @@ public:
     //void populateCollisionList();
 
     void startIM();
-    void startCall();
+
     void reportAbuse();
     void showProfile();
     void addFriend();

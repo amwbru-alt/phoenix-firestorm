@@ -35,10 +35,7 @@ struct ConversationParams;
 
 typedef LLIMModel::LLIMSession::SType SessionType;
 
-/*
- * This class represents a particular session(conversation) of any type(im/voice/p2p/group/...) by storing some of session's data.
- * Each LLConversation object has a corresponding visual representation in a form of LLConversationLogListItem.
- */
+
 class LLConversation
 {
 public:
@@ -100,14 +97,6 @@ private:
     std::string     mTimestamp; // last interaction time in form of: mm/dd/yyyy hh:mm
 };
 
-/**
- * LLConversationLog stores all agent's conversations.
- * This class is responsible for creating and storing LLConversation objects when im or voice session starts.
- * Also this class saves/retrieves conversations to/from file.
- *
- * Also please note that it may be several conversations with the same sessionID stored in the conversation log.
- * To distinguish two conversations with the same sessionID it's also needed to compare their creation date.
- */
 
 class LLConversationLog : public LLSingleton<LLConversationLog>, LLIMSessionObserver
 {
@@ -128,7 +117,7 @@ public:
     virtual void sessionAdded(const LLUUID& session_id, const std::string& name, const LLUUID& other_participant_id, bool has_offline_msg) override;
     virtual void sessionActivated(const LLUUID& session_id, const std::string& name, const LLUUID& other_participant_id) override {}; // Stub
     virtual void sessionRemoved(const LLUUID& session_id) override{}                                            // Stub
-    virtual void sessionVoiceOrIMStarted(const LLUUID& session_id) override{};                              // Stub
+                                  // Stub
     virtual void sessionIDUpdated(const LLUUID& old_session_id, const LLUUID& new_session_id) override{};   // Stub
 
     void notifyObservers();
@@ -186,7 +175,6 @@ private:
     void updateConversationTimestamp(LLConversation* conversation);
     void updateConversationName(const LLIMModel::LLIMSession* session, const std::string& name);
     void updateOfflineIMs(const LLIMModel::LLIMSession* session, bool new_messages);
-
 
 
     typedef std::vector<LLConversation> conversations_vec_t;

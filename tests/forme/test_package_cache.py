@@ -28,7 +28,7 @@ class PackageCacheTests(unittest.TestCase):
         self.payload = b'complete package bytes'
         self.manifest = self.root / 'autobuild.xml'
         self.manifest.write_text('''<llsd><map><key>installables</key><map>
-          <key>webrtc</key><map><key>platforms</key><map><key>darwin64</key><map>
+          <key>sample-package</key><map><key>platforms</key><map><key>darwin64</key><map>
           <key>archive</key><map><key>url</key><string>https://example.test/archive.tar.zst</string>
           <key>hash</key><string>''' + hashlib.sha1(self.payload).hexdigest() + '''</string>
           <key>hash_algorithm</key><string>sha1</string></map></map></map></map></map></map></llsd>''')
@@ -36,7 +36,7 @@ class PackageCacheTests(unittest.TestCase):
         self.target = self.cache / 'archive.tar.zst'
 
     def run_cache(self):
-        return cache_module.cache_package(self.manifest, 'webrtc', 'darwin64', self.cache)
+        return cache_module.cache_package(self.manifest, 'sample-package', 'darwin64', self.cache)
 
     def download(self, command, **kwargs):
         Path(command[command.index('--output') + 1]).write_bytes(self.payload)

@@ -26,6 +26,7 @@
 
 
 #include "llviewerprecompiledheaders.h"
+#include "llcallingcard.h"
 
 #include <boost/signals2.hpp>
 
@@ -40,7 +41,6 @@
 #include "llslurl.h" // AO: Used for confirm modify rights
 #include "llavatarnamecache.h"
 #include "llavatariconctrl.h"
-#include "lloutputmonitorctrl.h"
 #include "lltooldraganddrop.h"
 // [RLVa:KB] - Checked: RLVa-2.0.1
 #include "rlvactions.h"
@@ -48,7 +48,6 @@
 // [/RLVa:KB]
 #include  <time.h>
 #include "llnotificationsutil.h"
-#include "llvoiceclient.h"
 
 #include "lfsimfeaturehandler.h"    // <FS:CR> Opensim
 #include "llavatarlist.h"
@@ -64,9 +63,8 @@ static LLWidgetNameRegistry::StaticRegistrar sRegisterAvatarListItemParams(typei
 
 LLAvatarListItem::Params::Params()
 :   default_style("default_style"),
-    voice_call_invited_style("voice_call_invited_style"),
-    voice_call_joined_style("voice_call_joined_style"),
-    voice_call_left_style("voice_call_left_style"),
+
+
     online_style("online_style"),
     offline_style("offline_style"),
     group_moderator_style("group_moderator_style"),
@@ -84,7 +82,7 @@ LLAvatarListItem::LLAvatarListItem(bool not_from_ui_factory/* = true*/)
     mBtnPermissionMap(NULL),
     mBtnPermissionEditMine(NULL),
     mIconPermissionEditTheirs(NULL),
-    mSpeakingIndicator(NULL),
+
     mInfoBtn(NULL),
     mProfileBtn(NULL),
     mOnlineStatus(E_UNKNOWN),
@@ -99,7 +97,7 @@ LLAvatarListItem::LLAvatarListItem(bool not_from_ui_factory/* = true*/)
     mHovered(false),
     mAvatarNameCacheConnection(),
     mGreyOutUsername(""),
-    mShowVoiceVolume(false),
+
     mShowDisplayName(true),
     mShowUsername(true)
 {
@@ -111,7 +109,7 @@ LLAvatarListItem::LLAvatarListItem(bool not_from_ui_factory/* = true*/)
     // is created from the UICtrlFactory
 
     // <FS:Ansariel> Add callback for user volume change
-    mVoiceLevelChangeCallbackConnection = LLVoiceClient::setUserVolumeUpdateCallback(boost::bind(&LLAvatarListItem::onUserVoiceLevelChange, this, _1));
+
     // </FS:Ansariel>
 }
 
@@ -130,10 +128,7 @@ LLAvatarListItem::~LLAvatarListItem()
     }
 
     // <FS:Ansariel> Add callback for user volume change
-    if (mVoiceLevelChangeCallbackConnection.connected())
-    {
-        mVoiceLevelChangeCallbackConnection.disconnect();
-    }
+
     // </FS:Ansariel>
 }
 
@@ -161,17 +156,13 @@ bool LLAvatarListItem::postBuild()
     mBtnPermissionEditMine->setIsChrome(true);
     mIconPermissionEditTheirs->setVisible(false);
 
-    mSpeakingIndicator = getChild<LLOutputMonitorCtrl>("speaking_indicator");
-    mSpeakingIndicator->setChannelState(LLOutputMonitorCtrl::UNDEFINED_CHANNEL);
+
     mInfoBtn = getChild<LLButton>("info_btn");
     mProfileBtn = getChild<LLButton>("profile_btn");
 
     mInfoBtn->setVisible(false);
     mInfoBtn->setClickedCallback(boost::bind(&LLAvatarListItem::onInfoBtnClick, this));
 
-    mVoiceSlider = getChild<LLUICtrl>("volume_slider");
-    mVoiceSlider->setVisible(false);
-    mVoiceSlider->setCommitCallback(boost::bind(&LLAvatarListItem::onVolumeChange, this, _2));
 
     mProfileBtn->setVisible(false);
     mProfileBtn->setClickedCallback(boost::bind(&LLAvatarListItem::onProfileBtnClick, this));
@@ -191,25 +182,11 @@ bool LLAvatarListItem::postBuild()
     return true;
 }
 
-void LLAvatarListItem::onVolumeChange(const LLSD& data)
-{
-    F32 volume = (F32)data.asReal();
-    LLVoiceClient::getInstance()->setUserVolume(mAvatarId, volume);
-}
+
 
 // <FS:Ansariel> LL refactoring error
 //void LLAvatarListItem::handleVisibilityChange ( bool new_visibility )
-void LLAvatarListItem::onVisibilityChange ( bool new_visibility )
-// </FS:Ansariel>
-{
-    //Adjust positions of icons (info button etc) when
-    //speaking indicator visibility was changed/toggled while panel was closed (not visible)
-    if(new_visibility && mSpeakingIndicator->getIndicatorToggled())
-    {
-        updateChildren();
-        mSpeakingIndicator->setIndicatorToggled(false);
-    }
-}
+
 
 void LLAvatarListItem::fetchAvatarName()
 {
@@ -342,15 +319,8 @@ void LLAvatarListItem::setState(EItemState item_style)
     case IS_DEFAULT:
         mAvatarNameStyle = params.default_style();
         break;
-    case IS_VOICE_INVITED:
-        mAvatarNameStyle = params.voice_call_invited_style();
-        break;
-    case IS_VOICE_JOINED:
-        mAvatarNameStyle = params.voice_call_joined_style();
-        break;
-    case IS_VOICE_LEFT:
-        mAvatarNameStyle = params.voice_call_left_style();
-        break;
+
+
     case IS_ONLINE:
         mAvatarNameStyle = params.online_style();
         break;
@@ -380,10 +350,7 @@ void LLAvatarListItem::setAvatarId(const LLUUID& id, const LLUUID& session_id, b
     }
 
     mAvatarId = id;
-    mSpeakingIndicator->setSpeakerId(id, session_id);
 
-    // <FS:Ansariel> FIRE-10278: Show correct voice volume if we have it stored
-    updateVoiceLevelSlider();
 
     // We'll be notified on avatar online status changes
     if (!ignore_status_changes && mAvatarId.notNull())
@@ -407,34 +374,8 @@ void LLAvatarListItem::setAvatarId(const LLUUID& id, const LLUUID& session_id, b
 }
 
 // <FS:Ansariel> Add callback for user volume change
-void LLAvatarListItem::onUserVoiceLevelChange(const LLUUID& avatar_id)
-{
-    if (avatar_id == mAvatarId)
-    {
-        updateVoiceLevelSlider();
-    }
-}
 
-void LLAvatarListItem::updateVoiceLevelSlider()
-{
-    if (mVoiceSlider->getVisible() && LLVoiceClient::getInstance()->getVoiceEnabled(mAvatarId))
-    {
-        bool is_muted = LLAvatarActions::isVoiceMuted(mAvatarId);
 
-        F32 volume;
-        if (is_muted)
-        {
-            // it's clearer to display their volume as zero
-            volume = 0.f;
-        }
-        else
-        {
-            // actual volume
-            volume = LLVoiceClient::getInstance()->getUserVolume(mAvatarId);
-        }
-        mVoiceSlider->setValue((F64)volume);
-    }
-}
 // </FS:Ansariel>
 
 void LLAvatarListItem::showLastInteractionTime(bool show)
@@ -454,15 +395,6 @@ void LLAvatarListItem::setShowInfoBtn(bool show)
     mInfoBtn->setVisible( (mShowInfoBtn) && ((!mRlvCheckShowNames) || (RlvActions::canShowName(RlvActions::SNC_DEFAULT, mAvatarId))) );
 }
 
-void LLAvatarListItem::setShowVoiceVolume(bool show)
-{
-    mShowVoiceVolume = show;
-    mVoiceSlider->setVisible( (mShowVoiceVolume) && ((!mRlvCheckShowNames) || (RlvActions::canShowName(RlvActions::SNC_DEFAULT, mAvatarId))) );
-    if (show)
-    {
-        updateVoiceLevelSlider();
-    }
-}
 
 // [RLVa:KB] - Checked: 2010-04-05 (RLVa-1.2.2a) | Added: RLVa-1.2.0d
 void LLAvatarListItem::setRlvCheckShowNames(bool fRlvCheckShowNames)
@@ -473,7 +405,7 @@ void LLAvatarListItem::setRlvCheckShowNames(bool fRlvCheckShowNames)
 
 void LLAvatarListItem::updateRlvRestrictions()
 {
-    setShowVoiceVolume(mShowVoiceVolume);
+
     setShowInfoBtn(mShowInfoBtn);
 }
 // [/RLVa:KB]
@@ -483,15 +415,6 @@ void LLAvatarListItem::setShowProfileBtn(bool show)
     mShowProfileBtn = show;
 }
 
-void LLAvatarListItem::showSpeakingIndicator(bool visible)
-{
-    // used only to hide indicator to not contradict with SpeakingIndicatorManager functionality
-    if (mSpeakingIndicator && !visible)
-    {
-        mSpeakingIndicator->setIsActiveChannel(visible);
-        mSpeakingIndicator->setShowParticipantsSpeaking(visible);
-    }
-}
 
 void LLAvatarListItem::setAvatarIconVisible(bool visible)
 {
@@ -739,17 +662,6 @@ LLAvatarListItem::icon_color_map_t& LLAvatarListItem::getItemIconColorMap()
         std::make_pair(IS_DEFAULT,
         LLUIColorTable::instance().getColor("AvatarListItemIconDefaultColor", LLColor4::white)));
 
-    item_icon_color_map.insert(
-        std::make_pair(IS_VOICE_INVITED,
-        LLUIColorTable::instance().getColor("AvatarListItemIconVoiceInvitedColor", LLColor4::white)));
-
-    item_icon_color_map.insert(
-        std::make_pair(IS_VOICE_JOINED,
-        LLUIColorTable::instance().getColor("AvatarListItemIconVoiceJoinedColor", LLColor4::white)));
-
-    item_icon_color_map.insert(
-        std::make_pair(IS_VOICE_LEFT,
-        LLUIColorTable::instance().getColor("AvatarListItemIconVoiceLeftColor", LLColor4::white)));
 
     item_icon_color_map.insert(
         std::make_pair(IS_ONLINE,
@@ -768,24 +680,23 @@ LLAvatarListItem::icon_color_map_t& LLAvatarListItem::getItemIconColorMap()
 }
 
 
-
 // static
 void LLAvatarListItem::initChildrenWidths(LLAvatarListItem* avatar_item)
 {
     //speaking indicator width + padding
-    S32 speaking_indicator_width = avatar_item->getRect().getWidth() - avatar_item->mSpeakingIndicator->getRect().mLeft;
+
 
     //profile btn width + padding
-    S32 profile_btn_width = avatar_item->mSpeakingIndicator->getRect().mLeft - avatar_item->mProfileBtn->getRect().mLeft;
+
 
     //info btn width + padding
     S32 info_btn_width = avatar_item->mProfileBtn->getRect().mLeft - avatar_item->mInfoBtn->getRect().mLeft;
 
     //volume slider width + padding
-    S32 volume_slider_width = avatar_item->mInfoBtn->getRect().mLeft - avatar_item->mVoiceSlider->getRect().mLeft;
+
 
     // online permission icon width + padding
-    S32 permission_online_width = avatar_item->mVoiceSlider->getRect().mLeft - avatar_item->mBtnPermissionOnline->getRect().mLeft;
+
 
     // map permission icon width + padding
     S32 permission_map_width = avatar_item->mBtnPermissionOnline->getRect().mLeft - avatar_item->mBtnPermissionMap->getRect().mLeft;
@@ -811,11 +722,11 @@ void LLAvatarListItem::initChildrenWidths(LLAvatarListItem* avatar_item)
     sChildrenWidths[--index] = permission_edit_theirs_width;
     sChildrenWidths[--index] = permission_edit_mine_width;
     sChildrenWidths[--index] = permission_map_width;
-    sChildrenWidths[--index] = permission_online_width;
-    sChildrenWidths[--index] = volume_slider_width;
+
+
     sChildrenWidths[--index] = info_btn_width;
-    sChildrenWidths[--index] = profile_btn_width;
-    sChildrenWidths[--index] = speaking_indicator_width;
+
+
     llassert(index == 0);
 }
 
@@ -1073,7 +984,7 @@ LLView* LLAvatarListItem::getItemChildView(EAvatarListItemChildIndex child_view_
         child_view = mLastInteractionTime;
         break;
     case ALIC_SPEAKER_INDICATOR:
-        child_view = mSpeakingIndicator;
+
         break;
     case ALIC_PERMISSION_ONLINE:
         child_view = mBtnPermissionOnline;
@@ -1094,7 +1005,7 @@ LLView* LLAvatarListItem::getItemChildView(EAvatarListItemChildIndex child_view_
         child_view = mProfileBtn;
         break;
     case ALIC_VOLUME_SLIDER:
-        child_view = mVoiceSlider;
+
         break;
     default:
         LL_WARNS("AvatarItemReshape") << "Unexpected child view index is passed: " << child_view_index << LL_ENDL;

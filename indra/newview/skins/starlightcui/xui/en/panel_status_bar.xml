@@ -31,18 +31,7 @@
     name="parcel_info_panel"
     bg_visible="false"
     background_opaque="false">
-  <icon
-    enabled="true"
-    follows="right|top"
-    height="18"
-    image_name="Parcel_VoiceNo_Dark"
-    name="voice_icon"
-    top="0"
-    left="16"
-    visible="true"
-    width="22"
-	scale_image="false"
-    />
+
   <icon
     follows="right|top"
     height="18"

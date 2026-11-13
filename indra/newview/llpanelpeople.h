@@ -32,7 +32,6 @@
 
 #include "llcallingcard.h" // for avatar tracker
 #include "llfloaterwebcontent.h"
-#include "llvoiceclient.h"
 
 #include "llfloater.h"
 
@@ -57,7 +56,7 @@ class FSPanelRadar;
 class LLPanelPeople
     : public LLPanel
     , public LLFriendObserver // <FS:PP> FIRE-21531: Sort Contact Sets by Online Status
-    , public LLVoiceClientStatusObserver
+
 {
     LOG_CLASS(LLPanelPeople);
 public:
@@ -69,9 +68,9 @@ public:
     void onOpen(const LLSD& key) override;
     void reshape(S32 width, S32 height, bool called_from_parent = true) override;
     bool notifyChildren(const LLSD& info) override;
-    // Implements LLVoiceClientStatusObserver::onChange() to enable call buttons
-    // when voice is available
-    void onChange(EStatusType status, const LLSD& channelInfo, bool proximal) override;
+
+
+
     void changed(U32 mask) override; // <FS:PP> FIRE-21531: Sort Contact Sets by Online Status
 
     // <FS:Ansariel> CTRL-F focusses local search editor

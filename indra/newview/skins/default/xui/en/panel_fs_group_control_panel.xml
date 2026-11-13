@@ -37,7 +37,6 @@
              opaque="false"
              show_info_btn="true"
              show_profile_btn="false"
-             show_speaking_indicator="false"
              width="145" />
         </layout_panel>
     </layout_stack>

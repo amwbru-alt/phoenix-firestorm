@@ -17,8 +17,8 @@
 	<button name="permission_edit_mine_btn" tool_tip="Questo amico può modificare, cancellare o prendere i tuoi oggetti"/>
 	<button name="permission_map_btn" tool_tip="Questo amico può identificarti sulla mappa"/>
 	<button name="permission_online_btn" tool_tip="Questo amico può vedere se sei online"/>
-	<slider name="volume_slider" tool_tip="Volume voce"/>
+
 	<button name="info_btn" tool_tip="Maggiori informazioni"/>
 	<button name="profile_btn" tool_tip="Vedi profilo"/>
-	<output_monitor name="speaking_indicator" tool_tip="Mostra che l&apos;avatar è in zona per la voce e il livello di volume se sta parlando"/>
+
 </panel>

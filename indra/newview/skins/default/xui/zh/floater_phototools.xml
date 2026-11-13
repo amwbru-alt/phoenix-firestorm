@@ -204,7 +204,7 @@
 				<check_box label="啟用景深" name="UseDepthofField" tool_tip="啟用景深（DoF），模擬相機焦點，通過模糊焦平面外的物件，創造出真實的攝影效果。關閉此功能可以提升性能。"/>
 				<check_box label="景深焦點跟隨滑鼠" name="FSFocusPointFollowsPointer" tool_tip="允許景深焦點跟隨滑鼠光標，類似於三維控制器的行為。與景深焦點鎖定結合使用時，便於動態調整焦點。"/>
 				<button name="FocusPointRenderToggle" tool_tip="切換焦點十字準線顯示。十字準線在自由狀態下為黃色，鎖定狀態下為紅色。"/>
-				<check_box label="顯示當前相機視場 (FOV)" name="MIC_Show_FOV" tool_tip="顯示屏幕上的當前相機垂直視野（視場角）疊加，幫助您可視化不同視場角設置如何影響構圖和透視。較小的視場角模擬更長的焦距，類似於使用長焦鏡頭放大。例如，標準的 50mm 鏡頭對應約 27° 的垂直視場角，創造出更窄的視野和背景壓縮效果。較大的視場角模仿廣角鏡頭，捕捉更多場景，同時誇大空間關係。您可以使用下面的縮放滑塊調整視場角，以微調您的構圖。有關垂直視場角和焦距關係的更多詳細信息，請參閱：https://zh.wikipedia.org/zh-cn/%E8%A6%96%E8%A7%92"/>
+
 			</panel>
 			<panel name="P_Zoom">
 				<text name="T_Zoom" tool_tip="調整相機的視角，有效地進行放大或縮小。功能類似於 Ctrl + 0（放大）和 Ctrl + 8（縮小）。當三維控制器處於活動狀態時，此設置將被禁用。">

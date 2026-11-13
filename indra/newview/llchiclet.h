@@ -35,7 +35,6 @@
 // Firestorm includes
 #include "llgroupmgr.h"
 #include "llimview.h"
-#include "lloutputmonitorctrl.h"
 #include "llpanel.h"
 
 class LLMenuGL;
@@ -187,22 +186,8 @@ private:
 };
 
 // <FS:Ansariel> [FS communication UI]
-/**
- * Class for displaying of speaker's voice indicator
- */
-class LLChicletSpeakerCtrl : public LLOutputMonitorCtrl
-{
-public:
 
-    struct Params : public LLInitParam::Block<Params, LLOutputMonitorCtrl::Params>
-    {
-        Params(){};
-    };
-protected:
 
-    LLChicletSpeakerCtrl(const Params&p);
-    friend class LLUICtrlFactory;
-};
 // </FS:Ansariel> [FS communication UI]
 
 /**
@@ -307,11 +292,6 @@ private:
 };
 
 
-/**
- * Base class for Instant Message chiclets.
- * IMChiclet displays icon, number of unread messages(optional)
- * and voice chat status(optional).
- */
 class LLIMChiclet : public LLChiclet
 {
 public:
@@ -389,22 +369,10 @@ public:
     /**
      * Init Speaker Control with speaker's ID
      */
-    virtual void initSpeakerControl();
 
-    /**
-     * set status (Shows/Hide) for voice control.
-     */
-    virtual void setShowSpeaker(bool show);
 
-    /**
-     * Returns voice chat status control visibility.
-     */
-    virtual bool getShowSpeaker() {return mShowSpeaker;};
+    ;
 
-    /**
-     * Shows/Hides for voice control for a chiclet.
-     */
-    virtual void toggleSpeakerControl();
 
     /**
     * Sets number of unread messages. Will update chiclet's width if number text
@@ -458,7 +426,6 @@ protected:
 
     LLHandle<LLUICtrl> mPopupMenuHandle;
 
-    bool mShowSpeaker;
     bool mCounterEnabled;
     /* initial width of chiclet, should not include counter or speaker width */
     S32 mDefaultWidth;
@@ -468,7 +435,7 @@ protected:
 
     // <FS:Ansariel> [FS communication UI]
     LLChicletNotificationCounterCtrl* mCounterCtrl;
-    LLChicletSpeakerCtrl* mSpeakerCtrl;
+
     // </FS:Ansariel> [FS communication UI]
 
     /** the id of another participant, either an avatar id or a group id*/
@@ -612,11 +579,9 @@ public:
 
         Optional<LLChicletNotificationCounterCtrl::Params> unread_notifications;
 
-        Optional<LLChicletSpeakerCtrl::Params> speaker;
 
         Optional<LLIconCtrl::Params> new_message_icon;
 
-        Optional<bool>  show_speaker;
 
         Params();
     };
@@ -626,7 +591,7 @@ public:
     /**
      * Init Speaker Control with speaker's ID
      */
-    /*virtual*/ void initSpeakerControl();
+    /*virtual*/
 
     /**
      * Returns number of unread messages.
@@ -675,11 +640,9 @@ public:
 
         Optional<LLChicletNotificationCounterCtrl::Params> unread_notifications;
 
-        Optional<LLChicletSpeakerCtrl::Params> speaker;
 
         Optional<LLIconCtrl::Params> new_message_icon;
 
-        Optional<bool>  show_speaker;
 
         Optional<LLUIColor>  avatar_icon_color;
 
@@ -700,7 +663,7 @@ public:
     /**
      * Init Speaker Control with speaker's ID
      */
-    /*virtual*/ void initSpeakerControl();
+    /*virtual*/
 
     /**
      * Returns number of unread messages.
@@ -727,7 +690,7 @@ protected:
     /**
      * Finds a current speaker and resets the SpeakerControl with speaker's ID
      */
-    /*virtual*/ void switchToCurrentSpeaker();
+    /*virtual*/
 
 private:
 
@@ -749,11 +712,9 @@ public:
 
         Optional<LLChicletNotificationCounterCtrl::Params> unread_notifications;
 
-        Optional<LLChicletSpeakerCtrl::Params> speaker;
 
         Optional<LLIconCtrl::Params> new_message_icon;
 
-        Optional<bool>  show_speaker;
 
         Params();
     };
@@ -778,7 +739,7 @@ public:
     /**
      * Init Speaker Control with speaker's ID
      */
-    /*virtual*/ void initSpeakerControl();
+    /*virtual*/
 
     /**
      * Returns number of unread messages.
@@ -794,7 +755,7 @@ protected:
     /**
      * Finds a current speaker and resets the SpeakerControl with speaker's ID
      */
-    /*virtual*/ void switchToCurrentSpeaker();
+    /*virtual*/
 
     /**
      * Creates chiclet popup menu. Will create P2P or Group IM Chat menu
@@ -959,7 +920,7 @@ class LLIMWellChiclet : public LLSysWellChiclet, LLIMSessionObserver
 public:
     /*virtual*/ void sessionAdded(const LLUUID& session_id, const std::string& name, const LLUUID& other_participant_id, bool has_offline_msg) {}
     /*virtual*/ void sessionActivated(const LLUUID& session_id, const std::string& name, const LLUUID& other_participant_id) {}
-    /*virtual*/ void sessionVoiceOrIMStarted(const LLUUID& session_id) {};
+    /*virtual*/
     /*virtual*/ void sessionRemoved(const LLUUID& session_id) { messageCountChanged(LLSD()); }
     /*virtual*/ void sessionIDUpdated(const LLUUID& old_session_id, const LLUUID& new_session_id) {}
 
@@ -1093,10 +1054,6 @@ public:
 
     /*virtual*/ bool postBuild();
 
-    /**
-     * Handler for the Voice Client's signal. Finds a corresponding chiclet and toggles its SpeakerControl
-     */
-    void onCurrentVoiceChannelChanged(const LLUUID& session_id);
 
     /**
      * Reshapes controls and rearranges chiclets if needed.
@@ -1254,7 +1211,7 @@ protected:
     bool mShowControls;
     static const S32 s_scroll_ratio;
 
-    boost::signals2::connection mVoiceChannelChanged;
+
 };
 
 template<class T>

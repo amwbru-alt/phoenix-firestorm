@@ -45,7 +45,6 @@
 #include "lllistcontextmenu.h"
 #include "llrecentpeople.h"
 #include "lluuid.h"
-#include "llvoiceclient.h"
 #include "llviewercontrol.h"    // for gSavedSettings
 #include "lltooldraganddrop.h"
 #include "lggcontactsets.h" // <FS:PP> FIRE-36478: Ignore alias quotation marks when comparing names from contact sets
@@ -83,19 +82,6 @@ void LLAvatarList::toggleIcons()
     }
 }
 
-void LLAvatarList::setSpeakingIndicatorsVisible(bool visible)
-{
-    // Save the new value for new items to use.
-    mShowSpeakingIndicator = visible;
-
-    // Show/hide icons for all existing items.
-    std::vector<LLPanel*> items;
-    getItems(items);
-    for( std::vector<LLPanel*>::const_iterator it = items.begin(); it != items.end(); it++)
-    {
-        static_cast<LLAvatarListItem*>(*it)->showSpeakingIndicator(mShowSpeakingIndicator);
-    }
-}
 
 void LLAvatarList::showPermissions(bool visible)
 {
@@ -142,10 +128,6 @@ void LLAvatarList::refreshNames()
 }
 // [FS:CR]
 
-void LLAvatarList::showVoiceVolume(bool visible)
-{
-    mShowVoiceVolume=visible;
-}
 
 static bool findInsensitive(std::string haystack, const std::string& needle_upper)
 {
@@ -167,10 +149,9 @@ LLAvatarList::Params::Params()
 , show_last_interaction_time("show_last_interaction_time", false)
 , show_info_btn("show_info_btn", false)
 , show_profile_btn("show_profile_btn", true)
-, show_speaking_indicator("show_speaking_indicator", true)
-, show_permissions_granted("show_permissions_granted", false)
+,  show_permissions_granted("show_permissions_granted", false)
 , show_icons("show_icons",true)
-, show_voice_volume("show_voice_volume", false)
+
 {
 }
 
@@ -185,15 +166,13 @@ LLAvatarList::LLAvatarList(const Params& p)
 , mShowIcons(p.show_icons)
 , mShowInfoBtn(p.show_info_btn)
 , mShowProfileBtn(p.show_profile_btn)
-, mShowSpeakingIndicator(p.show_speaking_indicator)
-, mShowPermissions(p.show_permissions_granted)
+,  mShowPermissions(p.show_permissions_granted)
 , mShowCompleteName(false)
 , mForceCompleteName(false)
 // [RLVa:KB] - Checked: RLVa-1.2.0
 , mRlvCheckShowNames(false)
 // [/RLVa:KB]
-, mShowVoiceVolume(p.show_voice_volume)
-, mShowUsername(gSavedSettings.getBOOL("NameTagShowUsernames"))
+,  mShowUsername(gSavedSettings.getBOOL("NameTagShowUsernames"))
 , mShowDisplayName(gSavedSettings.getBOOL("UseDisplayNames"))
 , mUseContactSetColors(false) // <FS:PP> FIRE-32748 Colorize Friends List with Contact Sets
 , mUseContactSetListStyle(false) // <FS:PP> FIRE-31733: Make contact sets lists more readable
@@ -223,7 +202,7 @@ LLAvatarList::LLAvatarList(const Params& p)
     gSavedSettings.getControl("FSContactSetsListOfflineColor")->getSignal()->connect(boost::bind(&LLAvatarList::refreshNames, this));
     // </FS:PP>
 
-    // <FS:Ansariel> Update voice volume slider on RLVa shownames restriction update
+
     mRlvBehaviorCallbackConnection = gRlvHandler.setBehaviourCallback(boost::bind(&LLAvatarList::updateRlvRestrictions, this, _1));
 }
 
@@ -264,7 +243,7 @@ LLAvatarList::~LLAvatarList()
 {
     delete mLITUpdateTimer;
 
-    // <FS:Ansariel> Update voice volume slider on RLVa shownames restriction update
+
     if (mRlvBehaviorCallbackConnection.connected())
     {
         mRlvBehaviorCallbackConnection.disconnect();
@@ -283,7 +262,7 @@ std::string LLAvatarList::getAvatarName(LLAvatarName av_name)
     return mShowCompleteName? av_name.getCompleteName(false, mForceCompleteName) : av_name.getDisplayName();
 }
 
-// <FS:Ansariel> Update voice volume slider on RLVa shownames restriction update
+
 void LLAvatarList::updateRlvRestrictions(ERlvBehaviour behavior)
 {
     if (behavior == RLV_BHVR_SHOWNAMES)
@@ -615,9 +594,9 @@ void LLAvatarList::addNewItem(const LLUUID& id, const std::string& name, bool is
 
     item->setAvatarIconVisible(mShowIcons);
     item->setShowInfoBtn(mShowInfoBtn);
-    item->setShowVoiceVolume(mShowVoiceVolume);
+
     item->setShowProfileBtn(mShowProfileBtn);
-    item->showSpeakingIndicator(mShowSpeakingIndicator);
+
     item->setShowPermissions(mShowPermissions);
     item->showUsername(mShowUsername);
     item->showDisplayName(mShowDisplayName);

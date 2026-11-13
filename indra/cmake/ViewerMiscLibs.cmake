@@ -16,12 +16,6 @@ endif (LINUX)
 if( NOT USE_CONAN )
   use_prebuilt_binary(libhunspell)
 endif()
-
-# <FS:TJ> Keep Vivox only for OpenSim viewers
-if (OPENSIM)
-    use_prebuilt_binary(slvoice)
-endif ()
-# </FS:TJ>
 use_prebuilt_binary(nanosvg)
 use_prebuilt_binary(viewer-fonts)
 use_prebuilt_binary(google-fonts)

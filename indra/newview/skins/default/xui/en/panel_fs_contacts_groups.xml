@@ -50,7 +50,7 @@
 	 top="2"
 	 follows="top|right"
 	 height="20"
-	 label="IM/Call"
+     label="IM"
 	 layout="topleft"
 	 right="-1"
 	 name="chat_btn"

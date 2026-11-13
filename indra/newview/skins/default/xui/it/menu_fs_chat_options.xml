@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <toggleable_menu name="Chat Options Menu">
 	<menu_item_check label="Mostra Radar" name="nearby_people" />
-	<menu_item_check label="Mostra Voce nelle vicinanze" name="nearby_voice" />
+
 	<menu_item_check label="Mostra lista Bloccati" name="block_list" />
 	<menu_item_check label="Usa le intestazioni della chat in stile V1" name="plain_text_chat_history" />
 	<menu_item_check label="Mostra le icone del profilo nelle intestazioni della chat" name="chat_header_icons" />

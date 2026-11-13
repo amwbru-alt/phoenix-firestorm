@@ -93,7 +93,7 @@ FSPanelRadar::FSPanelRadar()
     mCommitCallbackRegistrar.add("Radar.Gear",      boost::bind(&FSPanelRadar::onGearButtonClicked,         this, _1));
 
     mColumnBits["name"] = 1;
-    mColumnBits["voice_level"] = 2;
+
     mColumnBits["in_region"] = 4;
     mColumnBits["typing_status"] = 8;
     mColumnBits["sitting_status"] = 16;
@@ -342,7 +342,7 @@ void FSPanelRadar::updateList(const std::vector<LLSD>& entries, const LLSD& stat
         row_data["columns"][0]["value"] = entry["name"];
         row_data["columns"][0]["font"] = default_font;
 
-        row_data["columns"][1]["column"] = "voice_level";
+
         row_data["columns"][1]["type"] = "icon";
         row_data["columns"][1]["value"] = ""; // Need to set it after the row has been created because it's to big for the row
         row_data["columns"][1]["font"] = default_font;
@@ -400,7 +400,7 @@ void FSPanelRadar::updateList(const std::vector<LLSD>& entries, const LLSD& stat
 
         static S32 rangeColumnIndex = mRadarList->getColumn("range")->mIndex;
         static S32 nameColumnIndex = mRadarList->getColumn("name")->mIndex;
-        static S32 voiceLevelColumnIndex = mRadarList->getColumn("voice_level")->mIndex;
+
         static S32 flagsColumnIndex = mRadarList->getColumn("flags")->mIndex;
         static S32 ageColumnIndex = mRadarList->getColumn("age")->mIndex;
 
@@ -415,11 +415,6 @@ void FSPanelRadar::updateList(const std::vector<LLSD>& entries, const LLSD& stat
             radarNameCell->setColor(LLColor4(options["name_color"]));
         }
 
-        if (entry.has("voice_level_icon"))
-        {
-            LLScrollListText* voiceLevelCell = (LLScrollListText*)row->getColumn(voiceLevelColumnIndex);
-            voiceLevelCell->setValue(entry["voice_level_icon"].asString());
-        }
 
         if (entry.has("flags"))
         {

@@ -5,7 +5,7 @@
 	<menu_item_call label="Teleportar para residente" name="Teleport to"/>
 	<menu_item_call label="Oferecer teleporte" name="Offer Teleport"/>
 	<menu_item_call label="Solicitar teleporte" name="Request Teleport"/>
-	<menu_item_call label="Chamada de voz" name="Voice Call"/>
+
 	<menu_item_call label="Histórico de conversa..." name="Chat History"/>
 	<menu_item_call label="Adicionar amigo" name="Add Friend"/>
 	<menu_item_call label="Remover amigo" name="Remove Friend"/>
@@ -20,13 +20,13 @@
 	<menu_item_call label="Copiar URL para a área de transferência" name="copy url"/>
 	<menu_item_call label="Copiar URI de menção para a área de transferência" name="mention_copy_label"/>
 	<menu_item_call label="Denunciar abuso" name="Report Abuse"/>
-	<menu_item_check label="Bloquear voz" name="Block Unblock"/>
+
 	<menu_item_check label="Bloquear texto" name="Mute Text"/>
 	<context_menu label="Opções de moderador" name="Moderator Options">
 		<menu_item_call label="Permitir bate-papo por texto" name="AllowTextChat"/>
 		<menu_item_call label="Proibir bate-papo por texto" name="ForbidTextChat"/>
-		<menu_item_call label="Silenciar este participante" name="ModerateVoiceMuteSelected"/>
-		<menu_item_call label="Remover silêncio deste participante" name="ModerateVoiceUnMuteSelected"/>
+
+
 	</context_menu>
 	<menu_item_call label="Banir membro" name="BanMember"/>
 	<menu_item_call label="Mencionar usuário no chat" name="mention_in_chat"/>

@@ -75,9 +75,7 @@ Leder du efter nogen at være sammen med? Prøv [fmw:///app/worldmap Verdenskort
 			<layout_panel name="im_btn_lp">
 				<button label="IM" name="im_btn" tool_tip="Åben session med privat besked (IM)"/>
 			</layout_panel>
-			<layout_panel name="call_btn_lp">
-				<button label="Kald" name="call_btn" tool_tip="Opkald til denne beboer"/>
-			</layout_panel>
+
 			<layout_panel name="share_btn_lp">
 				<button label="Del" name="share_btn" tool_tip="Del en genstand fra beholdning" forme_creator_only="true"/>
 			</layout_panel>
@@ -92,9 +90,7 @@ Leder du efter nogen at være sammen med? Prøv [fmw:///app/worldmap Verdenskort
 			<layout_panel name="chat_btn_lp">
 				<button label="Gruppe chat" name="chat_btn" tool_tip="Åben chat session"/>
 			</layout_panel>
-			<layout_panel name="group_call_btn_lp">
-				<button label="Gruppe kald" name="group_call_btn" tool_tip="Opkald til denne gruppe"/>
-			</layout_panel>
+
 		</layout_stack>
 	</panel>
 </panel>

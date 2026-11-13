@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <toggleable_menu name="ForMe Chat Options">
   <menu_item_check label="顯示雷達" name="nearby_people" />
-  <menu_item_check label="顯示附近語音" name="nearby_voice" />
+
   <menu_item_check label="顯示封鎖列表" name="block_list" />
   <menu_item_check label="使用 V1 風格的聊天記錄" name="plain_text_chat_history" />
   <menu_item_check label="在聊天標題中顯示個人資料圖示" name="chat_header_icons" />

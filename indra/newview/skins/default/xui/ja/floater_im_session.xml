@@ -4,8 +4,8 @@
 	<floater.string name="multiple_participants_added" value="[NAME]が会話に招待されました。"/>
 	<floater.string name="tooltip_to_separate_window" value="この会話を別のウィンドウへ移動させます。"/>
 	<floater.string name="tooltip_to_main_window" value="この会話をメインウィンドウへ戻します。"/>
-	<floater.string name="start_call_button_tooltip" value="ボイスチャット接続を開きます。"/>
-	<floater.string name="end_call_button_tooltip" value="ボイスチャット接続を閉じます。"/>
+
+
 	<floater.string name="expcol_button_not_tearoff_tooltip" value="このペインを閉じます。"/>
 	<floater.string name="expcol_button_tearoff_and_expanded_tooltip" value="参加者リストを閉じます。"/>
 	<floater.string name="expcol_button_tearoff_and_collapsed_tooltip" value="参加者リストを開きます。"/>
@@ -15,7 +15,7 @@
 				<menu_button name="view_options_btn" tool_tip="表示／並べ替えのオプションを表示します。"/>
 				<menu_button name="gear_btn" tool_tip="選択した人物に対する操作を表示します。"/>
 				<button name="add_btn" tool_tip="この会話に他の人物を追加します。"/>
-				<button name="voice_call_btn" tool_tip="ボイスチャット接続を開きます。"/>
+
 				<button name="close_btn" tool_tip="この会話を終了します。"/>
 				<button name="expand_collapse_btn" tool_tip="このペインを開閉します。"/>
 			</layout_panel>

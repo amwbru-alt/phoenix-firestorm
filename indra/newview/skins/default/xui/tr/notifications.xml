@@ -236,10 +236,7 @@ Lütfen sadece bir nesne seçin ve tekrar deneyin.
 		Giysi/vücut bölümlerinde yapılan tüm değişiklikler kaydedilsin mi?
 		<usetemplate canceltext="İptal" name="yesnocancelbuttons" notext="Kaydetme" yestext="Tümünü Kaydet"/>
 	</notification>
-	<notification name="FriendsAndGroupsOnly">
-		Arkadaşınız olmayan kişiler onların çağrılarını ve anlık iletilerini yok saydığınızı bilmeyecek.
-		<usetemplate name="okbutton" yestext="Tamam"/>
-	</notification>
+
 	<notification name="FavoritesOnLogin">
 		Not: Bu seçeneği etkinleştirdiğinizde, bu bilgisayarı kullanan herkes en sevdiğiniz konumlar listenizi görebilecek.
 		<usetemplate name="okbutton" yestext="Tamam"/>
@@ -2171,9 +2168,7 @@ Devam etmek istiyor musunuz?
 Bu değişikliğin harita üzerine yansıtılması biraz zaman alabilir.
 		<usetemplate name="okbutton" yestext="Tamam"/>
 	</notification>
-	<notification label="Sesli Sohbet Sürüm Uyumsuzluğu" name="VoiceVersionMismatch">
-		[APP_NAME] uygulamasının bu sürümü bu bölgedeki Sesli Sohbet özelliği ile uyumlu değil. Sesli Sohbet özelliğinin düzgün bir şekilde çalışabilmesi için [APP_NAME] uygulamasını güncellemeniz gerekiyor.
-	</notification>
+
 	<notification label="Nesneler Satın Alınamıyor" name="BuyObjectOneOwner">
 		Farklı sahipleri olan nesneler aynı anda satın alınamaz.
 Lütfen sadece bir nesne seçin ve tekrar deneyin.
@@ -2773,9 +2768,7 @@ Burada uçamazsınız.
 	<notification name="PushRestricted">
 		Bu alan başkalarını dışarı itmeye izin vermiyor. Bu arazinin sahibi değilseniz başkalarını dışarı itemezsiniz.
 	</notification>
-	<notification name="NoVoice">
-		Bu alanda sesli sohbet özelliği devre dışı. Kimsenin konuşmasını duyamayacaksınız.
-	</notification>
+
 	<notification name="NoBuild">
 		Bu alanda inşa etme özelliği devre dışı. Burada nesne inşa edemez ve oluşturamazsınız.
 	</notification>
@@ -3201,15 +3194,7 @@ Burada inşa ettiğiniz şeyler burayı terk ettiğinizde silinir, bu sebeple sa
 	<notification name="MaxListSelectMessage">
 		Bu listeden en fazla [MAX_SELECT] öğe seçebilirsiniz.
 	</notification>
-	<notification name="VoiceInviteP2P">
-		[NAME] sizi bir Sesli Sohbete davet ediyor.
-Katılmak için Kabul Et&apos;i, daveti geri çevirmek için ise Reddet&apos;i tıklatın. Arayan kişiyi engellemek için Engelle&apos;yi tıklatın.
-		<form name="form">
-			<button name="Accept" text="Kabul Et"/>
-			<button name="Decline" text="Reddet"/>
-			<button name="Mute" text="Engelle"/>
-		</form>
-	</notification>
+
 	<notification name="AutoUnmuteByIM">
 		[NAME] adlı kişiye bir anlık ileti gönderildi ve otomatik olarak engeli kaldırıldı.
 	</notification>
@@ -3219,75 +3204,8 @@ Katılmak için Kabul Et&apos;i, daveti geri çevirmek için ise Reddet&apos;i t
 	<notification name="AutoUnmuteByInventory">
 		[NAME] adlı kişiye envanter teklif edildi ve otomatik olarak engeli kaldırıldı.
 	</notification>
-	<notification name="VoiceInviteGroup">
-		[NAME], &lt;nolink&gt;[GROUP]&lt;/nolink&gt; grubu ile bir Sesli Sohbet&apos;e katıldı. 
-Aramaya katılmak için Kabul Et&apos;e veya reddetmek için Reddet&apos;e tıklayın. Bu arayanı engellemek için Engelle&apos;ye tıklayın.
-		<form name="form">
-			<button name="Accept" text="Kabul Et"/>
-			<button name="Decline" text="Reddet"/>
-			<button name="Mute" text="Engelle"/>
-		</form>
-	</notification>
-	<notification name="VoiceInviteAdHoc">
-		[NAME] konferans yoluyla bir sesli sohbete katıldı.
-Katılmak için Kabul Et&apos;i, daveti geri çevirmek için ise Reddet&apos;i tıklatın. Arayan kişiyi engellemek için Engelle&apos;yi tıklatın.
-		<form name="form">
-			<button name="Accept" text="Kabul Et"/>
-			<button name="Decline" text="Reddet"/>
-			<button name="Mute" text="Engelle"/>
-		</form>
-	</notification>
-	<notification name="InviteAdHoc">
-		[NAME] sizi bir konferans görüşmesine davet ediyor.
-Sohbete katılmak için Kabul Et&apos;i, daveti geri çevirmek için ise Reddet&apos;i tıklatın. Arayan kişiyi engellemek için Engelle&apos;yi tıklatın.
-		<form name="form">
-			<button name="Accept" text="Kabul Et"/>
-			<button name="Decline" text="Reddet"/>
-			<button name="Mute" text="Engelle"/>
-		</form>
-	</notification>
-	<notification name="VoiceChannelFull">
-		Katılmaya çalıştığınız sesli arama [VOICE_CHANNEL_NAME] maksimum kapasitesine ulaştı. Lütfen daha sonra tekrar deneyin.
-	</notification>
-	<notification name="ProximalVoiceChannelFull">
-		Üzgünüz. Bu alan sesli sohbet için maksimum kapasitesini aştı. Lütfen başka bir alanda sesli sohbet yapmayı deneyin.
-	</notification>
-	<notification name="VoiceChannelDisconnected">
-		[VOICE_CHANNEL_NAME] ile bağlantınız kesildi. Şimdi Yakındaki bir Sesli Sohbete yeniden bağlanılacaksınız.
-	</notification>
-	<notification name="VoiceChannelDisconnectedP2P">
-		[VOICE_CHANNEL_NAME] aramayı sonlandırdı. Şimdi Yakındaki bir Sesli Sohbete yeniden bağlanılacaksınız.
-	</notification>
-	<notification name="P2PCallDeclined">
-		[VOICE_CHANNEL_NAME] aramanızı reddetti. Şimdi Yakındaki bir Sesli Sohbete yeniden bağlanılacaksınız.
-	</notification>
-	<notification name="P2PCallNoAnswer">
-		[VOICE_CHANNEL_NAME] aramanızı kabul etmek için müsait değil. Şimdi Yakındaki bir Sesli Sohbete yeniden bağlanılacaksınız.
-	</notification>
-	<notification name="VoiceChannelJoinFailed">
-		[VOICE_CHANNEL_NAME] ile bağlantı kurulamadı, lütfen daha sonra tekrar deneyin. Şimdi Yakındaki bir Sesli Sohbete yeniden bağlanılacaksınız.
-	</notification>
-	<notification name="VoiceEffectsExpired">
-		Abone olduğunuz Ses Dönüşümlerinden birinin ya da daha fazlasının süresi dolmuş. 
-Aboneliğinizi yenilemek için [[URL] buraya tıklayın]. 
 
-Özel Üye iseniz, ses dönüştürme özelliğini almak için [[PREMIUM_URL] buraya tıklayın].
-	</notification>
-	<notification name="VoiceEffectsExpiredInUse">
-		Etkin Ses Dönüşümünün süresi dolmuş, normal ses ayarlarınız uygulandı. 
-Aboneliğinizi yenilemek için [[URL] buraya tıklayın]. 
 
-Özel Üye iseniz, ses dönüştürme özelliğini almak için [[PREMIUM_URL] buraya tıklayın].
-	</notification>
-	<notification name="VoiceEffectsWillExpire">
-		Ses Dönüşümlerinizden birinin ya da daha fazlasının süresi [INTERVAL] günden daha az bir zamanda dolacak. 
-Aboneliğinizi yenilemek için [[URL] buraya tıklayın]. 
-
-Özel Üye iseniz, ses dönüştürme özelliğini almak için [[PREMIUM_URL] buraya tıklayın].
-	</notification>
-	<notification name="VoiceEffectsNew">
-		Yeni Ses Şekilleri kullanılabilir!
-	</notification>
 	<notification name="Cannot enter parcel: not a group member">
 		Sadece belli bir grubun üyeleri bu alanı ziyaret edebilir.
 	</notification>
@@ -3297,12 +3215,8 @@ Aboneliğinizi yenilemek için [[URL] buraya tıklayın].
 	<notification name="Cannot enter parcel: not on access list">
 		Parsele giriş yapamazsınız, erişim listesinde yer almıyorsunuz.
 	</notification>
-	<notification name="VoiceNotAllowed">
-		[VOICE_CHANNEL_NAME] kanalındaki sesli sohbete bağlanmak için gerekli izne sahip değilsiniz.
-	</notification>
-	<notification name="VoiceCallGenericError">
-		[VOICE_CHANNEL_NAME] kanalındaki sesli sohbete bağlanmaya çalışılırken bir hata oluştu. Lütfen daha sonra tekrar deneyin.
-	</notification>
+
+
 	<notification name="UnsupportedCommandSLURL">
 		Tıklattığınız SLurl desteklenmiyor.
 	</notification>
@@ -3365,10 +3279,7 @@ Güvenliğiniz için birkaç saniye engellenecek.
 		Yazılı sohbetiniz moderatör tarafından engellendi.
 		<usetemplate name="okbutton" yestext="Tamam"/>
 	</notification>
-	<notification name="VoiceIsMutedByModerator">
-		Sesli sohbetiniz moderatör tarafından engellendi.
-		<usetemplate name="okbutton" yestext="Tamam"/>
-	</notification>
+
 	<notification name="FailedToGetBenefits">
 		Maalesef, bu oturumun avantajlarıyla ilgili bilgilere ulaşamıyoruz. Normal prodüksiyon ortamında yaşanmaması gereken bir durumdur. Lütfen destek ekibiyle iletişime geçin. Bu oturum normal bir şekilde çalışmayacaktır, yeniden başlatmanızı öneririz.
 		<usetemplate name="okbutton" yestext="Tamam"/>
@@ -3490,25 +3401,8 @@ Dış görünümünüzün kaydedilmesi [TIME] saniye sonra tamamlandı.
 Lütfen ağ ve güvenlik duvarı ayarlarınızı kontrol edin.
 		<usetemplate name="okbutton" yestext="Tamam"/>
 	</notification>
-	<notification name="NoVoiceConnect">
-		Ses sunucusuna bağlanamıyoruz: Ses için izin verilmesi gereken 
 
-&lt;nolink&gt;[HOSTID]&lt;/nolink&gt;
 
-Portları:
-:TCP: 80, 443
-:UDP: 3478, 3479, 5060, 5062, 6250, 12000-32000
-
-Lütfen ağ ve güvenlik duvarı ayarlarınızı kontrol edin. 
-Yönlendiricinizdeki her SIP ALG özelliğini devre dışı bırakın. 
-
-Sesli iletişim kullanılamayacak.
-		<usetemplate name="okbutton" yestext="Tamam"/>
-	</notification>
-	<notification name="NoVoiceConnect-GIAB">
-		Ses sunucunuz ile bağlantı kurma konusunda sorun yaşıyoruz. Ses bağlantıları kullanılamayacak. Lütfen ağ ve güvenlik duvarı ayarlarınızı kontrol edin.
-		<usetemplate name="okbutton" yestext="Tamam"/>
-	</notification>
 	<notification name="AvatarRezLeftNotification">
 		( [EXISTENCE] saniyedir hayatta )
 &apos;[NAME]&apos; adlı avatar tam olarak yüklenmiş bir şekilde ayrıldı.
@@ -3529,31 +3423,15 @@ Sesli iletişim kullanılamayacak.
 		Kopyalanamaz ve/veya aktarılamaz olduğu için bu dokunun bir önizlemesini görüntüleyemiyoruz.
 		<usetemplate ignoretext="Kopyalanamayan ve/veya aktarılamayan dokular için Canlı Önizleme modu mevcut olmayınca beni uyar" name="okignore" yestext="Tamam"/>
 	</notification>
-	<notification name="ConfirmLeaveCall">
-		Bu aramadan çıkmak istediğinize emin misiniz?
-		<usetemplate ignoretext="Aramadan çıkmadan önce doğrulama iste" name="okcancelignore" notext="Hayır" yestext="Evet"/>
-	</notification>
-	<notification name="ConfirmMuteAll">
-		Bir grup aramasındaki tüm katılımcıları engellemeyi seçtiniz.
-Bu, siz aramadan çıktıktan sonra bile, aramaya daha sonra katılacak tüm sakinlerin
-engellenmesine yol açacak.
 
-Herkes engellensin mi?
-		<usetemplate ignoretext="Bir grup aramasındaki tüm katılımcıları engellemeden önce doğrulama iste" name="okcancelignore" notext="İptal" yestext="Tamam"/>
-	</notification>
+
 	<notification label="Sohbet" name="HintChat">
 		Sohbete katılmak için aşağıdaki sohbet alanına yazın.
 	</notification>
 	<notification label="Ayağa Kalk" name="HintSit">
 		Ayağa kalkmak ve oturur konumdan çıkmak için Ayağa Kalk düğmesini tıklatın.
 	</notification>
-	<notification label="Konuş" name="HintSpeak">
-		Mikrofonunuzu açıp kapatmak için Konuş düğmesini tıklatın.
 
-Ses kontrol panelini görmek için yukarı ok tuşunu tıklatın.
-
-Konuş düğmesinin gizlenmesi ses özelliğini devre dışı bırakır.
-	</notification>
 	<notification label="Dünyayı Keşfet" name="HintDestinationGuide">
 		Hedef Kılavuzu, keşfedecek binlerce yeni yer barındırır. Bir konum seçin ve keşfetmeye başlamak için Işınla&apos;yı tıklatın.
 	</notification>
@@ -3665,10 +3543,7 @@ Görünümünüzü döndürmek için dünya üzerindeki herhangi bir yeri tıkla
 		Dünya haritasının görüntülenmesi sadece Gelişmiş modda kullanılabilir. Uygulamadan çıkıp, mod değiştirmek ister misiniz? Mod seçici oturum açma ekranında bulunabilir.
 		<usetemplate name="okcancelbuttons" notext="Çıkma" yestext="Çık"/>
 	</notification>
-	<notification label="" name="NoVoiceCall">
-		Sesli aramalar sadece Gelişmiş modda kullanılabilir. Oturumunuzu kapatıp, mod değiştirmek ister misiniz?
-		<usetemplate name="okcancelbuttons" notext="Çıkma" yestext="Çık"/>
-	</notification>
+
 	<notification label="" name="NoAvatarShare">
 		Paylaşma sadece Gelişmiş modda kullanılabilir. Oturumunuzu kapatıp, mod değiştirmek ister misiniz?
 		<usetemplate name="okcancelbuttons" notext="Çıkma" yestext="Çık"/>

@@ -62,7 +62,7 @@ Stai cercando persone da frequentare? Prova la [fmw:///app/worldmap Mappa del mo
 									<combo_box.item name="RadarNameFormat_userdisplay" label="Nome Utente (Nome Visualizzato)" />
 								</combo_box>
 								<text name="columns_label" value="Colonne visualizzate:" />
-								<check_box label="Usa la voce" name="column_voice" />
+
 								<check_box label="Tempo" name="column_seen" />
 								<check_box label="Età" name="column_age" />
 								<check_box label="Stessa regione" name="column_region" />

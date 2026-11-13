@@ -33,26 +33,8 @@
          name="lst_action"
          value="Play/Stop All Media" />
     </rows>
-    <rows
-     name="voice_follow_key"
-     value="voice_follow_key">
-        <columns
-         column="lst_action"
-         font="SansSerif"
-         halign="left"
-         name="lst_action"
-         value="Voice" />
-    </rows>
-    <rows
-     name="toggle_voice"
-     value="toggle_voice">
-        <columns
-         column="lst_action"
-         font="SansSerif"
-         halign="left"
-         name="lst_action"
-         value="Toggle Voice" />
-    </rows>
+
+
     <rows
      name="start_chat"
      value="start_chat">

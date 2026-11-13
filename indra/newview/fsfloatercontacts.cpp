@@ -26,6 +26,7 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "llcallingcard.h"
 
 #include "fsfloatercontacts.h"
 
@@ -49,7 +50,6 @@
 #include "lltabcontainer.h"
 #include "lltooldraganddrop.h"
 #include "llviewermenu.h"
-#include "llvoiceclient.h"
 #include "lggcontactsets.h"
 // [RLVa:KB] - @pay
 #include "rlvactions.h"
@@ -73,14 +73,14 @@ FSFloaterContacts::FSFloaterContacts(const LLSD& seed)
 {
     LLAvatarTracker::instance().addObserver(this);
     // For notification when SIP online status changes.
-    LLVoiceClient::addObserver(this);
+
     mContactSetChangedConnection = LGGContactSets::getInstance()->setContactSetChangeCallback(boost::bind(&FSFloaterContacts::onContactSetsChanged, this, _1));
 }
 
 FSFloaterContacts::~FSFloaterContacts()
 {
     // For notification when SIP online status changes.
-    LLVoiceClient::removeObserver(this);
+
     LLAvatarTracker::instance().removeObserver(this);
 
     if (mContactSetChangedConnection.connected())
@@ -749,7 +749,7 @@ void FSFloaterContacts::updateFriendItem(const LLUUID& agent_id, const LLRelatio
         return;
     }
 
-    bool isOnlineSIP = LLVoiceClient::getInstance()->isOnlineSIP(itemp->getUUID());
+
     bool isOnline = info->isOnline();
 
     LLAvatarName av_name;
@@ -765,10 +765,7 @@ void FSFloaterContacts::updateFriendItem(const LLUUID& agent_id, const LLRelatio
     {
         statusIcon = "icon_avatar_online";
     }
-    else if (isOnlineSIP)
-    {
-        statusIcon = "slim_icon_16_viewer";
-    }
+    else
 
     itemp->getColumn(LIST_ONLINE_STATUS)->setValue(statusIcon);
 
@@ -778,10 +775,7 @@ void FSFloaterContacts::updateFriendItem(const LLUUID& agent_id, const LLRelatio
     updateFriendItemColor(itemp, agent_id);
 
     // render name of online friends in bold text
-    LLFontGL::StyleFlags font_style = ((isOnline || isOnlineSIP) ? LLFontGL::BOLD : LLFontGL::NORMAL);
-    ((LLScrollListText*)itemp->getColumn(LIST_FRIEND_USER_NAME))->setFontStyle(font_style);
-    ((LLScrollListText*)itemp->getColumn(LIST_FRIEND_DISPLAY_NAME))->setFontStyle(font_style);
-    ((LLScrollListText*)itemp->getColumn(LIST_FRIEND_NAME))->setFontStyle(font_style);
+
 
     itemp->getColumn(LIST_VISIBLE_ONLINE)->setValue(info->isRightGrantedTo(LLRelationship::GRANT_ONLINE_STATUS));
     itemp->getColumn(LIST_VISIBLE_MAP)->setValue(info->isRightGrantedTo(LLRelationship::GRANT_MAP_LOCATION));

@@ -456,12 +456,8 @@ los medios:
 			</text>
 			<check_box label="Todos" name="all av sound check"/>
 			<check_box label="Grupo" name="group av sound check"/>
-			<text name="Voice settings:" width="110">
-				Voz:
-			</text>
-			<check_box label="Activar la voz" name="parcel_enable_voice_channel"/>
-			<check_box label="Activar la voz (establecido por el Estado)" name="parcel_enable_voice_channel_is_estate_disabled" left="120"/>
-			<check_box label="Limitar la voz a esta parcela" name="parcel_enable_voice_channel_local" left="120"/>
+
+
 		</panel>
 		<panel label="Acceso" name="land_access_panel">
 			<panel.string name="access_estate_defined">

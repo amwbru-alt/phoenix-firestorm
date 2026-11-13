@@ -4,7 +4,7 @@
 	<menu_item_call label="情報を表示" name="View Info"/>
 	<menu_item_call label="SLurlをクリップボードにコピー" name="Copy SLurl to clipboard"/>
 	<menu_item_call label="チャット" name="Chat"/>
-	<menu_item_call label="ボイスコール" name="Call"/>
+
 	<menu_item_call label="グループをピン" name="Favorite"/>
 	<menu_item_call label="グループのピン解除" name="Unfavorite"/>
 	<menu_item_call label="脱退" name="Leave"/>

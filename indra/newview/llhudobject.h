@@ -99,7 +99,7 @@ public:
         LL_HUD_EFFECT_EDIT,
         LL_HUD_EFFECT_LOOKAT,
         LL_HUD_EFFECT_POINTAT,
-        LL_HUD_EFFECT_VOICE_VISUALIZER, // Ventrella
+        LL_HUD_EFFECT_RESERVED_16, // Ventrella
         LL_HUD_NAME_TAG,
         LL_HUD_EFFECT_BLOB,
         LL_HUD_EFFECT_RESET_SKELETON

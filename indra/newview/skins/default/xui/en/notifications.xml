@@ -641,7 +641,7 @@ Save all changes to clothing/body parts?
    icon="alertmodal.tga"
    name="FriendsAndGroupsOnly"
    type="alertmodal">
-    Non-friends won't know that you've chosen to ignore their calls and instant messages.
+    People outside your friends list will not be notified that you ignore their personal text messages.
     <usetemplate
      name="okbutton"
      yestext="OK"/>
@@ -4918,7 +4918,6 @@ Cannot offer friendship at this time. Please try again in a moment.
 Unavailable mode is on.  You will not be notified of incoming communications.
 
 - Other residents will receive your Unavailable mode response (set in Preferences &gt; Privacy &gt; Autoresponse).
-- Voice calls will be rejected.
     <usetemplate
      ignoretext="I change my status to unavailable"
      name="okignore"
@@ -6326,15 +6325,6 @@ It may take some time for this change to be reflected on the map.
      yestext="OK"/>
   </notification>
 
-  <notification
-   icon="alertmodal.tga"
-   label="Voice Version Mismatch"
-   name="VoiceVersionMismatch"
-   type="alertmodal">
-This version of [APP_NAME] is not compatible with the Voice Chat feature in this region. In order for Voice Chat to function correctly you will need to update [APP_NAME].
-  <tag>fail</tag>
-  <tag>voice</tag>
-  </notification>
 
   <notification
    icon="alertmodal.tga"
@@ -8259,15 +8249,6 @@ You cannot fly here.
 This area does not allow pushing. You can&apos;t push others here unless you own the land.
   </notification>
 
-  <notification
-   icon="notify.tga"
-   name="NoVoice"
-   persist="true"
-   type="notify">
-    <unique/>    
-This area has voice chat disabled. You will not be able to use voice chat here.
-    <tag>voice</tag>
-  </notification>
 
   <notification
    icon="notify.tga"
@@ -9434,32 +9415,6 @@ Things you build here will be deleted after you leave, so do not forget to right
 You may only select up to [MAX_SELECT] items from this list.
   </notification>
 
-  <notification
-   icon="notify.tga"
-   name="VoiceInviteP2P"
-   type="notify">
-[NAME] is inviting you to a Voice Chat call.
-Click Accept to join the call or Decline to decline the invitation. Click mute to permanently block all messages this caller.
-    <tag>confirm</tag>
-    <tag>voice</tag>
-    <unique>
-      <context>NAME</context>
-    </unique>
-    <form name="form">
-      <button
-       index="0"
-       name="Accept"
-       text="Accept"/>
-      <button
-       index="1"
-       name="Decline"
-       text="Decline"/>
-      <button
-       index="2"
-       name="Mute"
-       text="Mute"/>
-    </form>
-  </notification>
 
   <notification
    icon="notify.tga"
@@ -9485,243 +9440,6 @@ Click Accept to join the call or Decline to decline the invitation. Click mute t
 [NAME] was offered inventory and has been automatically unblocked.
   </notification>
 
-  <notification
-   icon="notify.tga"
-   name="VoiceInviteGroup"
-   type="notify">
-[NAME] has joined a Voice Chat call with the group &lt;nolink&gt;[GROUP]&lt;/nolink&gt;.
-Click Accept to join the call or Decline to decline the invitation. Click mute to permanently block all messages from this caller.
-    <tag>group</tag>
-    <tag>confirm</tag>
-    <tag>voice</tag>
-    <unique>
-      <context>NAME</context>
-      <context>GROUP</context>
-    </unique>
-    <form name="form">
-      <button
-       index="0"
-       name="Accept"
-       text="Accept"/>
-      <button
-       index="1"
-       name="Decline"
-       text="Decline"/>
-      <button
-       index="2"
-       name="Mute"
-       text="Mute"/>
-    </form>
-  </notification>
-
-  <notification
-   icon="notify.tga"
-   name="VoiceInviteAdHoc"
-   type="notify">
-[NAME] has joined a voice chat call with a conference chat.
-Click Accept to join the call or Decline to decline the invitation. Click mute to permanently block all message from this caller.
-  <tag>confirm</tag>
-    <tag>voice</tag>
-    <unique>
-      <context>NAME</context>
-    </unique>
-    <form name="form">
-      <button
-       index="0"
-       name="Accept"
-       text="Accept"/>
-      <button
-       index="1"
-       name="Decline"
-       text="Decline"/>
-      <button
-       index="2"
-       name="Mute"
-       text="Mute"/>
-    </form>
-  </notification>
-
-  <notification
-   icon="notify.tga"
-   name="InviteAdHoc"
-   type="notify">
-[NAME] is inviting you to a conference chat.
-Click Accept to join the chat or Decline to decline the invitation. Click mute to permanently block all messages this caller.
-  <tag>confirm</tag>
-    <tag>voice</tag>
-    <unique>
-      <context>NAME</context>
-    </unique>
-    <form name="form">
-      <button
-       index="0"
-       name="Accept"
-       text="Accept"/>
-      <button
-       index="1"
-       name="Decline"
-       text="Decline"/>
-      <button
-       index="2"
-       name="Mute"
-       text="Mute"/>
-    </form>
-  </notification>
-
-  <notification
-   icon="notifytip.tga"
-   name="VoiceChannelFull"
-   type="notifytip">
-The voice call you are trying to join, [VOICE_CHANNEL_NAME], has reached maximum capacity. Please try again later.
-  <tag>fail</tag>
-    <tag>voice</tag>
-    <unique>
-      <context>VOICE_CHANNEL_NAME</context>
-    </unique>
-  </notification>
-
-  <notification
-   icon="notifytip.tga"
-   name="ProximalVoiceChannelFull"
-   type="notifytip">
-    <unique/>
-This area has reached maximum capacity for voice conversations.  Please try to use voice in a different area.
-    <tag>fail</tag>
-    <tag>voice</tag>
-  </notification>
-
-  <notification
-   icon="notifytip.tga"
-   name="VoiceChannelDisconnected"
-   type="notifytip">
-You have been disconnected from [VOICE_CHANNEL_NAME].  You will now be reconnected to Nearby Voice Chat.
-    <tag>voice</tag>
-    <unique>
-      <context>VOICE_CHANNEL_NAME</context>
-    </unique>
-  </notification>
-
-  <notification
-   icon="notifytip.tga"
-   name="VoiceChannelDisconnectedP2P"
-   type="notifytip">
-[VOICE_CHANNEL_NAME] has ended the call.  You will now be reconnected to Nearby Voice Chat.
-    <tag>voice</tag>
-    <unique>
-      <context>VOICE_CHANNEL_NAME</context>
-    </unique>
-  </notification>
-
-  <notification
-   icon="notifytip.tga"
-   name="P2PCallDeclined"
-   type="notifytip">
-[VOICE_CHANNEL_NAME] has declined your call.  You will now be reconnected to Nearby Voice Chat.
-    <tag>voice</tag>
-    <tag>fail</tag>
-    <unique>
-      <context>VOICE_CHANNEL_NAME</context>
-    </unique>
-  </notification>
-
-  <notification
-   icon="notifytip.tga"
-   name="P2PCallNoAnswer"
-   type="notifytip">
-[VOICE_CHANNEL_NAME] is not available to take your call.  You will now be reconnected to Nearby Voice Chat.
-    <tag>fail</tag>
-    <tag>voice</tag>
-    <unique>
-      <context>VOICE_CHANNEL_NAME</context>
-    </unique>
-  </notification>
-
-  <notification
-   icon="notifytip.tga"
-   name="VoiceChannelJoinFailed"
-   type="notifytip">
-Failed to connect to [VOICE_CHANNEL_NAME], please try again later.  You will now be reconnected to Nearby Voice Chat.
-    <tag>fail</tag>
-    <tag>voice</tag>
-    <unique>
-      <context>VOICE_CHANNEL_NAME</context>
-    </unique>
-  </notification>
-
-  <notification
-   icon="notify.tga"
-   name="VoiceEffectsExpired"
-   sound="UISndAlert"
-   persist="true"
-   type="notify">
-    <unique/>    
-One or more of your subscribed Voice Morphs has expired.
-[[URL] Click here] to renew your subscription.
-
-If you are a Premium Member, [[PREMIUM_URL] click here] to receive your voice morphing perk.
-  <tag>fail</tag>
-  <tag>voice</tag>
-  </notification>
-
-  <notification
-   icon="notify.tga"
-   name="VoiceEffectsExpiredInUse"
-   sound="UISndAlert"
-   persist="true"
-   type="notify">
-    <unique/>
-The active Voice Morph has expired, your normal voice settings have been applied.
-[[URL] Click here] to renew your subscription.
-
-If you are a Premium Member, [[PREMIUM_URL] click here] to receive your voice morphing perk.
-    <tag>fail</tag>
-    <tag>voice</tag>
-  </notification>
-
-  <notification
-   icon="notify.tga"
-   name="VoiceEffectsWillExpire"
-   sound="UISndAlert"
-   persist="true"
-   type="notify">
-    <unique/>    
-One or more of your Voice Morphs will expire in less than [INTERVAL] days.
-[[URL] Click here] to renew your subscription.
-
-If you are a Premium Member, [[PREMIUM_URL] click here] to receive your voice morphing perk.
-  <tag>fail</tag>
-  <tag>voice</tag>
-  <usetemplate
-      ignoretext="Warn me about voice morph expiring"
-      name="okignore"
-      yestext="OK"/>
-  </notification>
-
-  <notification
-   icon="notify.tga"
-   name="VoiceEffectsNew"
-   sound="UISndAlert"
-   persist="true"
-   type="notify">
-    <unique/>    
-New Voice Morphs are available!
-   <tag>voice</tag>
-  </notification>
-
-  <notification
-    icon="alertmodal.tga"
-    name="VoiceEffectsNotSupported"
-    sound="UISndAlert"
-    persist="true"
-    type="alertmodal">
-Voice Morphs are not supported by this viewer.
-For more information about other voice morph tools, see [[FAQ_URL] this article].
-    <usetemplate
-        ignoretext="Warn me about voice morph not being supported"
-        name="okignore"
-        yestext="OK"/>
-    <tag>voice</tag>
-  </notification>
 
   <notification
    icon="notifytip.tga"
@@ -9748,29 +9466,6 @@ Cannot enter parcel, you have been banned.
 Cannot enter parcel, you are not on the access list.
   </notification>
 
-  <notification
-   icon="notifytip.tga"
-   name="VoiceNotAllowed"
-   type="notifytip">
-You do not have permission to connect to voice chat for [VOICE_CHANNEL_NAME].
-  <tag>fail</tag>
-    <tag>voice</tag>
-    <unique>
-      <context>VOICE_CHANNEL_NAME</context>
-    </unique>
-  </notification>
-
-  <notification
-   icon="notifytip.tga"
-   name="VoiceCallGenericError"
-   type="notifytip">
-An error has occurred while trying to connect to voice chat for [VOICE_CHANNEL_NAME].  Please try again later.
-  <tag>fail</tag>
-    <tag>voice</tag>
-    <unique>
-      <context>VOICE_CHANNEL_NAME</context>
-    </unique>
-  </notification>
 
   <notification
    icon="notifytip.tga"
@@ -9916,33 +9611,6 @@ Your text chat has been muted by a moderator.
          yestext="OK"/>
     </notification>
 
-    <notification
- icon="alertmodal.tga"
- name="VoiceIsMutedByModerator"
- type="alertmodal">
-Your voice has been muted by a moderator.
-    <tag>voice</tag>
-        <usetemplate
-         name="okbutton"
-         yestext="OK"/>
-    </notification>
-
-    <notification
-     icon="notifytip.tga"
-     name="NearbyVoiceMutedByModerator"
-     type="notifytip">
-        The moderator has muted your voice chat.
-People in this location will not hear you if you speak.
-     <tag>voice</tag>
-    </notification>
-
-    <notification
-     icon="notifytip.tga"
-     name="NearbyVoiceUnmutedByModerator"
-     type="notifytip">
-        Your voice chat can now be heard by people in this location.
-     <tag>voice</tag>
-    </notification>
  
     <notification
         icon="alertmodal.tga"
@@ -10221,47 +9889,6 @@ Please check your network and firewall setup.
      yestext="OK"/>
   </notification>
 
-  <notification
-   icon="alertmodal.tga"
-   name="NoVoiceConnect"
-   type="alertmodal">
-    <unique/>
-We are unable to connect to the voice server:
-
-&lt;nolink&gt;[HOSTID]&lt;/nolink&gt;
-
-Ports that must be allowed for voice are:
-:TCP: 80, 443
-:UDP: 3478, 3479, 5060, 5062, 6250, 12000-32000
-
-Please check your network and firewall setup.
-Disable any SIP ALG feature in your router.
-
-Voice communications will not be available.
-https://wiki.firestormviewer.org/fs_voice
-    <tag>voice</tag>
-  <tag>fail</tag>
-    <usetemplate
-     ignoretext="Warn me when the viewer can't connect to the voice server"
-     name="okignore"
-     yestext="OK" />
-  </notification>
-
-  <notification
-   icon="alertmodal.tga"
-   name="NoVoiceConnect-GIAB"
-   type="alertmodal">
-We're having trouble connecting to your voice server.
-
-Voice communications will not be available.
-Please check your network and firewall setup.
-[https://wiki.firestormviewer.org/fs_voice]
-    <tag>voice</tag>
-  <tag>fail</tag>
-    <usetemplate
-     name="okbutton"
-     yestext="OK"/>
-  </notification>
 
   <notification
    icon="notifytip.tga"
@@ -10431,58 +10058,7 @@ Failed to apply GLTF material. You can not apply a no-copy material to multiple 
      yestext="OK"/>
   </notification>
 
-  <notification
-   icon="alertmodal.tga"
-   name="ConfirmLeaveCall"
-   type="alertmodal">
-Are you sure you want to leave this call?
-    <tag>confirm</tag>
-    <tag>voice</tag>
-    <usetemplate
-     ignoretext="Confirm before I leave call"
-     name="okcancelignore"
-     notext="No"
-     yestext="Yes">
-      <unique/>
-    </usetemplate>
-  </notification>
 
-  <notification
-   icon="alertmodal.tga"
-   name="ConfirmLeaveAdhoc"
-   type="alertmodal">
-Are you sure you want to leave this conference chat?
-    <tag>confirm</tag>
-    <tag>voice</tag>
-    <usetemplate
-     ignoretext="Confirm before I leave conference chat"
-     name="okcancelignore"
-     notext="No"
-     yestext="Yes">
-      <unique/>
-    </usetemplate>
-  </notification>
-
-  <notification
-   icon="alertmodal.tga"
-   name="ConfirmMuteAll"
-   type="alert">
-You have selected to mute all participants in a group call.
-This will also cause all residents that later join the call to be
-muted, even after you have left the call.
-
-Mute everyone?
-    <tag>group</tag>
-    <tag>confirm</tag>
-    <tag>voice</tag>
-    <usetemplate
-     ignoretext="Confirm before I mute all participants in a group call"
-     name="okcancelignore"
-     yestext="OK"
-     notext="Cancel">
-      <unique/>
-    </usetemplate>
-  </notification>
   <notification
   name="HintChat"
   label="Chat"
@@ -10499,17 +10075,6 @@ Mute everyone?
     To stand up and exit the sitting position, click the Stand button.
   </notification>
 
-  <notification
-  name="HintSpeak"
-  label="Speak"
-  type="hint">
-    <unique/>    
-Click the Speak button to turn your microphone on and off.
-
-Click on the up arrow to see the voice control panel.
-
-Hiding the Speak button will disable the voice feature.
-  </notification>
 
   <notification
   name="HintDestinationGuide"
@@ -10833,19 +10398,6 @@ Change mode and quit?
    notext="Don't Quit"/>
   </notification>
 
-  <notification
- name="NoVoiceCall"
- label=""
- type="alertmodal">
-    <unique/>
-    <tag>fail</tag>
-    <tag>confirm</tag>
-    Voice calls are only available in Advanced mode. Would you like to logout and change modes?
-    <usetemplate
-   name="okcancelbuttons"
-   yestext="Quit"
-   notext="Don't Quit"/>
-  </notification>
 
   <notification
  name="NoAvatarShare"
@@ -15512,7 +15064,6 @@ Enter a new name for Favorite Wearables folder [FOLDER_NAME]:
   </notification>
 
 
-
   <notification
    icon="alertmodal.tga"
    name="FSWearableFavoritesDeleteFolder"
@@ -15557,4 +15108,5 @@ Folder names cannot contain / or \.
     </form>
   </notification>
 
+<notification name="ForMeTextChatInvitation" type="notify" icon="notify.tga">[NAME] invites you to the text chat “[SESSION]”.<form name="form"><button name="Join" index="0" text="Join"/><button name="Decline" index="1" text="Decline"/></form></notification>
 </notifications>

@@ -20,9 +20,9 @@
 			</text>
 			<check_box label="Mostra le info dal profilo nei risultati di ricerca" name="online_searchresults"/>
 			<check_box label="Solo gli amici e i gruppi possono vedermi on-line" name="online_visibility"/>
-			<check_box label="Solo gli amici e i gruppi possono chiamarmi o inviarmi IMs" name="voice_call_friends_only_check"/>
+
 			<check_box label="Mostra inviti per gruppi a cui ho già aderito" name="FSShowJoinedGroupInvitations"/>
-			<check_box label="Chiudi il microfono automaticamente quando finisce la chiamata" name="auto_disengage_mic_check"/>
+
 			<check_box label="Permetti agli script di leggere la mia lingua" name="LanguageIsPublic"/>
 			<check_box label="Accetta automaticamente oggetti nell&apos;inventario" name="Auto_Accept_New_Inventory"/>
 			<check_box label="Segnala oggetti accettati automaticamente nella chat locale" name="FSLogAutoAcceptInventoryToChat"/>

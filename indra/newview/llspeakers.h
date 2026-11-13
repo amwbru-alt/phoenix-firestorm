@@ -29,14 +29,13 @@
 
 #include "llevent.h"
 #include "lleventtimer.h"
-#include "llvoicechannel.h"
 #include "lleventcoro.h"
 #include "llcoros.h"
 
 class LLSpeakerMgr;
 class LLAvatarName;
 
-// data for a given participant in a voice channel
+
 class LLSpeaker : public LLRefCount, public LLOldEvents::LLObservable, public LLHandleProvider<LLSpeaker>, public boost::signals2::trackable
 {
 public:
@@ -44,17 +43,13 @@ public:
     {
         SPEAKER_AGENT,
         SPEAKER_OBJECT,
-        SPEAKER_EXTERNAL    // Speaker that doesn't map to an avatar or object (i.e. PSTN caller in a group)
     } ESpeakerType;
 
     typedef enum e_speaker_status
     {
-        STATUS_SPEAKING,
         STATUS_HAS_SPOKEN,
-        STATUS_VOICE_ACTIVE,
         STATUS_TEXT_ONLY,
-        STATUS_NOT_IN_CHANNEL,
-        STATUS_MUTED
+        STATUS_NOT_IN_CHANNEL
     } ESpeakerStatus;
 
 
@@ -64,21 +59,19 @@ public:
 
     void onNameCache(const LLUUID& id, const LLAvatarName& full_name);
 
-    bool isInVoiceChannel();
 
     ESpeakerStatus  mStatus;            // current activity status in speech group
     F32             mLastSpokeTime;     // timestamp when this speaker last spoke
-    F32             mSpeechVolume;      // current speech amplitude (timea average rms amplitude?)
     std::string     mDisplayName;       // cache user name for this speaker
     bool            mHasSpoken;         // has this speaker said anything this session?
-    bool            mHasLeftCurrentCall;    // has this speaker left the current voice call?
+
     LLColor4        mDotColor;
     LLUUID          mID;
     bool            mTyping;
     S32             mSortIndex;
     ESpeakerType    mType;
     bool            mIsModerator;
-    bool            mModeratorMutedVoice;
+
     bool            mModeratorMutedText;
 
 private:
@@ -111,12 +104,6 @@ public:
     /*virtual*/ LLSD getValue();
 };
 
-class LLSpeakerVoiceModerationEvent : public LLOldEvents::LLEvent
-{
-public:
-    LLSpeakerVoiceModerationEvent(LLSpeaker* source);
-    /*virtual*/ LLSD getValue();
-};
 
 class LLSpeakerListChangeEvent : public LLOldEvents::LLEvent
 {
@@ -225,9 +212,13 @@ private:
 class LLSpeakerMgr : public LLOldEvents::LLObservable
 {
     LOG_CLASS(LLSpeakerMgr);
+    LLUUID mSessionID;
+public:
+    void setSessionID(const LLUUID& id) { mSessionID = id; }
 
 public:
-    LLSpeakerMgr(LLVoiceChannel* channelp);
+
+    explicit LLSpeakerMgr(const LLUUID& session_id = LLUUID::null);
     virtual ~LLSpeakerMgr();
 
     LLPointer<LLSpeaker> findSpeaker(const LLUUID& avatar_id);
@@ -239,21 +230,14 @@ public:
                     LLSpeaker::ESpeakerStatus status = LLSpeaker::STATUS_TEXT_ONLY,
                     LLSpeaker::ESpeakerType = LLSpeaker::SPEAKER_AGENT);
 
-    bool isVoiceActive();
 
     typedef std::vector<LLPointer<LLSpeaker> > speaker_list_t;
     void getSpeakerList(speaker_list_t* speaker_list, bool include_text);
-    LLVoiceChannel* getVoiceChannel() { return mVoiceChannel; }
-    void setVoiceChannel(LLVoiceChannel *voiceChannel) { mVoiceChannel = voiceChannel;  }
+
+
     const LLUUID getSessionID();
     bool isSpeakerToBeRemoved(const LLUUID& speaker_id);
 
-    /**
-     * Initializes mVoiceModerated depend on LLSpeaker::mModeratorMutedVoice of agent's participant.
-     *
-     * Is used only to implement workaround to initialize mVoiceModerated on first join to group chat. See EXT-6937
-     */
-    void initVoiceModerateMode();
 
 protected:
     virtual void updateSpeakerList();
@@ -267,20 +251,19 @@ protected:
 
     speaker_list_t      mSpeakersSorted;
     LLFrameTimer        mSpeechTimer;
-    LLVoiceChannel*     mVoiceChannel;
+
 
     /**
      * time out speakers when they are not part of current session
      */
     LLSpeakersDelayActionsStorage* mSpeakerDelayRemover;
 
-    // *TODO: should be moved back into LLIMSpeakerMgr when a way to request the current voice channel
-    // moderation mode is implemented: See EXT-6937
-    bool mVoiceModerated;
 
-    // *TODO: To be removed when a way to request the current voice channel
     // moderation mode is implemented: See EXT-6937
-    bool mModerateModeHandledFirstTime;
+
+
+    // moderation mode is implemented: See EXT-6937
+
 };
 
 class LLIMSpeakerMgr : public LLSpeakerMgr
@@ -288,7 +271,8 @@ class LLIMSpeakerMgr : public LLSpeakerMgr
     LOG_CLASS(LLIMSpeakerMgr);
 
 public:
-    LLIMSpeakerMgr(LLVoiceChannel* channel);
+    explicit LLIMSpeakerMgr(const LLUUID& session_id);
+
 
     void updateSpeakers(const LLSD& update);
     void setSpeakers(const LLSD& speakers);
@@ -297,55 +281,16 @@ public:
     // void toggleAllowTextChat(const LLUUID& speaker_id);
     void allowTextChat(const LLUUID& speaker_id, bool allow);
 
-    /**
-     * Mutes/Unmutes avatar for current group voice chat.
-     *
-     * It only marks avatar as muted for session and does not use local Agent's Block list.
-     * It does not mute Agent itself.
-     *
-     * @param[in] avatar_id UUID of avatar to be processed
-     * @param[in] unmute if false - specified avatar will be muted, otherwise - unmuted.
-     *
-     * @see moderateVoiceAllParticipants()
-     */
-    void moderateVoiceParticipant(const LLUUID& avatar_id, bool unmute);
-
-    /**
-     * Mutes/Unmutes all avatars for current group voice chat.
-     *
-     * It only marks avatars as muted for session and does not use local Agent's Block list.
-     * It calls forceVoiceModeratedMode() in case of session is already in requested state.
-     *
-     * @param[in] unmute_everyone if false - avatars will be muted, otherwise - unmuted.
-     *
-     * @see moderateVoiceParticipant()
-     */
-    void moderateVoiceAllParticipants(bool unmute_everyone);
-
-    void processSessionUpdate(const LLSD& session_update);
 
 protected:
     virtual void updateSpeakerList();
 
-    void moderateVoiceSession(const LLUUID& session_id, bool disallow_voice);
-
-    /**
-     * Process all participants to mute/unmute them according to passed voice session state.
-     */
-    void forceVoiceModeratedMode(bool should_be_muted);
 
     void moderationActionCoro(std::string url, LLSD action);
 
 };
 
-class LLActiveSpeakerMgr : public LLSpeakerMgr, public LLSingleton<LLActiveSpeakerMgr>
-{
-    LLSINGLETON(LLActiveSpeakerMgr);
-    LOG_CLASS(LLActiveSpeakerMgr);
 
-protected:
-    virtual void updateSpeakerList() override;
-};
 
 class LLLocalSpeakerMgr : public LLSpeakerMgr, public LLSingleton<LLLocalSpeakerMgr>
 {

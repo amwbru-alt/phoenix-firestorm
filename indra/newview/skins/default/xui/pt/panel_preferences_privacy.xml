@@ -21,9 +21,9 @@
 			</text>
 			<check_box label="Mostrar as informações do meu perfil nos resultados de busca" name="online_searchresults"/>
 			<check_box label="Apenas amigos e grupos sabem que estou online" name="online_visibility"/>
-			<check_box label="Apenas amigos e grupos podem me ligar ou enviar IM" name="voice_call_friends_only_check"/>
+
 			<check_box label="Mostrar convites de grupos que já participo" name="FSShowJoinedGroupInvitations"/>
-			<check_box label="Desligar o microfone quando as chamadas terminarem" name="auto_disengage_mic_check"/>
+
 			<check_box label="Permitir que objetos consultem a configuração atual de idioma" name="LanguageIsPublic"/>
 			<check_box label="Aceitar ofertas de inventário automaticamente" name="Auto_Accept_New_Inventory"/>
 			<check_box label="Registrar no chat ofertas aceitas automaticamente" name="FSLogAutoAcceptInventoryToChat"/>

@@ -10,7 +10,7 @@
 		<menu_item_check label="Nazwa konta (Wyświetlane)" name="radarFmtUNDN"/>
 	</context_menu>
 	<context_menu label="Widoczne kolumny" name="visible_columns">
-		<menu_item_check label="Rozmawia głosowo" name="voice_level"/>
+
 		<menu_item_check label="Jest w tym samym regionie" name="in_region"/>
 		<menu_item_check label="Obecnie pisze" name="typing_status"/>
 		<menu_item_check label="Obecnie siedzi" name="sitting_status"/>

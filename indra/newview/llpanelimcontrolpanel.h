@@ -50,8 +50,7 @@ public:
 private:
     LLUUID mSessionId;
 
-    // connection to voice channel state change signal
-    boost::signals2::connection mVoiceChannelStateChangeConnection;
+
 };
 
 class LLPanelGroupControlPanel : public LLPanelChatControlPanel

@@ -25,6 +25,8 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "llmutelist.h"
+#include "llcallingcard.h"
 
 #if 0
 
@@ -59,7 +61,6 @@
 #include "llviewermenu.h" // is_agent_mappable
 #include "llviewerobjectlist.h"
 #include "llvoavatar.h"
-#include "llnearbyvoicemoderation.h"
 // [RLVa:KB] - @pay
 #include "rlvactions.h"
 // [/RLVa:KB]
@@ -96,7 +97,7 @@ LLFloaterIMContainer::LLFloaterIMContainer(const LLSD& seed, const Params& param
 
     mAutoResize = false;
     LLTransientFloaterMgr::getInstance()->addControlView(LLTransientFloaterMgr::IM, this);
-    LLNearbyVoiceModeration::getInstance();
+
 }
 
 LLFloaterIMContainer::~LLFloaterIMContainer()
@@ -106,10 +107,6 @@ LLFloaterIMContainer::~LLFloaterIMContainer()
     mNewMessageConnection.disconnect();
     LLTransientFloaterMgr::getInstance()->removeControlView(LLTransientFloaterMgr::IM, this);
 
-    if (mMicroChangedSignal.connected())
-    {
-        mMicroChangedSignal.disconnect();
-    }
 
     gSavedPerAccountSettings.setBOOL("ConversationsListPaneCollapsed", mConversationsPane->isCollapsed());
     gSavedPerAccountSettings.setBOOL("ConversationsMessagePaneCollapsed", mMessagesPane->isCollapsed());
@@ -149,11 +146,6 @@ void LLFloaterIMContainer::sessionActivated(const LLUUID& session_id, const std:
     collapseMessagesPane(false);
 }
 
-void LLFloaterIMContainer::sessionVoiceOrIMStarted(const LLUUID& session_id)
-{
-    addConversationListItem(session_id);
-    LLFloaterIMSessionTab::addToHost(session_id);
-}
 
 void LLFloaterIMContainer::sessionIDUpdated(const LLUUID& old_session_id, const LLUUID& new_session_id)
 {
@@ -279,17 +271,14 @@ bool LLFloaterIMContainer::postBuild()
     mExpandCollapseBtn->setClickedCallback(boost::bind(&LLFloaterIMContainer::onExpandCollapseButtonClicked, this));
     mStubCollapseBtn = getChild<LLButton>("stub_collapse_btn");
     mStubCollapseBtn->setClickedCallback(boost::bind(&LLFloaterIMContainer::onStubCollapseButtonClicked, this));
-    mSpeakBtn = getChild<LLButton>("speak_btn");
 
-    mSpeakBtn->setMouseDownCallback(boost::bind(&LLFloaterIMContainer::onSpeakButtonPressed, this));
-    mSpeakBtn->setMouseUpCallback(boost::bind(&LLFloaterIMContainer::onSpeakButtonReleased, this));
 
     childSetAction("add_btn", boost::bind(&LLFloaterIMContainer::onAddButtonClicked, this));
 
     collapseMessagesPane(gSavedPerAccountSettings.getBOOL("ConversationsMessagePaneCollapsed"));
     collapseConversationsPane(gSavedPerAccountSettings.getBOOL("ConversationsListPaneCollapsed"), false);
     LLAvatarNameCache::getInstance()->addUseDisplayNamesCallback(boost::bind(&LLFloaterIMSessionTab::processChatHistoryStyleUpdate, false));
-    mMicroChangedSignal = LLVoiceClient::getInstance()->MicroChangedCallback(boost::bind(&LLFloaterIMContainer::updateSpeakBtnState, this));
+
 
     if (! mMessagesPane->isCollapsed() && ! mConversationsPane->isCollapsed())
     {
@@ -359,7 +348,6 @@ void LLFloaterIMContainer::addFloater(LLFloater* floaterp,
     LLMultiFloater::addFloater(floaterp, select_added_floater, insertion_point);
 
 
-
     LLIconCtrl* icon = 0;
     bool is_in_group = gAgent.isInGroup(session_id, true);
     LLUUID icon_id;
@@ -426,17 +414,9 @@ void LLFloaterIMContainer::onStubCollapseButtonClicked()
     collapseMessagesPane(true);
 }
 
-void LLFloaterIMContainer::onSpeakButtonPressed()
-{
-    LLVoiceClient::getInstance()->inputUserControlState(true);
-    updateSpeakBtnState();
-}
 
-void LLFloaterIMContainer::onSpeakButtonReleased()
-{
-    LLVoiceClient::getInstance()->inputUserControlState(false);
-    updateSpeakBtnState();
-}
+
+
 
 void LLFloaterIMContainer::onExpandCollapseButtonClicked()
 {
@@ -560,13 +540,13 @@ void LLFloaterIMContainer::idleUpdate()
                         dynamic_cast<LLConversationItemParticipant*>((*current_participant_model).get());
                 if (participant_model)
                 {
-                    bool show_moderator_options = LLNearbyVoiceModeration::getInstance()->isNearbyChatModerator();
+
                     LLUUID participant_id = participant_model->getUUID();
                     if (participant_id != gAgentID)
                     {
                         // Don't show moderator options if participant is not connected to the same spatial channel
                         LLSpeaker* speakerp = speaker_mgr->findSpeaker(participant_id).get();
-                        show_moderator_options &= speakerp && speakerp->isInVoiceChannel();
+
                     }
                     participant_model->setModeratorOptionsVisible(show_moderator_options);
                 }
@@ -1279,10 +1259,6 @@ void LLFloaterIMContainer::doToParticipants(const std::string& command, uuid_vec
         {
             LLAvatarActions::teleportRequest(selectedIDS.front());
         }
-        else if ("voice_call" == command)
-        {
-            LLAvatarActions::startCall(userID);
-        }
         else if ("chat_history" == command)
         {
             LLAvatarActions::viewChatHistory(userID);
@@ -1327,17 +1303,9 @@ void LLFloaterIMContainer::doToParticipants(const std::string& command, uuid_vec
                 LLFloaterReporter::showFromAvatar(userID, "not avaliable");
             }
         }
-        else if ("block_unblock" == command)
-        {
-            LLAvatarActions::toggleMute(userID, LLMute::flagVoiceChat);
-        }
         else if ("mute_unmute" == command)
         {
             LLAvatarActions::toggleMute(userID, LLMute::flagTextChat);
-        }
-        else if ("selected" == command || "mute_all" == command || "unmute_all" == command)
-        {
-            moderateVoice(command, userID);
         }
         else if ("toggle_allow_text_chat" == command)
         {
@@ -1357,10 +1325,6 @@ void LLFloaterIMContainer::doToParticipants(const std::string& command, uuid_vec
         else if ("offer_teleport" == command)
         {
             LLAvatarActions::offerTeleport(selectedIDS);
-        }
-        else if ("voice_call" == command)
-        {
-            LLAvatarActions::startAdhocCall(selectedIDS);
         }
         else if ("remove_friend" == command)
         {
@@ -1386,14 +1350,6 @@ void LLFloaterIMContainer::doToSelectedConversation(const std::string& command, 
         {
             getSelectedUUIDs(selectedIDS,false);
             closeSelectedConversations(selectedIDS);
-        }
-        else if("open_voice_conversation" == command)
-        {
-            gIMMgr->startCall(conversationItem->getUUID());
-        }
-        else if("disconnect_from_voice" == command)
-        {
-            gIMMgr->endCall(conversationItem->getUUID());
         }
         else if("chat_history" == command)
         {
@@ -1567,7 +1523,8 @@ bool LLFloaterIMContainer::enableContextMenuItem(const std::string& item, uuid_v
         return is_single_select;
     }
 
-    bool is_moderator_option = ("can_moderate_voice" == item) || ("can_allow_text_chat" == item) || ("can_mute" == item) || ("can_unmute" == item);
+
+    const bool is_moderator_option = item == "can_allow_text_chat";
 
     // Beyond that point, if only the user agent is selected, everything is disabled
     if (is_single_select && (single_id == gAgentID))
@@ -1634,18 +1591,6 @@ bool LLFloaterIMContainer::enableContextMenuItem(const std::string& item, uuid_v
         }
         return result;
     }
-    else if ("can_call" == item)
-    {
-        return LLAvatarActions::canCall();
-    }
-    else if ("can_open_voice_conversation" == item)
-    {
-        return is_single_select && LLAvatarActions::canCall();
-    }
-    else if ("can_open_voice_conversation" == item)
-    {
-        return is_single_select && LLAvatarActions::canCall();
-    }
     else if ("can_zoom_in" == item)
     {
         return is_single_select && gObjectList.findObject(single_id);
@@ -1685,11 +1630,7 @@ bool LLFloaterIMContainer::checkContextMenuItem(const std::string& item, uuid_ve
 {
     if (uuids.size() == 1)
     {
-        if ("is_blocked" == item)
-        {
-            return LLMuteList::getInstance()->isMuted(uuids.front(), LLMute::flagVoiceChat);
-        }
-        else if (item == "is_muted")
+        if (item == "is_muted")
         {
             return LLMuteList::getInstance()->isMuted(uuids.front(), LLMute::flagTextChat);
         }
@@ -1717,15 +1658,7 @@ bool LLFloaterIMContainer::visibleContextMenuItem(const LLSD& userdata)
 
     const std::string& item = userdata.asString();
 
-    if ("show_mute" == item)
-    {
-        return !isMuted(conversation_item->getUUID());
-    }
-    else if ("show_unmute" == item)
-    {
-        return isMuted(conversation_item->getUUID());
-    }
-    else if ("can_allow_text_chat" == item)
+    if ("can_allow_text_chat" == item)
     {
         return !isNearbyChatSpeakerSelected();
     }
@@ -1806,7 +1739,6 @@ bool LLFloaterIMContainer::selectConversationPair(const LLUUID& session_id, bool
         {
             // Store the active session
             setSelectedSession(session_id);
-
 
 
             if (session_floater->getHost())
@@ -2058,25 +1990,7 @@ LLConversationViewParticipant* LLFloaterIMContainer::createConversationViewParti
 
 bool LLFloaterIMContainer::enableModerateContextMenuItem(const std::string& userdata, bool is_self)
 {
-    if (LLNearbyVoiceModeration::getInstance()->isNearbyChatModerator() && isNearbyChatSpeakerSelected())
-    {
-        // Determine here which actions are allowed
-        if ("can_moderate_voice" == userdata)
-        {
-            return true;
-        }
-        else if (("can_mute" == userdata))
-        {
-            return !is_self;
-        }
-        else if ("can_unmute" == userdata)
-        {
-            return true;
-        }
-
-        return false;
-    }
-    else if (!isGroupModerator())
+    if (!isGroupModerator())
     {
         // only group moderators can perform actions related to this "enable callback"
         return false;
@@ -2088,23 +2002,11 @@ bool LLFloaterIMContainer::enableModerateContextMenuItem(const std::string& user
         return false;
     }
 
-    bool voice_channel = speakerp->isInVoiceChannel();
 
-    if ("can_moderate_voice" == userdata)
-    {
-        return voice_channel;
-    }
-    else if (("can_mute" == userdata) && !is_self)
-    {
-        return voice_channel && !isMuted(getCurSelectedViewModelItem()->getUUID());
-    }
-    else if ("can_unmute" == userdata)
-    {
-        return voice_channel && isMuted(getCurSelectedViewModelItem()->getUUID());
-    }
+
 
     // The last invoke is used to check whether the "can_allow_text_chat" will enabled
-    return LLVoiceClient::getInstance()->isParticipantAvatar(getCurSelectedViewModelItem()->getUUID()) && !is_self;
+    return userdata == "can_allow_text_chat" && !is_self;
 }
 
 bool LLFloaterIMContainer::isGroupModerator()
@@ -2116,7 +2018,7 @@ bool LLFloaterIMContainer::isGroupModerator()
         return false;
     }
 
-    // Is session a group call/chat?
+    // Is this a group text session?
     if(gAgent.isInGroup(speaker_manager->getSessionID()))
     {
         LLSpeaker * speaker = speaker_manager->findSpeaker(gAgentID).get();
@@ -2209,104 +2111,13 @@ void LLFloaterIMContainer::banSelectedMember(const LLUUID& participant_uuid)
 
 }
 
-void LLFloaterIMContainer::moderateVoice(const std::string& command, const LLUUID& userID)
-{
-    if (!gAgent.getRegion())
-    {
-        return;
-    }
 
-    if (isNearbyChatSpeakerSelected())
-    {
-        if ("selected" == command)
-        {
-            // Request a mute/unmute using a capability request via the simulator
-            LLNearbyVoiceModeration::getInstance()->requestMuteIndividual(userID, !isMuted(userID));
-        }
-        else
-        if ("mute_all" == command)
-        {
-            // Send the mute_all request to the server
-            const bool mute_state = true;
-            LLNearbyVoiceModeration::getInstance()->requestMuteAll(mute_state);
-        }
-        else
-        if ("unmute_all" == command)
-        {
-            // Send the unmute_all request to the server
-            const bool mute_state = false;
-            LLNearbyVoiceModeration::getInstance()->requestMuteAll(mute_state);
-        }
 
-        return;
-    }
 
-    if (command.compare("selected"))
-    {
-        moderateVoiceAllParticipants(command.compare("mute_all"));
-    }
-    else
-    {
-        moderateVoiceParticipant(userID, isMuted(userID));
-    }
-}
-
-bool LLFloaterIMContainer::isMuted(const LLUUID& avatar_id)
-{
-    const LLSpeaker * speakerp = getSpeakerOfSelectedParticipant(getSpeakerMgrForSelectedParticipant());
-    return NULL == speakerp ? true : speakerp->mStatus == LLSpeaker::STATUS_MUTED;
-}
-
-void LLFloaterIMContainer::moderateVoiceAllParticipants(bool unmute)
-{
-    LLIMSpeakerMgr * speaker_managerp = dynamic_cast<LLIMSpeakerMgr*>(getSpeakerMgrForSelectedParticipant());
-
-    if (NULL != speaker_managerp)
-    {
-        if (!unmute)
-        {
-            LLSD payload;
-            payload["session_id"] = speaker_managerp->getSessionID();
-            LLNotificationsUtil::add("ConfirmMuteAll", LLSD(), payload, confirmMuteAllCallback);
-            return;
-        }
-
-        speaker_managerp->moderateVoiceAllParticipants(unmute);
-    }
-}
 
 // static
-void LLFloaterIMContainer::confirmMuteAllCallback(const LLSD& notification, const LLSD& response)
-{
-    S32 option = LLNotificationsUtil::getSelectedOption(notification, response);
-    // if Cancel pressed
-    if (option == 1)
-    {
-        return;
-    }
 
-    const LLSD& payload = notification["payload"];
-    const LLUUID& session_id = payload["session_id"];
 
-    LLIMSpeakerMgr * speaker_manager = dynamic_cast<LLIMSpeakerMgr*> (
-        LLIMModel::getInstance()->getSpeakerManager(session_id));
-    if (speaker_manager)
-    {
-        speaker_manager->moderateVoiceAllParticipants(false);
-    }
-
-    return;
-}
-
-void LLFloaterIMContainer::moderateVoiceParticipant(const LLUUID& avatar_id, bool unmute)
-{
-    LLIMSpeakerMgr * speaker_managerp = dynamic_cast<LLIMSpeakerMgr *>(getSpeakerMgrForSelectedParticipant());
-
-    if (NULL != speaker_managerp)
-    {
-        speaker_managerp->moderateVoiceParticipant(avatar_id, unmute);
-    }
-}
 
 LLSpeakerMgr * LLFloaterIMContainer::getSpeakerMgrForSelectedParticipant()
 {
@@ -2415,11 +2226,7 @@ void LLFloaterIMContainer::reSelectConversation()
     }
 }
 
-void LLFloaterIMContainer::updateSpeakBtnState()
-{
-    mSpeakBtn->setToggleState(LLVoiceClient::getInstance()->getUserPTTState());
-    mSpeakBtn->setEnabled(LLAgent::isActionAllowed("speak"));
-}
+
 
 bool LLFloaterIMContainer::isConversationLoggingAllowed()
 {

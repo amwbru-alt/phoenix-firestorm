@@ -268,38 +268,7 @@ void LLGroupActions::search()
 }
 
 // static
-void LLGroupActions::startCall(const LLUUID& group_id)
-{
-    // create a new group voice session
-    LLGroupData gdata;
 
-    if (!gAgent.getGroupData(group_id, gdata))
-    {
-        LL_WARNS() << "Error getting group data" << LL_ENDL;
-        return;
-    }
-
-// [RLVa:KB] - Checked: 2013-05-09 (RLVa-1.4.9)
-    if (!RlvActions::canStartIM(group_id))
-    {
-        make_ui_sound("UISndInvalidOp");
-        RlvUtil::notifyBlocked(RlvStringKeys::Blocked::StartIm, LLSD().with("RECIPIENT", LLSLURL("group", group_id, "about").getSLURLString()));
-        return;
-    }
-// [/RLVa:KB]
-
-    LLUUID session_id = gIMMgr->addSession(gdata.mName, IM_SESSION_GROUP_START, group_id, LLSD());
-    if (session_id == LLUUID::null)
-    {
-        LL_WARNS() << "Error adding session" << LL_ENDL;
-        return;
-    }
-
-    // start the call
-    gIMMgr->autoStartCallOnStartup(session_id);
-
-    make_ui_sound("UISndStartIM");
-}
 
 // static
 void LLGroupActions::join(const LLUUID& group_id)

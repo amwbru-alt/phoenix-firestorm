@@ -74,15 +74,7 @@ public:
                                             add_landmark_button,
                                             for_sale_button,
                                             info_button;
-        Optional<LLIconCtrl::Params>        voice_icon,
-                                            fly_icon,
-                                            push_icon,
-                                            build_icon,
-                                            scripts_icon,
-                                            damage_icon,
-                                            see_avatars_icon,
-                                            pathfinding_dirty_icon,
-                                            pathfinding_disabled_icon;
+        Optional<LLIconCtrl::Params>        fly_icon, push_icon, build_icon, scripts_icon, damage_icon, see_avatars_icon, pathfinding_dirty_icon, pathfinding_disabled_icon;
         Optional<LLTextBox::Params>         damage_text;
         Params();
     };
@@ -119,7 +111,6 @@ private:
 
     enum EParcelIcon
     {
-        VOICE_ICON = 0,
         FLY_ICON,                 // 1
         PUSH_ICON,                // 2
         BUILD_ICON,               // 3

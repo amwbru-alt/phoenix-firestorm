@@ -86,7 +86,6 @@ J2C Decoder Version: [J2C_VERSION]
 Audio Driver Version: [AUDIO_DRIVER_VERSION]
 [LIBCEF_VERSION]
 LibVLC Version: [LIBVLC_VERSION]
-Voice Server Version: [VOICE_VERSION]
 	</string>
 	<string name="AboutTraffic">Packets Lost: [PACKETS_LOST,number,0]/[PACKETS_IN,number,0] ([PACKETS_PCT,number,1]%)</string>
 	<string name="AboutTime">[month, datetime, slt] [day, datetime, slt] [year, datetime, slt] [hour, datetime, slt]:[min, datetime, slt]:[second,datetime,slt] SLT</string>
@@ -276,7 +275,6 @@ If you feel this is an error, please contact support@secondlife.com</string>
     <string name="Rotatecolors180">Color Shift</string>
     <string name="Sharpen">Sharpen</string>
     <string name="Thematrix">The Matrix</string>
-	
 	
 	
     <!-- Tooltip -->
@@ -597,11 +595,10 @@ https://www.firestormviewer.org/support for help fixing this problem.
 	<string name="NearbyChatLabel">(Nearby chat)</string>
 	<string name="whisper">whispers:</string>
 	<string name="shout">shouts:</string>
-	<string name="ringing">Connecting to in-world Voice Chat...</string>
+
 	<string name="connected">Connected</string>
-	<string name="unavailable">Voice not available at your current location</string>
-	<string name="hang_up">Disconnected from in-world Voice Chat</string>
-	<string name="reconnect_nearby">You will now be reconnected to Nearby Voice Chat</string>
+
+
 	<string name="ScriptQuestionCautionChatGranted">'[OBJECTNAME]', an object owned by '[OWNERNAME]', located in [REGIONNAME] at [REGIONPOS], has been granted permission to: [PERMISSIONS].</string>
 	<string name="ScriptQuestionCautionChatDenied">'[OBJECTNAME]', an object owned by '[OWNERNAME]', located in [REGIONNAME] at [REGIONPOS], has been denied permission to: [PERMISSIONS].</string>
 	<string name="ScriptTakeMoneyCaution">The object &apos;&lt;nolink&gt;[OBJECTNAME]&lt;/nolink&gt;&apos; wants total access to your Linden Dollars account. If you allow access, it can remove funds from your account at any time, or empty your account completely, on an ongoing basis with no additional warnings.</string>
@@ -1693,9 +1690,7 @@ Please reinstall viewer from [DOWNLOAD_URL] and contact [SUPPORT_SITE] if issue 
 <string name="Collar Back">Collar Back</string>
 
 
-
 <string name="Collar Front">Collar Front</string>
-
 
 
 <string name="Corner Down">Corner Down</string>
@@ -1741,12 +1736,6 @@ Please reinstall viewer from [DOWNLOAD_URL] and contact [SUPPORT_SITE] if issue 
 <string name="Eyeliner Color">Eyeliner Color</string>
 
 <string name="Eyes Bugged">Eyes Bugged</string>
-
-
-
-
-
-
 
 
 <string name="Face Shear">Face Shear</string>
@@ -2058,7 +2047,6 @@ Please reinstall viewer from [DOWNLOAD_URL] and contact [SUPPORT_SITE] if issue 
 <string name="Sleeve Length">Sleeve Length</string>
 
 
-
 <string name="Sleeve Looseness">Sleeve Looseness</string>
 <string name="Slit Back">Slit: Back</string>
 <string name="Slit Front">Slit: Front</string>
@@ -2140,7 +2128,7 @@ Please reinstall viewer from [DOWNLOAD_URL] and contact [SUPPORT_SITE] if issue 
   <string name="LocationCtrlInfoBtnTooltip">See more info about the current location</string>
   <string name="LocationCtrlComboBtnTooltip">Location history</string>
   <string name="LocationCtrlForSaleTooltip">Buy this land</string>
-  <string name="LocationCtrlVoiceTooltip">Voice not available here</string>
+
   <string name="LocationCtrlFlyTooltip">Flying not allowed</string>
   <string name="LocationCtrlPushTooltip">No pushing</string>
   <string name="LocationCtrlBuildTooltip">Building/dropping objects not allowed</string>
@@ -2192,14 +2180,14 @@ Please reinstall viewer from [DOWNLOAD_URL] and contact [SUPPORT_SITE] if issue 
 	<string name="IM_logging_string">-- Instant message logging enabled --</string>
 	<string name="IM_typing_start_string">[NAME] is typing...</string>
 	<string name="Unnamed">(Unnamed)</string>
-	<string name="IM_moderated_chat_label">(Moderated: Voices off by default)</string>
-	<string name="IM_unavailable_text_label">Text chat is not available for this call.</string>
+
+	<string name="IM_unavailable_text_label">Text chat is not available.</string>
 	<string name="IM_muted_text_label">Your text chat has been disabled by a Group Moderator.</string>
 	<string name="IM_default_text_label">Click here to instant message.</string>
 	<string name="IM_to_label">To</string>
 	<string name="IM_moderator_label">(Moderator)</string>
 	<string name="Saved_message">(Saved [LONG_TIMESTAMP])</string>
-	<string name="IM_unblock_only_groups_friends">To see this message, you must uncheck &apos;Only friends and groups can call or IM me&apos; in Preferences/Privacy.</string>
+
   <string name="OnlineStatus">online</string>
   <string name="OfflineStatus">offline</string>
 	<string name="not_online_msg">User not online - message will be stored and delivered later.</string>
@@ -2210,22 +2198,12 @@ Please reinstall viewer from [DOWNLOAD_URL] and contact [SUPPORT_SITE] if issue 
 	<string name="IM_autoresponse_sent">Autoresponse sent: [MESSAGE]</string>
 	<string name="IM_autoresponse_item_sent">Sent auto-response item: [ITEM_NAME]</string>
 
-	<!-- voice calls -->
-	<string name="answered_call">Your call has been answered</string>
-	<string name="you_started_call">You started a voice call</string>
-	<string name="you_joined_call">You joined the voice call</string>
-  <string name="you_auto_rejected_call-im">You automatically rejected the voice call while Unavailable mode was on.</string>
-  <string name="name_started_call">[NAME] started a voice call</string>
 
-  <string name="ringing-im">
-    Joining voice call...
-  </string>
-  <string name="connected-im">
-    Connected, click Leave Call to hang up
-  </string>
-  <string name="hang_up-im">
-    Left voice call
-  </string>
+
+
+
+
+
   <string name="answering-im">
     Connecting...
   </string>
@@ -2263,9 +2241,7 @@ Learn more at https://second.life/scripted-agents.
   <string name="offline_message">
     [NAME] is offline.
   </string>
-  <string name="invite_message">
-    Click the [BUTTON NAME] button to accept/connect to this voice chat.
-  </string>
+
   <string name="muted_message">
     You have blocked this Resident. Sending a message will automatically unblock them.
   </string>
@@ -2351,9 +2327,6 @@ If the message does not appear in the next few minutes, it may have been dropped
 
   <string name="Home position set.">Home position set.</string>
 
-  <string name="voice_morphing_url">https://secondlife.com/destination/voice-island</string>
-  <string name="premium_voice_morphing_url">https://secondlife.com/destination/voice-morphing-premium</string>
-  <string name="no_voice_morphing_faq_url">https://lindenlab.freshdesk.com/support/solutions/articles/31000173560-webrtc-update-for-voice-chat-faq/</string>
 
   <string name="lindenhomes_get_home_url">https://secondlife.com/land/lindenhomes/member.php</string>
   <string name="lindenhomes_my_home_url">https://land.secondlife.com/en-Us/lindenhomes/my-home.php</string>
@@ -2427,7 +2400,7 @@ Abuse Report</string>
   <string name="Male Gestures">Male Gestures</string>
   <string name="Female Gestures">Female Gestures</string>
   <string name="Other Gestures">Other Gestures</string>
-  <string name="Speech Gestures">Speech Gestures</string>
+
   <string name="Common Gestures">Common Gestures</string>
   <!-- gestures -->
   <string name="Male - Excuse me">Male - Excuse me</string>
@@ -2748,9 +2721,8 @@ name="Command_360_Capture_Label">360° Snapshot</string>
   <string name="Command_Snapshot_Label">Snapshot</string>
   <string name="Command_Speak_Label">Speak</string>
   <string name="Command_View_Label">Camera</string>
-<!-- Ansariel: Renamed for FS (FIRE-5019)
-  <string name="Command_Voice_Label">Voice settings</string>-->
-  <string name="Command_Voice_Label">Nearby voice</string>
+
+
 <!-- Firestorm commands -->
   <string name="Command_Quickprefs_Label">Quick prefs</string>
   <string name="Command_AO_Label">Animation overrider</string>
@@ -2820,9 +2792,9 @@ name="Command_360_Capture_Label">360° Snapshot</string>
   <string name="Command_Report_Abuse_Tooltip">Report Abuse</string>
   <string name="Command_Search_Tooltip">Find places, events, people (CTRL+F)</string>
   <string name="Command_Snapshot_Tooltip">Take a picture (CTRL+SHIFT+S)</string>
-  <string name="Command_Speak_Tooltip">Speak with people nearby using your microphone</string>
+
   <string name="Command_View_Tooltip">Changing camera angle</string>
-  <string name="Command_Voice_Tooltip">Volume controls for calls and people near you in world</string>
+
 <!-- Firestorm commands -->
   <string name="Command_Quickprefs_Tooltip">Quick preferences for changing often used settings</string>
   <string name="Command_AO_Tooltip">Animation overrider</string>

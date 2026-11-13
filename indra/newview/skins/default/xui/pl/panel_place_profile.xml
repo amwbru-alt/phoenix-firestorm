@@ -54,7 +54,7 @@
 				<accordion_tab name="parcel_characteristics_tab" title="Działka">
 					<panel name="parcel_characteristics_panel">
 						<text name="rating_label" value="Rodzaj:"/>
-						<text name="voice_label" value="Kom. głosowa:"/>
+
 						<text name="fly_label" value="Latanie:"/>
 						<text name="push_label" value="Popchnięcia:"/>
 						<text name="build_label" value="Budowanie:"/>

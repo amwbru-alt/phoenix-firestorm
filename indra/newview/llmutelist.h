@@ -42,7 +42,7 @@ class LLMute
 {
 public:
     // Legacy mutes are BY_NAME and have null UUID.
-    // EXTERNAL mutes are only processed through an external system (e.g. Voice) and not stored.
+
     enum EType { BY_NAME = 0, AGENT = 1, OBJECT = 2, GROUP = 3, EXTERNAL = 4, COUNT = 5 };
 
     // Bits in the mute flags.  For backwards compatibility (since any mute list entries that were created before the flags existed
@@ -52,7 +52,7 @@ public:
     enum
     {
         flagTextChat        = 0x00000001,       // If set, don't mute user's text chat
-        flagVoiceChat       = 0x00000002,       // If set, don't mute user's voice chat
+        flagReservedLegacy  = 0x00000002,       // Reserved wire bit; no client behavior.
         flagParticles       = 0x00000004,       // If set, don't mute user's particles
         flagObjectSounds    = 0x00000008,       // If set, mute user's object sounds
 

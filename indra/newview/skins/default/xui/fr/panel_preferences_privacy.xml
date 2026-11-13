@@ -10,9 +10,9 @@
 			<text name="cache_size_label">(Emplacements, images, internet, recherches)</text>
 			<check_box label="Afficher mes informations de profil dans les résultats de recherche" name="online_searchresults"/>
 			<check_box label="Seuls mes amis et groupes savent que je suis connecté" name="online_visibility"/>
-			<check_box label="Seuls mes amis et groupes peuvent m'appeler ou m'envoyer des messages instantanés" name="voice_call_friends_only_check"/>
+
 			<check_box label="Afficher les invitations pour les groupes dont vous faîtes déjà partie" name="FSShowJoinedGroupInvitations"/>
-			<check_box label="Couper le micro à la fin d'un appel vocal" name="auto_disengage_mic_check"/>
+
 			<check_box label="Permettre aux objets scriptés de connaitre la langue de l’interface" name="LanguageIsPublic"/>
 			<check_box label="Afficher mes repères favoris à la connexion (dans le menu déroulant 'Démarrer :')" name="favorites_on_login_check"/>
 			<check_box label="Accepter automatiquement les nouveaux objets" name="Auto_Accept_New_Inventory"/>

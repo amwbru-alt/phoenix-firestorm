@@ -541,51 +541,7 @@ void LLToolBarView::onToolBarButtonAdded(LLView* button)
 {
     llassert(button);
 
-    if (button->getName() == "speak")
-    {
-        // Add the "Speak" button as a control view in LLTransientFloaterMgr
-        // to prevent hiding the transient IM floater upon pressing "Speak".
-        LLTransientFloaterMgr::getInstance()->addControlView(button);
-
-        // Redock incoming and/or outgoing call windows, if applicable
-
-        LLFloater* incoming_floater = LLFloaterReg::getLastFloaterInGroup("incoming_call");
-        LLFloater* outgoing_floater = LLFloaterReg::getLastFloaterInGroup("outgoing_call");
-
-        if (incoming_floater && incoming_floater->isShown())
-        {
-            LLCallDialog* incoming = dynamic_cast<LLCallDialog *>(incoming_floater);
-            llassert(incoming);
-
-            LLDockControl* dock_control = incoming->getDockControl();
-            if (dock_control->getDock() == NULL)
-            {
-                incoming->dockToToolbarButton("speak");
-            }
-        }
-
-        if (outgoing_floater && outgoing_floater->isShown())
-        {
-            LLCallDialog* outgoing = dynamic_cast<LLCallDialog *>(outgoing_floater);
-            llassert(outgoing);
-
-            LLDockControl* dock_control = outgoing->getDockControl();
-            if (dock_control->getDock() == NULL)
-            {
-                outgoing->dockToToolbarButton("speak");
-            }
-        }
-    }
-    // <FS:Ansariel> Do not remove in case they get removed by LL! We need this for standalone
-    //               IM floaters.
-    else if (button->getName() == "voice")
-    {
-        // Add the "Voice controls" button as a control view in LLTransientFloaterMgr
-        // to prevent hiding the transient IM floater upon pressing "Voice controls".
-        LLTransientFloaterMgr::getInstance()->addControlView(button);
-    }
-    // <FS:Ansariel> Dockable QuickPrefs floater
-    else if (button->getName() == "quickprefs" && !FSCommon::isLegacySkin())
+    if (button->getName() == "quickprefs" && !FSCommon::isLegacySkin())
     {
         LLTransientFloaterMgr::getInstance()->addControlView(button);
         FloaterQuickPrefs* quickprefs_floater = LLFloaterReg::findTypedInstance<FloaterQuickPrefs>("quickprefs");
@@ -601,41 +557,7 @@ void LLToolBarView::onToolBarButtonRemoved(LLView* button)
 {
     llassert(button);
 
-    if (button->getName() == "speak")
-    {
-        LLTransientFloaterMgr::getInstance()->removeControlView(button);
-
-        // Undock incoming and/or outgoing call windows
-
-        LLFloater* incoming_floater = LLFloaterReg::getLastFloaterInGroup("incoming_call");
-        LLFloater* outgoing_floater = LLFloaterReg::getLastFloaterInGroup("outgoing_call");
-
-        if (incoming_floater && incoming_floater->isShown())
-        {
-            LLDockableFloater* incoming = dynamic_cast<LLDockableFloater *>(incoming_floater);
-            llassert(incoming);
-
-            LLDockControl* dock_control = incoming->getDockControl();
-            dock_control->setDock(NULL);
-        }
-
-        if (outgoing_floater && outgoing_floater->isShown())
-        {
-            LLDockableFloater* outgoing = dynamic_cast<LLDockableFloater *>(outgoing_floater);
-            llassert(outgoing);
-
-            LLDockControl* dock_control = outgoing->getDockControl();
-            dock_control->setDock(NULL);
-        }
-    }
-    // <FS:Ansariel> Do not remove in case they get removed by LL! We need this for standalone
-    //               IM floaters.
-    else if (button->getName() == "voice")
-    {
-        LLTransientFloaterMgr::getInstance()->removeControlView(button);
-    }
-    // <FS:Ansariel> Dockable QuickPrefs floater
-    else if (button->getName() == "quickprefs" && !FSCommon::isLegacySkin())
+    if (button->getName() == "quickprefs" && !FSCommon::isLegacySkin())
     {
         LLTransientFloaterMgr::getInstance()->removeControlView(button);
         FloaterQuickPrefs* quickprefs_floater = LLFloaterReg::findTypedInstance<FloaterQuickPrefs>("quickprefs");

@@ -126,6 +126,14 @@ def main():
                         str(ROOT / 'tests/forme/group_paging_test.cpp'), '-o', str(binary)], check=True)
         subprocess.run([str(binary)], check=True)
 
+    with tempfile.TemporaryDirectory() as temp:
+        binary = pathlib.Path(temp) / 'stream_url'
+        subprocess.run(['c++', '-std=c++20', '-Wall', '-Wextra', '-Werror',
+                        '-I', str(ROOT / 'indra/llcommon'),
+                        str(ROOT / 'tests/forme/stream_url_test.cpp'), '-o', str(binary)], check=True)
+        subprocess.run([str(binary)], check=True)
+    subprocess.check_call([sys.executable, str(ROOT / 'tests/forme/check_no_voice.py')])
+
     if errors:
         print('\n'.join(errors), file=sys.stderr)
         return 1

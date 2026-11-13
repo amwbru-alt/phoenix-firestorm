@@ -295,7 +295,7 @@
 		<function name="osSetInertiaAsSphere" sleep="0.0" energy="10.0" desc="osSetInertiaAsSphere(float mass, float radius, vector centerOfMass);Allows creators to set the link set total mass, center of mass and moment of inertia. Moment of inertia will be the one of a sphere of radius radius, placed at the center of mass. Call osClearInertia to undo." />
 		<function name="osSetParcelDetails" sleep="0.0" energy="10.0" desc="osSetParcelDetails(vector pos, list parameters);Sets parcel details;PARCEL_DETAILS_NAME, PARCEL_DETAILS_DESC, PARCEL_DETAILS_OWNER, PARCEL_DETAILS_GROUP, PARCEL_DETAILS_CLAIMDATE are implemented" />
 		<function name="osSetParcelMediaURL" sleep="0.0" energy="10.0" desc="osSetParcelMediaURL(string url);Set parcel media to a given url" />
-		<function name="osSetParcelSIPaddress" sleep="0.0" energy="10.0" desc="osSetParcelSIPAddress(string SIPAddress);Set parcel SIP Address for voice" />
+
 		<function name="osSetPenCap" sleep="0.0" energy="10.0" desc="osSetPenCap(string draw_list, string direction, string type);Apply a shape on the end of a line" />
 		<function name="osSetPenColor" sleep="0.0" energy="10.0" desc="osSetPenColor(string draw_list, string color);Sets the pen color to be used when drawing dynamic textures" />
 		<function name="osSetPenSize" sleep="0.0" energy="10.0" desc="osSetPenSize(string draw_list, integer pen_size);Sets the line thickness to be used when drawing dynamic textures" />

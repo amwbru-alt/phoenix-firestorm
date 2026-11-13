@@ -8,7 +8,7 @@
 			<layout_panel name="radarlayout">
 				<radar_list name="radar_list">
 					<radar_list.columns label="名前" name="name" tool_tip="[TOTAL]人のアバター（同じリージョンに[IN_REGION]人、チャットレンジ内に[IN_CHAT_RANGE]人）"/>
-					<radar_list.columns name="voice_level" tool_tip="ボイスで会話しています。"/>
+
 					<radar_list.columns label="距離" name="range"/>
 					<radar_list.columns label="表示時間" name="seen"/>
 					<radar_list.columns label="年齢" name="age"/>

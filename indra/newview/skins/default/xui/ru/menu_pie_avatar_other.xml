@@ -20,7 +20,7 @@
         <pie_menu name="Avatar Pie More 2" label="Дальше &gt;">
             <pie_slice label="Отладка" name="Debug..." />
             <pie_slice label="О скриптах" name="ScriptInfo" />
-            <pie_slice label="Звонок" name="Call" />
+
             <pie_slice label="Приблизить" name="Zoom In" />
             <pie_slice label="Обновить текстуру" name="Texture Refresh" />
             <pie_menu name="ResetMenu" label="Сброс &gt;">

@@ -16,7 +16,7 @@
 					<layout_panel name="radarlayout">
 						<radar_list name="radar_list">
 							<radar_list.columns label="名前" name="name" tool_tip="[TOTAL]人のアバター（同じリージョンに[IN_REGION]人、チャットレンジ内に[IN_CHAT_RANGE]人）がいます。"/>
-							<radar_list.columns name="voice_level" tool_tip="ボイスで会話しています。"/>
+
 							<radar_list.columns name="in_region" tool_tip="同じリージョンにいる（緑）か同じ土地（緑・黄色）にいます。"/>
 							<radar_list.columns name="typing_status" tool_tip="入力しています。"/>
 							<radar_list.columns name="sitting_status" tool_tip="座っています。"/>

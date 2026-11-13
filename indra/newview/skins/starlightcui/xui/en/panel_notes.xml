@@ -166,27 +166,7 @@
 			         width="21" />		
 				</layout_panel>
 				
-				<layout_panel
-				follows="bottom|left|right"
-				height="23"
-				layout="bottomleft"
-				left_pad="3"
-				name="call_btn_lp"
-			    user_resize="false" 
-			    auto_resize="true"
-				width="52">
-					<button
-			         follows="bottom|left|right"
-			         height="23"
-			         label="Call"
-			         layout="topleft"
-			         name="call"
-			         tool_tip="Call this Resident"
-			         left="1"
-			         top="0"
-			         use_ellipses="true"
-			         width="51" />		
-				</layout_panel>
+
 				
 				<layout_panel
 				follows="bottom|left|right"

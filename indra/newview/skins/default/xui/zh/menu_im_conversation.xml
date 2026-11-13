@@ -11,6 +11,6 @@
 	<menu_item_call label="分享" name="Share"  forme_creator_only="true"/>
 	<menu_item_call label="支付" name="Pay" />
 	<menu_item_call label="檢舉違規行為" name="Report Abuse" />
-	<menu_item_check label="封鎖語音" name="Block/Unblock" />
+
 	<menu_item_check label="封鎖文字" name="MuteText" />
 </toggleable_menu>

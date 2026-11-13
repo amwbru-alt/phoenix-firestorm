@@ -69,7 +69,7 @@
 	</action_set>
 	<action_set description="これらの能力には、グループチャットセッションやグループボイスチャットへのアクセスの許可や制限の権限が含まれます。 " name="Chat">
 		<action description="グループチャットに参加する" longdescription=" この能力を持つ役割のメンバーは、グループチャットセッションにテキストおよびボイスで参加できます。" name="join group chat" />
-		<action description="グループボイスチャットに参加する" longdescription=" この能力を持つ役割のメンバーは、グループボイスチャットセッションに参加できます。注： ボイスチャットセッションにアクセスするには、グループチャットに参加する能力が必要です。 " name="join voice chat"/>
+
 		<action description="グループチャットを管理する" longdescription=" この能力を持つ役割のメンバーは、グループボイスチャットセッションおよびグループテキストチャットセッションへのアクセスや参加をコントロールすることができます。 " name="moderate group chat"/>
 	</action_set>
 	<action_set description="これらの機能には、このグループにより所有される体験を変更する機能が含まれます。" name="experience_tools_experience">

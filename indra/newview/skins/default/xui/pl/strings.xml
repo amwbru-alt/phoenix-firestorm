@@ -83,7 +83,6 @@ Wersja dekodera J2C: [J2C_VERSION]
 Wersja sterownika dźwięku (Audio Driver): [AUDIO_DRIVER_VERSION]
 [LIBCEF_VERSION]
 Wersja LibVLC: [LIBVLC_VERSION]
-Wersja serwera głosu (Voice Server): [VOICE_VERSION]
 	</string>
 	<string name="AboutTraffic">
 		Pakiety utracone: [PACKETS_LOST,number,0]/[PACKETS_IN,number,0] ([PACKETS_PCT,number,1]%)
@@ -1221,21 +1220,12 @@ https://www.firestormviewer.org/support aby uzyskać pomoc.
 	<string name="shout">
 		krzyczy:
 	</string>
-	<string name="ringing">
-		Łączenie z serwerem rozmów głosowych...
-	</string>
+
 	<string name="connected">
 		Połączenie uzyskane.
 	</string>
-	<string name="unavailable">
-		Niestety, rozmowy głosowe są niedozwolone w tym miejscu.
-	</string>
-	<string name="hang_up">
-		Połączenie rozmowy utracone.
-	</string>
-	<string name="reconnect_nearby">
-		Przełączanie do pobliskich rozmów głosowych
-	</string>
+
+
 	<string name="ScriptQuestionCautionChatGranted">
 		'[OBJECTNAME]', właściciel: '[OWNERNAME]', położenie: [REGIONNAME] w [REGIONPOS], dostał zezwolenie na: [PERMISSIONS].
 	</string>
@@ -4627,9 +4617,7 @@ Zainstaluj ponownie przeglądarkę z [DOWNLOAD_URL] i skontaktuj się z [SUPPORT
 	<string name="LocationCtrlForSaleTooltip">
 		Kup tą działkę
 	</string>
-	<string name="LocationCtrlVoiceTooltip">
-		Głos niedostępny w tym miejscu
-	</string>
+
 	<string name="LocationCtrlFlyTooltip">
 		Latanie zabronione
 	</string>
@@ -4708,12 +4696,8 @@ Zainstaluj ponownie przeglądarkę z [DOWNLOAD_URL] i skontaktuj się z [SUPPORT
 	<string name="Unnamed">
 		(Bez nazwy)
 	</string>
-	<string name="IM_moderated_chat_label">
-		(Moderacja: Komunikacja głosowa wyłączona domyślnie)
-	</string>
-	<string name="IM_unavailable_text_label">
-		Czat tekstowy jest nieaktywny dla tej rozmowy.
-	</string>
+
+
 	<string name="IM_muted_text_label">
 		Twój czat tekstowy w grupie został wyłączony przez Moderatora Grupy.
 	</string>
@@ -4729,9 +4713,7 @@ Zainstaluj ponownie przeglądarkę z [DOWNLOAD_URL] i skontaktuj się z [SUPPORT
 	<string name="Saved_message">
 		(Zapisano [LONG_TIMESTAMP])
 	</string>
-	<string name="IM_unblock_only_groups_friends">
-		Aby zobaczyć tą wiadomość musisz odznaczyć &apos;Tylko znajomi i grupy mogą wysyłać mi wiad. prywatne (IM) oraz rozmowy głosowe&apos; w Ustawieniach/Prywatności.
-	</string>
+
 	<string name="OnlineStatus">
 		dostępny/a
 	</string>
@@ -4753,30 +4735,11 @@ Zainstaluj ponownie przeglądarkę z [DOWNLOAD_URL] i skontaktuj się z [SUPPORT
 	<string name="IM_autoresponse_item_sent">
 		Wysłano przedmiot: [ITEM_NAME]
 	</string>
-	<string name="answered_call">
-		Twoja rozmowa głosowa została odebrana
-	</string>
-	<string name="you_started_call">
-		Rozmowa głosowa została rozpoczęta
-	</string>
-	<string name="you_joined_call">
-		Dołączyłeś/aś do rozmowy głosowej
-	</string>
-	<string name="you_auto_rejected_call-im">
-		Rozmowa głosowa została automatycznie odrzucona, ponieważ Tryb Zajętości był włączony.
-	</string>
-	<string name="name_started_call">
-		[NAME] zaczyna rozmowę głosową
-	</string>
-	<string name="ringing-im">
-		Rozmowa głosowa...
-	</string>
-	<string name="connected-im">
-		Połączono, kliknij Zakończ rozmowę aby się rozłączyć
-	</string>
-	<string name="hang_up-im">
-		Rozmowa głosowa zakończona
-	</string>
+
+
+
+
+
 	<string name="answering-im">
 		Łączenie...
 	</string>
@@ -4814,9 +4777,7 @@ Dowiedz się więcej na https://second.life/scripted-agents.
 	<string name="offline_message">
 		[NAME] opuszcza ForMe.World.
 	</string>
-	<string name="invite_message">
-		Kliknij na przycisk [BUTTON NAME] by zaakceptować/dołączyć do tej rozmowy.
-	</string>
+
 	<string name="muted_message">
 		Zablokowałeś/aś tego Rezydenta. Wysłanie wiadomości odblokuje go automatycznie.
 	</string>
@@ -5064,9 +5025,7 @@ Raport o Nadużyciu
 	<string name="Other Gestures">
 		Inne gesty
 	</string>
-	<string name="Speech Gestures">
-		Gesty dźwiękowe
-	</string>
+
 	<string name="Common Gestures">
 		Gesty
 	</string>
@@ -5451,9 +5410,7 @@ Spróbuj załączyć ścieżkę do edytora w cytowaniu.
 	<string name="Command_View_Label">
 		Kamera
 	</string>
-	<string name="Command_Voice_Label">
-		Pobliski głos
-	</string>
+
 	<string name="Command_Quickprefs_Label">
 		Szybkie strojenie
 	</string>
@@ -5652,15 +5609,11 @@ Spróbuj załączyć ścieżkę do edytora w cytowaniu.
 	<string name="Command_Snapshot_Tooltip">
 		Zrób zdjęcie (CTRL+SHIFT+S)
 	</string>
-	<string name="Command_Speak_Tooltip">
-		Rozmawiaj z ludźmi w pobliżu używając mikrofonu
-	</string>
+
 	<string name="Command_View_Tooltip">
 		Zmiana kąta patrzenia kamery
 	</string>
-	<string name="Command_Voice_Tooltip">
-		Sterowanie głośnością rozmów oraz ludzi wokół Ciebie
-	</string>
+
 	<string name="Command_Quickprefs_Tooltip">
 		Podręczny panel ustawień do zmiany najczęściej używanych opcji
 	</string>

@@ -12,7 +12,7 @@
 						<!-- The chat bar itself -->
 						<layout_panel name="chat_bar_layout_panel">
 							<button name="local_chat_button" tool_tip="Mostra/oculta a janela de chat local (Ctrl+H)" label="Chat local" width="100"/>
-							<nearby_voice_monitor name="nearby_voice_output_monitor" tool_tip="Atividade de voz atual nas proximidades"/>
+
 						</layout_panel>
 						<!-- The chat bar itself -->
 					</layout_stack>

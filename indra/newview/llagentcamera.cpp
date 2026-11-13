@@ -1571,7 +1571,6 @@ void LLAgentCamera::updateCamera()
     }
 
     // smoothing
-    if (true)
     {
         LLVector3d agent_pos = gAgent.getPositionGlobal();
         LLVector3d camera_pos_agent = camera_pos_global - agent_pos;

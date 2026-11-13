@@ -69,7 +69,6 @@ object or from inventory.
 
 14. First time you create/edit a sculpted prim.
 
-15. Explanation of Speak&flyout buttons.
 */
 
 class LLNotification;
@@ -79,7 +78,6 @@ class LLFirstUse
 {
 public:
     static void otherAvatarChatFirst(bool enable = true);
-    static void speak(bool enable = true);
     static void sit(bool enable = true);
     static void notUsingDestinationGuide(bool enable = true);
     static void notUsingSidePanel(bool enable = true);

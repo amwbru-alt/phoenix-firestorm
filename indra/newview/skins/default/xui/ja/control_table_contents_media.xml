@@ -9,12 +9,8 @@
 	<rows name="toggle_enable_media">
 		<columns name="lst_action" value="全てのメディアを再生／停止"/>
 	</rows>
-	<rows name="voice_follow_key">
-		<columns name="lst_action" value="ボイスチャット"/>
-	</rows>
-	<rows name="toggle_voice">
-		<columns name="lst_action" value="ボイスチャット切り替え"/>
-	</rows>
+
+
 	<rows name="start_chat">
 		<columns name="lst_action" value="チャットを開始"/>
 	</rows>

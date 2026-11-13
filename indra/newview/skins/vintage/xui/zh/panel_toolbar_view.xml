@@ -20,14 +20,7 @@
 						<button name="show_volume_controls_button" tool_tip="顯示音量控制選項" />
 					</panel>
 				</layout_panel>
-				<layout_panel name="voice_chat_controls_layout_panel" width="166">
-					<panel name="voice_chat_controls_panel" width="163">
-						<button name="show_voice_controls_button" tool_tip="顯示語音設定和附近的說話者" />
-						<button name="utility_talk_button" tool_tip="按住此按鈕說話。透過鎖定符號啟用/停用按鍵說話功能。" label="說話" width="85" />
-						<button name="utility_push_to_talk_lock_button" tool_tip="切換按鍵說話功能" />
-						<nearby_voice_monitor name="nearby_voice_output_monitor" tool_tip="當前語音訊道的活動" left_pad="68" />
-					</panel>
-				</layout_panel>
+
 				<layout_panel name="quick_preferences_button_layout_panel">
 					<panel name="quick_preferences_button_panel">
 						<button name="enable_disable_ao_button" tool_tip="啟用/停用動畫涵蓋器" />

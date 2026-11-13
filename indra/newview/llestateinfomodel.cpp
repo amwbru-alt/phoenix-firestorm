@@ -71,7 +71,7 @@ bool LLEstateInfoModel::getIsExternallyVisible()    const { return getFlag(REGIO
 bool LLEstateInfoModel::getAllowDirectTeleport()    const { return getFlag(REGION_FLAGS_ALLOW_DIRECT_TELEPORT); }
 bool LLEstateInfoModel::getDenyAnonymous()          const { return getFlag(REGION_FLAGS_DENY_ANONYMOUS);        }
 bool LLEstateInfoModel::getDenyAgeUnverified()      const { return getFlag(REGION_FLAGS_DENY_AGEUNVERIFIED);    }
-bool LLEstateInfoModel::getAllowVoiceChat()         const { return getFlag(REGION_FLAGS_ALLOW_VOICE); }
+
 bool LLEstateInfoModel::getAllowAccessOverride()    const { return getFlag(REGION_FLAGS_ALLOW_ACCESS_OVERRIDE); }
 bool LLEstateInfoModel::getAllowEnvironmentOverride() const { return getFlag(REGION_FLAGS_ALLOW_ENVIRONMENT_OVERRIDE); }
 bool LLEstateInfoModel::getDenyScriptedAgents()     const { return getFlag(REGION_FLAGS_DENY_BOTS); }
@@ -81,7 +81,7 @@ void LLEstateInfoModel::setIsExternallyVisible(bool val)    { setFlag(REGION_FLA
 void LLEstateInfoModel::setAllowDirectTeleport(bool val)    { setFlag(REGION_FLAGS_ALLOW_DIRECT_TELEPORT,   val);   }
 void LLEstateInfoModel::setDenyAnonymous(bool val)          { setFlag(REGION_FLAGS_DENY_ANONYMOUS,          val);   }
 void LLEstateInfoModel::setDenyAgeUnverified(bool val)      { setFlag(REGION_FLAGS_DENY_AGEUNVERIFIED,      val);   }
-void LLEstateInfoModel::setAllowVoiceChat(bool val)         { setFlag(REGION_FLAGS_ALLOW_VOICE,             val);   }
+
 void LLEstateInfoModel::setAllowAccessOverride(bool val)    { setFlag(REGION_FLAGS_ALLOW_ACCESS_OVERRIDE,   val);   }
 void LLEstateInfoModel::setAllowEnvironmentOverride(bool val) { setFlag(REGION_FLAGS_ALLOW_ENVIRONMENT_OVERRIDE, val); }
 void LLEstateInfoModel::setDenyScriptedAgents(bool val)     { setFlag(REGION_FLAGS_DENY_BOTS, val); }
@@ -148,10 +148,12 @@ void LLEstateInfoModel::commitEstateInfoCapsCoro(std::string url)
     body["is_sun_fixed"] = getUseFixedSun();
     body["is_externally_visible"] = getIsExternallyVisible();
     body["allow_direct_teleport"] = getAllowDirectTeleport();
+    // Required native estate field: never advertised as an editable option.
+    body["allow_voice_chat"] = false;
     body["deny_anonymous"] = getDenyAnonymous();
     body["deny_age_unverified"] = getDenyAgeUnverified();
     body["block_bots"] = getDenyScriptedAgents();
-    body["allow_voice_chat"] = getAllowVoiceChat();
+
     body["override_public_access"] = getAllowAccessOverride();
 // <FS:Beq> FIRE-29683 Update the (currently unused in SL) Cap to align to EEP as Opensim needs it
     body["override_environment"] = getAllowEnvironmentOverride();
@@ -228,7 +230,7 @@ std::string LLEstateInfoModel::getInfoDump()
     dump["deny_anonymous"       ] = getDenyAnonymous();
     dump["deny_age_unverified"  ] = getDenyAgeUnverified();
     dump["block_bots"           ] = getDenyScriptedAgents();
-    dump["allow_voice_chat"     ] = getAllowVoiceChat();
+
     dump["override_public_access"] = getAllowAccessOverride();
     dump["override_environment"] = getAllowEnvironmentOverride();
 

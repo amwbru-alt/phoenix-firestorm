@@ -111,14 +111,8 @@
      name="icon_R"
      translate="false"
      value="Parcel_R_Dark" />
-    <string
-     name="icon_Voice"
-     translate="false"
-     value="Parcel_Voice_Dark" />
-    <string
-     name="icon_VoiceNo"
-     translate="false"
-     value="Parcel_VoiceNo_Dark" />
+
+
     <string
      name="icon_Fly"
      translate="false"
@@ -421,33 +415,8 @@
                          top_delta="0"
                          value="unknown"
                          width="130" />
-                        <icon
-                         follows="top|left"
-                         height="18"
-                         image_name="Parcel_Voice_Dark"
-                         layout="topleft"
-                         left="10"
-                         name="voice_icon"
-                         top_pad="5"
-                         width="22" />
-                        <text
-                         follows="left|top"
-                         height="18"
-                         layout="topleft"
-                         left_pad="8"
-                         name="voice_label"
-                         top_delta="0"
-                         value="Voice:"
-                         width="90" />
-                        <text
-                         follows="left|right|top"
-                         height="18"
-                         layout="topleft"
-                         left_pad="0"
-                         name="voice_value"
-                         top_delta="0"
-                         value="On"
-                         width="130" />
+
+
                         <icon
                          follows="top|left"
                          height="18"

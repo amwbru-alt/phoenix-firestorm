@@ -36,9 +36,7 @@
 						<layout_panel name="btn_chat_lp">
 							<button label="Chat" name="btn_chat"/>
 						</layout_panel>
-						<layout_panel name="call_btn_lp">
-							<button label="Llamar" name="btn_call" tool_tip="Establecer conferencia de voz con este grupo"/>
-						</layout_panel>
+
 						<layout_panel name="btn_apply_lp">
 							<button label="Guardar" label_selected="Guardar" name="btn_apply"/>
 						</layout_panel>

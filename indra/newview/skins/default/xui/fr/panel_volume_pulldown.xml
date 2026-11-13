@@ -10,6 +10,6 @@
 	<check_box name="enable_music" tool_tip="Activer les flux musicaux"/>
 	<slider name="Media Volume" label="Multimédia"/>
 	<check_box name="enable_media" tool_tip="Activer les flux multimédia"/>
-	<slider name="Voice Volume" label="Voix"/>
-	<check_box name="enable_voice_check" tool_tip="Activer le chat vocal"/>
+
+
 </panel>

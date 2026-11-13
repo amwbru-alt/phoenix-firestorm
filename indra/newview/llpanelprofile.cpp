@@ -75,7 +75,6 @@
 #include "llviewercontrol.h"
 #include "llviewermenu.h" //is_agent_mappable
 #include "llviewertexturelist.h"
-#include "llvoiceclient.h"
 #include "llweb.h"
 #include "llviewernetwork.h" // <FS:Beq> For LLGridManager
 #include "lggcontactsets.h" // <FS:PP> FIRE-32401: Contact Sets on groups list in profile
@@ -571,7 +570,6 @@ LLPanelProfileSecondLife::~LLPanelProfileSecondLife()
         LLAvatarPropertiesProcessor::getInstance()->removeObserver(getAvatarId(), &mPropertiesObserver);
     }
 
-    LLVoiceClient::removeObserver((LLVoiceClientStatusObserver*)this);
 
     if (mAvatarNameCacheConnection.connected())
     {
@@ -751,7 +749,7 @@ void LLPanelProfileSecondLife::onOpen(const LLSD& key)
 
     if (!own_profile)
     {
-        mVoiceStatus = LLAvatarActions::canCall() && (LLAvatarActions::isFriend(avatar_id) ? LLAvatarTracker::instance().isBuddyOnline(avatar_id) : true);
+
         updateOnlineStatus();
         fillRightsData();
     }
@@ -1556,16 +1554,8 @@ void LLPanelProfileSecondLife::changed(U32 mask)
     updateButtons(); // <FS:Ansariel> Fix LL UI/UX design accident
 }
 
-// virtual, called by LLVoiceClient
-void LLPanelProfileSecondLife::onChange(EStatusType status, const LLSD& channelInfo, bool proximal)
-{
-    if(status == STATUS_JOINING || status == STATUS_LEFT_CHANNEL)
-    {
-        return;
-    }
 
-    mVoiceStatus = LLAvatarActions::canCall() && (LLAvatarActions::isFriend(getAvatarId()) ? LLAvatarTracker::instance().isBuddyOnline(getAvatarId()) : true);
-}
+
 
 void LLPanelProfileSecondLife::setAvatarId(const LLUUID& avatar_id)
 {
@@ -1746,10 +1736,6 @@ void LLPanelProfileSecondLife::onCommitMenu(const LLSD& userdata)
     {
         LLAvatarActions::teleportRequest(agent_id);
     }
-    else if (item_name == "voice_call")
-    {
-        LLAvatarActions::startCall(agent_id);
-    }
     else if (item_name == "chat_history")
     {
         LLAvatarActions::viewChatHistory(agent_id);
@@ -1902,10 +1888,6 @@ bool LLPanelProfileSecondLife::onEnableMenu(const LLSD& userdata)
     if (item_name == "offer_teleport" || item_name == "request_teleport")
     {
         return LLAvatarActions::canOfferTeleport(agent_id);
-    }
-    else if (item_name == "voice_call")
-    {
-        return mVoiceStatus;
     }
     else if (item_name == "chat_history")
     {

@@ -286,7 +286,6 @@ void LLFloaterAuction::cleanupAndClose()
 }
 
 
-
 // static glue
 void LLFloaterAuction::onClickResetParcel(void* data)
 {
@@ -318,17 +317,11 @@ void LLFloaterAuction::doResetParcel()
         // Set all the default parcel properties for auction
         body["local_id"] = parcelp->getLocalID();
 
-        U32 parcel_flags = PF_ALLOW_LANDMARK |
-                           PF_ALLOW_FLY |
-                           PF_CREATE_GROUP_OBJECTS |
-                           PF_ALLOW_ALL_OBJECT_ENTRY |
-                           PF_ALLOW_GROUP_OBJECT_ENTRY |
-                           PF_ALLOW_GROUP_SCRIPTS |
-                           PF_RESTRICT_PUSHOBJECT |
-                           PF_SOUND_LOCAL |
-                           PF_ALLOW_VOICE_CHAT |
-                           PF_USE_ESTATE_VOICE_CHAN;
 
+        const U32 parcel_flags = PF_ALLOW_LANDMARK | PF_ALLOW_FLY |
+            PF_CREATE_GROUP_OBJECTS | PF_ALLOW_ALL_OBJECT_ENTRY |
+            PF_ALLOW_GROUP_OBJECT_ENTRY | PF_ALLOW_GROUP_SCRIPTS |
+            PF_RESTRICT_PUSHOBJECT | PF_SOUND_LOCAL;
         body["parcel_flags"] = ll_sd_from_U32(parcel_flags);
 
         // Build a parcel name like "Ahern (128,128) PG 4032m"
@@ -401,7 +394,6 @@ void LLFloaterAuction::doResetParcel()
 }
 
 
-
 void LLFloaterAuction::clearParcelAccessList(LLParcel* parcel, LLViewerRegion* region, U32 list)
 {
     if (!region || !parcel) return;
@@ -430,7 +422,6 @@ void LLFloaterAuction::clearParcelAccessList(LLParcel* parcel, LLViewerRegion* r
 
     msg->sendReliable( region->getHost() );
 }
-
 
 
 // static - 'Sell to Anyone' clicked, throw up a confirmation dialog
@@ -473,7 +464,6 @@ bool LLFloaterAuction::onSellToAnyoneConfirmed(const LLSD& notification, const L
 
     return false;
 }
-
 
 
 // Reset all the values for the parcel in preparation for a sale

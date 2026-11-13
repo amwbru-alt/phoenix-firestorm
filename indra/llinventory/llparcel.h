@@ -475,8 +475,6 @@ public:
     bool    getAllowGroupObjectEntry() const           { return getParcelFlag(PF_ALLOW_GROUP_OBJECT_ENTRY); }
     bool    getForSale() const                         { return getParcelFlag(PF_FOR_SALE); }
     bool    getSoundLocal() const                      { return getParcelFlag(PF_SOUND_LOCAL); }
-    bool    getParcelFlagAllowVoice() const            { return getParcelFlag(PF_ALLOW_VOICE_CHAT); }
-    bool    getParcelFlagUseEstateVoiceChannel() const { return getParcelFlag(PF_USE_ESTATE_VOICE_CHAN); }
     bool    getAllowPublish() const                    { return getParcelFlag(PF_ALLOW_PUBLISH); }
     bool    getMaturePublish() const                   { return getParcelFlag(PF_MATURE_PUBLISH); }
     bool    getRestrictPushObject() const              { return getParcelFlag(PF_RESTRICT_PUSHOBJECT); }

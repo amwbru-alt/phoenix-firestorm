@@ -13,17 +13,7 @@
          function="Calllog.Enable"
          parameter="can_im" />
     </menu_item_call>
-    <menu_item_call
-     label="Voice call..."
-     layout="topleft"
-     name="Call">
-        <on_click
-         function="Calllog.Action"
-         parameter="call" />
-        <on_enable
-         function="Calllog.Enable"
-         parameter="can_call" />
-    </menu_item_call>
+
     <menu_item_call
      label="Open chat transcript..."
      layout="topleft"

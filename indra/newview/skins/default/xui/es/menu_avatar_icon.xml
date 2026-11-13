@@ -7,8 +7,8 @@
 	<menu_item_call label="Quitar de los amigos..." name="Remove Friend"/>
 	<context_menu label="Opciones del moderador" name="Moderator Options">
 		<menu_item_check label="Permitir el chat de texto" name="AllowTextChat"/>
-		<menu_item_call label="Silenciar a este participante" name="ModerateVoiceMuteSelected"/>
-		<menu_item_call label="Quitar el silencio a este participante" name="ModerateVoiceUnMuteSelected"/>
+
+
 	</context_menu>
 	<menu_item_call label="Expulsar a miembro" name="BanMember"/>
 </toggleable_menu>

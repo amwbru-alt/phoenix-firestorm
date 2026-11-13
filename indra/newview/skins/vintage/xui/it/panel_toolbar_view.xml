@@ -20,14 +20,7 @@
   <button name="show_volume_controls_button" tool_tip="Mostra / Nascondi controlli del volume" />
   </panel>
   </layout_panel>
-  <layout_panel name="voice_chat_controls_layout_panel">
-  <panel name="voice_chat_controls_panel">
-  <button name="show_voice_controls_button" tool_tip="Mostra / Nascondi controlli del volume per le persone nelle vicinanze" />
-  <button name="utility_talk_button" tool_tip="Premi questo pulsante per parlare. Clicca sul lucchetto per impostare la modalità premi-per-parlare" label="Parla" />
-  <button name="utility_push_to_talk_lock_button" tool_tip="Attiva / Disattiva la modalità premi-per-parlare" />
-  <nearby_voice_monitor name="nearby_voice_output_monitor" tool_tip="Attività del canale vocale" />
-  </panel>
-  </layout_panel>
+
   <layout_panel name="quick_preferences_button_layout_panel">
   <panel name="quick_preferences_button_panel">
   <button name="enable_disable_ao_button" tool_tip="Attiva / Disattiva AO del viewer" />

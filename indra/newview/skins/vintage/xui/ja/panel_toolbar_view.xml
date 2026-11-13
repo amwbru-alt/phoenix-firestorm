@@ -20,18 +20,7 @@
 						<button name="show_volume_controls_button" tool_tip="音量コントロールを表示します。"/>
 					</panel>
 				</layout_panel>
-				<layout_panel name="voice_chat_controls_layout_panel">
-					<panel name="voice_chat_controls_panel">
-						<button name="show_voice_controls_button" tool_tip="近くにいるボイスで会話している人とボイスコントロールを表示します。"/>
-						<button name="utility_talk_button" tool_tip="このボタンを押してボイスで会話します。鍵をクリックしてプッシュ・トゥ・トークモードのオン／オフを切り替えます。" label="話す"/>
-						<button name="utility_push_to_talk_lock_button" tool_tip="プッシュ・トゥ・トーク機能を切り替えます。"/>
-						<nearby_voice_monitor name="nearby_voice_output_monitor" tool_tip="現在のボイスチャンネルの活動モニタです。"/>
-						<!-- Do we need this button? -Zi -->
-						<!--
-						<button name="utility_show_voice_channel_button" tool_tip="(TODO) Shows current voice channel"/>
-						-->
-					</panel>
-				</layout_panel>
+
 				<layout_panel name="quick_preferences_button_layout_panel">
 					<panel name="quick_preferences_button_panel">
 						<button name="enable_disable_ao_button" tool_tip="クライアントＡＯを有効／無効にします。"/>

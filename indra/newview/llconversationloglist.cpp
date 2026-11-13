@@ -24,6 +24,8 @@
  */
 
 #include "llviewerprecompiledheaders.h"
+#include "llmutelist.h"
+#include "llcallingcard.h"
 
 #include "llavataractions.h"
 #include "llagent.h"
@@ -220,7 +222,7 @@ void LLConversationLogList::onChangeDetailed(const LLMute& mute)
         // and rebuilding it on every event can be expensive.
         // But 'mute' events are also rare, so maybe not a problem.
         // There also might be a way to react only to relevant changes,
-        // instead of reacting to everything, like ignoring voice only mutes,
+
         // which are not relevant for this log by themselves.
         for (const LLConversation& conversation : conversations)
         {
@@ -342,11 +344,11 @@ void LLConversationLogList::onCustomAction(const LLSD& userdata)
         switch (stype)
         {
         case LLIMModel::LLIMSession::P2P_SESSION:
-            LLAvatarActions::startCall(selected_conversation_participant_id);
+
             break;
 
         case LLIMModel::LLIMSession::GROUP_SESSION:
-            LLGroupActions::startCall(selected_conversation_session_id);
+
             break;
 
         default:
@@ -462,11 +464,6 @@ bool LLConversationLogList::isActionEnabled(const LLSD& userdata)
     {
         return true;
     }
-    else if ("can_call" == command_name)
-    {
-        return (is_p2p || is_group_member) && LLAvatarActions::canCall();
-    }
-// [RLVa:KB] - @pay
     else if ("can_pay" == command_name)
     {
         return is_p2p && RlvActions::canPayAvatar(selected_id);

@@ -53,10 +53,8 @@
 #include "llgroupactions.h"
 #include "llgroupmgr.h"
 #include "llmenugl.h"
-#include "lloutputmonitorctrl.h"
 #include "llspeakers.h"
 #include "lltransientfloatermgr.h"
-#include "llvoiceclient.h"
 
 // <FS:PP> Unread IMs counter in window title
 extern std::string gWindowTitle;
@@ -512,12 +510,10 @@ void LLChiclet::setValue(const LLSD& value)
 
 LLIMChiclet::LLIMChiclet(const LLIMChiclet::Params& p)
 : LLChiclet(p)
-, mShowSpeaker(false)
-, mDefaultWidth(p.rect().getWidth())
+,  mDefaultWidth(p.rect().getWidth())
 , mNewMessagesIcon(NULL)
 // <FS:Ansariel> [FS communication UI]
-, mSpeakerCtrl(NULL)
-, mCounterCtrl(NULL)
+,  mCounterCtrl(NULL)
 // </FS:Ansariel> [FS communication UI]
 , mChicletButton(NULL)
 {
@@ -562,10 +558,7 @@ void LLIMChiclet::setRequiredWidth()
     {
         required_width += mCounterCtrl->getRect().getWidth();
     }
-    if (getShowSpeaker())
-    {
-        required_width += mSpeakerCtrl->getRect().getWidth();
-    }
+
     // </FS:Ansariel> [FS communication UI]
 
     reshape(required_width, getRect().getHeight());
@@ -601,16 +594,7 @@ void LLIMChiclet::setToggleState(bool toggle)
 }
 
 // <FS:Ansariel> [FS communication UI]
-void LLIMChiclet::setShowSpeaker(bool show)
-{
-    bool needs_resize = getShowSpeaker() != show;
-    if(needs_resize)
-    {
-        mShowSpeaker = show;
-    }
 
-    toggleSpeakerControl();
-}
 
 void LLIMChiclet::setShowCounter(bool show)
 {
@@ -627,41 +611,12 @@ void LLIMChiclet::setShowCounter(bool show)
     }
 }
 
-void LLIMChiclet::initSpeakerControl()
-{
-    // virtual
-}
 
 void LLIMChiclet::draw()
 {
     LLUICtrl::draw();
 }
 
-void LLIMChiclet::toggleSpeakerControl()
-{
-    if(getShowSpeaker())
-    {
-        // move speaker to the right of chiclet icon
-        LLRect speaker_rc = mSpeakerCtrl->getRect();
-        speaker_rc.setLeftTopAndSize(mDefaultWidth, speaker_rc.mTop, speaker_rc.getWidth(), speaker_rc.getHeight());
-        mSpeakerCtrl->setRect(speaker_rc);
-
-        if(getShowCounter())
-        {
-            // move speaker to the right of counter
-            mSpeakerCtrl->translate(mCounterCtrl->getRect().getWidth(), 0);
-        }
-
-        initSpeakerControl();
-    }
-    else
-    {
-        mSpeakerCtrl->setSpeakerId(LLUUID::null);
-    }
-
-    setRequiredWidth();
-    mSpeakerCtrl->setVisible(getShowSpeaker());
-}
 
 void LLIMChiclet::setCounter(S32 counter)
 {
@@ -774,9 +729,8 @@ LLIMP2PChiclet::Params::Params()
 : avatar_icon("avatar_icon")
 , chiclet_button("chiclet_button")
 , unread_notifications("unread_notifications")
-, speaker("speaker")
-, new_message_icon("new_message_icon")
-, show_speaker("show_speaker")
+,  new_message_icon("new_message_icon")
+
 {
 }
 
@@ -803,18 +757,11 @@ LLIMP2PChiclet::LLIMP2PChiclet(const Params& p)
     setCounter(getCounter());
     setShowCounter(getShowCounter());
 
-    LLChicletSpeakerCtrl::Params speaker_params = p.speaker;
-    mSpeakerCtrl = LLUICtrlFactory::create<LLChicletSpeakerCtrl>(speaker_params);
-    addChild(mSpeakerCtrl);
 
     sendChildToFront(mNewMessagesIcon);
-    setShowSpeaker(p.show_speaker);
+
 }
 
-void LLIMP2PChiclet::initSpeakerControl()
-{
-    mSpeakerCtrl->setSpeakerId(getOtherParticipantId());
-}
 
 void LLIMP2PChiclet::setOtherParticipantId(const LLUUID& other_participant_id)
 {
@@ -884,10 +831,8 @@ LLAdHocChiclet::Params::Params()
 : avatar_icon("avatar_icon")
 , chiclet_button("chiclet_button")
 , unread_notifications("unread_notifications")
-, speaker("speaker")
-, new_message_icon("new_message_icon")
-, show_speaker("show_speaker")
-, avatar_icon_color("avatar_icon_color", LLColor4::green)
+,  new_message_icon("new_message_icon")
+,  avatar_icon_color("avatar_icon_color", LLColor4::green)
 {
 }
 
@@ -916,12 +861,9 @@ LLAdHocChiclet::LLAdHocChiclet(const Params& p)
     setCounter(getCounter());
     setShowCounter(getShowCounter());
 
-    LLChicletSpeakerCtrl::Params speaker_params = p.speaker;
-    mSpeakerCtrl = LLUICtrlFactory::create<LLChicletSpeakerCtrl>(speaker_params);
-    addChild(mSpeakerCtrl);
 
     sendChildToFront(mNewMessagesIcon);
-    setShowSpeaker(p.show_speaker);
+
 }
 
 void LLAdHocChiclet::setSessionId(const LLUUID& session_id)
@@ -933,40 +875,10 @@ void LLAdHocChiclet::setSessionId(const LLUUID& session_id)
 
 void LLAdHocChiclet::draw()
 {
-    switchToCurrentSpeaker();
+
     LLIMChiclet::draw();
 }
 
-void LLAdHocChiclet::initSpeakerControl()
-{
-    switchToCurrentSpeaker();
-}
-
-void LLAdHocChiclet::switchToCurrentSpeaker()
-{
-    LLUUID speaker_id;
-    LLSpeakerMgr::speaker_list_t speaker_list;
-
-    // <FS:Beq> FIRE-34593 bugsplat when closing group chat
-    // LLIMModel::getInstance()->findIMSession(getSessionId())->mSpeakers->getSpeakerList(&speaker_list, false);
-    auto session = LLIMModel::getInstance()->findIMSession(getSessionId());
-    if (session && session->mSpeakers)
-    {
-        session->mSpeakers->getSpeakerList(&speaker_list, false);
-    }
-    // </FS:Beq>
-    for (LLSpeakerMgr::speaker_list_t::iterator i = speaker_list.begin(); i != speaker_list.end(); ++i)
-    {
-        LLPointer<LLSpeaker> s = *i;
-        if (s->mSpeechVolume > 0 || s->mStatus == LLSpeaker::STATUS_SPEAKING)
-        {
-            speaker_id = s->mID;
-            break;
-        }
-    }
-
-    mSpeakerCtrl->setSpeakerId(speaker_id);
-}
 
 void LLAdHocChiclet::createPopupMenu()
 {
@@ -1003,9 +915,8 @@ LLIMGroupChiclet::Params::Params()
 : group_icon("group_icon")
 , chiclet_button("chiclet_button")
 , unread_notifications("unread_notifications")
-, speaker("speaker")
-, new_message_icon("new_message_icon")
-, show_speaker("show_speaker")
+,  new_message_icon("new_message_icon")
+
 {
 }
 
@@ -1033,12 +944,9 @@ LLIMGroupChiclet::LLIMGroupChiclet(const Params& p)
     setCounter(getCounter());
     setShowCounter(getShowCounter());
 
-    LLChicletSpeakerCtrl::Params speaker_params = p.speaker;
-    mSpeakerCtrl = LLUICtrlFactory::create<LLChicletSpeakerCtrl>(speaker_params);
-    addChild(mSpeakerCtrl);
 
     sendChildToFront(mNewMessagesIcon);
-    setShowSpeaker(p.show_speaker);
+
 }
 
 LLIMGroupChiclet::~LLIMGroupChiclet()
@@ -1048,36 +956,10 @@ LLIMGroupChiclet::~LLIMGroupChiclet()
 
 void LLIMGroupChiclet::draw()
 {
-    if(getShowSpeaker())
-    {
-        switchToCurrentSpeaker();
-    }
+
     LLIMChiclet::draw();
 }
 
-void LLIMGroupChiclet::initSpeakerControl()
-{
-    switchToCurrentSpeaker();
-}
-
-void LLIMGroupChiclet::switchToCurrentSpeaker()
-{
-    LLUUID speaker_id;
-    LLSpeakerMgr::speaker_list_t speaker_list;
-
-    LLIMModel::getInstance()->findIMSession(getSessionId())->mSpeakers->getSpeakerList(&speaker_list, false);
-    for (LLSpeakerMgr::speaker_list_t::iterator i = speaker_list.begin(); i != speaker_list.end(); ++i)
-    {
-        LLPointer<LLSpeaker> s = *i;
-        if (s->mSpeechVolume > 0 || s->mStatus == LLSpeaker::STATUS_SPEAKING)
-        {
-            speaker_id = s->mID;
-            break;
-        }
-    }
-
-    mSpeakerCtrl->setSpeakerId(speaker_id);
-}
 
 void LLIMGroupChiclet::setSessionId(const LLUUID& session_id)
 {
@@ -1285,7 +1167,7 @@ bool LLChicletPanel::postBuild()
     LLScriptFloaterManager::getInstance()->addNewObjectCallback(boost::bind(&LLChicletPanel::objectChicletCallback, this, _1));
     LLScriptFloaterManager::getInstance()->addToggleObjectFloaterCallback(boost::bind(&LLChicletPanel::objectChicletCallback, this, _1));
     LLIMChiclet::sFindChicletsSignal.connect(boost::bind(&LLChicletPanel::findChiclet<LLChiclet>, this, _1));
-    mVoiceChannelChanged = LLVoiceChannel::setCurrentVoiceChannelChangedCallback(boost::bind(&LLChicletPanel::onCurrentVoiceChannelChanged, this, _1));
+
 
     mLeftScrollButton=getChild<LLButton>("chicklet_left_scroll_button");
     LLTransientFloaterMgr::getInstance()->addControlView(mLeftScrollButton);
@@ -1302,48 +1184,6 @@ bool LLChicletPanel::postBuild()
     return true;
 }
 
-void LLChicletPanel::onCurrentVoiceChannelChanged(const LLUUID& session_id)
-{
-    static LLUUID s_previous_active_voice_session_id;
-
-    std::list<LLChiclet*> chiclets = LLIMChiclet::sFindChicletsSignal(session_id);
-
-    for(std::list<LLChiclet *>::iterator it = chiclets.begin(); it != chiclets.end(); ++it)
-    {
-        LLIMChiclet* chiclet = dynamic_cast<LLIMChiclet*>(*it);
-        if(chiclet)
-        {
-            // <FS:Ansariel> [FS communication UI]
-            chiclet->setShowSpeaker(true);
-            // </FS:Ansariel> [FS communication UI]
-            if (gSavedSettings.getBOOL("OpenIMOnVoice"))
-            {
-                // <FS:Ansariel> [FS communication UI]
-                //LLFloaterIMContainer::getInstance()->showConversation(session_id);
-                FSFloaterIM::show(chiclet->getSessionId());
-                // </FS:Ansariel> [FS communication UI]
-            }
-        }
-    }
-
-    // <FS:Ansariel> [FS communication UI]
-    if(s_previous_active_voice_session_id.notNull() && s_previous_active_voice_session_id != session_id)
-    {
-        chiclets = LLIMChiclet::sFindChicletsSignal(s_previous_active_voice_session_id);
-
-        for(std::list<LLChiclet *>::iterator it = chiclets.begin(); it != chiclets.end(); ++it)
-        {
-            LLIMChiclet* chiclet = dynamic_cast<LLIMChiclet*>(*it);
-            if(chiclet)
-            {
-                chiclet->setShowSpeaker(false);
-            }
-        }
-    }
-    // </FS:Ansariel> [FS communication UI]
-
-    s_previous_active_voice_session_id = session_id;
-}
 
 bool LLChicletPanel::addChiclet(LLChiclet* chiclet, S32 index)
 {
@@ -1990,10 +1830,7 @@ void LLChicletInvOfferIconCtrl::setValue(const LLSD& value )
 //////////////////////////////////////////////////////////////////////////
 
 // <FS:Ansariel> [FS communication UI]
-LLChicletSpeakerCtrl::LLChicletSpeakerCtrl(const Params&p)
- : LLOutputMonitorCtrl(p)
-{
-}
+
 
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////

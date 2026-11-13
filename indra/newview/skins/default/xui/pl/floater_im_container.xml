@@ -6,7 +6,7 @@
 				<layout_panel name="conversations_pane_buttons_expanded">
 					<menu_button name="sort_btn" tool_tip="Opcje widoku/sortowania" />
 					<button name="add_btn" tool_tip="Rozpocznij nową rozmowę" />
-					<button name="speak_btn" tool_tip="Rozmawiaj z ludźmi przy użyciu mikrofonu" />
+
 				</layout_panel>
 				<layout_panel name="conversations_pane_buttons_collapsed">
 					<button name="expand_collapse_btn" tool_tip="Zwiń/Rozwiń tą listę" />

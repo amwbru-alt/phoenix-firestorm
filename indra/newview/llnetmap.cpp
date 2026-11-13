@@ -226,7 +226,7 @@ bool LLNetMap::postBuild()
     commitRegistrar.add("Minimap.AddToContactSet", boost::bind(&LLNetMap::handleAddToContactSet, this));
     commitRegistrar.add("Minimap.RemoveFriend", boost::bind(&LLNetMap::handleRemoveFriend, this));
     commitRegistrar.add("Minimap.IM", boost::bind(&LLNetMap::handleIM, this));
-    commitRegistrar.add("Minimap.Call", boost::bind(&LLNetMap::handleCall, this));
+
     commitRegistrar.add("Minimap.Map", boost::bind(&LLNetMap::handleMap, this));
     commitRegistrar.add("Minimap.Share", boost::bind(&LLNetMap::handleShare, this));
     commitRegistrar.add("Minimap.Pay", boost::bind(&LLNetMap::handlePay, this));
@@ -246,7 +246,7 @@ bool LLNetMap::postBuild()
     commitRegistrar.add("Minimap.DerenderPermanent", boost::bind(&LLNetMap::handleDerender, this, true));
     enableRegistrar.add("Minimap.CanAddFriend", boost::bind(&LLNetMap::canAddFriend, this));
     enableRegistrar.add("Minimap.CanRemoveFriend", boost::bind(&LLNetMap::canRemoveFriend, this));
-    enableRegistrar.add("Minimap.CanCall", boost::bind(&LLNetMap::canCall, this));
+
     enableRegistrar.add("Minimap.CanMap", boost::bind(&LLNetMap::canMap, this));
     enableRegistrar.add("Minimap.CanShare", boost::bind(&LLNetMap::canShare, this));
     enableRegistrar.add("Minimap.CanOfferTeleport", boost::bind(&LLNetMap::canOfferTeleport, this));
@@ -2212,10 +2212,6 @@ bool LLNetMap::canRemoveFriend()
     return FSCommon::checkIsActionEnabled(mClosestAgentRightClick, EFSRegistrarFunctionActionType::FS_RGSTR_ACT_REMOVE_FRIEND);
 }
 
-bool LLNetMap::canCall()
-{
-    return LLAvatarActions::canCall();
-}
 
 bool LLNetMap::canMap()
 {
@@ -2279,10 +2275,7 @@ void LLNetMap::handleIM()
     LLAvatarActions::startIM(mClosestAgentRightClick);
 }
 
-void LLNetMap::handleCall()
-{
-    LLAvatarActions::startCall(mClosestAgentRightClick);
-}
+
 
 void LLNetMap::handleMap()
 {

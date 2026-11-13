@@ -162,7 +162,7 @@
 			</panel>
 			<panel name="P_DoF_Settings">
 				<check_box label="Activar la profundidad de campo (DOF)" name="UseDepthofField" tool_tip="Activa la Profundidad de Campo (Depth of Field - DOF), que 'determina la distanicia entre el objeto más cercano y el más lejano de una escena que aparecen aceptablemente nítidos en una imagen'(wikipedia). Si no estás usándola, desactívala y mejorarás el rendimiento. Si no puedes activar esta característica o no ves sus efectos, activa 'Dibujo diferido' en la pestaña 'Luz'"/>
-				<check_box name="MIC_Show_FOV" label="Mostrar el FOV actual en pantalla" tool_tip="Muestra el campo de visión (field of view - FOV) vertical para la cámara. En SL es posible cambiar la longitud de la lente como en RL. Cuanto más pequeño el FOV, más larga la lente de la cámara. Una lente de 50mm tiene un FOV de 27.0 grados. Para ajustar el FOV, usa el deslizador de abajo. Por favor, lee lens has a FOV of 27.0 degrees. To adjust the FOV use the zoom slider bar below. En  'es.wikipedia.org/wiki/Ángulo_de_visión' puedes ver una tabla que muestra la relación entre el FOV y la distancia focal de la lente (en mm). ¡DESACTÍVALO ANTES DE DISPARAR, O APARERÁ EN LA FOTO!"/>
+
 			</panel>
 			<panel name="P_Zoom">
 				<text name="T_Zoom" tool_tip="En términos de RL, ésta es una característica de zoom. Aquí, cambiará el campo de visión en la ventana de tu visor. Es lo mismo que pulsar Ctrl+0 o Ctrl+8. NOTA: No funcinará si tienes activado el 'flycam' (3D SpaceNavigator).">

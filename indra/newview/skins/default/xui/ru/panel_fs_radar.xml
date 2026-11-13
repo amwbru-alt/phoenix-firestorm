@@ -17,7 +17,7 @@
 					<layout_panel name="radarlayout">
 						<radar_list name="radar_list">
 							<radar_list.columns label="Имя" name="name" tool_tip="[TOTAL] аватаров, [IN_REGION] в этом же регионе, [IN_CHAT_RANGE] в радиусе чата"/>
-							<radar_list.columns name="voice_level" tool_tip="Говорит"/>
+
 							<radar_list.columns name="in_region" tool_tip="В этом же регионе"/>
 							<radar_list.columns name="typing_status" tool_tip="Набирает текст"/>
 							<radar_list.columns name="sitting_status" tool_tip="Сидит"/>

@@ -14,23 +14,6 @@
        parameter="unblock_item" /> 
   </menu_item_call>
 
-  <menu_item_check
-   label="Block Voice"
-   layout="topleft"
-   name="BlockVoice">
-      <on_check
-       function="Block.Check"
-       parameter="block_voice" />
-      <on_click
-       function="Block.Action"
-       parameter="block_voice" />
-      <on_enable
-       function="Block.Enable"
-       parameter="block_voice" />
-      <on_visible
-       function="Block.Visible"
-       parameter="block_voice" />
-  </menu_item_check>
 
   <menu_item_check
    label="Block Text"

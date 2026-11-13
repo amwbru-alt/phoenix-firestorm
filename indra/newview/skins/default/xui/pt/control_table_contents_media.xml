@@ -9,12 +9,8 @@
 	<rows name="toggle_enable_media">
 		<columns name="lst_action" value="Play/Stop toda mídia" />
 	</rows>
-	<rows name="voice_follow_key">
-		<columns name="lst_action" value="Voz" />
-	</rows>
-	<rows name="toggle_voice">
-		<columns name="lst_action" value="Alternar voz" />
-	</rows>
+
+
 	<rows name="start_chat">
 		<columns name="lst_action" value="Abrir chat" />
 	</rows>

@@ -14,12 +14,9 @@
 	<text name="user_details">
 		ForMe.World içerisindeki tanımım bu, harika olduğunu düşünüyorum. Ama nedense tanımım gerçekten çok uzun çünkü çok konuşmayı seviyorum.
 	</text>
-	<slider name="volume_slider" tool_tip="Ses düzeyi" value="0.5"/>
+
 	<button label="Arkadaş Ekle" name="add_friend_btn"/>
 	<button label="Aİ" name="im_btn"/>
 	<button label="Profil" name="view_profile_btn"/>
-	<panel name="moderator_panel">
-		<button label="Sesi Devre Dışı Bırak" name="disable_voice"/>
-		<button label="Sesi Etkinleştir" name="enable_voice"/>
-	</panel>
+
 </floater>

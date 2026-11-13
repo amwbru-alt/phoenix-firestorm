@@ -20,7 +20,7 @@
         <pie_menu name="Avatar Pie More 2" label="İrəli &gt;">
             <pie_slice label="Sazlama" name="Debug..."/>
             <pie_slice label="Skritplər haqqında" name="ScriptInfo"/>
-            <pie_slice label="Zəng" name="Call"/>
+
             <pie_slice label="Yaxınlaşdır" name="Zoom In"/>
             <pie_slice label="Teksturasını yenilə" name="Texture Refresh"/>
             <pie_menu name="ResetMenu" label="Sıfırla &gt;">

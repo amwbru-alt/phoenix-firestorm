@@ -142,7 +142,6 @@ const U64 GP_PROPOSAL_VOTE              = 0x1LL << 45;  // Vote on Proposal
 
 // Group chat moderation related
 const U64 GP_SESSION_JOIN               = 0x1LL << 16;  //can join session
-const U64 GP_SESSION_VOICE              = 0x1LL << 27;  //can hear/talk
 const U64 GP_SESSION_MODERATOR          = 0x1LL << 37;  //can mute people's session
 
 const U64 GP_EXPERIENCE_ADMIN           = 0x1LL << 49;  // has admin rights to any experiences owned by this group
@@ -155,7 +154,6 @@ const U64 GP_DEFAULT_MEMBER = GP_ACCOUNTING_ACCOUNTABLE
                                 | GP_LAND_ALLOW_SET_HOME
                                 | GP_NOTICES_RECEIVE
                                 | GP_SESSION_JOIN
-                                | GP_SESSION_VOICE
                                 ;
 
 const U64 GP_DEFAULT_OFFICER = GP_DEFAULT_MEMBER // Superset of GP_DEFAULT_MEMBER

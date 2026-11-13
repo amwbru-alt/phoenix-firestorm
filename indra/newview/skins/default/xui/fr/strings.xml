@@ -86,7 +86,6 @@ Version J2C Decoder : [J2C_VERSION]
 Version Audio Driver : [AUDIO_DRIVER_VERSION]
 [LIBCEF_VERSION]
 Version LibVLC : [LIBVLC_VERSION]
-Version serveur vocal : [VOICE_VERSION]
 	</string>
 	<string name="AboutTraffic">
 		Paquets perdus : [PACKETS_LOST,number,0]/[PACKETS_IN,number,0] ([PACKETS_PCT,number,1]%)
@@ -1185,21 +1184,12 @@ http://secondlife.com/support pour vous aider à résoudre ce problème.
 	<string name="shout">
 		crie :
 	</string>
-	<string name="ringing">
-		Connexion au chat vocal du Monde en cours…
-	</string>
+
 	<string name="connected">
 		Connecté(e)
 	</string>
-	<string name="unavailable">
-		Voix non disponible à l&apos;endroit où vous êtes
-	</string>
-	<string name="hang_up">
-		Déconnecté du chat vocal
-	</string>
-	<string name="reconnect_nearby">
-		Vous allez maintenant être reconnecté(e) au chat vocal près de vous.
-	</string>
+
+
 	<string name="ScriptQuestionCautionChatGranted">
 		&apos;[OBJECTNAME]&apos;, un objet appartenant à [OWNERNAME], situé dans [REGIONNAME] à [REGIONPOS], a reçu le droit de : [PERMISSIONS].
 	</string>
@@ -4666,9 +4656,7 @@ Veuillez réinstaller la le clientuse à partir de [DOWNLOAD_URL] et contacter [
 	<string name="LocationCtrlForSaleTooltip">
 		Acheter ce terrain
 	</string>
-	<string name="LocationCtrlVoiceTooltip">
-		Chat vocal indisponible ici
-	</string>
+
 	<string name="LocationCtrlFlyTooltip">
 		Vol interdit
 	</string>
@@ -4747,12 +4735,8 @@ Veuillez réinstaller la le clientuse à partir de [DOWNLOAD_URL] et contacter [
 	<string name="Unnamed">
 		(sans nom)
 	</string>
-	<string name="IM_moderated_chat_label">
-		(Modéré : Voix désactivées par défaut)
-	</string>
-	<string name="IM_unavailable_text_label">
-		Le chat écrit n&apos;est pas disponible pour cet appel.
-	</string>
+
+
 	<string name="IM_muted_text_label">
 		Votre chat écrit a été désactivé par un modérateur de groupe.
 	</string>
@@ -4768,9 +4752,7 @@ Veuillez réinstaller la le clientuse à partir de [DOWNLOAD_URL] et contacter [
 	<string name="Saved_message">
 		(Enregistrement : [LONG_TIMESTAMP])
 	</string>
-	<string name="IM_unblock_only_groups_friends">
-		Pour afficher ce message, vous devez désactiver la case Seuls mes amis et groupes peuvent m&apos;appeler ou m&apos;envoyer un IM, sous Préférences/Confidentialité.
-	</string>
+
 	<string name="OnlineStatus">
 		En ligne
 	</string>
@@ -4792,30 +4774,11 @@ Veuillez réinstaller la le clientuse à partir de [DOWNLOAD_URL] et contacter [
 	<string name="IM_autoresponse_item_sent">
 		Élément de réponse automatique envoyé : [ITEM_NAME]
 	</string>
-	<string name="answered_call">
-		Votre appel a fait l&apos;objet d&apos;une réponse
-	</string>
-	<string name="you_started_call">
-		Vous appelez.
-	</string>
-	<string name="you_joined_call">
-		Vous avez rejoint l&apos;appel
-	</string>
-	<string name="you_auto_rejected_call-im">
-		Vous avez automatiquement refusé l&apos;appel vocal quand le mode Ne pas déranger était activé.
-	</string>
-	<string name="name_started_call">
-		[NAME] appelle.
-	</string>
-	<string name="ringing-im">
-		En train de rejoindre l&apos;appel...
-	</string>
-	<string name="connected-im">
-		Connecté(e), cliquez sur Quitter l&apos;appel pour raccrocher
-	</string>
-	<string name="hang_up-im">
-		A quitté l&apos;appel
-	</string>
+
+
+
+
+
 	<string name="answering-im">
 		Connexion en cours...
 	</string>
@@ -4853,9 +4816,7 @@ Pour en savoir plus, rendez-vous sur https://second.life/scripted-agents.
 	<string name="offline_message">
 		[NAME] est hors ligne.
 	</string>
-	<string name="invite_message">
-		Pour accepter ce chat vocal/vous connecter, cliquez sur le bouton [BUTTON NAME].
-	</string>
+
 	<string name="muted_message">
 		Vous ignorez ce résident. Si vous lui envoyez un message, il ne sera plus ignoré.
 	</string>
@@ -4922,12 +4883,8 @@ Pour en savoir plus, rendez-vous sur https://second.life/scripted-agents.
 	<string name="Home position set.">
 		Emplacement du domicile défini.
 	</string>
-	<string name="voice_morphing_url">
-		https://secondlife.com/destination/voice-island
-	</string>
-	<string name="premium_voice_morphing_url">
-		https://secondlife.com/destination/voice-morphing-premium
-	</string>
+
+
 	<string name="lindenhomes_my_home_url">
 		https://land.secondlife.com/fr-Fr/lindenhomes/my-home.php
 	</string>
@@ -5107,9 +5064,7 @@ du rapport d&apos;infraction
 	<string name="Other Gestures">
 		Autres gestes
 	</string>
-	<string name="Speech Gestures">
-		Gestes liés à la parole
-	</string>
+
 	<string name="Common Gestures">
 		Gestes communs
 	</string>
@@ -5876,9 +5831,7 @@ Essayez avec le chemin d&apos;accès à l&apos;éditeur entre guillemets doubles
 	<string name="Command_View_Label">
 		Caméra
 	</string>
-	<string name="Command_Voice_Label">
-		Discussion vocale à proximité
-	</string>
+
 	<string name="Command_Quickprefs_Label">
 		Préférences rapides
 	</string>
@@ -6077,15 +6030,11 @@ Essayez avec le chemin d&apos;accès à l&apos;éditeur entre guillemets doubles
 	<string name="Command_Snapshot_Tooltip">
 		Prendre une photo
 	</string>
-	<string name="Command_Speak_Tooltip">
-		Parler aux personnes près de vous en utilisant votre micro
-	</string>
+
 	<string name="Command_View_Tooltip">
 		Changer l&apos;angle de la caméra
 	</string>
-	<string name="Command_Voice_Tooltip">
-		Commandes de réglage du volume des appels et des personnes près de vous dans ForMe.World.
-	</string>
+
 	<string name="Command_Quickprefs_Tooltip">
 		Préférences rapides pour modifier des paramètres souvent utilisés
 	</string>

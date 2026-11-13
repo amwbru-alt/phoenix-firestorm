@@ -24,6 +24,7 @@
  * $/LicenseInfo$
  */
 #include "llviewerprecompiledheaders.h"
+#include "llmutelist.h"
 
 #if 0 // <FS:Ansariel> [FS Persisted Avatar Render Settings]
 

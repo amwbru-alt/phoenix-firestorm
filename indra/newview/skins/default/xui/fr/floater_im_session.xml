@@ -6,7 +6,7 @@
 				<menu_button name="view_options_btn" tool_tip="Options d'affichage/de tri"/>
 				<menu_button name="gear_btn" tool_tip="Actions sur la personne sélectionnée"/>
 				<button name="add_btn" tool_tip="Ajouter un participant à cette conversation"/>
-				<button name="voice_call_btn" tool_tip="Ouvrir une connexion vocale"/>
+
 				<button name="close_btn" tool_tip="Mettre fin à cette conversation"/>
 				<button name="expand_collapse_btn" tool_tip="Réduire/Développer ce panneau"/>
 			</layout_panel>

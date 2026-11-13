@@ -98,7 +98,6 @@ SLURL: &lt;nolink&gt;[SLURL]&lt;/nolink&gt;
 Версия аудиодрайвера: [AUDIO_DRIVER_VERSION]
 [LIBCEF_VERSION]
 Версия LibVLC: [LIBVLC_VERSION]
-Версия речевого сервера: [VOICE_VERSION]
 	</string>
     <string name="AboutTraffic">
 		Потеряно пакетов: [PACKETS_LOST,number,0]/[PACKETS_IN,number,0] ([PACKETS_PCT,number,1]%)
@@ -1216,21 +1215,12 @@ https://www.firestormviewer.org/support за помощь в решении эт
     <string name="shout">
 		кричит:
 	</string>
-    <string name="ringing">
-		Подключение к голосовому чату...
-	</string>
+
     <string name="connected">
 		Подключено
 	</string>
-    <string name="unavailable">
-		В этом месте голосовая связь недоступна
-	</string>
-    <string name="hang_up">
-		Отключение от голосового чата...
-	</string>
-    <string name="reconnect_nearby">
-		Устанавливается переподключение к локальному голосовому чату
-	</string>
+
+
     <string name="ScriptQuestionCautionChatGranted">
 		Объекту '[OBJECTNAME]', который принадлежит пользователю '[OWNERNAME]' и находится в [REGIONPOS] в регионе '[REGIONNAME]', предоставлено разрешение: [PERMISSIONS].
 	</string>
@@ -4570,9 +4560,7 @@ https://www.firestormviewer.org/support за помощь в решении эт
     <string name="LocationCtrlForSaleTooltip">
 		Купить эту землю
 	</string>
-    <string name="LocationCtrlVoiceTooltip">
-		Голосовое общение здесь недоступно
-	</string>
+
     <string name="LocationCtrlFlyTooltip">
 		Летать запрещено
 	</string>
@@ -4651,11 +4639,9 @@ https://www.firestormviewer.org/support за помощь в решении эт
     <string name="Unnamed">
 		(Без имени)
 	</string>
-    <string name="IM_moderated_chat_label">
-		(Модерируется: голосовая связь по умолчанию отключена)
-	</string>
+
     <string name="IM_unavailable_text_label">
-		Во время этого звонка текстовый чат недоступен.
+		Текстовый чат недоступен.
 	</string>
     <string name="IM_muted_text_label">
 		Ваш текстовый чат отключен модератором группы.
@@ -4672,9 +4658,7 @@ https://www.firestormviewer.org/support за помощь в решении эт
     <string name="Saved_message">
 		(Сохранено [LONG_TIMESTAMP])
 	</string>
-    <string name="IM_unblock_only_groups_friends">
-		Чтобы увидеть это сообщение, вы должны снять галочку 'Только друзья и группы могут звонить мне и отправлять ЛС' в Настройки/Приватность.
-	</string>
+
     <string name="OnlineStatus">
 		в сети
 	</string>
@@ -4696,30 +4680,11 @@ https://www.firestormviewer.org/support за помощь в решении эт
     <string name="IM_autoresponse_item_sent">
 		Элемент [ITEM_NAME] отправлен автоответом
 	</string>
-    <string name="answered_call">
-		На ваш звонок ответили
-	</string>
-    <string name="you_started_call">
-		Вы начали голосовой вызов
-	</string>
-    <string name="you_joined_call">
-		Вы присоеденились к голосовому вызову
-	</string>
-    <string name="you_auto_rejected_call-im">
-		Вы автоматически отклонили голосовой вызов, т.к. у вас включен режим 'Недоступен'
-	</string>
-    <string name="name_started_call">
-		[NAME] начал голосовой вызыв
-	</string>
-    <string name="ringing-im">
-		Присоединение к голосовому вызову...
-	</string>
-    <string name="connected-im">
-		Подключено, нажмите 'Завершить звонок', чтобы повесить трубку
-	</string>
-    <string name="hang_up-im">
-		Голосовой вызов прерван
-	</string>
+
+
+
+
+
     <string name="answering-im">
 		Подключение...
 	</string>
@@ -4757,9 +4722,7 @@ https://www.firestormviewer.org/support за помощь в решении эт
     <string name="offline_message">
 		[NAME] не в сети.
 	</string>
-    <string name="invite_message">
-		Нажмите кнопку [BUTTON NAME], чтобы принять/подключиться к голосовому чату.
-	</string>
+
     <string name="muted_message">
 		Вы заблокировали этого пользователя. Отправка сообщения автоматически разблокирует его.
 	</string>
@@ -5006,9 +4969,7 @@ https://www.firestormviewer.org/support за помощь в решении эт
     <string name="Other Gestures">
 		Прочие жесты
 	</string>
-    <string name="Speech Gestures">
-		Жесты в разговорах
-	</string>
+
     <string name="Common Gestures">
 		Стандартные жесты
 	</string>
@@ -5527,9 +5488,7 @@ https://www.firestormviewer.org/support за помощь в решении эт
 		Говорить
 	</string>
     <string name="Command_View_Label">Камера</string>
-    <string name="Command_Voice_Label">
-		Голос рядом
-	</string>
+
     <string name="Command_Quickprefs_Label">
 		Быстрые настройки
 	</string>
@@ -5715,15 +5674,11 @@ https://www.firestormviewer.org/support за помощь в решении эт
     <string name="Command_Snapshot_Tooltip">
 		Сделать снимок (CTRL+SHIFT+S)
 	</string>
-    <string name="Command_Speak_Tooltip">
-		Говорите с людьми вокруг вас с помощью микрофона
-	</string>
+
     <string name="Command_View_Tooltip">
 		Изменение угла камеры
 	</string>
-    <string name="Command_Voice_Tooltip">
-		Регулировка громкости вызовов и голосов людей около вас
-	</string>
+
     <string name="Command_Quickprefs_Tooltip">
 		Быстрые настройки, для изменения частых настроек
 	</string>

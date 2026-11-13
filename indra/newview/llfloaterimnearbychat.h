@@ -33,8 +33,6 @@
 #include "llcombobox.h"
 #include "llgesturemgr.h"
 #include "llchat.h"
-#include "llvoiceclient.h"
-#include "lloutputmonitorctrl.h"
 #include "llspeakers.h"
 #include "llscrollbar.h"
 #include "llviewerchat.h"
@@ -102,12 +100,11 @@ protected:
     static LLWString stripChannelNumber(const LLWString &mesg, S32* channel);
     EChatType processChatTypeTriggers(EChatType type, std::string &str);
 
-    void displaySpeakingIndicator();
 
     // Which non-zero channel did we last chat on?
     static S32 sLastSpecialChatChannel;
 
-    LLOutputMonitorCtrl*    mOutputMonitor;
+
     LLLocalSpeakerMgr*      mSpeakerMgr;
 
     S32 mExpandedHeight;

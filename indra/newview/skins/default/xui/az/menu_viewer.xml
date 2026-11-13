@@ -108,14 +108,9 @@
 		<menu_item_check label="İnsanlar" name="People"/>
 		<menu_item_check label="Söhbətlər" name="Conversations"/>
 		<menu_item_check label="Əlamətlər" name="Gestures"/>
-		<menu label="Səs dəyişdirmə" name="VoiceMorphing">
-			<menu_item_check label="Səs dəyişdirmə yoxdur" name="NoVoiceMorphing"/>
-			<menu_item_check label="Öncədən baxış..." name="Preview"/>
-			<menu_item_call label="Abunə olmaq..." name="Subscribe"/>
-			<menu_item_call label="Premium imtiyazı..." name="PremiumPerk"/>
-		</menu>
+
 		<menu_item_check name="Söhbət jurnalı..." label="Söhbət jurnalı..."/>
-		<menu_item_check label="Yaxınlıqdakı səslər" name="Nearby Voice"/>
+
 		<menu_item_call label="Bloklanmış siyahısı" name="Block List"/>
 	</menu>
 

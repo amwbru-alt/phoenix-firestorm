@@ -78,17 +78,10 @@ public:
      */
     static void endIM(const LLUUID& id);
 
-    /**
-     * Start an avatar-to-avatar voice call with another user
-     */
-    static void startCall(const LLUUID& id);
 
-    /**
-     * Start an ad-hoc conference voice call with multiple users in a specific IM floater.
-     */
     // <FS:Ansariel> [FS Communication UI]
     //static void startAdhocCall(const uuid_vec_t& ids, const LLUUID& floater_id = LLUUID::null);
-    static const LLUUID startAdhocCall(const uuid_vec_t& ids, const LLUUID& floater_id = LLUUID::null);
+
     // </FS:Ansariel>
 
     /**
@@ -152,10 +145,6 @@ public:
      */
     static void toggleMute(const LLUUID& id, U32 flags);
 
-    /**
-     * Block/unblock the avatar voice.
-     */
-    static void toggleMuteVoice(const LLUUID& id);
 
     /**
      * Return true if avatar with "id" is a friend
@@ -167,19 +156,13 @@ public:
      */
     static bool isBlocked(const LLUUID& id);
 
-    /**
-     * @return true if the avatar voice is blocked
-     */
-    static bool isVoiceMuted(const LLUUID& id);
 
     /**
      * @return true if you can block the avatar
      */
     static bool canBlock(const LLUUID& id);
 
-    /**
-     * Return true if the avatar is in a P2P voice call with a given user
-     */
+
     /* AD *TODO: Is this function needed any more?
         I fixed it a bit(added check for canCall), but it appears that it is not used
         anywhere. Maybe it should be removed?
@@ -189,7 +172,7 @@ public:
      * @return true if call to the resident can be made
      */
 
-    static bool canCall();
+
     /**
      * Invite avatar to a group.
      */

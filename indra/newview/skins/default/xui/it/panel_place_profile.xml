@@ -51,7 +51,7 @@
 				<accordion_tab name="parcel_characteristics_tab" title="Lotto">
 					<panel name="parcel_characteristics_panel">
 						<text name="rating_label" value="Categoria:"/>
-						<text name="voice_label" value="Voce:"/>
+
 						<text name="fly_label" value="Volo:"/>
 						<text name="push_label" value="Spinta:"/>
 						<text name="build_label" value="Costruzione:"/>

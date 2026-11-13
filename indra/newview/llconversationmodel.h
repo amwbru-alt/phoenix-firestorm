@@ -184,7 +184,7 @@ public:
     bool isLoaded() { return mIsLoaded; }
 
     void buildContextMenu(LLMenuGL& menu, U32 flags);
-    void addVoiceOptions(menuentry_vec_t& items);
+
     virtual const bool getTime(F64& time) const;
 
     void dumpDebugData(bool dump_children = false);
@@ -203,10 +203,10 @@ public:
 
     virtual const std::string& getDisplayName() const { return mDisplayName; }
 
-    bool isVoiceMuted();
+
     bool isModeratorMuted() { return mIsModeratorMuted; }
     bool isModerator() const { return mIsModerator; }
-    void moderateVoice(bool mute_voice) { mIsModeratorMuted = mute_voice; }
+
     void setIsModerator(bool is_moderator) { mIsModerator = is_moderator; mNeedsRefresh = true; }
     void setTimeNow() { mLastActiveTime = LLFrameTimer::getElapsedSeconds(); mNeedsRefresh = true; }
     void setDistance(F64 dist) { mDistToAgent = dist; mNeedsRefresh = true; }

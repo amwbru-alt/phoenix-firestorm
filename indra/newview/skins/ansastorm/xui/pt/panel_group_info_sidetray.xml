@@ -27,6 +27,6 @@
 	</panel>
 	<button label="Ativar" name="btn_activate"/>
 	<button label="Chat" name="btn_chat"/>
-	<button label="Chamada em grupo" name="btn_call" tool_tip="Ligar para este grupo"/>
+
 	<button label="Salvar" name="btn_apply"/>
 </panel>

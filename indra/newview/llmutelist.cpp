@@ -1052,7 +1052,7 @@ void LLMuteList::onAccountNameChanged(const LLUUID& id, const std::string& usern
                     updateAdd(mute);
                     // Do not notify observers here, observers do not know or need to handle name changes
                     // Example: block list considers notifyObserversDetailed as a selection update;
-                    // Various chat/voice statuses care only about id and flags
+
                     // Since apropriate update time for account names is considered to be in 'hours' it is
                     // fine not to update UI (will be fine after restart or couple other changes)
 

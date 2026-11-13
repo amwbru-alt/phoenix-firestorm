@@ -21,7 +21,7 @@
         <pie_menu name="Avatar Pie More 2" label="Więcej &gt;">
             <pie_slice label="Pokaż tekstury" name="Debug..."/>
             <pie_slice label="Info o skryptach" name="ScriptInfo"/>
-            <pie_slice label="Zadzwoń" name="Call"/>
+
             <pie_slice label="Przybliż" name="Zoom In"/>
             <pie_slice label="Odśw. tekstury" name="Texture Refresh"/>
             <pie_menu name="ResetMenu" label="Resetuj &gt;">
