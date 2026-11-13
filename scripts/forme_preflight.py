@@ -129,6 +129,7 @@ def main():
     if errors:
         print('\n'.join(errors), file=sys.stderr)
         return 1
+    subprocess.check_call([sys.executable, str(ROOT / 'tests/forme/check_button_callbacks.py')])
     subprocess.check_call([sys.executable, str(ROOT / 'tests/forme/check_world_map.py')])
     subprocess.check_call([sys.executable, str(ROOT / 'tests/forme/check_chat_hud.py')])
     subprocess.check_call([sys.executable, str(ROOT / 'tests/forme/check_ui_theme.py')])

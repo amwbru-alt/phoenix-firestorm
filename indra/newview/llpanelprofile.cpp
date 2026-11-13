@@ -2747,11 +2747,11 @@ bool LLPanelProfile::postBuild()
 {
     if (auto* message = findChild<LLButton>("forme_profile_message"))
     {
-        message->setClickedCallback([this]() {
+        message->setClickedCallback([this](LLUICtrl*, const LLSD&) {
             if (getAvatarId().notNull() && getAvatarId() != gAgent.getID())
                 LLAvatarActions::startIM(getAvatarId());
         });
-        getChild<LLButton>("forme_profile_details")->setClickedCallback([this]() {
+        getChild<LLButton>("forme_profile_details")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
             LLSD key; key["id"] = getAvatarId();
             LLFloaterReg::showInstance("profile_details", key);
         });

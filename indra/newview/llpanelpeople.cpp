@@ -718,16 +718,16 @@ bool LLPanelPeople::postBuild()
         list->setRlvCheckShowNames(true);
         list->setShowIcons("NearbyListShowIcons");
         getChild<LLSearchEditor>("forme_nearby_search")->setCommitCallback([list](LLUICtrl* ctrl, const LLSD&) { list->setNameFilter(ctrl->getValue().asString()); });
-        getChild<LLButton>("forme_nearby_profile")->setClickedCallback([list]() { if (list->getSelectedUUID().notNull()) LLAvatarActions::showProfile(list->getSelectedUUID()); });
-        getChild<LLButton>("forme_nearby_message")->setClickedCallback([list]() { if (list->getSelectedUUID().notNull()) LLAvatarActions::startIM(list->getSelectedUUID()); });
-        getChild<LLButton>("forme_nearby_friend")->setClickedCallback([list]() { if (list->getSelectedUUID().notNull()) LLAvatarActions::requestFriendshipDialog(list->getSelectedUUID()); });
-        getChild<LLButton>("forme_radar_toggle")->setClickedCallback([this, list]() {
+        getChild<LLButton>("forme_nearby_profile")->setClickedCallback([list](LLUICtrl*, const LLSD&) { if (list->getSelectedUUID().notNull()) LLAvatarActions::showProfile(list->getSelectedUUID()); });
+        getChild<LLButton>("forme_nearby_message")->setClickedCallback([list](LLUICtrl*, const LLSD&) { if (list->getSelectedUUID().notNull()) LLAvatarActions::startIM(list->getSelectedUUID()); });
+        getChild<LLButton>("forme_nearby_friend")->setClickedCallback([list](LLUICtrl*, const LLSD&) { if (list->getSelectedUUID().notNull()) LLAvatarActions::requestFriendshipDialog(list->getSelectedUUID()); });
+        getChild<LLButton>("forme_radar_toggle")->setClickedCallback([this, list](LLUICtrl*, const LLSD&) {
             auto* radar = getChild<LLPanel>("panel_radar");
             const bool detailed = !radar->getVisible(); radar->setVisible(detailed); list->setVisible(!detailed);
             radar->setShape(list->getRect());
         });
-        getChild<LLButton>("forme_people_find")->setClickedCallback([]() { LLFloaterAvatarPicker::show([](const uuid_vec_t& ids, const std::vector<LLAvatarName>&) { if (!ids.empty()) LLAvatarActions::showProfile(ids.front()); }, false, true); });
-        getChild<LLButton>("forme_people_groups_window")->setClickedCallback([]() { LLSD key; key["people_panel_tab_name"] = "groups_panel"; LLFloaterReg::showInstance("forme_groups", key); });
+        getChild<LLButton>("forme_people_find")->setClickedCallback([](LLUICtrl*, const LLSD&) { LLFloaterAvatarPicker::show([](const uuid_vec_t& ids, const std::vector<LLAvatarName>&) { if (!ids.empty()) LLAvatarActions::showProfile(ids.front()); }, false, true); });
+        getChild<LLButton>("forme_people_groups_window")->setClickedCallback([](LLUICtrl*, const LLSD&) { LLSD key; key["people_panel_tab_name"] = "groups_panel"; LLFloaterReg::showInstance("forme_groups", key); });
     }
 
     // <FS:Ansariel> Don't bother with "want more?" advertisement

@@ -599,13 +599,13 @@ bool LLFloaterCamera::postBuild()
     {
         const std::string name(mode);
         if (auto* button = findChild<LLButton>("forme_camera_" + name))
-            button->setClickedCallback([name]() {
+            button->setClickedCallback([name](LLUICtrl*, const LLSD&) {
                 auto* move = LLFloaterReg::getTypedInstance<LLFloaterMove>("moveview");
                 if (move) move->getChild<LLButton>("mode_" + name + "_btn")->onCommit();
             });
     }
     if (auto* reset = findChild<LLButton>("forme_camera_reset"))
-        reset->setClickedCallback([]() { LLFloaterCamera::onClickCameraItem(LLSD("reset_view")); });
+        reset->setClickedCallback([](LLUICtrl*, const LLSD&) { LLFloaterCamera::onClickCameraItem(LLSD("reset_view")); });
 
     mControls = getChild<LLPanel>("controls");
     mAgentCameraInfo = getChild<LLPanel>("agent_camera_info");

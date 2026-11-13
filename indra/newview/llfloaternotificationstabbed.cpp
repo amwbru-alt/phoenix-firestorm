@@ -79,7 +79,7 @@ bool LLFloaterNotificationsTabbed::postBuild()
     mNotificationsTabContainer->setTabVisibility(getChild<LLPanel>("group_notice_notifications_tab"), false);
     mNotificationsTabContainer->selectTabPanel(getChild<LLPanel>("group_invite_notifications_tab"));
     getChild<LLCheckBoxCtrl>("forme_unread_only")->setCommitCallback([this](LLUICtrl*, const LLSD&) { applyReadFilter(); });
-    getChild<LLButton>("forme_mark_read")->setClickedCallback([this]() {
+    getChild<LLButton>("forme_mark_read")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
         std::vector<LLPanel*> items;
         getAllItemsOnCurrentTab(items);
         for (auto* panel : items)

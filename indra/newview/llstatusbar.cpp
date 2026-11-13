@@ -379,7 +379,7 @@ bool LLStatusBar::handleRightMouseDown(S32 x, S32 y, MASK mask)
 bool LLStatusBar::postBuild()
 {
     if (auto* rotate = findChild<LLButton>("forme_tools_rotate"))
-        rotate->setClickedCallback([]() {
+        rotate->setClickedCallback([](LLUICtrl*, const LLSD&) {
             if (!ForMeCreatorAccess::allowed() || gRlvHandler.hasBehaviour(RLV_BHVR_EDIT)) return;
             if (LLFloaterReg::showInstance("build"))
                 LLFloaterTools::setEditTool(LLToolCompRotate::getInstance());

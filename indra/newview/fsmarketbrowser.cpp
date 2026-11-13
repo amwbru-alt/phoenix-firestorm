@@ -67,24 +67,24 @@ void removeItem(const std::string& id)
 bool FSMarketBrowser::postBuild()
 {
     mMode = hasChild("catalog_grid") ? "catalog" : hasChild("cart_rows") ? "cart" : "item";
-    getChild<LLButton>("refresh")->setClickedCallback([this]() { refresh(); });
-    if (auto* site = findChild<LLButton>("website")) site->setClickedCallback([]() {
+    getChild<LLButton>("refresh")->setClickedCallback([this](LLUICtrl*, const LLSD&) { refresh(); });
+    if (auto* site = findChild<LLButton>("website")) site->setClickedCallback([](LLUICtrl*, const LLSD&) {
         LLWeb::loadURLExternal(std::string(ForMeGrid::LoginURI) + "web/marketplace.html");
     });
     if (mMode == "catalog")
     {
         getChild<LLSearchEditor>("query")->setCommitCallback([this](LLUICtrl*, const LLSD&) { mPage = 0; refresh(); });
         for (const auto& category : {std::make_pair("all", ""), std::make_pair("clothes", "apparel"), std::make_pair("home", "objects/home"), std::make_pair("accessories", "body/accessories")})
-            getChild<LLButton>(category.first)->setClickedCallback([this, value = std::string(category.second)]() { mCategory = value; mPage = 0; refresh(); });
-        getChild<LLButton>("previous")->setClickedCallback([this]() { if (!mBusy && mPage > 0) { --mPage; refresh(); } });
-        getChild<LLButton>("next")->setClickedCallback([this]() { if (!mBusy && (mPage + 1) * 3 < mTotal) { ++mPage; refresh(); } });
-        getChild<LLButton>("cart")->setClickedCallback([]() { LLFloaterReg::showInstance("market_cart"); });
+            getChild<LLButton>(category.first)->setClickedCallback([this, value = std::string(category.second)](LLUICtrl*, const LLSD&) { mCategory = value; mPage = 0; refresh(); });
+        getChild<LLButton>("previous")->setClickedCallback([this](LLUICtrl*, const LLSD&) { if (!mBusy && mPage > 0) { --mPage; refresh(); } });
+        getChild<LLButton>("next")->setClickedCallback([this](LLUICtrl*, const LLSD&) { if (!mBusy && (mPage + 1) * 3 < mTotal) { ++mPage; refresh(); } });
+        getChild<LLButton>("cart")->setClickedCallback([](LLUICtrl*, const LLSD&) { LLFloaterReg::showInstance("market_cart"); });
         for (S32 i = 0; i < 3; ++i)
         {
             const auto suffix = std::to_string(i);
-            getChild<LLButton>("open_" + suffix)->setClickedCallback([this, i]() { if (i < mItems.size()) LLFloaterReg::showInstance("market_product", itemKey(mItems[i]["item_id"].asString())); });
-            getChild<LLButton>("add_" + suffix)->setClickedCallback([this, i]() { if (i < mItems.size()) add(mItems[i]); });
-            getChild<LLButton>("favorite_" + suffix)->setClickedCallback([this, i]() {
+            getChild<LLButton>("open_" + suffix)->setClickedCallback([this, i](LLUICtrl*, const LLSD&) { if (i < mItems.size()) LLFloaterReg::showInstance("market_product", itemKey(mItems[i]["item_id"].asString())); });
+            getChild<LLButton>("add_" + suffix)->setClickedCallback([this, i](LLUICtrl*, const LLSD&) { if (i < mItems.size()) add(mItems[i]); });
+            getChild<LLButton>("favorite_" + suffix)->setClickedCallback([this, i](LLUICtrl*, const LLSD&) {
                 if (i >= mItems.size()) return;
                 LLSD data = state(); const auto id = mItems[i]["item_id"].asString();
                 data["favorites"][id] = !data["favorites"][id].asBoolean(); save(data); render();
@@ -93,13 +93,13 @@ bool FSMarketBrowser::postBuild()
     }
     else if (mMode == "item")
     {
-        getChild<LLButton>("add")->setClickedCallback([this]() { add(mProduct); });
-        getChild<LLButton>("buy")->setClickedCallback([this]() { LLSD items = LLSD::emptyArray(); if (mProduct.has("item_id")) { items.append(mProduct); checkout(items); } });
-        for (S32 i = 0; i < 3; ++i) getChild<LLButton>("photo_pick_" + std::to_string(i))->setClickedCallback([this, i]() {
+        getChild<LLButton>("add")->setClickedCallback([this](LLUICtrl*, const LLSD&) { add(mProduct); });
+        getChild<LLButton>("buy")->setClickedCallback([this](LLUICtrl*, const LLSD&) { LLSD items = LLSD::emptyArray(); if (mProduct.has("item_id")) { items.append(mProduct); checkout(items); } });
+        for (S32 i = 0; i < 3; ++i) getChild<LLButton>("photo_pick_" + std::to_string(i))->setClickedCallback([this, i](LLUICtrl*, const LLSD&) {
             if (i < mProduct["images"].size()) image(getChild<LLIconCtrl>("photo"), mProduct["images"][i].asString());
         });
     }
-    else getChild<LLButton>("checkout")->setClickedCallback([this]() { checkout(state()["items"]); });
+    else getChild<LLButton>("checkout")->setClickedCallback([this](LLUICtrl*, const LLSD&) { checkout(state()["items"]); });
     return true;
 }
 void FSMarketBrowser::onOpen(const LLSD& key)
@@ -243,7 +243,7 @@ void FSMarketBrowser::render()
             }
             LLTextBox::Params cost; cost.name = "cost_" + id; cost.rect = LLRect(492, top - 28, 616, top - 52); cost.initial_value = money(item["price"].asInteger(), item["currency"].asString()); body->addChild(LLUICtrlFactory::create<LLTextBox>(cost));
             LLButton::Params remove; remove.name = "remove_" + id; remove.label = "×"; remove.rect = LLRect(636, top - 24, 672, top - 56);
-            auto* button = LLUICtrlFactory::create<LLButton>(remove); body->addChild(button); button->setClickedCallback([handle, id]() { removeItem(id); if (auto* view = dynamic_cast<FSMarketBrowser*>(handle.get())) view->render(); });
+            auto* button = LLUICtrlFactory::create<LLButton>(remove); body->addChild(button); button->setClickedCallback([handle, id](LLUICtrl*, const LLSD&) { removeItem(id); if (auto* view = dynamic_cast<FSMarketBrowser*>(handle.get())) view->render(); });
             if (i == 1) currency = item["currency"].asString();
             else if (currency != item["currency"].asString()) mixed_currency = true;
             total += item["price"].asInteger();

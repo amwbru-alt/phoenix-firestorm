@@ -122,7 +122,7 @@ bool LLNotificationListItem::postBuild()
                 params.follows.flags = FOLLOWS_LEFT | FOLLOWS_TOP;
                 auto* button = LLUICtrlFactory::create<LLButton>(params);
                 const LLUUID id = mParams.notification_id;
-                button->setClickedCallback([id, option]() {
+                button->setClickedCallback([id, option](LLUICtrl*, const LLSD&) {
                     if (auto current = LLNotifications::instance().find(id))
                     {
                         LLSD response = current->getResponseTemplate();
