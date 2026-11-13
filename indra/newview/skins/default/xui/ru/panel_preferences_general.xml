@@ -1,5 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <panel label="Общее" name="general_panel">
+  <check_box label="Показывать титул группы" name="show_all_title_checkbox1" tool_tip="Показывать титул группыю Например, Owner" />
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
     <text name="language_textbox">
 		Язык:
 	</text>
@@ -53,7 +56,6 @@
 	</text>
     <check_box label="Показывать мое имя" name="show_my_name_checkbox1" />
     <check_box label="Имена пользователей" name="show_slids" tool_tip="Отображать имена учетных записей пользователей, например Bobsmith123" />
-    <check_box label="Показывать титул группы" name="show_all_title_checkbox1" tool_tip="Показывать титул группыю Например, Owner" />
     <check_box label="Скрыть собственный титул группы" name="RenderHideGroupTitle" tool_tip="Показать или скрыть свой титул группы для вас и всех остальных." />
     <check_box label="Отображаемое имя" name="display_names_check" tool_tip="Показать Отображаемое имя (Display Names) в чате, ЛС, тегах над аватарами" />
     <check_box label="Старый способ отображения имени" name="FSshow_legacyun" tool_tip="Отображение имени в старом формате (Имя Фамилия) вместо имени пользователя (имя.фамилия)" />
@@ -90,4 +92,5 @@
 		Автоматические сообщения можно изменить в [fmw:///app/openfloater/preferences?tab=im&amp;subtab=tab-autoresponse-1 Приватность / Автоответ]
 	</text>
     <text name="time_format_textbox2">(Необходим перезапуск)</text>
+</panel>  </scroll_container>
 </panel>

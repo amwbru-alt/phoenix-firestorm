@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="Gráficos" name="Display panel">
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 <tab_container label="Preferências Gráficas" name="tabs">
 	<panel label="Geral" name="General">
 		<text name="preset_label">
@@ -124,7 +126,6 @@
 		<button label="Excluir" left_pad="5" name="PrefDeleteButton" width="72" />
 		<button tool_tip="Recarregar as configurações gráficas padrão." name="Defaults" />
 	</panel>
-
 	<panel label="Config. de Hardware" name="Hardware Settings" width="320">
 		<check_box label="Filtragem Anisotrópica (mais lenta, quando ativado)" name="ani" tool_tip="Ativa a filtragem anisotrópica, um método que melhora a qualidade das texturas visualizadas em ângulos relativamente grandes em relação à posição da câmera. Geralmente faz com que pareçam menos borradas a distâncias maiores." />
 		<check_box label="Compressão de textura com perda (requer reinício)" name="texture compression" tool_tip="Comprime texturas na memória de vídeo, permitindo texturas com maior resolução e/ou mais texturas carregadas, com alguma perda de qualidade de cor." />
@@ -152,12 +153,8 @@
 			Configurações Avançadas (requer reinício):
 		</text>
 		<check_box label="Substituir detecção de VRAM (cuidado!)" name="FSOverrideVRAMDetection" tool_tip="Permite substituir a detecção de VRAM (use com extrema cautela)" />
-		<slider label="Substituir VRAM dedicada da GPU (GB):" name="FSForcedVideoMemory" tool_tip="Importante: Use com extrema cautela.
-Substitui a VRAM detectada na GPU.
-Este valor não deve incluir a VRAM compartilhada que faz parte da memória RAM do sistema.
-Se você não compreende a diferença, não altere esta configuração." />
+          <slider label="Substituir VRAM dedicada da GPU (GB):" name="FSForcedVideoMemory" tool_tip="Importante: Use com extrema cautela. Substitui a VRAM detectada na GPU. Este valor não deve incluir a VRAM compartilhada que faz parte da memória RAM do sistema. Se você não compreende a diferença, não altere esta configuração." />
 	</panel>
-
 	<panel label="Renderização" name="Rendering">
 		<text name="World Updating">
 			Atualização do Mundo:
@@ -180,7 +177,7 @@ Se você não compreende a diferença, não altere esta configuração." />
 		<text name="TextureDetailLabel" width="215">
 			Nível Máximo de Qualidade de Textura:
 		</text>
-		<combo_box tool_tip="Nível de qualidade no qual as texturas são carregadas. Afeta a configuração TextureDiscardLevel" name="TextureDetail"> <!-- To translators, do not try to translate the word TextureDiscardLevel -->
+          <combo_box tool_tip="Nível de qualidade no qual as texturas são carregadas. Afeta a configuração TextureDiscardLevel" name="TextureDetail">
 			<combo_box.item label="Qualidade Normal (0)" name="0" />
 			<combo_box.item label="Qualidade Média (3)" name="3" />
 			<combo_box.item label="Qualidade Baixa (4)" name="4" />
@@ -233,7 +230,6 @@ Se você não compreende a diferença, não altere esta configuração." />
 		</combo_box>
 		<slider label="Mistura de Mapeamento de Tom:" tool_tip="Mistura entre cores lineares e com mapeamento de tom." name="TonemapMix" />
 	</panel>
-	
 	<panel label="Profundidade de Campo" name="DOF panel">
 		<check_box label="Ativar Profundidade de Campo (DoF)" name="UseDoF" />
 		<check_box label="Ativar no modo de edição" name="RenderDepthOfFieldInEditMode" />
@@ -244,6 +240,7 @@ Se você não compreende a diferença, não altere esta configuração." />
 		<slider label="Tempo de Transição do Foco DoF:" name="CameraFocusTrans" tool_tip="Tempo necessário para alterar o foco de um ponto a outro." label_width="195" width="409" />
 		<slider label="Qualidade de Renderização do DoF:" name="CameraDoFResScale" tool_tip="Afeta a qualidade do desfoque e o desempenho da renderização. (maior = melhor qualidade, menor = melhor desempenho)" label_width="195" width="409" />
 	</panel>
-	
 </tab_container>
+</panel>
+  </scroll_container>
 </panel>

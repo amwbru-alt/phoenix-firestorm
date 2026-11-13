@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="Grafika" name="Display panel">
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 	<tab_container label="Ustawienia graficzne" name="tabs">
 		<panel label="Ogólne" name="General">
 			<text name="preset_label">
@@ -30,17 +32,17 @@
 			<text name="ShadersText">
 				Cieniowanie pikseli:
 			</text>
-			<check_box label="Przezroczysta woda" name="TransparentWater"/>
-			<check_box label="Okluzja otoczenia (SSAO)" name="UseSSAO"/>
-			<check_box label="Odbicia obsz. ekranu (SSR)" name="ScreenSpaceReflections"/>
+          <check_box label="Przezroczysta woda" name="TransparentWater" />
+          <check_box label="Okluzja otoczenia (SSAO)" name="UseSSAO" />
+          <check_box label="Odbicia obsz. ekranu (SSR)" name="ScreenSpaceReflections" />
 			<check_box label="Lustra" name="Mirrors" />
 			<text name="shadows_label">
 				Cienie:
 			</text>
 			<combo_box name="ShadowDetail">
-				<combo_box.item label="Brak" name="0"/>
-				<combo_box.item label="Słońce/Księżyc" name="1"/>
-				<combo_box.item label="Słońce/Księżyc + inne źródła" name="2"/>
+            <combo_box.item label="Brak" name="0" />
+            <combo_box.item label="Słońce/Księżyc" name="1" />
+            <combo_box.item label="Słońce/Księżyc + inne źródła" name="2" />
 			</combo_box>
 			<text name="ReflectionDetailText">
 				Szczegóły odbić:
@@ -63,9 +65,9 @@
 				Oświetlenie punktowe:
 			</text>
 			<combo_box name="LocalLightsDetail">
-				<combo_box.item label="Pełne (domyślne)" name="3"/>
-				<combo_box.item label="Częściowe" name="2"/>
-				<combo_box.item label="Tylko Słońce/Księżyc" name="1"/>
+            <combo_box.item label="Pełne (domyślne)" name="3" />
+            <combo_box.item label="Częściowe" name="2" />
+            <combo_box.item label="Tylko Słońce/Księżyc" name="1" />
 			</combo_box>
 			<text name="MirrorResolutionText">
 				Rozdzielczość luster:
@@ -74,13 +76,13 @@
 				Odświeżanie luster:
 			</text>
 			<combo_box name="HeroProbeUpdateRate">
-				<combo_box.item label="Powoli" name="6"/>
+            <combo_box.item label="Powoli" name="6" />
 				<combo_box.item label="Średnio" name="3" />
 				<combo_box.item label="Szybko" name="1" />
 			</combo_box>
-			<check_box label="Pełny ekran" name="Fullscreen Mode" tool_tip="Uruchamia Firestorma na pełnym ekranie. Aby zmienić tryb wymagany jest restart."/>
-			<slider label="Pole widzenia" name="DrawDistance"/>
-			<slider label="Maks. ilość cząsteczek" name="MaxParticleCount"/>
+          <check_box label="Pełny ekran" name="Fullscreen Mode" tool_tip="Uruchamia Firestorma na pełnym ekranie. Aby zmienić tryb wymagany jest restart." />
+          <slider label="Pole widzenia" name="DrawDistance" />
+          <slider label="Maks. ilość cząsteczek" name="MaxParticleCount" />
 			<text name="AvatarComplexityModeLabel">
 				Render awatarów
 			</text>
@@ -90,23 +92,23 @@
 				<combo_box.item label="Pokazuj tylko znajomych" name="2" />
 			</combo_box>
 			<slider label="Maks. złożoność awatarów" name="IndirectMaxComplexity" tool_tip="Kontroluje w jakim momencie awatar, który jest graficznie złożony zostanie zastąpiony przez mniej obciążającą komputer formę (tzw. JellyDoll)" />
-			<slider label="Maks. il. widocznych awatarów" name="IndirectMaxNonImpostors"/>
-			<slider label="Jakość post-procesu" name="RenderPostProcess"/>
+          <slider label="Maks. il. widocznych awatarów" name="IndirectMaxNonImpostors" />
+          <slider label="Jakość post-procesu" name="RenderPostProcess" />
 			<text name="PostProcessText">
 				Niska
 			</text>
 			<slider label="Maks. świateł" name="MaxLights" />
-			<slider label="Fizyka awatarów" name="AvatarPhysicsDetail"/>
+          <slider label="Fizyka awatarów" name="AvatarPhysicsDetail" />
 			<slider label="Ekspozycja" name="RenderExposure" />
 			<text name="MeshDetailText">
 				Poziom szczegółowości obiektów (LOD):
 			</text>
 			<slider label="  Obiekty i skulpty" name="ObjectMeshDetail" tool_tip="Kontroluje kiedy obiekty z mniejszą ilością detali mogą zostać użyte, aby ograniczyć koszty renderowania. Wyższe wartości mogą powodować lag, używaj z rozwagą." />
-			<slider label="  Obiekty elastyczne" name="FlexibleMeshDetail"/>
-			<slider label="  Drzewa" name="TreeMeshDetail"/>
-			<slider label="  Awatary" name="AvatarMeshDetail"/>
-			<slider label="  Teren" name="TerrainMeshDetail"/>
-			<slider label="  Niebo" name="SkyMeshDetail"/>
+          <slider label="  Obiekty elastyczne" name="FlexibleMeshDetail" />
+          <slider label="  Drzewa" name="TreeMeshDetail" />
+          <slider label="  Awatary" name="AvatarMeshDetail" />
+          <slider label="  Teren" name="TerrainMeshDetail" />
+          <slider label="  Niebo" name="SkyMeshDetail" />
 			<text name="Presets_Label">
 				Ustawienia:
 			</text>
@@ -116,7 +118,7 @@
 		</panel>
 		<panel label="Ustawienia sprzętowe" name="Hardware Settings">
 			<check_box label="Filtrowanie anizotropowe (wolniej, gdy włączone)" name="ani" tool_tip="To pole wyboru włącza filtrowanie anizotropowe, które jest metodą polepszania jakości tekstur, gdy są one oglądane pod względnie dużymi kątami w stosunku do położenia kamery. Zazwyczaj sprawia, że wydają się mniej rozmyte przy większych odległościach." />
-			<check_box label="Włącz stratną kompresję tekstur (wymaga restartu)" name="texture compression" tool_tip="Kompresuje tekstury w pamięci wideo. Umożliwi to ładowanie tekstur w wyższej rozdzielczości / większej ich ilości, ale kosztem jakości obrazu."/>
+          <check_box label="Włącz stratną kompresję tekstur (wymaga restartu)" name="texture compression" tool_tip="Kompresuje tekstury w pamięci wideo. Umożliwi to ładowanie tekstur w wyższej rozdzielczości / większej ich ilości, ale kosztem jakości obrazu." />
 			<check_box label="Włącz wsparcie dla ekranów HiDPI (tylko macOS; wymaga restartu)" name="use HiDPI" tool_tip="Włącz funkcje OpenGL dla rysowania w wysokich rozdzielczościach." />
 			<text name="antialiasing label" tool_tip="Zmiana tego ustawienia może wymagać ponownego uruchomienia na niektórych urządzeniach.">
 				Antyaliasing (zalecany restart):
@@ -125,7 +127,7 @@
 				Jakość antyaliasingu:
 			</text>
 			<combo_box name="fsaa">
-				<combo_box.item label="Wyłączony" name="FSAADisabled"/>
+            <combo_box.item label="Wyłączony" name="FSAADisabled" />
 			</combo_box>
 			<combo_box name="fsaa quality">
 				<combo_box.item label="Niska" name="Low" />
@@ -145,9 +147,9 @@
 			<text name="World Updating">
 				Odświeżanie świata:
 			</text>
-			<check_box label="Wstrzymaj odświeżanie świata (pauzuj wszystko)" tool_tip="Wstrzymaj odświeżanie świata z serwera - zatrzymaj wszystkie akcje w świecie ForMe.World, ale bez wpływu na czat, IM czy rozmowy głosowe" name="WorldPause"/>
-			<check_box label="Limit klatek wyświetlanych na sekundę" tool_tip="Ogranicza liczbę klatek na sekundę do wartości zdefiniowanej przez użytkownika. Może zmniejszyć zużycie energii i wydzielanie ciepła GPU/CPU." name="FSLimitFramerate"/>
-			<check_box label="Włącz VSync" name="vsync" tool_tip="Synchronizuje liczbę klatek na sekundę z częstotliwością odświeżania monitora, może skutkować zmniejszeniem widocznej płynności i opóźnieniami."/>
+          <check_box label="Wstrzymaj odświeżanie świata (pauzuj wszystko)" tool_tip="Wstrzymaj odświeżanie świata z serwera - zatrzymaj wszystkie akcje w świecie ForMe.World, ale bez wpływu na czat, IM czy rozmowy głosowe" name="WorldPause" />
+          <check_box label="Limit klatek wyświetlanych na sekundę" tool_tip="Ogranicza liczbę klatek na sekundę do wartości zdefiniowanej przez użytkownika. Może zmniejszyć zużycie energii i wydzielanie ciepła GPU/CPU." name="FSLimitFramerate" />
+          <check_box label="Włącz VSync" name="vsync" tool_tip="Synchronizuje liczbę klatek na sekundę z częstotliwością odświeżania monitora, może skutkować zmniejszeniem widocznej płynności i opóźnieniami." />
 			<text name="Texture Rendering">
 				Rendering tekstur:
 			</text>
@@ -163,22 +165,22 @@
 				Maks. jakość tekstur:
 			</text>
 			<combo_box name="TextureDetail" tool_tip="Jakość ładowanych tekstur, wpływa na ustawienie TextureDiscardLevel">
-				<combo_box.item label="Normalna jakość (0)" name="0"/>
-				<combo_box.item label="Średnia jakość (3)" name="3"/>
-				<combo_box.item label="Niska jakość (4)" name="4"/>
-				<combo_box.item label="Bez tekstur (5)" name="5"/>
+            <combo_box.item label="Normalna jakość (0)" name="0" />
+            <combo_box.item label="Średnia jakość (3)" name="3" />
+            <combo_box.item label="Niska jakość (4)" name="4" />
+            <combo_box.item label="Bez tekstur (5)" name="5" />
 			</combo_box>
 			<text name="Miscellaneous Rendering">
 				Inne opcje wyświetlania:
 			</text>
 			<check_box label="HDR i emisyjność" tool_tip="Włącza dodatkowe funkcje renderowania na nowszych maszynach, takie jak HDR i tekstury emisyjne dla PBR." name="VintageMode" />
-			<check_box label="Renderuj maski przezroczystości" tool_tip="Gdy opcja jest zaznaczona, to następuje poprawny rendering masek alpha (przezroczystych bitów)" name="RenderAutoMaskAlphaDeferred"/>
-			<check_box label="Renderuj blask" tool_tip="Renderuj blask. Siła musi być ustawiona na 0, aby wyłączyć blask gdy cienie są włączone." name="RenderGlow"/>
-			<slider label="Siła:" tool_tip="Siła blasku. Więcej = szerszy i gładszy (domyślnie 2) " name="glow_strength"/>
-			<check_box label="Pokazuj awatary, które nie skończyły się ładować" name="RenderUnloadedAvatars"/>
-			<check_box label="Tryb obrazu szkieletowego" name="Wireframe"/>
-			<check_box label="Włącz doczepiane światła (np. twarzy)" tool_tip="Ta opcja włącza światła doczepione do awatarów, na przykład te oświetlające twarze. Użyteczne, gdy trzeba wyłączyć oświetlenie twarzy." name="Render Attached Lights"/>
-			<check_box label="Renderuj cząsteczki innych awatarów" name="Render Attached Particles"/>
+          <check_box label="Renderuj maski przezroczystości" tool_tip="Gdy opcja jest zaznaczona, to następuje poprawny rendering masek alpha (przezroczystych bitów)" name="RenderAutoMaskAlphaDeferred" />
+          <check_box label="Renderuj blask" tool_tip="Renderuj blask. Siła musi być ustawiona na 0, aby wyłączyć blask gdy cienie są włączone." name="RenderGlow" />
+          <slider label="Siła:" tool_tip="Siła blasku. Więcej = szerszy i gładszy (domyślnie 2) " name="glow_strength" />
+          <check_box label="Pokazuj awatary, które nie skończyły się ładować" name="RenderUnloadedAvatars" />
+          <check_box label="Tryb obrazu szkieletowego" name="Wireframe" />
+          <check_box label="Włącz doczepiane światła (np. twarzy)" tool_tip="Ta opcja włącza światła doczepione do awatarów, na przykład te oświetlające twarze. Użyteczne, gdy trzeba wyłączyć oświetlenie twarzy." name="Render Attached Lights" />
+          <check_box label="Renderuj cząsteczki innych awatarów" name="Render Attached Particles" />
 			<check_box label="Zmniejsz pole widzenia, gdy VRAM jest pełny" name="Reduce Draw Distance when VRAM is full" tool_tip="Włącza funkcję zmniejszającą odległość rysowania (pole widzenia), gdy pamięć VRAM jest pełna" />
 			<text name="ExcludeAnimeshImposterLabel">
 				Wyklucz zast. animesz. awatarów:
@@ -189,12 +191,12 @@
 				<combo_box.item label="Kontrolowanych" name="2" />
 				<combo_box.item label="Obu" name="3" />
 			</combo_box>
-			<slider label="Opóźnienie wczytywania świata po logowaniu" tool_tip="Jak długo czekać na rozpoczęcie odświeżenia świata dla Ciebie po tym, gdy pokażesz się dostępny/a dla Twoich znajomych (domyślnie 6 sekund)" name="PrecachingDelay"/>
+          <slider label="Opóźnienie wczytywania świata po logowaniu" tool_tip="Jak długo czekać na rozpoczęcie odświeżenia świata dla Ciebie po tym, gdy pokażesz się dostępny/a dla Twoich znajomych (domyślnie 6 sekund)" name="PrecachingDelay" />
 			<text name="PrecachingDelayText">
 				sekund
 			</text>
-			<slider label="Jakość cieni" tool_tip="Określa jakość cieni (domyślnie 1)" name="ShadowResolution"/>
-			<slider label="Wielkość tekstur terenu (wymaga restartu)" name="RenderTerrainScale" tool_tip="Określa wielkość tekstur terenu - mniej oznacza: bardziej skompresowane (wymaga restartu)."/>
+          <slider label="Jakość cieni" tool_tip="Określa jakość cieni (domyślnie 1)" name="ShadowResolution" />
+          <slider label="Wielkość tekstur terenu (wymaga restartu)" name="RenderTerrainScale" tool_tip="Określa wielkość tekstur terenu - mniej oznacza: bardziej skompresowane (wymaga restartu)." />
 			<slider label="Wyostrzanie:" name="RenderSharpness" />
 			<text name="ReflectionProbeCount">
 				Il. sond refleksyjnych:
@@ -211,14 +213,16 @@
 			<slider label="Miks tone mappingu:" tool_tip="Łączenie kolorów liniowych i tonalnie odwzorowanych (mappingowanych)" name="TonemapMix" />
 		</panel>
 		<panel label="Głębia ostrości" name="DOF panel">
-			<check_box label="Włącz głębię ostrości (rozmywaj widok z wyjątkiem miejsca, gdzie skupiona jest kamera)" name="UseDoF"/>
-			<check_box label="Włączaj w trybie budowania" name="RenderDepthOfFieldInEditMode"/>
+          <check_box label="Włącz głębię ostrości (rozmywaj widok z wyjątkiem miejsca, gdzie skupiona jest kamera)" name="UseDoF" />
+          <check_box label="Włączaj w trybie budowania" name="RenderDepthOfFieldInEditMode" />
 			<check_box label="Głębia ostrości podąża za kursorem" name="FSFocusPointFollowsPointer" tool_tip="Głębia ostrości (DoF) będzie podążać za kursorem myszy - to zachowanie jest zgodne z tym, co widać podczas korzystania z Flycam. Używaj w połączeniu z blokadą ostrości DoF." />
-			<slider label="Wartość F kamery:" name="CameraFNum" tool_tip="Wartość F kamery dla głębi ostrości"/>
-			<slider label="Ogniskowa (mm):" name="CameraFocal" tool_tip="Ogniskowa dla głębi ostrości (w milimetrach)"/>
-			<slider label="Pole widzenia (°):" name="Camera FOV" tool_tip="Pionowy kąt pola widzenia kamery dla głębi ostrości (w stopniach)"/>
-			<slider label="Czas przejścia:" name="CameraFocusTrans" tool_tip="Czas potrzebny na dostosowanie skupienia kamery podczas zmiany z jednego punktu widzenia na drugi"/>
-			<slider label="Jakość renderowania:" name="CameraDoFResScale" tool_tip="Wpływa na jakość rozmywania oraz wydajność renderowania (więcej = lepsza jakość, mniej = lepsza wydajność)"/>
+          <slider label="Wartość F kamery:" name="CameraFNum" tool_tip="Wartość F kamery dla głębi ostrości" />
+          <slider label="Ogniskowa (mm):" name="CameraFocal" tool_tip="Ogniskowa dla głębi ostrości (w milimetrach)" />
+          <slider label="Pole widzenia (°):" name="Camera FOV" tool_tip="Pionowy kąt pola widzenia kamery dla głębi ostrości (w stopniach)" />
+          <slider label="Czas przejścia:" name="CameraFocusTrans" tool_tip="Czas potrzebny na dostosowanie skupienia kamery podczas zmiany z jednego punktu widzenia na drugi" />
+          <slider label="Jakość renderowania:" name="CameraDoFResScale" tool_tip="Wpływa na jakość rozmywania oraz wydajność renderowania (więcej = lepsza jakość, mniej = lepsza wydajność)" />
 		</panel>
 	</tab_container>
+</panel>
+  </scroll_container>
 </panel>

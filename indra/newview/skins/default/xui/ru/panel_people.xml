@@ -37,13 +37,6 @@
 	</string>
   <tab_container name="tabs">
     <panel label="Рядом" name="nearby_panel">
-      <panel name="nearby_buttons_panel">
-        <filter_editor label="Фильтр людей" name="nearby_filter_input" />
-        <button name="gear_btn" tool_tip="Действия с выбранным жителем" />
-        <menu_button name="nearby_view_btn" tool_tip="Параметры просмотра/сортировки" />
-        <button name="add_friend_btn" tool_tip="Предложить жителю дружбу" />
-        <dnd_button name="nearby_del_btn" tool_tip="Удалить выбранного пользователя из друзей" />
-      </panel>
       <search_editor name="forme_nearby_search" label="Поиск людей…" />
       <button name="forme_radar_toggle" label="Радар" />
       <button name="forme_nearby_profile" label="Профиль" />
@@ -62,7 +55,6 @@
       <tab_container name="friends_accordion">
         <panel name="tab_online" title="В сети" />
         <panel name="tab_all" title="Все" />
-        <panel name="tab_suggested_friends" title="Предложенные" />
       </tab_container>
     </panel>
     <panel label="Группы" name="groups_panel">

@@ -1769,6 +1769,14 @@ void LLPanelPeople::reshape(S32 width, S32 height, bool called_from_parent)
             button->reshape(right - left, rect.getHeight(), true);
         }
     }
+    const S32 action_width = (navigation->getRect().getWidth() - 8) / 2;
+    for (const auto& item : {std::make_pair("forme_people_find", 0), std::make_pair("forme_people_groups_window", action_width + 8)})
+        if (auto* button = navigation->findChildView(item.first, false))
+        {
+            LLRect rect = button->getRect();
+            rect.setOriginAndSize(item.second, rect.mBottom, action_width, rect.getHeight());
+            button->setShape(rect);
+        }
 }
 
 void LLPanelPeople::onOpen(const LLSD& key)

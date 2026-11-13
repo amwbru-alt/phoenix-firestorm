@@ -1,17 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="Ayarlar" name="Input panel">
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 	<tab_container name="tabs">
 		<panel label="Ağ" name="tab-conn">
 			<text name="Maximum bandwidth">
 				Maksimum bant genişliği ([https://wiki.firestormviewer.org/fs_speedtest Bir öneri gerekiyor?]):
 			</text>
-			<check_box label="Özel port" name="connection_port_enabled"/>
-			<spinner label="Port numarası:" name="connection_port" width="160" label_width="85"/>
-			<check_box label="Çerezleri kabul et" name="cookies_enabled"/>
-			<check_box label="Javascript&apos;i etkinleştir" name="browser_javascript_enabled"/>
-			<check_box label="Ortam tarayıcısı açılır pencerelerini etkinleştir" name="media_popup_enabled"/>
-			<button label="Proxy Ayarları" label_selected="Proxy Ayarları" name="set_proxy"/>
+          <check_box label="Özel port" name="connection_port_enabled" />
+          <spinner label="Port numarası:" name="connection_port" width="160" label_width="85" />
+          <check_box label="Çerezleri kabul et" name="cookies_enabled" />
+          <check_box label="Javascript'i etkinleştir" name="browser_javascript_enabled" />
+          <check_box label="Ortam tarayıcısı açılır pencerelerini etkinleştir" name="media_popup_enabled" />
+          <button label="Proxy Ayarları" label_selected="Proxy Ayarları" name="set_proxy" />
 		</panel>
 		<panel label="Yerleri" name="tab-dir" />
 	</tab_container>
+</panel>
+  </scroll_container>
 </panel>

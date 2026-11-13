@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="Audio e Media" name="Preference Media panel">
 	<panel.string name="middle_mouse">
 		Pulsante centrale del mouse
@@ -66,14 +66,12 @@
 	<panel.string name="textFSHealthReductionM">
 		Urto maschio:
 	</panel.string>
-
 	<panel.string name="textFSInvalidOp">
 		Operazione non valida:
 	</panel.string>
 	<panel.string name="textFSInventoryOffer">
 		Offerta inventario:
 	</panel.string>
-
 	<panel.string name="textFSMoneyChangeDown">
 		Diminuzione soldi:
 	</panel.string>
@@ -179,20 +177,20 @@
 	<panel.string name="textFSWindowOpen">
 		Apre finestra:
 	</panel.string>
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 	<tab_container label="Preferenze ForMe.World" name="tabs">
 		<panel label="Generale" name="Media Sounds Panel">
-			<slider label="Volume Generale" name="System Volume"/>
-			<check_box label="Muta quando riduci ad icona" name="mute_when_minimized"/>
-			<slider label="Interfaccia" name="UI Volume"/>
-			<slider label="Ambiente" name="Wind Volume"/>
-			<check_box name="collisions_audio_play_btn" tool_tip="Abilita i suoni predefiniti per le collisioni" label="Riproduci suoni collisioni"/>
-			<slider label="Effetti Sonori" name="SFX Volume"/>
-			<check_box name="gesture_audio_play_btn" tool_tip="Se spuntata, riprodurrà i suoni di tutti i gesti" label="Riproduci suoni gesti"/>
-			<slider label="Musica" name="Music Volume"/>
-			<check_box label="Abilita" name="enable_music"/>
-			<check_box label="Abilita" name="enable_media"/>
-
-
+          <slider label="Volume Generale" name="System Volume" />
+          <check_box label="Muta quando riduci ad icona" name="mute_when_minimized" />
+          <slider label="Interfaccia" name="UI Volume" />
+          <slider label="Ambiente" name="Wind Volume" />
+          <check_box name="collisions_audio_play_btn" tool_tip="Abilita i suoni predefiniti per le collisioni" label="Riproduci suoni collisioni" />
+          <slider label="Effetti Sonori" name="SFX Volume" />
+          <check_box name="gesture_audio_play_btn" tool_tip="Se spuntata, riprodurrà i suoni di tutti i gesti" label="Riproduci suoni gesti" />
+          <slider label="Musica" name="Music Volume" />
+          <check_box label="Abilita" name="enable_music" />
+          <check_box label="Abilita" name="enable_media" />
 			<text name="Listen media from">
 				Ascolta media e suoni da:
 			</text>
@@ -208,8 +206,8 @@
 			<text name="friends_logon_sounds_label">
 				Riproduci suono quando un amico:
 			</text>
-			<check_box name="friends_notify_online_sound" label="Entra in SL"/>
-			<check_box name="friends_notify_offline_sound" label="Esce da SL"/>
+          <check_box name="friends_notify_online_sound" label="Entra in SL" />
+          <check_box name="friends_notify_offline_sound" label="Esce da SL" />
 			<text name="money_change_threshold_label" tool_tip="Riproduci un suono quando spendi o ricevi una somma di denaro superiore alla soglia stabilita">
 				Soglia di cambio L$:
 			</text>
@@ -238,32 +236,31 @@
 			<combo_box name="media_auto_play_combo">
 				<item label="Disabilitato" name="autoplay_disabled" />
 				<item label="Abilitato" name="autoplay_enabled" />
-				<!-- <item label="Chiedi" name="autoplay_ask" /> -->
 			</combo_box>
-			<check_box name="media_allowscript_btn" tool_tip="Questa impostazione consente/impedisce di controllare le connessioni multimediali da parte di script di altri utenti" label="Consenti agli script di riprodurre i media"/>
-			<check_box label="Riproduci media indossati da altri avatar" name="media_show_on_others_btn" tool_tip="Non selezionare se non si vogliono ascoltare i media indossati su altri avatar."/>
-			<check_box name="media_filter" tool_tip="Selezionare questa opzione per abilitare il filtro che permette di scegliere se riprodurre file multimediali da un host specifico" label="Attiva filtro media (aumenta la sicurezza)"/>
-			<button label="Gestisci siti media" name="edit_media_lists_button"/>
-			<text name="Media Rolloff" >
+          <check_box name="media_allowscript_btn" tool_tip="Questa impostazione consente/impedisce di controllare le connessioni multimediali da parte di script di altri utenti" label="Consenti agli script di riprodurre i media" />
+          <check_box label="Riproduci media indossati da altri avatar" name="media_show_on_others_btn" tool_tip="Non selezionare se non si vogliono ascoltare i media indossati su altri avatar." />
+          <check_box name="media_filter" tool_tip="Selezionare questa opzione per abilitare il filtro che permette di scegliere se riprodurre file multimediali da un host specifico" label="Attiva filtro media (aumenta la sicurezza)" />
+          <button label="Gestisci siti media" name="edit_media_lists_button" />
+          <text name="Media Rolloff">
 				Attenuazione del volume dei media:
 			</text>
-			<slider name="MediaRollOffMin" label="Inizia a diminuire a:" tool_tip="Distanza minima dalla sorgente per la quale inizia l&apos;effetto di attenuazione."/>
+          <slider name="MediaRollOffMin" label="Inizia a diminuire a:" tool_tip="Distanza minima dalla sorgente per la quale inizia l'effetto di attenuazione." />
 			<text name="MinMeters">
 				metri
 			</text>
-			<slider name="MediaRollOffMax" label="Svanisce completamente a:" tool_tip="Distanza massima dalla fonte sonora per disattivare completamente l&apos;audio."/>
+          <slider name="MediaRollOffMax" label="Svanisce completamente a:" tool_tip="Distanza massima dalla fonte sonora per disattivare completamente l'audio." />
 			<text name="MaxMeters">
 				metri
 			</text>
 		</panel>
 		<panel name="Media Music Panel" label="Musica">
-			<check_box name="audio_auto_play_btn" tool_tip="Avvia automaticamene la musica della parcella" label="Riproduci musica automaticamente"/>
-			<check_box name="FSFadeAudioStream" tool_tip="Utilizza la dissolvenza della musica quando entri ed esci da una parcella" label="Abilita dissolvenza musica:"/>
-			<slider label="In entrata:" name="FSAudioMusicFadeIn" tool_tip="Durata dell'incremento progressivo del volume della musica quando entri da una parcella." label_width="55"/>
+          <check_box name="audio_auto_play_btn" tool_tip="Avvia automaticamene la musica della parcella" label="Riproduci musica automaticamente" />
+          <check_box name="FSFadeAudioStream" tool_tip="Utilizza la dissolvenza della musica quando entri ed esci da una parcella" label="Abilita dissolvenza musica:" />
+          <slider label="In entrata:" name="FSAudioMusicFadeIn" tool_tip="Durata dell'incremento progressivo del volume della musica quando entri da una parcella." label_width="55" />
 			<text name="FSAudioMusicFadeInSeconds">
 				secondi
 			</text>
-			<slider label="In uscita:" name="FSAudioMusicFadeOut" tool_tip="Durata della diminuzione progressiva del volume della musica quando esci da una parcella." label_width="55"/>
+          <slider label="In uscita:" name="FSAudioMusicFadeOut" tool_tip="Durata della diminuzione progressiva del volume della musica quando esci da una parcella." label_width="55" />
 			<text name="FSAudioMusicFadeOutSeconds">
 				secondi
 			</text>
@@ -271,13 +268,12 @@
 				Mostra notifiche sui titoli in streaming:
 			</text>
 			<radio_group name="show_stream_metadata">
-				<radio_item label="No" name="radio_off"/>
-				<radio_item label="Pop-up" name="radio_toasts"/>
-				<radio_item label="Chat locale" name="radio_chat"/>
+            <radio_item label="No" name="radio_off" />
+            <radio_item label="Pop-up" name="radio_toasts" />
+            <radio_item label="Chat locale" name="radio_chat" />
 			</radio_group>
-			<check_box name="StreamMetadataAnnounceToChat" label="Invia titoli in streaming sul canale:" width="210"/>
+          <check_box name="StreamMetadataAnnounceToChat" label="Invia titoli in streaming sul canale:" width="210" />
 		</panel>
-
 		<panel label="Suoni UI" name="UI Sounds tab">
 			<text name="textFSExplanation_tab1">
 				Si possono cambiare qui (indicando gli UUID) ed abilitare/disabilitare i suoni di sistema.
@@ -291,6 +287,7 @@ Passare sui campi UUID per leggere le impostazioni predefinite.
 			<button name="ui_sound_preview" tool_tip="Anteprima suono." />
 			<button name="ui_sound_default" tool_tip="Ripristina suono predefinito." />
 		</panel>
-
 	</tab_container>
+</panel>
+  </scroll_container>
 </panel>

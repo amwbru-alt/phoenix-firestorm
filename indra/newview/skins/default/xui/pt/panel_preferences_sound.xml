@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="Sons" name="Preference Media panel">
 <panel.string name="middle_mouse">
 	Botão do meio do mouse
@@ -66,14 +66,12 @@
 <panel.string name="textFSHealthReductionM">
 	Dano em avatar masculino:
 </panel.string>
-
 <panel.string name="textFSInvalidOp">
 	Ação inválida:
 </panel.string>
 <panel.string name="textFSInventoryOffer">
 	Ofertas de inventário:
 </panel.string>
-
 <panel.string name="textFSMoneyChangeDown">
 	Saída de dinheiro:
 </panel.string>
@@ -179,39 +177,38 @@
 <panel.string name="textFSWindowOpen">
 	Abrir janela:
 </panel.string>
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 <tab_container label="Preferências do ForMe.World" name="tabs">
-	<!-- Sounds -->
 	<panel label="Sons" name="Media Sounds Panel">
-		<slider label="Volume mestre" name="System Volume"/>
-		<check_box name="mute_when_minimized" label="Silenciar quando minimizado"/>
-		<slider label="Interface" name="UI Volume"/>
-		<slider label="Ambiente" name="Wind Volume"/>
-		<check_box label="Sons de colisão" name="collisions_audio_play_btn" tool_tip="Marque para ouvir sons de colisão"/>
-		<slider label="Sons" name="SFX Volume"/>
-		<check_box label="Sons de gestos" name="gesture_audio_play_btn" tool_tip="Marque para ouvir sons de gestos"/>
-		<slider label="Música" name="Music Volume"/>
-		<check_box label="Ativado" name="enable_music"/>
-		<slider label="Mídia" name="Media Volume"/>
-		<check_box label="Ativado" name="enable_media"/>
-
-
+          <slider label="Volume mestre" name="System Volume" />
+          <check_box name="mute_when_minimized" label="Silenciar quando minimizado" />
+          <slider label="Interface" name="UI Volume" />
+          <slider label="Ambiente" name="Wind Volume" />
+          <check_box label="Sons de colisão" name="collisions_audio_play_btn" tool_tip="Marque para ouvir sons de colisão" />
+          <slider label="Sons" name="SFX Volume" />
+          <check_box label="Sons de gestos" name="gesture_audio_play_btn" tool_tip="Marque para ouvir sons de gestos" />
+          <slider label="Música" name="Music Volume" />
+          <check_box label="Ativado" name="enable_music" />
+          <slider label="Mídia" name="Media Volume" />
+          <check_box label="Ativado" name="enable_media" />
 		<text name="Listen media from" width="170">
 			Ouvir mídia e sons a partir de:
 		</text>
 		<radio_group name="media_ear_location">
-			<radio_item label="Posição da câmera" name="0"/>
-			<radio_item label="Posição do avatar" name="1"/>
+            <radio_item label="Posição da câmera" name="0" />
+            <radio_item label="Posição do avatar" name="1" />
 		</radio_group>
 		<text name="auto_unmute_label">
 			Remover silenciamento automaticamente após teleporte:
 		</text>
-		<check_box name="FSAutoUnmuteAmbient" label="Ambiente" tool_tip="Remover automaticamente o silenciamento de sons ambientes após teleporte, se estiverem silenciados (padrão: desativado)"/>
-		<check_box name="FSAutoUnmuteSounds" label="Sons" tool_tip="Remover automaticamente o silenciamento de sons após teleporte, se estiverem silenciados (padrão: desativado)"/>
+          <check_box name="FSAutoUnmuteAmbient" label="Ambiente" tool_tip="Remover automaticamente o silenciamento de sons ambientes após teleporte, se estiverem silenciados (padrão: desativado)" />
+          <check_box name="FSAutoUnmuteSounds" label="Sons" tool_tip="Remover automaticamente o silenciamento de sons após teleporte, se estiverem silenciados (padrão: desativado)" />
 		<text name="friends_logon_sounds_label">
 			Tocar som quando amigos:
 		</text>
-		<check_box label="Conectarem" name="friends_notify_online_sound"/>
-		<check_box label="Desconectarem" name="friends_notify_offline_sound"/>
+          <check_box label="Conectarem" name="friends_notify_online_sound" />
+          <check_box label="Desconectarem" name="friends_notify_offline_sound" />
 		<text name="money_change_threshold_label" tool_tip="Reproduz um som de notificação quando o valor de dinheiro informado é recebido ou gasto." width="160">
 			Limite de alteração em L$:
 		</text>
@@ -232,56 +229,50 @@
 				Dispositivo de saída:
 			</text>
 		</panel>
-
 	</panel>
-
-	<!-- Media -->
 	<panel label="Mídia" name="Media Media Panel">
 		<text width="190" name="media_autoplay_label">
 			Reprodução automática de mídia
 		</text>
 		<combo_box name="media_auto_play_combo" width="100">
-			<item label="Desativado" name="autoplay_disabled"/>
-			<item label="Ativado" name="autoplay_enabled"/>
-			<!--<item label="Perguntar" name="autoplay_ask"/>-->
+            <item label="Desativado" name="autoplay_disabled" />
+            <item label="Ativado" name="autoplay_enabled" />
 		</combo_box>
 		<check_box name="media_allowscript_btn" tool_tip="Permite ou bloqueia scripts de controlar a reprodução de mídia" label="Permitir que scripts reproduzam mídia" />
-		<check_box label="Reproduzir mídias anexadas a outros avatares." name="media_show_on_others_btn" tool_tip="Desative esta opção para ocultar mídias de outros avatares próximos."/>
-		<check_box label="Reproduzir automaticamente mídias anexadas ao próprio HUD." name="media_huds_autoplay" tool_tip="Desative esta opção para aplicar as configurações padrão de reprodução às mídias dos seus objetos HUD."/>
-		<check_box name="media_filter" tool_tip="Ativa o filtro de mídia, que permite ou bloqueia reprodução dependendo da URL da mídia." label="Ativar filtro de mídia (maior segurança)"/>
-		<button label="Editar listas..." name="edit_media_lists_button"/>
+          <check_box label="Reproduzir mídias anexadas a outros avatares." name="media_show_on_others_btn" tool_tip="Desative esta opção para ocultar mídias de outros avatares próximos." />
+          <check_box label="Reproduzir automaticamente mídias anexadas ao próprio HUD." name="media_huds_autoplay" tool_tip="Desative esta opção para aplicar as configurações padrão de reprodução às mídias dos seus objetos HUD." />
+          <check_box name="media_filter" tool_tip="Ativa o filtro de mídia, que permite ou bloqueia reprodução dependendo da URL da mídia." label="Ativar filtro de mídia (maior segurança)" />
+          <button label="Editar listas..." name="edit_media_lists_button" />
 		<text name="Media Rolloff">
 			Distância de atenuação de volume para fontes de mídia:
 		</text>
-		<slider label="Começa a reduzir em:" name="MediaRollOffMin" tool_tip="Distância mínima da fonte sonora a partir da qual o volume começa a diminuir."/>
+          <slider label="Começa a reduzir em:" name="MediaRollOffMin" tool_tip="Distância mínima da fonte sonora a partir da qual o volume começa a diminuir." />
 		<text name="media_firstinteract_label" tool_tip="Esta configuração define quais mídias, depois de carregadas, não exigem um primeiro clique para interação. Assim, o evento de clique é repassado diretamente para a mídia sem precisar obter foco antes." width="180">
 			Primeira interação com mídia:
 		</text>
-		<check_box name="media_first_click_all" label="Toda mídia em objetos"/>
-		<check_box name="media_first_click_any" label="Objetos de qualquer pessoa"/>
-		<check_box name="media_first_click_hud" label="Apenas HUDs vestíveis"/>
-		<check_box name="media_first_click_own" label="Meus objetos"/>
-		<check_box name="media_first_click_group" label="Objetos do grupo"/>
-		<check_box name="media_first_click_friend" label="Objetos de amigos"/>
-		<check_box name="media_first_click_land" label="Objetos do dono do terreno"/>
+          <check_box name="media_first_click_all" label="Toda mídia em objetos" />
+          <check_box name="media_first_click_any" label="Objetos de qualquer pessoa" />
+          <check_box name="media_first_click_hud" label="Apenas HUDs vestíveis" />
+          <check_box name="media_first_click_own" label="Meus objetos" />
+          <check_box name="media_first_click_group" label="Objetos do grupo" />
+          <check_box name="media_first_click_friend" label="Objetos de amigos" />
+          <check_box name="media_first_click_land" label="Objetos do dono do terreno" />
 		<text name="MinMeters">
 			metros
 		</text>
-		<slider label="Silencia totalmente em:" name="MediaRollOffMax" tool_tip="Distância máxima da fonte sonora em que ela será silenciada."/>
+          <slider label="Silencia totalmente em:" name="MediaRollOffMax" tool_tip="Distância máxima da fonte sonora em que ela será silenciada." />
 		<text name="MaxMeters">
 			metros
 		</text>
 	</panel>
-	
-	<!-- Music -->
 	<panel label="Música" name="Media Music Panel">
-		<check_box label="Permitir reprodução automática de áudio" name="audio_auto_play_btn" tool_tip="Ative para reproduzir streams de áudio automaticamente."/>
-		<check_box name="FSFadeAudioStream" tool_tip="Ativa fade quando o stream de áudio da parcela muda" label="Fade no stream de áudio da parcela:"/>
-		<slider label="Fade in:" width="270" label_width="70" name="FSAudioMusicFadeIn" tool_tip="Duração do fade in para o stream de áudio da parcela."/>
+          <check_box label="Permitir reprodução automática de áudio" name="audio_auto_play_btn" tool_tip="Ative para reproduzir streams de áudio automaticamente." />
+          <check_box name="FSFadeAudioStream" tool_tip="Ativa fade quando o stream de áudio da parcela muda" label="Fade no stream de áudio da parcela:" />
+          <slider label="Fade in:" width="270" label_width="70" name="FSAudioMusicFadeIn" tool_tip="Duração do fade in para o stream de áudio da parcela." />
 		<text left_delta="275" name="FSAudioMusicFadeInSeconds">
 			segundos
 		</text>
-		<slider label="Fade out:" width="270" label_width="70" name="FSAudioMusicFadeOut" tool_tip="Duração do fade out para o stream de áudio da parcela."/>
+          <slider label="Fade out:" width="270" label_width="70" name="FSAudioMusicFadeOut" tool_tip="Duração do fade out para o stream de áudio da parcela." />
 		<text left_delta="275" name="FSAudioMusicFadeOutSeconds">
 			segundos
 		</text>
@@ -289,15 +280,12 @@
 			Mostrar título do stream de música:
 		</text>
 		<radio_group name="show_stream_metadata">
-			<radio_item label="Desativado" name="radio_off" width="90"/>
-			<radio_item label="Toasts" name="radio_toasts" width="65"/>
-			<radio_item label="Chat local" name="radio_chat" width="90"/>
+            <radio_item label="Desativado" name="radio_off" width="90" />
+            <radio_item label="Toasts" name="radio_toasts" width="65" />
+            <radio_item label="Chat local" name="radio_chat" width="90" />
 		</radio_group>
-		<check_box name="StreamMetadataAnnounceToChat" label="Enviar título do stream para este canal:" width="230"/>
+          <check_box name="StreamMetadataAnnounceToChat" label="Enviar título do stream para este canal:" width="230" />
 	</panel>
-
-
-	<!-- UI Sounds -->
 	<panel label="Sons da interface" name="UI Sounds tab">
 		<text name="textFSExplanation_tab1">
 			Aqui você pode alterar, ativar ou desativar os sons da interface.
@@ -311,6 +299,7 @@ O valor padrão correspondente é mostrado na dica de mouse do campo UUID.
 		<button name="ui_sound_preview" label="V" tool_tip="Prévia deste som." />
 		<button name="ui_sound_default" label="P" tool_tip="Restaurar valor padrão." />
 	</panel>
-
 	</tab_container>
+</panel>
+  </scroll_container>
 </panel>

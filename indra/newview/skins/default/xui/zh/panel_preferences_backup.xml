@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="備份" name="backup">
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 	<text name="backup_path_label">檔案夾：</text>
 	<button label="設定" name="set_backup_settings_path" />
 	<layout_stack name="ls_account_specific_label">
@@ -64,7 +66,6 @@
 						<row name="restore_per_account_row_toolbars">
 							<column name="restore_per_account_files_label">工具列</column>
 						</row>
-
 						<row name="restore_per_account_row_tphistory">
 							<column name="restore_per_account_files_label">瞬間傳送歷史</column>
 						</row>
@@ -121,4 +122,5 @@
 			<button label="恢復" name="restore_settings" />
 		</layout_panel>
 	</layout_stack>
+</panel>  </scroll_container>
 </panel>

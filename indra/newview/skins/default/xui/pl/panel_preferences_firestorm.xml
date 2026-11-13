@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel name="firestorm">
 <panel.string name="BeamsOffLabel">
     === WYŁĄCZONE ===
@@ -12,6 +12,8 @@
 <string name="EmbeddedItemNotLoggedIn">
     Zaloguj się
 </string>
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 <tab_container label="Ust. Firestorma" name="tabs">
     <panel label="Dodatki" name="tab-extras">
         <check_box name="checkMiscRLVa" label="Sterowanie Firestormem przez skrypty (RLVa)" />
@@ -49,8 +51,8 @@
     </panel>
     <panel label="Ochrona" name="ProtectionTab">
         <check_box label="Blokuj siadanie na obiektach przez kliknięcie lewym przyciskiem myszy" name="FSBlockClickSit" />
-        <check_box label="Podgląd prawdziwego URL linków w nawiasach: IM, czat grupowy (po najechaniu)" name="FSDisableLabeledChatLinks" tool_tip="Po włączeniu linki w nawiasach kwadratowych w IM, czacie grupowym, konferencjach ad-hoc i ogłoszeniach grup zachowują swój tekst, ale najechanie kursorem natychmiast pokazuje prawdziwy adres docelowy w dużej podpowiedzi. Pomaga wykryć phishing, gdy etykieta ukrywa inny cel. Czat w pobliżu używa opcji poniżej. Wbudowany tekst przeglądarki nie jest zmieniany."/>
-        <check_box label="Podgląd prawdziwego URL linków w nawiasach: czat w pobliżu, obiekty (po najechaniu)" name="FSDisableLabeledChatLinksNearbyChat" tool_tip="Po włączeniu linki w nawiasach kwadratowych w czacie w pobliżu (lokalnym) i tekstach obiektów zachowują swój tekst, ale najechanie kursorem natychmiast pokazuje prawdziwy adres docelowy w dużej podpowiedzi. Domyślnie wyłączone."/>
+          <check_box label="Podgląd prawdziwego URL linków w nawiasach: IM, czat grupowy (po najechaniu)" name="FSDisableLabeledChatLinks" tool_tip="Po włączeniu linki w nawiasach kwadratowych w IM, czacie grupowym, konferencjach ad-hoc i ogłoszeniach grup zachowują swój tekst, ale najechanie kursorem natychmiast pokazuje prawdziwy adres docelowy w dużej podpowiedzi. Pomaga wykryć phishing, gdy etykieta ukrywa inny cel. Czat w pobliżu używa opcji poniżej. Wbudowany tekst przeglądarki nie jest zmieniany." />
+          <check_box label="Podgląd prawdziwego URL linków w nawiasach: czat w pobliżu, obiekty (po najechaniu)" name="FSDisableLabeledChatLinksNearbyChat" tool_tip="Po włączeniu linki w nawiasach kwadratowych w czacie w pobliżu (lokalnym) i tekstach obiektów zachowują swój tekst, ale najechanie kursorem natychmiast pokazuje prawdziwy adres docelowy w dużej podpowiedzi. Domyślnie wyłączone." />
         <check_box label="Pozwól skryptom na pokazywanie interfejsu mapy (llMapDestination)" name="ScriptsCanShowUI" />
         <text name="revokepermissions_txt">
          Cofnij zezwolenia do animowania:
@@ -66,7 +68,7 @@
         </text>
         <check_box label="Ukrywaj duże obiekty, z dużym poteksturowanym obszarem. Próg: " name="RenderVolumeSAProtection" tool_tip="Chroni przed obiektami z bardzo dużymi teksturami nałożonymi na ogromne powierzchnie często stworzone po to, aby spowodować awarię Przeglądarki. Domyślnie to 5000 metrów kwadratowych, ale jeśli jakieś -normalne- obiekty się nie renderują, a ta opcja jest włączona, to możesz zwiększyć limit." />
         <check_box label="Włącz antyspam" name="UseAntiSpam" />
-        <check_box label="Włącz antyspam nawet dla Twoich własnych obiektów" name="FSUseAntiSpamMine" tool_tip="Włączenie tej opcji spowoduje aktywowanie ochrony antyspamowej nawet dla Twoich własnych obiektów."/>
+          <check_box label="Włącz antyspam nawet dla Twoich własnych obiektów" name="FSUseAntiSpamMine" tool_tip="Włączenie tej opcji spowoduje aktywowanie ochrony antyspamowej nawet dla Twoich własnych obiektów." />
         <text name="AntiSpamText1">
            Maks. ilość linii w poj. wiadomości:
         </text>
@@ -137,36 +139,36 @@
         <spinner label="Roz. X" name="X size" />
         <spinner label="Roz. Y" name="Y size" />
         <spinner label="Roz. Z" name="Z size" />
-        <check_box label="Widmowy" name="FSBuildPrefs_PhantomToggle"/>
-        <check_box label="Fizyczny" name="FSBuildPrefs_PhysicalToggle"/>
-        <check_box label="Tymczasowy" name="FSBuildPrefs_TemporaryToggle"/>
+          <check_box label="Widmowy" name="FSBuildPrefs_PhantomToggle" />
+          <check_box label="Fizyczny" name="FSBuildPrefs_PhysicalToggle" />
+          <check_box label="Tymczasowy" name="FSBuildPrefs_TemporaryToggle" />
         <combo_box name="material">
-             <combo_item name="Stone" label="Kamień"/>
-             <combo_item name="Glass" label="Szkło"/>
-             <combo_item name="Wood" label="Drewno"/>
-             <combo_item name="Flesh" label="Ciało"/>
-             <combo_item name="Plastic" label="Plastik"/>
-             <combo_item name="Rubber" label="Guma"/>
+            <combo_item name="Stone" label="Kamień" />
+            <combo_item name="Glass" label="Szkło" />
+            <combo_item name="Wood" label="Drewno" />
+            <combo_item name="Flesh" label="Ciało" />
+            <combo_item name="Plastic" label="Plastik" />
+            <combo_item name="Rubber" label="Guma" />
         </combo_box>
-        <texture_picker label="Tekstura" name="texture control" tool_tip="Kliknij, aby wybrać obraz"/>
-        <color_swatch label="Kolor" name="colorswatch" tool_tip="Kliknij, aby wybrać kolor"/>
-        <spinner label="Przezr." name="alpha"/>
-        <spinner label="Blask" name="glow"/>
-        <check_box label="Superjasna" name="EmFBToggle"/>
+          <texture_picker label="Tekstura" name="texture control" tool_tip="Kliknij, aby wybrać obraz" />
+          <color_swatch label="Kolor" name="colorswatch" tool_tip="Kliknij, aby wybrać kolor" />
+          <spinner label="Przezr." name="alpha" />
+          <spinner label="Blask" name="glow" />
+          <check_box label="Superjasna" name="EmFBToggle" />
         <combo_box name="combobox shininess" tool_tip="Określ, jak mocny połysk ma mieć obiekt">
-          <combo_item name="None" label="Żaden"/>
-          <combo_item name="Low" label="Niski"/>
-          <combo_item name="Medium" label="Średni"/>
-          <combo_item name="High" label="Wysoki"/>
+            <combo_item name="None" label="Żaden" />
+            <combo_item name="Low" label="Niski" />
+            <combo_item name="Medium" label="Średni" />
+            <combo_item name="High" label="Wysoki" />
         </combo_box>
-        <check_box name="FSBuildPrefs_EmbedItem" label="Umieszczaj obiekt w nowych primach"/>
+          <check_box name="FSBuildPrefs_EmbedItem" label="Umieszczaj obiekt w nowych primach" />
         <fs_embedded_item_drop_target name="embed_item" tool_tip="Upuść przedmiot w tym miejscu.">
          Upuść przedmiot w tym miejscu.
         </fs_embedded_item_drop_target>
         <text name="build_item_add_disp_rect_txt">
          Obecnie: [ITEM]
         </text>
-        <check_box name="FSBuildPrefs_UseCustomScript" label="Własny skrypt pod guzikiem Nowy Skrypt"/>
+          <check_box name="FSBuildPrefs_UseCustomScript" label="Własny skrypt pod guzikiem Nowy Skrypt" />
         <fs_embedded_item_drop_target name="custom_script" tool_tip="Upuść skrypt w tym miejscu.">
          Upuść skrypt w tym miejscu.
         </fs_embedded_item_drop_target>
@@ -184,11 +186,11 @@
         <text name="RotationStepText1" width="185">
           Stosuj rotację do wielokrotności
         </text>
-        <spinner name="RotationStep" tool_tip="Wszystkie rotacje wykonywane przez narzędzie obracania są wymuszane do wielokrotności tej jednostki [Domyślnie: 1.0]"/>
+          <spinner name="RotationStep" tool_tip="Wszystkie rotacje wykonywane przez narzędzie obracania są wymuszane do wielokrotności tej jednostki [Domyślnie: 1.0]" />
         <text name="RotationStepText2">
           stopni, gdy 'przyciągaj do siatki' nie jest używane
         </text>
-        <check_box label="Pytaj o potwierdzenie przy rozłączaniu jeśli zbiór ma przynajmniej" name="FSUnlinkConfirmEnabled" width="385"/>
+          <check_box label="Pytaj o potwierdzenie przy rozłączaniu jeśli zbiór ma przynajmniej" name="FSUnlinkConfirmEnabled" width="385" />
         <text name="MinObjectsForUnlinkConfirmText2">
           części
         </text>
@@ -227,9 +229,9 @@
         </text>
         <combo_box name="FSScriptingFontName" tool_tip="Nazwa czcionki używanej w edytorze skryptów LSL" />
         <combo_box name="FSScriptingFontSize" tool_tip="Rozmiar czcionki używanej w edytorze skryptów LSL">
-            <combo_item name="Small" label="Mała"/>
-            <combo_item name="Medium" label="Średnia"/>
-            <combo_item name="Large" label="Duża"/>
+            <combo_item name="Small" label="Mała" />
+            <combo_item name="Medium" label="Średnia" />
+            <combo_item name="Large" label="Duża" />
         </combo_box>
         <check_box label="Zapisuj skrypty edytowane w Szafie jako Mono" tool_tip="Gdy zaznaczone, to wszystkie skrypty edytowane w Szafie są zapisywane jako Mono zamiast LSL." name="FSSaveInventoryScriptsAsMono_toggle" />
         <check_box label="Włącz preprocesor LSL" tool_tip="Preprocesor LSL będzie aktywny, gdy ta opcja zostanie zaznaczona." name="preproc_checkbox" />
@@ -272,4 +274,6 @@ i użyj opcji "ustaw jako domyślne dla"
         <button name="reset_default_folders" label="Reset folderów domyślnych" />
     </panel>
 </tab_container>
+</panel>
+  </scroll_container>
 </panel>

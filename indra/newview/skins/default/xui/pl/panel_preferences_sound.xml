@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="Dźwięki" name="Preference Media panel">
 	<panel.string name="middle_mouse">
 		Środkowy przycisk myszy
@@ -66,14 +66,12 @@
 	<panel.string name="textFSHealthReductionM">
 		Uraz męskiego awatara:
 	</panel.string>
-
 	<panel.string name="textFSInvalidOp">
 		Nieprawidłowa operacja:
 	</panel.string>
 	<panel.string name="textFSInventoryOffer">
 		Oferta przedmiotu:
 	</panel.string>
-
 	<panel.string name="textFSMoneyChangeDown">
 		Odpływ gotówki:
 	</panel.string>
@@ -179,20 +177,20 @@
 	<panel.string name="textFSWindowOpen">
 		Otwieranie okna:
 	</panel.string>
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 	<tab_container label="Ust. Firestorma" name="tabs">
 		<panel label="Dźwięki" name="Media Sounds Panel">
-			<slider label="Głośność ogólna" name="System Volume"/>
-			<check_box label="Wycisz gdy zminimalizowane" name="mute_when_minimized"/>
-			<slider label="Interfejs" name="UI Volume"/>
-			<slider label="Otoczenie" name="Wind Volume"/>
-			<check_box name="collisions_audio_play_btn" tool_tip="Zaznacz, aby słyszeć domyślne dźwięki kolizji" label="Odtwarzaj dźwięki kolizji"/>
-			<slider label="Efekty dźwiękowe" name="SFX Volume"/>
-			<check_box name="gesture_audio_play_btn" tool_tip="Zaznacz, aby słyszeć dźwięki gestów" label="Odtwarzaj dźwięki gestów"/>
-			<slider label="Muz. strumieniowa" name="Music Volume"/>
-			<check_box label="Włączona" name="enable_music"/>
-			<check_box label="Włączone" name="enable_media"/>
-
-
+          <slider label="Głośność ogólna" name="System Volume" />
+          <check_box label="Wycisz gdy zminimalizowane" name="mute_when_minimized" />
+          <slider label="Interfejs" name="UI Volume" />
+          <slider label="Otoczenie" name="Wind Volume" />
+          <check_box name="collisions_audio_play_btn" tool_tip="Zaznacz, aby słyszeć domyślne dźwięki kolizji" label="Odtwarzaj dźwięki kolizji" />
+          <slider label="Efekty dźwiękowe" name="SFX Volume" />
+          <check_box name="gesture_audio_play_btn" tool_tip="Zaznacz, aby słyszeć dźwięki gestów" label="Odtwarzaj dźwięki gestów" />
+          <slider label="Muz. strumieniowa" name="Music Volume" />
+          <check_box label="Włączona" name="enable_music" />
+          <check_box label="Włączone" name="enable_media" />
 			<text name="Listen media from">
 				Odtwarzaj media i dźwięki:
 			</text>
@@ -208,8 +206,8 @@
 			<text name="friends_logon_sounds_label">
 				Odtwórz dźwięk gdy moi znajomi:
 			</text>
-			<check_box label="Logują się" name="friends_notify_online_sound"/>
-			<check_box label="Wylogowywują się" name="friends_notify_offline_sound"/>
+          <check_box label="Logują się" name="friends_notify_online_sound" />
+          <check_box label="Wylogowywują się" name="friends_notify_offline_sound" />
 			<text name="money_change_threshold_label" tool_tip="Przeglądarka będzie odtwarzać 'dźwięk pieniędzy' tylko wtedy, gdy wydawana lub otrzymywana kwota jest wyższa niż wartość ustawiona tutaj.">
 				Próg zmiany ilości L$:
 			</text>
@@ -238,13 +236,12 @@
 			<combo_box name="media_auto_play_combo">
 				<item label="Wyłącz" name="autoplay_disabled" />
 				<item label="Włącz" name="autoplay_enabled" />
-				<!-- <item label="Pytaj" name="autoplay_ask" /> -->
 			</combo_box>
-			<check_box name="media_allowscript_btn" tool_tip="To ustawienie pozwala lub zabrania oskryptowanym primom kontrolować Twoje media" label="Pozwalaj skryptom w świecie odtwarzać media"/>
-			<check_box label="Uruchamiaj media dołączone do innych awatarów" name="media_show_on_others_btn" tool_tip="Odznacz tę funkcję by ukryć media załączone do awatarów w pobliżu"/>
+          <check_box name="media_allowscript_btn" tool_tip="To ustawienie pozwala lub zabrania oskryptowanym primom kontrolować Twoje media" label="Pozwalaj skryptom w świecie odtwarzać media" />
+          <check_box label="Uruchamiaj media dołączone do innych awatarów" name="media_show_on_others_btn" tool_tip="Odznacz tę funkcję by ukryć media załączone do awatarów w pobliżu" />
 			<check_box name="media_huds_autoplay" tool_tip="Odznacz, aby HUDy stosowały się do standardowego ustawienia automatycznego odtwarzania mediów" label="Autoodtwarzanie mediów w HUDach" />
-			<check_box name="media_filter" tool_tip="Zaznacz tą opcję, aby móc wybierać, czy odtwarzać media z konkretnego hosta, czy nie" label="Włącz filtr mediów (zwiększone bezpieczeństwo)"/>
-			<button label="Zarządzaj witrynami" name="edit_media_lists_button"/>
+          <check_box name="media_filter" tool_tip="Zaznacz tą opcję, aby móc wybierać, czy odtwarzać media z konkretnego hosta, czy nie" label="Włącz filtr mediów (zwiększone bezpieczeństwo)" />
+          <button label="Zarządzaj witrynami" name="edit_media_lists_button" />
 			<text tool_tip="To ustawienie kontroluje, które media (po załadowaniu) NIE wymagają pierwszego kliknięcia (aktywacji) przed rozpoczęciem interakcji. To ustawienie pozwala na przekazywanie kliknięć bezpośrednio do mediów, pomijając wymóg pierwszego kliknięcia aktywacyjnego." name="media_firstinteract_label">
 				Pomijaj kliknięcie aktywacyjne dla mediów:
 			</text>
@@ -258,23 +255,23 @@
 			<text name="Media Rolloff">
 				Rozchodzenie się dźwięku mediów:
 			</text>
-			<slider label="Zaczyna być ciszej po:" name="MediaRollOffMin" tool_tip="Minimalny dystans od źródła, aby ściszanie mediów zaczęło działać."/>
+          <slider label="Zaczyna być ciszej po:" name="MediaRollOffMin" tool_tip="Minimalny dystans od źródła, aby ściszanie mediów zaczęło działać." />
 			<text name="MinMeters">
 				metrach
 			</text>
-			<slider label="Całkowicie zanika po:" name="MediaRollOffMax" tool_tip="Maksymalny dystans od źródła, aby dźwięk był słyszalny."/>
+          <slider label="Całkowicie zanika po:" name="MediaRollOffMax" tool_tip="Maksymalny dystans od źródła, aby dźwięk był słyszalny." />
 			<text name="MaxMeters">
 				metrach
 			</text>
 		</panel>
 		<panel label="Muzyka" name="Media Music Panel">
-			<check_box label="Automatycznie odtwarzaj muzykę" name="audio_auto_play_btn" tool_tip="Zaznacz tę funkcję, aby automatycznie uruchamiać muzykę strumieniową."/>
-			<check_box name="FSFadeAudioStream" tool_tip="Zaznacz to pole, jeśli wygładzanie ma być używane, gdy zmieni się muzyka strumieniowa na działce" label="Płynnie wygładzaj przechodzenie między strumieniami muzyki na działkach:"/>
-			<slider label="Wejście" name="FSAudioMusicFadeIn" tool_tip="Czas wygładzania dla dźwięku działki przy wchodzeniu. Ustaw na 0, aby wyłączyć wygładzanie."/>
+          <check_box label="Automatycznie odtwarzaj muzykę" name="audio_auto_play_btn" tool_tip="Zaznacz tę funkcję, aby automatycznie uruchamiać muzykę strumieniową." />
+          <check_box name="FSFadeAudioStream" tool_tip="Zaznacz to pole, jeśli wygładzanie ma być używane, gdy zmieni się muzyka strumieniowa na działce" label="Płynnie wygładzaj przechodzenie między strumieniami muzyki na działkach:" />
+          <slider label="Wejście" name="FSAudioMusicFadeIn" tool_tip="Czas wygładzania dla dźwięku działki przy wchodzeniu. Ustaw na 0, aby wyłączyć wygładzanie." />
 			<text name="FSAudioMusicFadeInSeconds">
 				sekund
 			</text>
-			<slider label="Wyjście" name="FSAudioMusicFadeOut" tool_tip="Czas wygładzania dla dźwięku działki przy wychodzeniu. Ustaw na 0, aby wyłączyć wygładzanie."/>
+          <slider label="Wyjście" name="FSAudioMusicFadeOut" tool_tip="Czas wygładzania dla dźwięku działki przy wychodzeniu. Ustaw na 0, aby wyłączyć wygładzanie." />
 			<text name="FSAudioMusicFadeOutSeconds">
 				sekund
 			</text>
@@ -286,9 +283,8 @@
 				<radio_item label="Tosty" name="radio_toasts" />
 				<radio_item label="Czat w pobliżu" name="radio_chat" />
 			</radio_group>
-			<check_box name="StreamMetadataAnnounceToChat" width="210" label="Wysyłaj tytuł strumienia na kanał:"/>
+          <check_box name="StreamMetadataAnnounceToChat" width="210" label="Wysyłaj tytuł strumienia na kanał:" />
 		</panel>
-
 		<panel label="Dźwięki interfejsu" name="UI Sounds tab">
 			<text name="textFSExplanation_tab1">
 				Możesz tutaj zmieniać (wpisując UUIDy), włączać lub wyłączać standardowe dźwięki interfejsu.
@@ -310,4 +306,6 @@ Przytrzymaj kursor myszki ponad polem na UUID, aby zobaczyć jego domyślną war
 			</combo_box>
 		</panel>
 	</tab_container>
+</panel>
+  </scroll_container>
 </panel>

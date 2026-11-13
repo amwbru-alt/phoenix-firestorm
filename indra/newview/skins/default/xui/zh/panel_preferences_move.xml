@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="移動 &amp; 相機" name="move_panel">
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 	<tab_container label="移動 &amp; 相機" name="tabs">
 		<panel label="相機" name="tab-view">
 			<slider label="視野角度" name="camera_fov" />
@@ -28,9 +30,9 @@
 				滑鼠歸位：
 			</text>
 			<combo_box name="mouse_warp_combo" tool_tip="控制在Alt縮放和滑鼠觀察模式下，滑鼠是否自動跳轉至螢幕中心。">
-				<combo_box.item label="自動" name="0"/>
-				<combo_box.item label="開啟" name="1"/>
-				<combo_box.item label="關閉" name="2"/>
+            <combo_box.item label="自動" name="0" />
+            <combo_box.item label="開啟" name="1" />
+            <combo_box.item label="關閉" name="2" />
 			</combo_box>
 		</panel>
 		<panel label="第一人稱視角" name="tab-mouselook">
@@ -108,4 +110,5 @@
 			<check_box label="在世界地圖上通過雙擊瞬間傳送" name="FSWorldMapDoubleclickTeleport" tool_tip="在地圖上雙擊時啟用瞬間傳送功能。" />
 		</panel>
 	</tab_container>
+</panel>  </scroll_container>
 </panel>

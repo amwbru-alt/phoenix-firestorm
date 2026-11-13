@@ -57,4 +57,7 @@
   <button name="forme_camera_run" label="Бег" />
   <button name="forme_camera_fly" label="Полёт" />
   <button name="forme_camera_reset" label="Сбросить" />
+  <floater.string name="forme_view_front">Спереди</floater.string>
+  <floater.string name="forme_view_side">Сбоку</floater.string>
+  <floater.string name="forme_view_back">Сзади</floater.string>
 </floater>

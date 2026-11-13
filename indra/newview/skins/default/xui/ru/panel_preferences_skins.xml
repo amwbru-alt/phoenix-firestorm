@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="Темы" name="skin_panel">
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
     <text name="skin_textbox">
         Темы:
     </text>
@@ -12,10 +14,12 @@
     <text name="theme_textbox2">
         (Необходим перезапуск)
     </text>
-    <check_box label="Сброс панели инструментов темы заменяемым слоем, когда меняется тема" tool_tip="Сброс панели инструментов темы заменяемым слоем, когда меняется тема" name="reset_toolbar_settings"/>
+      <check_box label="Сброс панели инструментов темы заменяемым слоем, когда меняется тема" tool_tip="Сброс панели инструментов темы заменяемым слоем, когда меняется тема" name="reset_toolbar_settings" />
     <check_box label="Сброс панели инструментов на предпочитаемый при смене режима логина." tool_tip="Когда включено, этот параметр сохраняет схему кнопок панели инструментов, разработанную в режиме входа в систему, и отменяет выбранные вами настройки кнопок при изменении режима входа в систему." name="FSToolbarsResetOnModeChange" />
-    <check_box label="Использовать курсор стиля Viewer 1" name="use_legacy_cursors"/>
+      <check_box label="Использовать курсор стиля Viewer 1" name="use_legacy_cursors" />
     <text name="theme_textbox3">
         (Необходим перезапуск)
     </text>
+</panel>
+  </scroll_container>
 </panel>

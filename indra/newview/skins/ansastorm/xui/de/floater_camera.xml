@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <floater name="camera_floater" title="Kamerasteuerungen">
 	<floater.string name="rotate_tooltip">
 		Kamera um Fokus drehen
@@ -15,16 +15,6 @@
 	<string name="inactive_combo_text">
 		Voreinstellung...
 	</string>
-
-	<panel name="controls">
-		<panel name="zoom">
-			<joystick_rotate name="cam_rotate_stick" tool_tip="Kamera um Fokus kreisen"/>
-			<button name="roll_left" tool_tip="Kamera nach links rollen" />
-			<button name="roll_right" tool_tip="Kamera nach rechts rollen" />
-			<slider_bar name="zoom_slider" tool_tip="Kamera auf Fokus zoomen"/>
-			<joystick_track name="cam_track_stick" tool_tip="Kamera nach oben, unten, links und rechts bewegen"/>
-		</panel>
-	</panel>
 	<panel name="buttons_panel">
 		<panel_camera_item name="front_view" tool_tip="Frontalansicht">
 			<panel_camera_item.text name="front_view_text">
@@ -55,10 +45,11 @@
 			</panel_camera_item.text>
 		</panel_camera_item>
 	</panel>
+  <panel name="preset_buttons_panel">
 	<combo_box name="preset_combo">
-		<combo_box.item label="Voreinstell. verw." name="Use preset"/>
+      <combo_box.item label="Voreinstell. verw." name="Use preset" />
 	</combo_box>
-	<button name="gear_btn" tool_tip="Kamera-Voreinstellungen"/>
-	<button label="Position..." name="camera_position_btn"/>
-	<button label="Speichern" name="save_btn"/>
+    <button name="gear_btn" tool_tip="Kamera-Voreinstellungen" />
+    <button label="Position..." name="camera_position_btn" />
+  </panel>
 </floater>

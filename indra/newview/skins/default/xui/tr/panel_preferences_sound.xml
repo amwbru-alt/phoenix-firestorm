@@ -1,30 +1,31 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="Sesler" name="Preference Media panel">
 	<panel.string name="middle_mouse">
 		Orta Fare
 	</panel.string>
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 	<tab_container name="tabs">
 		<panel name="Media Sounds Panel">
-			<slider label="Ana ses düzeyi" name="System Volume"/>
-			<check_box initial_value="true" name="mute_when_minimized"/>
+          <slider label="Ana ses düzeyi" name="System Volume" />
+          <check_box initial_value="true" name="mute_when_minimized" />
 			<text name="mute_chb_label">
 				Küçültüldüğünde sustur
 			</text>
-			<slider label="Düğmeler" name="UI Volume"/>
-			<slider label="Ortam" name="Wind Volume"/>
-			<slider label="Ses Efektleri" name="SFX Volume"/>
-			<slider label="Müzik akışı" name="Music Volume"/>
-			<check_box label="Etkin" name="enable_music"/>
-			<slider label="Ortam" name="Media Volume"/>
-			<check_box label="Etkin" name="enable_media"/>
-
-
-			<check_box label="Mimiklere ses eşlik etsin" name="gesture_audio_play_btn" tool_tip="Mimiklerle beraber ses duymak için bunu işaretleyin"/>
+          <slider label="Düğmeler" name="UI Volume" />
+          <slider label="Ortam" name="Wind Volume" />
+          <slider label="Ses Efektleri" name="SFX Volume" />
+          <slider label="Müzik akışı" name="Music Volume" />
+          <check_box label="Etkin" name="enable_music" />
+          <slider label="Ortam" name="Media Volume" />
+          <check_box label="Etkin" name="enable_media" />
+          <check_box label="Mimiklere ses eşlik etsin" name="gesture_audio_play_btn" tool_tip="Mimiklerle beraber ses duymak için bunu işaretleyin" />
 		</panel>
 		<panel name="Media Media Panel">
-			<check_box label="Ortamı otomatik oynatmaya izin ver" name="media_auto_play_btn" tool_tip="istiyorsa ortamı otomatik oynatmak için bunu işaretleyin"/>
+          <check_box label="Ortamı otomatik oynatmaya izin ver" name="media_auto_play_btn" tool_tip="istiyorsa ortamı otomatik oynatmak için bunu işaretleyin" />
 			<check_box label="Diğer avatarlara eklenen ortamı oynat" name="media_show_on_others_btn" tool_tip="Yakınlardaki diğer avatarlara eklenen ortamı gizlemek için bunun işaretini kaldırın" />
 		</panel>
-
 	</tab_container>
+</panel>
+  </scroll_container>
 </panel>

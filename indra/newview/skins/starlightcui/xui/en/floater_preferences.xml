@@ -1,220 +1,86 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<floater
- legacy_header_height="0"
- positioning="centered"
- default_tab_group="2"
- height="561"
- layout="topleft"
- name="Preferences"
-
- save_rect="true"
- single_instance="true"
- title="Preferences"
- width="673" header_height="44" header_vpad="10" header_icon="Forme_UI_Settings" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD">
-    <floater.string
-     name="email_unverified_tooltip">
-        Please verify your email to enable IM to Email by visiting
-https://accounts.secondlife.com/change_email/
-    </floater.string>
-	
-	<floater.string name="LoginToChange">
-		Login to change
-	</floater.string>
- 
-    <button
-     follows="right|bottom"
-     height="23"
-     label="OK"
-     label_selected="OK"
-     layout="topleft"
-     left_pad="5"
-     right="-105"
-     name="OK"
-     top="528"
-     width="90">
-        <button.commit_callback
-         function="Pref.OK" />
+<?xml version='1.0' encoding='utf-8'?>
+<floater legacy_header_height="0" positioning="centered" default_tab_group="2" height="550" layout="topleft" name="Preferences" save_rect="true" single_instance="true" title="Preferences" width="820" header_height="36" header_vpad="7" header_icon="Forme_UI_Settings" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="Medium" header_font.style="BOLD" min_width="820" min_height="550" rect_control_suffix="_forme_preferences_v4" can_resize="false">
+  <button follows="right|bottom" label="OK" label_selected="OK" layout="topleft" name="OK" width="98" height="32" left="594" top="502">
+    <button.commit_callback function="Pref.OK" />
     </button>
-    <button
-     follows="right|bottom"
-     height="23"
-     label="Cancel"
-     label_selected="Cancel"
-     layout="topleft"
-     left_pad="5"
-     name="Cancel"
-     right="-10"
-     width="90" >
-        <button.commit_callback
-         function="Pref.Cancel" />
+  <button follows="right|bottom" label="Cancel" label_selected="Cancel" layout="topleft" name="Cancel" width="104" height="32" left="700" top="502">
+    <button.commit_callback function="Pref.Cancel" />
     </button>
-
-    <panel
-     name="search_panel"
-     layout="topleft"
-     follows="left|top|right"
-     left="4"
-     right="-4"
-     top="21"
-     height="18"
-     tab_group="2">
-        <search_editor
-         clear_button_visible="true"
-         follows="left|top|right"
-         height="18"
-         label="Search Settings"
-         layout="topleft"
-         left="0"
-         max_length_bytes="255"
-         name="search_prefs_edit"
-         right="-32"
-         text_pad_left="6"
-         tool_tip="Type the search term you are interested in here. Results will be displayed for partial fulltext matches within the setting's name or comment."
-         top="0">
-         <search_editor.commit_callback
-          function="UpdateFilter" />
-         <search_editor.clear_button
-          rect.height="18"
-          rect.width="18"
-          rect.bottom="-1" />
-         <search_editor.search_button
-          rect.height="12"
-          rect.width="12"
-          rect.bottom="-1" />
+  <panel name="search_panel" layout="topleft" follows="left|right|top" tab_group="2" height="32" left="16" top="12" width="788">
+    <search_editor clear_button_visible="true" follows="left|right|top" label="Search Settings" layout="topleft" max_length_bytes="255" name="search_prefs_edit" text_pad_left="34" tool_tip="Type the search term you are interested in here. Results will be displayed for partial fulltext matches within the setting's name or comment." height="32" left="0" top="0" width="748">
+      <search_editor.commit_callback function="UpdateFilter" />
+      <search_editor.clear_button rect.height="18" rect.width="18" rect.bottom="-1" />
+      <search_editor.search_button rect.height="12" rect.width="12" rect.bottom="-1" />
         </search_editor>
-        <button
-          height="18"
-          image_overlay="Copy"
-          layout="topleft"
-          left_pad="4"
-          top_delta="0"
-          name="copy_search_slurl_btn"
-          tool_tip="Copy search query as SLURL"
-          width="28">
-          <button.commit_callback
-            function="Pref.CopySearchAsSLURL" />
+    <button image_overlay="Copy" layout="topleft" name="copy_search_slurl_btn" tool_tip="Copy search query as SLURL" width="32" height="32" left="756" top="0" follows="right|top">
+      <button.commit_callback function="Pref.CopySearchAsSLURL" />
         </button>
     </panel>
-
-    <tab_container
-     follows="all"
-     halign="left"
-     height="480"
-     layout="topleft"
-     left="0"
-     name="pref core"
-     tab_group="1"
-     tab_position="left"
-     tab_width="125"
-     tab_padding_right="4"
-     top="42"
-     width="673">
-        <panel
-         class="panel_preference"
-         filename="panel_preferences_general.xml"
-         label="General"
-         layout="topleft"
-        
-         name="general" />
-        <panel
-         class="panel_preference"
-         filename="panel_preferences_chat.xml"
-         label="Chat"
-         layout="topleft"
-        
-         name="chat" />
-        
-        
-        <panel
-          class="panel_preference_graphics"
-         filename="panel_preferences_graphics1.xml"
-         label="Graphics"
-         layout="topleft"
-        
-         name="display" />
-        <panel
-         class="panel_preference_sounds"
-         filename="panel_preferences_sound.xml"
-         label="Sound &amp; Media"
-         layout="topleft"
-        
-         name="audio" />
-        <panel
-         class="panel_preference"
-         filename="panel_preferences_setup.xml"
-         label="Network &amp; Files"
-         layout="topleft"
-        
-         name="input" />
-        <panel
-         class="panel_preference"
-         filename="panel_preferences_move.xml"
-         label="Move &amp; View"
-         layout="topleft"
-        
-         name="move" />
-        <panel
-         class="panel_preference_controls"
-         filename="panel_preferences_controls.xml"
-         label="Controls"
-         layout="topleft"
-        
-         name="controls" />
-        <panel
-         class="panel_preference"
-         filename="panel_preferences_alerts.xml"
-         label="Notifications"
-         layout="topleft"
-        
-         name="msgs" />
-        <panel
-         class="panel_preference_privacy"
-         filename="panel_preferences_privacy.xml"
-         label="Privacy"
-         layout="topleft"
-        
-         name="im" />
-        <panel
-         class="panel_preference"
-         filename="panel_preferences_advanced.xml"
-         label="Advanced"
-         layout="topleft"
-        
-         name="advanced1" />
-        <panel
-         class="panel_preference"
-         filename="panel_preferences_UI.xml"
-         label="User Interface"
-         layout="topleft"
-        
-         name="ui" />
-        <panel
-         class="panel_preference_skins"
-         filename="panel_preferences_skins.xml"
-         label="Skins"
-         layout="topleft"
-        
-         name="skins" />
-        <panel
-         class="panel_preference_crashreports"
-         filename="panel_preferences_crashreports.xml"
-         label="Crash Reports"
-         layout="topleft"
-        
-         name="crashreports" />
-        <panel
-         class="panel_preference_firestorm"
-         filename="panel_preferences_firestorm.xml"
-         label="ForMe.World"
-         layout="topleft"
-        
-         name="firestorm" />
-        <panel
-         class="panel_preference_backup"
-         filename="panel_preferences_backup.xml"
-         label="Backup &amp; Restore"
-         layout="topleft"
-        
-         name="backup" />
+  <tab_container follows="all" halign="left" layout="topleft" name="pref core" tab_group="1" tab_position="left" tab_width="184" tab_padding_right="14" width="620" height="432" tab_height="34" label_pad_left="10" use_ellipses="true" hide_tabs="true" left="184" top="56">
+    <panel name="forme_interface" layout="topleft" label="Interface" class="panel_preference" width="620" height="432" follows="all">
+      <text name="forme_interface_title" layout="topleft" width="580" height="28" value="Interface" font="SansSerifLarge" left="16" top="12" follows="left|top" />
+      <text name="forme_scale_label" layout="topleft" width="146" height="24" value="Scale" left="16" top="60" follows="left|top" />
+      <text name="forme_font_label" layout="topleft" width="146" height="24" value="Text size" left="16" top="102" follows="left|top" />
+      <slider name="forme_scale" layout="topleft" width="400" height="28" control_name="UIScaleFactor" min_val="0.75" max_val="2" increment="0.05" show_text="true" decimal_digits="2" left="172" top="56" follows="left|top" />
+      <combo_box name="forme_font" layout="topleft" width="240" height="28" control_name="FSFontSizeAdjustment" left="172" top="98" follows="left|top">
+        <combo_box.item label="Small" value="-1" />
+        <combo_box.item label="Medium" value="0" />
+        <combo_box.item label="Large" value="2" />
+      </combo_box>
+      <check_box name="forme_tooltips" layout="topleft" width="560" height="24" label="Show tooltips" control_name="ShowHoverTips" left="16" top="148" follows="left|top" />
+      <check_box name="forme_compact_header" layout="topleft" width="560" height="24" label="Compact top bar" left="16" top="184" follows="left|top" />
+      <check_box name="forme_full_menu_binding" layout="topleft" control_name="ForMeShowFullMenu" visible="false" left="0" top="0" width="1" height="1" label="" />
+    </panel>
+    <panel class="panel_preference" filename="panel_preferences_general.xml" label="General" layout="topleft" name="general" />
+    <panel class="panel_preference" filename="panel_preferences_chat.xml" label="Chat" layout="topleft" name="chat" />
+    <panel class="panel_preference_graphics" filename="panel_preferences_graphics1.xml" label="Graphics" layout="topleft" name="display" />
+    <panel class="panel_preference_sounds" filename="panel_preferences_sound.xml" label="Sound &amp; Media" layout="topleft" name="audio" />
+    <panel class="panel_preference" filename="panel_preferences_setup.xml" label="Network &amp; Files" layout="topleft" name="input" />
+    <panel class="panel_preference" filename="panel_preferences_move.xml" label="Move &amp; View" layout="topleft" name="move" />
+    <panel class="panel_preference_controls" filename="panel_preferences_controls.xml" label="Controls" layout="topleft" name="controls" />
+    <panel class="panel_preference" filename="panel_preferences_alerts.xml" label="Notifications" layout="topleft" name="msgs" />
+    <panel class="panel_preference_privacy" filename="panel_preferences_privacy.xml" label="Privacy" layout="topleft" name="im" />
+    <panel class="panel_preference" filename="panel_preferences_advanced.xml" label="Advanced" layout="topleft" name="advanced1" />
+    <panel class="panel_preference" filename="panel_preferences_UI.xml" label="Advanced interface" layout="topleft" name="ui" />
+    <panel class="panel_preference_skins" filename="panel_preferences_skins.xml" label="Skins" layout="topleft" name="skins" />
+    <panel class="panel_preference_crashreports" filename="panel_preferences_crashreports.xml" label="Crash Reports" layout="topleft" name="crashreports" />
+    <panel class="panel_preference_firestorm" filename="panel_preferences_firestorm.xml" label="ForMe.World" layout="topleft" name="firestorm" />
+    <panel class="panel_preference_backup" filename="panel_preferences_backup.xml" label="Backup &amp; Restore" layout="topleft" name="backup" />
     </tab_container>
+  <button name="forme_apply" layout="topleft" width="104" height="32" follows="right|bottom" label="Apply" left="482" top="502">
+    <button.commit_callback function="Pref.Apply" />
+  </button>
+  <panel name="forme_preferences_nav" layout="topleft" width="152" height="432" follows="left|top|bottom" left="16" top="56">
+    <button name="forme_preferences_general" layout="topleft" width="152" height="32" label="General" image_overlay="Forme_UI_Settings" image_overlay_max_size="20" image_overlay_alignment="left" pad_left="10" halign="left" is_toggle="true" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" left="0" top="0" follows="left|top">
+      <button.commit_callback function="ForMe.PreferencesPanel" parameter="general" />
+    </button>
+    <button name="forme_preferences_display" layout="topleft" width="152" height="32" label="Graphics" image_overlay="Forme_UI_Eye" image_overlay_max_size="20" image_overlay_alignment="left" pad_left="10" halign="left" is_toggle="true" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" left="0" top="36" follows="left|top">
+      <button.commit_callback function="ForMe.PreferencesPanel" parameter="display" />
+    </button>
+    <button name="forme_preferences_audio" layout="topleft" width="152" height="32" label="Sound" image_overlay="Forme_UI_Sound" image_overlay_max_size="20" image_overlay_alignment="left" pad_left="10" halign="left" is_toggle="true" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" left="0" top="72" follows="left|top">
+      <button.commit_callback function="ForMe.PreferencesPanel" parameter="audio" />
+    </button>
+    <button name="forme_preferences_controls" layout="topleft" width="152" height="32" label="Controls" image_overlay="Forme_UI_Move" image_overlay_max_size="20" image_overlay_alignment="left" pad_left="10" halign="left" is_toggle="true" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" left="0" top="108" follows="left|top">
+      <button.commit_callback function="ForMe.PreferencesPanel" parameter="controls" />
+    </button>
+    <button name="forme_preferences_forme_interface" layout="topleft" width="152" height="32" label="Interface" image_overlay="Forme_UI_Window" image_overlay_max_size="20" image_overlay_alignment="left" pad_left="10" halign="left" is_toggle="true" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" left="0" top="144" follows="left|top">
+      <button.commit_callback function="ForMe.PreferencesPanel" parameter="forme_interface" />
+    </button>
+    <button name="forme_preferences_im" layout="topleft" width="152" height="32" label="Privacy" image_overlay="Forme_UI_Shield" image_overlay_max_size="20" image_overlay_alignment="left" pad_left="10" halign="left" is_toggle="true" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" left="0" top="180" follows="left|top">
+      <button.commit_callback function="ForMe.PreferencesPanel" parameter="im" />
+    </button>
+    <combo_box name="forme_preferences_more" layout="topleft" width="152" height="30" label="More settings…" left="0" top="230" follows="left|top">
+      <combo_box.item label="Chat" value="chat" />
+      <combo_box.item label="Network &amp; Files" value="input" />
+      <combo_box.item label="Move &amp; View" value="move" />
+      <combo_box.item label="Notifications" value="msgs" />
+      <combo_box.item label="Advanced" value="advanced1" />
+      <combo_box.item label="Advanced interface" value="ui" />
+      <combo_box.item label="Skins" value="skins" />
+      <combo_box.item label="Crash Reports" value="crashreports" />
+      <combo_box.item label="ForMe.World" value="firestorm" />
+      <combo_box.item label="Backup &amp; Restore" value="backup" />
+      <combo_box.commit_callback function="ForMe.PreferencesOther" />
+    </combo_box>
+  </panel>
 </floater>

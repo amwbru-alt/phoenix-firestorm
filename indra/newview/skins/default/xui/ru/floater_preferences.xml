@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <floater name="Preferences" title="Настройки">
-  <button label="Применить" label_selected="Применить" name="Apply" />
+  <button label="Применить" label_selected="Применить" name="forme_apply" />
   <button label="Отменить" label_selected="Отменить" name="Cancel" />
   <panel name="search_panel">
     <search_editor label="Поиск настроек" name="search_prefs_edit" tool_tip="Введите интересующий вас термин для поиска здесь. Результаты будут отображены для частичного совпадения полного текста в названии параметра или комментариях." />
@@ -35,7 +35,6 @@
       </combo_box>
     </panel>
   </tab_container>
-  <button name="forme_apply" label="Применить" />
   <panel name="forme_preferences_nav">
     <button name="forme_preferences_general" label="Общие" />
     <button name="forme_preferences_display" label="Графика" />

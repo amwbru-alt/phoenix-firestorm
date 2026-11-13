@@ -1,9 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="Respaldo" name="backup">
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 	<text name="backup_path_label" width="100">
 		Ruta del respaldo:
 	</text>
-	<button label="Establecer" name="set_backup_settings_path"/>
+      <button label="Establecer" name="set_backup_settings_path" />
 	<layout_stack name="ls_account_specific_label">
 		<layout_panel name="lp_account_specific_label" height="60">
 			<text name="account_specific_label" height="60">
@@ -17,8 +19,8 @@
 			<layout_stack name="ls_list_view_stack">
 				<layout_panel name="lp_restore_global_files">
 					<scroll_list name="restore_global_files_list">
-						<column label="Archivos globales:" name="restore_global_files_label"/>
-						<column label="Valor" name="value"/>
+                <column label="Archivos globales:" name="restore_global_files_label" />
+                <column label="Valor" name="value" />
 						<row name="restore_global_row_login">
 							<column name="restore_global_files_label">Credenciales de conexión</column>
 						</row>
@@ -41,8 +43,8 @@
 				</layout_panel>
 				<layout_panel name="lp_restore_per_account_files">
 					<scroll_list name="restore_per_account_files_list">
-						<column label="Archivos por avatar:" name="restore_per_account_files_label"/>
-						<column label="Valor" name="value" width="-1"/>
+                <column label="Archivos por avatar:" name="restore_per_account_files_label" />
+                <column label="Valor" name="value" width="-1" />
 						<row name="restore_per_account_row_blacklist">
 							<column name="restore_per_account_files_label">Lista negra</column>
 						</row>
@@ -61,7 +63,6 @@
 						<row name="restore_per_account_row_toolbars">
 							<column name="restore_per_account_files_label">Barras de herramientas</column>
 						</row>
-
 						<row name="restore_per_account_row_tphistory">
 							<column name="restore_per_account_files_label">Historial de teleportes</column>
 						</row>
@@ -72,8 +73,8 @@
 				</layout_panel>
 				<layout_panel name="lp_restore_folders">
 					<scroll_list name="restore_global_folders_list">
-						<column label="Carpetas:" name="restore_global_folders_label"/>
-						<column label="Valor" name="value"/>
+                <column label="Carpetas:" name="restore_global_folders_label" />
+                <column label="Valor" name="value" />
 						<row name="restore_folders_row_beams">
 							<column name="restore_global_folders_label">Balizas de selección</column>
 						</row>
@@ -98,12 +99,14 @@
 					</scroll_list>
 				</layout_panel>
 			</layout_stack>
-			<button label="Seleccionar todo" name="select_all_button"/>
-			<button label="Deseleccionar todo" name="deselect_all_button"/>
-			<check_box label="Restaurar configuraciones globales" name="restore_global_settings_checkbox"/>
-			<check_box label="Restaurar configuraciones por avatar" name="restore_per_account_settings_checkbox"/>
-			<button label="Respaldar configuración" name="backup_settings" width="160"/>
-			<button label="Restaurar configuración" name="restore_settings" width="160"/>
+          <button label="Seleccionar todo" name="select_all_button" />
+          <button label="Deseleccionar todo" name="deselect_all_button" />
+          <check_box label="Restaurar configuraciones globales" name="restore_global_settings_checkbox" />
+          <check_box label="Restaurar configuraciones por avatar" name="restore_per_account_settings_checkbox" />
+          <button label="Respaldar configuración" name="backup_settings" width="160" />
+          <button label="Restaurar configuración" name="restore_settings" width="160" />
 		</layout_panel>
 	</layout_stack>
  </panel>
+  </scroll_container>
+</panel>

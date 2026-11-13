@@ -36,24 +36,12 @@
       <layout_panel name="label_stack">
         <text name="status" value="Status Desconocido" />
         <text name="label" value="Fecha de nacimiento:" />
-        <text_editor name="register_date" value="(cargando...)" />
         <text name="label2" value="Cuenta:" />
         <text name="partner_label" value="Compañero/a:" />
       </layout_panel>
     </layout_stack>
     <text name="Groups:" value="Grupos:" />
     <button label="+" label_selected="+" name="group_invite" tool_tip="Invitar al grupo" />
-    <layout_stack name="aboutpositioner">
-      <layout_panel name="about_stack">
-        <text name="About:" value="Acerca de:" />
-      </layout_panel>
-      <layout_panel name="give_stack">
-        <text name="Give item:" value="Dar objeto:" />
-        <text name="Give inventory" tool_tip="Soltar elementos de inventario aquí para dárselos a esta persona.">
-				Soltar aquí el nuevo elemento de inventario.
-			</text>
-      </layout_panel>
-    </layout_stack>
     <layout_stack name="buttonstack">
       <layout_panel name="left_buttonstack">
         <button label="Encontrar en el mapa" label_selected="Encontrar en el mapa" name="show_on_map_btn" tool_tip="Mostrar al Residente en el mapa" />
@@ -69,6 +57,5 @@
         <button label="Desbloquear" name="unblock" tool_tip="Desbloquear al residente" />
       </layout_panel>
     </layout_stack>
-    <check_box label="Mostrar en la búsqueda" name="show_in_search_checkbox" />
   </panel>
 </panel>

@@ -12,6 +12,8 @@
     <string name="EmbeddedItemNotLoggedIn">
 	Войти
 </string>
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
     <tab_container label="Настройки ForMe.World" name="tabs">
         <panel label="Основное" name="tab-extras">
             <check_box name="checkMiscRLVa" label="Контроль скриптами (RLVa)" />
@@ -260,4 +262,5 @@
             <button name="reset_default_folders" label="Сброс папок по умолчанию" width="200" />
         </panel>
     </tab_container>
+</panel>  </scroll_container>
 </panel>

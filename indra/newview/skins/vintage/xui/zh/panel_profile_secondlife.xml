@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="預覽" name="panel_profile">
 	<string name="status_unknown">
 		未知
@@ -24,6 +24,9 @@
 	<string name="FSSupp" value="支援" />
 	<string name="FSQualityAssurance" value="除錯人員" />
 	<string name="texture_picker_label" value="個人檔案相片" />
+  <button name="save_description_changes" label="儲存" />
+  <button name="discard_description_changes" label="放棄" />
+  <panel name="forme_layout_profile_legacy">
 	<text name="name_label" value="名稱：" />
 	<button label="名稱：" name="set_name" tool_tip="設定顯示名" />
 	<panel name="name_holder">
@@ -40,11 +43,11 @@
 			<icon tool_tip="朋友無法看到我的在線狀態" name="cant_see_online" />
 			<icon tool_tip="朋友可以在世界地圖上找到我" name="can_see_on_map" />
 			<icon tool_tip="朋友無法在世界地圖上找到我" name="cant_see_on_map" />
-			<icon tool_tip="朋友可以編輯我的物件" name="can_edit_objects"  forme_creator_only="true"/>
-			<icon tool_tip="朋友無法編輯我的物件" name="cant_edit_objects"  forme_creator_only="true"/>
+        <icon tool_tip="朋友可以編輯我的物件" name="can_edit_objects" forme_creator_only="true" />
+        <icon tool_tip="朋友無法編輯我的物件" name="cant_edit_objects" forme_creator_only="true" />
 			<text_editor name="user_age" value="(正在載入...)" />
 			<text name="label2" value="帳戶:" />
-			<panel name="badge_layout">
+        <layout_panel name="badge_layout">
 				<layout_stack name="badge_stacker">
 					<layout_panel name="top_badge_layout">
 						<icon name="top_badge_icon" tool_tip="Linden Lab 員工" />
@@ -53,11 +56,11 @@
 						<icon name="bottom_badge_icon" tool_tip="Linden Lab 員工" />
 					</layout_panel>
 				</layout_stack>
-			</panel>
+        </layout_panel>
 		</layout_panel>
 	</layout_stack>
 	<text name="About:" value="關於我:" />
-	<button name="btn_preview" tool_tip="切換預覽你個人檔案的「關於我」部分"/>
+    <button name="btn_preview" tool_tip="切換預覽你個人檔案的「關於我」部分" />
 	<text name="Groups:" value="群組:" />
 	<button name="group_invite" tool_tip="邀請加入群組" />
 	<text name="Give item:" value="分享:" />
@@ -82,6 +85,4 @@
 	</layout_stack>
 	<check_box label="在搜尋中顯示" tool_tip="允許其他居民在搜尋結果中找到你" name="show_in_search" />
 	<check_box name="hide_sl_age" label="顯示完整出生日期" tool_tip="允許其他人查看你在SL的年齡" />
-	<button name="save_description_changes" label="儲存" />
-	<button name="discard_description_changes" label="放棄" />
-</panel>
+</panel></panel>

@@ -1,26 +1,27 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="Lyde" name="Preference Media panel">
 	<panel.string name="middle_mouse">
 		Midterste museknap
 	</panel.string>
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 	<tab_container name="tabs">
 		<panel name="Media Sounds Panel">
-			<slider label="Generel" name="System Volume"/>
-			<check_box label="Sluk for lyd når minimeret" name="mute_when_minimized"/>
-			<slider label="Knapper" name="UI Volume"/>
-			<slider label="Omgivelser" name="Wind Volume"/>
-			<slider label="Lyd effekter" name="SFX Volume"/>
-			<slider label="Musik" name="Music Volume"/>
-			<check_box label="Aktiveret" name="enable_music"/>
-			<slider label="Media" name="Media Volume"/>
-			<check_box label="Aktiveret" name="enable_media"/>
-
-
+          <slider label="Generel" name="System Volume" />
+          <check_box label="Sluk for lyd når minimeret" name="mute_when_minimized" />
+          <slider label="Knapper" name="UI Volume" />
+          <slider label="Omgivelser" name="Wind Volume" />
+          <slider label="Lyd effekter" name="SFX Volume" />
+          <slider label="Musik" name="Music Volume" />
+          <check_box label="Aktiveret" name="enable_music" />
+          <slider label="Media" name="Media Volume" />
+          <check_box label="Aktiveret" name="enable_media" />
 		</panel>
 		<panel name="Media Media Panel">
-			<check_box label="Tillad media at afspilles automatisk" name="media_auto_play_btn" tool_tip="Vælg dette for at media afspille automatisk hvis det ønsker det" value="true"/>
-			<check_box label="Afspil media vedhæftet andre avatarer" name="media_show_on_others_btn" tool_tip="Deaktiver dette for at skjule vedhæftet media for avatarer i nærheden" value="true"/>
+          <check_box label="Tillad media at afspilles automatisk" name="media_auto_play_btn" tool_tip="Vælg dette for at media afspille automatisk hvis det ønsker det" value="true" />
+          <check_box label="Afspil media vedhæftet andre avatarer" name="media_show_on_others_btn" tool_tip="Deaktiver dette for at skjule vedhæftet media for avatarer i nærheden" value="true" />
 		</panel>
-
 	</tab_container>
+</panel>
+  </scroll_container>
 </panel>

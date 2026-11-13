@@ -36,24 +36,12 @@
       <layout_panel name="label_stack">
         <text name="status" value="Durum Bilinmiyor" />
         <text name="label" value="Doğum Tarihi:" />
-        <text_editor name="register_date" value="(yükleniyor...)" />
         <text name="label2" value="Hesap:" />
         <text name="partner_label" value="Ortak:" />
       </layout_panel>
     </layout_stack>
     <text name="Groups:" value="Gruplar:" />
     <button label="+" label_selected="+" name="group_invite" tool_tip="Gruba Davet Et" />
-    <layout_stack name="aboutpositioner">
-      <layout_panel name="about_stack">
-        <text name="About:" value="Hakkında:" />
-      </layout_panel>
-      <layout_panel name="give_stack">
-        <text name="Give item:" value="Öğe ver:" />
-        <text name="Give inventory" tool_tip="Envanter öğelerini bu kişiye vermek için buraya bırakın.">
-				Envanter öğesini buraya bırakın.
-			</text>
-      </layout_panel>
-    </layout_stack>
     <layout_stack name="buttonstack">
       <layout_panel name="left_buttonstack">
         <button label="Haritada Bul" label_selected="Haritada Bul" name="show_on_map_btn" tool_tip="Sakini haritada bul" />
@@ -69,6 +57,5 @@
         <button label="Engellemeyi Kaldır" name="unblock" tool_tip="Bu Sakinin engellemesini kaldır" />
       </layout_panel>
     </layout_stack>
-    <check_box label="Aramada göster" name="show_in_search_checkbox" />
   </panel>
 </panel>

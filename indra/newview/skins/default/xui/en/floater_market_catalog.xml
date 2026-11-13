@@ -1,48 +1,48 @@
 <?xml version='1.0' encoding='utf-8'?>
-<floater name="market_catalog" layout="topleft" title="Market" width="820" height="468" min_width="820" min_height="468" header_height="44" legacy_header_height="0" header_vpad="10" header_icon="Forme_HUD_Market" can_resize="false" can_minimize="false" can_close="true" save_rect="true" rect_control_suffix="_forme_market_v1" single_instance="true" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White">
-  <text name="status" layout="topleft" left="16" top="390" width="788" height="36" use_ellipses="true" parse_urls="false" wrap="true" />
-  <button name="refresh" layout="topleft" label="Refresh" left="16" top="430" width="104" height="32" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" />
-  <button name="website" layout="topleft" label="Website" left="128" top="430" width="104" height="32" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" />
-  <search_editor name="query" layout="topleft" left="16" top="12" width="620" height="34" label="Find a product…" />
-  <button name="cart" layout="topleft" label="Cart" left="646" top="12" width="158" height="32" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" />
-  <button name="all" layout="topleft" label="All" left="16" top="54" width="122" height="32" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" />
-  <button name="clothes" layout="topleft" label="Clothing" left="146" top="54" width="122" height="32" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" />
-  <button name="home" layout="topleft" label="Home" left="276" top="54" width="122" height="32" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" />
-  <button name="accessories" layout="topleft" label="Accessories" left="406" top="54" width="122" height="32" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" />
-  <panel name="catalog_grid" layout="topleft" left="16" top="100" width="788" height="270">
-    <panel name="card_0" layout="topleft" left="0" top="0" width="256" height="270" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
-      <icon name="photo_0" layout="topleft" left="8" top="8" width="240" height="164" image_name="Forme_UI_Inventory" mouse_opaque="false" />
-      <button name="open_0" layout="topleft" label="" left="8" top="8" width="240" height="164" image_unselected="Forme_WMap_Clear" image_selected="Forme_WMap_Clear" image_pressed="Forme_Round_Selection" tool_tip="Open product" />
-      <text name="name_0" layout="topleft" left="10" top="182" width="236" height="24" use_ellipses="true" parse_urls="false" font="SansSerifBold" />
-      <text name="seller_0" layout="topleft" left="38" top="208" width="208" height="20" use_ellipses="true" parse_urls="false" font="SansSerifSmall" />
-      <text name="price_0" layout="topleft" left="10" top="238" width="144" height="24" use_ellipses="true" parse_urls="false" />
-      <button name="favorite_0" layout="topleft" label="♡" left="164" top="232" width="36" height="32" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" is_toggle="true" />
-      <button name="add_0" layout="topleft" label="+" left="208" top="232" width="36" height="32" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" />
-      <avatar_icon default_icon_name="Generic_Person" name="seller_avatar_0" layout="topleft" left="10" top="208" width="20" height="20" circular="true" />
+<floater name="market_catalog" layout="topleft" title="Market" width="680" height="388" min_width="680" min_height="388" header_height="36" legacy_header_height="0" header_vpad="7" header_icon="Forme_HUD_Market" can_resize="false" can_minimize="false" can_close="true" save_rect="true" rect_control_suffix="_forme_market_v2" single_instance="true" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" bg_opaque_color="White" bg_alpha_color="White" header_font.size="Medium">
+  <text name="status" layout="topleft" width="648" height="24" use_ellipses="true" parse_urls="false" wrap="true" left="16" top="320" follows="left|top" word_wrap="true" />
+  <button name="refresh" layout="topleft" label="Refresh" width="96" height="28" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" left="16" top="350" follows="left|top" />
+  <button name="website" layout="topleft" label="Website" width="96" height="28" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" left="120" top="350" follows="left|top" />
+  <search_editor name="query" layout="topleft" width="510" height="30" label="Find a product…" left="16" top="10" follows="left|top" />
+  <button name="cart" layout="topleft" label="Cart" width="130" height="30" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" left="534" top="10" follows="left|top" />
+  <button name="all" layout="topleft" label="All" width="118" height="28" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" left="16" top="48" follows="left|top" />
+  <button name="clothes" layout="topleft" label="Clothing" width="118" height="28" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" left="142" top="48" follows="left|top" />
+  <button name="home" layout="topleft" label="Home" width="118" height="28" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" left="268" top="48" follows="left|top" />
+  <button name="accessories" layout="topleft" label="Accessories" width="118" height="28" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" left="394" top="48" follows="left|top" />
+  <panel name="catalog_grid" layout="topleft" width="648" height="224" left="16" top="88" follows="left|top">
+    <panel name="card_0" layout="topleft" width="212" height="224" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White" left="0" top="0" follows="left|top">
+      <icon name="photo_0" layout="topleft" width="196" height="128" image_name="Forme_UI_Inventory" mouse_opaque="false" left="8" top="8" follows="left|top" />
+      <button name="open_0" layout="topleft" label="" width="196" height="128" image_unselected="Forme_WMap_Clear" image_selected="Forme_WMap_Clear" image_pressed="Forme_Round_Selection" tool_tip="Open product" left="8" top="8" follows="left|top" />
+      <text name="name_0" layout="topleft" width="192" height="22" use_ellipses="true" parse_urls="false" font="SansSerifBold" left="10" top="144" follows="left|top" />
+      <text name="seller_0" layout="topleft" width="166" height="18" use_ellipses="true" parse_urls="false" font="SansSerifSmall" left="36" top="170" follows="left|top" />
+      <text name="price_0" layout="topleft" width="116" height="22" use_ellipses="true" parse_urls="false" left="10" top="196" follows="left|top" />
+      <button name="favorite_0" layout="topleft" label="♡" width="32" height="28" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" is_toggle="true" left="132" top="190" follows="left|top" />
+      <button name="add_0" layout="topleft" label="+" width="32" height="28" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" left="172" top="190" follows="left|top" />
+      <avatar_icon default_icon_name="Generic_Person" name="seller_avatar_0" layout="topleft" width="18" height="18" circular="true" left="10" top="170" follows="left|top" />
     </panel>
-    <panel name="card_1" layout="topleft" left="266" top="0" width="256" height="270" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
-      <icon name="photo_1" layout="topleft" left="8" top="8" width="240" height="164" image_name="Forme_UI_Inventory" mouse_opaque="false" />
-      <button name="open_1" layout="topleft" label="" left="8" top="8" width="240" height="164" image_unselected="Forme_WMap_Clear" image_selected="Forme_WMap_Clear" image_pressed="Forme_Round_Selection" tool_tip="Open product" />
-      <text name="name_1" layout="topleft" left="10" top="182" width="236" height="24" use_ellipses="true" parse_urls="false" font="SansSerifBold" />
-      <text name="seller_1" layout="topleft" left="38" top="208" width="208" height="20" use_ellipses="true" parse_urls="false" font="SansSerifSmall" />
-      <text name="price_1" layout="topleft" left="10" top="238" width="144" height="24" use_ellipses="true" parse_urls="false" />
-      <button name="favorite_1" layout="topleft" label="♡" left="164" top="232" width="36" height="32" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" is_toggle="true" />
-      <button name="add_1" layout="topleft" label="+" left="208" top="232" width="36" height="32" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" />
-      <avatar_icon default_icon_name="Generic_Person" name="seller_avatar_1" layout="topleft" left="10" top="208" width="20" height="20" circular="true" />
+    <panel name="card_1" layout="topleft" width="212" height="224" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White" left="218" top="0" follows="left|top">
+      <icon name="photo_1" layout="topleft" width="196" height="128" image_name="Forme_UI_Inventory" mouse_opaque="false" left="8" top="8" follows="left|top" />
+      <button name="open_1" layout="topleft" label="" width="196" height="128" image_unselected="Forme_WMap_Clear" image_selected="Forme_WMap_Clear" image_pressed="Forme_Round_Selection" tool_tip="Open product" left="8" top="8" follows="left|top" />
+      <text name="name_1" layout="topleft" width="192" height="22" use_ellipses="true" parse_urls="false" font="SansSerifBold" left="10" top="144" follows="left|top" />
+      <text name="seller_1" layout="topleft" width="166" height="18" use_ellipses="true" parse_urls="false" font="SansSerifSmall" left="36" top="170" follows="left|top" />
+      <text name="price_1" layout="topleft" width="116" height="22" use_ellipses="true" parse_urls="false" left="10" top="196" follows="left|top" />
+      <button name="favorite_1" layout="topleft" label="♡" width="32" height="28" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" is_toggle="true" left="132" top="190" follows="left|top" />
+      <button name="add_1" layout="topleft" label="+" width="32" height="28" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" left="172" top="190" follows="left|top" />
+      <avatar_icon default_icon_name="Generic_Person" name="seller_avatar_1" layout="topleft" width="18" height="18" circular="true" left="10" top="170" follows="left|top" />
     </panel>
-    <panel name="card_2" layout="topleft" left="532" top="0" width="256" height="270" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
-      <icon name="photo_2" layout="topleft" left="8" top="8" width="240" height="164" image_name="Forme_UI_Inventory" mouse_opaque="false" />
-      <button name="open_2" layout="topleft" label="" left="8" top="8" width="240" height="164" image_unselected="Forme_WMap_Clear" image_selected="Forme_WMap_Clear" image_pressed="Forme_Round_Selection" tool_tip="Open product" />
-      <text name="name_2" layout="topleft" left="10" top="182" width="236" height="24" use_ellipses="true" parse_urls="false" font="SansSerifBold" />
-      <text name="seller_2" layout="topleft" left="38" top="208" width="208" height="20" use_ellipses="true" parse_urls="false" font="SansSerifSmall" />
-      <text name="price_2" layout="topleft" left="10" top="238" width="144" height="24" use_ellipses="true" parse_urls="false" />
-      <button name="favorite_2" layout="topleft" label="♡" left="164" top="232" width="36" height="32" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" is_toggle="true" />
-      <button name="add_2" layout="topleft" label="+" left="208" top="232" width="36" height="32" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" />
-      <avatar_icon default_icon_name="Generic_Person" name="seller_avatar_2" layout="topleft" left="10" top="208" width="20" height="20" circular="true" />
+    <panel name="card_2" layout="topleft" width="212" height="224" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White" left="436" top="0" follows="left|top">
+      <icon name="photo_2" layout="topleft" width="196" height="128" image_name="Forme_UI_Inventory" mouse_opaque="false" left="8" top="8" follows="left|top" />
+      <button name="open_2" layout="topleft" label="" width="196" height="128" image_unselected="Forme_WMap_Clear" image_selected="Forme_WMap_Clear" image_pressed="Forme_Round_Selection" tool_tip="Open product" left="8" top="8" follows="left|top" />
+      <text name="name_2" layout="topleft" width="192" height="22" use_ellipses="true" parse_urls="false" font="SansSerifBold" left="10" top="144" follows="left|top" />
+      <text name="seller_2" layout="topleft" width="166" height="18" use_ellipses="true" parse_urls="false" font="SansSerifSmall" left="36" top="170" follows="left|top" />
+      <text name="price_2" layout="topleft" width="116" height="22" use_ellipses="true" parse_urls="false" left="10" top="196" follows="left|top" />
+      <button name="favorite_2" layout="topleft" label="♡" width="32" height="28" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" is_toggle="true" left="132" top="190" follows="left|top" />
+      <button name="add_2" layout="topleft" label="+" width="32" height="28" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" left="172" top="190" follows="left|top" />
+      <avatar_icon default_icon_name="Generic_Person" name="seller_avatar_2" layout="topleft" width="18" height="18" circular="true" left="10" top="170" follows="left|top" />
     </panel>
   </panel>
-  <text name="count" layout="topleft" left="246" top="430" width="222" height="24" use_ellipses="true" parse_urls="false" />
-  <text name="page" layout="topleft" left="642" top="430" width="68" height="24" use_ellipses="true" parse_urls="false" halign="center" />
-  <button name="previous" layout="topleft" label="‹" left="594" top="426" width="36" height="32" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" />
-  <button name="next" layout="topleft" label="›" left="724" top="426" width="36" height="32" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" />
+  <text name="count" layout="topleft" width="180" height="28" use_ellipses="true" parse_urls="false" left="230" top="350" follows="left|top" />
+  <text name="page" layout="topleft" width="70" height="28" use_ellipses="true" parse_urls="false" halign="center" left="540" top="350" follows="left|top" />
+  <button name="previous" layout="topleft" label="‹" width="32" height="28" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" left="500" top="350" follows="left|top" />
+  <button name="next" layout="topleft" label="›" width="32" height="28" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" left="624" top="350" follows="left|top" />
 </floater>

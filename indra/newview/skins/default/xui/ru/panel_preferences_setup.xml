@@ -1,5 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <panel label="Сеть и файлы" name="Input panel">
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
     <tab_container name="tabs" label="Сеть и файлы">
         <panel label="Подключение" name="tab-conn">
             <text name="Maximum bandwidth">
@@ -54,4 +56,5 @@
             <button label="Папка с настройками" label_selected="Папка с настройками" name="browse_settingsdir" />
         </panel>
     </tab_container>
+</panel>  </scroll_container>
 </panel>

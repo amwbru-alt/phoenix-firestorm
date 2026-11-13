@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel name="firestorm">
 <panel.string name="BeamsOffLabel">
 	=== SÖN ===
@@ -12,16 +12,18 @@
 <string name="EmbeddedItemNotLoggedIn">
 	Daxil ol
 </string>
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 <tab_container label="ForMe.World seçimləri" name="tabs">
     <panel label="Əsas" name="tab-extras">
         <check_box name="checkMiscRLVa" label="Skriptlər ilə nəzarət (RLVa)" />
         <text name="textMiscRLVaRestart">
             (yenidən başlatma tələb olunur)
         </text>
-        <check_box label="Bir qrup torpaq altında tikin və yerləşdirin (mümkünsə)" name="grouplandrez" tool_tip="Yer qrupunun üzvüsinizsə, cari qrup etiketinizdən asılı olmayaraq, obyektləri torpaq qrupunun altına qoymağa çalışın."/>
+          <check_box label="Bir qrup torpaq altında tikin və yerləşdirin (mümkünsə)" name="grouplandrez" tool_tip="Yer qrupunun üzvüsinizsə, cari qrup etiketinizdən asılı olmayaraq, obyektləri torpaq qrupunun altına qoymağa çalışın." />
         <check_box label="Skriptlərlə əlaqə qurarkən hissəcik effektlərinin yaradılması" name="EffectScriptChatParticles" tool_tip="Bu seçimi aktiv etsəniz, skriptlər danışarkən skriptli obyektlər fırlanan işıq hissəciklərini göstərəcək" />
         <check_box label="Avatar hədəfə çatdıqdan sonra izləmə mayakının söndürülməsi (&lt;= 3m)" name="FSDisableAvatarTrackerAtCloseIn" tool_tip="Bu seçimi aktiv etdikdə, avatarla məsafə 3 metrdən az olarsa, izləmə mayağı avtomatik olaraq sönəcək (susmaya görə)." />
-        <check_box label="Boş bento animasiyasını düzəldin" name="play_default_bento_idle_animation_toggle" tool_tip="Bu seçim aktivləşdirilərsə, defolt bento animasiyası 0 prioritetində işləyəcək, bu da başqa heç bir bento animasiyası işləmədikdə qolları, qanadları, ağızı və quyruğu öz təbii vəziyyətinə gətirir."/>
+          <check_box label="Boş bento animasiyasını düzəldin" name="play_default_bento_idle_animation_toggle" tool_tip="Bu seçim aktivləşdirilərsə, defolt bento animasiyası 0 prioritetində işləyəcək, bu da başqa heç bir bento animasiyası işləmədikdə qolları, qanadları, ağızı və quyruğu öz təbii vəziyyətinə gətirir." />
         <check_box label="Daxil ol ekranını söndürün" name="login_screen_toggle" tool_tip="Qara daxil ol ekranını söndürün" />
         <check_box label="Çıxış ekranını söndürün" name="logout_screen_toggle" tool_tip="Qara çıxış ekranını söndürün" />
         <check_box label="Çəkmə məsafəsinin tədricən artması" name="FSRenderFarClipStepping" tool_tip="Bu seçimi aktiv etsəniz, ForMe.World teleportdan sonra çəkiliş məsafəsini tədricən artıracaq." />
@@ -34,13 +36,12 @@
             <combo_box.item label="Uçuş köməyi: Güclü sürətlənmə" name="flight_strong" />
             <combo_box.item label="Uçuş köməyi: Ekstremal sürətlənmə" name="flight_extreme" />
         </combo_box>
-        <slider name="manual_environment_change_transition_period" label="Ətraf mühitin dəyişmə vaxtı:"
-        tool_tip="Quraşdırma zamanı mühitin dəyişəcəyi saniyələrlə interval. Sıfır anidir."/>
-        <check_box name="EnvironmentPersistAcrossLogin" label="Seanslar arasında mühit seçimlərini yadda saxlayın" tool_tip="Növbəti girişdən sonra cari mühit seçimlərini bərpa edir."/>
+          <slider name="manual_environment_change_transition_period" label="Ətraf mühitin dəyişmə vaxtı:" tool_tip="Quraşdırma zamanı mühitin dəyişəcəyi saniyələrlə interval. Sıfır anidir." />
+          <check_box name="EnvironmentPersistAcrossLogin" label="Seanslar arasında mühit seçimlərini yadda saxlayın" tool_tip="Növbəti girişdən sonra cari mühit seçimlərini bərpa edir." />
     </panel>
     <panel label="Qoruma" name="ProtectionTab">
         <check_box label="Sol maus düyməsi ilə basdıqda obyektə oturmaq bloku" name="FSBlockClickSit" />
-        <check_box label="IM və qrup çatında mötərizəli linklərin əsl URL-ni göstər (kursorla)" name="FSDisableLabeledChatLinks" tool_tip="Aktiv olduqda, IM, qrup çatı, ad-hoc konfranslar və qrup bildirişlərindəki kvadrat mötərizəli linklər mətnini saxlayır, lakin kursoru saxlayanda əsl təyinat URL-i böyük ipucu kimi dərhal göstərilir. Etiketin fərqli hədəfi gizlətdiyi fişinqi aşkar etməyə kömək edir. Yaxınlıqdakı çat aşağıdakı seçimdən istifadə edir. Viewer-in daxili mətni dəyişmir."/>
+          <check_box label="IM və qrup çatında mötərizəli linklərin əsl URL-ni göstər (kursorla)" name="FSDisableLabeledChatLinks" tool_tip="Aktiv olduqda, IM, qrup çatı, ad-hoc konfranslar və qrup bildirişlərindəki kvadrat mötərizəli linklər mətnini saxlayır, lakin kursoru saxlayanda əsl təyinat URL-i böyük ipucu kimi dərhal göstərilir. Etiketin fərqli hədəfi gizlətdiyi fişinqi aşkar etməyə kömək edir. Yaxınlıqdakı çat aşağıdakı seçimdən istifadə edir. Viewer-in daxili mətni dəyişmir." />
         <check_box label="Skriptlərin (llMapDestination) istifadəsinə icazə verin" name="ScriptsCanShowUI" />
         <text name="revokepermissions_txt">
          Animasiya icazələrini ləğv edin:
@@ -56,7 +57,7 @@
         </text>
         <check_box label="Yüksək tekstura sahəsi olan obyektləri gizlədin. Həddi: " name="RenderVolumeSAProtection" tool_tip="Bu, klientin tez-tez qəzaya uğramasına səbəb olan çox böyük teksturalı obyektlərdən qoruyur. Varsayılan olaraq 5000 kvadratmetrdir" />
         <check_box label="Antispamı aktivləşdirin" name="UseAntiSpam" />
-        <check_box label="Obyektləriniz üçün antispamı aktivləşdirin" name="FSUseAntiSpamMine" tool_tip="Bu, hətta obyektlərinizə spamdan qorunma tətbiq etməyə imkan verəcək."/>
+          <check_box label="Obyektləriniz üçün antispamı aktivləşdirin" name="FSUseAntiSpamMine" tool_tip="Bu, hətta obyektlərinizə spamdan qorunma tətbiq etməyə imkan verəcək." />
         <text name="AntiSpamText1">
            Mesaj başına maksimum sətir:
         </text>
@@ -74,8 +75,8 @@
         </text>
         <spinner name="_NACL_AntiSpamSoundPreloadMulti" tool_tip="Səs Öncədən Yükləmə Sorğusu Vuranı [Defolt: 4]" />
         <button name="AntiSpamUnblock" label="Bütün spam mənbələrini blokdan çıxarın" />
-        <check_box label="Ödənişdən əvvəl təsdiqləmə:" name="FSConfirmPayments" tool_tip="Həddini aşan məbləği ödəməzdən əvvəl ödənişin təsdiqi dialoq pəncərəsini göstərin. Həmişə təsdiqi göstərmək üçün həddi 0-a təyin edin."/>
-        <spinner name="FSPaymentConfirmationThreshold" tool_tip="Həddini aşan məbləği ödəməzdən əvvəl ödənişin təsdiqi dialoq pəncərəsini göstərin. Həmişə təsdiqi göstərmək üçün həddi 0-a təyin edin." width="100"/>
+          <check_box label="Ödənişdən əvvəl təsdiqləmə:" name="FSConfirmPayments" tool_tip="Həddini aşan məbləği ödəməzdən əvvəl ödənişin təsdiqi dialoq pəncərəsini göstərin. Həmişə təsdiqi göstərmək üçün həddi 0-a təyin edin." />
+          <spinner name="FSPaymentConfirmationThreshold" tool_tip="Həddini aşan məbləği ödəməzdən əvvəl ödənişin təsdiqi dialoq pəncərəsini göstərin. Həmişə təsdiqi göstərmək üçün həddi 0-a təyin edin." width="100" />
     </panel>
     <panel label="Avatar" name="firestorm_avatar">
         <text name="HeadMovement">
@@ -92,7 +93,7 @@
         <text name="note_lookat">
              (Kamera diqqətinin seçimləri Məxfilik → Kamera diqqəti pəncərəsindədir)
         </text>
-        <check_box label="Təsadüfi avatar göz hərəkətinin qarşısını alın" name="FSStaticEyes"/>
+          <check_box label="Təsadüfi avatar göz hərəkətinin qarşısını alın" name="FSStaticEyes" />
         <text name="BeamPrefs">
             Seçim şüa effektləri
         </text>
@@ -127,37 +128,37 @@
         <spinner label="Ölçü X" name="X size" />
         <spinner label="Ölçü Y" name="Y size" />
         <spinner label="Ölçü Z" name="Z size" />
-        <check_box label="Fantom" name="FSBuildPrefs_PhantomToggle"/>
-        <check_box label="Fiziki" name="FSBuildPrefs_PhysicalToggle"/>
-        <check_box label="Müvəqqəti" name="FSBuildPrefs_TemporaryToggle"/>
+          <check_box label="Fantom" name="FSBuildPrefs_PhantomToggle" />
+          <check_box label="Fiziki" name="FSBuildPrefs_PhysicalToggle" />
+          <check_box label="Müvəqqəti" name="FSBuildPrefs_TemporaryToggle" />
         <combo_box name="material">
-             <combo_item name="Stone" label="Daş"/>
-             <combo_item name="Metal" label="Dəmir"/>
-             <combo_item name="Glass" label="Ot"/>
-             <combo_item name="Wood" label="Taxta"/>
-             <combo_item name="Flesh"  label="Dəri"/>
-             <combo_item name="Plastic" label="Plastik"/>
-             <combo_item name="Rubber"  label="Rezin"/>
+            <combo_item name="Stone" label="Daş" />
+            <combo_item name="Metal" label="Dəmir" />
+            <combo_item name="Glass" label="Ot" />
+            <combo_item name="Wood" label="Taxta" />
+            <combo_item name="Flesh" label="Dəri" />
+            <combo_item name="Plastic" label="Plastik" />
+            <combo_item name="Rubber" label="Rezin" />
         </combo_box>
-        <texture_picker label="Tekstur" name="texture control" tool_tip="Şəkil seçmək üçün basın"/>
-        <color_swatch label="Rəng" name="colorswatch" tool_tip="Rəng palitrasını açmaq üçün basın"/>
-        <spinner label="Afla" name="alpha"/>
-        <spinner label="İşar." name="glow"/>
-        <check_box label="Tam işıq" name="EmFBToggle"/>
+          <texture_picker label="Tekstur" name="texture control" tool_tip="Şəkil seçmək üçün basın" />
+          <color_swatch label="Rəng" name="colorswatch" tool_tip="Rəng palitrasını açmaq üçün basın" />
+          <spinner label="Afla" name="alpha" />
+          <spinner label="İşar." name="glow" />
+          <check_box label="Tam işıq" name="EmFBToggle" />
         <combo_box name="combobox shininess" tool_tip="Bir obyekt üçün parlaqlıq miqdarını təyin edin">
-          <combo_item name="None" label="Yox"/>
-          <combo_item name="Low" label="Aşağı"/>
-          <combo_item name="Medium" label="Ortam"/>
-          <combo_item name="High" label="Yüksək"/>
+            <combo_item name="None" label="Yox" />
+            <combo_item name="Low" label="Aşağı" />
+            <combo_item name="Medium" label="Ortam" />
+            <combo_item name="High" label="Yüksək" />
         </combo_box>
-        <check_box name="FSBuildPrefs_EmbedItem" label="Yeni obyektə element daxil edin"/>
+          <check_box name="FSBuildPrefs_EmbedItem" label="Yeni obyektə element daxil edin" />
         <fs_embedded_item_drop_target name="embed_item" tool_tip="Avadanlıq siyahısı elementini buraya daşıyın.">
          Avadanlıq siyahısı elementini buraya daşıyın.
         </fs_embedded_item_drop_target>
         <text name="build_item_add_disp_rect_txt">
          Məzmun: [ITEM]
         </text>
-        <check_box name="FSBuildPrefs_UseCustomScript" label="Use custom script for New Script button"/>
+          <check_box name="FSBuildPrefs_UseCustomScript" label="Use custom script for New Script button" />
         <fs_embedded_item_drop_target name="custom_script" tool_tip="Drop a script from your inventory here.">
          Drop a script here.
         </fs_embedded_item_drop_target>
@@ -166,8 +167,8 @@
         </text>
         <button label="Defolt Yaratma İcazələri" name="fs_default_creation_permissions" />
         <check_box label="Seçilmiş obyektin işıqlandırılması yandırın" tool_tip="Seçilmiş obyektin işıqlandırılması yandırın" name="FSBuildPrefsRenderHighlight_toggle" />
-        <check_box label="Seçilmiş ərazinin sərhədlərini işıqlandırın" name="RenderParcelSelection"/>
-        <check_box label="Maksimum tikinti hündürlüyünə sərhəddini göstərin" name="FSRenderParcelSelectionToMaxBuildHeight"/>
+          <check_box label="Seçilmiş ərazinin sərhədlərini işıqlandırın" name="RenderParcelSelection" />
+          <check_box label="Maksimum tikinti hündürlüyünə sərhəddini göstərin" name="FSRenderParcelSelectionToMaxBuildHeight" />
         <check_box label="Seçim məsafəsi həddi:" name="LimitSelectDistance" width="145" />
         <spinner name="MaxSelectDistance" tool_tip="Maksimum icazə verilən seçim məsafəsi (avatardan metrlə) [Defolt: 128.000]" />
         <check_box label="Məsafə limitini çəkin:" name="LimitDragDistance" width="145" />
@@ -175,11 +176,11 @@
         <text name="RotationStepText1" width="135">
           Fırlanma məhdudiyyəti
         </text>
-        <spinner name="RotationStep" tool_tip="[Defolt: 1.0]"/>
+          <spinner name="RotationStep" tool_tip="[Defolt: 1.0]" />
         <text name="RotationStepText2">
           dərəcə, əgər şəbəkəyə istinad yoxdursa
         </text>
-        <check_box label="Ən azı neçə obyekt sayında ayırma təsdiq sorğusu" width="305" name="FSUnlinkConfirmEnabled"/>
+          <check_box label="Ən azı neçə obyekt sayında ayırma təsdiq sorğusu" width="305" name="FSUnlinkConfirmEnabled" />
         <text name="MinObjectsForUnlinkConfirmText2">
           obyekt
         </text>
@@ -198,22 +199,22 @@
         <check_box label="Obyektləri tutmaq və manipulyasiya etmək üçün Ctrl + siçan istifadə edin" tool_tip="Obyektləri tutmaq və manipulyasiya etmək üçün Ctrl + siçan istifadə edin" name="FSEnableGrab" />
         <check_box label="Tikinti zamanı teksturlar üçün basdıqda miqyaslama (caps lock ilə birlikdə)." tool_tip="Aktivləşdirildikdə, tikinti rejimində teksturalar üçün basım ilə sürükləməyə və ya basdıqda miqyasına (caps lock ilə) icazə verir. Bu xüsusiyyət eksperimentaldır və ehtiyatla istifadə edilməlidir." name="FSExperimentalDragTexture" />
         <check_box label="Yükləyərkən öz avatarınızda animasiyaya önbaxış" tool_tip="Yükləyərkən öz avatarınızda animasiyaya önbaxış" name="FSUploadAnimationOnOwnAvatar" />
-        <check_box label="Genişləndirilmiş Skript Məlumatını aktivləşdirin" name="FSScriptInfoExtended" tool_tip="Aktiv edilərsə, əsas skript məlumatı funksiyasını inşaatçılar üçün faydalı olan müxtəlif detallarla genişləndirir"/>
+          <check_box label="Genişləndirilmiş Skript Məlumatını aktivləşdirin" name="FSScriptInfoExtended" tool_tip="Aktiv edilərsə, əsas skript məlumatı funksiyasını inşaatçılar üçün faydalı olan müxtəlif detallarla genişləndirir" />
     </panel>
     <panel label="Script Editor" name="BuildTabScriptEditor">
         <text name="text_box_scripting_font">
           Skript yazı tipi:
         </text>
         <combo_box name="FSScriptingFontName" tool_tip="LSL skript dəyişdiricisində istifadə olunan yazı tipinin adı">
-          <combo_item name="Monospace" label="Monogeniş"/>
-          <combo_item name="Scripting" label="Skriptli"/>
+            <combo_item name="Monospace" label="Monogeniş" />
+            <combo_item name="Scripting" label="Skriptli" />
         </combo_box>
         <combo_box name="FSScriptingFontSize" tool_tip="LSL skript dəyişdiricisində istifadə olunan yazı tipinin ölçüsü">
-          <combo_item name="Monospace" label="Monogeniş"/>
-          <combo_item name="Scripting" label="Skriptli"/>
-          <combo_item name="Small" label="Kiçik"/>
-          <combo_item name="Medium" label="Ortam"/>
-          <combo_item name="Large" label="Yerkə"/>
+            <combo_item name="Monospace" label="Monogeniş" />
+            <combo_item name="Scripting" label="Skriptli" />
+            <combo_item name="Small" label="Kiçik" />
+            <combo_item name="Medium" label="Ortam" />
+            <combo_item name="Large" label="Yerkə" />
         </combo_box>
         <check_box label="Avadanlıq siyahısında dəyişdirilmiş skriptləri Mono olaraq saxlayın" tool_tip="Avadanlıq siyahısında dəyişdirilmiş skriptləri Mono olaraq saxlayın" name="FSSaveInventoryScriptsAsMono_toggle" />
 		<check_box label="LSL Önprosessorunu aktivləşdir" tool_tip="Bu seçim aktiv edildikdə, LSL önprosessoru işləyəcəkdir." name="preproc_checkbox" />
@@ -230,7 +231,6 @@
         </text>
         <button label="Baxış" label_selected="Baxış" name="SetExternalEditor" />
     </panel>
-    <!--Uploads-->
     <panel label="Yükləmələr" name="UploadsTab">
       <text name="title">
         Cari yükləmə istiqamətləri:
@@ -251,7 +251,9 @@
         Təyinat qovluğunu dəyişmək üçün onu inventarınızda sağ klikləyin və
       "Nə üçün susmaya görə istifadə et" seçin
       </text>
-        <button name="reset_default_folders" label="Susmaya görə qovluqları sıfırlayın" width="200"/>
+          <button name="reset_default_folders" label="Susmaya görə qovluqları sıfırlayın" width="200" />
     </panel>
 </tab_container>
+</panel>
+  </scroll_container>
 </panel>

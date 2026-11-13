@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <floater name="Preferences" title="Einstellungen">
 	<floater.string name="email_unverified_tooltip">
 		Bitte bestätigen Sie Ihre E-Mail-Adresse unter
@@ -7,28 +7,26 @@ https://accounts.secondlife.com/change_email/?lang=de-DE
 	<floater.string name="LoginToChange">
 		Zum Ändern einloggen
 	</floater.string>
-	<button label="OK" label_selected="OK" name="OK"/>
-	<button label="Abbrechen" label_selected="Abbrechen" name="Cancel"/>
+  <button label="OK" label_selected="OK" name="OK" />
+  <button label="Abbrechen" label_selected="Abbrechen" name="Cancel" />
 	<panel name="search_panel">
-		<search_editor label="Einstellungen suchen" name="search_prefs_edit" tool_tip="Den Suchbegriff hier eingeben. Ergebnisse werden für Treffer im Namen oder Kommentar einer Einstellung angezeigt."/>
-		<button name="copy_search_slurl_btn" tool_tip="Suchbegriff als SLURL kopieren"/>
+    <search_editor label="Einstellungen suchen" name="search_prefs_edit" tool_tip="Den Suchbegriff hier eingeben. Ergebnisse werden für Treffer im Namen oder Kommentar einer Einstellung angezeigt." />
+    <button name="copy_search_slurl_btn" tool_tip="Suchbegriff als SLURL kopieren" />
 	</panel>
 	<tab_container name="pref core">
-		<panel label="Allgemein" name="general"/>
-		<panel label="Chat" name="chat"/>
-		
-		
-		<panel label="Grafik" name="display"/>
-		<panel label="Sound &amp; Medien" name="audio"/>
-		<panel label="Netzwerk &amp; Dateien" name="input"/>
-		<panel label="Bewegen/Anzeigen" name="move"/>
-		<panel label="Tastenbelegung" name="controls"/>
-		<panel label="Meldungen" name="msgs"/>
-		<panel label="Privatsphäre" name="im"/>
-		<panel label="Erweitert" name="advanced1"/>
-		<panel label="Benutzerinterface" name="ui"/>
-		<panel label="Oberflächendesign" name="skins"/>
-		<panel label="ForMe.World" name="firestorm"/>
-		<panel label="Sicherung" name="backup"/>
+    <panel label="Allgemein" name="general" />
+    <panel label="Chat" name="chat" />
+    <panel label="Grafik" name="display" />
+    <panel label="Sound &amp; Medien" name="audio" />
+    <panel label="Netzwerk &amp; Dateien" name="input" />
+    <panel label="Bewegen/Anzeigen" name="move" />
+    <panel label="Tastenbelegung" name="controls" />
+    <panel label="Meldungen" name="msgs" />
+    <panel label="Privatsphäre" name="im" />
+    <panel label="Erweitert" name="advanced1" />
+    <panel label="Benutzerinterface" name="ui" />
+    <panel label="Oberflächendesign" name="skins" />
+    <panel label="ForMe.World" name="firestorm" />
+    <panel label="Sicherung" name="backup" />
 	</tab_container>
 </floater>

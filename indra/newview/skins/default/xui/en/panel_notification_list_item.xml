@@ -20,21 +20,21 @@
     <layout_stack top="0" left="0" width="331" height="196" orientation="vertical" follows="left|top|right|bottom" name="item_vertical_stack">
       <layout_panel top="0" left="0" height="90" follows="left|top|right|bottom" layout="topleft" name="layout_panel_condensed_view" visible="false" background_opaque="false" background_visible="true" bg_alpha_color="SysWellItemUnselected">
         <panel border="true" top="0" left="5" height="89" bevel_style="none" layout="topleft" follows="left|top|right|bottom" name="panel_condensed_view">
-          <layout_stack top="0" left="0" width="325" height="50" orientation="horizontal" follows="left|top|right|bottom" name="horizontal_stack">
+          <layout_stack top="0" left="0" width="325" height="66" orientation="horizontal" follows="left|top|right|bottom" name="horizontal_stack">
             <layout_panel width="30" height="39" follows="left|top|right|bottom" name="layout_panel_right">
               <group_icon left="5" top="6" width="25" height="25" mouse_opaque="true" name="group_icon" tool_tip="Group" default_icon_name="Generic_Group" visible="true" />
               <avatar_icon left="5" top="6" width="25" height="25" mouse_opaque="true" name="avatar_icon" tool_tip="Avatar" default_icon_name="Generic_Person" visible="false" />
               <icon left="5" top="6" width="25" height="25" mouse_opaque="true" name="system_notification_icon" tool_tip="Icon" image_name="System_Notification" visible="false" />
             </layout_panel>
-            <layout_panel width="260" height="50" name="layout_panel_middle">
-              <panel border="false" top="0" width="260" height="38" bevel_style="none" follows="left|top|right" layout="topleft" name="main_info_panel">
-                <panel border="false" top="0" left="0" width="260" height="19" bevel_style="none" follows="left|top|right|bottom" layout="topleft" name="notification_title_panel">
-                  <text allow_scroll="false" font="SansSerifSmall" top="6" left="0" width="260" height="12" layout="topleft" follows="right|left" text_color="White" use_ellipses="true" word_wrap="false" mouse_opaque="false" name="notification_title">
+            <layout_panel width="260" height="66" name="layout_panel_middle">
+              <panel border="false" top="0" width="260" height="60" bevel_style="none" follows="left|top|right" layout="topleft" name="main_info_panel">
+                <panel border="false" top="0" left="0" width="260" height="38" bevel_style="none" follows="left|top|right|bottom" layout="topleft" name="notification_title_panel">
+                  <text allow_scroll="false" font="SansSerif" top="4" left="0" width="260" height="34" layout="topleft" follows="left|right|top" text_color="White" use_ellipses="true" word_wrap="true" mouse_opaque="false" name="notification_title" font.style="BOLD">
                     Group Name:Notice Title N o t i c e T i t l e N o t i c e T i t l e N o t i c e T i t l e N oticeTitle
                   </text>
                   <icon top="1" left="242" width="21" height="21" image_name="Icon_Attachment_Small" follows="right" mouse_opaque="true" name="attachment_icon" tool_tip="Attachment" visible="false" />
                 </panel>
-                <panel border="false" top="23" left="0" width="260" height="15" bevel_style="none" follows="left|top|right|bottom" layout="topleft" name="sender_time_panel">
+                <panel border="false" top="42" left="0" width="260" height="15" bevel_style="none" follows="left|top|right|bottom" layout="topleft" name="sender_time_panel">
                   <text allow_scroll="false" font="SansSerifSmall" top="0" left="0" width="130" height="13" layout="topleft" follows="right|left" use_ellipses="true" word_wrap="false" mouse_opaque="false" name="sender_or_fee_box" visible="false">
                     Sender: "Resident R e s i d e n t R e s i d e n t"
                   </text>

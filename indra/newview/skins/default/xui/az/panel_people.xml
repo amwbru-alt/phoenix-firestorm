@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="Adamlar" name="people_panel">
 	<string name="no_recent_people" value="Son zamanlarda danışan insan yoxdur. Kimləsə danışmaq istəyirsiniz? [fmw:///app/search/people Axtarışdan] və ya [fmw:///app/worldmap dünya xəritəsindən] istifadə edin." />
 	<string name="no_filtered_recent_people" value="Tələb etdiyiniz məzmun tapılmadı? [fmw:///app/search/people/[SEARCH_TERM] Axtarışdan] istifadə edin." />
@@ -37,13 +37,6 @@ Kimləsə danışmaq istəyirsiniz? [fmw:///app/worldmap dünya xəritəsindən]
 	</string>
 	<tab_container name="tabs">
 		<panel label="Yaxındakılar" name="nearby_panel">
-			<panel name="nearby_buttons_panel">
-				<filter_editor label="İnsanların filtri" name="nearby_filter_input" />
-				<button name="gear_btn" tool_tip="Seçilmiş sakini üzərindəki əməliyyatlar" />
-				<menu_button name="nearby_view_btn" tool_tip="Göstərilmə/sıralanma seçimləri" />
-				<button name="add_friend_btn" tool_tip="Sakinə dostluq təklif et" />
-				<dnd_button name="nearby_del_btn" tool_tip="Seçilmiş istifadəçini dostlarınızdan silin" />
-			</panel>
 		</panel>
 		<panel label="Dostlar" name="friends_panel">
 			<panel name="friends_buttons_panel">
@@ -57,7 +50,6 @@ Kimləsə danışmaq istəyirsiniz? [fmw:///app/worldmap dünya xəritəsindən]
 			<tab_container name="friends_accordion">
 				<panel name="tab_online" title="Onlayn" />
 				<panel name="tab_all" title="Hamısı" />
-				<panel name="tab_suggested_friends" title="Təklif olunanlar" />
 			</tab_container>
 		</panel>
 		<panel label="Qruplar" name="groups_panel">

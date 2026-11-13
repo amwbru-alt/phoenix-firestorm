@@ -1,9 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="バックアップ" name="backup">
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 	<text name="backup_path_label">
 		バックアップ先：
 	</text>
-	<button label="設定" name="set_backup_settings_path"/>
+      <button label="設定" name="set_backup_settings_path" />
 	<layout_stack name="ls_account_specific_label">
 		<layout_panel name="lp_account_specific_label">
 			<text name="account_specific_label">
@@ -17,8 +19,8 @@
 			<layout_stack name="ls_list_view_stack">
 				<layout_panel name="lp_restore_global_files">
 					<scroll_list name="restore_global_files_list">
-						<column label="グローバルファイル：" name="restore_global_files_label"/>
-						<column label="値" name="value"/>
+                <column label="グローバルファイル：" name="restore_global_files_label" />
+                <column label="値" name="value" />
 						<row name="restore_global_row_login">
 							<column name="restore_global_files_label">
 								ログイン情報
@@ -68,8 +70,8 @@
 				</layout_panel>
 				<layout_panel name="lp_restore_per_account_files">
 					<scroll_list name="restore_per_account_files_list">
-						<column label="アカウント固有ファイル：" name="restore_per_account_files_label"/>
-						<column label="値" name="value"/>
+                <column label="アカウント固有ファイル：" name="restore_per_account_files_label" />
+                <column label="値" name="value" />
 						<row name="restore_per_account_row_blacklist">
 							<column name="restore_per_account_files_label">
 								無視リスト
@@ -95,7 +97,6 @@
 								ツールバー
 							</column>
 						</row>
-
 						<row name="restore_per_account_row_tphistory">
 							<column name="restore_per_account_files_label">
 								テレポート履歴
@@ -125,8 +126,8 @@
 				</layout_panel>
 				<layout_panel name="lp_restore_folders">
 					<scroll_list name="restore_global_folders_list">
-						<column label="フォルダ：" name="restore_global_folders_label"/>
-						<column label="値" name="value"/>
+                <column label="フォルダ：" name="restore_global_folders_label" />
+                <column label="値" name="value" />
 						<row name="restore_folders_row_beams">
 							<column name="restore_global_folders_label">
 								選択ビーム
@@ -170,12 +171,14 @@
 					</scroll_list>
 				</layout_panel>
 			</layout_stack>
-			<button label="全て選択" name="select_all_button"/>
-			<button label="全て選択解除" name="deselect_all_button"/>
-			<check_box label="グローバル設定を復元" name="restore_global_settings_checkbox"/>
-			<check_box label="アカウント固有設定を復元" name="restore_per_account_settings_checkbox"/>
-			<button label="設定をバックアップ" name="backup_settings"/>
-			<button label="設定を復元" name="restore_settings"/>
+          <button label="全て選択" name="select_all_button" />
+          <button label="全て選択解除" name="deselect_all_button" />
+          <check_box label="グローバル設定を復元" name="restore_global_settings_checkbox" />
+          <check_box label="アカウント固有設定を復元" name="restore_per_account_settings_checkbox" />
+          <button label="設定をバックアップ" name="backup_settings" />
+          <button label="設定を復元" name="restore_settings" />
 		</layout_panel>
 	</layout_stack>
+</panel>
+  </scroll_container>
 </panel>

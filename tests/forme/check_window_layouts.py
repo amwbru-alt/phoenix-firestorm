@@ -57,7 +57,7 @@ for identifier, filename in registered:
     root = resource(filename)
     if identifier in custom:
         continue
-    assert int(root.get('header_height', '0')) == (28 if filename in {'floater_moveview.xml', 'floater_camera.xml'} else 44), filename
+    assert int(root.get('header_height', '0')) == (28 if filename in {'floater_moveview.xml', 'floater_camera.xml'} else 36 if filename in {'floater_market_catalog.xml', 'floater_tools.xml', 'floater_people.xml', 'floater_profile.xml', 'floater_preferences.xml', 'floater_fs_im_container.xml', 'floater_notifications_tabbed.xml'} else 44), filename
     assert root.get('header_icon') in textures, filename
     framed += 1
 
@@ -90,9 +90,9 @@ for first in nav:
 
 # ForMe social and commerce windows keep their expanded, balanced geometry.
 people_floater = resource('floater_people.xml')
-assert int(people_floater.get('height')) == 580
-assert int(child(people_floater, 'main_panel').get('height')) == 552
-assert int(people.get('height')) == 552
+assert int(people_floater.get('height')) == 440
+assert int(child(people_floater, 'main_panel').get('height')) == 420
+assert int(people.get('height')) == 420
 market_listings = resource('floater_marketplace_listings.xml')
 assert int(market_listings.get('width')) == 440
 assert int(market_listings.get('height')) == 560
@@ -200,7 +200,7 @@ second_life_profile = resource('panel_profile_secondlife.xml')
 assert int(child(second_life_profile, 'name_holder').get('width')) == 430
 assert int(child(second_life_profile, 'set_name').get('left')) == 520
 assert int(child(second_life_profile, 'forme_profile_about_card').get('width')) == 482
-assert int(child(second_life_profile, 'sl_description_edit').get('width')) == 388
+assert int(child(second_life_profile, 'sl_description_edit').get('width')) == 328
 assert int(child(second_life_profile, 'buttonstack').get('width')) == 202
 picks_profile = resource('panel_profile_picks.xml')
 picks_header = child(picks_profile, 'buttons_header')
@@ -342,7 +342,7 @@ assert child(inventory, 'forme_inventory_item_actions').get('right') == '-33'
 assert child(people, 'panel_radar').get('right') == child(people, 'panel_radar').get('bottom') == '-1'
 camera = resource('floater_camera.xml')
 assert int(camera.get('min_height')) == int(camera.get('height')) + int(camera.get('header_height'))
-assert camera.get('can_resize') == 'false' and int(camera.get('width')) == 520
+assert camera.get('can_resize') == 'false' and int(camera.get('width')) == 340
 for block in ('buttons_panel', 'zoom', 'preset_buttons_panel'):
     fits(child(camera, block), camera)
 for item in child(camera, 'buttons_panel'):
@@ -438,7 +438,7 @@ assert int(child(im_panels, 'speakers_list_panel').get('width')) == 170
 assert int(child(im_panels, 'right_part_holder').get('min_width')) == 300
 # Notification Center's tab list and footer flex inside the resizable shell.
 notifications = resource('floater_notifications_tabbed.xml')
-assert int(notifications.get('min_width')) == 560
+assert int(notifications.get('min_width')) == 460
 notification_stack = child(notifications, 'TabButtonsStack')
 assert notification_stack.get('width') is None and notification_stack.get('height') is None
 assert notification_stack.get('right') == '-16' and notification_stack.get('bottom') == '-16'
@@ -447,7 +447,7 @@ assert notification_content.get('auto_resize') == 'true'
 assert notification_content.get('height') is None and notification_content.get('follows') == 'all'
 notification_tabs = child(notification_content, 'notifications_tab_container')
 assert notification_tabs.get('height') is None and notification_tabs.get('bottom') == '-42'
-assert int(notification_tabs.get('tab_min_width')) == 156
+assert int(notification_tabs.get('tab_min_width')) == 132
 notification_actions = child(notification_content, 'ButtonsStack')
 assert notification_actions.get('bottom') == '-1'
 assert notification_actions.get('follows') == 'left|right|bottom'

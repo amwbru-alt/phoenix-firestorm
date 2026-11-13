@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<floater name="toolbox floater" short_title="Строительные инструменты" forme_creator_only="true">
+<floater name="toolbox floater" short_title="Строительные инструменты" forme_creator_only="true" title="Инструменты">
     <floater.string name="grid_screen_text">
 		Экран
 	</floater.string>
@@ -131,10 +131,10 @@
 		Сила
 	</text>
     <button label="Применить" label_selected="Применить" name="button apply to selection" tool_tip="Изменить выбранную землю" />
-    <text name="link_num_obj_count" tool_tip="Номер объединения может быть неточным." width="160">
+  <text name="link_num_obj_count" tool_tip="Номер объединения может быть неточным.">
 		[DESC] [NUM]
 	</text>
-    <text name="selection_empty" width="120">
+  <text name="selection_empty">
 		Ничего не выбрано.
 	</text>
     <text name="more info label">
@@ -187,6 +187,8 @@
             <panel.string name="multiple selection">
 				Множественный выбор
 			</panel.string>
+      <scroll_container name="compact_build_general_scroll">
+        <panel name="compact_build_general_body">
             <text name="Name:">
 				Название:
 			</text>
@@ -226,7 +228,7 @@
             <check_box label="Для продажи:" name="checkbox for sale" tool_tip="Позволяет людям покупать этот объект, его содержимое или копировать в мире по указанной цене." />
             <combo_box name="sale type" tool_tip="Выберите, будет ли покупатель получать копию предмета, копию содержимого или сам предмет.">
                 <combo_box.item name="Copy" label="Копия" />
-                <combo_box.item name="Contents" label="Содержимое" />
+            <combo_box.item name="Contents" label="Состав" />
                 <combo_box.item name="Original" label="Оригинал" />
             </combo_box>
             <spinner name="Edit Cost" label="Цена: L$" tool_tip="Стоимость объекта." />
@@ -240,14 +242,14 @@
                 <text name="Anyone can:">
 					Любой может:
 				</text>
-                <check_box label="Переместить" name="checkbox allow everyone move" width="95" tool_tip="Любой может переместить объект." />
-                <check_box label="Копировать" name="checkbox allow everyone copy" width="95" tool_tip="Любой может взять копию объекта. Объект и все его содержимое должны быть разрешены для копирования и передачи." />
+            <check_box label="Переместить" name="checkbox allow everyone move" tool_tip="Любой может переместить объект." />
+            <check_box label="Копировать" name="checkbox allow everyone copy" tool_tip="Любой может взять копию объекта. Объект и все его содержимое должны быть разрешены для копирования и передачи." />
                 <check_box label="Экспортировать" name="checkbox allow export" tool_tip="Любой может экспортировать этот объект." />
                 <text name="Next owner can:">
 					Следующий владелец может:
 				</text>
-                <check_box label="Править" name="checkbox next owner can modify" width="95" tool_tip="Следующий владелец может редактировать свойства, такие как имя элемента или масштаб этого объекта." />
-                <check_box label="Копировать" name="checkbox next owner can copy" width="95" tool_tip="Следующий владелец может сделать неограниченное количество копий этого объекта. Копии содержат информацию об создателе и никогда не могут быть более разрешающими, чем копируемый элемент." />
+            <check_box label="Править" name="checkbox next owner can modify" tool_tip="Следующий владелец может редактировать свойства, такие как имя элемента или масштаб этого объекта." />
+            <check_box label="Копировать" name="checkbox next owner can copy" tool_tip="Следующий владелец может сделать неограниченное количество копий этого объекта. Копии содержат информацию об создателе и никогда не могут быть более разрешающими, чем копируемый элемент." />
                 <check_box label="Передать" name="checkbox next owner can transfer" tool_tip="Следующий владелец может отдать или перепродать объект" />
             </panel>
             <panel name="pathfinding_attrs_panel">
@@ -255,6 +257,8 @@
 					Атрибуты поиска пути:
 				</text>
             </panel>
+        </panel>
+      </scroll_container>
         </panel>
         <panel label="Объект" name="Object">
             <panel.string name="paste_position">
@@ -269,6 +273,10 @@
 				Вставить поворот
 [VALUE]
 			</panel.string>
+      <string name="ll_lod_tooltip_msg">Linden Lab Second Life Viewer по умолчанию ([FACTOR])</string>
+      <string name="fs_lod_tooltip_msg">[APPNAME] по умолчанию ([FACTOR])</string>
+      <scroll_container name="compact_build_object_scroll">
+        <panel name="compact_build_object_body">
             <check_box label="Заблокирован" name="checkbox locked" tool_tip="Предотвращение перемещения или удаления объекта. Обычно эта функция полезна во время стройки для избежания нежелательных изменений." />
             <check_box label="Физический" name="Physical Checkbox Ctrl" tool_tip="Позволяет толкать объект. Также на объект будет воздействовать гравитация." />
             <check_box label="Временный" name="Temporary Checkbox Ctrl" tool_tip="Приводит к автоматическому удалению объекта через минуту после создания." />
@@ -389,7 +397,7 @@
                 <combo_box.item label="Плоскость / Нет" name="Plane" />
                 <combo_box.item label="Цилиндр" name="Cylinder" />
             </combo_box>
-            <text name="mesh_info_label" width="120">
+          <text name="mesh_info_label">
 				Информация о Меше:
 			</text>
             <text name="lod_label" value="LOD:" />
@@ -412,10 +420,8 @@
             <text name="LOD_swap_factors_label" value="факторы LOD" />
             <text name="LOD_swap_defaults_label" value="По умолч." tool_tip="Значение фактора LOD по умолчанию, которое будет применяться большинством вьюверов." />
             <text name="LOD_swap_usr_label" tool_tip="Ваши текущие настройки, взятые из RenderVolumeLODFactor" value="Ваши" />
-            <text name="LOD_swap_label" value="Обмен LOD" width="65" />
-            <string name="ll_lod_tooltip_msg">Linden Lab Second Life Viewer по умолчанию ([FACTOR])</string>
-            <text name="LOD_swap_ll_default" value="LL" width="25" />
-            <string name="fs_lod_tooltip_msg">[APPNAME] по умолчанию ([FACTOR])</string>
+          <text name="LOD_swap_label" value="Обмен LOD" />
+          <text name="LOD_swap_ll_default" value="LL" />
             <text name="LOD_swap_usr_current" tool_tip="Ваш текущий коэффициент LOD" />
             <text name="LOD_swap_LOD_Change_label">
 Выс. ↔ Ср.
@@ -426,7 +432,9 @@
 				Эта таблица показывает границы изменения LOD в метрах от камеры.
 			</text>
         </panel>
-        <panel label="Особенности" name="Features">
+      </scroll_container>
+    </panel>
+    <panel label="Свойства" name="Features">
             <panel.string name="None">
 				Нет
 			</panel.string>
@@ -461,22 +469,22 @@
             <spinner label="Фокус" name="Light Focus" />
             <spinner label="Спад" name="Light Falloff" />
             <spinner label="Окружение" name="Light Ambiance" />
-            <check_box label="Датчик отражений" name="Reflection Probe" tool_tip="Настраивает способ отражения объектов в пределах этого объема при включенном PBR" width="60" />
+      <check_box label="Датчик отражений" name="Reflection Probe" tool_tip="Настраивает способ отражения объектов в пределах этого объема при включенном PBR" />
             <combo_box name="Probe Volume Type" tool_tip="Выберите тип объема влияния датчика">
                 <combo_box.item label="Сфера" name="Sphere" />
                 <combo_box.item label="Куб" name="Box" />
             </combo_box>
-            <check_box label="Динамика" name="Probe Dynamic" tool_tip="Если эта функция включена, аватары будут отображаться в отражениях в пределах объема влияния этого датчика." width="60" />
-            <text name="Probe Update Label" width="100">Обновление датчика</text>
+      <check_box label="Динамика" name="Probe Dynamic" tool_tip="Если эта функция включена, аватары будут отображаться в отражениях в пределах объема влияния этого датчика." />
+      <text name="Probe Update Label">Обновление датчика</text>
             <combo_box name="Probe Update Type" tool_tip="Определяет способ обновления датчика. Статические обновления самые медленные и без аватарок. Динамические обновления происходят чаще, аватары видны в датчиках. Зеркало (Окружающая среда) превращает этот датчик в планарный проецируемый датчик в реальном времени, который только отражает окружающую среду, но не рассчитывает атмосферу. Зеркало (Все) похоже на Зеркало (Окружающая среда), но отражает частицы и аватары..">
                 <combo_box.item label="Статика" name="Static" />
                 <combo_box.item label="Динамика" name="Dynamic" />
                 <combo_box.item label="Отражение (Окружение)" name="Mirror" />
                 <combo_box.item label="Отражение (Все)" name="Dynamic Mirror" />
             </combo_box>
-            <spinner label="Окружение" label_width="65" name="Probe Ambiance" width="125" />
-            <spinner label="Клип Рядом" label_width="65" name="Probe Near Clip" width="125" />
-            <text name="label physicsshapetype" width="140">
+      <spinner label="Окружение" label_width="65" name="Probe Ambiance" />
+      <spinner label="Клип Рядом" label_width="65" name="Probe Near Clip" />
+      <text name="label physicsshapetype">
 				Тип физической формы:
 			</text>
             <combo_box name="Physics Shape Type Combo Ctrl" tool_tip="Выберите тип физической формы" />
@@ -495,86 +503,11 @@
             <spinner label="Плотность в 100 кг/м^3" name="Physics Density" />
             <spinner label="Восстанавление" name="Physics Restitution" />
         </panel>
-        <panel label="Текстура" name="Texture">
-            <panel.string name="string repeats per meter">
-				Повторений на метр
-			</panel.string>
-            <panel.string name="string repeats per face">
-				Повторений на грань
-			</panel.string>
-            <texture_picker label="Текстура" name="texture control" tool_tip="Щелкните для выбора изображения" />
-            <color_swatch label="Цвет" name="colorswatch" tool_tip="Щелкните для выбора цвета" />
-            <text name="color trans">
-				Прозрачность %
-			</text>
-            <text name="glow label">
-				Свечение
-			</text>
-            <text name="tex gen">
-				Наложение
-			</text>
-            <combo_box name="combobox texgen">
-                <combo_box.item label="По умолчанию" name="Default" />
-                <combo_box.item label="На плоскость" name="Planar" />
-            </combo_box>
-            <text name="label shininess">
-				Блеск
-			</text>
-            <combo_box name="combobox shininess">
-                <combo_box.item label="Нет" name="None" />
-                <combo_box.item label="Низко" name="Low" />
-                <combo_box.item label="Средний" name="Medium" />
-                <combo_box.item label="Высоко" name="High" />
-            </combo_box>
-            <text name="label bumpiness">
-				Рельефность
-			</text>
-            <combo_box name="combobox bumpiness">
-                <combo_box.item label="Нет" name="None" />
-                <combo_box.item label="Яркость" name="Brightness" />
-                <combo_box.item label="По темному" name="Darkness" />
-                <combo_box.item label="дерево" name="woodgrain" />
-                <combo_box.item label="кора" name="bark" />
-                <combo_box.item label="кирпич" name="bricks" />
-                <combo_box.item label="шахматная доска" name="checker" />
-                <combo_box.item label="бетон" name="concrete" />
-                <combo_box.item label="старая плитка" name="crustytile" />
-                <combo_box.item label="тесаный камень" name="cutstone" />
-                <combo_box.item label="диски" name="discs" />
-                <combo_box.item label="гравий" name="gravel" />
-                <combo_box.item label="чашка Петри" name="petridish" />
-                <combo_box.item label="сайдинг" name="siding" />
-                <combo_box.item label="каменная плитка" name="stonetile" />
-                <combo_box.item label="штукатурка" name="stucco" />
-                <combo_box.item label="присоска" name="suction" />
-                <combo_box.item label="переплетение" name="weave" />
-            </combo_box>
-            <spinner label="По горизонтали (U)" name="TexScaleU" />
-            <check_box label="Разворот" name="checkbox flip s" />
-            <spinner label="По вертикали (V)" name="TexScaleV" />
-            <check_box label="Разворот" name="checkbox flip t" />
-            <spinner label="Вращение˚" name="TexRot" />
-            <button label="Применить" label_selected="Применить" name="button apply" />
-            <text name="tex offset">
-				Сдвиг текстуры
-			</text>
-            <spinner label="По горизонтали (U)" name="TexOffsetU" />
-            <spinner label="По вертикали (V)" name="TexOffsetV" />
-            <panel name="Add_Media">
-                <text name="media_tex">
-					Медиа
-				</text>
-                <button name="add_media" tool_tip="Добавить медиа" />
-                <button name="delete_media" tool_tip="Удалить медиа-текстуру" />
-                <button name="edit_media" tool_tip="Редактировать медиа" />
-                <button label="Выровнять" label_selected="Выровнять медиа" name="button align" tool_tip="Масштабирование медиа-текстуры (сначала нужно загрузить)" />
-            </panel>
-        </panel>
         <panel label="Содержимое" name="Contents">
             <button label="Создать скрипт" label_selected="Создать скрипт" name="button new script" />
             <button label="Разрешения" name="button permissions" />
-            <button label="Обновить" name="button refresh" width="100" />
-            <button label="Сброс скриптов" name="btn_reset_scripts" width="100" />
+      <button label="Обновить" name="button refresh" />
+      <button label="Сброс скриптов" name="btn_reset_scripts" />
             <filter_editor label="Введите текст фильтра" name="contents_filter" />
             <button name="button new notecard" label="Новая заметка" />
         </panel>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel name="panel_profile" label="Profil">
 	<string name="status_unknown">
 		Nieznane
@@ -23,6 +23,9 @@ Urodziny: [REG_DATE]
 	<string name="FSSupp" value=" Wsparcie" />
 	<string name="FSQualityAssurance" value=" Łowca błędów" />
 	<string name="texture_picker_label" value="Zdjęcie profilowe" />
+  <button name="save_description_changes" label="Zapisz" />
+  <button name="discard_description_changes" label="Odrzuć" />
+  <panel name="forme_layout_profile_legacy">
 	<text name="name_label" value="Imię:" />
 	<button name="set_name" label="Imię:" tool_tip="Ustaw Imię Wyświetlane" />
 	<panel name="name_holder">
@@ -39,11 +42,11 @@ Urodziny: [REG_DATE]
 			<icon tool_tip="Znajomy nie może zobaczyć mojego statusu online" name="cant_see_online" />
 			<icon tool_tip="Znajomy może mnie zobaczyć na mapie" name="can_see_on_map" />
 			<icon tool_tip="Znajomy nie może mnie zobaczyć na mapie" name="cant_see_on_map" />
-			<icon tool_tip="Znajomy może edytować moje obiekty" name="can_edit_objects"  forme_creator_only="true"/>
-			<icon tool_tip="Znajomy nie może edytować moich obiektów" name="cant_edit_objects"  forme_creator_only="true"/>
+        <icon tool_tip="Znajomy może edytować moje obiekty" name="can_edit_objects" forme_creator_only="true" />
+        <icon tool_tip="Znajomy nie może edytować moich obiektów" name="cant_edit_objects" forme_creator_only="true" />
 			<text_editor name="user_age" value="(ładowanie...)" />
 			<text name="label2" value="Konto:" />
-			<panel name="badge_layout">
+        <layout_panel name="badge_layout">
 				<layout_stack name="badge_stacker">
 					<layout_panel name="top_badge_layout">
 						<icon name="top_badge_icon" tool_tip="Pracownik Linden Lab" />
@@ -52,7 +55,7 @@ Urodziny: [REG_DATE]
 						<icon name="bottom_badge_icon" tool_tip="Pracownik Linden Lab" />
 					</layout_panel>
 				</layout_stack>
-			</panel>
+        </layout_panel>
 		</layout_panel>
 	</layout_stack>
 	<text name="Groups:" value="Grupy:" />
@@ -81,6 +84,5 @@ Urodziny: [REG_DATE]
 	</layout_stack>
 	<check_box name="show_in_search" label="Pokaż w wyszukiwarce" tool_tip="Pozwól innym zobaczyć Cię w wynikach wyszukiwania" />
 	<check_box name="hide_sl_age" label="Pełna data urodzenia" tool_tip="Pozwól innym widzieć Twój wiek w SL" />
-	<button name="save_description_changes" label="Zapisz" />
-	<button name="discard_description_changes" label="Odrzuć" />
+</panel>
 </panel>

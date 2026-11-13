@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel name="status">
 	<panel.string name="packet_loss_tooltip">
 		封包損失
@@ -25,12 +25,12 @@
 		<button name="buy_land_btn" tool_tip="此地塊可購買。" />
 		<text name="parcel_info_text" value="(載入中)" tool_tip="你所在的地塊的名稱。點擊打開土地資訊。" />
 	</panel>
-	<panel name="balance_bg" left="-331">
+  <panel name="balance_bg">
 		<text name="balance" tool_tip="點擊以更新L$餘額" value="?? L$" />
 		<button label="購買L$" name="buyL" tool_tip="點擊此處購買更多的L$" />
 	</panel>
-	<panel name="time_and_media_bg" width="229">
-		<text name="TimeText" tool_tip="當前時間（太平洋時間）" width="78">
+  <panel name="time_and_media_bg">
+    <text name="TimeText" tool_tip="當前時間（太平洋時間）">
 			24:00:00 PST
 		</text>
 		<button name="stream_toggle_btn" tool_tip="啟動/停止地塊音訊串流" />

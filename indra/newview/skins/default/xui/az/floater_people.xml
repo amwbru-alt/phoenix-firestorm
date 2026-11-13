@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <floater name="floater_people" title="İnsanlar">
 	<panel_container name="main_panel">
-		<panel name="panel_group_info_sidetray" label="Qrup profili"/>
+    <panel name="panel_group_info_sidetray" label="Qrup profili" />
 	</panel_container>
 </floater>

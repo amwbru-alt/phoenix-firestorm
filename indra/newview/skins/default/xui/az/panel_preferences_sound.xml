@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="Səslər" name="Preference Media panel">
 	<panel.string name="middle_mouse">
 		Orta siçan düyməsi
@@ -60,14 +60,12 @@
 	<panel.string name="textFSHealthReductionM">
 		Kişi avatarın acısı:
 	</panel.string>
-
 	<panel.string name="textFSInvalidOp">
 		Yalnış əməliyyatlar:
 	</panel.string>
 	<panel.string name="textFSInventoryOffer">
 		Avadanlıq siyahısı təklifi:
 	</panel.string>
-
 	<panel.string name="textFSMoneyChangeDown">
 		Pul balansının azalması:
 	</panel.string>
@@ -173,31 +171,31 @@
 	<panel.string name="textFSWindowOpen">
 		Pəncərə açılır:
 	</panel.string>
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 	<tab_container label="ForMe.World Seçimləri" name="tabs">
 		<panel label="Səslər" name="Media Sounds Panel">
-			<slider label="Ümumi səs səviyyəsi" name="System Volume"/>
-			<check_box label="Çevirilərkən səssizləşdir" name="mute_when_minimized"/>
-			<slider label="İnterfeys" name="UI Volume"/>
-			<slider label="Ətraf mühit" name="Wind Volume"/>
-			<check_box name="collisions_audio_play_btn" tool_tip="Toqquşma səslərini dəyişdirmək üçün seçin" label="Toqquşma səslərini aktivləşdir"/>
-			<slider label="Səs effektləri" name="SFX Volume"/>
-			<check_box name="gesture_audio_play_btn" tool_tip="Jestlər səsləri eşitmək üçün seçin" label="Jestlər səsləri aktivləşdir"/>
-			<slider label="Musiqi səviyyəsi" name="Music Volume"/>
-			<check_box label="Aktivləşdir" name="enable_music"/>
-			<slider label="Media" name="Media Volume"/>
-			<check_box label="Aktivləşdir" name="enable_media"/>
-
-
+          <slider label="Ümumi səs səviyyəsi" name="System Volume" />
+          <check_box label="Çevirilərkən səssizləşdir" name="mute_when_minimized" />
+          <slider label="İnterfeys" name="UI Volume" />
+          <slider label="Ətraf mühit" name="Wind Volume" />
+          <check_box name="collisions_audio_play_btn" tool_tip="Toqquşma səslərini dəyişdirmək üçün seçin" label="Toqquşma səslərini aktivləşdir" />
+          <slider label="Səs effektləri" name="SFX Volume" />
+          <check_box name="gesture_audio_play_btn" tool_tip="Jestlər səsləri eşitmək üçün seçin" label="Jestlər səsləri aktivləşdir" />
+          <slider label="Musiqi səviyyəsi" name="Music Volume" />
+          <check_box label="Aktivləşdir" name="enable_music" />
+          <slider label="Media" name="Media Volume" />
+          <check_box label="Aktivləşdir" name="enable_media" />
 			<text name="auto_unmute_label" width="300">
 				Teleportdan sonra səsləri avtomatik olaraq aktivləşdir:
 			</text>
-			<check_box name="FSAutoUnmuteAmbient" label="Ətraf mühit" tool_tip="Teleportdan sonra ətraf mühit səslərini avtomatik olaraq aktivləşdirin (varsayılan olaraq söndürülüb)" width="95"/>
-			<check_box name="FSAutoUnmuteSounds" label="Səs effektləri" tool_tip="Teleportdan sonra səs effektlərini avtomatik olaraq aktivləşdirin (varsayılan olaraq söndürülüb)" width="95"/>
+          <check_box name="FSAutoUnmuteAmbient" label="Ətraf mühit" tool_tip="Teleportdan sonra ətraf mühit səslərini avtomatik olaraq aktivləşdirin (varsayılan olaraq söndürülüb)" width="95" />
+          <check_box name="FSAutoUnmuteSounds" label="Səs effektləri" tool_tip="Teleportdan sonra səs effektlərini avtomatik olaraq aktivləşdirin (varsayılan olaraq söndürülüb)" width="95" />
 			<text name="friends_logon_sounds_label">
 				Dostlar daxil olanda/çıxanda səs çalın:
 			</text>
-			<check_box label="Daxil oldu" name="friends_notify_online_sound"/>
-			<check_box label="Çıxdı" name="friends_notify_offline_sound"/>
+          <check_box label="Daxil oldu" name="friends_notify_online_sound" />
+          <check_box label="Çıxdı" name="friends_notify_offline_sound" />
 			<text name="money_change_threshold_label" tool_tip="Balansınız dəyişdikdə səs çalın">
 				L$ dəyişiklik həddi:
 			</text>
@@ -224,38 +222,37 @@
 Avtomatik oxutma
 			</text>
 			<combo_box name="media_auto_play_combo" width="100">
-				<item label="Qadağan edilir" name="autoplay_disabled"/>
-				<item label="İcazə verilir" name="autoplay_enabled"/>
-				<!--<item label="Sorğu" name="autoplay_ask" />-->
+            <item label="Qadağan edilir" name="autoplay_disabled" />
+            <item label="İcazə verilir" name="autoplay_enabled" />
 			</combo_box>
-			<check_box name="media_allowscript_btn" tool_tip="Bu seçim medya axınlarını idarə etmək üçün skriptlərin icazə verib / qadağan edir" label="Skriptlərə medyanın oxutmasına icazə ver"/>
-			<check_box label="Başqa avatara bağlı medyanın oxutmasını icazə ver" name="media_show_on_others_btn" tool_tip="Başqa avatara bağlı medyanın oxutmasını icazə ver"/>
-			<check_box name="media_filter" tool_tip="Belirli bir hostdan gələn media oynanıb oynanmayacağını seçmək üçün bunu seçin" label="Media filtri aktivləşdir (təhlükəsizlik artır)"/>
-			<button label="Media saytlarını idarə et" name="edit_media_lists_button"/>
+          <check_box name="media_allowscript_btn" tool_tip="Bu seçim medya axınlarını idarə etmək üçün skriptlərin icazə verib / qadağan edir" label="Skriptlərə medyanın oxutmasına icazə ver" />
+          <check_box label="Başqa avatara bağlı medyanın oxutmasını icazə ver" name="media_show_on_others_btn" tool_tip="Başqa avatara bağlı medyanın oxutmasını icazə ver" />
+          <check_box name="media_filter" tool_tip="Belirli bir hostdan gələn media oynanıb oynanmayacağını seçmək üçün bunu seçin" label="Media filtri aktivləşdir (təhlükəsizlik artır)" />
+          <button label="Media saytlarını idarə et" name="edit_media_lists_button" />
 			<text name="Media Rolloff">
 				Səs mənbəsinin eşitilməsindən azaltma məsafəsi:
 			</text>
-			<slider label="Minimum" name="MediaRollOffMin" tool_tip="Səs mənbəsinin eşitilməsindən azaltma minimum məsafəsi"/>
+          <slider label="Minimum" name="MediaRollOffMin" tool_tip="Səs mənbəsinin eşitilməsindən azaltma minimum məsafəsi" />
 			<text name="MinMeters">
 				metr
 			</text>
-			<slider label="Maksimum" name="MediaRollOffMax" tool_tip="Səs mənbəsinin eşitilməsindən azaltma maksimum məsafəsi."/>
+          <slider label="Maksimum" name="MediaRollOffMax" tool_tip="Səs mənbəsinin eşitilməsindən azaltma maksimum məsafəsi." />
 			<text name="MaxMeters">
 				metr
 			</text>
 		</panel>
 		<panel label="Musiqi" name="Media Music Panel">
-			<check_box label="Musiqinin avtomatik çalınmasına icazə ver" name="audio_auto_play_btn" tool_tip="Səs axınını avtomatik olaraq başlatmaq üçün seçin."/>
-			<check_box name="FSFadeAudioStream" tool_tip="Sahədə musiqinin səsinin yumşaq artması və azalması aktivləşdirilsin" label="Səsin yumşaq artması / azalması aktivləşdir:"/>
-			<slider label="Artma:" name="FSAudioMusicFadeIn" tool_tip="Sahədə musiqinin səsinin yumşaq artma vaxtı." width="270" label_width="70"/>
+          <check_box label="Musiqinin avtomatik çalınmasına icazə ver" name="audio_auto_play_btn" tool_tip="Səs axınını avtomatik olaraq başlatmaq üçün seçin." />
+          <check_box name="FSFadeAudioStream" tool_tip="Sahədə musiqinin səsinin yumşaq artması və azalması aktivləşdirilsin" label="Səsin yumşaq artması / azalması aktivləşdir:" />
+          <slider label="Artma:" name="FSAudioMusicFadeIn" tool_tip="Sahədə musiqinin səsinin yumşaq artma vaxtı." width="270" label_width="70" />
 			<text name="FSAudioMusicFadeInSeconds" left_delta="275">
 				saniyə
 			</text>
-			<slider label="Azalma:" name="FSAudioMusicFadeOut" tool_tip="Sahədə musiqinin səsinin yumşaq azalma vaxtı." width="270" label_width="70"/>
+          <slider label="Azalma:" name="FSAudioMusicFadeOut" tool_tip="Sahədə musiqinin səsinin yumşaq azalma vaxtı." width="270" label_width="70" />
 			<text name="FSAudioMusicFadeOutSeconds" left_delta="275">
 				saniyə
 			</text>
-			<text name="show_stream_metadata_text" >
+          <text name="show_stream_metadata_text">
 				Axın başlığı bildirişlərini göstərin:
 			</text>
 			<radio_group name="show_stream_metadata">
@@ -263,9 +260,8 @@ Avtomatik oxutma
 				<radio_item label="Açılan pəncərə" width="150" name="radio_toasts" />
 				<radio_item label="Ümumi söhbət" name="radio_chat" />
 			</radio_group>
-			<check_box name="StreamMetadataAnnounceToChat" width="200" label="Başlıqları kanala göndər:"/>
+          <check_box name="StreamMetadataAnnounceToChat" width="200" label="Başlıqları kanala göndər:" />
 		</panel>
-
 		<panel label="İnterfeys səsləri" name="UI Sounds tab">
 			<text name="textFSExplanation_tab1">
 				Burada (səs UUID-lərini dəyişərək), interfeys səsini dəyişə, aktivləşdirə və ya deaktivləşdirə bilərsiniz.
@@ -279,6 +275,7 @@ Susmaya görə dəyərə qayıtmaq üçün UUID yanındakı 'D' düyməsini bas�
 			<button name="ui_sound_preview" tool_tip="Bu səsi oxut." />
 			<button name="ui_sound_default" tool_tip="Susmaya görə olan UUID-yə sıfırla." />
 		</panel>
-
 	</tab_container>
+</panel>
+  </scroll_container>
 </panel>

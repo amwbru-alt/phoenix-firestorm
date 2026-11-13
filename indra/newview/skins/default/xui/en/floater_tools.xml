@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<floater positioning="none" legacy_header_height="0" height="716" layout="topleft" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" name="toolbox floater" save_rect="true" short_title="Build Tools" single_instance="true" save_visibility="true" sound_flags="0" width="832" forme_creator_only="true" header_height="44" header_vpad="10" header_icon="Forme_UI_Cube" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="WMapRegion" header_font.style="BOLD">
+<floater positioning="none" legacy_header_height="0" height="478" layout="topleft" bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive" name="toolbox floater" save_rect="true" short_title="Build Tools" single_instance="true" save_visibility="true" sound_flags="0" width="620" forme_creator_only="true" header_height="36" header_vpad="7" header_icon="Forme_UI_Cube" bg_opaque_color="White" bg_alpha_color="White" header_font="SansSerif" header_font.size="Medium" header_font.style="BOLD" min_width="620" min_height="478" rect_control_suffix="_forme_tools_v4" title="Build tools">
   <floater.string name="grid_screen_text">
     Screen
   </floater.string>
@@ -51,7 +51,7 @@
   <floater.string name="selected_faces">
 		Faces:
 	</floater.string>
-  <button follows="left|top" height="25" image_bottom_pad="1" image_overlay="Tool_Zoom" image_selected="PushButton_Selected_Press" layout="topleft" left="10" name="button focus" tool_tip="Focus" width="35" font="DejaVu" font.size="LSmall" pad_bottom="1">
+  <button follows="left|top" height="25" image_bottom_pad="1" image_overlay="Tool_Zoom" image_selected="PushButton_Selected_Press" layout="topleft" name="button focus" tool_tip="Focus" width="35" font="DejaVu" font.size="LSmall" pad_bottom="1" left="10" top="10">
     <button.commit_callback function="BuildTool.setTool" parameter="Focus" />
   </button>
   <button follows="left|top" height="25" image_bottom_pad="1" image_overlay="Tool_Grab" image_selected="PushButton_Selected_Press" layout="topleft" left_pad="10" name="button move" tool_tip="Move" width="35" font="DejaVu" font.size="LSmall" pad_bottom="1">
@@ -121,7 +121,7 @@
     <check_box.commit_callback function="BuildTool.commitShowHighlight" />
   </check_box>
   <check_box control_name="SelectReflectionProbes" height="17" initial_value="false" label="Select Reflection Probes" layout="topleft" top_pad="-2" name="checkbox select probes" width="134" font="DejaVu" font.size="LSmall" />
-  <button left_pad="0" image_selected="ForwardArrow_Press" image_unselected="ForwardArrow_Off" layout="topleft" follows="top|left" name="Options..." tool_tip="See more grid options" top="78" right="-10" width="18" height="23">
+  <button image_selected="ForwardArrow_Press" image_unselected="ForwardArrow_Off" layout="topleft" follows="top|left" name="Options..." tool_tip="See more grid options" top="78" width="18" height="23" left="266">
     <button.commit_callback function="BuildTool.gridOptions" />
   </button>
   <button follows="left|top" height="20" image_disabled="Object_Cube" image_disabled_selected="Object_Cube" image_selected="Object_Cube_Selected" image_unselected="Object_Cube" layout="topleft" left="10" name="ToolCube" tool_tip="Cube" top="58" width="20" />
@@ -184,8 +184,8 @@
 	 [CAPACITY_STRING] [fmw:///app/openfloater/object_weights More info]
 	</text>
   <view_border bevel_style="none" follows="top|left" height="0" layout="topleft" left="6" name="cost_text_border" top="165" width="282" />
-  <tab_container follows="left|top" height="676" halign="center" name="Object Info Tabs" tab_max_width="138" tab_min_width="88" tab_position="top" tab_height="34" open_tabs_on_drag_and_drop="true" width="504" font="DejaVu" font.size="LSmall" layout="topleft" left="312" top="18">
-    <panel border="false" follows="all" label="General" layout="topleft" mouse_opaque="false" name="General" top="16" width="295">
+  <tab_container follows="left|top" height="448" halign="center" name="Object Info Tabs" tab_max_width="80" tab_min_width="54" tab_position="top" tab_height="28" open_tabs_on_drag_and_drop="true" width="304" font="DejaVu" font.size="LSmall" layout="topleft" left="306" top="10">
+    <panel border="false" follows="all" label="General" layout="topleft" mouse_opaque="false" name="General" top="16" width="304" height="420">
       <panel.string name="text deed continued">
 		Deed
 	 </panel.string>
@@ -231,45 +231,47 @@
       <panel.string name="multiple selection">
                 Multiple selection
             </panel.string>
-      <text follows="left|top" height="10" left="10" name="Name:" top="5" width="90" font="DejaVu" font.size="LSmall">
+      <scroll_container name="compact_build_general_scroll" layout="topleft" left="0" top="0" width="304" height="416" follows="all" opaque="false" border_visible="false">
+        <panel name="compact_build_general_body" layout="topleft" left="0" top="0" width="286" height="466" follows="left|top" background_visible="false">
+          <text follows="left|top" height="20" name="Name:" width="84" font="DejaVu" font.size="LSmall" left="8" top="10" layout="topleft">
                 Name:
             </text>
-      <line_editor follows="left|top|right" height="19" left_pad="0" max_length_bytes="63" name="Object Name" select_on_focus="true" top_delta="0" width="190" tool_tip="The name is limited to 63 characters. Longer prim names are cut short. Names can only consist of printable characters found in the ASCII-7 (non-extended) character set, with the exception of the vertical bar/pipe '|'." />
-      <text follows="left|top" height="10" left="10" name="Description:" top_pad="3" width="90" font="DejaVu" font.size="LSmall">
+          <line_editor follows="left|top" height="24" max_length_bytes="63" name="Object Name" select_on_focus="true" width="182" tool_tip="The name is limited to 63 characters. Longer prim names are cut short. Names can only consist of printable characters found in the ASCII-7 (non-extended) character set, with the exception of the vertical bar/pipe '|'." left="94" top="8" layout="topleft" />
+          <text follows="left|top" height="20" name="Description:" width="84" font="DejaVu" font.size="LSmall" left="8" top="38" layout="topleft">
                 Description:
             </text>
-      <line_editor follows="left|top|right" height="19" left_pad="0" max_length_bytes="127" name="Object Description" select_on_focus="true" top_delta="0" width="190" tool_tip="When people have 'Hover Tips on All Objects' selected in the viewer's settings, they'll see the object description pop-up for any object under their mouse pointer. The prim description is limited to 127 bytes any string longer then that will be truncated." />
-      <text type="string" left="10" length="1" follows="left|top" height="29" layout="topleft" name="Creator:" width="75" font="DejaVu" font.size="LSmall">
+          <line_editor follows="left|top" height="24" max_length_bytes="127" name="Object Description" select_on_focus="true" width="182" tool_tip="When people have 'Hover Tips on All Objects' selected in the viewer's settings, they'll see the object description pop-up for any object under their mouse pointer. The prim description is limited to 127 bytes any string longer then that will be truncated." left="94" top="36" layout="topleft" />
+          <text type="string" length="1" follows="left|top" height="20" layout="topleft" name="Creator:" width="76" font="DejaVu" font.size="LSmall" left="8" top="68">
                 Creator:
             </text>
-      <text type="string" length="1" follows="left|top" left_pad="0" height="24" layout="topleft" name="Creator Name" font="DejaVu" font.size="LSmall" top_delta="0" translate="false" width="190" word_wrap="true" use_ellipses="true">
+          <text type="string" length="1" follows="left|top" height="22" layout="topleft" name="Creator Name" font="DejaVu" font.size="LSmall" translate="false" width="188" word_wrap="true" use_ellipses="true" left="88" top="68">
                 fmw:///app/agent/00000000-0000-0000-0000-000000000000/inspect TestString PleaseIgnore (please.ignore)
             </text>
-      <text type="string" length="1" left="10" follows="left|top" height="29" layout="topleft" name="Owner:" top_pad="7" width="75" font="DejaVu" font.size="LSmall">
+          <text type="string" length="1" follows="left|top" height="20" layout="topleft" name="Owner:" width="76" font="DejaVu" font.size="LSmall" left="8" top="94">
                 Owner:
             </text>
-      <text type="string" length="1" follows="left|top" height="24" layout="topleft" name="Owner Name" font="DejaVu" font.size="LSmall" left_pad="0" top_delta="0" translate="false" width="190" word_wrap="true" use_ellipses="true">
+          <text type="string" length="1" follows="left|top" height="22" layout="topleft" name="Owner Name" font="DejaVu" font.size="LSmall" translate="false" width="188" word_wrap="true" use_ellipses="true" left="88" top="94">
                 fmw:///app/agent/00000000-0000-0000-0000-000000000000/inspect TestString PleaseIgnore (please.ignore)
             </text>
-      <text type="string" length="1" left="10" follows="left|top" height="19" layout="topleft" name="Last Owner:" font="DejaVu" font.size="LSmall" top_pad="7" width="75">
+          <text type="string" length="1" follows="left|top" height="20" layout="topleft" name="Last Owner:" font="DejaVu" font.size="LSmall" width="76" left="8" top="120">
                 Last Owner:
             </text>
-      <text type="string" length="1" follows="left|top" height="22" layout="topleft" name="Last Owner Name" font="DejaVu" font.size="LSmall" left_pad="0" top_delta="0" translate="false" width="190">
+          <text type="string" length="1" follows="left|top" height="22" layout="topleft" name="Last Owner Name" font="DejaVu" font.size="LSmall" translate="false" width="188" left="88" top="120">
                 fmw:///app/agent/00000000-0000-0000-0000-000000000000/inspect TestString PleaseIgnore (please.ignore)
             </text>
-      <text type="string" length="1" follows="left|top" layout="topleft" left="10" height="18" name="Group:" top_pad="-2" width="75" font="DejaVu" font.size="LSmall">
+          <text type="string" length="1" follows="left|top" layout="topleft" height="20" name="Group:" width="76" font="DejaVu" font.size="LSmall" left="8" top="146">
                 Group:
             </text>
-      <text type="string" length="1" follows="left|top" height="22" layout="topleft" name="Group Name" font="DejaVu" font.size="LSmall" left_pad="0" top_delta="0" translate="false" width="170" use_ellipses="true">
+          <text type="string" length="1" follows="left|top" height="22" layout="topleft" name="Group Name" font="DejaVu" font.size="LSmall" translate="false" width="162" use_ellipses="true" left="88" top="146">
                 fmw:///app/agent/00000000-0000-0000-0000-000000000000/inspect Loading...
             </text>
-      <button follows="top|right" height="18" image_overlay="Edit_Wrench" layout="topleft" right="-5" top_delta="0" name="button set group" tab_stop="false" tool_tip="Choose a group to share this object's permissions" width="18" font="DejaVu" font.size="LSmall" />
-      <check_box height="19" follows="left|top" label="Share" layout="topleft" name="checkbox share with group" tool_tip="Allow all members of the set group to share your modify permissions for this object. You must Deed to enable role restrictions." top_pad="3" left="85" width="87" font="DejaVu" font.size="LSmall" />
-      <button follows="top|right" height="19" label="Deed" label_selected="Deed" layout="topleft" name="button deed" right="-5" top_delta="-1" tool_tip="Deeding gives this item away with next owner permissions. Group shared objects can be deeded by a group officer." width="80" font="DejaVu" font.size="LSmall" pad_bottom="1" />
-      <text type="string" length="1" follows="left|top" height="16" layout="topleft" top_pad="10" left="10" name="label click action" width="82" font="DejaVu" font.size="LSmall">
+          <button follows="left|top" height="22" image_overlay="Edit_Wrench" layout="topleft" name="button set group" tab_stop="false" tool_tip="Choose a group to share this object's permissions" width="22" font="DejaVu" font.size="LSmall" left="254" top="146" />
+          <check_box height="22" follows="left|top" label="Share" layout="topleft" name="checkbox share with group" tool_tip="Allow all members of the set group to share your modify permissions for this object. You must Deed to enable role restrictions." width="104" font="DejaVu" font.size="LSmall" left="88" top="174" />
+          <button follows="left|top" height="22" label="Deed" label_selected="Deed" layout="topleft" name="button deed" tool_tip="Deeding gives this item away with next owner permissions. Group shared objects can be deeded by a group officer." width="80" font="DejaVu" font.size="LSmall" pad_bottom="1" left="196" top="174" />
+          <text type="string" length="1" follows="left|top" height="20" layout="topleft" name="label click action" width="84" font="DejaVu" font.size="LSmall" left="8" top="206">
                 Click to:
             </text>
-      <combo_box follows="left|top" height="23" layout="topleft" name="clickaction" width="148" top_delta="-4" left_pad="10" tool_tip="A click action enables you to interact with an object with a single left click. Each click action has a special cursor indicating what it does. Some click actions have requirements to function. For example Touch and Pay require scripts" drop_down_button.font="DejaVu" drop_down_button.font.size="LSmall">
+          <combo_box follows="left|top" height="24" layout="topleft" name="clickaction" width="182" tool_tip="A click action enables you to interact with an object with a single left click. Each click action has a special cursor indicating what it does. Some click actions have requirements to function. For example Touch and Pay require scripts" drop_down_button.font="DejaVu" drop_down_button.font.size="LSmall" left="94" top="202">
         <combo_box.item label="Touch  (default)" name="Touch/grab(default)" value="Touch" />
         <combo_box.item label="Sit on object" name="Sitonobject" value="Sit" />
         <combo_box.item label="Buy object" name="Buyobject" value="Buy" />
@@ -279,20 +281,20 @@
         <combo_box.item label="Ignore object" name="Ignoreobject" value="Ignore" />
         <combo_box.item label="None" name="None" value="None" />
       </combo_box>
-      <view_border left="5" right="-5" bevel_style="none" border_thickness="1" follows="left|top|right" height="55" name="SaleBorder" width="235" />
-      <check_box top_delta="3" height="23" label="For Sale:" layout="topleft" name="checkbox for sale" left="7" width="100" tool_tip="Lets people buy this object, its content or it copy inworld for specified price." font="DejaVu" font.size="LSmall" />
-      <combo_box left_pad="8" layout="topleft" follows="left|top" allow_text_entry="false" height="23" top_pad="-23" initial_value="2" max_chars="20" mouse_opaque="true" name="sale type" width="168" tool_tip="Select whether purchaser will receive a copy, copy of the content or item itself." drop_down_button.font="DejaVu" drop_down_button.font.size="LSmall">
+          <view_border bevel_style="none" border_thickness="1" follows="left|top" height="60" name="SaleBorder" width="278" left="4" top="236" layout="topleft" />
+          <check_box height="24" label="For Sale:" layout="topleft" name="checkbox for sale" width="102" tool_tip="Lets people buy this object, its content or it copy inworld for specified price." font="DejaVu" font.size="LSmall" left="8" top="240" follows="left|top" />
+          <combo_box layout="topleft" follows="left|top" allow_text_entry="false" height="24" initial_value="2" max_chars="20" mouse_opaque="true" name="sale type" width="160" tool_tip="Select whether purchaser will receive a copy, copy of the content or item itself." drop_down_button.font="DejaVu" drop_down_button.font.size="LSmall" left="116" top="240">
         <combo_box.item name="Copy" label="Copy" value="2" />
         <combo_box.item name="Contents" label="Contents" value="3" />
         <combo_box.item name="Original" label="Original" value="1" />
       </combo_box>
-      <spinner follows="left|top" decimal_digits="0" increment="1" top_pad="5" left="10" name="Edit Cost" label="Price: L$" label_width="65" valign="center" width="165" min_val="0" height="20" max_val="999999999" tool_tip="Object cost." font="DejaVu" font.size="LSmall" />
-      <button left_pad="10" enabled="false" follows="top|right" height="20" label="Apply" name="button mark for sale" font="DejaVu" font.size="LSmall" tool_tip="Mark/Update object(s) for sale." width="100" />
-      <button top_pad="7" left="10" follows="top|right" height="20" label="Copy Keys" name="btnCopyKeys" font="DejaVu" font.size="LSmall" tool_tip="Copies the selected object's root key to the clipboard. Shift-click copies all of the selected objects' keys" width="80">
+          <spinner follows="left|top" decimal_digits="0" increment="1" name="Edit Cost" label="Price: L$" label_width="65" valign="center" width="156" min_val="0" height="22" max_val="999999999" tool_tip="Object cost." font="DejaVu" font.size="LSmall" left="8" top="270" layout="topleft" />
+          <button enabled="false" follows="left|top" height="24" label="Apply" name="button mark for sale" font="DejaVu" font.size="LSmall" tool_tip="Mark/Update object(s) for sale." width="104" left="172" top="268" layout="topleft" />
+          <button follows="left|top" height="24" label="Copy Keys" name="btnCopyKeys" font="DejaVu" font.size="LSmall" tool_tip="Copies the selected object's root key to the clipboard. Shift-click copies all of the selected objects' keys" width="84" left="8" top="306" layout="topleft">
         <button.commit_callback function="BuildTool.CopyKeys" />
       </button>
-      <check_box height="15" width="110" label="Show in search" layout="topleft" left_pad="15" name="search_check" tool_tip="Let people see this object in search results" font="DejaVu" font.size="LSmall" />
-      <panel border="false" follows="left|top" layout="topleft" mouse_opaque="false" background_visible="true" bg_alpha_color="Black_10" name="perms_build" left="0" top_pad="4" height="98" width="290">
+          <check_box height="24" width="174" label="Show in search" layout="topleft" name="search_check" tool_tip="Let people see this object in search results" font="DejaVu" font.size="LSmall" left="102" top="306" follows="left|top" />
+          <panel border="false" follows="left|top" layout="topleft" mouse_opaque="false" background_visible="true" bg_alpha_color="Black_10" name="perms_build" height="98" width="286" left="0" top="340">
         <text type="string" length="1" left="10" word_wrap="true" top_pad="4" text_color="EmphasisColor" height="24" follows="left|top|right" layout="topleft" name="perm_modify" width="214" font="DejaVu" font.size="LSmall">
                 You can modify this object
             </text>
@@ -327,7 +329,7 @@
                 F:
             </text>
       </panel>
-      <panel border="false" follows="left|top" layout="topleft" mouse_opaque="false" name="pathfinding_attrs_panel" left="0" top_pad="0" height="25" width="290">
+          <panel border="false" follows="left|top" layout="topleft" mouse_opaque="false" name="pathfinding_attrs_panel" height="25" width="286" left="0" top="438">
         <text type="string" follows="left|top" name="pathfinding_attributes_label" top_pad="4" width="150" left="10" font="DejaVu" font.size="LSmall">
         Pathfinding attributes:
       </text>
@@ -335,7 +337,9 @@
       </text>
       </panel>
     </panel>
-    <panel border="false" follows="all" height="567" label="Object" layout="topleft" left_delta="0" mouse_opaque="false" name="Object" top="16" width="295">
+      </scroll_container>
+    </panel>
+    <panel border="false" follows="all" height="420" label="Object" layout="topleft" left_delta="0" mouse_opaque="false" name="Object" top="16" width="304">
       <panel.string name="paste_position">
 Paste Position
 [VALUE]
@@ -348,6 +352,22 @@ Paste Size
 Paste Rotation
 [VALUE]
             </panel.string>
+      <string name="mesh_lod_num_tris_values">
+[HIGHTRIS]
+[MIDTRIS]
+[LOWTRIS]
+[LOWESTTRIS]
+        </string>
+      <string name="ll_lod_tooltip_msg">Linden Lab Second Life Viewer default ([FACTOR])</string>
+      <string name="fs_lod_tooltip_msg">[APP_NAME] Viewer default ([FACTOR])</string>
+      <string name="user_lod_label_string">[FACTOR]</string>
+      <string name="LODSwapFormatString" visible="false">
+[HIGH2MED]
+[MED2LOW]
+[LOW2LOWEST]
+        </string>
+      <scroll_container name="compact_build_object_scroll" layout="topleft" left="0" top="0" width="304" height="416" follows="all" opaque="false" border_visible="false">
+        <panel name="compact_build_object_body" layout="topleft" left="0" top="0" width="286" height="590" follows="left|top" background_visible="false">
       <check_box height="19" label="Locked" layout="topleft" name="checkbox locked" tool_tip="Prevents object from being moved or deleted. Frequently useful during building to avoid unintended edits." top_pad="5" left="10" width="123" font="DejaVu" font.size="LSmall" />
       <check_box height="19" label="Physical" layout="topleft" name="Physical Checkbox Ctrl" tool_tip="Allows object to be pushed and affected by gravity" top_pad="0" width="123" font="DejaVu" font.size="LSmall" />
       <check_box height="19" label="Temporary" layout="topleft" name="Temporary Checkbox Ctrl" tool_tip="Causes object to be deleted 1 minute after creation" top_pad="0" width="123" font="DejaVu" font.size="LSmall" />
@@ -494,12 +514,6 @@ Medium:
 Low:
 Lowest:
         </text>
-      <string name="mesh_lod_num_tris_values">
-[HIGHTRIS]
-[MIDTRIS]
-[LOWTRIS]
-[LOWESTTRIS]
-        </string>
       <text follows="left|top" height="64" layout="topleft" left_pad="10" halign="right" name="mesh_lod_num_tris" font="DejaVu" font.size="LSmall" top_delta="0" value="--" visible="false" width="80" />
       <combo_box height="19" layout="topleft" name="LOD_show_combo" top_pad="20" left="125" width="150" visible="false" drop_down_button.font="DejaVu" drop_down_button.font.size="LSmall">
         <combo_box.item label="Default" name="Default" value="-1" />
@@ -515,30 +529,24 @@ Lowest:
       <text follows="left|top" height="16" layout="topleft" left="190" halign="center" name="LOD_swap_defaults_label" font="DejaVu" font.size="LSmall" top_pad="3" value="Default" tool_tip="The default LOD factor setting that will be applied by most viewers." visible="true" width="60" />
       <text follows="left|top" height="16" layout="topleft" left_pad="5" halign="center" name="LOD_swap_usr_label" font="DejaVu" font.size="LSmall" top_delta="0" tool_tip="Your current setting, taken from RenderVolumeLODFactor" value="Yours" visible="true" width="30" />
       <text follows="left|top" height="16" layout="topleft" left="125" halign="left" name="LOD_swap_label" font="DejaVu" font.size="LSmall" top_pad="3" value="LOD Swap" visible="false" width="60" />
-      <string name="ll_lod_tooltip_msg">Linden Lab Second Life Viewer default ([FACTOR])</string>
       <text follows="left|top" height="16" layout="topleft" left_pad="5" halign="center" name="LOD_swap_ll_default" font="DejaVu" font.size="LSmall" top_delta="0" value="LL" visible="false" width="30" />
-      <string name="fs_lod_tooltip_msg">[APP_NAME] Viewer default ([FACTOR])</string>
       <text follows="left|top" height="16" layout="topleft" left_pad="5" halign="center" name="LOD_swap_fs_default" font="DejaVu" font.size="LSmall" top_delta="0" visible="false" width="30">
             [APP_NAME_ABBR]
         </text>
-      <string name="user_lod_label_string">[FACTOR]</string>
       <text follows="left|top" height="16" layout="topleft" left_pad="5" halign="center" name="LOD_swap_usr_current" font="DejaVu" font.size="LSmall" top_delta="0" tool_tip="Your current LOD Factor" value="[FACTOR]" visible="false" width="30" />
       <text follows="left|top" height="50" layout="topleft" left="125" halign="left" name="LOD_swap_LOD_Change_label" font="DejaVu" font.size="LSmall" top_pad="3" visible="false" width="65">
 High ↔ Med
 Med ↔ Low
 Low ↔ Lwst         
         </text>
-      <string name="LODSwapFormatString" visible="false">
-[HIGH2MED]
-[MED2LOW]
-[LOW2LOWEST]
-        </string>
       <text follows="left|top" height="50" layout="topleft" left_pad="0" halign="right" name="LOD_swap_ll_values" font="DejaVu" font.size="LSmall" top_delta="0" visible="false" width="30" />
       <text follows="left|top" height="50" layout="topleft" left_pad="5" halign="right" name="LOD_swap_fs_values" font="DejaVu" font.size="LSmall" top_delta="0" value="--" visible="false" width="30" />
       <text follows="left|top" height="50" layout="topleft" left_pad="5" halign="right" name="LOD_swap_usr_values" font="DejaVu" font.size="LSmall" top_delta="0" value="--" visible="false" width="30" />
       <text name="LODSwapTableDscriptionsText" font="DejaVu" font.size="LSmall" follows="top|left" layout="topleft" left="125" right="-1" word_wrap="true" top_pad="15" tool_tip="Best practice: Creators should ensure good LOD behaviour for Default settings across all viewers." height="100">
           This table shows the LOD change boundaries in metres from the camera.
         </text>
+        </panel>
+      </scroll_container>
     </panel>
     <panel border="false" follows="all" height="367" label="Features" layout="topleft" left_delta="0" mouse_opaque="false" name="Features" top_delta="0" width="295">
       <panel.string name="None">None</panel.string>
@@ -619,7 +627,7 @@ Low ↔ Lwst
       <panel_inventory_object border="true" border_visible="true" bevel_style="in" follows="left|top|right" height="325" layout="topleft" left="10" name="contents_inventory" top="70" width="275" />
     </panel>
   </tab_container>
-  <panel follows="left|top" height="676" layout="topleft" name="land info panel" width="504" left="312" top="18">
+  <panel follows="left|top" height="448" layout="topleft" name="land info panel" width="304" left="306" top="10">
     <text type="string" length="1" font="DejaVu" font.size="Small" follows="left|top" height="19" layout="topleft" left="20" name="label_parcel_info" top="24" width="240">
             Parcel Information
         </text>

@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="Резервная копия" name="backup">
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 	<text name="backup_path_label" width="180">
 		Путь резервного копирования:
 	</text>
@@ -67,7 +69,6 @@
 						<row name="restore_per_account_row_toolbars">
 							<column name="restore_per_account_files_label">Панели инструментов</column>
 						</row>
-
 						<row name="restore_per_account_row_tphistory">
 							<column name="restore_per_account_files_label">Истории телепорта</column>
 						</row>
@@ -124,4 +125,6 @@
 			<button width="165" label="Восстановить настройки" name="restore_settings" />
 		</layout_panel>
 	</layout_stack>
+</panel>
+  </scroll_container>
 </panel>

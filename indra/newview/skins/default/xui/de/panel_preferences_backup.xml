@@ -1,9 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="Sicherung" name="backup">
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 	<text name="backup_path_label" width="100">
 		Sicherungspfad:
 	</text>
-	<button label="Setzen" name="set_backup_settings_path"/>
+      <button label="Setzen" name="set_backup_settings_path" />
 	<layout_stack name="ls_account_specific_label">
 		<layout_panel name="lp_account_specific_label" height="60">
 			<text name="account_specific_label">
@@ -70,7 +72,6 @@
 						<row name="restore_per_account_row_toolbars">
 							<column name="restore_per_account_files_label">Symbolleisten</column>
 						</row>
-
 						<row name="restore_per_account_row_tphistory">
 							<column name="restore_per_account_files_label">Teleport-Liste</column>
 						</row>
@@ -123,8 +124,10 @@
 			<button label="Alles abwählen" name="deselect_all_button" />
 			<check_box label="Globale Einstellungen wiederherstellen" name="restore_global_settings_checkbox" />
 			<check_box label="Benutzerspezifische Einstellungen wiederherstellen" name="restore_per_account_settings_checkbox" />
-			<button label="Einstellungen sichern" name="backup_settings" width="190" left="25"/>
-			<button label="Einstellungen wiederherstellen" name="restore_settings" width="190" right="-25"/>
+          <button label="Einstellungen sichern" name="backup_settings" width="190" left="25" />
+          <button label="Einstellungen wiederherstellen" name="restore_settings" width="190" right="-25" />
 		</layout_panel>
 	</layout_stack>
+</panel>
+  </scroll_container>
 </panel>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <floater name="move_floater" title="">
 	<string name="walk_forward_tooltip">
 		Cammina in avanti (premi freccia su o W)
@@ -59,7 +59,7 @@
 						<joystick_turn name="forward btn" tool_tip="Cammina in avanti (premi freccia su o W)" />
 					</layout_panel>
 					<layout_panel name="lp_col1_3">
-						<button name="turn right btn" tool_tip="Gira a destra (premi freccia destra o D)"/>
+            <button name="turn right btn" tool_tip="Gira a destra (premi freccia destra o D)" />
 					</layout_panel>
 					<layout_panel name="lp_col1_4">
 						<button name="move up btn" tool_tip="Vola in alto (premi E)" />

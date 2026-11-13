@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="UI-Pref" name="Display panel">
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 <tab_container label="Preferências de Tempestade de Fogo" name="tabs">
-
-	
 	<panel label="Mundo 3D" name="UI Prefs Panel">
 		<text name="HoverTipText">
 			Dicas para passar o mouse:
@@ -42,8 +42,6 @@
 			<combo_box.item label="Todos os objetos" name="ScriptDialogOption_2" />
 		</combo_box>
 	</panel>
-
-	
 	<panel label="Sobreposição 2D" name="ui-2d-overlay">
 		<text name="UI Size:" width="95">
 			Dimensionamento da IU:
@@ -107,8 +105,6 @@
 			Sek.
 		</text>
 	</panel>
-
-	
 	<panel label="Barras superiores" name="UI-interface-top-bars">
 		<text name="statusbar_textbox">
 			Barra de status:
@@ -144,8 +140,6 @@
 		<check_box label="Mostrar barra de navegação e pesquisa" name="ShowNavbarNavigationPanel" />
 		<check_box label="Mostrar barra de pesquisa" name="ShowSearchTopBar" />
 	</panel>
-
-	
 	<panel label="Janela" name="UI-interface-windows-tab">
 		<check_box label="Abrir perfil ao clicar no nome do avatar" name="FSInspectAvatarSlurlOpensProfile" tool_tip="Se ativado, clicar no link do nome de um avatar abrirá diretamente todo o seu perfil." />
 		<check_box label="Desativar abertura automática da lista de bloqueios" name="FSDisableBlockListAutoOpen" tool_tip="Desativa a abertura automática da lista de bloqueio quando avatares ou objetos são bloqueados." />
@@ -198,8 +192,6 @@
 		<check_box label="Sempre mostrar o botão “Itens Recebidos” no inventário" name="FSAlwaysShowInboxButton" tool_tip="Se ativado, o botão Itens Recebidos sempre aparecerá na janela do inventário, mesmo quando as pastas forem exibidas no inventário." />
 		<check_box label="Permitir termos de busca por guia no inventário" name="FSSplitInventorySearchOverTabs" tool_tip="Se ativado, diferentes termos de pesquisa podem ser inseridos para cada guia da janela de inventário." />
 	</panel>
-
-	
 	<panel label="notificações" name="UI-toasts-tab">
 		<text name="ToastSettings">
 			Configurações de notificação (pop-ups, console, notificações):
@@ -253,7 +245,6 @@
 		<check_box label="Não sacudir a tela em reinício de região" name="FSNoScreenShakeOnRegionRestart" />
 		<check_box label="Enviar aviso de reinício de região ao canal:" width="355" name="FSReportRegionRestartToChat" />
 	</panel>
-	
 	<panel label="Escrita" name="UI-font-tab">
 		<text name="tooltip_textbox1">
 			Esquema de fonte:
@@ -306,4 +297,5 @@ Padrão 0. Valores maiores podem não funcionar corretamente.
 		<check_box label="Use um botão de emoji" name="FSUsePrettyEmojiButton" />
 	</panel>
 </tab_container>
+</panel>  </scroll_container>
 </panel>

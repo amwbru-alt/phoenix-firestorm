@@ -12,6 +12,7 @@
 #include "llcoros.h"
 #include "llcorehttputil.h"
 #include "llfloaterreg.h"
+#include "llstatusbar.h"
 #include "lliconctrl.h"
 #include "llnotificationsutil.h"
 #include "llnotificationptr.h"
@@ -107,7 +108,16 @@ void FSMarketBrowser::onOpen(const LLSD& key)
     mItemId = key["item_id"].asString(); mAgent = gAgent.getID(); mSession = gAgent.getSessionID(); mCap = capability();
     ++mRevision; mBusy = false; mProduct = LLSD(); mItems = LLSD::emptyArray(); refresh();
 }
-void FSMarketBrowser::status(const std::string& message) { getChild<LLTextBox>("status")->setText(message); }
+void FSMarketBrowser::status(const std::string& message)
+{
+    auto* label = getChild<LLTextBox>("status");
+    label->setText(message);
+    if (mMode == "catalog")
+    {
+        const bool empty = !mItems.size();
+        label->setShape(empty ? LLRect(36, 180, 644, 108) : LLRect(16, 68, 664, 44));
+    }
+}
 void FSMarketBrowser::draw()
 {
     if (mAgent != gAgent.getID() || mSession != gAgent.getSessionID() || mCap != capability())
@@ -151,7 +161,11 @@ void FSMarketBrowser::request(LLSD data, std::function<void(FSMarketBrowser*, co
         const auto status = LLCoreHttpUtil::HttpCoroutineAdapter::getStatusFromLLSD(result[LLCoreHttpUtil::HttpCoroutineAdapter::HTTP_RESULTS]);
         if (!status) {
             result["ok"] = false;
-            if (result["message"].asString().empty()) result["message"] = result["error"].asString().empty() ? "Не удалось получить ответ. Незавершённый заказ сохранён для проверки." : result["error"].asString();
+            if (result["message"].asString().empty()) result["message"] = result["error"].asString().empty()
+                ? data["action"].asString() == "checkout"
+                    ? "Не удалось получить ответ. Незавершённый заказ сохранён для проверки."
+                    : "Не удалось загрузить данные маркета. Нажмите «Обновить» или откройте сайт."
+                : result["error"].asString();
         }
         view->status(result["message"].asString()); done(view, result);
     });
@@ -293,7 +307,11 @@ void FSMarketBrowser::submit(const LLSD& order)
         LLSD data = state();
         const S32 code = result["http_status"].asInteger();
         if (ForMeMarket::releaseReceipt(result["ok"].asBoolean(), code, result["code"].asString())) { data.erase("pending"); save(data); }
-        if (result["ok"].asBoolean()) for (const auto& item : llsd::inArray(order["items"])) removeItem(item["item_id"].asString());
+        if (result["ok"].asBoolean())
+        {
+            for (const auto& item : llsd::inArray(order["items"])) removeItem(item["item_id"].asString());
+            LLStatusBar::sendMoneyBalanceRequest();
+        }
         view->render(); view->status(result["ok"].asBoolean() ? "Покупка завершена. Товары доставлены в инвентарь." : result["message"].asString());
     });
 }

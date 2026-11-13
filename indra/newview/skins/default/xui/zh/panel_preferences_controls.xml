@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="控制" name="controls">
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 	<combo_box name="key_mode">
 		<combo_box.item label="第三人稱視角" name="third_person" />
 		<combo_box.item label="第一人稱視角" name="first_person" />
@@ -7,4 +9,5 @@
 		<combo_box.item label="坐下" name="sitting" />
 	</combo_box>
 	<button label="重設" tool_tip="恢復所有控制模式的預設值。" name="restore_defaults" />
+</panel>  </scroll_container>
 </panel>

@@ -53,4 +53,5 @@
     <search_editor name="forme_world_search" label="Поиск мест…" />
     <button name="forme_tools_settings" tool_tip="Настройки" />
   </panel>
+  <button name="forme_hud_balance" tool_tip="Деньги на счёте — нажмите, чтобы обновить" />
 </panel>

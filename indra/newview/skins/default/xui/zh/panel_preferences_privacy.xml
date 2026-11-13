@@ -1,8 +1,10 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="隱私" name="im">
 	<string name="AutoresponseItemNotSet">未設定項目</string>
 	<string name="AutoresponseItemNotAvailable">項目不可用</string>
 	<string name="AutoresponseItemNotLoggedIn">未登入</string>
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 	<tab_container label="隱私" name="tabs">
 		<panel label="常規" name="tab-general">
 			<panel.string name="log_in_to_change">登入以修改</panel.string>
@@ -10,9 +12,7 @@
 			<text name="cache_size_label">(地點、圖片、網頁、搜尋)</text>
 			<check_box label="在搜尋結果中顯示我的個人檔案資訊" name="online_searchresults" />
 			<check_box label="只有我的朋友和群組知道我在線" name="online_visibility" />
-
 			<check_box label="顯示已加入的群組邀請" name="FSShowJoinedGroupInvitations" />
-
 			<check_box label="允許指令碼檔案知道我的界面語言" name="LanguageIsPublic" />
 			<check_box label="登入時自動顯示我的收藏夾項目（在「開始」下拉式選單中）" name="favorites_on_login_check" />
 			<check_box label="自動接受新物件" name="Auto_Accept_New_Inventory" />
@@ -74,4 +74,5 @@
 			<button label="清除" name="clear_autoresponse_item" />
 		</panel>
 	</tab_container>
+</panel>  </scroll_container>
 </panel>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <floater name="floater_notifications_tabbed" title="通知">
 	<floater.string name="system_tab_title">
 		系統：([COUNT])

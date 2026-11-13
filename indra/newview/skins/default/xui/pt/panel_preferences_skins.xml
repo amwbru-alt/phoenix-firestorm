@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="Aparência da interface" name="skin_panel">
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 	<text name="skin_textbox">
         Aparência da interface:
     </text>
@@ -12,10 +14,12 @@
     <text name="theme_textbox2">
         (Requer reinício)
     </text>
-    <check_box label="Redefinir botões ao trocar de interface" tool_tip="Se ativado, ao trocar a interface os botões serão redefinidos para o layout padrão correspondente." name="reset_toolbar_settings"/>
-    <check_box label="Redefinir botões ao trocar de modo" tool_tip="Se ativado, ao trocar o modo de login os botões serão redefinidos para o layout padrão correspondente." name="FSToolbarsResetOnModeChange"/>
-    <check_box label="Usar cursor no estilo Viewer 1" name="use_legacy_cursors"/>
+      <check_box label="Redefinir botões ao trocar de interface" tool_tip="Se ativado, ao trocar a interface os botões serão redefinidos para o layout padrão correspondente." name="reset_toolbar_settings" />
+      <check_box label="Redefinir botões ao trocar de modo" tool_tip="Se ativado, ao trocar o modo de login os botões serão redefinidos para o layout padrão correspondente." name="FSToolbarsResetOnModeChange" />
+      <check_box label="Usar cursor no estilo Viewer 1" name="use_legacy_cursors" />
     <text name="theme_textbox3">
         (Requer reinício)
     </text>
+</panel>
+  </scroll_container>
 </panel>

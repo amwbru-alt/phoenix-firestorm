@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="Sauvegarde" name="backup">
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 	<text name="backup_path_label">Dossier :</text>
-	<button label="Définir" name="set_backup_settings_path"/>
+      <button label="Définir" name="set_backup_settings_path" />
 	<layout_stack name="ls_account_specific_label">
 		<layout_panel name="lp_account_specific_label">
 			<text name="account_specific_label">Vous êtes actuellement déconnecté. Veuillez noter que les paramètres spécifiques à votre compte ne peuvent être sauvegardés et restaurés que lorsque vous êtes en ligne. En revanche, les  paramètres qui s'appliquent à tous les comptes peuvent être sauvegardés sans être connecté.</text>
@@ -11,8 +13,8 @@
 			<layout_stack name="ls_list_view_stack">
 				<layout_panel name="lp_restore_global_files">
 					<scroll_list name="restore_global_files_list">
-						<column label="Paramètres généraux :" name="restore_global_files_label"/>
-						<column label="Valeur" name="value"/>
+                <column label="Paramètres généraux :" name="restore_global_files_label" />
+                <column label="Valeur" name="value" />
 						<row name="restore_global_row_login">
 							<column name="restore_global_files_label">Informations de connexion</column>
 						</row>
@@ -44,8 +46,8 @@
 				</layout_panel>
 				<layout_panel name="lp_restore_per_account_files">
 					<scroll_list name="restore_per_account_files_list">
-						<column label="Liés au compte :" name="restore_per_account_files_label"/>
-						<column label="Valeur" name="value"/>
+                <column label="Liés au compte :" name="restore_per_account_files_label" />
+                <column label="Valeur" name="value" />
 						<row name="restore_per_account_row_blacklist">
 							<column name="restore_per_account_files_label">Liste noire</column>
 						</row>
@@ -64,7 +66,6 @@
 						<row name="restore_per_account_row_toolbars">
 							<column name="restore_per_account_files_label">Barres d'outils</column>
 						</row>
-
 						<row name="restore_per_account_row_tphistory">
 							<column name="restore_per_account_files_label">Historique de téléportation</column>
 						</row>
@@ -84,8 +85,8 @@
 				</layout_panel>
 				<layout_panel name="lp_restore_folders">
 					<scroll_list name="restore_global_folders_list">
-						<column label="Divers :" name="restore_global_folders_label"/>
-						<column label="Valeur" name="value"/>
+                <column label="Divers :" name="restore_global_folders_label" />
+                <column label="Valeur" name="value" />
 						<row name="restore_folders_row_beams">
 							<column name="restore_global_folders_label">Faisceaux de sélection</column>
 						</row>
@@ -113,12 +114,14 @@
 					</scroll_list>
 				</layout_panel>
 			</layout_stack>
-			<button label="Tout sélectionner" name="select_all_button"/>
-			<button label="Tout désélectionner" name="deselect_all_button"/>
-			<check_box label="Restaurer les paramètres généraux" name="restore_global_settings_checkbox"/>
-			<check_box label="Restaurer les paramètres liés au compte" name="restore_per_account_settings_checkbox"/>
-			<button label="Sauvegarder" name="backup_settings"/>
-			<button label="Restaurer" name="restore_settings"/>
+          <button label="Tout sélectionner" name="select_all_button" />
+          <button label="Tout désélectionner" name="deselect_all_button" />
+          <check_box label="Restaurer les paramètres généraux" name="restore_global_settings_checkbox" />
+          <check_box label="Restaurer les paramètres liés au compte" name="restore_per_account_settings_checkbox" />
+          <button label="Sauvegarder" name="backup_settings" />
+          <button label="Restaurer" name="restore_settings" />
 		</layout_panel>
 	</layout_stack>
+</panel>
+  </scroll_container>
 </panel>

@@ -1,7 +1,8 @@
-<?xml version='1.0' encoding='utf-8' standalone="yes" ?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="Mover e ver" name="move_panel">
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 	<tab_container label="Mover e ver" name="tabs">
-		
 		<panel label="Visão" name="tab-view">
 			<slider label="Ângulo de visão" name="camera_fov" tool_tip="No mundo real, este é um recurso de zoom. Ele altera o ângulo de visão dentro da janela do visualizador. Tem a mesma função de pressionar Ctrl-0 ou Ctrl-8. NOTA: Este recurso não funciona quando o Flycam está ativado (3D SpaceNavigator)." />
 			<button name="Def_CameraAngle" label="S" tool_tip="Redefinir para o valor padrão." />
@@ -38,8 +39,6 @@
 				<combo_box.item label="Desligado" name="2" />
 			</combo_box>
 		</panel>
-
-		
 		<panel label="Modo Mouselook" name="tab-mouselook">
 			<check_box label="Habilitar a funcionalidade Mouselook" name="EnableMouselook" tool_tip="Ativa perspectiva em primeira pessoa e controle com o mouse." />
 			<check_box label="Exibir meu avatar no Mouselook" name="first_person_avatar_visible" />
@@ -57,8 +56,6 @@
 			</text>
 			<check_box label="Reverter" name="invert_mouse" />
 		</panel>
-
-		
 		<panel label="Movimento" name="tab-movement">
 			<check_box label="Mover com as setas do teclado" name="arrow_keys_move_avatar_check" tool_tip="Aplica-se exclusivamente à janela “Bate-papo por proximidade” na parte inferior do visualizador, e não à guia correspondente na janela “Conversas”." />
 			<check_box label="Mover com letras (ex: WASD)" name="LetterKeysAffectsMovementNotFocusChatBar" />
@@ -100,8 +97,6 @@
 			<check_box label="Permitir ação de clique duplo em objetos com script" name="FSAllowDoubleClickOnScriptedObjects" />
 			<button label="Configuração do joystick" name="joystick_setup_button" />
 		</panel>
-
-		
 		<panel label="Teleportes" name="tab-teleports">
 			<check_box label="Reproduza efeitos sonoros ao se teletransportar" name="PlayTeleportSound" />
 			<check_box label="Sempre voar após teleportar" name="FSFlyAfterTeleport" />
@@ -112,8 +107,6 @@
 			<check_box label="Deixe “Mostrar apenas amigos” ativado após o teletransporte" name="FSRenderFriendsOnlyPersistsTP" tool_tip="Se habilitada, a configuração “Mostrar apenas amigos” permanece habilitada após um teletransporte (padrão: desabilitada)" />
 			<check_box label="Mostrar SLurl da região de origem do TP" name="FSShowBackSLURL" />
 		</panel>
-
-		
 		<panel label="mapa-múndi &amp; minimapa" name="tab-maps">
 			<text name="minimap_options_label">
 			   opções de minimapa:
@@ -137,4 +130,5 @@
 			<check_box label="TP com duplo clique no mapa-múndi" name="FSWorldMapDoubleclickTeleport" tool_tip="Ativa o teletransporte para um destino no mapa-múndi clicando duas vezes." />
 		</panel>
 	</tab_container>
+</panel>  </scroll_container>
 </panel>

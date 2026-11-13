@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="Pessoas" name="people_panel">
 	<string name="no_recent_people" value="Não há ninguém recente. Procurando pessoas? Use a [fmw:///app/search/people Busca] ou o [fmw:///app/worldmap Mapa]." />
 	<string name="no_filtered_recent_people" value="Não encontrou o que procurava? Tente a [fmw:///app/search/people/[SEARCH_TERM] Busca]." />
@@ -34,46 +34,6 @@ Procurando pessoas? Use o [fmw:///app/worldmap Mapa].
 	</panel.string>
 	<tab_container name="tabs">
 		<panel label="Por perto" name="nearby_panel">
-			<tab_container name="tabcont_radarpeople_main">
-				<panel name="panel_radar" label="Lista" />
-				<panel name="radarmap_options_panel" label="Opções">
-					<scroll_container label="Opções" name="radarmap_options_scroll_container">
-						<container_view name="radarmap_options_container_view" label="Opções">
-							<panel name="radarmap_options_scrolled_panel">
-								<check_box label="Mostrar minimapa acima do radar" name="ShowRadarMinimap"/>
-								<check_box label="Mostrar avatares bloqueados e na blacklist" name="FSRadarShowMutedAndDerendered"/>
-								<check_box label="Avisar ao entrar na distância de renderização" name="RadarReportDrawRangeEnter"/>
-								<check_box label="Avisar ao sair da distância de renderização" name="RadarReportDrawRangeLeaving"/>
-								<check_box label="Avisar ao entrar no alcance do chat" name="RadarReportChatRangeEnter"/>
-								<check_box label="Avisar ao sair do alcance do chat" name="RadarReportChatRangeLeave"/>
-								<check_box label="Avisar ao entrar na região" name="RadarReportSimRangeEnter"/>
-								<check_box label="Avisar ao sair da região" name="RadarReportSimRangeLeave"/>
-								<check_box label="Enviar avisos de entrada para scripts" name="RadarEnterChannelAlert"/>
-								<check_box label="Enviar avisos de saída para scripts" name="RadarLeaveChannelAlert"/>
-								<check_box label="Usar ponte LSL" tool_tip="Se ativado, funções do radar que determinam a localização de avatares em grande altitude são auxiliadas pela ponte LSL, especialmente quando estão além da distância de renderização." name="FSRadarEnhanceByBridge"/>
-								<check_box label="Colorir nomes por distância" name="FSRadarColorNamesByDistance"/>
-								<check_box label="Alcance:" tool_tip="Limita os resultados a um raio definido" name="LimitRadarByRange" />
-								<text name="radarmap_range_label" value="Formato do nome:"/>
-								<combo_box name="RadarNameFormat">
-									<combo_box.item name="RadarNameFormat_display" label="Nome de exibição" />
-									<combo_box.item name="RadarNameFormat_user" label="Nome de usuário" />
-									<combo_box.item name="RadarNameFormat_displayuser" label="Nome de exibição (nome de usuário)" />
-									<combo_box.item name="RadarNameFormat_userdisplay" label="Nome de usuário (nome de exibição)" />
-								</combo_box>
-								<text name="columns_label" value="Colunas exibidas:" />
-
-								<check_box label="Hora" name="column_seen" />
-								<check_box label="Idade" name="column_age" />
-								<check_box label="Mesma região" name="column_region" />
-								<check_box label="Status digitando" name="column_typing_status" />
-								<check_box label="Status sentado" name="column_sitting_status" />
-								<check_box label="Informações de pagamento" name="column_flags" />
-								<check_box label="Notas" name="notes_flags" />
-							</panel>
-						</container_view>
-					</scroll_container>
-				</panel>
-			</tab_container>
 		</panel>
 		<panel label="Recentes" name="recent_panel" />
 		<panel label="Bloqueados" name="blocked_panel" />

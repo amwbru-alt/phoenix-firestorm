@@ -1,600 +1,147 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<panel
-	default_tab_group="1"
-	follows="all"
-	height="423"
-	label="People"
-	layout="topleft"
-	left="0"
-	min_height="350"
-	name="people_panel"
-	top="0"
-	width="333">
-	<string name="FlagsColumnType" value="icon"/>
-	<string name="FlagsColumnValue_0" value=""/>
-	<string name="FlagsColumnValue_1" value="Payment_Info_Filled"/>
-	<string name="FlagsColumnValue_2" value="Payment_Info_Used"/>
-    <string
-		name="no_recent_people"
-		value="No recent people. Looking for people to hang out with? Use the search box to find topics or content you might be interested in, then visit those places to meet people with similar interests." />
-    <string
-		name="no_filtered_recent_people"
-		value="Didn't find what you're looking for? Try [fmw:///app/search/people/[SEARCH_TERM] Search]." />
-    <string
-		name="no_one_near"
-		value="No one nearby. Looking for people to hang out with? Use the search box to find topics or content you might be interested in, then visit those places to meet people with similar interests." />
-    <string
-		name="no_one_filtered_near"
-		value="Didn't find what you're looking for? Try [fmw:///app/search/people/[SEARCH_TERM] Search]." />
-    <string
-		name="no_friends_online"
-		value="No friends online" />
-    <string
-		name="no_friends"
-		value="No friends" />
-    <string
-		name="no_friends_msg">
-		Find friends using [fmw:///app/search/people Search] or right-click on a Resident to add them as a friend.
-Looking for people to hang out with? Use the search box to find topics or content you might be interested in, then visit those places to meet people with similar interests.
+<?xml version='1.0' encoding='utf-8'?>
+<panel follows="all" height="420" label="People" layout="topleft" left="0" min_height="350" name="people_panel" top="0" width="388">
+  <string name="no_recent_people" value="No recent people." />
+  <string name="no_filtered_recent_people" value="Didn't find what you're looking for? Try [fmw:///app/search/people/[SEARCH_TERM] Search]." />
+  <string name="no_one_near" value="No one nearby. Looking for people to hang out with? Try [fmw:///app/search/people Search] or the [fmw:///app/worldmap World Map]." />
+  <string name="no_one_filtered_near" value="Didn't find what you're looking for? Try [fmw:///app/search/people/[SEARCH_TERM] Search]." />
+  <string name="no_friends_online" value="No friends online" />
+  <string name="no_friends" value="No friends" />
+  <string name="no_friends_msg">
+      To add someone as a friend, right-click on their avatar or their name.
+
+Looking for places with more people?
+
+[fmw:///app/floater/destinations Destination Guide] has locations chosen by the grid operator staff.
+
+[fmw:///app/search/ Search] lets you search all the grid for certain keywords.
 	</string>
-    <string
-		name="no_filtered_friends_msg">
+  <string name="no_filtered_friends_msg">
 		Didn't find what you're looking for? Try [fmw:///app/search/people/[SEARCH_TERM] Search].
 	</string>
-	<string
-		name="people_filter_label"
-		value="Filter People" />
-	<string
-		name="groups_filter_label"
-		value="Filter Groups" />
-		<!--
-			*WORKAROUND: for group_list.no_items_msg & group_list.no_filtered_items_msg attributes.
-			They are not defined as translatable in VLT. See EXT-5931
-		-->
-	<string
-		name="no_filtered_groups_msg"
-		value="Didn't find what you're looking for? Try [fmw:///app/search/groups/[SEARCH_TERM] Search]." />
-	<string
-		name="no_groups_msg"
-		value="Looking for Groups to join? Try [fmw:///app/search/groups Search]." />
-	<string
-		name="MiniMapToolTipMsg"
-		value="[REGION](Double-click to open Map, shift-drag to pan)"/>
-	<string
-		name="AltMiniMapToolTipMsg"
-		value="[REGION] (Double-click to teleport, shift-drag to pan)"/>
-	<string
-		name="avatar_name_count"
-		value="Name [[TOTAL] / [IN_REGION] / [IN_CHAT_RANGE]]" />
-	<panel.string
-		name="empty_list">
+  <string name="no_filtered_groups_msg" value="Didn't find what you're looking for? Try [fmw:///app/search/groups/[SEARCH_TERM] Search]." />
+  <string name="no_groups_msg">
+You are not a member of any groups.
+
+Learn about [https://community.secondlife.com/knowledgebase/joining-and-participating-in-groups-r51/ groups].
+  </string>
+  <string name="MiniMapToolTipMsg" value="[REGION] (Double-click to open Map, shift-drag to pan)" />
+  <string name="AltMiniMapToolTipMsg" value="[REGION] (Double-click to teleport, shift-drag to pan)" />
+  <string name="GroupCountWithInfo" value="You belong to [COUNT] groups, and can join [REMAINING] more.  [fmw:/// Raise your limit]" />
+  <panel.string name="empty_list">
 		This contact set is empty.
 	</panel.string>
-	<panel.string
-		name="no_sets">
+  <panel.string name="no_sets">
 		No sets
 	</panel.string>
-	<panel.string
-		name="all_sets">
+  <panel.string name="all_sets">
 		All sets
 	</panel.string>
-	<panel.string
-		name="pseudonyms">
+  <panel.string name="pseudonyms">
 		Aliases
 	</panel.string>
-
-	<tab_container
-		follows="all"
-		height="413"
-		layout="topleft"
-		left="2"
-		name="tabs"
-		tab_group="1"
-		tab_position="top"
-		top="2"
-		halign="center"
-		right="-2">
-
-		<panel
-			background_visible="false"
-			follows="all"
-			height="383"
-			label="Nearby"
-			layout="topleft"
-			left="0"
-		
-			name="nearby_panel"
-			top="0"
-			width="313">
-
-			<tab_container
-				name="tabcont_radarpeople_main"
-				layout="topleft"
-				follows="all"
-				tab_position="bottom"
-				height="383">
-
-				<panel
-					class="fs_panel_radar"
-					name="panel_radar"
-					filename="panel_fs_radar.xml"
-					follows="all"
-					height="383"
-					layout="topleft"
-					left="3"
-					top_pad="3"
-					label="List"
-					width="319"/>
-
-				<panel
-					name="radarmap_options_panel"
-					label="Options"
-					layout="topleft"
-					background_visible="false"
-					follows="all"
-					left="3"
-					height="375">
-
-				<scroll_container
-					label="Options"
-					opaque="false"
-					name="radarmap_options_scroll_container"
-					follows="all"
-					top="0"
-					height="370">
-
-				<container_view
-					name="radarmap_options_container_view"
-					label="Options"
-					follows="all"
-					background_visible="false"
-					width="290"
-					height="380">
-
-				<panel
-					name="radarmap_options_scrolled_panel"
-					background_visible="false"
-					height="420">
-
-					<check_box
-						label="Show Minimap above Radar"
-						left="0"
-						top="4"
-						name="ShowRadarMinimap"
-						control_name="ShowRadarMinimap"
-						right="-1"
-						height="16"
-						layout="topleft"
-						follows="left|top"/>
-
-					<check_box
-						label="Show blocked and blacklisted Avatars"
-						left="0"
-						top_pad="2"
-						name="FSRadarShowMutedAndDerendered"
-						control_name="FSRadarShowMutedAndDerendered"
-						right="-1"
-						height="16"
-						layout="topleft"
-						follows="left|top"/>
-
-					<check_box
-						label="Report Entering Draw Range"
-						left="0"
-						top_pad="2"
-						name="RadarReportDrawRangeEnter"
-						control_name="RadarReportDrawRangeEnter"
-						right="-1"
-						height="16"
-						layout="topleft"
-						follows="left|top"/>
-
-					<check_box
-						label="Report Leaving Draw Range"
-						left="0"
-						top_pad="2"
-						name="RadarReportDrawRangeLeaving"
-						control_name="RadarReportDrawRangeLeave"
-						right="-1"
-						height="16"
-						layout="topleft"
-						follows="left|top"/>
-
-					<check_box
-						label="Report Entering Chat Range"
-						left="0"
-						top_pad="2"
-						name="RadarReportChatRangeEnter"
-						control_name="RadarReportChatRangeEnter"
-						right="-1"
-						height="16"
-						layout="topleft"
-						follows="left|top"/>
-
-					<check_box
-						label="Report Leaving Chat Range"
-						left="0"
-						top_pad="2"
-						name="RadarReportChatRangeLeave"
-						control_name="RadarReportChatRangeLeave"
-						right="-1"
-						height="16"
-						layout="topleft"
-						follows="left|top"/>
-
-					<check_box
-						label="Report Entering your Region"
-						left="0"
-						top_pad="2"
-						name="RadarReportSimRangeEnter"
-						control_name="RadarReportSimRangeEnter"
-						right="-1"
-						height="16"
-						layout="topleft"
-						follows="left|top"/>
-
-					<check_box
-						label="Report Leaving your Region"
-						left="0"
-						top_pad="2"
-						name="RadarReportSimRangeLeave"
-						control_name="RadarReportSimRangeLeave"
-						right="-1"
-						height="16"
-						layout="topleft"
-						follows="left|top"/>
-
-					<check_box
-						label="Report Enter Alerts to Scripts"
-						left="0"
-						top_pad="2"
-						name="RadarEnterChannelAlert"
-						control_name="RadarEnterChannelAlert"
-						right="-1"
-						height="16"
-						layout="topleft"
-						follows="left|top"/>
-
-					<check_box
-						label="Report Exit Alerts to Scripts"
-						left="0"
-						top_pad="2"
-						name="RadarLeaveChannelAlert"
-						control_name="RadarLeaveChannelAlert"
-						right="-1"
-						height="16"
-						layout="topleft"
-						follows="left|top"/>
-
-					<check_box
-						enabled_control="UseLSLBridge"
-						label="Enhance radar with LSL-Client Bridge"
-						tool_tip="If this is enabled, radar functions responsible for determining avatar locations at high altitudes are assisted by the LSL-Client Bridge, particularly when they're beyond draw distance."
-						left="0"
-						top_pad="2"
-						name="FSRadarEnhanceByBridge"
-						control_name="FSRadarEnhanceByBridge"
-						right="-1"
-						height="16"
-						layout="topleft"
-						follows="left|top"/>
-
-					<check_box
-						label="Color names based on distance"
-						left="0"
-						top_pad="2"
-						name="FSRadarColorNamesByDistance"
-						control_name="FSRadarColorNamesByDistance"
-						right="-1"
-						height="16"
-						layout="topleft"
-						follows="left|top"/>
-
-					<check_box
-						label="Limit range to:"
-						tool_tip="Limit Results to specific Radius"
-						left="0"
-						top_pad="2"
-						name="LimitRadarByRange"
-						control_name="LimitRadarByRange"
-						width="100"
-						height="16"
-						layout="topleft"
-						follows="left|top" />
-					<slider
-						visibility_control="LimitRadarByRange"
-						enabled_control="LimitRadarByRange"
-						control_name="NearMeRange"
-						decimal_digits="0"
-						follows="top|left|right"
-						height="16"
-						increment="2"
-						initial_value="96"
-						layout="topleft"
-						max_val="4096"
-						min_val="20"
-						name="NearMeRangeVintage"
-						visible="true"
-						can_edit_text="true"
-						left_pad="4"
-						width="140" />
-					<text
-						visibility_control="LimitRadarByRange"
-						value="m"
-						layout="topleft"
-						follows="top|left"
-						width="20"
-						left_pad="3"
-						height="16"
-						wrap="false" />
-
-					<text
-						name="radarmap_range_label"
-						layout="topleft"
-						follows="left|top"
-						value="Radar Name Format:"
-						left="3"
-						top_pad="4"
-						height="16"
-						width="120"/>
-					<combo_box
-						layout="topleft"
-						follows="left|top|right"
-						left_pad="2"
-						top_delta="-2"
-						height="20"
-						right="-1"
-						name="RadarNameFormat"
-						control_name="RadarNameFormat"
-						enabled_control="UseDisplayNames">
-						<combo_box.item name="RadarNameFormat_display" value="0" label="Display Name only" />
-						<combo_box.item name="RadarNameFormat_user" value="1" label="Username only" />
-						<combo_box.item name="RadarNameFormat_displayuser" value="2" label="Display Name (Username)" />
-						<combo_box.item name="RadarNameFormat_userdisplay" value="3" label="Username (Display Name)" />
-					</combo_box>
-
-					<text
-						name="columns_label"
-						layout="topleft"
-						follows="left|top"
-						value="Displayed Columns:"
-						left="3"
-						top_pad="4"
-						height="16"
-						width="120"/>
-
-					<check_box
-						label="Time"
-						left="10"
-						top_pad="2"
-						name="column_seen"
-						width="100"
-						height="16"
-						layout="topleft"
-						follows="left|top">
-						<check_box.on_check
-							function="People.EnableColumn"
-							parameter="seen"/>
-						<check_box.commit_callback
-							function="People.ToggleColumn"
-							parameter="seen"/>
-					</check_box>
-					<check_box
-						label="Age"
-						left="10"
-						top_pad="2"
-						name="column_age"
-						width="100"
-						height="16"
-						layout="topleft"
-						follows="left|top">
-						<check_box.on_check
-							function="People.EnableColumn"
-							parameter="age"/>
-						<check_box.commit_callback
-							function="People.ToggleColumn"
-							parameter="age"/>
-					</check_box>
-					<check_box
-						label="Same Region"
-						left="10"
-						top_pad="2"
-						name="column_region"
-						width="100"
-						height="16"
-						layout="topleft"
-						follows="left|top">
-						<check_box.on_check
-							function="People.EnableColumn"
-							parameter="in_region"/>
-						<check_box.commit_callback
-							function="People.ToggleColumn"
-							parameter="in_region"/>
-					</check_box>
-					<check_box
-						label="Typing Status"
-						left="10"
-						top_pad="2"
-						name="column_typing_status"
-						width="100"
-						height="16"
-						layout="topleft"
-						follows="left|top">
-						<check_box.on_check
-							function="People.EnableColumn"
-							parameter="typing_status"/>
-						<check_box.commit_callback
-							function="People.ToggleColumn"
-							parameter="typing_status"/>
-					</check_box>
-					<check_box
-						label="Sitting Status"
-						left="10"
-						top_pad="2"
-						name="column_sitting_status"
-						width="100"
-						height="16"
-						layout="topleft"
-						follows="left|top">
-						<check_box.on_check
-							function="People.EnableColumn"
-							parameter="sitting_status"/>
-						<check_box.commit_callback
-							function="People.ToggleColumn"
-							parameter="sitting_status"/>
-					</check_box>
-					<check_box
-						label="Flags"
-						left="10"
-						top_pad="2"
-						name="column_flags"
-						width="100"
-						height="16"
-						layout="topleft"
-						follows="left|top">
-						<check_box.on_check
-							function="People.EnableColumn"
-							parameter="flags"/>
-						<check_box.commit_callback
-							function="People.ToggleColumn"
-							parameter="flags"/>
-					</check_box>
-					<check_box
-						label="Notes"
-						left="10"
-						top_pad="2"
-						name="notes_flags"
-						width="100"
-						height="16"
-						layout="topleft"
-						follows="left|top">
-						<check_box.on_check
-							function="People.EnableColumn"
-							parameter="has_notes"/>
-						<check_box.commit_callback
-							function="People.ToggleColumn"
-							parameter="has_notes"/>
-					</check_box>
-
+  <panel.string name="AllFriendsTitle">
+    All ([ALL])
+    </panel.string>
+  <panel.string name="OnlineFriendsTitle">
+    Online ([ONLINE])
+    </panel.string>
+  <tab_container follows="all" layout="topleft" name="tabs" tab_min_width="105" tab_height="34" tab_position="top" halign="center" tab_max_width="180" use_ellipses="true" hide_tabs="true" left="0" top="98" right="-1" bottom="-1">
+    <panel background_opaque="false" background_visible="false" bottom="-1" follows="all" label="Nearby" layout="topleft" left="0" name="nearby_panel" right="-1" top="0">
+      <panel class="fs_panel_radar" name="panel_radar" filename="panel_fs_radar.xml" follows="all" layout="topleft" left="0" top="2" right="-1" bottom="-1" visible="false" />
+      <search_editor name="forme_nearby_search" layout="topleft" left="0" top="0" right="-90" height="32" follows="left|right|top" label="Search people…" />
+      <button name="forme_radar_toggle" layout="topleft" right="-1" top="0" width="84" height="32" follows="right|top" label="Details" />
+      <avatar_list name="forme_nearby_list" layout="topleft" left="0" top="42" right="-1" bottom="-44" follows="all" show_icons="true" allow_select="true" />
+      <button name="forme_nearby_profile" layout="topleft" label="Profile" left="0" bottom="-4" height="32" width="132" follows="left|bottom" image_selected="Forme_Round_Accent" image_unselected="Forme_Round_Field" />
+      <button name="forme_nearby_message" layout="topleft" label="Message" left="140" bottom="-4" height="32" width="196" follows="left|bottom" image_selected="Forme_Round_Accent" image_unselected="Forme_Round_Field" />
+      <button name="forme_nearby_friend" layout="topleft" label="+" left="344" bottom="-4" height="32" width="96" follows="left|bottom" image_selected="Forme_Round_Accent" image_unselected="Forme_Round_Field" />
 				</panel>
-				</container_view>
-				</scroll_container>
-
+    <panel background_opaque="false" background_visible="false" bottom="-1" follows="all" label="Friends" layout="topleft" left="0" name="friends_panel" right="-1" top="0">
+      <panel follows="left|top|right" height="27" label="bottom_panel" layout="topleft" left="0" name="friends_buttons_panel" right="-1" top="0">
+        <filter_editor follows="left|top|right" height="23" layout="topleft" left="6" label="Filter People" max_length_chars="300" name="friends_filter_input" top="4" right="-175" use_bg_color="false" background_image="Forme_Round_Field" background_image_focused="Forme_Round_Field" background_image_highlight="Forme_Round_Field" />
+        <button commit_callback.function="People.Gear" follows="right" height="25" image_hover_unselected="Toolbar_Middle_Over" image_overlay="OptionsMenu_Off" image_selected="Toolbar_Middle_Selected" image_unselected="Toolbar_Middle_Off" layout="topleft" left_pad="8" name="gear_btn" tool_tip="Actions on selected person" top="3" width="31" />
+        <menu_button follows="right" height="25" image_hover_unselected="Toolbar_Middle_Over" image_overlay="Conv_toolbar_sort" image_selected="Toolbar_Middle_Selected" image_unselected="Toolbar_Middle_Off" layout="topleft" left_pad="2" menu_filename="menu_people_friends_view.xml" menu_position="bottomleft" name="friends_view_btn" tool_tip="View/sort options" top_delta="0" width="31" />
+        <button follows="right" height="25" image_hover_unselected="Toolbar_Middle_Over" image_overlay="AddItem_Off" image_selected="Toolbar_Middle_Selected" image_unselected="Toolbar_Middle_Off" layout="topleft" left_pad="2" name="friends_add_btn" tool_tip="Offer friendship to a resident" top_delta="0" width="31">
+          <commit_callback function="People.AddFriendWizard" />
+        </button>
+        <button follows="right" height="25" image_hover_unselected="Toolbar_Middle_Over" image_overlay="Permission_Visible_Online" image_selected="Toolbar_Middle_Selected" image_unselected="Toolbar_Middle_Off" control_name="GlobalOnlineStatusToggle" is_toggle="true" layout="topleft" left_pad="2" name="GlobalOnlineStatusToggle" tool_tip="Toggle global online status visibility" width="31" />
+        <dnd_button follows="right" height="25" image_hover_unselected="Toolbar_Middle_Over" image_overlay="TrashItem_Off" image_selected="Toolbar_Middle_Selected" image_unselected="Toolbar_Middle_Off" left_pad="2" layout="topleft" name="friends_del_btn" tool_tip="Remove selected person as a friend" top_delta="0" width="31">
+          <commit_callback function="People.DelFriend" />
+        </dnd_button>
 				</panel>
-
+      <tab_container name="friends_accordion" follows="all" background_visible="false" bg_alpha_color="Transparent" bg_opaque_color="Transparent" layout="topleft" tab_group="1" tab_position="top" halign="center" right="-1" left="0" top="29" bottom="-1">
+        <panel layout="topleft" height="372" width="420" name="tab_online" follows="all" title="Online">
+          <avatar_list allow_select="true" follows="all" layout="topleft" multi_select="true" name="avatars_online" keep_one_selected="false" show_permissions_granted="true" left="0" top="0" right="-1" bottom="-1" />
+        </panel>
+        <panel layout="topleft" height="372" width="420" name="tab_all" follows="all" title="All">
+          <avatar_list allow_select="true" follows="all" layout="topleft" multi_select="true" name="avatars_all" keep_one_selected="false" show_permissions_granted="true" left="0" top="0" right="-1" bottom="-1" />
+        </panel>
 			</tab_container>
-
-			<!-- Keep these controls so the code doesn't complain about them being missing -Zi -->
-			<panel name="hide_controls" enabled="false" visible="false" left="0" top="0">
-				<view 			follows="top|left" height="0" layout="topleft" name="NearMeRange"
-								left="0" top="0" width="0" />
-				<view 			follows="top|left" height="0" layout="topleft" name="add_friend_btn_nearby"
-								left="0" top="0" width="0" />
-				<avatar_list	follows="top|left" height="0" layout="topleft" name="avatar_list"
-								left="0" top="0" width="0" />
+      <text follows="all" left="13" name="no_friends_help_text" right="-13" top="37" wrap="true" bottom="-6" />
 			</panel>
-			<!-- Keep these controls so the code doesn't complain about them being missing -Zi -->
-
+    <panel background_opaque="false" background_visible="false" bottom="-1" follows="all" label="Groups" layout="topleft" left="0" name="groups_panel" right="-1" top="0">
+      <panel follows="left|top|right" height="27" label="bottom_panel" layout="topleft" left="0" name="groups_buttons_panel" right="-1" top="0">
+        <filter_editor follows="left|top|right" height="23" layout="topleft" left="6" label="Filter Groups" max_length_chars="300" name="groups_filter_input" top="4" right="-142" use_bg_color="false" background_image="Forme_Round_Field" background_image_focused="Forme_Round_Field" background_image_highlight="Forme_Round_Field" />
+        <menu_button follows="right" height="25" image_hover_unselected="Toolbar_Middle_Over" image_overlay="OptionsMenu_Off" image_selected="Toolbar_Middle_Selected" image_unselected="Toolbar_Middle_Off" layout="topleft" left_pad="8" name="groups_gear_btn" tool_tip="Actions on selected group" top="3" width="31" />
+        <menu_button follows="right" height="25" image_hover_unselected="Toolbar_Middle_Over" image_overlay="Conv_toolbar_sort" image_selected="Toolbar_Middle_Selected" image_unselected="Toolbar_Middle_Off" layout="topleft" left_pad="2" menu_filename="menu_people_groups_view.xml" menu_position="bottomleft" name="groups_view_btn" tool_tip="View/sort options" top_delta="0" width="31" />
+        <menu_button follows="right" height="25" image_hover_unselected="Toolbar_Middle_Over" image_overlay="AddItem_Off" image_selected="Toolbar_Middle_Selected" image_unselected="Toolbar_Middle_Off" layout="topleft" left_pad="2" menu_filename="menu_group_plus.xml" menu_position="bottomleft" name="plus_btn" tool_tip="Join group/Create new group" top_delta="0" width="31">
+          <validate_callback function="People.Group.Plus.Validate" />
+        </menu_button>
+        <dnd_button follows="right" height="25" image_hover_unselected="Toolbar_Middle_Over" image_overlay="TrashItem_Off" image_selected="Toolbar_Middle_Selected" image_unselected="Toolbar_Middle_Off" left_pad="2" layout="topleft" name="minus_btn" tool_tip="Leave selected group" top_delta="0" width="31">
+          <commit_callback function="People.Group.Minus" />
+        </dnd_button>
 		</panel>
-
-		<panel
-			follows="all"
-			height="383"
-			label="Recent"
-			layout="topleft"
-			left="0"
-		
-			name="recent_panel"
-			top="0"
-			width="313">
-			<avatar_list
-				allow_select="true"
-				follows="all"
-				height="383"
-				layout="topleft"
-				left="3"
-				multi_select="true"
-				name="avatar_list"
-				show_last_interaction_time="true"
-				top="0"
-				width="307" />
-
-			<!-- Keep these controls so the code doesn't complain about them being missing -Zi -->
-			<panel name="hide_controls" enabled="false" visible="false" left="0" top="0">
-				<menu_button	follows="top|left" height="0" layout="topleft" name="recent_viewsort_btn"
-								left="0" top="0" width="0" />
-				<button	follows="top|left" height="0" layout="topleft" name="add_friend_btn_recent"
-								left="0" top="0" width="0" />
+      <text type="string" length="1" follows="left|top|right" height="14" layout="topleft" right="-10" top_pad="4" left="3" use_ellipses="true" skip_link_underline="true" name="groupcount">
+              You belong to [COUNT] groups ([REMAINING] remaining).
+            </text>
+      <group_list allow_select="true" follows="all" layout="topleft" left="3" keep_one_selected="false" name="group_list" right="-2" top="49" bottom="-1" />
 			</panel>
-
+    <panel background_opaque="false" background_visible="false" follows="all" label="Recent" layout="topleft" left="0" name="recent_panel" right="-1" top="0" bottom="-1">
+      <panel follows="left|top|right" height="27" label="bottom_panel" layout="topleft" left="0" name="recent_buttons_panel" right="-1" top="0">
+        <filter_editor follows="left|top|right" height="23" layout="topleft" left="6" label="Filter People" max_length_chars="300" name="recent_filter_input" top="4" right="-142" use_bg_color="false" background_image="Forme_Round_Field" background_image_focused="Forme_Round_Field" background_image_highlight="Forme_Round_Field" />
+        <button commit_callback.function="People.Gear" follows="right" height="25" image_hover_unselected="Toolbar_Middle_Over" image_overlay="OptionsMenu_Off" image_selected="Toolbar_Middle_Selected" image_unselected="Toolbar_Middle_Off" layout="topleft" left_pad="8" name="gear_btn" tool_tip="Actions on selected person" top="3" width="31" />
+        <menu_button follows="right" height="25" image_hover_unselected="Toolbar_Middle_Over" image_overlay="Conv_toolbar_sort" image_selected="Toolbar_Middle_Selected" image_unselected="Toolbar_Middle_Off" layout="topleft" left_pad="2" menu_filename="menu_people_recent_view.xml" menu_position="bottomleft" name="recent_view_btn" tool_tip="View/sort options" top_delta="0" width="31" />
+        <button follows="right" height="25" image_hover_unselected="Toolbar_Middle_Over" image_overlay="AddItem_Off" image_selected="Toolbar_Middle_Selected" image_unselected="Toolbar_Middle_Off" layout="topleft" left_pad="2" name="add_friend_btn" tool_tip="Offer friendship to a resident" top_delta="0" width="31">
+          <commit_callback function="People.AddFriend" />
+        </button>
+        <dnd_button enabled="false" follows="right" height="25" image_hover_unselected="Toolbar_Middle_Over" image_overlay="TrashItem_Off" image_selected="Toolbar_Middle_Selected" image_unselected="Toolbar_Middle_Off" left_pad="2" layout="topleft" name="recent_del_btn" tool_tip="Remove selected person as a friend" top_delta="0" width="31">
+          <commit_callback function="People.DelFriend" />
+        </dnd_button>
 		</panel>
-
-		<panel
-			class="fs_panel_block_list_sidetray"
-			name="blocked_panel"
-			filename="panel_fs_block_list_sidetray.xml"
-			label="Blocked" />
-
+      <avatar_list allow_select="true" follows="all" layout="topleft" left="0" multi_select="true" name="avatar_list" show_last_interaction_time="true" keep_one_selected="false" right="-1" top="31" bottom="-1" />
+    </panel>
+    <panel background_opaque="false" background_visible="false" follows="all" label="Blocked" layout="topleft" left="0" name="blocked_panel" right="-1" top="0" bottom="-1">
+      <panel class="fs_panel_block_list_sidetray" name="panel_block_list_sidetray" filename="panel_fs_block_list_sidetray.xml" follows="all" label="Blocked Residents &amp; Objects" layout="topleft" left="0" font="SansSerifBold" top="0" right="-1" bottom="-1" />
+    </panel>
+    <panel background_opaque="false" background_visible="false" follows="all" label="Contact Sets" layout="topleft" left="0" name="contact_sets_panel" right="-1" top="0" bottom="-1">
+      <panel name="panel_people_contacts_sidetray" filename="panel_people_contact_sets.xml" follows="all" label="Contact Sets" layout="topleft" left="0" font="SansSerifBold" top="0" right="-1" bottom="-1" />
+    </panel>
 	</tab_container>
-
-	<!-- Keep these controls so the code doesn't complain about them being missing -Zi -->
-	<panel name="hide_controls" enabled="false" visible="false" left="0" top="0">
-	<avatar_list	follows="top|left" height="0" layout="topleft" name="nearby_avatar_list"
-					left="0" top="0" width="0" />
-	<button	 	follows="top|left" height="0" layout="topleft" name="view_profile_btn"
-					left="0" top="0" width="0" />
-	<button	 	follows="top|left" height="0" layout="topleft" name="im_btn"
-					left="0" top="0" width="0" />
-
-	<button	 	follows="top|left" height="0" layout="topleft" name="share_btn"
-					left="0" top="0" width="0"  forme_creator_only="true"/>
-	<button	 	follows="top|left" height="0" layout="topleft" name="teleport_btn"
-					left="0" top="0" width="0" />
-	<button	 	follows="top|left" height="0" layout="topleft" name="group_info_btn"
-					left="0" top="0" width="0" />
-	<button	 	follows="top|left" height="0" layout="topleft" name="chat_btn"
-					left="0" top="0" width="0" />
-
-	<group_list 	follows="top|left" height="0" layout="topleft" name="group_list"
-					left="0" top="0" width="0" />
-	<panel			follows="top|left" height="0" layout="topleft" name="groups_panel"
-					left="0" top="0" width="0" />
-	<accordion_tab	follows="top|left" height="0" layout="topleft" name="tab_all"
-					left="0" top="0" width="0" />
-	<accordion_tab	follows="top|left" height="0" layout="topleft" name="tab_online"
-					left="0" top="0" width="0" />
-	<menu_button	follows="top|left" height="0" layout="topleft" name="nearby_view_sort_btn"
-					left="0" top="0" width="0" />
-	<menu_button	follows="top|left" height="0" layout="topleft" name="friends_viewsort_btn"
-					left="0" top="0" width="0" />
-	<menu_button	follows="top|left" height="0" layout="topleft" name="groups_viewsort_btn"
-					left="0" top="0" width="0" />
+  <panel name="forme_people_navigation" layout="topleft" width="388" height="90" follows="left|right|top" left="0" top="0">
+    <button name="forme_people_tab_0" label="Nearby" tool_tip="Nearby" layout="topleft" width="128" height="28" image_overlay="Forme_UI_Pin" image_overlay_alignment="left" pad_left="6" halign="left" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" use_ellipses="true" left="0" top="0" follows="left|top" image_overlay_max_size="16">
+      <button.commit_callback function="ForMePeople.SelectTab" parameter="nearby_panel" />
+      <button.is_toggled_callback function="ForMePeople.SelectedTab" parameter="nearby_panel" />
+    </button>
+    <button name="forme_people_tab_1" label="Friends" tool_tip="Friends" layout="topleft" width="128" height="28" image_overlay="Forme_UI_People" image_overlay_alignment="left" pad_left="6" halign="left" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" use_ellipses="true" left="130" top="0" follows="left|top" image_overlay_max_size="16">
+      <button.commit_callback function="ForMePeople.SelectTab" parameter="friends_panel" />
+      <button.is_toggled_callback function="ForMePeople.SelectedTab" parameter="friends_panel" />
+    </button>
+    <button name="forme_people_tab_2" label="Groups" tool_tip="Groups" layout="topleft" width="128" height="28" image_overlay="Forme_UI_People" image_overlay_alignment="left" pad_left="6" halign="left" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" use_ellipses="true" left="260" top="0" follows="left|top" image_overlay_max_size="16">
+      <button.commit_callback function="ForMePeople.SelectTab" parameter="groups_panel" />
+      <button.is_toggled_callback function="ForMePeople.SelectedTab" parameter="groups_panel" />
+    </button>
+    <button name="forme_people_tab_3" label="Recent" tool_tip="Recent" layout="topleft" width="128" height="28" image_overlay="Forme_UI_Clock" image_overlay_alignment="left" pad_left="6" halign="left" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" use_ellipses="true" left="0" top="30" follows="left|top" image_overlay_max_size="16">
+      <button.commit_callback function="ForMePeople.SelectTab" parameter="recent_panel" />
+      <button.is_toggled_callback function="ForMePeople.SelectedTab" parameter="recent_panel" />
+    </button>
+    <button name="forme_people_tab_4" label="Blocked" tool_tip="Blocked" layout="topleft" width="128" height="28" image_overlay="Forme_UI_Shield" image_overlay_alignment="left" pad_left="6" halign="left" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" use_ellipses="true" left="130" top="30" follows="left|top" image_overlay_max_size="16">
+      <button.commit_callback function="ForMePeople.SelectTab" parameter="blocked_panel" />
+      <button.is_toggled_callback function="ForMePeople.SelectedTab" parameter="blocked_panel" />
+    </button>
+    <button name="forme_people_tab_5" label="Contact Sets" tool_tip="Contact Sets" layout="topleft" width="128" height="28" image_overlay="Forme_UI_Profile" image_overlay_alignment="left" pad_left="6" halign="left" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" use_ellipses="true" left="260" top="30" follows="left|top" image_overlay_max_size="16">
+      <button.commit_callback function="ForMePeople.SelectTab" parameter="contact_sets_panel" />
+      <button.is_toggled_callback function="ForMePeople.SelectedTab" parameter="contact_sets_panel" />
+    </button>
+    <button name="forme_people_find" layout="topleft" label="Search" width="190" height="28" left="0" top="62" follows="left|top" />
+    <button name="forme_people_groups_window" layout="topleft" label="Groups window" width="190" height="28" left="198" top="62" follows="left|top" />
 	</panel>
-
-	<panel			follows="top|left" height="0" layout="topleft" name="friends_panel"
-					left="0" top="0" width="0" enabled="false" visible="false">
-	<avatar_list	follows="top|left" height="0" layout="topleft" name="avatars_online"
-					left="0" top="0" width="0" />
-	<avatar_list	follows="top|left" height="0" layout="topleft" name="avatars_all"
-					left="0" top="0" width="0" />
 	</panel>
-
-	<panel			follows="top|left" height="0" layout="topleft" name="button_bar"
-					left="0" top="0" width="0" enabled="false" visible="false">
-	<button	 	follows="top|left" height="0" layout="topleft" name="group_info_btn"
-					left="0" top="0" width="0" />
-	<button	 	follows="top|left" height="0" layout="topleft" name="chat_btn"
-					left="0" top="0" width="0" />
-	<button	 	follows="top|left" height="0" layout="topleft" name="view_profile_btn"
-					left="0" top="0" width="0" />
-	<button	 	follows="top|left" height="0" layout="topleft" name="im_btn"
-					left="0" top="0" width="0" />
-
-
-	<button	 	follows="top|left" height="0" layout="topleft" name="teleport_btn"
-					left="0" top="0" width="0" />
-	<button	 	follows="top|left" height="0" layout="topleft" name="share_btn"
-					left="0" top="0" width="0"  forme_creator_only="true"/>
-	</panel>
-	<!-- Keep these controls so the code doesn't complain about them being missing -Zi -->
-</panel>

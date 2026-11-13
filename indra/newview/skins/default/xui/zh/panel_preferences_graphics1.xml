@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="顯示" name="Display panel">
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 	<tab_container label="圖形設定" name="tabs">
 		<panel label="通用" name="General">
 			<text name="preset_label">使用的預設：</text>
@@ -127,16 +129,16 @@
 			<combo_box name="fsaa">
 				<combo_box.item label="禁用" name="FSAADisabled" />
 				<combo_box.item label="FXAA" name="FXAA" />
-				<combo_box.item label="SMAA" name="SMAA"/>
+            <combo_box.item label="SMAA" name="SMAA" />
 			</combo_box>
 			<combo_box label="反鋸齒" name="fsaa quality">
-				<combo_box.item label="低" name="Low"/>
-				<combo_box.item label="中" name="Medium"/>
-				<combo_box.item label="高" name="High"/>
-				<combo_box.item label="超高" name="Ultra"/>
+            <combo_box.item label="低" name="Low" />
+            <combo_box.item label="中" name="Medium" />
+            <combo_box.item label="高" name="High" />
+            <combo_box.item label="超高" name="Ultra" />
 			</combo_box>
-			<check_box label="限制視訊記憶體使用量 (MB)" name="FSLimitTextureVRAMUsage" tool_tip="限制用於紋理的視訊記憶體總量。整體使用量可能仍然更高，因為其他元素也會使用記憶體。"/>
-			<slider name="RenderMaxVRAMBudget" tool_tip="用於紋理的最大視訊記憶體數量（以兆字節為單位）。"/>
+          <check_box label="限制視訊記憶體使用量 (MB)" name="FSLimitTextureVRAMUsage" tool_tip="限制用於紋理的視訊記憶體總量。整體使用量可能仍然更高，因為其他元素也會使用記憶體。" />
+          <slider name="RenderMaxVRAMBudget" tool_tip="用於紋理的最大視訊記憶體數量（以兆字節為單位）。" />
 			<text name="advanced_settings">
 				進階設定（需要重新啟動）：
 			</text>
@@ -158,7 +160,7 @@
 			<combo_box name="FSRestrictMaxTexturePixels" tool_tip="將紋理的最大解析度限制為指定的畫素。這允許在現有紋理記憶體用盡之前顯示多個紋理，並且不會顯示模糊的紋理。">
 				<combo_box.item label="512畫素" name="512" />
 				<combo_box.item label="1024畫素" name="1024" />
-				<combo_box.item label="2048畫素" name="2048"/>
+            <combo_box.item label="2048畫素" name="2048" />
 			</combo_box>
 			<slider label="最大同時HTTP請求數" name="HTTPFetchMaxRequests" />
 			<text name="TextureDetailLabel" tool_tip="載入紋理的品質級別。影響紋理丟棄設定">
@@ -171,7 +173,7 @@
 				<combo_box.item label="無紋理" name="5" />
 			</combo_box>
 			<text name="Miscellaneous Rendering">雜項彩現：</text>
-			<check_box label="HDR與自發光" tool_tip="在較新設備上啟用額外彩現管線功能，例如HDR與在PBR內容中使用的自發光纹理。" name="VintageMode"/>
+          <check_box label="HDR與自發光" tool_tip="在較新設備上啟用額外彩現管線功能，例如HDR與在PBR內容中使用的自發光纹理。" name="VintageMode" />
 			<text name="Alpha Mask Rendering">Alpha遮色片彩現：</text>
 			<check_box label="啟用Alpha遮色片" tool_tip="勾選此項可以使Alpha遮色片（透明部分）正確彩現" name="RenderAutoMaskAlphaDeferred" />
 			<check_box label="光暈" tool_tip="啟用光暈。請注意，如果陰影被啟用，強度必須設為0才能禁用光暈。" name="RenderGlow" />
@@ -180,7 +182,7 @@
 			<check_box label="以線框模式檢視" name="Wireframe" />
 			<check_box label="啟用附著的光源 (臉部光源)" tool_tip="此選項將啟用所有附著的光源，例如 '臉部光源'。" name="Render Attached Lights" />
 			<check_box label="彩現附著的粒子" name="Render Attached Particles" />
-			<check_box label="當視訊記憶體已滿時減少繪製距離" name="Reduce Draw Distance when VRAM is full" tool_tip="啟用此功能可在你的視訊記憶體已滿時減少繪製距離"/>
+          <check_box label="當視訊記憶體已滿時減少繪製距離" name="Reduce Draw Distance when VRAM is full" tool_tip="啟用此功能可在你的視訊記憶體已滿時減少繪製距離" />
 			<text name="ExcludeAnimeshImposterLabel">
 				精簡化身時排除動畫網格(Animesh)：
 			</text>
@@ -194,7 +196,7 @@
 			<text name="PrecachingDelayText">秒</text>
 			<slider label="陰影品質" tool_tip="陰影的品質（預設為1）" name="ShadowResolution" />
 			<slider label="地形紋理彩現比例 (需要重新啟動)" name="RenderTerrainScale" tool_tip="確定地形紋理的彩現比例-較低的值更壓縮（需要重新啟動）" />
-			<slider label="銳化：" name="RenderSharpness"/>
+          <slider label="銳化：" name="RenderSharpness" />
 			<text name="ReflectionProbeCount">
 				反射探針數量：
 			</text>
@@ -209,10 +211,10 @@
 				色調映射器：
 			</text>
 			<combo_box name="TonemapType">
-				<combo_box.item label="Khronos中性" name="0"/>
-				<combo_box.item label="ACES" name="1"/>
+            <combo_box.item label="Khronos中性" name="0" />
+            <combo_box.item label="ACES" name="1" />
 			</combo_box>
-			<slider label="色調映射混合：" tool_tip="在線性與色調映射顏色之間進行混合" name="TonemapMix"/>
+          <slider label="色調映射混合：" tool_tip="在線性與色調映射顏色之間進行混合" name="TonemapMix" />
 		</panel>
 		<panel label="景深" name="DOF panel">
 			<check_box label="啟用景深 (除了相機的焦點外，使視圖模糊)" name="UseDoF" />
@@ -226,4 +228,6 @@
 			<slider label="模糊彩現品質：" name="CameraDoFResScale" tool_tip="定義模糊彩現的品質和彩現效能。（越高的值品質越好，效能越低）" />
 		</panel>
 	</tab_container>
+</panel>
+  </scroll_container>
 </panel>

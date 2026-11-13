@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="使用者界面偏好設定" name="Display panel">
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 	<tab_container label="Firestorm偏好設定" name="tabs">
 		<panel label="3D世界" name="UI Prefs Panel">
 			<text name="HoverTipText">
@@ -30,14 +32,14 @@
 			</text>
 			<slider label_width="230" label="懸停文字淡出距離（單位：米）：" tool_tip="設定懸停文字淡出的距離。" name="FSHudTextFadeDistance" />
 			<slider label_width="230" label="懸停文字淡出範圍（單位：米）：" tool_tip="設定懸停文字從完全可見到完全不可見的淡出範圍。" name="FSHudTextFadeRange" />
-			<check_box name="FSHudTextUseHoverHighlight" label="突出顯示物件的懸停文字：" tool_tip="當滑鼠懸停於物件上時，物件的懸停文字（若存在）將被突出顯示，文字會置於前景，並停用懸停文字的透明度。"/>
+          <check_box name="FSHudTextUseHoverHighlight" label="突出顯示物件的懸停文字：" tool_tip="當滑鼠懸停於物件上時，物件的懸停文字（若存在）將被突出顯示，文字會置於前景，並停用懸停文字的透明度。" />
 			<text name="FSHudTextShowBackgroundLabel">
 				顯示懸停文字背景：
 			</text>
-			<combo_box name="FSHudTextShowBackgroundDropdown" tool_tip="在懸停文字後顯示黑/白背景以提升可讀性。背景透明度可於顏色 > 其他進行調整。">
-				<combo_box.item label="停用" name="ScriptDialogOption_0"/>
-				<combo_box.item label="僅限突出顯示的物件" name="ScriptDialogOption_1"/>
-				<combo_box.item label="所有物件" name="ScriptDialogOption_2"/>
+          <combo_box name="FSHudTextShowBackgroundDropdown" tool_tip="在懸停文字後顯示黑/白背景以提升可讀性。背景透明度可於顏色 &gt; 其他進行調整。">
+            <combo_box.item label="停用" name="ScriptDialogOption_0" />
+            <combo_box.item label="僅限突出顯示的物件" name="ScriptDialogOption_1" />
+            <combo_box.item label="所有物件" name="ScriptDialogOption_2" />
 			</combo_box>
 		</panel>
 		<panel label="2D覆蓋" name="ui-2d-overlay">
@@ -143,7 +145,7 @@
 			<check_box label="在「聊天」選單中的「好友」和「群組」使用 [SHORT_VIEWER_GENERATION] 版本" name="FSUseV2Friends" tool_tip="如果啟用，將在「人物」視窗中打開好友和群組 - 否則在「聯絡人」視窗中打開。" />
 			<check_box label="使用原始版本的物件屬性視窗" name="FSUseLegacyObjectProperties" tool_tip="如果啟用，將使用原始的Viewer-1風格的物件屬性視窗。" />
 			<check_box label="使用較小的相機控制視窗" name="FSUseSmallCameraFloater" tool_tip="如果啟用，將使用不帶相機預設控制項的原始較小版本的相機控制視窗。" />
-			<check_box label="禁用相機控制台的重置按鈕" name="DisableCameraJoystickCenterReset" tool_tip="禁用相機旋轉與移動操縱桿中央的重置按鈕。"/>
+          <check_box label="禁用相機控制台的重置按鈕" name="DisableCameraJoystickCenterReset" tool_tip="禁用相機旋轉與移動操縱桿中央的重置按鈕。" />
 			<text name="standalone_textbox">
 				為以下內容使用單獨視窗：
 			</text>
@@ -301,4 +303,5 @@
 			<check_box label="使用漂亮的表情符號按鈕" name="FSUsePrettyEmojiButton" />
 		</panel>
 	</tab_container>
+</panel>  </scroll_container>
 </panel>

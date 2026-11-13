@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <floater name="nearby_chat" title="Чат рядом">
   <floater.string name="chatbox_label">Написать сообщение</floater.string>
   <floater.string name="forme_chat_title">Чат рядом</floater.string>
@@ -6,8 +6,11 @@
   <floater.string name="forme_chat_collapse">Свернуть чат</floater.string>
   <text name="forme_chat_title">Чат рядом</text>
   <button name="forme_chat_toggle" tool_tip="Свернуть чат" />
-  <layout_stack name="forme_chat_input_stack"><layout_panel name="chat_layout_panel">
+  <layout_stack name="forme_chat_input_stack">
+    <layout_panel name="chat_layout_panel">
     <button name="emoji_picker_toggle_btn" tool_tip="Выбрать эмодзи" />
     <button name="send_chat" tool_tip="Отправить сообщение" />
-  </layout_panel></layout_stack>
+    </layout_panel>
+  </layout_stack>
+  <button name="forme_chat_dialogs" label="Полный чат" tool_tip="Открыть полный чат и личные диалоги" />
 </floater>

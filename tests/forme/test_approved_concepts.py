@@ -24,7 +24,7 @@ def child(root, name):
 class ApprovedConcepts(unittest.TestCase):
     def test_profile_keeps_native_editor_separate(self):
         compact = resource('floater_profile.xml')
-        self.assertEqual(420, int(compact.get('width')))
+        self.assertEqual(360, int(compact.get('width')))
         for name in ('forme_profile_avatar', 'forme_profile_name', 'forme_profile_badge', 'forme_profile_message', 'forme_profile_details'):
             child(compact, name)
         main = resource('panel_profile_secondlife.xml')

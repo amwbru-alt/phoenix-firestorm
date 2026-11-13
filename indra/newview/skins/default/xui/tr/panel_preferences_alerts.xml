@@ -1,13 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="Açılır Uyarılar" name="popups">
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 <tab_container name="tabs">
- 
-    <!-- World -->
     <panel label="Dünya" name="tab-world">
-	<check_box label="Bana söyle: L$ harcadığımda veya aldığımda" name="notify_money_change_checkbox"/>
+          <check_box label="Bana söyle: L$ harcadığımda veya aldığımda" name="notify_money_change_checkbox" />
     </panel>
-
-    <!-- Alerts -->
     <panel label="Alerts" name="tab-alerts">
 	<text name="show_label">
 		Daima göster:
@@ -16,6 +14,7 @@
 		Asla gösterme:
 	</text>
 	</panel>
-
 </tab_container>
+</panel>
+  </scroll_container>
 </panel>

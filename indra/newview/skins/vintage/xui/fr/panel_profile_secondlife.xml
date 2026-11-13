@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel name="panel_profile" label="Profil">
 	<string name="status_online">
 		En ligne
@@ -22,6 +22,9 @@ Anniversaire : [REG_DATE]
 	<string name="FSSupp" value=" Support" />
 	<string name="FSQualityAssurance" value=" Chasseur de bogues" />
 	<string name="texture_picker_label" value="Photo du profil" />
+  <button name="save_description_changes" label="Enregistrer" />
+  <button name="discard_description_changes" label="Annuler" />
+  <panel name="forme_layout_profile_legacy">
 	<text name="name_label" value="Nom :" />
 	<button name="set_name" label="Nom :" tool_tip="Définir le nom d'affichage'" />
 	<panel name="name_holder">
@@ -38,11 +41,11 @@ Anniversaire : [REG_DATE]
 			<icon tool_tip="Mes amis ne peuvent pas voir si je suis connecté" name="cant_see_online" />
 			<icon tool_tip="Mes amis peuvent me voir sur la carte" name="can_see_on_map" />
 			<icon tool_tip="Mes amis ne peuvent pas me voir sur la carte" name="cant_see_on_map" />
-			<icon tool_tip="Mes amis peuvent modifier mes objets" name="can_edit_objects"  forme_creator_only="true"/>
-			<icon tool_tip="Mes amis ne peuvent pas modifier mes objets" name="cant_edit_objects"  forme_creator_only="true"/>
+        <icon tool_tip="Mes amis peuvent modifier mes objets" name="can_edit_objects" forme_creator_only="true" />
+        <icon tool_tip="Mes amis ne peuvent pas modifier mes objets" name="cant_edit_objects" forme_creator_only="true" />
 			<text_editor name="user_age" value="(chargement en cours...)" />
 			<text name="label2" value="Compte :" />
-			<text name="partner_label" value="Partenaire :"/>
+        <text name="partner_label" value="Partenaire :" />
 		</layout_panel>
 	</layout_stack>
 	<text name="Groups:" value="Groupes :" />
@@ -69,7 +72,6 @@ Anniversaire : [REG_DATE]
 		</layout_panel>
 	</layout_stack>
 	<check_box name="show_in_search" label="Afficher dans la recherche" tool_tip="Laissez les autres vous voir dans les résultats de recherche" />
-	<check_box name="hide_sl_age" label="Afficher la date de naissance complète'" tool_tip="Laissez les gens voir votre âge SL"/>
-	<button name="save_description_changes" label="Enregistrer" />
-	<button name="discard_description_changes" label="Annuler" />
+    <check_box name="hide_sl_age" label="Afficher la date de naissance complète'" tool_tip="Laissez les gens voir votre âge SL" />
+</panel>
 </panel>

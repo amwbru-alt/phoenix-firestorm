@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<panel follows="all" height="552" label="People" layout="topleft" left="0" min_height="350" name="people_panel" top="0" width="442">
+<panel follows="all" height="420" label="People" layout="topleft" left="0" min_height="350" name="people_panel" top="0" width="388">
   <string name="no_recent_people" value="No recent people." />
   <string name="no_filtered_recent_people" value="Didn't find what you're looking for? Try [fmw:///app/search/people/[SEARCH_TERM] Search]." />
   <string name="no_one_near" value="No one nearby. Looking for people to hang out with? Try [fmw:///app/search/people Search] or the [fmw:///app/worldmap World Map]." />
@@ -45,7 +45,7 @@ Learn about [https://community.secondlife.com/knowledgebase/joining-and-particip
   <panel.string name="OnlineFriendsTitle">
     Online ([ONLINE])
     </panel.string>
-  <tab_container follows="all" layout="topleft" name="tabs" tab_min_width="105" tab_height="34" tab_position="top" halign="center" tab_max_width="180" use_ellipses="true" hide_tabs="true" left="0" top="112" right="-1" bottom="-1">
+  <tab_container follows="all" layout="topleft" name="tabs" tab_min_width="105" tab_height="34" tab_position="top" halign="center" tab_max_width="180" use_ellipses="true" hide_tabs="true" left="0" top="98" right="-1" bottom="-1">
     <panel background_opaque="false" background_visible="false" bottom="-1" follows="all" label="Nearby" layout="topleft" left="0" name="nearby_panel" right="-1" top="0">
       <panel class="fs_panel_radar" name="panel_radar" filename="panel_fs_radar.xml" follows="all" layout="topleft" left="0" top="2" right="-1" bottom="-1" visible="false" />
       <search_editor name="forme_nearby_search" layout="topleft" left="0" top="0" right="-90" height="32" follows="left|right|top" label="Search people…" />
@@ -116,32 +116,32 @@ Learn about [https://community.secondlife.com/knowledgebase/joining-and-particip
       <panel name="panel_people_contacts_sidetray" filename="panel_people_contact_sets.xml" follows="all" label="Contact Sets" layout="topleft" left="0" font="SansSerifBold" top="0" right="-1" bottom="-1" />
     </panel>
   </tab_container>
-  <panel name="forme_people_navigation" layout="topleft" left="0" top="0" width="442" height="104" follows="left|right|top">
-    <button name="forme_people_tab_0" label="Nearby" tool_tip="Nearby" layout="topleft" left="0" top="0" width="144" height="30" image_overlay="Forme_UI_Pin" image_overlay_alignment="left" pad_left="6" halign="left" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" use_ellipses="true">
+  <panel name="forme_people_navigation" layout="topleft" width="388" height="90" follows="left|right|top" left="0" top="0">
+    <button name="forme_people_tab_0" label="Nearby" tool_tip="Nearby" layout="topleft" width="128" height="28" image_overlay="Forme_UI_Pin" image_overlay_alignment="left" pad_left="6" halign="left" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" use_ellipses="true" left="0" top="0" follows="left|top" image_overlay_max_size="16">
       <button.commit_callback function="ForMePeople.SelectTab" parameter="nearby_panel" />
       <button.is_toggled_callback function="ForMePeople.SelectedTab" parameter="nearby_panel" />
     </button>
-    <button name="forme_people_tab_1" label="Friends" tool_tip="Friends" layout="topleft" left="148" top="0" width="144" height="30" image_overlay="Forme_UI_People" image_overlay_alignment="left" pad_left="6" halign="left" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" use_ellipses="true">
+    <button name="forme_people_tab_1" label="Friends" tool_tip="Friends" layout="topleft" width="128" height="28" image_overlay="Forme_UI_People" image_overlay_alignment="left" pad_left="6" halign="left" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" use_ellipses="true" left="130" top="0" follows="left|top" image_overlay_max_size="16">
       <button.commit_callback function="ForMePeople.SelectTab" parameter="friends_panel" />
       <button.is_toggled_callback function="ForMePeople.SelectedTab" parameter="friends_panel" />
     </button>
-    <button name="forme_people_tab_2" label="Groups" tool_tip="Groups" layout="topleft" left="296" top="0" width="144" height="30" image_overlay="Forme_UI_People" image_overlay_alignment="left" pad_left="6" halign="left" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" use_ellipses="true">
+    <button name="forme_people_tab_2" label="Groups" tool_tip="Groups" layout="topleft" width="128" height="28" image_overlay="Forme_UI_People" image_overlay_alignment="left" pad_left="6" halign="left" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" use_ellipses="true" left="260" top="0" follows="left|top" image_overlay_max_size="16">
       <button.commit_callback function="ForMePeople.SelectTab" parameter="groups_panel" />
       <button.is_toggled_callback function="ForMePeople.SelectedTab" parameter="groups_panel" />
     </button>
-    <button name="forme_people_tab_3" label="Recent" tool_tip="Recent" layout="topleft" left="0" top="34" width="144" height="30" image_overlay="Forme_UI_Clock" image_overlay_alignment="left" pad_left="6" halign="left" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" use_ellipses="true">
+    <button name="forme_people_tab_3" label="Recent" tool_tip="Recent" layout="topleft" width="128" height="28" image_overlay="Forme_UI_Clock" image_overlay_alignment="left" pad_left="6" halign="left" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" use_ellipses="true" left="0" top="30" follows="left|top" image_overlay_max_size="16">
       <button.commit_callback function="ForMePeople.SelectTab" parameter="recent_panel" />
       <button.is_toggled_callback function="ForMePeople.SelectedTab" parameter="recent_panel" />
     </button>
-    <button name="forme_people_tab_4" label="Blocked" tool_tip="Blocked" layout="topleft" left="148" top="34" width="144" height="30" image_overlay="Forme_UI_Shield" image_overlay_alignment="left" pad_left="6" halign="left" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" use_ellipses="true">
+    <button name="forme_people_tab_4" label="Blocked" tool_tip="Blocked" layout="topleft" width="128" height="28" image_overlay="Forme_UI_Shield" image_overlay_alignment="left" pad_left="6" halign="left" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" use_ellipses="true" left="130" top="30" follows="left|top" image_overlay_max_size="16">
       <button.commit_callback function="ForMePeople.SelectTab" parameter="blocked_panel" />
       <button.is_toggled_callback function="ForMePeople.SelectedTab" parameter="blocked_panel" />
     </button>
-    <button name="forme_people_tab_5" label="Contact Sets" tool_tip="Contact Sets" layout="topleft" left="296" top="34" width="144" height="30" image_overlay="Forme_UI_Profile" image_overlay_alignment="left" pad_left="6" halign="left" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" use_ellipses="true">
+    <button name="forme_people_tab_5" label="Contact Sets" tool_tip="Contact Sets" layout="topleft" width="128" height="28" image_overlay="Forme_UI_Profile" image_overlay_alignment="left" pad_left="6" halign="left" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" use_ellipses="true" left="260" top="30" follows="left|top" image_overlay_max_size="16">
       <button.commit_callback function="ForMePeople.SelectTab" parameter="contact_sets_panel" />
       <button.is_toggled_callback function="ForMePeople.SelectedTab" parameter="contact_sets_panel" />
     </button>
-    <button name="forme_people_find" layout="topleft" label="Search" left="0" top="70" width="216" height="30" />
-    <button name="forme_people_groups_window" layout="topleft" label="Groups window" left="224" top="70" width="216" height="30" />
+    <button name="forme_people_find" layout="topleft" label="Search" width="190" height="28" left="0" top="62" follows="left|top" />
+    <button name="forme_people_groups_window" layout="topleft" label="Groups window" width="190" height="28" left="198" top="62" follows="left|top" />
   </panel>
 </panel>

@@ -30,6 +30,21 @@
 #include <algorithm>
 namespace ForMeHUD
 {
+struct HeaderLayout
+{
+    int balanceLeft, balanceWidth, locationLeft, locationWidth, connectionLeft;
+    bool showBrand, showLocation, showConnection;
+};
+inline HeaderLayout header(int width, int balanceTextWidth)
+{
+    const int balanceWidth = std::clamp(balanceTextWidth + 38, 96, std::min(180, std::max(96, width / 3)));
+    const int balanceLeft = std::max(0, width - 148 - balanceWidth);
+    const bool location = width >= 620;
+    const bool connection = width >= 940;
+    const int locationWidth = location ? std::min(200, std::max(0, balanceLeft - 200 - (connection ? 160 : 0))) : 0;
+    return {balanceLeft, balanceWidth, 184, locationWidth, 196 + locationWidth,
+        balanceLeft >= 180, location, connection};
+}
 struct Layout
 {
     int chatWidth, chatHeight, chatBottom;

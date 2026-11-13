@@ -595,6 +595,12 @@ LLFloaterCamera::LLFloaterCamera(const LLSD& val)
 // virtual
 bool LLFloaterCamera::postBuild()
 {
+    if (hasChild("forme_camera_walk"))
+    {
+        for (const auto& view : {std::make_pair("front_view", "forme_view_front"),
+                 std::make_pair("group_view", "forme_view_side"), std::make_pair("rear_view", "forme_view_back")})
+            getChild<LLPanelCameraItem>(view.first)->getChild<LLTextBox>("picture_name")->setText(getString(view.second));
+    }
     for (const auto& mode : {"walk", "run", "fly"})
     {
         const std::string name(mode);
@@ -607,7 +613,7 @@ bool LLFloaterCamera::postBuild()
     if (auto* reset = findChild<LLButton>("forme_camera_reset"))
         reset->setClickedCallback([](LLUICtrl*, const LLSD&) { LLFloaterCamera::onClickCameraItem(LLSD("reset_view")); });
 
-    mControls = getChild<LLPanel>("controls");
+    mControls = findChild<LLPanel>("controls");
     mAgentCameraInfo = getChild<LLPanel>("agent_camera_info");
     mViewerCameraInfo = getChild<LLPanel>("viewer_camera_info");
     mRotate = getChild<LLJoystickCameraRotate>(ORBIT);

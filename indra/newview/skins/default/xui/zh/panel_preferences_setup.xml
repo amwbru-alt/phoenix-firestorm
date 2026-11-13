@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="初始化" name="Input panel">
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 	<tab_container name="tabs" label="初始化">
 		<panel label="連線" name="tab-conn">
 			<text name="Maximum bandwidth">最大頻寬（[https://wiki.firestormviewer.org/fs_speedtest 需要幫助？]）：</text>
@@ -58,4 +60,5 @@
 			<button label="設定檔案夾" label_selected="設定資料夾" name="browse_settingsdir" />
 		</panel>
 	</tab_container>
+</panel>  </scroll_container>
 </panel>

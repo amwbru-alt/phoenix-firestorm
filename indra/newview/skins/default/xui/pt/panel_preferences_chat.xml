@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="Bate-papo de texto" name="chat">
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 	<tab_container name="tabs" label="Preferências do ForMe.World">
 		<panel label="Visual" name="ChatVisuals">
 			<text name="console_font_size" width="180">
@@ -40,8 +42,6 @@
 				(# linhas)
 			</text>
 		</panel>
-
-		
 		<panel label="Janela de bate-papo" name="ChatWindows">
 			<text name="font_size" width="180">
 				Tamanho da fonte do chat:
@@ -56,7 +56,7 @@
 			<check_box label="Estilo V1 para histórico de IMs e chat" name="plain_text_chat_history" />
 			<check_box label="Mostrar mini-ícones no estilo [SHORT_VIEWER_GENERATION]" name="ShowChatMiniIcons" />	
 			<check_box label="Exibir fim da última conversa" name="LogShowHistory" />
-			<check_box name="FSTypingChevronPrefix" label="Adicionar seta adicional (&gt;) como indicador de digitação nas sessões de MI"/>
+          <check_box name="FSTypingChevronPrefix" label="Adicionar seta adicional (&gt;) como indicador de digitação nas sessões de MI" />
 			<text name="show_unread_messages_label" width="155">
 				Notificar novas mensagens em:
 			</text>
@@ -142,8 +142,6 @@
 			</text>
 			<check_box name="FSEnablePerGroupSnoozeDuration" label="Período de silêncio personalizado por grupo" />
 		</panel>
-
-		
 		<panel label="entrada" name="ChatTyping">
 			<button name="autoreplace_showgui" label="Substituição automática" />
 			<button name="spellcheck_showgui" label="Verificação ortográfica" width="145" />
@@ -175,8 +173,6 @@
 			<check_box label="Shift + Return (sussurrar)" tool_tip="Ative se o atalho de teclado Shift + Return deve ser usado para sussurrar no chat nas proximidades." name="FSUseShiftWhisper" />
 			<check_box label="Alt + Retorno (OOC)" tool_tip="Ative se o atalho de teclado Alt + Return para chat OOC deve ser usado no chat nas proximidades." name="FSUseAltOOC" />
 		</panel>
-
-		
 		<panel label="notificação" name="ChatNotices">
 			<text name="disable_toast_label">
 				Ative pop-ups de bate-papo para chamadas recebidas:
@@ -214,8 +210,6 @@
 			<check_box name="FSGroupNoticesToIMLog" label="Mostrar avisos de grupo também no chat do grupo" />
 			<check_box name="FSBetterGroupNoticesToIMLog" label="Mostrar também assunto e autor" />
 		</panel>
-
-		
 		<panel label="Radar" name="ChatRadar">
 			<check_box name="reportChatRangeEnter" label="Radar: avatar entra no alcance do chat" />
 			<check_box width="140" name="PlayModeUISndRadarChatEnter" label="Reproduzir som UUID:" />
@@ -259,8 +253,6 @@
 			<button label="V" name="Prev_UISndRadarAgeAlert" tool_tip="Prévia deste som." />
 			<button label="S" name="Def_UISndRadarAgeAlert" tool_tip="Redefinir para o valor padrão." />
 		</panel>
-
-		
 		<panel label="Palavras-chave" name="ChatKeywordAlerts">
 			<check_box name="FSKeywordOn" label="Ativar alertas de palavras-chave" />
 			<check_box name="FSKeywordInChat" label="Verificar palavras-chave no chat local" />
@@ -280,8 +272,6 @@
 			<button label="V" name="Prev_UISndFSKeywordSound" tool_tip="Prévia deste som." />
 			<button label="S" name="Def_UISndFSKeywordSound" tool_tip="Redefinir para o valor padrão." />
 		</panel>
-
-		
 		<panel label="CmdLine" name="tab-CmdLine">
 			<check_box label="Use a linha de entrada do chat para inserir comandos" name="chat_cmd_toggle" />
 			<text name="FSCmdLineCalc_txt">
@@ -349,6 +339,6 @@
 			</text>
 			<check_box label="Manter posição na nova região" name="toggle" />
 		</panel>
-
 	</tab_container>
+</panel>  </scroll_container>
 </panel>

@@ -1,27 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <floater name="Preferences" title="Preferencias">
-	<button label="Aplicar" label_selected="Aplicar" name="Apply"/>
-	<button label="Aceptar" label_selected="Aceptar" name="OK"/>
-	<button label="Cancelar" label_selected="Cancelar" name="Cancel"/>
+  <button label="Aplicar" label_selected="Aplicar" name="forme_apply" />
+  <button label="Aceptar" label_selected="Aceptar" name="OK" />
+  <button label="Cancelar" label_selected="Cancelar" name="Cancel" />
 	<panel name="search_panel">
-		<search_editor label="Parámetros de Búsqueda" name="search_prefs_edit" tool_tip="Ingresa el término de búsqueda que te interesa aquí. Los resultados aparecerán para coincidencias parciales de texto completo en el nombre o comentario del parámetro."/>
+    <search_editor label="Parámetros de Búsqueda" name="search_prefs_edit" tool_tip="Ingresa el término de búsqueda que te interesa aquí. Los resultados aparecerán para coincidencias parciales de texto completo en el nombre o comentario del parámetro." />
 	</panel>
 	<tab_container name="pref core">
-		<panel label="General" name="general"/>
-		<panel label="Chat" name="chat"/>
-		
-		<panel label="Gráficos" name="display"/>
-		<panel label="Sonido y medios" name="audio"/>
-		<panel label="Red y caché" name="input"/>
-		<panel label="Mover y ver" name="move"/>
-		<panel label="Notificaciones" name="msgs"/>	
-		<panel label="Privacidad" name="im"/>
-		<panel label="Avanzado" name="advanced1"/>
-		<panel label="Ortografía" name="spell_check"/>
-		<panel label="Interfaz" name="ui"/>
-		<panel label="Skins" name="skins"/>
-		<panel label="Reporte de fallos" name="crashreports"/>
-		<panel label="ForMe.World" name="firestorm"/>
-		<panel label="Respaldo" name="backup"/>
+    <panel label="General" name="general" />
+    <panel label="Chat" name="chat" />
+    <panel label="Gráficos" name="display" />
+    <panel label="Sonido y medios" name="audio" />
+    <panel label="Red y caché" name="input" />
+    <panel label="Mover y ver" name="move" />
+    <panel label="Notificaciones" name="msgs" />
+    <panel label="Privacidad" name="im" />
+    <panel label="Avanzado" name="advanced1" />
+    <panel label="Interfaz" name="ui" />
+    <panel label="Skins" name="skins" />
+    <panel label="Reporte de fallos" name="crashreports" />
+    <panel label="ForMe.World" name="firestorm" />
+    <panel label="Respaldo" name="backup" />
 	</tab_container>
 </floater>

@@ -80,6 +80,13 @@ FSFloaterIMContainer::~FSFloaterIMContainer()
 
 bool FSFloaterIMContainer::postBuild()
 {
+    getChild<LLButton>("forme_nearby_chat")->setClickedCallback([](LLUICtrl*, const LLSD&) {
+        LLFloaterReg::showInstance("fs_nearby_chat");
+    });
+    getChild<LLButton>("forme_new_dialog")->setClickedCallback([](LLUICtrl*, const LLSD&) {
+        LLSD key; key["people_panel_tab_name"] = "friends_panel";
+        LLFloaterReg::showInstance("people", key);
+    });
     if (auto* search = findChild<LLSearchEditor>("forme_conversation_search"))
         search->setCommitCallback([this](LLUICtrl* ctrl, const LLSD&) {
             std::string query = utf8str_tolower(ctrl->getValue().asString());
@@ -584,7 +591,7 @@ void FSFloaterIMContainer::reloadEmptyFloaters()
 // virtual
 void FSFloaterIMContainer::draw()
 {
-
+    getChildView("forme_conversation_empty")->setVisible(mTabContainer->getTabCount() == 0);
 
     for (const auto& entry : mSessions)
     {

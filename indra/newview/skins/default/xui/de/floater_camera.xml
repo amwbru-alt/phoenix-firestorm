@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <floater name="camera_floater" title="Kamerasteuerungen">
 	<floater.string name="rotate_tooltip">
 		Kamera um Fokus drehen
@@ -18,15 +18,15 @@
 	<panel name="zoom">
 		<layout_stack name="camera_view_layout_stack">
 			<layout_panel name="camera_rotate_layout_panel">
-				<joystick_rotate name="cam_rotate_stick" tool_tip="Kamera um Fokus kreisen"/>
+        <joystick_rotate name="cam_rotate_stick" tool_tip="Kamera um Fokus kreisen" />
 				<button name="roll_left" tool_tip="Kamera nach links rollen" />
 				<button name="roll_right" tool_tip="Kamera nach rechts rollen" />
 			</layout_panel>
 			<layout_panel name="camera_zoom_layout_panel">
-				<slider_bar name="zoom_slider" tool_tip="Kamera auf Fokus zoomen"/>
+        <slider_bar name="zoom_slider" tool_tip="Kamera auf Fokus zoomen" />
 			</layout_panel>
 			<layout_panel name="panel_track">
-				<joystick_track name="cam_track_stick" tool_tip="Kamera nach oben, unten, links und rechts bewegen"/>
+        <joystick_track name="cam_track_stick" tool_tip="Kamera nach oben, unten, links und rechts bewegen" />
 			</layout_panel>
 		</layout_stack>
 	</panel>
@@ -59,13 +59,13 @@
 			<panel_camera_item.text name="reset_view_text">
 			</panel_camera_item.text>
 		</panel_camera_item>
-	<button label="Position..." name="camera_position_btn"/>
+    <button label="Position..." name="camera_position_btn" />
 	</panel>
 	<panel name="preset_buttons_panel">
 		<combo_box name="preset_combo">
-			<combo_box.item label="Voreinstellung verw." name="Use preset"/>
+      <combo_box.item label="Voreinstellung verw." name="Use preset" />
 		</combo_box>
-		<button name="gear_btn" tool_tip="Kamera-Voreinstellungen"/>
-		<button name="save_preset_btn" tool_tip="Als Voreinstellung speichern"/>
+    <button name="gear_btn" tool_tip="Kamera-Voreinstellungen" />
+    <button name="save_preset_btn" tool_tip="Als Voreinstellung speichern" />
 	</panel>
 </floater>

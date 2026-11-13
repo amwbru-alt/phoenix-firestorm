@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <floater name="Map" title="Minimappa">
 	<floater.string name="ParcelSalePriceMsg">
 		Prezzo: [PRICE] L$ ([PRICE_PER_SQM] L$/m²)

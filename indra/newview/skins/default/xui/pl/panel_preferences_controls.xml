@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="Sterowanie" name="controls">
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 	<combo_box name="key_mode">
 		<combo_box.item label="W trzeciej osobie" name="third_person" />
 		<combo_box.item label="W trybie pierwszoosobowym" name="first_person" />
@@ -7,4 +9,6 @@
 		<combo_box.item label="Siedząc" name="sitting" />
 	</combo_box>
 	<button label="Przywróć domyślne" tool_tip="Przywraca wartości domyślne dla wszystkich trybów sterowania." name="restore_defaults" />
+</panel>
+  </scroll_container>
 </panel>

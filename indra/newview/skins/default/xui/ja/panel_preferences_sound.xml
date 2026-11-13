@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="サウンド" name="Preference Media panel">
-	<!-- label_widthと、widthを削除しないこと -->
 	<panel.string name="middle_mouse">
 		マウスボタン中央
 	</panel.string>
@@ -67,14 +66,12 @@
 	<panel.string name="textFSHealthReductionM">
 		男性のうめき声：
 	</panel.string>
-
 	<panel.string name="textFSInvalidOp">
 		無効な操作：
 	</panel.string>
 	<panel.string name="textFSInventoryOffer">
 		インベントリを受け取った：
 	</panel.string>
-
 	<panel.string name="textFSMoneyChangeDown">
 		リンデンドル残高減少：
 	</panel.string>
@@ -180,39 +177,38 @@
 	<panel.string name="textFSWindowOpen">
 		ウィンドウを開いたとき：
 	</panel.string>
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 	<tab_container label="Firestorm初期設定" name="tabs">
-		<!-- Sounds -->
 		<panel label="サウンド" name="Media Sounds Panel">
-			<slider label="マスターボリューム" name="System Volume"/>
-			<check_box label="最小化時にミュート" name="mute_when_minimized"/>
-			<slider label="インターフェース" name="UI Volume"/>
-			<slider label="環境音" name="Wind Volume"/>
-			<check_box name="collisions_audio_play_btn" tool_tip="衝突時のデフォルトのサウンドを聞くには、これをチェックしてください。" label="衝突時の音を再生する"/>
-			<slider label="効果音" name="SFX Volume"/>
-			<check_box label="ジェスチャーの音を再生" name="gesture_audio_play_btn" tool_tip="ジェスチャーの音を聞くにはこれをチェックしてください。"/>
-			<slider label="ストリーミング音楽" name="Music Volume"/>
-			<check_box label="有効" name="enable_music"/>
-			<slider label="メディア" name="Media Volume"/>
-			<check_box label="有効" name="enable_media"/>
-
-
+          <slider label="マスターボリューム" name="System Volume" />
+          <check_box label="最小化時にミュート" name="mute_when_minimized" />
+          <slider label="インターフェース" name="UI Volume" />
+          <slider label="環境音" name="Wind Volume" />
+          <check_box name="collisions_audio_play_btn" tool_tip="衝突時のデフォルトのサウンドを聞くには、これをチェックしてください。" label="衝突時の音を再生する" />
+          <slider label="効果音" name="SFX Volume" />
+          <check_box label="ジェスチャーの音を再生" name="gesture_audio_play_btn" tool_tip="ジェスチャーの音を聞くにはこれをチェックしてください。" />
+          <slider label="ストリーミング音楽" name="Music Volume" />
+          <check_box label="有効" name="enable_music" />
+          <slider label="メディア" name="Media Volume" />
+          <check_box label="有効" name="enable_media" />
 			<text name="Listen media from">
 				メディアとサウンドの聞き取り位置：
 			</text>
 			<radio_group name="media_ear_location">
-				<radio_item label="カメラの位置" name="0"/>
-				<radio_item label="アバターの位置" name="1"/>
+            <radio_item label="カメラの位置" name="0" />
+            <radio_item label="アバターの位置" name="1" />
 			</radio_group>
 			<text name="auto_unmute_label">
 				テレポート後に自動的にミュート解除：
 			</text>
-			<check_box name="FSAutoUnmuteAmbient" label="環境音" tool_tip="環境音がミュートされている場合、テレポート後に自動的にミュートを解除します。（デフォルトはオフ）"/>
-			<check_box name="FSAutoUnmuteSounds" label="効果音" tool_tip="効果音がミュートされている場合、テレポート後に自動的にミュートを解除します。（デフォルトはオフ）"/>
+          <check_box name="FSAutoUnmuteAmbient" label="環境音" tool_tip="環境音がミュートされている場合、テレポート後に自動的にミュートを解除します。（デフォルトはオフ）" />
+          <check_box name="FSAutoUnmuteSounds" label="効果音" tool_tip="効果音がミュートされている場合、テレポート後に自動的にミュートを解除します。（デフォルトはオフ）" />
 			<text name="friends_logon_sounds_label">
 				フレンドが次の場合にサウンドを再生します：
 			</text>
-			<check_box name="friends_notify_online_sound" label="ログイン時"/>
-			<check_box name="friends_notify_offline_sound" label="ログアウト時"/>
+          <check_box name="friends_notify_online_sound" label="ログイン時" />
+          <check_box name="friends_notify_offline_sound" label="ログアウト時" />
 			<text name="money_change_threshold_label" tool_tip="ここで設定した金額を超える金額が使われたり受け取られたりしたときにサウンドが再生されます。">
 				L$入出金通知音のしきい値：
 			</text>
@@ -234,52 +230,49 @@
 				</text>
 			</panel>
 		</panel>
-		<!-- Media -->
 		<panel label="メディア" name="Media Media Panel">
 			<text name="media_autoplay_label">
 				メディアの自動再生
 			</text>
 			<combo_box name="media_auto_play_combo">
-				<item label="無効" name="autoplay_disabled"/>
-				<item label="有効" name="autoplay_enabled"/>
-				<!--<item label="確認" name="autoplay_ask"/>-->
+            <item label="無効" name="autoplay_disabled" />
+            <item label="有効" name="autoplay_enabled" />
 			</combo_box>
-			<check_box label="インワールドスクリプトによるメディアの再生を許可する" name="media_allowscript_btn" tool_tip="この設定は、スクリプトプリムがメディア接続を制御することを許可／禁止します。"/>
-			<check_box label="他のアバターに装着されたメディアを再生する" name="media_show_on_others_btn" tool_tip="チェックを外すと、近くにある他のアバターに添付されたメディアが非表示になります。"/>
-			<check_box name="media_huds_autoplay" tool_tip="チェックを外すと、ＨＵＤは標準のメディア自動再生設定に従います。" label="ＨＵＤに装着されたメディアを自動再生する"/>
-			<check_box label="メディアフィルタを有効にする（セキュリティレベルが上がります）" name="media_filter" tool_tip="これをチェックすると、特定のホストからメディアを再生するかどうかを選択できるフィルタが有効になります。"/>
-			<button label="メディアサイトの管理" name="edit_media_lists_button"/>
+          <check_box label="インワールドスクリプトによるメディアの再生を許可する" name="media_allowscript_btn" tool_tip="この設定は、スクリプトプリムがメディア接続を制御することを許可／禁止します。" />
+          <check_box label="他のアバターに装着されたメディアを再生する" name="media_show_on_others_btn" tool_tip="チェックを外すと、近くにある他のアバターに添付されたメディアが非表示になります。" />
+          <check_box name="media_huds_autoplay" tool_tip="チェックを外すと、ＨＵＤは標準のメディア自動再生設定に従います。" label="ＨＵＤに装着されたメディアを自動再生する" />
+          <check_box label="メディアフィルタを有効にする（セキュリティレベルが上がります）" name="media_filter" tool_tip="これをチェックすると、特定のホストからメディアを再生するかどうかを選択できるフィルタが有効になります。" />
+          <button label="メディアサイトの管理" name="edit_media_lists_button" />
 			<text tool_tip="この設定は、読み込まれたメディアのうち、対象をクリックせずにインタラクションを開始できるメディアを制御します。これにより、対象をクリックする必要がなくなり、メディアに直接クリック情報が渡されるようになります。" name="media_firstinteract_label">
 				メディアの開始インタラクト：
 			</text>
-			<check_box name="media_first_click_all" label="すべてのＭＯＡＰ"/>
-			<check_box name="media_first_click_any" label="誰かのオブジェクト"/>
-			<check_box name="media_first_click_hud" label="装着しているＨＵＤ"/>
-			<check_box name="media_first_click_own" label="自身のオブジェクト"/>
-			<check_box name="media_first_click_group" label="グループのオブジェクト"/>
-			<check_box name="media_first_click_friend" label="フレンドのオブジェクト"/>
-			<check_box name="media_first_click_land" label="土地所有者のオブジェクト"/>
+          <check_box name="media_first_click_all" label="すべてのＭＯＡＰ" />
+          <check_box name="media_first_click_any" label="誰かのオブジェクト" />
+          <check_box name="media_first_click_hud" label="装着しているＨＵＤ" />
+          <check_box name="media_first_click_own" label="自身のオブジェクト" />
+          <check_box name="media_first_click_group" label="グループのオブジェクト" />
+          <check_box name="media_first_click_friend" label="フレンドのオブジェクト" />
+          <check_box name="media_first_click_land" label="土地所有者のオブジェクト" />
 			<text name="Media Rolloff">
 				メディアソースの音量ロールオフ距離：
 			</text>
-			<slider label="音量減少開始" name="MediaRollOffMin" tool_tip="ここで設定した距離より音源から遠くに離れていくにつれて音量が次第に小さくなっていきます"/>
+          <slider label="音量減少開始" name="MediaRollOffMin" tool_tip="ここで設定した距離より音源から遠くに離れていくにつれて音量が次第に小さくなっていきます" />
 			<text name="MinMeters">
 				メートル
 			</text>
-			<slider label="音量完全オフ：" name="MediaRollOffMax" tool_tip="ここで設定した距離まで音源から離れると音量が最小になり、更に離れると音が聞こえなくなります"/>
+          <slider label="音量完全オフ：" name="MediaRollOffMax" tool_tip="ここで設定した距離まで音源から離れると音量が最小になり、更に離れると音が聞こえなくなります" />
 			<text name="MaxMeters">
 				メートル
 			</text>
 		</panel>
-		<!-- Music -->
 		<panel label="音楽" name="Media Music Panel">
-			<check_box name="audio_auto_play_btn" tool_tip="チェックすると自動的にオーディオストリームの再生が始まります" label="オーディオの自動再生を許可"/>
-			<check_box name="FSFadeAudioStream" tool_tip="区画に流れている曲が変わる時にフェードイン／フェードアウトさせたい場合にここにチェックを入れて下さい。" label="区画音声のフェードを有効にする："/>
-			<slider label="フェードイン" name="FSAudioMusicFadeIn" tool_tip="区画に流れている音声のフェードインした時間を設定します。" width="280" label_width="80"/>
+          <check_box name="audio_auto_play_btn" tool_tip="チェックすると自動的にオーディオストリームの再生が始まります" label="オーディオの自動再生を許可" />
+          <check_box name="FSFadeAudioStream" tool_tip="区画に流れている曲が変わる時にフェードイン／フェードアウトさせたい場合にここにチェックを入れて下さい。" label="区画音声のフェードを有効にする：" />
+          <slider label="フェードイン" name="FSAudioMusicFadeIn" tool_tip="区画に流れている音声のフェードインした時間を設定します。" width="280" label_width="80" />
 			<text name="FSAudioMusicFadeInSeconds">
 				秒
 			</text>
-			<slider label="フェードアウト" name="FSAudioMusicFadeOut" tool_tip="区画に流れている音声のフェードアウトした時間を設定します。" width="280" label_width="80"/>
+          <slider label="フェードアウト" name="FSAudioMusicFadeOut" tool_tip="区画に流れている音声のフェードアウトした時間を設定します。" width="280" label_width="80" />
 			<text name="FSAudioMusicFadeOutSeconds">
 				秒
 			</text>
@@ -287,15 +280,12 @@
 				曲名の通知方法：
 			</text>
 			<radio_group name="show_stream_metadata">
-				<radio_item label="通知しない" name="radio_off"/>
-				<radio_item label="トースト" name="radio_toasts"/>
-				<radio_item label="近くのチャット" name="radio_chat"/>
+            <radio_item label="通知しない" name="radio_off" />
+            <radio_item label="トースト" name="radio_toasts" />
+            <radio_item label="近くのチャット" name="radio_chat" />
 			</radio_group>
-			<check_box label="曲名を次のチャンネルに送る" name="StreamMetadataAnnounceToChat"/>
+          <check_box label="曲名を次のチャンネルに送る" name="StreamMetadataAnnounceToChat" />
 		</panel>
-		<!-- ボイス -->
-
-		<!-- UI Sounds -->
 		<panel label="ＵＩサウンド" name="UI Sounds tab">
 			<text name="textFSExplanation_tab1">
 				ここから（サウンドのＵＵＩＤを指定することで）デフォルトのインターフェイスサウンドを変更したり、
@@ -310,4 +300,6 @@
 			<button name="ui_sound_default" tool_tip="デフォルトのＵＵＩＤにリセットします。" />
 		</panel>
 	</tab_container>
+</panel>
+  </scroll_container>
 </panel>

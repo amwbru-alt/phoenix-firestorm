@@ -249,6 +249,9 @@ bool FSFloaterNearbyChat::postBuild()
         {
             setForMeChatCollapsed(!mForMeChatCollapsed);
         });
+        getChild<LLButton>("forme_chat_dialogs")->setClickedCallback([](LLUICtrl*, const LLSD&) {
+            LLFloaterReg::showInstance("fs_im_container");
+        });
         layoutForMeChat();
     }
     return built;
@@ -629,6 +632,7 @@ void FSFloaterNearbyChat::layoutForMeChat()
     mChatLayoutPanel->reshape(width - 28, 44 + input_extra, false);
     getChildView("forme_chat_input_stack")->setVisible(gSavedSettings.getBOOL("FSNearbyChatbar"));
     getChildView("forme_chat_options")->setOrigin(width - 74, height - 38);
+    getChildView("forme_chat_dialogs")->setShape(LLRect(width - 190, height - 10, width - 78, height - 38));
     auto* tools = getChildView("forme_chat_channel_tools");
     tools->setShape(LLRect(16, 94 + input_extra, width - 16, 66 + input_extra));
     tools->setVisible(tools_extra > 0 && gSavedSettings.getBOOL("FSNearbyChatbar"));
@@ -639,7 +643,7 @@ void FSFloaterNearbyChat::layoutForMeChat()
     channel->setVisible(show_channel);
     channel->setShape(LLRect(show_type ? half + 8 : 0, 26, width - 32, 2));
     getChildView("forme_chat_icon")->setOrigin(16, height - 35);
-    getChildView("forme_chat_title")->setShape(LLRect(48, height - 14, width - 134, height - 38));
+    getChildView("forme_chat_title")->setShape(LLRect(48, height - 14, width - (mForMeChatCollapsed ? 238 : 198), height - 38));
     getChildView("forme_chat_divider")->setShape(LLRect(16, height - 47, width - 16, height - 48));
     auto* toggle = getChild<LLButton>("forme_chat_toggle");
     toggle->setOrigin(width - 42, height - 38);
@@ -653,7 +657,7 @@ void FSFloaterNearbyChat::layoutForMeChat()
     mChatHistoryMuted->setVisible(!mForMeChatCollapsed && muted);
     mUnreadMessagesNotificationPanel->setVisible(false);
     auto* unread = getChild<LLTextBox>("forme_chat_unread");
-    unread->setOrigin(width - 126, height - 36);
+    unread->setOrigin(width - 232, height - 36);
     unread->setVisible(mForMeChatCollapsed && mForMeChatUnread > 0);
     unread->setText(mForMeChatUnread >= 999 ? "999+" : std::to_string(mForMeChatUnread));
     mSendChatButton->setEnabled(!gDisconnected);

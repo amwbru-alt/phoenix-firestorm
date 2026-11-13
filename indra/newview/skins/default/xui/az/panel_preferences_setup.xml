@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="Şəbəkə və fayllar" name="Input panel">
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 	<tab_container name="tabs">
 		<panel label="Qoşulma" name="tab-conn">
 			<text name="Maximum bandwidth">
@@ -11,8 +13,8 @@
 			<text name="NetworkPrefText4">
 				Problemlərə səbəb ola bilər
 			</text>
-			<check_box label="İstifadəçi portu" name="connection_port_enabled"/>
-			<spinner label="Port nömrəsi:" name="connection_port"/>
+          <check_box label="İstifadəçi portu" name="connection_port_enabled" />
+          <spinner label="Port nömrəsi:" name="connection_port" />
 			<text name="Web:">
 				Web brauzer:
 			</text>
@@ -25,16 +27,16 @@
 				Web brauzer pəncərələrinin maksimum sayı:
 			</text>
 			<combo_box tool_tip="Açıla bilən brauzer pəncərələrinin maksimum sayı" name="web_number_combobox">
-				<combo_box.item label="Məhdudiyyət yoxdur" name="web_unlimited"/>
-				<combo_box.item label="Bir pəncərə" name="web_1"/>
-				<combo_box.item label="Beş pəncərə" name="web_5"/>
-				<combo_box.item label="On pəncərə" name="web_10"/>
+            <combo_box.item label="Məhdudiyyət yoxdur" name="web_unlimited" />
+            <combo_box.item label="Bir pəncərə" name="web_1" />
+            <combo_box.item label="Beş pəncərə" name="web_5" />
+            <combo_box.item label="On pəncərə" name="web_10" />
 			</combo_box>
-			<button label="Web brauzerinin keşini təmizlə" name="ClearWebBrowserCache" width="195"/>
-			<check_box label="Cookies qəbul edin" name="cookies_enabled"/>
-			<check_box label="Javascript-i aktivləşdir" name="browser_javascript_enabled"/>
-			<check_box label="Media popup pəncərələrini aktivləşdir" name="media_popup_enabled"/>
-			<button label="Proksi seçimlərinin təmzimlənməsi" label_selected="Proksi seçimlərinin təmzimlənməsi" name="set_proxy"/>
+          <button label="Web brauzerinin keşini təmizlə" name="ClearWebBrowserCache" width="195" />
+          <check_box label="Cookies qəbul edin" name="cookies_enabled" />
+          <check_box label="Javascript-i aktivləşdir" name="browser_javascript_enabled" />
+          <check_box label="Media popup pəncərələrini aktivləşdir" name="media_popup_enabled" />
+          <button label="Proksi seçimlərinin təmzimlənməsi" label_selected="Proksi seçimlərinin təmzimlənməsi" name="set_proxy" />
 			<text name="home_page_label_l">
 				Brauzerin ev səhifəsi:
 			</text>
@@ -52,29 +54,31 @@
 			<text name="asset_text_box5">
 				MB
 			</text>
-			<button label="İnventar Keşini Təmizləyin" name="ClearInventoryCache" left="370" width="160"/>
+          <button label="İnventar Keşini Təmizləyin" name="ClearInventoryCache" left="370" width="160" />
 			<text name="Cache location">
 				Keş yerləşməsi:
 			</text>
-			<button label="Aç" label_selected="Aç" width="60" name="open_cache"/>
-			<button label="Təyin et" label_selected="Təyin et" width="50" name="set_cache"/>
-			<button label="Sıfırla" label_selected="Sıfırla" width="50" name="reset_cache"/>
-			<button label="Təmizlə" label_selected="Təmizlə" width="60" name="clear_cache"/>
+          <button label="Aç" label_selected="Aç" width="60" name="open_cache" />
+          <button label="Təyin et" label_selected="Təyin et" width="50" name="set_cache" />
+          <button label="Sıfırla" label_selected="Sıfırla" width="50" name="reset_cache" />
+          <button label="Təmizlə" label_selected="Təmizlə" width="60" name="clear_cache" />
 			<text name="Sound Cache location">
 				Səs keşinin yerləşməsi:
 			</text>
-			<button label="Aç" label_selected="Aç" width="60" name="open_sound_cache"/>
-			<button label="Təyin et" label_selected="Təyin et" width="50" name="set_sound_cache"/>
-			<button label="Sıfırla" label_selected="Sıfırla" width="50" name="reset_sound_cache"/>
-			<check_box label="Çıxarkən açılmış DSF fayllarının kəşindən silinməsi (səslər)" tool_tip="DİQQƏT: Bu funksiyanın aktiv edilməsi halında səs faylları keşdən silinməyəcəkdir, bu da keş kataloqunun tez bir zamanda dolmasına və kompüterinizdəki disk sahəsinin azalmasına səbəb ola bilər. Susmaya görə bu funksiya söndürülüb" name="keep_unpacked_cache"/>
+          <button label="Aç" label_selected="Aç" width="60" name="open_sound_cache" />
+          <button label="Təyin et" label_selected="Təyin et" width="50" name="set_sound_cache" />
+          <button label="Sıfırla" label_selected="Sıfırla" width="50" name="reset_sound_cache" />
+          <check_box label="Çıxarkən açılmış DSF fayllarının kəşindən silinməsi (səslər)" tool_tip="DİQQƏT: Bu funksiyanın aktiv edilməsi halında səs faylları keşdən silinməyəcəkdir, bu da keş kataloqunun tez bir zamanda dolmasına və kompüterinizdəki disk sahəsinin azalmasına səbəb ola bilər. Susmaya görə bu funksiya söndürülüb" name="keep_unpacked_cache" />
 			<text name="log_path_desc">
 				Söhbətlər jurnallarının yerləşməsi:
 			</text>
-			<button label="Aç" label_selected="Aç" width="60" name="open_log_path_button-panelsetup"/>
-			<button label="Təyin et" label_selected="Təyin et" width="50" name="log_path_button-panelsetup"/>
-			<button label="Sıfırla" label_selected="Sıfırla" name="reset_logpath"/>
-			<button label="Xəta jurnalı" label_selected="Xəta jurnalı" name="browse_crashlogs"/>
-			<button label="Seçimlər qovluğu" label_selected="Seçimlər qovluğu" name="browse_settingsdir"/>
+          <button label="Aç" label_selected="Aç" width="60" name="open_log_path_button-panelsetup" />
+          <button label="Təyin et" label_selected="Təyin et" width="50" name="log_path_button-panelsetup" />
+          <button label="Sıfırla" label_selected="Sıfırla" name="reset_logpath" />
+          <button label="Xəta jurnalı" label_selected="Xəta jurnalı" name="browse_crashlogs" />
+          <button label="Seçimlər qovluğu" label_selected="Seçimlər qovluğu" name="browse_settingsdir" />
 		</panel>
 	</tab_container>
+</panel>
+  </scroll_container>
 </panel>

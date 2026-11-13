@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="Oberflächendesign" name="skin_panel">
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 	<text name="skin_textbox">
         Oberflächendesign:
     </text>
@@ -12,10 +14,12 @@
     <text name="theme_textbox2">
         (Erfordert Neustart)
     </text>
-    <check_box label="Schaltflächen bei Designwechsel auf Standard-Layout zurücksetzen" tool_tip="Falls aktiviert, werden beim Wechsel der Benutzeroberfläche die Schaltflächen auf das dazugehörige Standardlayout zurückgesetzt." name="reset_toolbar_settings"/>
-    <check_box label="Schaltflächen bei Moduswechsel auf Standard-Layout zurücksetzen" tool_tip="Falls aktiviert, werden beim Wechsel des Login-Modus die Schaltflächen auf das dazugehörige Standardlayout zurückgesetzt." name="FSToolbarsResetOnModeChange"/>
-    <check_box label="Cursor im Viewer 1-Stil verwenden" name="use_legacy_cursors"/>
+      <check_box label="Schaltflächen bei Designwechsel auf Standard-Layout zurücksetzen" tool_tip="Falls aktiviert, werden beim Wechsel der Benutzeroberfläche die Schaltflächen auf das dazugehörige Standardlayout zurückgesetzt." name="reset_toolbar_settings" />
+      <check_box label="Schaltflächen bei Moduswechsel auf Standard-Layout zurücksetzen" tool_tip="Falls aktiviert, werden beim Wechsel des Login-Modus die Schaltflächen auf das dazugehörige Standardlayout zurückgesetzt." name="FSToolbarsResetOnModeChange" />
+      <check_box label="Cursor im Viewer 1-Stil verwenden" name="use_legacy_cursors" />
     <text name="theme_textbox3">
         (Erfordert Neustart)
     </text>
+</panel>
+  </scroll_container>
 </panel>

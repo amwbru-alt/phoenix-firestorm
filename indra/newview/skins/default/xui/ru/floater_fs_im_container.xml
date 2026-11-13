@@ -1,4 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<multi_floater name="floater_im_box" title="Личные сообщения">
+<multi_floater name="floater_im_box" title="Диалоги">
   <search_editor name="forme_conversation_search" label="Поиск диалогов…" />
+  <button name="forme_nearby_chat" label="Чат рядом" />
+  <button name="forme_new_dialog" label="Начать диалог" />
+  <text name="forme_conversation_empty">Здесь появятся личные и групповые диалоги. Выберите друга, чтобы начать разговор.</text>
 </multi_floater>

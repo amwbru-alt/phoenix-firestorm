@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version='1.0' encoding='utf-8'?>
 <floater name="move_floater">
 	<string name="walk_forward_tooltip">
 		Idź w przód (Strzałka w górę lub W)

@@ -1,15 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="Reporte de fallos" name="crash_reports">
-	<check_box label="Enviar reportes de fallos a firestormviewer.org" name="checkSendCrashReports"/>
-	<check_box label="Preguntar siempre antes de enviar" name="checkSendCrashReportsAlwaysAsk"/>
-	<check_box label="Incluir settings.xml" name="checkSendSettings"/>
-	<text name="textSendSettings">
-		(contiene tu nombre en ForMe.World)
-	</text>
-	<check_box label="Incluir tu nombre en ForMe.World" name="checkSendName"/>
-	<text name="textSendName" width="400">
-		(se utilizará para solicitarte información adicional si es necesario)
-	</text>
 	<text name="textInformation1" height="40">
 		A no ser que marques la opción anterior, los reportes de error sólo contienen
 información relevante al fallo.
@@ -20,7 +10,21 @@ separadamente si crees que pueden contener información adicional.
 	</text>
 	<text name="textInformation3" height="0">
 	</text>
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
+      <check_box label="Enviar reportes de fallos a firestormviewer.org" name="checkSendCrashReports" />
+      <check_box label="Preguntar siempre antes de enviar" name="checkSendCrashReportsAlwaysAsk" />
+      <check_box label="Incluir settings.xml" name="checkSendSettings" />
+      <text name="textSendSettings">
+		(contiene tu nombre en ForMe.World)
+	</text>
+      <check_box label="Incluir tu nombre en ForMe.World" name="checkSendName" />
+      <text name="textSendName" width="400">
+		(se utilizará para solicitarte información adicional si es necesario)
+	</text>
 	<text name="textInformation4">
 		Política de privacidad: [URL]
 	</text>
+</panel>
+  </scroll_container>
 </panel>

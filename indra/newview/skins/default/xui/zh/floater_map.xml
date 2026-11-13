@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <floater name="Map" title="小地圖">
 	<floater.string name="ParcelSalePriceMsg">
 		價格: [PRICE]L$ ([PRICE_PER_SQM]L$/平方公尺)

@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="Üslublar" name="skin_panel">
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
     <text name="skin_textbox">
         Üslublar:
     </text>
@@ -12,10 +14,12 @@
     <text name="theme_textbox2">
         (Yenidən başlatma tələb olunur)
     </text>
-    <check_box label="Mövzu alətlər panelini mövzu ilə dəyişəndə əvəzlənən qatla sıfırla" tool_tip="Mövzu alətlər panelini mövzu ilə dəyişəndə əvəzlənən qatla sıfırla" name="reset_toolbar_settings"/>
+      <check_box label="Mövzu alətlər panelini mövzu ilə dəyişəndə əvəzlənən qatla sıfırla" tool_tip="Mövzu alətlər panelini mövzu ilə dəyişəndə əvəzlənən qatla sıfırla" name="reset_toolbar_settings" />
     <check_box label="Giriş rejimi dəyişdikdə istifadə olunan panel ilə sıfırla" tool_tip="İşə salındıqda bu parametr, giriş rejimində hazırlanmış alətlər panelinin düymə sıralamasını saxlayır və sizin tərəfinizdən seçilmiş düymə sıralamalarını dəyişdikdən sonra seçilmiş düymə sıralamalarını ləğv edir." name="FSToolbarsResetOnModeChange" />
-    <check_box label="Viewer 1 stilindəki kursoru istifadə et" name="use_legacy_cursors"/>
+      <check_box label="Viewer 1 stilindəki kursoru istifadə et" name="use_legacy_cursors" />
     <text name="theme_textbox3">
         (Yenidən başlatma tələb olunur)
     </text>
+</panel>
+  </scroll_container>
 </panel>

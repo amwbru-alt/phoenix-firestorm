@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <floater name="toolbox floater" short_title="建造工具" forme_creator_only="true">
 	<floater.string name="grid_screen_text">
 		螢幕
@@ -137,9 +137,6 @@
 	<text name="selection_empty">
 		未做任何選擇。
 	</text>
-	<!--<text name="selection_faces">
-		選擇的面: [FACES_STRING]
-	</text>-->
 	<text name="more info label">
 		[CAPACITY_STRING] [fmw:///app/openfloater/object_weights 更多資訊]
 	</text>
@@ -190,6 +187,8 @@
 			<panel.string name="multiple selection">
 				多選
 			</panel.string>
+      <scroll_container name="compact_build_general_scroll">
+        <panel name="compact_build_general_body">
 			<text name="Name:">
 				名稱：
 			</text>
@@ -259,6 +258,8 @@
 				</text>
 			</panel>
 		</panel>
+      </scroll_container>
+    </panel>
 		<panel label="物件" name="Object">
 			<panel.string name="paste_position">
 貼上位置
@@ -272,6 +273,10 @@
 貼上旋轉
 [VALUE]
 			</panel.string>
+      <string name="ll_lod_tooltip_msg">林登實驗室第二人生檢視器標準 ([FACTOR])</string>
+      <string name="fs_lod_tooltip_msg">[APP_NAME]檢視器標準 ([FACTOR])</string>
+      <scroll_container name="compact_build_object_scroll">
+        <panel name="compact_build_object_body">
 			<check_box label="鎖定" name="checkbox locked" tool_tip="避免物件被移動或刪除。 這在建造過程中非常有用，可避免意外的編輯更動。" />
 			<check_box label="物理性" name="Physical Checkbox Ctrl" tool_tip="允許物件被推撞與受重力影響" />
 			<check_box label="暫時性" name="Temporary Checkbox Ctrl" tool_tip="使物件在建造後的一分鐘自動刪除" />
@@ -404,8 +409,6 @@
 			<text name="LOD_swap_defaults_label" value="標準" tool_tip="大多數檢視器應用此標準細節層次等級。" />
 			<text name="LOD_swap_usr_label" value="您的" tool_tip="基於RenderVolumeLODFactor的當前設定。" />
 			<text name="LOD_swap_label" value="細節層次切換" />
-			<string name="ll_lod_tooltip_msg">林登實驗室第二人生檢視器標準 ([FACTOR])</string>
-			<string name="fs_lod_tooltip_msg">[APP_NAME]檢視器標準 ([FACTOR])</string>
 			<text name="LOD_swap_usr_current" tool_tip="您當前的細節層次等級。" />
 			<text name="LOD_swap_LOD_Change_label">
 高 ↔ 中
@@ -415,6 +418,8 @@
 			<text name="LODSwapTableDscriptionsText" tool_tip="最佳實踐：製造商應確保所有檢視器的標準設定具有良好的細節層次行為。">
 				此表顯示了從相機位置到細節層次切換的距離限制（以米為單位）。
 			</text>
+        </panel>
+      </scroll_container>
 		</panel>
 		<panel label="特性" name="Features">
 			<panel.string name="None">
@@ -495,7 +500,7 @@
 			<button label="權限" name="button permissions" />
 			<button label="更新" name="button refresh" />
 			<button label="重設指令碼" name="btn_reset_scripts" />
-			<filter_editor label="輸入篩選文字" name="contents_filter"/>
+      <filter_editor label="輸入篩選文字" name="contents_filter" />
 		</panel>
 	</tab_container>
 	<panel name="land info panel">

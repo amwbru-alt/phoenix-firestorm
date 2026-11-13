@@ -32,7 +32,6 @@
       <text_editor name="complete_name" value="(正在載入...)" />
       <menu_button name="copy_btn" tool_tip="複製選項" />
     </panel>
-    <button name="set_name" tool_tip="設定顯示名稱" />
     <icon tool_tip="朋友可以看到我的在線狀態" name="can_see_online" />
     <icon tool_tip="朋友無法看到我的在線狀態" name="cant_see_online" />
     <icon tool_tip="朋友可以在世界地圖上找到我" name="can_see_on_map" />

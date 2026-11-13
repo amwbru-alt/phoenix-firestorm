@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel name="status">
 	<panel.string name="StatBarDaysOfWeek">
 		Søndag:Mandag:Tirsdag:Onsdag:Torsdag:Fredag:Lørdag
@@ -22,14 +22,14 @@
 		L$ [AMT]
 	</panel.string>
 	<panel name="balance_bg">
-		<text name="balance" tool_tip="Klik for at opdaterer din L$ balance" value="L$??"/>
-		<button label="KØB L$" name="buyL" tool_tip="Klik for at købe flere L$"/>
+    <text name="balance" tool_tip="Klik for at opdaterer din L$ balance" value="L$??" />
+    <button label="KØB L$" name="buyL" tool_tip="Klik for at købe flere L$" />
 	</panel>
 	<panel name="time_and_media_bg">
 		<text name="TimeText" tool_tip="Nuværende tid (Pacific)">
 			24:00:00 AM PST
 		</text>
-		<button name="media_toggle_btn" tool_tip="Start/Stop Alle medier (musik, video, hjemmesider)"/>
-		<button name="volume_btn" tool_tip="Kontrol for generel lydstyrke"/>
+    <button name="media_toggle_btn" tool_tip="Start/Stop Alle medier (musik, video, hjemmesider)" />
+    <button name="volume_btn" tool_tip="Kontrol for generel lydstyrke" />
 	</panel>
 </panel>

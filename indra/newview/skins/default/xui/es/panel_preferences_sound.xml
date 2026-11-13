@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="Sonidos" name="Preference Media panel">
 	<panel.string name="ui_sound_copy_uuid">
 		Copiar UUID del sonido
@@ -57,14 +57,12 @@
 	<panel.string name="textFSHealthReductionM">
 		Daño avatar masculino:
 	</panel.string>
-
 	<panel.string name="textFSInvalidOp">
 		Operación inválida:
 	</panel.string>
 	<panel.string name="textFSInventoryOffer">
 		Oferta inventario:
 	</panel.string>
-
 	<panel.string name="textFSMoneyChangeDown">
 		Gasto de L$:
 	</panel.string>
@@ -170,37 +168,37 @@
 	<panel.string name="textFSWindowOpen">
 		Apertura de ventana:
 	</panel.string>
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 	<tab_container label="Prefs. ForMe.World" name="tabs">
 		<panel label="General" name="Media Sounds Panel">
-			<slider label="Volumen general" name="System Volume"/>
-			<check_box label="Silenciar al minimizar" name="mute_when_minimized"/>
-			<slider label="Interfaz" name="UI Volume"/>
-			<slider label="Ambiente" name="Wind Volume"/>
-			<check_box name="collisions_audio_play_btn" tool_tip="Activa/desactiva los sonidos asociados a las colisiones" label="Reproducir sonidos de colisión"/>
-			<slider label="Efectos de sonido" name="SFX Volume"/>
-			<check_box name="gesture_audio_play_btn" tool_tip="Activa/desactiva el sonido de los gestos" label="Reproducir sonido de los gestos"/>
-			<slider label="Flujo de música" name="Music Volume"/>
-			<check_box label="Activado" name="enable_music"/>
-			<slider label="Medios" name="Media Volume"/>
-			<check_box label="Activado" name="enable_media"/>
-
-
+          <slider label="Volumen general" name="System Volume" />
+          <check_box label="Silenciar al minimizar" name="mute_when_minimized" />
+          <slider label="Interfaz" name="UI Volume" />
+          <slider label="Ambiente" name="Wind Volume" />
+          <check_box name="collisions_audio_play_btn" tool_tip="Activa/desactiva los sonidos asociados a las colisiones" label="Reproducir sonidos de colisión" />
+          <slider label="Efectos de sonido" name="SFX Volume" />
+          <check_box name="gesture_audio_play_btn" tool_tip="Activa/desactiva el sonido de los gestos" label="Reproducir sonido de los gestos" />
+          <slider label="Flujo de música" name="Music Volume" />
+          <check_box label="Activado" name="enable_music" />
+          <slider label="Medios" name="Media Volume" />
+          <check_box label="Activado" name="enable_media" />
 			<text name="friends_logon_sounds_label">
 				Reproducir un sonido cuando mis amigos:
 			</text>
-			<check_box name="friends_notify_online_sound" label="Se conectan" width="95"/>
+          <check_box name="friends_notify_online_sound" label="Se conectan" width="95" />
 			<check_box name="friends_notify_offline_sound" label="Se desconectan" width="95" />
 			<text name="money_change_threshold_label" tool_tip="Reproduce un sonido cuando se gasta o recibe una cantidad de dinero superior a la configurada.">
 				Umbral de L$:
 			</text>
 		</panel>
 		<panel name="Media Music Panel">
-			<check_box name="FSFadeAudioStream" tool_tip="Activa el fundido de sonido cuando cambia el flujo de audio de parcela" label="Fundido de audio de parcela:"/>
-			<slider label="Entrada:" name="FSAudioMusicFadeIn" tool_tip="Tiempo de fundido de entrada de audio de parcela."/>
+          <check_box name="FSFadeAudioStream" tool_tip="Activa el fundido de sonido cuando cambia el flujo de audio de parcela" label="Fundido de audio de parcela:" />
+          <slider label="Entrada:" name="FSAudioMusicFadeIn" tool_tip="Tiempo de fundido de entrada de audio de parcela." />
 			<text name="FSAudioMusicFadeInSeconds">
 				segundos
 			</text>
-			<slider label="Salida:" name="FSAudioMusicFadeOut" tool_tip="Tiempo de fundido de salida de audio de parcela."/>
+          <slider label="Salida:" name="FSAudioMusicFadeOut" tool_tip="Tiempo de fundido de salida de audio de parcela." />
 			<text name="FSAudioMusicFadeOutSeconds">
 				segundos
 			</text>
@@ -208,32 +206,31 @@
 				Mostrar notificaciones de título de flujo:
 			</text>
 			<radio_group name="show_stream_metadata" width="270">
-				<radio_item label="No" name="radio_off"/>
-				<radio_item label="Tostadas" width="75" name="radio_toasts"/>
-				<radio_item label="Chat local" name="radio_chat"/>
+            <radio_item label="No" name="radio_off" />
+            <radio_item label="Tostadas" width="75" name="radio_toasts" />
+            <radio_item label="Chat local" name="radio_chat" />
 			</radio_group>
-			<check_box name="StreamMetadataAnnounceToChat" label="Enviar el título del flujo al canal:"/>
-			<spinner top_delta="-3" left_pad="25" name="StreamMetadataAnnounceChannel"/>
+          <check_box name="StreamMetadataAnnounceToChat" label="Enviar el título del flujo al canal:" />
+          <spinner top_delta="-3" left_pad="25" name="StreamMetadataAnnounceChannel" />
 		</panel>
 		<panel name="Media Media Panel">
-			<check_box name="media_auto_play_btn" tool_tip="Activa/desactiva la reproducción automática de medios cuando te conectas o cambias de región." label="Permitir reproducción automática de medios al entrar en una región"/>
-			<check_box name="media_allowscript_btn" tool_tip="Permite/impide que los scripts de los prims controlen tus conexiones de medios" label="Permitir que los scripts prims reproduzcan medios"/>
-			<check_box name="media_show_on_others_btn" tool_tip="Desactiva para ocultar los medios anexados a avatares de tu entorno" label="Reproducir medios anexados a otros avatares"/>
-			<check_box name="media_filter" tool_tip="Activa/desactiva el filtro que te permite escoger a qué servidores permites la reproducción de medios" label="Activar filtro de medios (seguridad mejorada)"/>
+          <check_box name="media_auto_play_btn" tool_tip="Activa/desactiva la reproducción automática de medios cuando te conectas o cambias de región." label="Permitir reproducción automática de medios al entrar en una región" />
+          <check_box name="media_allowscript_btn" tool_tip="Permite/impide que los scripts de los prims controlen tus conexiones de medios" label="Permitir que los scripts prims reproduzcan medios" />
+          <check_box name="media_show_on_others_btn" tool_tip="Desactiva para ocultar los medios anexados a avatares de tu entorno" label="Reproducir medios anexados a otros avatares" />
+          <check_box name="media_filter" tool_tip="Activa/desactiva el filtro que te permite escoger a qué servidores permites la reproducción de medios" label="Activar filtro de medios (seguridad mejorada)" />
 			<button label="Administrar servidores de medios" name="edit_media_lists_button" width="200" />
 			<text name="Media Rolloff" width="270">
 				Distancia de atenuación de la fuente del audio:
 			</text>
-			<slider name="MediaRollOffMin" tool_tip="Distancia mínima de la fuente de sonido para que la atenuación empiece a tener efecto."/>
+          <slider name="MediaRollOffMin" tool_tip="Distancia mínima de la fuente de sonido para que la atenuación empiece a tener efecto." />
 			<text name="MinMeters">
 				metros
 			</text>
-			<slider name="MediaRollOffMax" tool_tip="Distancia de la fuente de sonido para silenciarlo completamente."/>
+          <slider name="MediaRollOffMax" tool_tip="Distancia de la fuente de sonido para silenciarlo completamente." />
 			<text name="MaxMeters">
 				metros
 			</text>
 		</panel>
-
 		<panel label="Sonidos de IU" name="UI Sounds tab">
 			<text name="textFSExplanation_tab1">
 				Aquí puedes cambiar (mediante UUIDs) los sonidos por defecto de la interfaz.
@@ -247,6 +244,7 @@ Sitúa el cursor del ratón sobre el campo de UUID para mostrar su valor por def
 			<button name="ui_sound_preview" tool_tip="Probar sonido." />
 			<button name="ui_sound_default" tool_tip="Restablecer al UUID por defecto." />
 		</panel>
-
 	</tab_container>
+</panel>
+  </scroll_container>
 </panel>

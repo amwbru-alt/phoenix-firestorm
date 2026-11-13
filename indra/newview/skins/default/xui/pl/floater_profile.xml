@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <floater name="avatarinfo" title="Profil">
 	<panel name="panel_profile_view">
 		<tab_container name="panel_profile_tabs">

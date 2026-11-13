@@ -60,14 +60,12 @@
     <panel.string name="textFSHealthReductionM">
 		Боль мужского аватара:
 	</panel.string>
-
     <panel.string name="textFSInvalidOp">
 		Неверная операция:
 	</panel.string>
     <panel.string name="textFSInventoryOffer">
 		Предложение передачи:
 	</panel.string>
-
     <panel.string name="textFSMoneyChangeDown">
 		Снижение баланса:
 	</panel.string>
@@ -173,6 +171,8 @@
     <panel.string name="textFSWindowOpen">
 		Открытие окна:
 	</panel.string>
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
     <tab_container label="Настройки ForMe.World" name="tabs">
         <panel label="Звуки" name="Media Sounds Panel">
             <slider label="Общая громкость" name="System Volume" />
@@ -186,8 +186,6 @@
             <check_box label="Включено" name="enable_music" />
             <slider label="Медиа" name="Media Volume" />
             <check_box label="Включено" name="enable_media" />
-
-
             <text name="Listen media from" width="200">
 				Слышать мультимедиа и звуки из:
 			</text>
@@ -282,7 +280,6 @@
             </radio_group>
             <check_box name="StreamMetadataAnnounceToChat" width="200" label="Посылать заголовки в канал:" />
         </panel>
-
         <panel label="Звуки интерфейса" name="UI Sounds tab">
             <text name="textFSExplanation_tab1">
 				Здесь вы можете изменить (путем замены звуковых UUID), включить или выключить звуки интерфейса по умолчанию.
@@ -297,4 +294,5 @@
             <button name="ui_sound_default" tool_tip="Сброс к UUID по умолчанию." />
         </panel>
     </tab_container>
+</panel>  </scroll_container>
 </panel>

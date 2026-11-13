@@ -1,13 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="Popups" name="popups" title="Popups">
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 <tab_container name="tabs">
- 
-    <!-- World -->
     <panel name="tab-world">
-		<check_box label="Vis mig når, når jeg bruger eller får L$" name="notify_money_change_checkbox"/>
+          <check_box label="Vis mig når, når jeg bruger eller får L$" name="notify_money_change_checkbox" />
     </panel>
-
-    <!-- Alerts -->
     <panel name="tab-alerts">
 		<text name="show_label">
 			Vis altid:
@@ -16,6 +14,7 @@
 			Vis aldrig:
 		</text>
     </panel>
-
 </tab_container>
+</panel>
+  </scroll_container>
 </panel>

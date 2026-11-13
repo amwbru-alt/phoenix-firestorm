@@ -1,5 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <panel label="Уведомления" name="popups">
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
     <tab_container name="tabs" label="Оповещения">
         <panel label="Мир" name="tab-world">
             <check_box label="Когда я трачу или получаю L$" name="notify_money_change_checkbox" />
@@ -55,4 +57,5 @@
             </scroll_list>
         </panel>
     </tab_container>
+</panel>  </scroll_container>
 </panel>

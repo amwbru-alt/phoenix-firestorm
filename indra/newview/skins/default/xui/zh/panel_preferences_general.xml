@@ -1,12 +1,14 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel name="general_panel" label="一般設定">
+  <check_box label="群組頭銜" name="show_all_title_checkbox1" tool_tip="顯示群組頭銜，如 Officer 或 Member" />
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 	<text name="language_textbox">
 		語言：
 	</text>
 	<combo_box name="language_combobox">
 		<combo_box.item label="英語" name="English" />
 		<combo_box.item label="Azərbaycanca(亞塞拜然語)" name="Azerbaijani" />
-		<!-- <combo_box.item label="Dansk（丹麥語）- 試用版" name="Danish"/> -->
 		<combo_box.item label="Deutsch（德語）" name="Deutsch(German)" />
 		<combo_box.item label="Español（西班牙語）- 試用版" name="Spanish" />
 		<combo_box.item label="Français（法語）" name="French" />
@@ -55,7 +57,6 @@
 		<combo_box.item label="僅我的群組頭銜" name="my_tag" />
 		<combo_box.item label="所有群組頭銜" name="all_tags" />
 	</combo_box>
-	<check_box label="群組頭銜" name="show_all_title_checkbox1" tool_tip="顯示群組頭銜，如 Officer 或 Member" />
 	<check_box label="隱藏我的群組頭銜" name="RenderHideGroupTitle" tool_tip="隱藏或顯示您自己和他人的群組頭銜。" />
 	<check_box label="顯示名" name="display_names_check" tool_tip="在聊天、私聊、標籤等中使用顯示名。" />
 	<check_box label="繼承的名稱而不是使用者名稱" name="FSshow_legacyun" tool_tip="顯示繼承的名稱（名字姓氏）而不是使用者名稱（名字.姓氏）" />
@@ -70,8 +71,8 @@
 		時間格式：
 	</text>
 	<combo_box name="time_format_combobox" tool_tip="此設定控制本地聊天、姿勢編輯器、聊天歷史記錄、私聊、檢查物件、土地資訊、區域重新啟動計劃、通知、環境、群組公告、地標、瞬間傳送歷史和群組通知。">
-		<combo_box.item label="下午1:00" name="12H"/>
-		<combo_box.item label="13:00" name="24H"/>
+        <combo_box.item label="下午1:00" name="12H" />
+        <combo_box.item label="13:00" name="24H" />
 	</combo_box>
 	<text name="time_format_textbox2">
 		（需重新啟動）
@@ -98,4 +99,5 @@
 		<combo_box.item label="永不" name="item4" />
 	</combo_box>
 	<text name="text_box3">自動回覆可以在 [fmw:///app/openfloater/preferences?tab=im&amp;subtab=tab-autoresponse-1 隱私 ＞ 自動回覆] 選項中設定</text>
+</panel>  </scroll_container>
 </panel>

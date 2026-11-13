@@ -29,6 +29,18 @@
 #include <cassert>
 int main()
 {
+    for (int width = 320; width <= 3840; width += 16)
+        for (int digits : {8, 60, 120, 240, 400})
+        {
+            const auto header = ForMeHUD::header(width, digits);
+            assert(header.balanceLeft >= 0 && header.balanceWidth >= 96);
+            assert(header.balanceLeft + header.balanceWidth <= width - 148);
+            if (header.showBrand) assert(header.balanceLeft > 168);
+            if (header.showLocation)
+                assert(header.locationLeft + header.locationWidth + 16 <= header.balanceLeft);
+            if (header.showConnection)
+                assert(header.connectionLeft + 148 <= header.balanceLeft);
+        }
     const auto reference = ForMeHUD::layout(1672, 940, false, 0, 588, 92);
     assert(reference.chatWidth == 380 && reference.chatHeight == 204 && reference.chatBottom == 24);
     const auto emptyDock = ForMeHUD::layout(580, 420, false, 0, 0, 0);

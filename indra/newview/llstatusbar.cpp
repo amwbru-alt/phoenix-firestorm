@@ -26,6 +26,7 @@
 */
 
 #include "llviewerprecompiledheaders.h"
+#include "formehudlayout.h"
 
 #include "llstatusbar.h"
 #include "llfloatertools.h"
@@ -334,9 +335,11 @@ void LLStatusBar::draw()
     const bool full_menu = gSavedSettings.getBOOL("ForMeShowFullMenu");
     if (getParent())
     {
-        const S32 height = full_menu ? 106 : 82;
+        const S32 height = full_menu ? 106 : 36;
         if (getParent()->getRect().getHeight() != height)
             getParent()->reshape(getParent()->getRect().getWidth(), height, false);
+        const LLRect header_rect(0, height, getParent()->getRect().getWidth(), full_menu ? 24 : 0);
+        if (getRect() != header_rect) setShape(header_rect);
     }
     if (gMenuBarView)
     {
@@ -347,25 +350,35 @@ void LLStatusBar::draw()
         child->setVisible(child->getName().rfind("forme_", 0) == 0);
     if (auto* tools = findChild<LLPanel>("forme_tools_row"))
     {
-        tools->setVisible(getRect().getWidth() >= 980);
+        tools->setVisible(full_menu && getRect().getWidth() >= 980);
         for (const auto& target : {std::make_pair("map", "world_map"), std::make_pair("people", "people"), std::make_pair("inventory", "inventory")})
             getChild<LLButton>(std::string("forme_tools_") + target.first)->setToggleState(LLFloaterReg::instanceVisible(target.second));
     }
 
+    auto* balance = getChild<LLButton>("forme_hud_balance");
+    const std::string amount = mObscureBalance ? "••••" : LLResMgr::getInstance()->getMonetaryString(getBalance());
+    balance->setLabel(amount + " ₽");
+    const S32 width = getRect().getWidth();
+    const S32 height = getRect().getHeight();
+    const auto header = ForMeHUD::header(width, balance->getFont()->getWidth(amount + " ₽"));
+    balance->setShape(LLRect(header.balanceLeft, height - 4, header.balanceLeft + header.balanceWidth, height - 32));
+    getChildView("forme_hud_brand")->setVisible(header.showBrand);
+    getChildView("forme_hud_notifications")->setOrigin(width - 136, height - 30);
+    getChildView("forme_hud_people")->setOrigin(width - 100, height - 30);
     if (auto* location = findChild<LLTextBox>("forme_hud_location"))
     {
         LLViewerRegion* region = gAgent.getRegion();
         location->setText(region && !gRlvHandler.hasBehaviour(RLV_BHVR_SHOWLOC) ? region->getName() : std::string());
-        LLRect rect = location->getRect();
-        rect.mRight = llmax(rect.mLeft, llmin(420, getRect().getWidth() - 168));
-        location->setRect(rect);
+        location->setShape(LLRect(header.locationLeft, height - 10, header.locationLeft + header.locationWidth, height - 30));
+        location->setVisible(header.showLocation);
     }
     if (auto* connection = findChild<LLTextBox>("forme_hud_connection"))
     {
         const bool connected = gAgent.getRegion() && gAgent.getRegion()->isAlive();
         connection->setText(std::string("● ") + getString(connected ? "forme_region_connected" : "forme_region_disconnected"));
         connection->setColor(connected ? LLColor4(0.30f, 0.78f, 0.36f, 1.f) : LLColor4(0.85f, 0.55f, 0.35f, 1.f));
-        connection->setVisible(getRect().getWidth() >= 800);
+        connection->setOrigin(header.connectionLeft, height - 30);
+        connection->setVisible(header.showConnection);
     }
     LLPanel::draw();
 }
@@ -378,6 +391,9 @@ bool LLStatusBar::handleRightMouseDown(S32 x, S32 y, MASK mask)
 
 bool LLStatusBar::postBuild()
 {
+    getChild<LLButton>("forme_hud_balance")->setClickedCallback([](LLUICtrl*, const LLSD&) {
+        LLStatusBar::sendMoneyBalanceRequest();
+    });
     if (auto* rotate = findChild<LLButton>("forme_tools_rotate"))
         rotate->setClickedCallback([](LLUICtrl*, const LLSD&) {
             if (!ForMeCreatorAccess::allowed() || gRlvHandler.hasBehaviour(RLV_BHVR_EDIT)) return;

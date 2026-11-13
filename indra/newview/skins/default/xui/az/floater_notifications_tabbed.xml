@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <floater name="floater_notifications_tabbed" title="Bildirişlər">
 	<floater.string name="system_tab_title">
 		Sistem ([COUNT])
@@ -18,20 +18,20 @@
 	<layout_stack name="TabButtonsStack">
 		<layout_panel name="TabButtonsLayoutPanel">
 			<tab_container name="notifications_tab_container">
-				<panel label="Sistem (0)" name="system_notification_list_tab"/>
-				<panel label="Əməliyyatlar (0)" name="transaction_notifications_tab"/>
-				<panel label="Dəvətlər (0)" name="group_invite_notifications_tab"/>
-				<panel label="Qrup (0)" name="group_notice_notifications_tab"/>
+        <panel label="Sistem (0)" name="system_notification_list_tab" />
+        <panel label="Əməliyyatlar (0)" name="transaction_notifications_tab" />
+        <panel label="Dəvətlər (0)" name="group_invite_notifications_tab" />
+        <panel label="Qrup (0)" name="group_notice_notifications_tab" />
 			</tab_container>
 			<layout_stack name="ButtonsStack">
 				<layout_panel name="CondenseAllButtonPanel">
-					<button label="Hamısını minimal." name="collapse_all_button"/>
+          <button label="Hamısını minimal." name="collapse_all_button" />
 				</layout_panel>
 				<layout_panel name="GapLayoutPanel">
-					<panel label="Interval paneli" name="GapPanel"/>
+          <panel label="Interval paneli" name="GapPanel" />
 				</layout_panel>
 				<layout_panel name="DeleteAllButtonPanel">
-					<button label="Hamısını sil" name="delete_all_button"/>
+          <button label="Hamısını sil" name="delete_all_button" />
 				</layout_panel>
 			</layout_stack>
 		</layout_panel>

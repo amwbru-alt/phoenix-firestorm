@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="Ustawienia interfejsu" name="Display panel">
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 <tab_container label="Ust. Firestorma" name="tabs">
     <panel label="Świat 3D" name="UI Prefs Panel">
         <text name="HoverTipText">
@@ -34,7 +36,7 @@
 		<text name="FSHudTextShowBackgroundLabel">
 			Pokaż tło pływającego tekstu:
 		</text>
-		<combo_box name="FSHudTextShowBackgroundDropdown" tool_tip="Wyświetla czarno-białe tło za tekstem pływającym nad primą (tzw. hovertextem), aby uczynić go bardziej czytelnym. Przezroczystość można zmienić w Kolory > Różne">
+          <combo_box name="FSHudTextShowBackgroundDropdown" tool_tip="Wyświetla czarno-białe tło za tekstem pływającym nad primą (tzw. hovertextem), aby uczynić go bardziej czytelnym. Przezroczystość można zmienić w Kolory &gt; Różne">
 			<combo_box.item label="Wyłącz" name="ScriptDialogOption_0" />
 			<combo_box.item label="Tylko podświetlony obiekt" name="ScriptDialogOption_1" />
 			<combo_box.item label="Wszystkie obiekty" name="ScriptDialogOption_2" />
@@ -142,7 +144,7 @@
         <check_box label="Otwieraj profil od razu po kliknięciu na imię awatara" name="FSInspectAvatarSlurlOpensProfile" tool_tip="Gdy ta opcja jest włączona, to kliknięcie na linku z imieniem awatara otworzy od razu jego profil." />
         <check_box label="Wyłącz automatyczne otwieranie listy zablokowanych" name="FSDisableBlockListAutoOpen" tool_tip="Wyłącza automatyczne otwieranie listy zablokowanych podczas blokowania awatarów lub obiektów." />
         <check_box label="'Znajomi' oraz 'Grupy' w menu 'Komunikacja' otwierają okna w stylu [SHORT_VIEWER_GENERATION]" name="FSUseV2Friends" tool_tip="Gdy włączysz tą opcję, to Znajomi / Grupy będą się otwierać poprzez okno Ludzie - w przeciwnym wypadku będzie się to odbywać w oknie Kontaktów." />
-        <check_box label="Stary sposób wyświetlania właściwości obiektu" name="FSUseLegacyObjectProperties" tool_tip="Gdy włączysz tą opcję, to stare okno właściwości obiektu będzie używane zamiast nowego."/>
+          <check_box label="Stary sposób wyświetlania właściwości obiektu" name="FSUseLegacyObjectProperties" tool_tip="Gdy włączysz tą opcję, to stare okno właściwości obiektu będzie używane zamiast nowego." />
         <check_box label="Użyj małego okna kamery" name="FSUseSmallCameraFloater" tool_tip="Jeśli ta opcja jest włączona, to zostanie użyte mniejsze, starsze okno kamery bez elementów sterujących wstępnymi ustawieniami." />
         <check_box label="Wyłącz przyciski resetowania kamery" name="DisableCameraJoystickCenterReset" tool_tip="Zapobiega resetowaniu kamery po kliknięciu w środkowy celownik (bullseye) w kontrolkach obrotu i ruchu kamery." />
         <text name="standalone_textbox">
@@ -155,8 +157,8 @@
         <text name="ExtendedTeleportHistoryLabel">
             Dodaj do historii teleportacji:
         </text>
-        <check_box name="FSTeleportHistoryShowPosition" label="Pozycję" tool_tip="Gdy włączysz tą opcję, to lokalne koordynaty wewnętrzne regionu będą pokazywane w historii teleportacji."/>
-        <check_box name="FSTeleportHistoryShowDate" label="Datę" tool_tip="Gdy włączysz tą opcję, to daty i czasy teleportacji będą pokazywane w historii teleportacji."/>
+          <check_box name="FSTeleportHistoryShowPosition" label="Pozycję" tool_tip="Gdy włączysz tą opcję, to lokalne koordynaty wewnętrzne regionu będą pokazywane w historii teleportacji." />
+          <check_box name="FSTeleportHistoryShowDate" label="Datę" tool_tip="Gdy włączysz tą opcję, to daty i czasy teleportacji będą pokazywane w historii teleportacji." />
         <text name="textFriendlistOptions">
             Opcje listy kontaktów:
         </text>
@@ -250,7 +252,7 @@
         <text name="tooltip_textbox5">
            Dostrój rozmiar:
         </text>
-        <text name="tooltip_textbox6" >
+          <text name="tooltip_textbox6">
            pt (wymaga restartu)
 Domyślnie 0. Większa wartość może sprawiać kłopoty.
         </text>
@@ -291,4 +293,6 @@ ForMe.World viewer domyślnie 20. V1 domyślnie 18.
         <check_box label="Użyj ładnego przycisku emoji" name="FSUsePrettyEmojiButton" />
     </panel>
 </tab_container>
+</panel>
+  </scroll_container>
 </panel>

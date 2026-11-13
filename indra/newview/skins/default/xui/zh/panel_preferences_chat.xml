@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version='1.0' encoding='utf-8'?>
 <panel label="聊天" name="chat">
+  <scroll_container name="compact_preferences_scroll">
+    <panel name="compact_preferences_body">
 	<tab_container label="聊天" name="tabs">
 		<panel label="外觀" name="ChatVisuals">
 			<text name="console_font_size" width="170">聊天控制台的字型：</text>
@@ -25,7 +27,7 @@
 			<check_box label="本地聊天" name="show_timestamps_nearby_chat" width="80" />
 			<check_box label="私聊" name="show_timestamps_im" width="50" />
 			<check_box label="記錄" name="show_timestamps_transcripts" />
-			<check_box label="顯示螢幕控制台" tool_tip="在聊天視窗未開啟時，顯示或隱藏聊天控制台文字" name="FSShowOnscreenConsole"/>
+          <check_box label="顯示螢幕控制台" tool_tip="在聊天視窗未開啟時，顯示或隱藏聊天控制台文字" name="FSShowOnscreenConsole" />
 			<check_box name="FSConsoleClassicDrawMode" label="使用經典模式繪製控制台" tool_tip="經典控制台顯示所有行的背景為一個塊，長度為最長行的長度。" />
 			<check_box name="ChatFullWidth" label="使用全螢幕寬度顯示控制台" />
 			<spinner label="訊息消失時間：" name="fade_chat_time" />
@@ -124,7 +126,7 @@
 			<check_box name="FSChatbarNamePrediction" label="在本地聊天中啟用名稱自動完成" />
 			<check_box name="AllowMUpose" label="':' 為 '/me' 的同義詞" />
 			<check_box name="AutoCloseOOC" label="自動關閉雙括號 ((OOC))" />
-			<check_box name="FSUseChatMentionAutoComplete" label="在聊天欄輸入@時自動打開提及視窗"/>
+          <check_box name="FSUseChatMentionAutoComplete" label="在聊天欄輸入@時自動打開提及視窗" />
 			<check_box name="FSEnableEmojiWindowPopupWhileTyping" label="在聊天欄輸入時自動打開表情選擇視窗" />
 			<check_box name="FSShowEmojiButton" label="在私聊和附近聊天中顯示表情符號按鈕" />
 			<check_box name="FSShowIMSendButton" label="在私聊中顯示傳送按鈕" />
@@ -132,10 +134,10 @@
 			<check_box name="FSShowChatChannel" label="在本地聊天視窗中顯示頻道號選擇" />
 			<check_box name="FSShowChatType" label="在本地聊天視窗中顯示說話/竊竊私語/大聲呼喊按鈕" />
 			<check_box label="隱藏主聊天欄" name="AutohideChatBar" tool_tip="當滑鼠懸停在該區域上方時，隱藏螢幕左下角的聊天欄，並在滑鼠離開該區域時顯示。" />
-			<check_box label="傳送訊息後取消選取聊天框" name="CloseChatOnReturn"/>
-			<check_box label="僅在滑鼠視角模式下" name="FSCloseChatOnReturnInMouselook" tool_tip="當啟用「傳送訊息後取消選取聊天框」時，僅在滑鼠視角模式下取消選取聊天。"/>
-			<check_box label="僅適用於附近聊天欄" name="FSCloseChatOnReturnOnlyForNearbyChatControl" tool_tip="當啟用「傳送訊息後取消選取聊天框」時，僅對附近聊天欄生效。"/>
-			<check_box label="同時取消聊天記錄選取" name="FSUnfocusChatHistoryOnReturn"/>
+          <check_box label="傳送訊息後取消選取聊天框" name="CloseChatOnReturn" />
+          <check_box label="僅在滑鼠視角模式下" name="FSCloseChatOnReturnInMouselook" tool_tip="當啟用「傳送訊息後取消選取聊天框」時，僅在滑鼠視角模式下取消選取聊天。" />
+          <check_box label="僅適用於附近聊天欄" name="FSCloseChatOnReturnOnlyForNearbyChatControl" tool_tip="當啟用「傳送訊息後取消選取聊天框」時，僅對附近聊天欄生效。" />
+          <check_box label="同時取消聊天記錄選取" name="FSUnfocusChatHistoryOnReturn" />
 			<text name="textUseKeyboardShortcuts">使用鍵盤快速鍵：</text>
 			<check_box name="FSUseCtrlShout" label="Ctrl+Enter (大聲呼喊)" tool_tip="使用 Ctrl+Enter 快速鍵在本地聊天中喊話。" />
 			<check_box name="FSUseShiftWhisper" label="Shift+Enter (竊竊私語)" tool_tip="使用 Shift+Enter 快速鍵在本地聊天中竊竊私語。" />
@@ -151,7 +153,7 @@
 			<text name="FSShowGroupNameLength_label">在記錄中顯示的群組名稱長度</text>
 			<spinner tool_tip="設定為-1表示完整名稱，設定為0表示禁用" name="FSShowGroupNameLength" />
 			<check_box name="FSOpenIMContainerOnOfflineMessage" label="連線時顯示離線訊息" />
-			<check_box name="FSRestoreOpenIMs" label="啟動時恢復上次登入時開啟的私聊訊息"/>
+          <check_box name="FSRestoreOpenIMs" label="啟動時恢復上次登入時開啟的私聊訊息" />
 			<text name="email_settings">
 				[https://accounts.secondlife.com/change_email 設定離線私聊的電子郵件通知]
 			</text>
@@ -245,7 +247,7 @@
 			<text name="FSCmdLineRollDice_txt">擲骰子（例如：cmd dice faces mt mv）</text>
 			<line_editor tool_tip="擲骰子 - cmd [骰子數量] [面數] [修改類型（可選）] [修改值（可選）]。例如：cmd 1 20、cmd 2 40 + 5。如果沒有參數，則為 cmd 1 6（標準骰子）。" name="FSCmdLineRollDice" />
 			<text name="FSCmdLineTrackPos_txt">追蹤位置或化身（指令：pos 或 名稱）</text>
-			<line_editor name="FSCmdLineTrackPos" tool_tip="在世界地圖上為一個位置（cpcampos 格式）或部分化身名稱設定追蹤信標"/>
+          <line_editor name="FSCmdLineTrackPos" tool_tip="在世界地圖上為一個位置（cpcampos 格式）或部分化身名稱設定追蹤信標" />
 			<text name="FSCmdLinePos_txt">傳送到類比主機(sim)中（例如：cmd x y z）</text>
 			<text name="FSCmdLineGround_txt">傳送到地面（例如：cmd）</text>
 			<text name="FSCmdLineHeight_txt">傳送到指定高度..（例如：cmd z）</text>
@@ -259,4 +261,5 @@
 			<check_box label="將指令結果傳送到頻道：" name="FSCmdLineAnnounceToChannel" />
 		</panel>
 	</tab_container>
+</panel>  </scroll_container>
 </panel>

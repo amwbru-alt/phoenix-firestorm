@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<panel name="panel_profile" label="Profile" top="0" left="0" height="296" width="388" follows="all" layout="topleft">
+<panel name="panel_profile" label="Profile" top="0" left="0" height="246" width="328" follows="all" layout="topleft">
   <string name="status_online">
         Online
     </string>
@@ -48,10 +48,10 @@
   <string name="FSQualityAssurance" value=" Bug Hunter" />
   <string name="FSGW" value=" Gateway" />
   <string name="texture_picker_label" value="Profile Picture" />
-  <text_editor name="sl_description_edit" trusted_content="false" always_show_icons="true" enabled="false" height="104" follows="left|right|top" layout="topleft" bg_readonly_color="Transparent" border_visible="false" font="SansSerif" h_pad="8" max_length="65000" parse_urls="true" word_wrap="true" left="0" top="8" width="388" />
-  <group_list name="group_list" height="98" follows="left|right|top" layout="topleft" border_visible="false" for_agent="false" left="0" top="146" width="388" />
-  <button name="save_description_changes" label="Save" height="30" width="102" enabled="false" follows="left|top" layout="topleft" left="176" top="254" />
-  <button name="discard_description_changes" label="Discard" height="30" width="102" enabled="false" follows="left|top" layout="topleft" left="286" top="254" />
+  <text_editor name="sl_description_edit" trusted_content="false" always_show_icons="true" enabled="false" height="100" follows="left|right|top" layout="topleft" bg_readonly_color="0.15 0.15 0.17 1" border_visible="false" font="SansSerif" h_pad="8" max_length="65000" parse_urls="true" word_wrap="true" width="328" left="0" top="8" bg_visible="true" bg_writeable_color="0.18 0.17 0.20 1" bg_focus_color="0.20 0.18 0.23 1" text_color="0.94 0.93 0.95 1" text_readonly_color="0.91 0.90 0.93 1" v_pad="8" />
+  <group_list name="group_list" height="64" follows="left|right|top" layout="topleft" border_visible="false" for_agent="false" width="328" left="0" top="134" />
+  <button name="save_description_changes" label="Save" height="28" width="100" enabled="false" follows="right|top" layout="topleft" left="116" top="208" />
+  <button name="discard_description_changes" label="Discard" height="28" width="104" enabled="false" follows="right|top" layout="topleft" left="224" top="208" />
   <panel name="forme_layout_profile_legacy" layout="topleft" left="0" top="0" width="726" height="674" visible="false">
     <text name="name_label" value="Name:" height="24" width="64" follows="left|top" layout="topleft" halign="right" left="12" top="14" />
     <panel name="name_holder" height="32" follows="left|top|right" layout="topleft" bg_visible="false" border_visible="false" left="84" top="10" width="430">
@@ -140,5 +140,5 @@
     <check_box name="hide_sl_age" label="Show full birthdate" tool_tip="Let people see your SL age" enabled="false" height="24" width="220" follows="left|bottom" layout="topleft" visible="false" left="230" top="642" />
     <profile_drop_target name="drop_target" top="0" bottom="-1" left="0" right="-1" follows="all" layout="topleft" mouse_opaque="false" />
   </panel>
-  <text name="forme_profile_groups_label" layout="topleft" left="8" top="120" width="360" height="22" value="Groups" font="SansSerif" />
+  <text name="forme_profile_groups_label" layout="topleft" left="8" top="120" width="328" height="22" value="Groups" font="SansSerif" follows="left|top" />
 </panel>
