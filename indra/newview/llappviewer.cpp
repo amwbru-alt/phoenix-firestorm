@@ -28,6 +28,7 @@
 #include "llcallingcard.h"
 #include "fsmarketplacelistings.h"
 #include "fscreatoraccess.h"
+#include "fsworldentities.h"
 
 #include "llappviewer.h"
 
@@ -5791,6 +5792,7 @@ void LLAppViewer::idle()
     pingMainloopTimeout("Main:Idle");
     // UI visibility is derived in memory, never from an editable debug setting.
     ForMeAvatarBadges::updateSelf();
+    ForMeWorldEntities::update();
     const bool forme_creator = !gDisconnected && ForMeCreatorAccess::allowed();
     LLView::setForMeCreatorAccess(forme_creator);
     static std::string forme_listing_cap;

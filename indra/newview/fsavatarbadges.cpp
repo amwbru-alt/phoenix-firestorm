@@ -47,6 +47,7 @@ LLUUID s_agent;
 std::string s_cap;
 U64 s_generation = 0;
 bool s_pending = false;
+bool s_creator_grant = false;
 using Clock = std::chrono::steady_clock;
 Clock::time_point s_next, s_fetched;
 std::string capability()
@@ -71,6 +72,7 @@ void fetch(LLUUID agent, std::string cap, U64 generation)
     if (status && result["version"].asInteger() == 1 && result["agent_id"].asUUID() == agent)
         next = ForMeBadge::parse(result["id"].asString(), result["label"].asString(), result["badge_color"].asString(),
             result["name_color"].asString(), result["chat_color"].asString());
+    s_creator_grant = status && next.valid && (!result["creator_grant_required"].asBoolean() || (result["creator_grant"].isBoolean() && result["creator_grant"].asBoolean()));
     const bool changed = s_badge.stamp != next.stamp;
     s_badge = next;
     s_fetched = Clock::now();
@@ -83,6 +85,11 @@ ForMeBadge::Data self()
         || Clock::now() - s_fetched > std::chrono::seconds(25)) return {};
     return s_badge;
 }
+bool creatorGranted()
+{
+    if (capability().empty()) return true; // Compatibility grids have no independent grant service yet.
+    return self().valid && s_creator_grant;
+}
 void updateSelf()
 {
     const std::string cap = capability();
@@ -90,7 +97,7 @@ void updateSelf()
     {
         const LLUUID old_agent = s_agent;
         s_agent = gAgent.getID(); s_cap = cap; ++s_generation;
-        s_pending = false; s_badge = {}; s_next = {};
+        s_pending = false; s_creator_grant = false; s_badge = {}; s_next = {};
         if (old_agent.notNull()) LLVOAvatar::invalidateNameTag(old_agent);
     }
     const auto now = Clock::now();

@@ -57,7 +57,7 @@ for identifier, filename in registered:
     root = resource(filename)
     if identifier in custom:
         continue
-    assert int(root.get('header_height', '0')) == (28 if filename in {'floater_moveview.xml', 'floater_camera.xml'} else 36 if filename in {'floater_market_catalog.xml', 'floater_tools.xml', 'floater_people.xml', 'floater_profile.xml', 'floater_preferences.xml', 'floater_fs_im_container.xml', 'floater_notifications_tabbed.xml'} else 44), filename
+    assert int(root.get('header_height', '0')) == (28 if filename in {'floater_moveview.xml', 'floater_camera.xml'} else 36 if filename in {'floater_forme_world_physics.xml', 'floater_market_catalog.xml', 'floater_tools.xml', 'floater_people.xml', 'floater_profile.xml', 'floater_preferences.xml', 'floater_fs_im_container.xml', 'floater_notifications_tabbed.xml'} else 44), filename
     assert root.get('header_icon') in textures, filename
     framed += 1
 

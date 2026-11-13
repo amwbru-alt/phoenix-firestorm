@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:forme.world:world:1",
+  "title": "ForMe.World interest replication v1",
+  "type": "object",
+  "required": ["protocolVersion", "regionId", "epoch", "cursor", "reset", "hasMore", "changes"],
+  "additionalProperties": false,
+  "properties": {
+    "protocolVersion": {"const": 1},
+    "regionId": {"$ref": "#/$defs/uuid"},
+    "epoch": {"$ref": "#/$defs/uuid"},
+    "cursor": {"$ref": "#/$defs/revision"},
+    "reset": {"type": "boolean"},
+    "hasMore": {"const": false},
+    "changes": {"type": "array", "maxItems": 512, "items": {
+      "type": "object", "required": ["cursor", "entityId", "deleted", "entity"], "additionalProperties": false,
+      "properties": {
+        "cursor": {"$ref": "#/$defs/revision"}, "entityId": {"$ref": "#/$defs/uuid"}, "deleted": {"type": "boolean"},
+        "entity": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/entity"}]}
+      }
+    }}
+  },
+  "$defs": {
+    "uuid": {"type": "string", "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", "not": {"const": "00000000-0000-0000-0000-000000000000"}},
+    "revision": {"type": "string", "pattern": "^(0|[1-9][0-9]{0,18})$", "description": "Decimal int64 >= 0; implementation also rejects values above 9223372036854775807."},
+    "entity": {
+      "type": "object", "required": ["schemaVersion", "entityId", "regionId", "parentId", "ownerId", "creatorId", "category", "revision", "authorityEpoch", "authorityNodeId", "components"], "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {"const": 1}, "entityId": {"$ref": "#/$defs/uuid"}, "regionId": {"$ref": "#/$defs/uuid"},
+        "parentId": {"type": "string", "format": "uuid"}, "ownerId": {"type": "string", "format": "uuid"}, "creatorId": {"type": "string", "format": "uuid"},
+        "category": {"type": "string", "minLength": 1, "maxLength": 80}, "revision": {"$ref": "#/$defs/revision"}, "authorityEpoch": {"$ref": "#/$defs/revision"}, "authorityNodeId": {"$ref": "#/$defs/uuid"},
+        "components": {"type": "object", "minProperties": 1, "maxProperties": 64, "required": ["transform"], "additionalProperties": {
+          "type": "object", "required": ["schemaVersion", "data"], "additionalProperties": false,
+          "properties": {"schemaVersion": {"const": 1}, "data": {"type": "object"}}
+        }}
+      }
+    }
+  }
+}

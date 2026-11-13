@@ -900,6 +900,8 @@ list(APPEND viewer_SOURCE_FILES ${viewer_GLTF_SOURCE_FILES})
 
 if (OPENSIM)
     list(APPEND viewer_SOURCE_FILES
+                fsfloaterworldphysics.cpp
+                fsworldentities.cpp
                 fsavatarbadges.cpp
                 fsgridhandler.cpp
                 fsslurl.cpp
@@ -981,6 +983,8 @@ set(viewer_HEADER_FILES
     fsjointpose.h
     fsmarketplacelistings.h
     fscreatoraccess.h
+    fsfloaterworldphysics.h
+    fsworldentities.h
     fsavatarbadges.h
     fsgridhandler.h
     fskeywords.h

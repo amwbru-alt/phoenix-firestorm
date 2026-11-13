@@ -43,7 +43,7 @@ inline bool allowed()
     LLViewerObject* self = gObjectList.findObject(gAgent.getID());
     if (!region || !self || self->isDead() || self->getRegion() != region || gAgent.getID().isNull()) return false;
     const ForMeBadge::Data badge = ForMeAvatarBadges::get(gAgent.getID());
-    return ForMeCreator::allowed(badge.valid, badge.id);
+    return ForMeCreator::allowed(badge.valid, badge.id) && ForMeAvatarBadges::creatorGranted();
 }
 }
 #endif

@@ -42,6 +42,7 @@ namespace ForMeAvatarBadges
 {
 ForMeBadge::Data self();
 void updateSelf();
+bool creatorGranted();
 inline LLColor4 color(const std::array<float, 4>& value) { return LLColor4(value[0], value[1], value[2], value[3]); }
 inline ForMeBadge::Data get(const LLUUID& id)
 {

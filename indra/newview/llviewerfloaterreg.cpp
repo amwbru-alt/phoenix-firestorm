@@ -27,6 +27,7 @@
 
 
 #include "llviewerprecompiledheaders.h"
+#include "fsfloaterworldphysics.h"
 
 #include "llfloaterreg.h"
 #include "llviewerfloaterreg.h"
@@ -630,6 +631,7 @@ void LLViewerFloaterReg::registerFloaters()
     LLFloaterReg::add("fs_group_titles", "floater_fs_group_titles.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<FSFloaterGroupTitles>);
     LLFloaterReg::add("fs_export", "floater_fs_export.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<FSFloaterObjectExport>);
     LLFloaterReg::add("fs_import", "floater_fs_import.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<FSFloaterImport>);
+    LLFloaterReg::add("forme_world_physics", "floater_forme_world_physics.xml", &LLFloaterReg::build<FSFloaterWorldPhysics>);
     LLFloaterReg::add("fs_posestand", "floater_fs_posestand.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<FSFloaterPoseStand>);
     LLFloaterReg::add("fs_partial_inventory", "floater_fs_partial_inventory.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<FSFloaterPartialInventory>);
     LLFloaterReg::add("fs_placedetails", "floater_fs_placedetails.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<FSFloaterPlaceDetails>);

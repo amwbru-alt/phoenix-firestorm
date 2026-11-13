@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<floater name="forme_world_physics" title="ForMe.World • Физика">
+  <floater.string name="select_object">Выберите объект, который можете изменять.</floater.string>
+  <floater.string name="await_entity">Ожидаем данные сущности. Обновите через несколько секунд.</floater.string>
+  <floater.string name="ready">Движок региона: твёрдые объекты.</floater.string>
+  <floater.string name="saving">Сохраняем на сервере…</floater.string>
+  <floater.string name="saved">Сохранено. Обновите данные для загрузки новой версии.</floater.string>
+  <floater.string name="conflict">Объект изменился. Обновите данные перед сохранением.</floater.string>
+  <floater.string name="failed">Не удалось сохранить. Обновите данные и проверьте права.</floater.string>
+  <text name="id_label">Сущность</text>
+  <text name="revision_label">Версия</text>
+  <spinner name="density" label="Плотность, кг/м³"/>
+  <spinner name="friction" label="Трение"/>
+  <spinner name="restitution" label="Упругость"/>
+  <button name="refresh" label="Выбранный объект"/>
+  <button name="apply" label="Применить"/>
+</floater>
