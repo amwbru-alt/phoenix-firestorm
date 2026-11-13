@@ -14,7 +14,7 @@ public:
     void draw() override;
 private:
     FSMarketBrowser(const LLSD& key) : LLFloater(key) {}
-    void refresh();
+    void refresh() override;
     void render();
     void request(LLSD data, std::function<void(FSMarketBrowser*, const LLSD&)> done);
     void add(const LLSD& item);
