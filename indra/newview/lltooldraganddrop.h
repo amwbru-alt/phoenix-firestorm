@@ -221,6 +221,8 @@ protected:
     //  LLViewerInventoryCategory::cat_array_t& cats,
     //  LLViewerInventoryItem::item_array_t& items);
 
+    bool ownObjectPlacementSource() const;
+
     void dropObject(LLViewerObject* raycast_target,
             bool bypass_sim_raycast,
             bool from_task_inventory,

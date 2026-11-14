@@ -1,4 +1,4 @@
-# ForMe Real World Simulation: client packages RWS-001 / RWS-002 / RWS-003
+# ForMe Real World Simulation: client packages RWS-001–RWS-004
 
 The new native entity cache uses the authenticated `ForMeWorld` capability and the shared [protocol](../protocol/README.md). It preserves existing viewer objects and their UUIDs. Region/session changes clear the cache; responses from previous sessions, cursor gaps, stale revisions and oversized pages are rejected.
 
@@ -21,3 +21,5 @@ g++ -std=c++20 -Wall -Wextra -Werror -pedantic -Iindra/llcommon tests/forme/worl
 ```
 
 RWS-003 continues stage 2: residents may place an owned object from their personal inventory and take existing objects back through native ownership checks. Drag preview and final send retain owner/source/type checks; Ctrl-drop into object contents still uses the creator-only authoring path. Land, no-copy and RLVa checks remain active. Uploads, primitive creation, geometry/physics/script edits, world duplication and publication still require creator authorization. The server resolves canonical inventory records; packet permission masks are not trusted. This package does not complete all stage-2 adapters or distributed inventory/scene transactions.
+
+RWS-004 extends existing-content placement to an owned object's inventory. Both drag preview and final send verify the source object and item ownership; foreign contents retain legacy copy/transfer/creator checks. Parcel placement permission is separated from authoring access so a resident may drop a worn object onto permitted land without gaining build/upload/edit rights. Task placement and attachment drop use the server's integrated inventory checks; no new endpoint or local setting is required. Region crossings, full scripted gameplay and avatar/attachment visual acceptance remain pending.

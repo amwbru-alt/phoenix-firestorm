@@ -87,10 +87,18 @@ assert 'ForMeCreatorAccess' not in read('indra/newview/llviewertexlayer.cpp')
 
 # Inventory placement is separate from authoring; both preview and final send check the source and owner.
 rez=read('indra/newview/lltooldraganddrop.cpp')
-for method in ('dropObject','dad3dRezObjectOnLand','dad3dRezObjectOnObject'):
-    start=rez.index('LLToolDragAndDrop::'+method+'(');body=rez[start:rez.index('\n}',start)]
-    assert 'mSource != SOURCE_AGENT' in body and 'getPermissions().getOwner() != gAgent.getID()' in body,method
+for method in ('dropObject','dad3dRezObjectOnLand','dad3dRezObjectOnObject','dad3dRezFromObjectOnLand','dad3dRezFromObjectOnObject'):
+    start=re.search(r'^(?:void|EAcceptance) LLToolDragAndDrop::'+method+r'\(',rez,re.M).start();body=rez[start:rez.index('\n}',start)]
+    assert 'ownObjectPlacementSource()' in body and 'getPermissions().getOwner() != gAgent.getID()' in body,method
     assert 'LLAssetType::AT_OBJECT' in body,method
+source_body=rez[rez.index('bool LLToolDragAndDrop::ownObjectPlacementSource()'):rez.index('void LLToolDragAndDrop::dropObject(')]
+assert 'mSource == SOURCE_AGENT' in source_body and 'mSource != SOURCE_WORLD' in source_body
+assert 'gObjectList.findObject(mSourceID)' in source_body and '!source->isDead()' in source_body and 'source->permYouOwner()' in source_body
+assert 'from_task_inventory != (mSource == SOURCE_WORLD)' in rez
+parcel=read('indra/newview/llviewerparcelmgr.cpp')
+assert 'ForMeCreatorAccess::allowed() && allowAgentPlaceInventory()' in parcel
+menu=read('indra/newview/llviewermenu.cpp')
+assert 'allowAgentPlaceInventory()' in menu[menu.index('class LLAttachmentEnableDrop'):menu.index('bool enable_detach(const LLSD&',menu.index('class LLAttachmentEnableDrop'))]
 assert 'willObjectAcceptInventory(obj, item)' in rez # Ctrl-drop remains protected authoring, not placement
 
 for filename in ('menu_object.xml','menu_viewer.xml'):

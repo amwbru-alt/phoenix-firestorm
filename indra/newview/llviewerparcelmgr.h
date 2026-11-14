@@ -178,6 +178,7 @@ public:
     // Can this agent build on the parcel he is on?
     // Used for parcel property icons in nav bar.
     bool    allowAgentBuild() const;
+    bool    allowAgentPlaceInventory() const;
     bool    allowAgentBuild(const LLParcel* parcel) const;
 
     // Can this agent speak on the parcel he is on?

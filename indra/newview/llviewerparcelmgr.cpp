@@ -724,7 +724,11 @@ LLParcel * LLViewerParcelMgr::getAgentOrSelectedParcel() const
 // Return whether the agent can build on the land they are on
 bool LLViewerParcelMgr::allowAgentBuild() const
 {
-    if (!ForMeCreatorAccess::allowed()) return false; // <FS:ForMe> Owner/designer only.
+    return ForMeCreatorAccess::allowed() && allowAgentPlaceInventory();
+}
+
+bool LLViewerParcelMgr::allowAgentPlaceInventory() const
+{
 
     // <FS> Rez under land group
     //if (mAgentParcel)
