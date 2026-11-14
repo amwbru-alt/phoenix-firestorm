@@ -293,7 +293,7 @@
   <menu_item_call
       label="Take"
       layout="topleft"
-      name="Pie Object Take" forme_creator_only="true">
+      name="Pie Object Take">
     <menu_item_call.on_click
         function="Object.Take"/>
     <menu_item_call.on_enable
@@ -318,7 +318,7 @@
     <menu_item_call
       label="Take as combined item"
       layout="topleft"
-      name="Take combined" forme_creator_only="true">
+      name="Take combined">
       <menu_item_call.on_click
         function="Object.Take"/>
       <menu_item_call.on_enable
@@ -340,7 +340,7 @@
     <menu_item_call
       label="Take as separate items"
       layout="topleft"
-      name="Take Separate" forme_creator_only="true">
+      name="Take Separate">
       <menu_item_call.on_click
         function="Object.TakeSeparate"/>
       <menu_item_call.on_enable

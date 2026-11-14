@@ -41,12 +41,12 @@
 	<menu_item_call label="Derenderuj" name="Derender"/>
 	<menu_item_call label="Derenderuj + czarna lista" name="DerenderPermanent"/>
 	<menu_item_call label="Zwróć" name="Return..." forme_creator_only="true"/>
-	<menu_item_call label="Weź" name="Pie Object Take"  forme_creator_only="true"/>
+	<menu_item_call label="Weź" name="Pie Object Take"/>
 	<menu_item_call label="Weź kopię" name="Take Copy"  forme_creator_only="true"/>
 	<context_menu label="Weź kilka" name="Take Multiple">
-		<menu_item_call label="Weź jako: podniesione razem" name="Take combined"  forme_creator_only="true"/>
+		<menu_item_call label="Weź jako: podniesione razem" name="Take combined"/>
 		<menu_item_call label="Weź kopię jako: podniesione razem" name="Take Copy combined"  forme_creator_only="true"/>
-		<menu_item_call label="Weź jako: oddzielne obiekty" name="Take Separate"  forme_creator_only="true"/>
+		<menu_item_call label="Weź jako: oddzielne obiekty" name="Take Separate"/>
 		<menu_item_call label="Weź kopie jako: oddzielne obiekty" name="Take Copy Separate"  forme_creator_only="true"/>
 	</context_menu>
 	<menu_item_call label="Zapłać" name="Pay..."/>

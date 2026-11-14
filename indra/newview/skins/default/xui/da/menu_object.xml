@@ -21,7 +21,7 @@
 		<menu_item_call label="Blokér" name="Object Mute"/>
 		<menu_item_call label="Returnér" name="Return..." forme_creator_only="true"/>
 	</context_menu>
-	<menu_item_call label="Tag" name="Pie Object Take" forme_creator_only="true"/>
+	<menu_item_call label="Tag" name="Pie Object Take"/>
 	<menu_item_call label="Tag kopi" name="Take Copy" forme_creator_only="true"/>
 	<menu_item_call label="Betal" name="Pay..."/>
 	<menu_item_call label="Køb" name="Buy..."/>

@@ -1,4 +1,4 @@
-# ForMe Real World Simulation: client packages RWS-001 / RWS-002
+# ForMe Real World Simulation: client packages RWS-001 / RWS-002 / RWS-003
 
 The new native entity cache uses the authenticated `ForMeWorld` capability and the shared [protocol](../protocol/README.md). It preserves existing viewer objects and their UUIDs. Region/session changes clear the cache; responses from previous sessions, cursor gaps, stale revisions and oversized pages are rejected.
 
@@ -19,3 +19,5 @@ RWS-002 follows roadmap stages 1–3. Shared component and rigid-profile JSON sc
 g++ -std=c++20 -Wall -Wextra -Werror -pedantic -Iindra/llcommon tests/forme/world_physics_test.cpp -o /tmp/world-physics-test
 /tmp/world-physics-test
 ```
+
+RWS-003 continues stage 2: residents may place an owned object from their personal inventory and take existing objects back through native ownership checks. Drag preview and final send retain owner/source/type checks; Ctrl-drop into object contents still uses the creator-only authoring path. Land, no-copy and RLVa checks remain active. Uploads, primitive creation, geometry/physics/script edits, world duplication and publication still require creator authorization. The server resolves canonical inventory records; packet permission masks are not trusted. This package does not complete all stage-2 adapters or distributed inventory/scene transactions.

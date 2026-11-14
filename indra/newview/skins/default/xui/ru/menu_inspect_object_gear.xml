@@ -4,7 +4,7 @@
 	<menu_item_call label="Сесть" name="sit"/>
 	<menu_item_call label="Заплатить" name="pay"/>
 	<menu_item_call label="Купить" name="buy"/>
-	<menu_item_call label="Взять" name="take" forme_creator_only="true"/>
+	<menu_item_call label="Взять" name="take"/>
 	<menu_item_call label="Взять копию" name="take_copy" forme_creator_only="true"/>
 	<menu_item_call label="Открыть" name="open"/>
 	<menu_item_call label="Править" name="edit" forme_creator_only="true"/>

@@ -4,7 +4,7 @@
 	<menu_item_call label="Otur" name="sit"/>
 	<menu_item_call label="Öde" name="pay"/>
 	<menu_item_call label="Satın Al" name="buy"/>
-	<menu_item_call label="Al" name="take" forme_creator_only="true"/>
+	<menu_item_call label="Al" name="take"/>
 	<menu_item_call label="Kopya Al" name="take_copy" forme_creator_only="true"/>
 	<menu_item_call label="Aç" name="open"/>
 	<menu_item_call label="Düzenle" name="edit" forme_creator_only="true"/>

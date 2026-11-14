@@ -4,7 +4,7 @@
 	<menu_item_call label="坐下" name="sit" />
 	<menu_item_call label="支付" name="pay" />
 	<menu_item_call label="購買" name="buy" />
-	<menu_item_call label="取得" name="take"  forme_creator_only="true"/>
+	<menu_item_call label="取得" name="take"/>
 	<menu_item_call label="取得副本" name="take_copy"  forme_creator_only="true"/>
 	<menu_item_call label="打開" name="open" />
 	<menu_item_call label="編輯" name="edit"  forme_creator_only="true"/>

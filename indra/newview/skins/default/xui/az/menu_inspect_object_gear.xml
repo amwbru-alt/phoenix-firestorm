@@ -4,7 +4,7 @@
 	<menu_item_call label="Otur" name="sit"/>
 	<menu_item_call label="Ödə" name="pay"/>
 	<menu_item_call label="Almaq" name="buy"/>
-	<menu_item_call label="Götür" name="take" forme_creator_only="true"/>
+	<menu_item_call label="Götür" name="take"/>
 	<menu_item_call label="Köçürtməsin götür" name="take_copy" forme_creator_only="true"/>
 	<menu_item_call label="Aç" name="open"/>
 	<menu_item_call label="Dəyişdir" name="edit" forme_creator_only="true"/>

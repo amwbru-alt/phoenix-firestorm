@@ -6520,7 +6520,7 @@ void force_take_copy()
 
 void handle_take(bool take_separate)
 {
-    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+    // Taking existing content back to inventory follows native ownership permissions.
 
     // we want to use the folder this was derezzed from if it's
     // available. Otherwise, derez to the normal place.

@@ -1906,7 +1906,9 @@ void LLToolDragAndDrop::dropObject(LLViewerObject* raycast_target,
                    bool from_task_inventory,
                    bool remove_from_inventory)
 {
-    if (!ForMeCreatorAccess::allowed()) return; // <FS:ForMe> Owner/designer only.
+    // Existing owned inventory may be placed without content-authoring access.
+    // The server resolves the real item and still checks parcel permissions.
+    if (!ForMeCreatorAccess::allowed() && mSource != SOURCE_AGENT) return;
 
     LLViewerRegion* regionp = LLWorld::getInstance()->getRegionFromPosGlobal(mLastHitPos);
     if (!regionp)
@@ -1930,6 +1932,8 @@ void LLToolDragAndDrop::dropObject(LLViewerObject* raycast_target,
     LLViewerInventoryCategory* cat;
     locateInventory(item, cat);
     if (!item || !item->isFinished()) return;
+    if (!ForMeCreatorAccess::allowed() && (from_task_inventory || item->getType() != LLAssetType::AT_OBJECT
+        || item->getPermissions().getOwner() != gAgent.getID())) return;
 
     //if (regionp
     //  && (regionp->getRegionFlag(REGION_FLAGS_SANDBOX)))
@@ -2510,7 +2514,9 @@ EAcceptance LLToolDragAndDrop::dad3dRezAttachmentFromInv(
 EAcceptance LLToolDragAndDrop::dad3dRezObjectOnLand(
     LLViewerObject* obj, S32 face, MASK mask, bool drop)
 {
-    if (!ForMeCreatorAccess::allowed()) return ACCEPT_NO; // <FS:ForMe> Owner/designer only.
+    // Existing owned inventory may be placed without content-authoring access.
+    // The server resolves the real item and still checks parcel permissions.
+    if (!ForMeCreatorAccess::allowed() && mSource != SOURCE_AGENT) return ACCEPT_NO;
 
 // [RLVa:KB] - Checked: 2010-03-23 (RLVa-1.2.0e) | Modified: RLVa-1.1.0l
     // RELEASE-RLVa: [SL-2.2.0] Make sure the code below is the only code path to LLToolDragAndDrop::dad3dRezFromObjectOnLand()
@@ -2530,6 +2536,8 @@ EAcceptance LLToolDragAndDrop::dad3dRezObjectOnLand(
     LLViewerInventoryCategory* cat;
     locateInventory(item, cat);
     if (!item || !item->isFinished()) return ACCEPT_NO;
+    if (!ForMeCreatorAccess::allowed() && (item->getType() != LLAssetType::AT_OBJECT
+        || item->getPermissions().getOwner() != gAgent.getID())) return ACCEPT_NO;
 
     LLVOAvatarSelf* my_avatar = gAgentAvatarp;
     if( !my_avatar || my_avatar->isWearingAttachment( item->getUUID() ) )
@@ -2581,7 +2589,9 @@ EAcceptance LLToolDragAndDrop::dad3dRezObjectOnLand(
 EAcceptance LLToolDragAndDrop::dad3dRezObjectOnObject(
     LLViewerObject* obj, S32 face, MASK mask, bool drop)
 {
-    if (!ForMeCreatorAccess::allowed()) return ACCEPT_NO; // <FS:ForMe> Owner/designer only.
+    // Existing owned inventory may be placed without content-authoring access.
+    // The server resolves the real item and still checks parcel permissions.
+    if (!ForMeCreatorAccess::allowed() && mSource != SOURCE_AGENT) return ACCEPT_NO;
 
 // [RLVa:KB] - Checked: 2010-03-23 (RLVa-1.2.0e) | Modified: RLVa-1.1.0l
     // NOTE: if (mask & MASK_CONTROL) then it's a drop rather than a rez, so we let that pass through when @rez=n restricted
@@ -2606,6 +2616,8 @@ EAcceptance LLToolDragAndDrop::dad3dRezObjectOnObject(
     LLViewerInventoryCategory* cat;
     locateInventory(item, cat);
     if (!item || !item->isFinished()) return ACCEPT_NO;
+    if (!ForMeCreatorAccess::allowed() && (item->getType() != LLAssetType::AT_OBJECT
+        || item->getPermissions().getOwner() != gAgent.getID())) return ACCEPT_NO;
     LLVOAvatarSelf* my_avatar = gAgentAvatarp;
     if( !my_avatar || my_avatar->isWearingAttachment( item->getUUID() ) )
     {

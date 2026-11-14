@@ -4,7 +4,7 @@
 	<menu_item_call label="Sentarse" name="sit"/>
 	<menu_item_call label="Pagar" name="pay"/>
 	<menu_item_call label="Comprar" name="buy"/>
-	<menu_item_call label="Tomar" name="take" forme_creator_only="true"/>
+	<menu_item_call label="Tomar" name="take"/>
 	<menu_item_call label="Coger una copia" name="take_copy" forme_creator_only="true"/>
 	<menu_item_call label="Abrir" name="open"/>
 	<menu_item_call label="Editar" name="edit" forme_creator_only="true"/>

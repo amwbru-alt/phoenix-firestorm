@@ -45,9 +45,9 @@ for path,methods in {
  'llmeshrepository.cpp':['LLMeshRepository::uploadModel'],
  'lltoolplacer.cpp':['LLToolPlacer::addObject','LLToolPlacer::addDuplicate'],
  'lltoolmgr.cpp':['LLToolMgr::canEdit','LLToolMgr::toggleBuildMode'],
- 'lltooldraganddrop.cpp':['LLToolDragAndDrop::handleGiveDragAndDrop','LLToolDragAndDrop::dropObject','LLToolDragAndDrop::dropInventory','LLToolDragAndDrop::dropTexture','LLToolDragAndDrop::dropMaterial','LLToolDragAndDrop::dropScript'],
+ 'lltooldraganddrop.cpp':['LLToolDragAndDrop::handleGiveDragAndDrop','LLToolDragAndDrop::dropInventory','LLToolDragAndDrop::dropTexture','LLToolDragAndDrop::dropMaterial','LLToolDragAndDrop::dropScript'],
  'llselectmgr.cpp':['LLSelectMgr::sendMultipleUpdate','LLSelectMgr::sendOwner','LLSelectMgr::sendLink','LLSelectMgr::sendDelink','LLSelectMgr::selectionSetObjectSaleInfo','LLSelectMgr::sendSelectionMove'],
- 'llviewermenu.cpp':['handle_object_edit','handle_object_edit_gltf_material','handle_take','handle_take_copy','handle_object_return'],
+ 'llviewermenu.cpp':['handle_object_edit','handle_object_edit_gltf_material','handle_take_copy','handle_object_return'],
  'llpreviewscript.cpp':['LLPreviewLSL::saveIfNeeded','LLLiveLSLEditor::saveIfNeeded'],
  'llcompilequeue.cpp':['LLFloaterScriptQueue::onScriptModifyConfirmation','LLFloaterCompileQueue::processScript'],
  'fsfloaterimport.cpp':['FSFloaterImport::createPrim','FSFloaterImport::uploadAsset'],
@@ -84,4 +84,19 @@ for filename,action in [('menu_avatar_self.xml','EditShape'),('menu_object.xml',
     assert found,(filename,action)
 # Appearance baking has its own upload path and must keep working for residents.
 assert 'ForMeCreatorAccess' not in read('indra/newview/llviewertexlayer.cpp')
+
+# Inventory placement is separate from authoring; both preview and final send check the source and owner.
+rez=read('indra/newview/lltooldraganddrop.cpp')
+for method in ('dropObject','dad3dRezObjectOnLand','dad3dRezObjectOnObject'):
+    start=rez.index('LLToolDragAndDrop::'+method+'(');body=rez[start:rez.index('\n}',start)]
+    assert 'mSource != SOURCE_AGENT' in body and 'getPermissions().getOwner() != gAgent.getID()' in body,method
+    assert 'LLAssetType::AT_OBJECT' in body,method
+assert 'willObjectAcceptInventory(obj, item)' in rez # Ctrl-drop remains protected authoring, not placement
+
+for filename in ('menu_object.xml','menu_viewer.xml'):
+    path=ROOT/'indra/newview/skins/default/xui/en'/filename
+    for node in ET.parse(path).getroot().iter():
+        if any(child.get('function') in {'Object.Take','Object.TakeSeparate'} for child in node):
+            assert node.get('forme_creator_only')!='true',(filename,node.get('name'))
+
 print(f'PASS creator identity, mutation/confirmation guards, runtime visibility, gameplay preservation and {count} UI gates')

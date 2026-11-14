@@ -39,12 +39,12 @@
 	<menu_item_call label="隱藏" name="Derender" />
 	<menu_item_call label="永久隱藏&amp;封鎖" name="DerenderPermanent" />
 	<menu_item_call label="退回" name="Return..."  forme_creator_only="true"/>
-	<menu_item_call label="取得" name="Pie Object Take" forme_creator_only="true"/>
+	<menu_item_call label="取得" name="Pie Object Take"/>
 	<menu_item_call label="取得副本" name="Take Copy" forme_creator_only="true"/>
 	<context_menu label="取得多個" name="Take Multiple">
-		<menu_item_call label="取得合併物件" name="Take combined"  forme_creator_only="true"/>
+		<menu_item_call label="取得合併物件" name="Take combined"/>
 		<menu_item_call label="取得合併對象副本" name="Take Copy combined"  forme_creator_only="true"/>
-		<menu_item_call label="取得獨立物件" name="Take Separate"  forme_creator_only="true"/>
+		<menu_item_call label="取得獨立物件" name="Take Separate"/>
 		<menu_item_call label="取得獨立物件副本" name="Take Copy Separate"  forme_creator_only="true"/>
 	</context_menu>
 	<menu_item_call label="支付" name="Pay..." />

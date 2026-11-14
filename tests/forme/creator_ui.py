@@ -35,7 +35,7 @@ WINDOWS={'floater_marketplace_listings.xml','floater_associate_listing.xml','flo
          'floater_live_material_editor.xml','floater_particle_editor.xml','floater_script.xml',
          'floater_script_preview.xml','floater_script_queue.xml','floater_script_recover.xml',
          'floater_live_lsleditor.xml','floater_fs_export.xml','floater_animation_bvh_preview.xml','floater_image_preview.xml','floater_sound_preview.xml','floater_animation_anim_preview.xml','panel_snapshot_inventory.xml'}
-ACTIONS={'Object.Delete','Tools.SaveToObjectInventory','Tools.SnapObjectXY','Object.Take','Object.TakeSeparate','Object.Return','Object.Build','Object.Edit','Object.EditGLTFMaterial','Object.EditParticles','Object.Duplicate',
+ACTIONS={'Object.Delete','Tools.SaveToObjectInventory','Tools.SnapObjectXY','Object.Return','Object.Build','Object.Edit','Object.EditGLTFMaterial','Object.EditParticles','Object.Duplicate',
          'Object.Export','Object.ExportCollada','Object.TakeSeparateCopy','Land.Build','Land.Edit','Build.Toggle',
          'Tools.Link','Tools.Unlink','Tools.EditLinkedParts','Tools.TakeCopy','Tools.SelectedScriptAction',
          'Tools.SelectTool','Advanced.ClickGLTFUpload','Advanced.ClickGLTFEdit','Admin.ForceTakeCopy',

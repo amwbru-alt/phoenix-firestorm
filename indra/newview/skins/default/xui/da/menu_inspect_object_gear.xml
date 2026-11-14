@@ -4,7 +4,7 @@
 	<menu_item_call label="Sid her" name="sit"/>
 	<menu_item_call label="betal" name="pay"/>
 	<menu_item_call label="Køb" name="buy"/>
-	<menu_item_call label="Tag" name="take" forme_creator_only="true"/>
+	<menu_item_call label="Tag" name="take"/>
 	<menu_item_call label="tag kopi" name="take_copy" forme_creator_only="true"/>
 	<menu_item_call label="Åben" name="open"/>
 	<menu_item_call label="Redigér" name="edit" forme_creator_only="true"/>

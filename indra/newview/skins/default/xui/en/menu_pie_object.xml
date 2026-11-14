@@ -90,7 +90,7 @@
         <pie_slice
          enabled="false"
          label="Take"
-         name="Take" forme_creator_only="true">
+         name="Take">
             <pie_slice.on_click
              function="Object.Take"/>
             <pie_slice.on_enable
@@ -101,7 +101,7 @@
         <pie_slice
          enabled="false"
          label="Take: Combined"
-         name="Take combined" forme_creator_only="true">
+         name="Take combined">
             <pie_slice.on_click
              function="Object.Take"/>
             <pie_slice.on_enable
@@ -123,7 +123,7 @@
         <pie_slice
          enabled="false"
          label="Take: Separately"
-         name="Take Separate" forme_creator_only="true">
+         name="Take Separate">
             <pie_slice.on_click
              function="Object.TakeSeparate"/>
             <pie_slice.on_enable

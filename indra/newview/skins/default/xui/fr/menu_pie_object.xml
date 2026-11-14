@@ -9,10 +9,10 @@
 	<pie_menu label="Prendre &gt;" name="Take Submenu">
 		<pie_slice label="Copies séparées" name="Take Copy Separate" forme_creator_only="true"/>
 		<pie_slice label="Copier" name="Take Copy"  forme_creator_only="true"/>
-		<pie_slice label="Prendre" name="Take"  forme_creator_only="true"/>
-		<pie_slice label="Le groupe" name="Take combined" forme_creator_only="true"/>
+		<pie_slice label="Prendre" name="Take"/>
+		<pie_slice label="Le groupe" name="Take combined"/>
 		<pie_slice label="Copie du groupe" name="Take Copy combined" forme_creator_only="true"/>
-		<pie_slice label="Objets séparés" name="Take Separate" forme_creator_only="true"/>
+		<pie_slice label="Objets séparés" name="Take Separate"/>
 	</pie_menu>
 	<pie_slice label="Payer" name="Pay..."/>
 	<pie_menu label="Plus &gt;" name="Object Pie More 1">
