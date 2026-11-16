@@ -34,21 +34,27 @@
   </button>
   <text name="forme_sidebar_inventory_label" layout="topleft" left="0" top="278" width="76" height="16"
         halign="center" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">Inventory</text>
-  <button name="forme_sidebar_community" layout="topleft" left="10" top="310" width="56" height="48"
+  <button name="forme_sidebar_fitting_room" layout="topleft" left="10" top="310" width="56" height="48"
+          image_overlay="Forme_UI_Inventory" image_overlay_max_size="22" image_unselected="Forme_WMap_Clear"
+          image_hover_unselected="Forme_Round_Field" image_pressed="Forme_Round_Accent" tool_tip="Fitting Room">
+    <button.commit_callback function="Floater.Toggle" parameter="forme_fitting_room"/>
+  </button>
+  <text name="forme_sidebar_fitting_room_label" layout="topleft" left="0" top="356" width="76" height="16" halign="center" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">Style</text>
+  <button name="forme_sidebar_community" layout="topleft" left="10" top="388" width="56" height="48"
           image_overlay="Forme_UI_People" image_overlay_max_size="22" image_unselected="Forme_WMap_Clear"
           image_hover_unselected="Forme_Round_Field" image_pressed="Forme_Round_Accent"
           tool_tip="Groups and community">
     <button.commit_callback function="Floater.Toggle" parameter="groups"/>
   </button>
-  <text name="forme_sidebar_community_label" layout="topleft" left="0" top="356" width="76" height="16"
+  <text name="forme_sidebar_community_label" layout="topleft" left="0" top="434" width="76" height="16"
         halign="center" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">Community</text>
-  <button name="forme_sidebar_market" layout="topleft" left="10" top="388" width="56" height="48"
+  <button name="forme_sidebar_market" layout="topleft" left="10" top="466 width="56" height="48"
           image_overlay="Forme_HUD_Market" image_overlay_max_size="22" image_unselected="Forme_WMap_Clear"
           image_hover_unselected="Forme_Round_Field" image_pressed="Forme_Round_Accent"
           tool_tip="Marketplace">
     <button.commit_callback function="Avatar.OpenMarketplace" parameter=""/>
   </button>
-  <text name="forme_sidebar_market_label" layout="topleft" left="0" top="434" width="76" height="16"
+  <text name="forme_sidebar_market_label" layout="topleft" left="0" top="512 width="76" height="16"
         halign="center" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">Market</text>
   <panel name="forme_sidebar_bottom_divider" layout="topleft" left="18" top="-76" width="40" height="1"
          follows="left|bottom" background_visible="true" background_opaque="true"
