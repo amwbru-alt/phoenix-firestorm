@@ -25,6 +25,15 @@
     <panel name="item_card_9"><text name="item_name_9"/><button name="item_select_9" label="Выбрать"/></panel>
     <panel name="item_card_10"><text name="item_name_10"/><button name="item_select_10" label="Выбрать"/></panel>
     <panel name="item_card_11"><text name="item_name_11"/><button name="item_select_11" label="Выбрать"/></panel>
+    <panel name="item_card_12"><text name="item_name_12"/><button name="item_select_12" label="Выбрать"/></panel>
+    <panel name="item_card_13"><text name="item_name_13"/><button name="item_select_13" label="Выбрать"/></panel>
+    <panel name="item_card_14"><text name="item_name_14"/><button name="item_select_14" label="Выбрать"/></panel>
+    <panel name="item_card_15"><text name="item_name_15"/><button name="item_select_15" label="Выбрать"/></panel>
+    <panel name="item_card_16"><text name="item_name_16"/><button name="item_select_16" label="Выбрать"/></panel>
+    <panel name="item_card_17"><text name="item_name_17"/><button name="item_select_17" label="Выбрать"/></panel>
+    <panel name="item_card_18"><text name="item_name_18"/><button name="item_select_18" label="Выбрать"/></panel>
+    <panel name="item_card_19"><text name="item_name_19"/><button name="item_select_19" label="Выбрать"/></panel>
+    <button name="previous" label="‹"/><text name="page">1 / 1</text><button name="next" label="›"/>
   </panel>
   <panel name="details_surface">
     <text name="details_heading">Предмет</text>
