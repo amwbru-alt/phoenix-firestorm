@@ -4,8 +4,13 @@
 #include "llviewerprecompiledheaders.h"
 #include "fsforme_fittingroom.h"
 #include "llappearancemgr.h"
-#include "llagentcamera.h"
-#include "llvoavatarself.h"
+#include "lldynamictexture.h"
+#include "lldrawpoolavatar.h"
+#include "llviewercamera.h"
+#include "llvoavatar.h"
+#include "llviewershadermgr.h"
+#include "llrender.h"
+#include "pipeline.h"
 #include "llbutton.h"
 #include "llcombobox.h"
 #include "llfloaterreg.h"
@@ -16,6 +21,65 @@
 #include "llthumbnailctrl.h"
 #include "llinventoryicon.h"
 #include "llviewerinventory.h"
+class FSForMeAvatarPreview final : public LLViewerDynamicTexture
+{
+public:
+    FSForMeAvatarPreview()
+        : LLViewerDynamicTexture(512, 512, 3, ORDER_MIDDLE, false)
+    {
+    }
+
+    ~FSForMeAvatarPreview() override = default;
+
+    bool needsRender() override { return mActive; }
+    void setActive(bool active) { mActive = active; }
+    void setYaw(F32 yaw) { mYaw = yaw; }
+    void rotate(F32 delta) { mYaw += delta; }
+    void adjustDistance(F32 delta) { mDistance = llclamp(mDistance + delta, 1.8f, 7.0f); }
+    void resetView() { mYaw = 0.f; mDistance = 3.4f; }
+
+    bool render() override
+    {
+        LLVOAvatar* avatar = gAgentAvatarp;
+        if (!mActive || !avatar || avatar->isDead() || avatar->mDrawable.isNull())
+            return false;
+
+        LLViewerCamera* camera = LLViewerCamera::getInstance();
+        camera->setAspect(static_cast<F32>(getWidth()) / static_cast<F32>(getHeight()));
+        camera->setViewNoBroadcast(camera->getDefaultFOV());
+
+        const LLVector3 focus = avatar->getPositionAgent() + LLVector3(0.f, 0.f, 1.0f);
+        const LLQuaternion orbit(mYaw, LLVector3::z_axis);
+        const LLVector3 offset = LLVector3(-mDistance, 0.f, 0.18f) * orbit;
+        camera->setOriginAndLookAt(focus + offset, LLVector3::z_axis, focus);
+        camera->setPerspective(false, 0, 0, getWidth(), getHeight(), false, 0.1f, 64.f);
+
+        glClearColor(0.035f, 0.025f, 0.05f, 1.f);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+        LLGLSUIDefault state;
+        LLGLDepthTest depth(GL_TRUE);
+        LLGLEnable cull(GL_CULL_FACE);
+        gPipeline.enableLightsPreview();
+
+        auto* pool = dynamic_cast<LLDrawPoolAvatar*>(gPipeline.getPool(LLDrawPool::POOL_AVATAR));
+        if (!pool)
+            return false;
+
+        // Render only the agent avatar through the viewer's normal avatar draw-pool
+        // passes. LLViewerDynamicTexture saves/restores the world camera around
+        // this call, so the main 3D view is not moved.
+        pool->renderAvatars(avatar, -1);
+        gGL.flush();
+        return true;
+    }
+
+private:
+    bool mActive = false;
+    F32 mYaw = 0.f;
+    F32 mDistance = 3.4f;
+};
+
 namespace
 {
 constexpr S32 WORN_ITEM_SLOTS = 16;
@@ -29,29 +93,29 @@ std::string fittingItemType(const LLViewerInventoryItem* item)
 }
 }
 FSForMeFittingRoom::FSForMeFittingRoom(const LLSD& key) : LLFloater(key) {}
-FSForMeFittingRoom::~FSForMeFittingRoom() { gInventory.removeObserver(this); }
+FSForMeFittingRoom::~FSForMeFittingRoom() { gInventory.removeObserver(this); delete mAvatarPreview; }
 bool FSForMeFittingRoom::postBuild()
 {
     gInventory.addObserver(this);
+    mAvatarPreview = new FSForMeAvatarPreview();
     getChild<LLButton>("fitting_refresh")->setClickedCallback([this](LLUICtrl*, const LLSD&) { mDirty = true; });
     getChild<LLButton>("fitting_camera_front")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
-        setCameraPreset(CAMERA_PRESET_FRONT_VIEW);
+        setCameraPreset(3.14159265f);
     });
     getChild<LLButton>("fitting_camera_rear")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
-        setCameraPreset(CAMERA_PRESET_REAR_VIEW);
+        setCameraPreset(0.f);
     });
     getChild<LLButton>("fitting_camera_three_quarter")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
-        setCameraPreset(CAMERA_PRESET_GROUP_VIEW);
+        setCameraPreset(0.78539816f);
     });
     getChild<LLButton>("fitting_camera_reset")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
-        setCameraPreset(CAMERA_PRESET_REAR_VIEW);
-        gAgentCamera.setCameraZoomFraction(0.5f);
+        if (mAvatarPreview) mAvatarPreview->resetView();
     });
     getChild<LLButton>("fitting_camera_zoom_out")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
-        adjustCameraZoom(-0.12f);
+        adjustCameraZoom(0.35f);
     });
     getChild<LLButton>("fitting_camera_zoom_in")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
-        adjustCameraZoom(0.12f);
+        adjustCameraZoom(-0.35f);
     });
     getChild<LLButton>("fitting_open_inventory")->setClickedCallback([](LLUICtrl*, const LLSD&) {
         LLFloaterReg::showInstance("forme_inventory");
@@ -70,56 +134,46 @@ bool FSForMeFittingRoom::postBuild()
 }
 void FSForMeFittingRoom::onOpen(const LLSD&)
 {
-    mPreviousCameraMode = static_cast<S32>(gAgentCamera.getCameraMode());
-    mPreviousCameraPreset = static_cast<S32>(gAgentCamera.getCameraPreset());
-    mPreviousCameraZoom = gAgentCamera.getCameraZoomFraction();
-    mCameraStateSaved = true;
-
-    // This is a camera-control bridge to the live world avatar, not an
-    // embedded/off-screen viewport. The independent preview renderer remains
-    // a separate implementation task.
-    gAgentCamera.changeCameraToThirdPerson(true);
-    gAgentCamera.setFocusOnAvatar(true, true);
-    gAgentCamera.switchCameraPreset(CAMERA_PRESET_REAR_VIEW);
-    gAgentCamera.setCameraZoomFraction(0.5f);
+    if (mAvatarPreview) mAvatarPreview->setActive(true);
     mDirty = true;
 }
 void FSForMeFittingRoom::onClose(bool)
 {
-    restoreCameraState();
+    if (mAvatarPreview) mAvatarPreview->setActive(false);
 }
 void FSForMeFittingRoom::setCameraPreset(S32 preset)
 {
-    if (!gAgentAvatarp) return;
-    gAgentCamera.changeCameraToThirdPerson(true);
-    gAgentCamera.setFocusOnAvatar(true, true);
-    gAgentCamera.switchCameraPreset(static_cast<ECameraPreset>(preset));
+    if (mAvatarPreview) mAvatarPreview->setYaw(static_cast<F32>(preset));
 }
 void FSForMeFittingRoom::adjustCameraZoom(F32 delta)
 {
-    const F32 zoom = gAgentCamera.getCameraZoomFraction();
-    gAgentCamera.setCameraZoomFraction(llclamp(zoom + delta, 0.f, 1.f));
+    if (mAvatarPreview) mAvatarPreview->adjustDistance(delta);
 }
-void FSForMeFittingRoom::restoreCameraState()
+void FSForMeFittingRoom::drawAvatarPreview()
 {
-    if (!mCameraStateSaved) return;
-    gAgentCamera.switchCameraPreset(static_cast<ECameraPreset>(mPreviousCameraPreset));
-    switch (static_cast<ECameraMode>(mPreviousCameraMode))
-    {
-        case CAMERA_MODE_MOUSELOOK: gAgentCamera.changeCameraToMouselook(true); break;
-        case CAMERA_MODE_CUSTOMIZE_AVATAR: gAgentCamera.changeCameraToCustomizeAvatar(); break;
-        case CAMERA_MODE_FOLLOW: gAgentCamera.changeCameraToFollow(true); break;
-        case CAMERA_MODE_THIRD_PERSON:
-        default: gAgentCamera.changeCameraToThirdPerson(true); break;
-    }
-    gAgentCamera.setCameraZoomFraction(mPreviousCameraZoom);
-    mCameraStateSaved = false;
+    if (!mAvatarPreview || !mAvatarPreview->getHasGLTexture())
+        return;
+    LLView* canvas = getChild<LLView>("avatar_preview_canvas");
+    if (!canvas) return;
+    const LLRect rect = canvas->getRect();
+    gGL.getTexUnit(0)->bind(mAvatarPreview);
+    gGL.color4f(1.f, 1.f, 1.f, 1.f);
+    gGL.begin(LLRender::TRIANGLES);
+    gGL.texCoord2f(0.f, 1.f); gGL.vertex2i(rect.mLeft + 1, rect.mTop - 1);
+    gGL.texCoord2f(0.f, 0.f); gGL.vertex2i(rect.mLeft + 1, rect.mBottom + 1);
+    gGL.texCoord2f(1.f, 0.f); gGL.vertex2i(rect.mRight - 1, rect.mBottom + 1);
+    gGL.texCoord2f(1.f, 0.f); gGL.vertex2i(rect.mRight - 1, rect.mBottom + 1);
+    gGL.texCoord2f(1.f, 1.f); gGL.vertex2i(rect.mRight - 1, rect.mTop - 1);
+    gGL.texCoord2f(0.f, 1.f); gGL.vertex2i(rect.mLeft + 1, rect.mTop - 1);
+    gGL.end();
+    gGL.getTexUnit(0)->unbind(LLTexUnit::TT_TEXTURE);
 }
 void FSForMeFittingRoom::changed(U32) { mDirty = true; }
 void FSForMeFittingRoom::draw()
 {
     if (mDirty) rebuild();
     LLFloater::draw();
+    if (!isMinimized() && mAvatarPreview && mAvatarPreview->needsRender()) drawAvatarPreview();
 }
 void FSForMeFittingRoom::rebuild()
 {
