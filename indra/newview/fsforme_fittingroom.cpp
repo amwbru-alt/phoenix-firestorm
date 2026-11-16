@@ -5,6 +5,7 @@
 #include "fsforme_fittingroom.h"
 #include "llappearancemgr.h"
 #include "llagentcamera.h"
+#include "llvoavatarself.h"
 #include "llbutton.h"
 #include "llcombobox.h"
 #include "llfloaterreg.h"
@@ -83,7 +84,7 @@ void FSForMeFittingRoom::onOpen(const LLSD&)
     gAgentCamera.setCameraZoomFraction(0.5f);
     mDirty = true;
 }
-void FSForMeFittingRoom::onClose(bool app_quitting)
+void FSForMeFittingRoom::onClose(bool)
 {
     restoreCameraState();
 }
