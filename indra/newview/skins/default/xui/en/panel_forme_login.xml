@@ -96,6 +96,46 @@
     </layout_stack>
     <combo_box name="mode_combo" layout="topleft" left="0" top="0" width="1" height="1" visible="false"/>
   </panel>
+  <!-- ForMe welcome hub: a calm introduction beside the native login form. -->
+  <panel name="forme_welcome_hub" layout="topleft" left="438" top="132" width="526" height="456"
+         follows="right|top" background_visible="true" background_opaque="true"
+         bg_opaque_image="Forme_Round_Window" bg_opaque_image_overlay="White">
+    <text name="forme_hub_eyebrow" layout="topleft" left="28" top="28" width="450" height="18"
+          font="SansSerifSmall" font.style="BOLD" text_color="FormeLoginLink">YOUR WORLD, YOUR WAY</text>
+    <text name="forme_hub_title" layout="topleft" left="28" top="54" width="460" height="42"
+          font="SansSerifLarge" font.style="BOLD" text_color="White">A place to explore and belong</text>
+    <text name="forme_hub_intro" layout="topleft" left="28" top="104" width="460" height="42"
+          font="SansSerif" text_color="0.84 0.81 0.90 1" wrap="true">Discover places, meet people and make something of your own in a world shaped by its residents.</text>
+    <panel name="forme_hub_explore_card" layout="topleft" left="24" top="176" width="150" height="178"
+           background_visible="true" background_opaque="true" bg_opaque_image="Forme_Login_Card">
+      <text name="forme_hub_explore_mark" layout="topleft" left="16" top="16" width="40" height="36"
+            font="SansSerifLarge" font.style="BOLD" text_color="FormeLoginLink">01</text>
+      <text name="forme_hub_explore_title" layout="topleft" left="16" top="68" width="118" height="24"
+            font="SansSerifMedium" font.style="BOLD" text_color="White">Explore</text>
+      <text name="forme_hub_explore_copy" layout="topleft" left="16" top="98" width="118" height="62"
+            font="SansSerifSmall" text_color="0.82 0.78 0.89 1" wrap="true">Find new regions, destinations and experiences.</text>
+    </panel>
+    <panel name="forme_hub_connect_card" layout="topleft" left="188" top="176" width="150" height="178"
+           background_visible="true" background_opaque="true" bg_opaque_image="Forme_Login_Card">
+      <text name="forme_hub_connect_mark" layout="topleft" left="16" top="16" width="40" height="36"
+            font="SansSerifLarge" font.style="BOLD" text_color="FormeLoginLink">02</text>
+      <text name="forme_hub_connect_title" layout="topleft" left="16" top="68" width="118" height="24"
+            font="SansSerifMedium" font.style="BOLD" text_color="White">Connect</text>
+      <text name="forme_hub_connect_copy" layout="topleft" left="16" top="98" width="118" height="62"
+            font="SansSerifSmall" text_color="0.82 0.78 0.89 1" wrap="true">Meet residents and build lasting communities.</text>
+    </panel>
+    <panel name="forme_hub_create_card" layout="topleft" left="352" top="176" width="150" height="178"
+           background_visible="true" background_opaque="true" bg_opaque_image="Forme_Login_Card">
+      <text name="forme_hub_create_mark" layout="topleft" left="16" top="16" width="40" height="36"
+            font="SansSerifLarge" font.style="BOLD" text_color="FormeLoginLink">03</text>
+      <text name="forme_hub_create_title" layout="topleft" left="16" top="68" width="118" height="24"
+            font="SansSerifMedium" font.style="BOLD" text_color="White">Create</text>
+      <text name="forme_hub_create_copy" layout="topleft" left="16" top="98" width="118" height="62"
+            font="SansSerifSmall" text_color="0.82 0.78 0.89 1" wrap="true">Build, express yourself and share your work.</text>
+    </panel>
+    <text name="forme_hub_footer" layout="topleft" left="28" top="386" width="460" height="34"
+          font="SansSerifMedium" text_color="White">One world. Many ways to belong.</text>
+  </panel>
   <text name="forme_coast_caption" layout="topleft" left="784" top="726" width="216" height="23"
         follows="right|bottom" halign="right" text_color="White">Azure Coast</text>
 </panel>
