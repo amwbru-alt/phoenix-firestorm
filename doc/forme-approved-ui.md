@@ -9,9 +9,11 @@ The approved concept sheets are implemented as native viewer surfaces:
   About/Places tabs and message/details actions. The full native editor remains
   available through the ellipsis button as `profile_details`. It uses a separate
   copy of the native profile form, including translated overlays.
-- Inventory: larger rows and icons, folder navigation, compact view selector,
+- Inventory legacy fallback: larger rows and icons, folder navigation, compact view selector,
   native item context actions and existing category, search and selection logic.
-  The view selector also includes restored custom inventory tabs.
+  The separate ForMe inventory workspace is a new `FSForMeInventoryBrowser` and
+  `floater_forme_inventory.xml`, backed by `LLInventoryModel` observation; it does
+  not embed or modify the legacy inventory panel. The view selector also includes restored custom inventory tabs.
 - Preferences: six primary navigation buttons, advanced sections in a dropdown,
   a settings-backed interface page and Apply/Cancel. The hidden full-menu binding
   participates in the native preferences snapshot so Cancel can restore it.
