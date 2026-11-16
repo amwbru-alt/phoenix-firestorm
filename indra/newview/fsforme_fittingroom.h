@@ -16,6 +16,10 @@ public:
     void onOpen(const LLSD& key) override;
     void onClose(bool app_quitting) override;
     void draw() override;
+    bool handleMouseDown(S32 x, S32 y, MASK mask) override;
+    bool handleMouseUp(S32 x, S32 y, MASK mask) override;
+    bool handleHover(S32 x, S32 y, MASK mask) override;
+    bool handleScrollWheel(S32 x, S32 y, S32 clicks) override;
     void changed(U32 mask) override;
 private:
     FSForMeFittingRoom(const LLSD& key);
@@ -30,4 +34,6 @@ private:
     S32 mSavedOutfitCount = 0;
     bool mDirty = true;
     FSForMeAvatarPreview* mAvatarPreview = nullptr;
+    bool mDraggingPreview = false;
+    S32 mLastPreviewMouseX = 0;
 };
