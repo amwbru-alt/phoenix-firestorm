@@ -1,8 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <panel name="home_tab">
-  <layout_stack name="stack">
-    <layout_panel name="browser_layout">
-      <web_browser name="browser" start_url="data:text/html,%3Chtml%3E%3Cbody bgcolor=%22#2A2A2A%22 text=%22eeeeee%22%3E %3Ch3%3E %0D%0A%0D%0AЗагрузка... %3C/h3%3E %3C/body%3E%3C/html%3E" />
-    </layout_panel>
-  </layout_stack>
+  <text name="forme_home_eyebrow">FORME WORLD</text>
+  <text name="forme_home_title">Твой мир</text>
+  <text name="forme_home_subtitle">Продолжай с того места, где остановился. Исследуй локации, знакомься с людьми и управляй своим миром.</text>
+  <panel name="forme_home_section_world">
+    <text name="forme_home_world_title">Исследуй</text>
+    <text name="forme_home_world_copy">Найди новое место в мире</text>
+    <button name="forme_home_open_map" label="Открыть карту"/>
+    <button name="forme_home_open_destinations" label="Локации"/>
+  </panel>
+  <panel name="forme_home_section_social">
+    <text name="forme_home_social_title">Люди и сообщества</text>
+    <text name="forme_home_social_copy">Друзья, группы и общение</text>
+    <button name="forme_home_open_people" label="Люди"/>
+    <button name="forme_home_open_groups" label="Группы"/>
+  </panel>
+  <panel name="forme_home_section_tools">
+    <text name="forme_home_tools_title">Твои инструменты</text>
+    <text name="forme_home_tools_copy">Инвентарь, покупки и настройки</text>
+    <button name="forme_home_open_inventory" label="Инвентарь"/>
+    <button name="forme_home_open_market" label="Маркетплейс"/>
+    <button name="forme_home_open_preferences" label="Настройки"/>
+  </panel>
+  <text name="forme_home_footer">ForMe World · Сделай этот мир своим</text>
 </panel>
