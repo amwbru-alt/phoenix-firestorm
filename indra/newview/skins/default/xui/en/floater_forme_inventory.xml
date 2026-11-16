@@ -2,7 +2,7 @@
 <!-- Independent ForMe inventory workspace. It does not embed or modify the legacy inventory panel. -->
 <floater name="forme_inventory" title="ForMe Inventory" width="1120" height="760" min_width="980" min_height="640"
          can_resize="true" can_minimize="true" can_close="true" single_instance="true"
-         legacy_header_height="0" header_height="42" header_vpad="9" header_icon="Forme_UI_Inventory"
+         legacy_header_height="0" header_height="44" header_vpad="9" header_icon="Forme_UI_Inventory"
          bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive"
          bg_opaque_color="White" bg_alpha_color="White">
   <text name="eyebrow" layout="topleft" left="22" top="18" width="700" height="18" font="SansSerifSmall" text_color="0.72 0.55 0.88 1">FORME WORLD / PERSONAL SPACE</text>
