@@ -5,21 +5,23 @@
   <button name="fitting_refresh" layout="topleft" left="908" top="42" width="42" height="32" label="↻" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
   <panel name="avatar_stage" layout="topleft" left="18" top="96" width="400" height="520" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
     <text name="stage_eyebrow" layout="topleft" left="20" top="18" width="350" height="20" font="SansSerifSmall" text_color="0.72 0.55 0.88 1">LIVE AVATAR</text>
-    <text name="stage_title" layout="topleft" left="20" top="48" width="350" height="34" font="SansSerifLarge" font.style="BOLD">Твой текущий образ</text>
-    <text name="stage_description" layout="topleft" left="20" top="100" width="350" height="68" wrap="true" text_color="0.76 0.73 0.80 1">The controls below operate the live world camera. A separate embedded 3D preview is still in development.</text>
-    <text name="camera_heading" layout="topleft" left="20" top="172" width="350" height="18" font="SansSerifBold">CAMERA / LIVE AVATAR</text>
-    <button name="fitting_camera_front" layout="topleft" left="20" top="194" width="78" height="30" label="Front" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
-    <button name="fitting_camera_rear" layout="topleft" left="104" top="194" width="78" height="30" label="Back" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
-    <button name="fitting_camera_three_quarter" layout="topleft" left="188" top="194" width="86" height="30" label="3/4 view" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
-    <button name="fitting_camera_reset" layout="topleft" left="280" top="194" width="70" height="30" label="Reset" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
-    <button name="fitting_camera_zoom_out" layout="topleft" left="20" top="230" width="34" height="28" label="−" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
-    <button name="fitting_camera_zoom_in" layout="topleft" left="58" top="230" width="34" height="28" label="+" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
-    <text name="camera_zoom_hint" layout="topleft" left="104" top="234" width="244" height="20" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">Zoom changes the world camera</text>
-    <text name="fitting_item_count" layout="topleft" left="20" top="266" width="350" height="26" font="SansSerifBold">Загрузка образа…</text>
-    <button name="fitting_open_inventory" layout="topleft" left="20" top="300" width="350" height="40" label="Открыть гардероб" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
-    <text name="stage_hint" layout="topleft" left="20" top="350" width="350" height="62" wrap="true" text_color="0.65 0.61 0.70 1">Выбирай предметы в новом инвентаре ForMe и нажимай «Применить». Изменения сразу отражаются на аватаре.</text>
-    <combo_box name="saved_outfits" layout="topleft" left="20" top="426" width="350" height="28" allow_text_entry="false"/>
-    <button name="fitting_wear_saved" layout="topleft" left="20" top="462" width="350" height="34" label="Надеть сохранённый образ" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
+    <text name="stage_title" layout="topleft" left="20" top="48" width="350" height="34" font="SansSerifLarge" font.style="BOLD">Текущий образ</text>
+    <text name="stage_description" layout="topleft" left="20" top="88" width="350" height="30" wrap="true" text_color="0.76 0.73 0.80 1">Independent 3D view · changes do not move the world camera</text>
+    <panel name="avatar_preview_canvas" layout="topleft" left="20" top="122" width="350" height="150" background_visible="true" bg_alpha_image="Forme_Round_Window" bg_alpha_color="White"/>
+    <text name="camera_heading" layout="topleft" left="20" top="282" width="350" height="18" font="SansSerifBold">PREVIEW CAMERA</text>
+    <button name="fitting_camera_front" layout="topleft" left="20" top="304" width="78" height="30" label="Front" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    <button name="fitting_camera_rear" layout="topleft" left="104" top="304" width="78" height="30" label="Back" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    <button name="fitting_camera_three_quarter" layout="topleft" left="188" top="304" width="86" height="30" label="3/4 view" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    <button name="fitting_camera_reset" layout="topleft" left="280" top="304" width="70" height="30" label="Reset" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    <button name="fitting_camera_zoom_out" layout="topleft" left="20" top="340" width="34" height="28" label="−" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    <button name="fitting_camera_zoom_in" layout="topleft" left="58" top="340" width="34" height="28" label="+" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    <button name="fitting_camera_rotate_left" layout="topleft" left="104" top="340" width="34" height="28" label="↶" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    <button name="fitting_camera_rotate_right" layout="topleft" left="142" top="340" width="34" height="28" label="↷" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    <text name="camera_zoom_hint" layout="topleft" left="190" top="344" width="158" height="20" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">Zoom / orbit</text>
+    <text name="fitting_item_count" layout="topleft" left="20" top="376" width="350" height="26" font="SansSerifBold">Загрузка образа…</text>
+    <button name="fitting_open_inventory" layout="topleft" left="20" top="408" width="350" height="38" label="Открыть гардероб" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    <combo_box name="saved_outfits" layout="topleft" left="20" top="454" width="350" height="28" allow_text_entry="false"/>
+    <button name="fitting_wear_saved" layout="topleft" left="20" top="488" width="350" height="30" label="Надеть сохранённый образ" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
   </panel>
   <panel name="wardrobe_surface" layout="topleft" left="430" top="96" width="532" height="520" background_visible="true" bg_alpha_image="Forme_Round_Window" bg_alpha_color="White">
     <text name="wardrobe_heading" layout="topleft" left="18" top="16" width="360" height="26" font="SansSerifBold">Сейчас надето</text>
