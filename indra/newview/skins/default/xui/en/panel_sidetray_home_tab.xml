@@ -43,7 +43,7 @@
       <button.commit_callback function="Floater.Toggle" parameter="groups"/>
     </button>
   </panel>
-  <panel name="forme_home_section_tools" layout="topleft" left="16" top="370" width="301" height="132"
+  <panel name="forme_home_section_tools" layout="topleft" left="16" top="370" width="301" height="164"
          background_visible="true" background_opaque="true" bg_opaque_image="Forme_Round_Window">
     <text name="forme_home_tools_title" layout="topleft" left="14" top="12" width="260" height="22"
           font="SansSerifMedium" font.style="BOLD" text_color="1 1 1 1">Your tools</text>
@@ -59,7 +59,12 @@
             image_pressed="Forme_Round_Accent" label_color="1 1 1 1">
       <button.commit_callback function="Avatar.OpenMarketplace" parameter=""/>
     </button>
-    <button name="forme_home_open_preferences" layout="topleft" left="14" top="100" width="273" height="26"
+    <button name="forme_home_open_fitting_room" layout="topleft" left="14" top="100" width="273" height="26"
+            label="Fitting Room" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent"
+            image_pressed="Forme_Round_Accent" label_color="0.82 0.70 0.94 1">
+      <button.commit_callback function="Floater.Toggle" parameter="forme_fitting_room"/>
+    </button>
+    <button name="forme_home_open_preferences" layout="topleft" left="14" top="132" width="273" height="26"
             label="Preferences" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent"
             image_pressed="Forme_Round_Accent" label_color="0.82 0.70 0.94 1">
       <button.commit_callback function="Floater.Toggle" parameter="preferences"/>
