@@ -10,6 +10,8 @@
     <button name="category_accessories" label="Аксессуары"/>
     <button name="category_objects" label="Объекты"/>
     <button name="category_animations" label="Анимации"/>
+    <button name="category_favorites" label="Избранное"/>
+    <button name="category_recent" label="Недавние"/>
     <text name="inventory_count">Загрузка…</text>
   </panel>
   <panel name="items_surface">
@@ -17,33 +19,34 @@
     <button name="folder_back" label="Все папки" enabled="false"/>
     <scroll_container name="items_scroll">
       <panel name="items_grid">
-      <panel name="item_card_0"><text name="item_name_0"/><button name="item_select_0" label="Выбрать"/></panel>
-      <panel name="item_card_1"><text name="item_name_1"/><button name="item_select_1" label="Выбрать"/></panel>
-      <panel name="item_card_2"><text name="item_name_2"/><button name="item_select_2" label="Выбрать"/></panel>
-      <panel name="item_card_3"><text name="item_name_3"/><button name="item_select_3" label="Выбрать"/></panel>
-      <panel name="item_card_4"><text name="item_name_4"/><button name="item_select_4" label="Выбрать"/></panel>
-      <panel name="item_card_5"><text name="item_name_5"/><button name="item_select_5" label="Выбрать"/></panel>
-      <panel name="item_card_6"><text name="item_name_6"/><button name="item_select_6" label="Выбрать"/></panel>
-      <panel name="item_card_7"><text name="item_name_7"/><button name="item_select_7" label="Выбрать"/></panel>
-      <panel name="item_card_8"><text name="item_name_8"/><button name="item_select_8" label="Выбрать"/></panel>
-      <panel name="item_card_9"><text name="item_name_9"/><button name="item_select_9" label="Выбрать"/></panel>
-      <panel name="item_card_10"><text name="item_name_10"/><button name="item_select_10" label="Выбрать"/></panel>
-      <panel name="item_card_11"><text name="item_name_11"/><button name="item_select_11" label="Выбрать"/></panel>
-      <panel name="item_card_12"><text name="item_name_12"/><button name="item_select_12" label="Выбрать"/></panel>
-      <panel name="item_card_13"><text name="item_name_13"/><button name="item_select_13" label="Выбрать"/></panel>
-      <panel name="item_card_14"><text name="item_name_14"/><button name="item_select_14" label="Выбрать"/></panel>
-      <panel name="item_card_15"><text name="item_name_15"/><button name="item_select_15" label="Выбрать"/></panel>
-      <panel name="item_card_16"><text name="item_name_16"/><button name="item_select_16" label="Выбрать"/></panel>
-      <panel name="item_card_17"><text name="item_name_17"/><button name="item_select_17" label="Выбрать"/></panel>
-      <panel name="item_card_18"><text name="item_name_18"/><button name="item_select_18" label="Выбрать"/></panel>
-      <panel name="item_card_19"><text name="item_name_19"/><button name="item_select_19" label="Выбрать"/></panel>
+      <panel name="item_card_0"><thumbnail name="item_thumbnail_0"/><button name="item_favorite_0" label="☆"/><text name="item_name_0"/><button name="item_select_0" label="Выбрать"/></panel>
+      <panel name="item_card_1"><thumbnail name="item_thumbnail_1"/><button name="item_favorite_1" label="☆"/><text name="item_name_1"/><button name="item_select_1" label="Выбрать"/></panel>
+      <panel name="item_card_2"><thumbnail name="item_thumbnail_2"/><button name="item_favorite_2" label="☆"/><text name="item_name_2"/><button name="item_select_2" label="Выбрать"/></panel>
+      <panel name="item_card_3"><thumbnail name="item_thumbnail_3"/><button name="item_favorite_3" label="☆"/><text name="item_name_3"/><button name="item_select_3" label="Выбрать"/></panel>
+      <panel name="item_card_4"><thumbnail name="item_thumbnail_4"/><button name="item_favorite_4" label="☆"/><text name="item_name_4"/><button name="item_select_4" label="Выбрать"/></panel>
+      <panel name="item_card_5"><thumbnail name="item_thumbnail_5"/><button name="item_favorite_5" label="☆"/><text name="item_name_5"/><button name="item_select_5" label="Выбрать"/></panel>
+      <panel name="item_card_6"><thumbnail name="item_thumbnail_6"/><button name="item_favorite_6" label="☆"/><text name="item_name_6"/><button name="item_select_6" label="Выбрать"/></panel>
+      <panel name="item_card_7"><thumbnail name="item_thumbnail_7"/><button name="item_favorite_7" label="☆"/><text name="item_name_7"/><button name="item_select_7" label="Выбрать"/></panel>
+      <panel name="item_card_8"><thumbnail name="item_thumbnail_8"/><button name="item_favorite_8" label="☆"/><text name="item_name_8"/><button name="item_select_8" label="Выбрать"/></panel>
+      <panel name="item_card_9"><thumbnail name="item_thumbnail_9"/><button name="item_favorite_9" label="☆"/><text name="item_name_9"/><button name="item_select_9" label="Выбрать"/></panel>
+      <panel name="item_card_10"><thumbnail name="item_thumbnail_10"/><button name="item_favorite_10" label="☆"/><text name="item_name_10"/><button name="item_select_10" label="Выбрать"/></panel>
+      <panel name="item_card_11"><thumbnail name="item_thumbnail_11"/><button name="item_favorite_11" label="☆"/><text name="item_name_11"/><button name="item_select_11" label="Выбрать"/></panel>
+      <panel name="item_card_12"><thumbnail name="item_thumbnail_12"/><button name="item_favorite_12" label="☆"/><text name="item_name_12"/><button name="item_select_12" label="Выбрать"/></panel>
+      <panel name="item_card_13"><thumbnail name="item_thumbnail_13"/><button name="item_favorite_13" label="☆"/><text name="item_name_13"/><button name="item_select_13" label="Выбрать"/></panel>
+      <panel name="item_card_14"><thumbnail name="item_thumbnail_14"/><button name="item_favorite_14" label="☆"/><text name="item_name_14"/><button name="item_select_14" label="Выбрать"/></panel>
+      <panel name="item_card_15"><thumbnail name="item_thumbnail_15"/><button name="item_favorite_15" label="☆"/><text name="item_name_15"/><button name="item_select_15" label="Выбрать"/></panel>
+      <panel name="item_card_16"><thumbnail name="item_thumbnail_16"/><button name="item_favorite_16" label="☆"/><text name="item_name_16"/><button name="item_select_16" label="Выбрать"/></panel>
+      <panel name="item_card_17"><thumbnail name="item_thumbnail_17"/><button name="item_favorite_17" label="☆"/><text name="item_name_17"/><button name="item_select_17" label="Выбрать"/></panel>
+      <panel name="item_card_18"><thumbnail name="item_thumbnail_18"/><button name="item_favorite_18" label="☆"/><text name="item_name_18"/><button name="item_select_18" label="Выбрать"/></panel>
+      <panel name="item_card_19"><thumbnail name="item_thumbnail_19"/><button name="item_favorite_19" label="☆"/><text name="item_name_19"/><button name="item_select_19" label="Выбрать"/></panel>
       </panel>
     </scroll_container>
     <button name="previous" label="‹"/><text name="page">1 / 1</text><button name="next" label="›"/>
   </panel>
   <panel name="details_surface">
     <text name="details_heading">Предмет</text>
-    <text name="detail_name">Выберите предмет</text>
+    <thumbnail name="detail_thumbnail"/><text name="detail_name">Выберите предмет</text>
+    <button name="detail_favorite" label="В избранное"/>
     <button name="apply" label="Применить"/>
     <button name="open_folder" label="Открыть папку"/>
   </panel>
