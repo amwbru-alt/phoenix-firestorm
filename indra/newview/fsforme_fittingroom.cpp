@@ -36,8 +36,9 @@ public:
     void setActive(bool active) { mActive = active; }
     void setYaw(F32 yaw) { mYaw = yaw; }
     void rotate(F32 delta) { mYaw += delta; }
+    void tilt(F32 delta) { mElevation = llclamp(mElevation + delta, -0.35f, 0.65f); }
     void adjustDistance(F32 delta) { mDistance = llclamp(mDistance + delta, 1.8f, 7.0f); }
-    void resetView() { mYaw = 0.f; mDistance = 3.4f; }
+    void resetView() { mYaw = 0.f; mDistance = 3.4f; mElevation = 0.18f; }
 
     bool render() override
     {
@@ -51,7 +52,7 @@ public:
 
         const LLVector3 focus = avatar->getPositionAgent() + LLVector3(0.f, 0.f, 1.0f);
         const LLQuaternion orbit = avatar->getRotation() * LLQuaternion(mYaw, LLVector3::z_axis);
-        const LLVector3 offset = LLVector3(-mDistance, 0.f, 0.18f) * orbit;
+        const LLVector3 offset = LLVector3(-mDistance, 0.f, mDistance * mElevation) * orbit;
         camera->setOriginAndLookAt(focus + offset, LLVector3::z_axis, focus);
         camera->setPerspective(false, 0, 0, getWidth(), getHeight(), false, 0.1f, 64.f);
 
@@ -75,6 +76,7 @@ private:
     bool mActive = false;
     F32 mYaw = 0.f;
     F32 mDistance = 3.4f;
+    F32 mElevation = 0.18f;
 };
 
 namespace
@@ -163,6 +165,7 @@ bool FSForMeFittingRoom::handleMouseDown(S32 x, S32 y, MASK mask)
     {
         mDraggingPreview = true;
         mLastPreviewMouseX = x;
+        mLastPreviewMouseY = y;
         gFocusMgr.setMouseCapture(this);
         bringToFront(x, y);
         return true;
@@ -189,8 +192,11 @@ bool FSForMeFittingRoom::handleHover(S32 x, S32 y, MASK mask)
     if (mDraggingPreview && hasMouseCapture() && mAvatarPreview)
     {
         const S32 delta_x = x - mLastPreviewMouseX;
+        const S32 delta_y = y - mLastPreviewMouseY;
         mLastPreviewMouseX = x;
+        mLastPreviewMouseY = y;
         mAvatarPreview->rotate(-static_cast<F32>(delta_x) * 0.012f);
+        mAvatarPreview->tilt(-static_cast<F32>(delta_y) * 0.008f);
         return true;
     }
     return LLFloater::handleHover(x, y, mask);
