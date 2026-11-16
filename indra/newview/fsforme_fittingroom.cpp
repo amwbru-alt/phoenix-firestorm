@@ -160,7 +160,7 @@ bool FSForMeFittingRoom::handleMouseDown(S32 x, S32 y, MASK mask)
 {
     LLView* canvas = getChild<LLView>("avatar_preview_canvas");
     LLRect canvas_rect;
-    if (canvas && canvas->localRectToOtherView(canvas->getLocalRect(), &canvas_rect, this)
+    if ((mask & MASK_LEFT) && canvas && canvas->localRectToOtherView(canvas->getLocalRect(), &canvas_rect, this)
         && canvas_rect.pointInRect(x, y) && mAvatarPreview)
     {
         mDraggingPreview = true;
