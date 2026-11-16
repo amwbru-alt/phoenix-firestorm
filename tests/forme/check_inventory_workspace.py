@@ -81,14 +81,21 @@ assert "getDirectDescendentsOf" in fit_cpp and "getCOF()" in fit_cpp
 assert "removeItemFromAvatar" in fit_cpp and "makeNewOutfitLinks" in fit_cpp
 assert "wearInventoryCategoryOnAvatar" in fit_cpp and "FT_MY_OUTFITS" in fit_cpp
 assert 'showInstance("forme_inventory")' in fit_cpp
-assert '#include "llagentcamera.h"' in fit_cpp
-assert "switchCameraPreset" in fit_cpp and "setCameraZoomFraction" in fit_cpp
-assert "mPreviousCameraMode" in fit_header and "restoreCameraState" in fit_cpp
+assert '#include "lldynamictexture.h"' in fit_cpp
+assert '#include "lldrawpoolavatar.h"' in fit_cpp
+assert "LLViewerDynamicTexture(512, 512" in fit_cpp
+assert "renderAvatars(avatar, -1)" in fit_cpp
+assert "setPerspective(false, 0, 0, getWidth(), getHeight()" in fit_cpp
+assert "setOriginAndLookAt" in fit_cpp and "needsRender() override" in fit_cpp
+assert "gAgentCamera" not in fit_cpp
+assert "FSForMeAvatarPreview* mAvatarPreview" in fit_header
 assert "LLThumbnailCtrl" in fit_cpp and "getThumbnailUUID()" in fit_cpp
 for locale in ("en", "ru"):
     fit_ui = ET.parse(XUI / locale / "floater_forme_fitting_room.xml").getroot()
+    child(fit_ui, "avatar_preview_canvas")
     for name in ("fitting_camera_front", "fitting_camera_rear", "fitting_camera_three_quarter",
-                 "fitting_camera_reset", "fitting_camera_zoom_out", "fitting_camera_zoom_in"):
+                 "fitting_camera_reset", "fitting_camera_zoom_out", "fitting_camera_zoom_in",
+                 "fitting_camera_rotate_left", "fitting_camera_rotate_right"):
         child(fit_ui, name)
     for index in range(16):
         child(fit_ui, "worn_thumbnail_%d" % index)
