@@ -18,7 +18,7 @@ def child(root, name):
 for name in ("query", "category_all", "category_clothing", "category_accessories",
              "category_objects", "category_animations", "items_grid", "items_scroll",
              "details_surface", "detail_icon", "detail_name", "apply", "open_folder",
-             "previous", "next", "page", "status"):
+             "previous", "next", "page", "folder_back", "status"):
     child(en, name)
     if name not in ("detail_icon", "items_scroll"):
         child(ru, name)
@@ -41,6 +41,7 @@ assert "LLInventoryObserver" in header
 assert "gInventory.addObserver(this)" in cpp and "gInventory.removeObserver(this)" in cpp
 assert "getDirectDescendentsOf" in cpp
 assert "wearItemOnAvatar" in cpp
+assert "mFolder" in cpp and 'showInstance("inventory"' not in cpp
 assert "category_clothing" in cpp and "mQuery" in cpp and "mPage" in cpp
 
 registry = (ROOT / "indra/newview/llviewerfloaterreg.cpp").read_text()
