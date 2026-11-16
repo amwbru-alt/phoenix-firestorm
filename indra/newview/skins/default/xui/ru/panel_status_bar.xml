@@ -50,11 +50,11 @@
     <button name="forme_tools_people" label="Люди" />
     <button name="forme_tools_inventory" label="Инвентарь" />
     <button name="forme_tools_market" label="Маркет" />
-    <button name="forme_tools_build" tool_tip="Строительство" />
-    <button name="forme_tools_move" tool_tip="Перемещение объектов" />
-    <button name="forme_tools_rotate" tool_tip="Поворот объектов" />
+    <button name="forme_tools_build" tool_tip="Режим строительства" />
+    <button name="forme_tools_move" tool_tip="Переместить объект" />
+    <button name="forme_tools_rotate" tool_tip="Повернуть объект" />
     <search_editor name="forme_world_search" label="Поиск мест…" />
-    <button name="forme_tools_settings" tool_tip="Настройки" />
+    <button name="forme_tools_settings" tool_tip="Настройки клиента" />
   </panel>
   <button name="forme_hud_balance" tool_tip="Деньги на счёте — нажмите, чтобы обновить" />
 </panel>
