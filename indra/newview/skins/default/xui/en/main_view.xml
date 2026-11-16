@@ -109,6 +109,10 @@
     </layout_panel>
   </layout_stack>
 
+  <!-- ForMe workspace navigation, layered over the 3D world without replacing it. -->
+  <panel name="forme_workspace_sidebar" filename="panel_forme_sidebar.xml"
+         layout="topleft" left="12" top="58" width="76" height="620"
+         follows="left|top|bottom" mouse_opaque="false" visible="true"/>
   <panel top="0"
         follows="all"
         mouse_opaque="false"
