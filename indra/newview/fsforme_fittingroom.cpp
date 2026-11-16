@@ -16,6 +16,7 @@
 #include "llfloaterreg.h"
 #include "llinventorymodel.h"
 #include "llinventorytype.h"
+#include "llwearabletype.h"
 #include "lllineeditor.h"
 #include "llpanel.h"
 #include "lltextbox.h"
@@ -86,7 +87,17 @@ std::string fittingItemType(const LLViewerInventoryItem* item)
 {
     if (!item) return "Предмет";
     if (item->getType() == LLAssetType::AT_CLOTHING) return "Одежда";
-    if (item->getType() == LLAssetType::AT_BODYPART) return "Часть тела";
+    if (item->getType() == LLAssetType::AT_BODYPART)
+    {
+        switch (item->getWearableType())
+        {
+            case LLWearableType::WT_SHAPE: return "Форма тела";
+            case LLWearableType::WT_SKIN: return "Кожа";
+            case LLWearableType::WT_HAIR: return "Волосы";
+            case LLWearableType::WT_EYES: return "Глаза";
+            default: return "Часть тела";
+        }
+    }
     if (item->getType() == LLAssetType::AT_OBJECT) return "Аксессуар / объект";
     return "Другой предмет";
 }
@@ -99,7 +110,10 @@ bool FSForMeFittingRoom::postBuild()
     mAvatarPreview = new FSForMeAvatarPreview();
     for (const auto& category : {std::make_pair("worn_filter_all", "all"),
                                  std::make_pair("worn_filter_clothing", "clothing"),
-                                 std::make_pair("worn_filter_body", "body"),
+                                 std::make_pair("worn_filter_shape", "shape"),
+                                 std::make_pair("worn_filter_skin", "skin"),
+                                 std::make_pair("worn_filter_hair", "hair"),
+                                 std::make_pair("worn_filter_eyes", "eyes"),
                                  std::make_pair("worn_filter_accessories", "accessories")})
         getChild<LLButton>(category.first)->setClickedCallback([this, value = std::string(category.second)](LLUICtrl*, const LLSD&) {
             setCategory(value);
@@ -255,7 +269,10 @@ bool FSForMeFittingRoom::matchesCategory(const LLViewerInventoryItem* item) cons
 {
     if (!item || mCategory == "all") return item != nullptr;
     if (mCategory == "clothing") return item->getType() == LLAssetType::AT_CLOTHING;
-    if (mCategory == "body") return item->getType() == LLAssetType::AT_BODYPART;
+    if (mCategory == "shape") return item->getType() == LLAssetType::AT_BODYPART && item->getWearableType() == LLWearableType::WT_SHAPE;
+    if (mCategory == "skin") return item->getType() == LLAssetType::AT_BODYPART && item->getWearableType() == LLWearableType::WT_SKIN;
+    if (mCategory == "hair") return item->getType() == LLAssetType::AT_BODYPART && item->getWearableType() == LLWearableType::WT_HAIR;
+    if (mCategory == "eyes") return item->getType() == LLAssetType::AT_BODYPART && item->getWearableType() == LLWearableType::WT_EYES;
     if (mCategory == "accessories")
         return item->getType() == LLAssetType::AT_OBJECT && item->getInventoryType() == LLInventoryType::IT_WEARABLE;
     return true;
@@ -309,7 +326,10 @@ void FSForMeFittingRoom::rebuild()
     getChild<LLTextBox>("fitting_item_count")->setText(std::to_string(mWornItems.size()) + " предметов в категории");
     getChild<LLButton>("worn_filter_all")->setToggleState(mCategory == "all");
     getChild<LLButton>("worn_filter_clothing")->setToggleState(mCategory == "clothing");
-    getChild<LLButton>("worn_filter_body")->setToggleState(mCategory == "body");
+    getChild<LLButton>("worn_filter_shape")->setToggleState(mCategory == "shape");
+    getChild<LLButton>("worn_filter_skin")->setToggleState(mCategory == "skin");
+    getChild<LLButton>("worn_filter_hair")->setToggleState(mCategory == "hair");
+    getChild<LLButton>("worn_filter_eyes")->setToggleState(mCategory == "eyes");
     getChild<LLButton>("worn_filter_accessories")->setToggleState(mCategory == "accessories");
     getChild<LLTextBox>("fitting_status")->setText(mWornItems.empty()
         ? "Ожидаем данные текущего образа. Если аватар ещё загружается, обновите список позже."
