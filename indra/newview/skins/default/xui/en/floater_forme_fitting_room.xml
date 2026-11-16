@@ -3,7 +3,7 @@
   <text name="eyebrow" layout="topleft" left="22" top="18" width="650" height="18" font="SansSerifSmall" text_color="0.72 0.55 0.88 1">FORME WORLD / PERSONAL STYLE</text>
   <text name="title" layout="topleft" left="22" top="42" width="420" height="36" font="SansSerifLarge" font.style="BOLD">Примерочная</text>
   <button name="fitting_refresh" layout="topleft" left="908" top="42" width="42" height="32" label="↻" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
-  <panel name="avatar_stage" layout="topleft" left="18" top="96" width="400" height="570" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
+  <panel name="avatar_stage" layout="topleft" left="18" top="96" width="400" height="580" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
     <text name="stage_eyebrow" layout="topleft" left="20" top="18" width="350" height="20" font="SansSerifSmall" text_color="0.72 0.55 0.88 1">LIVE AVATAR</text>
     <text name="stage_title" layout="topleft" left="20" top="48" width="350" height="34" font="SansSerifLarge" font.style="BOLD">Текущий образ</text>
     <text name="stage_description" layout="topleft" left="20" top="88" width="350" height="30" wrap="true" text_color="0.76 0.73 0.80 1">Independent 3D view · changes do not move the world camera</text>
