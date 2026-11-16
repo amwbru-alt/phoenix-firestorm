@@ -7,6 +7,7 @@
 #include "lluuid.h"
 #include <vector>
 class FSForMeAvatarPreview;
+class LLViewerInventoryItem;
 
 class FSForMeFittingRoom final : public LLFloater, public LLInventoryObserver
 {
