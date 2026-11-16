@@ -96,6 +96,13 @@ bool FSForMeFittingRoom::postBuild()
 {
     gInventory.addObserver(this);
     mAvatarPreview = new FSForMeAvatarPreview();
+    for (const auto& category : {std::make_pair("worn_filter_all", "all"),
+                                 std::make_pair("worn_filter_clothing", "clothing"),
+                                 std::make_pair("worn_filter_body", "body"),
+                                 std::make_pair("worn_filter_accessories", "accessories")})
+        getChild<LLButton>(category.first)->setClickedCallback([this, value = std::string(category.second)](LLUICtrl*, const LLSD&) {
+            setCategory(value);
+        });
     getChild<LLButton>("fitting_refresh")->setClickedCallback([this](LLUICtrl*, const LLSD&) { mDirty = true; });
     getChild<LLButton>("fitting_camera_front")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
         setCameraPreset(3.14159265f);
@@ -236,6 +243,22 @@ void FSForMeFittingRoom::drawAvatarPreview()
     gGL.getTexUnit(0)->unbind(LLTexUnit::TT_TEXTURE);
 }
 void FSForMeFittingRoom::changed(U32) { mDirty = true; }
+
+void FSForMeFittingRoom::setCategory(const std::string& category)
+{
+    mCategory = category;
+    mDirty = true;
+}
+
+bool FSForMeFittingRoom::matchesCategory(const LLViewerInventoryItem* item) const
+{
+    if (!item || mCategory == "all") return item != nullptr;
+    if (mCategory == "clothing") return item->getType() == LLAssetType::AT_CLOTHING;
+    if (mCategory == "body") return item->getType() == LLAssetType::AT_BODYPART;
+    if (mCategory == "accessories")
+        return item->getType() == LLAssetType::AT_OBJECT && item->getInventoryType() == LLInventoryType::IT_WEARABLE;
+    return true;
+}
 void FSForMeFittingRoom::draw()
 {
     if (mDirty) rebuild();
@@ -267,7 +290,7 @@ void FSForMeFittingRoom::rebuild()
     gInventory.getDirectDescendentsOf(LLAppearanceMgr::instance().getCOF(), categories, items);
     if (items)
         for (const auto& item : *items)
-            if (item.notNull() && item->getIsLinkType()) mWornItems.push_back(item->getUUID());
+            if (item.notNull() && item->getIsLinkType() && matchesCategory(item)) mWornItems.push_back(item->getUUID());
     for (S32 i = 0; i < WORN_ITEM_SLOTS; ++i)
     {
         const bool present = i < static_cast<S32>(mWornItems.size());
@@ -282,7 +305,11 @@ void FSForMeFittingRoom::rebuild()
         getChild<LLTextBox>("worn_name_" + suffix)->setText(item->getName());
         getChild<LLTextBox>("worn_type_" + std::to_string(i))->setText(fittingItemType(item));
     }
-    getChild<LLTextBox>("fitting_item_count")->setText(std::to_string(mWornItems.size()) + " предметов надето");
+    getChild<LLTextBox>("fitting_item_count")->setText(std::to_string(mWornItems.size()) + " предметов в категории");
+    getChild<LLButton>("worn_filter_all")->setToggleState(mCategory == "all");
+    getChild<LLButton>("worn_filter_clothing")->setToggleState(mCategory == "clothing");
+    getChild<LLButton>("worn_filter_body")->setToggleState(mCategory == "body");
+    getChild<LLButton>("worn_filter_accessories")->setToggleState(mCategory == "accessories");
     getChild<LLTextBox>("fitting_status")->setText(mWornItems.empty()
         ? "Ожидаем данные текущего образа. Если аватар ещё загружается, обновите список позже."
         : "Список синхронизирован с текущим образом аватара.");
