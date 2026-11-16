@@ -61,7 +61,8 @@ bool FSForMeInventoryBrowser::postBuild()
     getChild<LLButton>("next")->setClickedCallback([this](LLUICtrl*, const LLSD&) { if ((mPage + 1) * CARD_COUNT < static_cast<S32>(mVisibleItems.size())) { ++mPage; mDirty = true; } });
     for (S32 i = 0; i < CARD_COUNT; ++i)
         getChild<LLButton>("item_select_" + std::to_string(i))->setClickedCallback([this, i](LLUICtrl*, const LLSD&) {
-            if (i < static_cast<S32>(mVisibleItems.size())) selectItem(mVisibleItems[i]);
+            const S32 index = mPage * CARD_COUNT + i;
+            if (index < static_cast<S32>(mVisibleItems.size())) selectItem(mVisibleItems[index]);
         });
     getChild<LLButton>("apply")->setClickedCallback([this](LLUICtrl*, const LLSD&) { applySelected(); });
     getChild<LLButton>("open_folder")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
@@ -105,6 +106,8 @@ void FSForMeInventoryBrowser::rebuild()
     });
     mVisibleItems.clear();
     for (const auto& id : all) if (matches(gInventory.getItem(id))) mVisibleItems.push_back(id);
+    const S32 pages = llmax(1, (static_cast<S32>(mVisibleItems.size()) + CARD_COUNT - 1) / CARD_COUNT);
+    mPage = llclamp(mPage, 0, pages - 1);
     auto* grid = getChild<LLPanel>("items_grid");
     for (S32 i = 0; i < CARD_COUNT; ++i)
     {
@@ -120,8 +123,6 @@ void FSForMeInventoryBrowser::rebuild()
         getChild<LLButton>("item_select_" + suffix)->setLabel(mSelectedItem == item->getUUID() ? "Выбрано" : "Выбрать");
     }
     grid->reshape(644, 560);
-    const S32 pages = llmax(1, (static_cast<S32>(mVisibleItems.size()) + CARD_COUNT - 1) / CARD_COUNT);
-    mPage = llclamp(mPage, 0, pages - 1);
     getChild<LLTextBox>("inventory_count")->setText(std::to_string(mVisibleItems.size()) + " предметов");
     getChild<LLTextBox>("page")->setText(std::to_string(mPage + 1) + " / " + std::to_string(pages));
     getChild<LLButton>("previous")->setEnabled(mPage > 0);
