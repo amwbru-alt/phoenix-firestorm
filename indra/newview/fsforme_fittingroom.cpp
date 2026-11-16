@@ -37,7 +37,7 @@ public:
     void rotate(F32 delta) { mYaw += delta; }
     void tilt(F32 delta) { mElevation = llclamp(mElevation + delta, -0.35f, 0.65f); }
     void adjustDistance(F32 delta) { mDistance = llclamp(mDistance + delta, 1.8f, 7.0f); }
-    void resetView() { mYaw = 0.f; mDistance = 3.4f; mElevation = 0.18f; }
+    void resetView() { mYaw = 0.f; mDistance = 2.7f; mElevation = 0.18f; }
 
     bool render() override
     {
@@ -47,7 +47,7 @@ public:
 
         LLViewerCamera* camera = LLViewerCamera::getInstance();
         camera->setAspect(static_cast<F32>(getWidth()) / static_cast<F32>(getHeight()));
-        camera->setViewNoBroadcast(camera->getDefaultFOV());
+        camera->setViewNoBroadcast(0.78539816f); // 45-degree preview FOV keeps the full avatar legible.
 
         const LLVector3 focus = avatar->getPositionAgent() + LLVector3(0.f, 0.f, 1.0f);
         const LLQuaternion orbit = avatar->getRotation() * LLQuaternion(mYaw, LLVector3::z_axis);
@@ -74,7 +74,7 @@ public:
 private:
     bool mActive = false;
     F32 mYaw = 0.f;
-    F32 mDistance = 3.4f;
+    F32 mDistance = 2.7f;
     F32 mElevation = 0.18f;
 };
 
