@@ -72,7 +72,7 @@ for name in ("avatar_stage", "fitting_item_count", "fitting_open_inventory",
              "wardrobe_surface", "saved_outfits", "fitting_wear_saved", "outfit_name", "fitting_save_outfit", "fitting_status"):
     child(fit_en, name)
 for index in range(16):
-    for suffix in ("card", "name", "type", "remove"):
+    for suffix in ("card", "name", "type", "remove", "thumbnail"):
         child(fit_en, "worn_" + suffix + "_%d" % index)
 fit_cpp = (ROOT / "indra/newview/fsforme_fittingroom.cpp").read_text()
 fit_header = (ROOT / "indra/newview/fsforme_fittingroom.h").read_text()
@@ -81,6 +81,17 @@ assert "getDirectDescendentsOf" in fit_cpp and "getCOF()" in fit_cpp
 assert "removeItemFromAvatar" in fit_cpp and "makeNewOutfitLinks" in fit_cpp
 assert "wearInventoryCategoryOnAvatar" in fit_cpp and "FT_MY_OUTFITS" in fit_cpp
 assert 'showInstance("forme_inventory")' in fit_cpp
+assert '#include "llagentcamera.h"' in fit_cpp
+assert "switchCameraPreset" in fit_cpp and "setCameraZoomFraction" in fit_cpp
+assert "mPreviousCameraMode" in fit_header and "restoreCameraState" in fit_cpp
+assert "LLThumbnailCtrl" in fit_cpp and "getThumbnailUUID()" in fit_cpp
+for locale in ("en", "ru"):
+    fit_ui = ET.parse(XUI / locale / "floater_forme_fitting_room.xml").getroot()
+    for name in ("fitting_camera_front", "fitting_camera_rear", "fitting_camera_three_quarter",
+                 "fitting_camera_reset", "fitting_camera_zoom_out", "fitting_camera_zoom_in"):
+        child(fit_ui, name)
+    for index in range(16):
+        child(fit_ui, "worn_thumbnail_%d" % index)
 assert 'LLFloaterReg::add("forme_fitting_room", "floater_forme_fitting_room.xml"' in registry
 assert "fsforme_fittingroom.cpp" in cmake and "fsforme_fittingroom.h" in cmake
 for locale in ("en", "ru"):
