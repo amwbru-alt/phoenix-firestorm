@@ -5,6 +5,7 @@
 #include "fsforme_fittingroom.h"
 #include "llappearancemgr.h"
 #include "llbutton.h"
+#include "llcombobox.h"
 #include "llfloaterreg.h"
 #include "llinventorymodel.h"
 #include "lllineeditor.h"
@@ -33,6 +34,11 @@ bool FSForMeFittingRoom::postBuild()
         LLFloaterReg::showInstance("forme_inventory");
     });
     getChild<LLButton>("fitting_save_outfit")->setClickedCallback([this](LLUICtrl*, const LLSD&) { saveOutfit(); });
+    getChild<LLButton>("fitting_wear_saved")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
+        const LLUUID outfit_id = getChild<LLComboBox>("saved_outfits")->getSelectedValue().asUUID();
+        if (auto* outfit = gInventory.getCategory(outfit_id))
+            LLAppearanceMgr::instance().wearInventoryCategoryOnAvatar(outfit, false);
+    });
     for (S32 i = 0; i < WORN_ITEM_SLOTS; ++i)
         getChild<LLButton>("worn_remove_" + std::to_string(i))->setClickedCallback([this, i](LLUICtrl*, const LLSD&) {
             removeWornItem(i);
@@ -50,6 +56,17 @@ void FSForMeFittingRoom::rebuild()
 {
     mDirty = false;
     mWornItems.clear();
+    auto* outfits_combo = getChild<LLComboBox>("saved_outfits");
+    outfits_combo->removeall();
+    mSavedOutfitCount = 0;
+    const LLUUID outfits_id = gInventory.findCategoryUUIDForType(LLFolderType::FT_MY_OUTFITS);
+    LLInventoryModel::cat_array_t* outfit_categories = nullptr;
+    LLInventoryModel::item_array_t* outfit_items = nullptr;
+    gInventory.getDirectDescendentsOf(outfits_id, outfit_categories, outfit_items);
+    if (outfit_categories)
+        for (const auto& outfit : *outfit_categories)
+            if (outfit.notNull()) { outfits_combo->add(outfit->getName(), outfit->getUUID()); ++mSavedOutfitCount; }
+    getChild<LLButton>("fitting_wear_saved")->setEnabled(mSavedOutfitCount > 0);
     LLInventoryModel::cat_array_t* categories = nullptr;
     LLInventoryModel::item_array_t* items = nullptr;
     gInventory.getDirectDescendentsOf(LLAppearanceMgr::instance().getCOF(), categories, items);
