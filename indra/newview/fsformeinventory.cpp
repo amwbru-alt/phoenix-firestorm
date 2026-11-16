@@ -9,6 +9,8 @@
 #include "lliconctrl.h"
 #include "llinventoryicon.h"
 #include "llinventorymodel.h"
+#include "llinventoryfunctions.h"
+#include "llthumbnailctrl.h"
 #include "llpanel.h"
 #include "llinventorytype.h"
 #include "llsearcheditor.h"
@@ -52,9 +54,15 @@ bool FSForMeInventoryBrowser::postBuild()
     getChild<LLButton>("refresh")->setClickedCallback([this](LLUICtrl*, const LLSD&) { mDirty = true; });
     for (const auto& category : {std::make_pair("category_all", "all"), std::make_pair("category_clothing", "clothing"),
                                  std::make_pair("category_accessories", "accessories"), std::make_pair("category_objects", "objects"),
-                                 std::make_pair("category_animations", "animations")})
+                                 std::make_pair("category_animations", "animations"), std::make_pair("category_favorites", "favorites"),
+                                 std::make_pair("category_recent", "recent")})
         getChild<LLButton>(category.first)->setClickedCallback([this, value = std::string(category.second)](LLUICtrl*, const LLSD&) {
             mCategory = value; mPage = 0; mDirty = true;
+        });
+    for (S32 i = 0; i < CARD_COUNT; ++i)
+        getChild<LLButton>("item_favorite_" + std::to_string(i))->setClickedCallback([this, i](LLUICtrl*, const LLSD&) {
+            const S32 index = mPage * CARD_COUNT + i;
+            if (index < static_cast<S32>(mVisibleItems.size())) toggle_favorite(mVisibleItems[index]);
         });
     getChild<LLButton>("previous")->setClickedCallback([this](LLUICtrl*, const LLSD&) { if (mPage > 0) { --mPage; mDirty = true; } });
     getChild<LLButton>("next")->setClickedCallback([this](LLUICtrl*, const LLSD&) { if ((mPage + 1) * CARD_COUNT < static_cast<S32>(mVisibleItems.size())) { ++mPage; mDirty = true; } });
@@ -63,6 +71,7 @@ bool FSForMeInventoryBrowser::postBuild()
             const S32 index = mPage * CARD_COUNT + i;
             if (index < static_cast<S32>(mVisibleItems.size())) selectItem(mVisibleItems[index]);
         });
+    getChild<LLButton>("detail_favorite")->setClickedCallback([this](LLUICtrl*, const LLSD&) { if (mSelectedItem.notNull()) toggle_favorite(mSelectedItem); });
     getChild<LLButton>("apply")->setClickedCallback([this](LLUICtrl*, const LLSD&) { applySelected(); });
     getChild<LLButton>("open_folder")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
         if (auto* item = gInventory.getItem(mSelectedItem)) { mFolder = item->getParentUUID(); mPage = 0; mDirty = true; }
@@ -95,6 +104,8 @@ bool FSForMeInventoryBrowser::matches(const LLViewerInventoryItem* item) const
     if (mCategory == "accessories" && (type != LLAssetType::AT_OBJECT || item->getInventoryType() != LLInventoryType::IT_WEARABLE)) return false;
     if (mCategory == "objects" && (type != LLAssetType::AT_OBJECT || item->getInventoryType() == LLInventoryType::IT_WEARABLE)) return false;
     if (mCategory == "animations" && type != LLAssetType::AT_ANIMATION && type != LLAssetType::AT_GESTURE) return false;
+    if (mCategory == "favorites" && !get_is_favorite(item->getUUID())) return false;
+    if (mCategory == "recent" && std::find(mRecentItems.begin(), mRecentItems.end(), item->getUUID()) == mRecentItems.end()) return false;
     return mQuery.empty() || lower(item->getName()).find(lower(mQuery)) != std::string::npos;
 }
 void FSForMeInventoryBrowser::rebuild()
@@ -103,12 +114,19 @@ void FSForMeInventoryBrowser::rebuild()
     std::vector<LLUUID> all;
     std::set<LLUUID> visited;
     collectItems(mFolder.isNull() ? gInventory.getRootFolderID() : mFolder, all, visited);
-    std::sort(all.begin(), all.end(), [](const LLUUID& a, const LLUUID& b) {
-        const auto* left = gInventory.getItem(a); const auto* right = gInventory.getItem(b);
-        return left && right ? lower(left->getName()) < lower(right->getName()) : a.asString() < b.asString();
-    });
     mVisibleItems.clear();
-    for (const auto& id : all) if (matches(gInventory.getItem(id))) mVisibleItems.push_back(id);
+    if (mCategory == "recent")
+    {
+        for (const auto& id : mRecentItems) if (matches(gInventory.getItem(id))) mVisibleItems.push_back(id);
+    }
+    else
+    {
+        std::sort(all.begin(), all.end(), [](const LLUUID& a, const LLUUID& b) {
+            const auto* left = gInventory.getItem(a); const auto* right = gInventory.getItem(b);
+            return left && right ? lower(left->getName()) < lower(right->getName()) : a.asString() < b.asString();
+        });
+        for (const auto& id : all) if (matches(gInventory.getItem(id))) mVisibleItems.push_back(id);
+    }
     const S32 pages = llmax(1, (static_cast<S32>(mVisibleItems.size()) + CARD_COUNT - 1) / CARD_COUNT);
     mPage = llclamp(mPage, 0, pages - 1);
     auto* grid = getChild<LLPanel>("items_grid");
@@ -121,7 +139,9 @@ void FSForMeInventoryBrowser::rebuild()
         if (!present) continue;
         auto* item = gInventory.getItem(mVisibleItems[index]);
         if (!item) continue;
-        getChild<LLIconCtrl>("item_icon_" + suffix)->setValue(LLInventoryIcon::getIconName(item->getType(), item->getInventoryType(), item->getFlags()));
+        const auto icon_name = LLInventoryIcon::getIconName(item->getType(), item->getInventoryType(), item->getFlags());
+        getChild<LLThumbnailCtrl>("item_thumbnail_" + suffix)->setValue(item->getThumbnailUUID().notNull() ? LLSD(item->getThumbnailUUID()) : LLSD(icon_name));
+        getChild<LLButton>("item_favorite_" + suffix)->setLabel(get_is_favorite(item->getUUID()) ? "★" : "☆");
         getChild<LLTextBox>("item_name_" + suffix)->setText(item->getName());
         getChild<LLButton>("item_select_" + suffix)->setLabel(mSelectedItem == item->getUUID() ? "Выбрано" : "Выбрать");
     }
@@ -139,7 +159,12 @@ void FSForMeInventoryBrowser::selectItem(const LLUUID& id)
     auto* item = gInventory.getItem(id);
     if (!item) { mSelectedItem.setNull(); mDirty = true; return; }
     mSelectedItem = id;
-    getChild<LLIconCtrl>("detail_icon")->setValue(LLInventoryIcon::getIconName(item->getType(), item->getInventoryType(), item->getFlags()));
+    const auto icon_name = LLInventoryIcon::getIconName(item->getType(), item->getInventoryType(), item->getFlags());
+    getChild<LLThumbnailCtrl>("detail_thumbnail")->setValue(item->getThumbnailUUID().notNull() ? LLSD(item->getThumbnailUUID()) : LLSD(icon_name));
+    mRecentItems.erase(std::remove(mRecentItems.begin(), mRecentItems.end(), id), mRecentItems.end());
+    mRecentItems.insert(mRecentItems.begin(), id);
+    if (mRecentItems.size() > 50) mRecentItems.resize(50);
+    getChild<LLButton>("detail_favorite")->setLabel(get_is_favorite(id) ? "Убрать из избранного" : "В избранное");
     getChild<LLTextBox>("detail_name")->setText(item->getName());
     getChild<LLTextBox>("detail_type")->setText(item->getType() == LLAssetType::AT_CLOTHING ? "Одежда" :
         item->getType() == LLAssetType::AT_BODYPART ? "Часть тела" : item->getType() == LLAssetType::AT_OBJECT ? "Объект / аксессуар" : "Предмет инвентаря");
