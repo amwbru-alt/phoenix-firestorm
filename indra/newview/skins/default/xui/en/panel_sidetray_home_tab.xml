@@ -52,7 +52,7 @@
     <button name="forme_home_open_inventory" layout="topleft" left="14" top="66" width="126" height="28"
             label="Inventory" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"
             image_pressed="Forme_Round_Accent" label_color="1 1 1 1">
-      <button.commit_callback function="Floater.Toggle" parameter="inventory"/>
+      <button.commit_callback function="Floater.Toggle" parameter="forme_inventory"/>
     </button>
     <button name="forme_home_open_market" layout="topleft" left="148" top="66" width="139" height="28"
             label="Marketplace" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"
