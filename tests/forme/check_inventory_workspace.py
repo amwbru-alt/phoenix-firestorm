@@ -84,6 +84,8 @@ assert "matchesCategory" in fit_cpp and "setCategory" in fit_cpp
 assert "worn_filter_shape" in fit_cpp and "worn_filter_skin" in fit_cpp
 assert "worn_filter_hair" in fit_cpp and "worn_filter_eyes" in fit_cpp
 assert "getWearableType()" in fit_cpp and "LLWearableType::WT_SKIN" in fit_cpp
+assert "LLWearableType::WT_SHIRT" in fit_cpp and "LLWearableType::WT_PANTS" in fit_cpp
+assert "LLWearableType::WT_SHOES" in fit_cpp and "LLWearableType::WT_UNIVERSAL" in fit_cpp
 assert 'showInstance("forme_inventory")' in fit_cpp
 assert '#include "lldynamictexture.h"' in fit_cpp
 assert "LLViewerDynamicTexture(512, 307" in fit_cpp
