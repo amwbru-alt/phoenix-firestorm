@@ -148,7 +148,11 @@ void FSForMeFittingRoom::rebuild()
         if (!present) continue;
         const auto* item = gInventory.getItem(mWornItems[i]);
         if (!item) continue;
-        getChild<LLTextBox>("worn_name_" + std::to_string(i))->setText(item->getName());
+        const auto suffix = std::to_string(i);
+        const auto icon_name = LLInventoryIcon::getIconName(item->getType(), item->getInventoryType(), item->getFlags());
+        getChild<LLThumbnailCtrl>("worn_thumbnail_" + suffix)->setValue(
+            item->getThumbnailUUID().notNull() ? LLSD(item->getThumbnailUUID()) : LLSD(icon_name));
+        getChild<LLTextBox>("worn_name_" + suffix)->setText(item->getName());
         getChild<LLTextBox>("worn_type_" + std::to_string(i))->setText(fittingItemType(item));
     }
     getChild<LLTextBox>("fitting_item_count")->setText(std::to_string(mWornItems.size()) + " предметов надето");
