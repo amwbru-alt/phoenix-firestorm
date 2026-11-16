@@ -9,6 +9,9 @@
 #include "lliconctrl.h"
 #include "llinventoryicon.h"
 #include "llinventorymodel.h"
+#include "llfloaterreg.h"
+#include "llpanel.h"
+#include "llinventorytype.h"
 #include "llsearcheditor.h"
 #include "llscrollcontainer.h"
 #include "lltextbox.h"
@@ -83,8 +86,8 @@ bool FSForMeInventoryBrowser::matches(const LLViewerInventoryItem* item) const
     if (!item) return false;
     const auto type = item->getType();
     if (mCategory == "clothing" && type != LLAssetType::AT_CLOTHING && type != LLAssetType::AT_BODYPART) return false;
-    if (mCategory == "accessories" && type != LLAssetType::AT_OBJECT) return false;
-    if (mCategory == "objects" && type != LLAssetType::AT_OBJECT) return false;
+    if (mCategory == "accessories" && (type != LLAssetType::AT_OBJECT || item->getInventoryType() != LLInventoryType::IT_WEARABLE)) return false;
+    if (mCategory == "objects" && (type != LLAssetType::AT_OBJECT || item->getInventoryType() == LLInventoryType::IT_WEARABLE)) return false;
     if (mCategory == "animations" && type != LLAssetType::AT_ANIMATION && type != LLAssetType::AT_GESTURE) return false;
     return mQuery.empty() || lower(item->getName()).find(lower(mQuery)) != std::string::npos;
 }
