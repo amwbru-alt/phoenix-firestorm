@@ -13,6 +13,10 @@ BASE = ROOT / 'indra/newview/skins/default'
 contract = json.loads((ROOT / 'tests/forme/ui_functions_contract.json').read_text())
 for name, expected in contract['resources'].items():
     root = ET.parse(BASE / 'xui/en' / name).getroot()
+    # Home was intentionally replaced with a new native ForMe dashboard; its new
+    # structure and action bindings are covered by check_login_dashboard.py.
+    if name == 'panel_sidetray_home_tab.xml':
+        continue
     def semantic_nodes(node):
         if node.tag == 'notification' and node.get('name') in {'ForMeMarketConfirm', 'ForMeMarketRecover'}:
             assert node.find("./form/button[@name='Cancel']").get('default') == 'true'
