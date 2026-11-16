@@ -20,7 +20,8 @@
     <text name="inventory_count" layout="topleft" left="14" top="280" width="120" height="50" wrap="true" text_color="0.76 0.73 0.80 1">Загрузка…</text>
   </panel>
   <panel name="items_surface" layout="topleft" left="178" top="96" width="668" height="610" background_visible="true" bg_alpha_image="Forme_Round_Window" bg_alpha_color="White">
-    <text name="items_heading" layout="topleft" left="16" top="14" width="620" height="24" font="SansSerifBold">Мои предметы</text>
+    <text name="items_heading" layout="topleft" left="16" top="14" width="400" height="24" font="SansSerifBold">Мои предметы</text>
+    <button name="folder_back" layout="topleft" left="490" top="10" width="154" height="28" label="Все папки" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
     <scroll_container name="items_scroll" layout="topleft" left="12" top="48" width="644" height="514" opaque="false" reserve_scroll_corner="true">
       <panel name="items_grid" layout="topleft" left="0" top="0" width="644" height="560" background_visible="false">
         <panel name="item_card_0" layout="topleft" left="0" top="0" width="124" height="132" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White" follows="left|top">
