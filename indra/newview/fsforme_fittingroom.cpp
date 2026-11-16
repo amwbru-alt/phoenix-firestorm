@@ -5,7 +5,6 @@
 #include "fsforme_fittingroom.h"
 #include "llappearancemgr.h"
 #include "lldynamictexture.h"
-#include "lldrawpoolavatar.h"
 #include "llviewercamera.h"
 #include "llvoavatar.h"
 #include "llvoavatarself.h"
@@ -62,16 +61,12 @@ public:
         LLGLSUIDefault state;
         LLGLDepthTest depth(GL_TRUE);
         LLGLEnable cull(GL_CULL_FACE);
-        gPipeline.enableLightsPreview();
-
-        auto* pool = dynamic_cast<LLDrawPoolAvatar*>(gPipeline.getPool(LLDrawPool::POOL_AVATAR));
-        if (!pool)
-            return false;
-
-        // Render only the agent avatar through the viewer's normal avatar draw-pool
-        // passes. LLViewerDynamicTexture saves/restores the world camera around
-        // this call, so the main 3D view is not moved.
-        pool->renderAvatars(avatar, -1);
+        // Use the viewer's dedicated avatar-preview pipeline. It marks the
+        // avatar and its attachment bridges visible, hides unrelated world
+        // geometry, and renders rigged attachments into the currently bound
+        // dynamic-texture target. The dynamic-texture lifecycle restores the
+        // world camera and viewport after this call.
+        gPipeline.generateImpostor(avatar, true, false);
         gGL.flush();
         return true;
     }
