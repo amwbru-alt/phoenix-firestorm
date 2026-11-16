@@ -1,42 +1,70 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<!-- the web-based Home panel of the side tray -->
-<panel
- follows="all"
- height="570"
- min_height="350"
-
- layout="topleft"
- top="0"
- left="0"
- name="home_tab"
- width="333">
-  <layout_stack
-   follows="all"
-   height="550"
-   layout="topleft"
-   left="10"
-   name="stack"
-   top_pad="10"
-   orientation="vertical" 
-   width="313">
-    <layout_panel
-     height="550"
-     layout="topleft"
-     left_delta="0"
-     name="browser_layout"
-     top_delta="0"
-     width="313">
-      <web_browser
-        trusted_content="true"
-       border_visible="false"
-       follows="all"
-       height="550"
-       layout="topleft"
-       left="0"
-       name="browser"
-       start_url="data:text/html,%3Chtml%3E%3Cbody bgcolor=%22#2A2A2A%22 text=%22eeeeee%22%3E %3Ch3%3E %0D%0A%0D%0ALoading... %3C/h3%3E %3C/body%3E%3C/html%3E"
-       top="0"
-       width="313" />
-    </layout_panel>
-  </layout_stack>
+<!-- Native ForMe home dashboard. No embedded browser or static account metrics. -->
+<panel follows="all" height="570" min_height="350" layout="topleft" top="0" left="0"
+       name="home_tab" width="333" background_visible="true" background_opaque="true"
+       bg_opaque_color="floater_bg_color">
+  <text name="forme_home_eyebrow" layout="topleft" left="18" top="18" width="290" height="16"
+        font="SansSerifSmall" font.style="BOLD" text_color="0.72 0.55 0.88 1">FORME WORLD</text>
+  <text name="forme_home_title" layout="topleft" left="18" top="42" width="290" height="34"
+        font="SansSerifLarge" font.style="BOLD" text_color="1 1 1 1">Your world</text>
+  <text name="forme_home_subtitle" layout="topleft" left="18" top="80" width="290" height="40"
+        wrap="true" font="SansSerifSmall" text_color="0.78 0.74 0.84 1">Pick up where you left off. Explore places, meet people and manage your world.</text>
+  <panel name="forme_home_section_world" layout="topleft" left="16" top="138" width="301" height="104"
+         background_visible="true" background_opaque="true" bg_opaque_image="Forme_Round_Window">
+    <text name="forme_home_world_title" layout="topleft" left="14" top="12" width="260" height="22"
+          font="SansSerifMedium" font.style="BOLD" text_color="1 1 1 1">Explore</text>
+    <text name="forme_home_world_copy" layout="topleft" left="14" top="38" width="260" height="20"
+          font="SansSerifSmall" text_color="0.78 0.74 0.84 1">Find a destination in the world</text>
+    <button name="forme_home_open_map" layout="topleft" left="14" top="66" width="126" height="28"
+            label="Open map" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"
+            image_pressed="Forme_Round_Accent" label_color="1 1 1 1">
+      <button.commit_callback function="Floater.Toggle" parameter="world_map"/>
+    </button>
+    <button name="forme_home_open_destinations" layout="topleft" left="148" top="66" width="139" height="28"
+            label="Destinations" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"
+            image_pressed="Forme_Round_Accent" label_color="1 1 1 1">
+      <button.commit_callback function="Floater.Toggle" parameter="destinations"/>
+    </button>
+  </panel>
+  <panel name="forme_home_section_social" layout="topleft" left="16" top="254" width="301" height="104"
+         background_visible="true" background_opaque="true" bg_opaque_image="Forme_Round_Window">
+    <text name="forme_home_social_title" layout="topleft" left="14" top="12" width="260" height="22"
+          font="SansSerifMedium" font.style="BOLD" text_color="1 1 1 1">People &amp; community</text>
+    <text name="forme_home_social_copy" layout="topleft" left="14" top="38" width="260" height="20"
+          font="SansSerifSmall" text_color="0.78 0.74 0.84 1">Friends, groups and conversations</text>
+    <button name="forme_home_open_people" layout="topleft" left="14" top="66" width="126" height="28"
+            label="People" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"
+            image_pressed="Forme_Round_Accent" label_color="1 1 1 1">
+      <button.commit_callback function="Floater.Toggle" parameter="people"/>
+    </button>
+    <button name="forme_home_open_groups" layout="topleft" left="148" top="66" width="139" height="28"
+            label="Groups" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"
+            image_pressed="Forme_Round_Accent" label_color="1 1 1 1">
+      <button.commit_callback function="Floater.Toggle" parameter="groups"/>
+    </button>
+  </panel>
+  <panel name="forme_home_section_tools" layout="topleft" left="16" top="370" width="301" height="132"
+         background_visible="true" background_opaque="true" bg_opaque_image="Forme_Round_Window">
+    <text name="forme_home_tools_title" layout="topleft" left="14" top="12" width="260" height="22"
+          font="SansSerifMedium" font.style="BOLD" text_color="1 1 1 1">Your tools</text>
+    <text name="forme_home_tools_copy" layout="topleft" left="14" top="38" width="260" height="20"
+          font="SansSerifSmall" text_color="0.78 0.74 0.84 1">Inventory, shopping and preferences</text>
+    <button name="forme_home_open_inventory" layout="topleft" left="14" top="66" width="126" height="28"
+            label="Inventory" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"
+            image_pressed="Forme_Round_Accent" label_color="1 1 1 1">
+      <button.commit_callback function="Floater.Toggle" parameter="inventory"/>
+    </button>
+    <button name="forme_home_open_market" layout="topleft" left="148" top="66" width="139" height="28"
+            label="Marketplace" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"
+            image_pressed="Forme_Round_Accent" label_color="1 1 1 1">
+      <button.commit_callback function="Avatar.OpenMarketplace" parameter=""/>
+    </button>
+    <button name="forme_home_open_preferences" layout="topleft" left="14" top="100" width="273" height="26"
+            label="Preferences" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent"
+            image_pressed="Forme_Round_Accent" label_color="0.82 0.70 0.94 1">
+      <button.commit_callback function="Floater.Toggle" parameter="preferences"/>
+    </button>
+  </panel>
+  <text name="forme_home_footer" layout="topleft" left="18" top="526" width="290" height="22"
+        font="SansSerifSmall" text_color="0.62 0.58 0.68 1">ForMe World · Make this world yours</text>
 </panel>
