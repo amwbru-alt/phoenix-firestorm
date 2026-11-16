@@ -8,6 +8,7 @@
 #include "lldrawpoolavatar.h"
 #include "llviewercamera.h"
 #include "llvoavatar.h"
+#include "llvoavatarself.h"
 #include "llviewershadermgr.h"
 #include "llrender.h"
 #include "pipeline.h"
@@ -41,7 +42,7 @@ public:
     bool render() override
     {
         LLVOAvatar* avatar = gAgentAvatarp;
-        if (!mActive || !avatar || avatar->isDead() || avatar->mDrawable.isNull())
+        if (!mActive || !avatar || avatar->isDead())
             return false;
 
         LLViewerCamera* camera = LLViewerCamera::getInstance();
@@ -141,9 +142,9 @@ void FSForMeFittingRoom::onClose(bool)
 {
     if (mAvatarPreview) mAvatarPreview->setActive(false);
 }
-void FSForMeFittingRoom::setCameraPreset(S32 preset)
+void FSForMeFittingRoom::setCameraPreset(F32 preset)
 {
-    if (mAvatarPreview) mAvatarPreview->setYaw(static_cast<F32>(preset));
+    if (mAvatarPreview) mAvatarPreview->setYaw(preset);
 }
 void FSForMeFittingRoom::adjustCameraZoom(F32 delta)
 {
