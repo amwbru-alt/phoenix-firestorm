@@ -99,6 +99,7 @@
 #include "llfloatermarketplace.h"
 #include "fsmarketbrowser.h"
 #include "fsformeinventory.h"
+#include "fsforme_fittingroom.h"
 #include "llfloatermarketplacelistings.h"
 #include "llfloatermediasettings.h"
 #include "llfloatermemleak.h"
@@ -494,6 +495,7 @@ void LLViewerFloaterReg::registerFloaters()
 
     LLFloaterReg::add("media_settings", "floater_media_settings.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<LLFloaterMediaSettings>);
     LLFloaterReg::add("forme_inventory", "floater_forme_inventory.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<FSForMeInventoryBrowser>);
+    LLFloaterReg::add("forme_fitting_room", "floater_forme_fitting_room.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<FSForMeFittingRoom>);
     LLFloaterReg::add("market_catalog", "floater_market_catalog.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<FSMarketBrowser>);
     LLFloaterReg::add("market_product", "floater_market_product.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<FSMarketBrowser>);
     LLFloaterReg::add("market_cart", "floater_market_cart.xml", (LLFloaterBuildFunc)&LLFloaterReg::build<FSMarketBrowser>);
