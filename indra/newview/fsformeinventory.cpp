@@ -172,6 +172,7 @@ void FSForMeInventoryBrowser::selectItem(const LLUUID& id)
     getChild<LLTextBox>("detail_folder")->setText(folder ? "Папка: " + folder->getName() : "");
     getChild<LLButton>("apply")->setEnabled(item->getType() == LLAssetType::AT_CLOTHING || item->getType() == LLAssetType::AT_BODYPART || item->getType() == LLAssetType::AT_OBJECT);
     getChild<LLButton>("open_folder")->setEnabled(folder != nullptr);
+    getChild<LLButton>("detail_favorite")->setEnabled(true);
     for (S32 i = 0; i < CARD_COUNT; ++i)
     {
         const S32 index = mPage * CARD_COUNT + i;
