@@ -144,9 +144,11 @@ void FSForMeInventoryBrowser::selectItem(const LLUUID& id)
     getChild<LLButton>("apply")->setEnabled(item->getType() == LLAssetType::AT_CLOTHING || item->getType() == LLAssetType::AT_BODYPART || item->getType() == LLAssetType::AT_OBJECT);
     getChild<LLButton>("open_folder")->setEnabled(folder != nullptr);
     for (S32 i = 0; i < CARD_COUNT; ++i)
+    {
         const S32 index = mPage * CARD_COUNT + i;
         if (index < static_cast<S32>(mVisibleItems.size()))
             getChild<LLButton>("item_select_" + std::to_string(i))->setLabel(mVisibleItems[index] == id ? "Выбрано" : "Выбрать");
+    }
 }
 void FSForMeInventoryBrowser::applySelected()
 {
