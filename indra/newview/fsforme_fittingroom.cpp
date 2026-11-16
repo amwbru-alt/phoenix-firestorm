@@ -23,6 +23,7 @@
 #include "llthumbnailctrl.h"
 #include "llinventoryicon.h"
 #include "llviewerinventory.h"
+#include <set>
 class FSForMeAvatarPreview final : public LLViewerDynamicTexture
 {
 public:
@@ -166,6 +167,7 @@ bool FSForMeFittingRoom::postBuild()
         LLFloaterReg::showInstance("forme_inventory");
     });
     getChild<LLButton>("fitting_save_outfit")->setClickedCallback([this](LLUICtrl*, const LLSD&) { saveOutfit(); });
+    getChild<LLButton>("fitting_compare_outfits")->setClickedCallback([this](LLUICtrl*, const LLSD&) { compareOutfits(); });
     getChild<LLButton>("fitting_wear_saved")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
         const LLUUID outfit_id = getChild<LLComboBox>("saved_outfits")->getSelectedValue().asUUID();
         if (auto* outfit = gInventory.getCategory(outfit_id))
@@ -312,7 +314,11 @@ void FSForMeFittingRoom::rebuild()
     mDirty = false;
     mWornItems.clear();
     auto* outfits_combo = getChild<LLComboBox>("saved_outfits");
+    auto* compare_a = getChild<LLComboBox>("compare_outfit_a");
+    auto* compare_b = getChild<LLComboBox>("compare_outfit_b");
     outfits_combo->removeall();
+    compare_a->removeall();
+    compare_b->removeall();
     mSavedOutfitCount = 0;
     const LLUUID outfits_id = gInventory.findCategoryUUIDForType(LLFolderType::FT_MY_OUTFITS);
     LLInventoryModel::cat_array_t* outfit_categories = nullptr;
@@ -320,8 +326,15 @@ void FSForMeFittingRoom::rebuild()
     gInventory.getDirectDescendentsOf(outfits_id, outfit_categories, outfit_items);
     if (outfit_categories)
         for (const auto& outfit : *outfit_categories)
-            if (outfit.notNull()) { outfits_combo->add(outfit->getName(), outfit->getUUID()); ++mSavedOutfitCount; }
+            if (outfit.notNull())
+            {
+                outfits_combo->add(outfit->getName(), outfit->getUUID());
+                compare_a->add(outfit->getName(), outfit->getUUID());
+                compare_b->add(outfit->getName(), outfit->getUUID());
+                ++mSavedOutfitCount;
+            }
     getChild<LLButton>("fitting_wear_saved")->setEnabled(mSavedOutfitCount > 0);
+    getChild<LLButton>("fitting_compare_outfits")->setEnabled(mSavedOutfitCount > 1);
     LLInventoryModel::cat_array_t* categories = nullptr;
     LLInventoryModel::item_array_t* items = nullptr;
     gInventory.getDirectDescendentsOf(LLAppearanceMgr::instance().getCOF(), categories, items);
@@ -360,6 +373,49 @@ void FSForMeFittingRoom::removeWornItem(S32 index)
     LLAppearanceMgr::instance().removeItemFromAvatar(mWornItems[index]);
     mDirty = true;
 }
+
+void FSForMeFittingRoom::compareOutfits()
+{
+    const LLUUID first_id = getChild<LLComboBox>("compare_outfit_a")->getSelectedValue().asUUID();
+    const LLUUID second_id = getChild<LLComboBox>("compare_outfit_b")->getSelectedValue().asUUID();
+    if (first_id.isNull() || second_id.isNull() || first_id == second_id)
+    {
+        getChild<LLTextBox>("fitting_status")->setText("Выберите два разных сохранённых образа для сравнения.");
+        return;
+    }
+    auto collect_items = [](const LLUUID& outfit_id, std::set<LLUUID>& item_ids)
+    {
+        LLInventoryModel::cat_array_t* categories = nullptr;
+        LLInventoryModel::item_array_t* items = nullptr;
+        gInventory.getDirectDescendentsOf(outfit_id, categories, items);
+        if (!items) return;
+        for (const auto& item : *items)
+            if (item.notNull() && item->getLinkedUUID().notNull())
+                item_ids.insert(item->getLinkedUUID());
+    };
+    std::set<LLUUID> first_items, second_items;
+    collect_items(first_id, first_items);
+    collect_items(second_id, second_items);
+    if (first_items.empty() && second_items.empty())
+    {
+        getChild<LLTextBox>("fitting_status")->setText("В выбранных образах пока нет загруженных предметов для сравнения.");
+        return;
+    }
+    S32 shared = 0;
+    for (const auto& item_id : first_items)
+        if (second_items.count(item_id)) ++shared;
+    const S32 only_first = static_cast<S32>(first_items.size()) - shared;
+    const S32 only_second = static_cast<S32>(second_items.size()) - shared;
+    const auto* first = gInventory.getCategory(first_id);
+    const auto* second = gInventory.getCategory(second_id);
+    const std::string first_name = first ? first->getName() : "Образ A";
+    const std::string second_name = second ? second->getName() : "Образ B";
+    getChild<LLTextBox>("fitting_status")->setText(
+        first_name + " / " + second_name + ": общих " + std::to_string(shared)
+        + ", только в A " + std::to_string(only_first) + ", только в B " + std::to_string(only_second)
+        + " предметов.");
+}
+
 void FSForMeFittingRoom::saveOutfit()
 {
     std::string name = getChild<LLLineEditor>("outfit_name")->getValue().asString();
