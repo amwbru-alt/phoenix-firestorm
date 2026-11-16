@@ -25,6 +25,7 @@ private:
     bool matches(const LLViewerInventoryItem* item) const;
     std::vector<LLUUID> mVisibleItems;
     LLUUID mSelectedItem;
+    LLUUID mFolder;
     std::string mCategory = "all";
     std::string mQuery;
     S32 mPage = 0;
