@@ -60,3 +60,29 @@ for locale in ("en", "ru"):
     assert child(home, "forme_home_open_inventory").find("button.commit_callback").get("parameter") == "forme_inventory"
 
 print("PASS independent ForMe inventory workspace: native model observer, search, categories, paging, apply, locales and navigation")
+
+# Independent Fitting Room: live Current Outfit Folder, take-off, inventory handoff and save.
+fit_en = ET.parse(XUI / "en/floater_forme_fitting_room.xml").getroot()
+fit_ru = ET.parse(XUI / "ru/floater_forme_fitting_room.xml").getroot()
+assert fit_en.tag == "floater" and fit_en.get("name") == "forme_fitting_room"
+assert fit_ru.tag == "floater" and fit_ru.get("name") == "forme_fitting_room"
+for name in ("avatar_stage", "fitting_item_count", "fitting_open_inventory",
+             "wardrobe_surface", "outfit_name", "fitting_save_outfit", "fitting_status"):
+    child(fit_en, name)
+for index in range(16):
+    for suffix in ("card", "name", "type", "remove"):
+        child(fit_en, "worn_" + suffix + "_%d" % index)
+fit_cpp = (ROOT / "indra/newview/fsforme_fittingroom.cpp").read_text()
+fit_header = (ROOT / "indra/newview/fsforme_fittingroom.h").read_text()
+assert "LLInventoryObserver" in fit_header
+assert "getDirectDescendentsOf" in fit_cpp and "getCOF()" in fit_cpp
+assert "removeItemFromAvatar" in fit_cpp and "makeNewOutfitLinks" in fit_cpp
+assert 'showInstance("forme_inventory")' in fit_cpp
+assert 'LLFloaterReg::add("forme_fitting_room", "floater_forme_fitting_room.xml"' in registry
+assert "fsforme_fittingroom.cpp" in cmake and "fsforme_fittingroom.h" in cmake
+for locale in ("en", "ru"):
+    sidebar = ET.parse(XUI / locale / "panel_forme_sidebar.xml").getroot()
+    home = ET.parse(XUI / locale / "panel_sidetray_home_tab.xml").getroot()
+    assert child(sidebar, "forme_sidebar_fitting_room").find("button.commit_callback").get("parameter") == "forme_fitting_room"
+    assert child(home, "forme_home_open_fitting_room").find("button.commit_callback").get("parameter") == "forme_fitting_room"
+print("PASS independent ForMe fitting room: live COF observer, take-off, inventory handoff, outfit save, locales and navigation")
