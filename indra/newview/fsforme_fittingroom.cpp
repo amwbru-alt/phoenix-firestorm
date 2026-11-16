@@ -24,6 +24,7 @@
 #include "llinventoryicon.h"
 #include "llviewerinventory.h"
 #include <set>
+#include <map>
 class FSForMeAvatarPreview final : public LLViewerDynamicTexture
 {
 public:
@@ -316,6 +317,9 @@ void FSForMeFittingRoom::rebuild()
     auto* outfits_combo = getChild<LLComboBox>("saved_outfits");
     auto* compare_a = getChild<LLComboBox>("compare_outfit_a");
     auto* compare_b = getChild<LLComboBox>("compare_outfit_b");
+    const LLUUID previous_outfit = outfits_combo->getSelectedValue().asUUID();
+    const LLUUID previous_compare_a = compare_a->getSelectedValue().asUUID();
+    const LLUUID previous_compare_b = compare_b->getSelectedValue().asUUID();
     outfits_combo->removeall();
     compare_a->removeall();
     compare_b->removeall();
@@ -337,10 +341,13 @@ void FSForMeFittingRoom::rebuild()
     getChild<LLButton>("fitting_compare_outfits")->setEnabled(mSavedOutfitCount > 1);
     if (mSavedOutfitCount > 0)
     {
-        outfits_combo->selectFirstItem();
-        compare_a->selectFirstItem();
-        compare_b->selectFirstItem();
-        if (mSavedOutfitCount > 1) compare_b->selectNthItem(1);
+        if (!outfits_combo->setCurrentByID(previous_outfit)) outfits_combo->selectFirstItem();
+        if (!compare_a->setCurrentByID(previous_compare_a)) compare_a->selectFirstItem();
+        if (!compare_b->setCurrentByID(previous_compare_b))
+        {
+            compare_b->selectFirstItem();
+            if (mSavedOutfitCount > 1) compare_b->selectNthItem(1);
+        }
     }
     LLInventoryModel::cat_array_t* categories = nullptr;
     LLInventoryModel::item_array_t* items = nullptr;
@@ -390,17 +397,20 @@ void FSForMeFittingRoom::compareOutfits()
         getChild<LLTextBox>("fitting_status")->setText("Выберите два разных сохранённых образа для сравнения.");
         return;
     }
-    auto collect_items = [](const LLUUID& outfit_id, std::set<LLUUID>& item_ids)
+    auto collect_items = [](const LLUUID& outfit_id, std::map<LLUUID, std::string>& item_ids)
     {
         LLInventoryModel::cat_array_t* categories = nullptr;
         LLInventoryModel::item_array_t* items = nullptr;
         gInventory.getDirectDescendentsOf(outfit_id, categories, items);
         if (!items) return;
         for (const auto& item : *items)
-            if (item.notNull() && item->getLinkedUUID().notNull())
-                item_ids.insert(item->getLinkedUUID());
+        {
+            if (item.isNull()) continue;
+            const LLUUID linked_id = item->getIsLinkType() ? item->getLinkedUUID() : item->getUUID();
+            if (linked_id.notNull()) item_ids.emplace(linked_id, item->getName());
+        }
     };
-    std::set<LLUUID> first_items, second_items;
+    std::map<LLUUID, std::string> first_items, second_items;
     collect_items(first_id, first_items);
     collect_items(second_id, second_items);
     if (first_items.empty() && second_items.empty())
@@ -409,8 +419,16 @@ void FSForMeFittingRoom::compareOutfits()
         return;
     }
     S32 shared = 0;
-    for (const auto& item_id : first_items)
-        if (second_items.count(item_id)) ++shared;
+    std::string only_first_names, only_second_names;
+    for (const auto& entry : first_items)
+    {
+        if (second_items.count(entry.first)) ++shared;
+        else if (only_first_names.size() < 110)
+            only_first_names += (only_first_names.empty() ? "" : ", ") + entry.second;
+    }
+    for (const auto& entry : second_items)
+        if (!first_items.count(entry.first) && only_second_names.size() < 110)
+            only_second_names += (only_second_names.empty() ? "" : ", ") + entry.second;
     const S32 only_first = static_cast<S32>(first_items.size()) - shared;
     const S32 only_second = static_cast<S32>(second_items.size()) - shared;
     const auto* first = gInventory.getCategory(first_id);
@@ -420,7 +438,8 @@ void FSForMeFittingRoom::compareOutfits()
     getChild<LLTextBox>("fitting_status")->setText(
         first_name + " / " + second_name + ": общих " + std::to_string(shared)
         + ", только в A " + std::to_string(only_first) + ", только в B " + std::to_string(only_second)
-        + " предметов.");
+        + ". A: " + (only_first_names.empty() ? "—" : only_first_names)
+        + ". B: " + (only_second_names.empty() ? "—" : only_second_names));
 }
 
 void FSForMeFittingRoom::saveOutfit()
