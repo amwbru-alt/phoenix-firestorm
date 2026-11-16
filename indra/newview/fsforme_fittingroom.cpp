@@ -12,6 +12,8 @@
 #include "lllineeditor.h"
 #include "llpanel.h"
 #include "lltextbox.h"
+#include "llthumbnailctrl.h"
+#include "llinventoryicon.h"
 #include "llviewerinventory.h"
 namespace
 {
