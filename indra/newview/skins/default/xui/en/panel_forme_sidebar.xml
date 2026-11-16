@@ -30,7 +30,7 @@
           image_overlay="Forme_UI_Inventory" image_overlay_max_size="22" image_unselected="Forme_WMap_Clear"
           image_hover_unselected="Forme_Round_Field" image_pressed="Forme_Round_Accent"
           tool_tip="Inventory">
-    <button.commit_callback function="Floater.Toggle" parameter="inventory"/>
+    <button.commit_callback function="Floater.Toggle" parameter="forme_inventory"/>
   </button>
   <text name="forme_sidebar_inventory_label" layout="topleft" left="0" top="278" width="76" height="16"
         halign="center" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">Inventory</text>
