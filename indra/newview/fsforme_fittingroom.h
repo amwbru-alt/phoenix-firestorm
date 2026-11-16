@@ -30,6 +30,7 @@ private:
     bool matchesCategory(const LLViewerInventoryItem* item) const;
     void removeWornItem(S32 index);
     void saveOutfit();
+    void compareOutfits();
     void setCameraPreset(F32 preset);
     void adjustCameraZoom(F32 delta);
     void drawAvatarPreview();
