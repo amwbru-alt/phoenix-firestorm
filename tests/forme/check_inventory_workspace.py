@@ -89,7 +89,7 @@ assert "setPerspective(false, 0, 0, getWidth(), getHeight()" in fit_cpp
 assert "setOriginAndLookAt" in fit_cpp and "needsRender() override" in fit_cpp
 assert "avatar->mDrawable.isNull()" in fit_cpp
 assert "setActive(!isMinimized())" in fit_cpp
-assert fit_ui.get("height") == "730"
+assert fit_en.get("height") == "730" and fit_ru.get("height") == "730"
 assert "gAgentCamera" not in fit_cpp
 assert "handleMouseDown" in fit_cpp and "handleMouseUp" in fit_cpp
 assert "mask & MASK_LEFT" in fit_cpp
