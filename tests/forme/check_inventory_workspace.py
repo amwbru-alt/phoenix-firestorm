@@ -82,9 +82,9 @@ assert "removeItemFromAvatar" in fit_cpp and "makeNewOutfitLinks" in fit_cpp
 assert "wearInventoryCategoryOnAvatar" in fit_cpp and "FT_MY_OUTFITS" in fit_cpp
 assert 'showInstance("forme_inventory")' in fit_cpp
 assert '#include "lldynamictexture.h"' in fit_cpp
-assert '#include "lldrawpoolavatar.h"' in fit_cpp
 assert "LLViewerDynamicTexture(512, 512" in fit_cpp
 assert "generateImpostor(avatar, true, false)" in fit_cpp
+assert "localRectToOtherView" in fit_cpp
 assert "setPerspective(false, 0, 0, getWidth(), getHeight()" in fit_cpp
 assert "setOriginAndLookAt" in fit_cpp and "needsRender() override" in fit_cpp
 assert "gAgentCamera" not in fit_cpp
