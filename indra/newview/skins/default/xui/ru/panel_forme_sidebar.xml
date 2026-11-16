@@ -7,6 +7,8 @@
   <text name="forme_sidebar_people_label">Люди</text>
   <button name="forme_sidebar_inventory" tool_tip="Инвентарь"/>
   <text name="forme_sidebar_inventory_label">Инвентарь</text>
+  <button name="forme_sidebar_fitting_room" tool_tip="Примерочная"/>
+  <text name="forme_sidebar_fitting_room_label">Стиль</text>
   <button name="forme_sidebar_community" tool_tip="Группы и сообщества"/>
   <text name="forme_sidebar_community_label">Сообщество</text>
   <button name="forme_sidebar_market" tool_tip="Маркетплейс"/>
