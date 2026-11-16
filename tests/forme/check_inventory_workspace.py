@@ -89,6 +89,7 @@ assert "setPerspective(false, 0, 0, getWidth(), getHeight()" in fit_cpp
 assert "setOriginAndLookAt" in fit_cpp and "needsRender() override" in fit_cpp
 assert "gAgentCamera" not in fit_cpp
 assert "handleMouseDown" in fit_cpp and "handleMouseUp" in fit_cpp
+assert "mask & MASK_LEFT" in fit_cpp
 assert "handleHover" in fit_cpp and "handleScrollWheel" in fit_cpp
 assert "mAvatarPreview->rotate" in fit_cpp and "mAvatarPreview->tilt" in fit_cpp
 assert "adjustCameraZoom" in fit_cpp and "mLastPreviewMouseY" in fit_cpp
