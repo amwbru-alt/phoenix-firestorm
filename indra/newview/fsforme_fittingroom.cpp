@@ -42,7 +42,7 @@ public:
     bool render() override
     {
         LLVOAvatar* avatar = gAgentAvatarp;
-        if (!mActive || !avatar || avatar->isDead())
+        if (!mActive || !avatar || avatar->isDead() || avatar->mDrawable.isNull())
             return false;
 
         LLViewerCamera* camera = LLViewerCamera::getInstance();
