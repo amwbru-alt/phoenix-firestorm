@@ -118,6 +118,12 @@ bool FSForMeFittingRoom::postBuild()
     getChild<LLButton>("fitting_camera_zoom_in")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
         adjustCameraZoom(-0.35f);
     });
+    getChild<LLButton>("fitting_camera_rotate_left")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
+        if (mAvatarPreview) mAvatarPreview->rotate(-0.26179939f);
+    });
+    getChild<LLButton>("fitting_camera_rotate_right")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
+        if (mAvatarPreview) mAvatarPreview->rotate(0.26179939f);
+    });
     getChild<LLButton>("fitting_open_inventory")->setClickedCallback([](LLUICtrl*, const LLSD&) {
         LLFloaterReg::showInstance("forme_inventory");
     });
