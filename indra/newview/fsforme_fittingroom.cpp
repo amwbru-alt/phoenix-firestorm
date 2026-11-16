@@ -50,7 +50,7 @@ public:
         camera->setViewNoBroadcast(camera->getDefaultFOV());
 
         const LLVector3 focus = avatar->getPositionAgent() + LLVector3(0.f, 0.f, 1.0f);
-        const LLQuaternion orbit(mYaw, LLVector3::z_axis);
+        const LLQuaternion orbit = avatar->getRotation() * LLQuaternion(mYaw, LLVector3::z_axis);
         const LLVector3 offset = LLVector3(-mDistance, 0.f, 0.18f) * orbit;
         camera->setOriginAndLookAt(focus + offset, LLVector3::z_axis, focus);
         camera->setPerspective(false, 0, 0, getWidth(), getHeight(), false, 0.1f, 64.f);
@@ -163,6 +163,7 @@ void FSForMeFittingRoom::drawAvatarPreview()
     LLView* canvas = getChild<LLView>("avatar_preview_canvas");
     if (!canvas) return;
     const LLRect rect = canvas->getRect();
+    LLGLSUIDefault ui_state;
     gGL.getTexUnit(0)->bind(mAvatarPreview);
     gGL.color4f(1.f, 1.f, 1.f, 1.f);
     gGL.begin(LLRender::TRIANGLES);
