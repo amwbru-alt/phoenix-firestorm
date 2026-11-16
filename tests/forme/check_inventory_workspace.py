@@ -30,6 +30,8 @@ for index in range(20):
     child(en, "item_name_%d" % index)
     child(en, "item_select_%d" % index)
     child(ru, "item_card_%d" % index)
+    child(ru, "item_thumbnail_%d" % index)
+    child(ru, "item_favorite_%d" % index)
 
 # This is a new ForMe surface, not an embedding or mutation of the legacy inventory UI.
 for node in en.iter():
