@@ -39,4 +39,23 @@ for name in ("forme_hub_eyebrow", "forme_hub_title", "forme_hub_intro",
 # The welcome area is informational; native credential and login controls remain intact.
 for name in ("username_combo", "password_edit", "start_location_combo", "connect_btn"):
     child(en, name)
-print("PASS ForMe login welcome hub: card bounds, spacing, locale overlay and native login controls")
+# Keep the in-world navigation surfaces on the same ForMe theme.
+nav = ET.parse(XUI / "en/panel_navigation_bar.xml").getroot()
+assert nav.get("background_visible") == "true"
+assert nav.get("bg_opaque_color") == "MenuBarBgColor"
+nav_main = child(nav, "navigation_bar_visibility_panel")
+assert nav_main.get("background_visible") == "true"
+favorites = child(nav, "favorites_bar_visibility_panel")
+assert favorites.get("background_visible") == "true"
+
+topinfo = ET.parse(XUI / "en/panel_topinfo_bar.xml").getroot()
+assert topinfo.get("background_opaque") == "true"
+assert topinfo.get("bg_opaque_color") == "floater_bg_color"
+
+toolbar_ru = ET.parse(XUI / "ru/panel_status_bar.xml").getroot()
+for name in ("forme_tools_map", "forme_tools_people", "forme_tools_inventory",
+             "forme_tools_market", "forme_tools_build", "forme_tools_move",
+             "forme_tools_rotate", "forme_tools_settings"):
+    child(toolbar_ru, name)
+
+print("PASS ForMe ForMe login hub and in-world navigation: layout, locale, theme surfaces and native controls")
