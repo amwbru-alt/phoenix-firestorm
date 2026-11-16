@@ -24,5 +24,23 @@
     <button name="connect_btn" label="Войти в мир"/>
     <text name="create_new_account_text">Создать аккаунт</text>
   </panel>
+  <panel name="forme_welcome_hub">
+    <text name="forme_hub_eyebrow">ТВОЙ МИР — ТВОИ ПРАВИЛА</text>
+    <text name="forme_hub_title">Место, где можно исследовать и быть собой</text>
+    <text name="forme_hub_intro">Открывай новые места, знакомься с людьми и создавай собственную историю в мире его жителей.</text>
+    <panel name="forme_hub_explore_card">
+      <text name="forme_hub_explore_title">Исследуй</text>
+      <text name="forme_hub_explore_copy">Открывай регионы, интересные места и новые впечатления.</text>
+    </panel>
+    <panel name="forme_hub_connect_card">
+      <text name="forme_hub_connect_title">Общайся</text>
+      <text name="forme_hub_connect_copy">Знакомься с жителями и создавай сообщества.</text>
+    </panel>
+    <panel name="forme_hub_create_card">
+      <text name="forme_hub_create_title">Создавай</text>
+      <text name="forme_hub_create_copy">Строй, выражай себя и делись своими работами.</text>
+    </panel>
+    <text name="forme_hub_footer">Один мир. Много способов найти своё место.</text>
+  </panel>
   <text name="forme_coast_caption">Лазурный берег</text>
 </panel>
