@@ -23,7 +23,7 @@ private:
     void rebuild();
     void removeWornItem(S32 index);
     void saveOutfit();
-    void setCameraPreset(S32 preset);
+    void setCameraPreset(F32 preset);
     void adjustCameraZoom(F32 delta);
     void drawAvatarPreview();
     std::vector<LLUUID> mWornItems;
