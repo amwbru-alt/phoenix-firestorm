@@ -20,6 +20,7 @@
     <text name="forme_home_tools_copy">Инвентарь, покупки и настройки</text>
     <button name="forme_home_open_inventory" label="Инвентарь"/>
     <button name="forme_home_open_market" label="Маркетплейс"/>
+    <button name="forme_home_open_fitting_room" label="Примерочная"/>
     <button name="forme_home_open_preferences" label="Настройки"/>
   </panel>
   <text name="forme_home_footer">ForMe World · Сделай этот мир своим</text>
