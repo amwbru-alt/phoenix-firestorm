@@ -83,6 +83,7 @@ assert "wearInventoryCategoryOnAvatar" in fit_cpp and "FT_MY_OUTFITS" in fit_cpp
 assert 'showInstance("forme_inventory")' in fit_cpp
 assert '#include "lldynamictexture.h"' in fit_cpp
 assert "LLViewerDynamicTexture(512, 307" in fit_cpp
+assert "setViewNoBroadcast(0.78539816f)" in fit_cpp
 assert "generateImpostor(avatar, true, false)" in fit_cpp
 assert "localRectToOtherView" in fit_cpp
 assert "setPerspective(false, 0, 0, getWidth(), getHeight()" in fit_cpp
@@ -101,6 +102,7 @@ assert "LLThumbnailCtrl" in fit_cpp and "getThumbnailUUID()" in fit_cpp
 for locale in ("en", "ru"):
     fit_ui = ET.parse(XUI / locale / "floater_forme_fitting_room.xml").getroot()
     canvas = child(fit_ui, "avatar_preview_canvas")
+    child(fit_ui, "avatar_preview_loading")
     assert canvas.get("width") == "350" and canvas.get("height") == "210"
     for name in ("fitting_camera_front", "fitting_camera_rear", "fitting_camera_three_quarter",
                  "fitting_camera_reset", "fitting_camera_zoom_out", "fitting_camera_zoom_in",
