@@ -87,6 +87,7 @@ assert "generateImpostor(avatar, true, false)" in fit_cpp
 assert "localRectToOtherView" in fit_cpp
 assert "setPerspective(false, 0, 0, getWidth(), getHeight()" in fit_cpp
 assert "setOriginAndLookAt" in fit_cpp and "needsRender() override" in fit_cpp
+assert "avatar->mDrawable.isNull()" in fit_cpp
 assert "gAgentCamera" not in fit_cpp
 assert "handleMouseDown" in fit_cpp and "handleMouseUp" in fit_cpp
 assert "mask & MASK_LEFT" in fit_cpp
