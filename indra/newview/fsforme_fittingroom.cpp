@@ -86,7 +86,26 @@ constexpr S32 WORN_ITEM_SLOTS = 16;
 std::string fittingItemType(const LLViewerInventoryItem* item)
 {
     if (!item) return "Предмет";
-    if (item->getType() == LLAssetType::AT_CLOTHING) return "Одежда";
+    if (item->getType() == LLAssetType::AT_CLOTHING)
+    {
+        switch (item->getWearableType())
+        {
+            case LLWearableType::WT_SHIRT: return "Верхняя одежда";
+            case LLWearableType::WT_PANTS: return "Брюки";
+            case LLWearableType::WT_SHOES: return "Обувь";
+            case LLWearableType::WT_SOCKS: return "Носки";
+            case LLWearableType::WT_JACKET: return "Куртка";
+            case LLWearableType::WT_GLOVES: return "Перчатки";
+            case LLWearableType::WT_UNDERSHIRT: return "Нижний слой";
+            case LLWearableType::WT_UNDERPANTS: return "Нижнее бельё";
+            case LLWearableType::WT_SKIRT: return "Юбка";
+            case LLWearableType::WT_ALPHA: return "Alpha / скрывающий слой";
+            case LLWearableType::WT_TATTOO: return "Татуировка";
+            case LLWearableType::WT_PHYSICS: return "Физика";
+            case LLWearableType::WT_UNIVERSAL: return "Универсальная одежда";
+            default: return "Одежда";
+        }
+    }
     if (item->getType() == LLAssetType::AT_BODYPART)
     {
         switch (item->getWearableType())
