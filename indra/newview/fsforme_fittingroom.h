@@ -12,6 +12,7 @@ class FSForMeFittingRoom final : public LLFloater, public LLInventoryObserver
 public:
     bool postBuild() override;
     void onOpen(const LLSD& key) override;
+    void onClose(bool app_quitting) override;
     void draw() override;
     void changed(U32 mask) override;
 private:
@@ -20,7 +21,14 @@ private:
     void rebuild();
     void removeWornItem(S32 index);
     void saveOutfit();
+    void setCameraPreset(S32 preset);
+    void adjustCameraZoom(F32 delta);
+    void restoreCameraState();
     std::vector<LLUUID> mWornItems;
     S32 mSavedOutfitCount = 0;
     bool mDirty = true;
+    S32 mPreviousCameraMode = 0;
+    S32 mPreviousCameraPreset = 0;
+    F32 mPreviousCameraZoom = 0.5f;
+    bool mCameraStateSaved = false;
 };
