@@ -9,7 +9,6 @@
 #include "lliconctrl.h"
 #include "llinventoryicon.h"
 #include "llinventorymodel.h"
-#include "llfloaterreg.h"
 #include "llpanel.h"
 #include "llinventorytype.h"
 #include "llsearcheditor.h"
@@ -66,13 +65,17 @@ bool FSForMeInventoryBrowser::postBuild()
         });
     getChild<LLButton>("apply")->setClickedCallback([this](LLUICtrl*, const LLSD&) { applySelected(); });
     getChild<LLButton>("open_folder")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
-        if (auto* item = gInventory.getItem(mSelectedItem)) LLFloaterReg::showInstance("inventory", LLSD().with("folder_id", item->getParentUUID()));
+        if (auto* item = gInventory.getItem(mSelectedItem)) { mFolder = item->getParentUUID(); mPage = 0; mDirty = true; }
+    });
+    getChild<LLButton>("folder_back")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
+        mFolder = gInventory.getRootFolderID(); mPage = 0; mDirty = true;
     });
     return true;
 }
 void FSForMeInventoryBrowser::onOpen(const LLSD&)
 {
     mSelectedItem.setNull();
+    mFolder = gInventory.getRootFolderID();
     mDirty = true;
 }
 void FSForMeInventoryBrowser::changed(U32)
@@ -99,7 +102,7 @@ void FSForMeInventoryBrowser::rebuild()
     mDirty = false;
     std::vector<LLUUID> all;
     std::set<LLUUID> visited;
-    collectItems(gInventory.getRootFolderID(), all, visited);
+    collectItems(mFolder.isNull() ? gInventory.getRootFolderID() : mFolder, all, visited);
     std::sort(all.begin(), all.end(), [](const LLUUID& a, const LLUUID& b) {
         const auto* left = gInventory.getItem(a); const auto* right = gInventory.getItem(b);
         return left && right ? lower(left->getName()) < lower(right->getName()) : a.asString() < b.asString();
@@ -125,6 +128,7 @@ void FSForMeInventoryBrowser::rebuild()
     grid->reshape(644, 560);
     getChild<LLTextBox>("inventory_count")->setText(std::to_string(mVisibleItems.size()) + " предметов");
     getChild<LLTextBox>("page")->setText(std::to_string(mPage + 1) + " / " + std::to_string(pages));
+    getChild<LLButton>("folder_back")->setEnabled(mFolder.notNull() && mFolder != gInventory.getRootFolderID());
     getChild<LLButton>("previous")->setEnabled(mPage > 0);
     getChild<LLButton>("next")->setEnabled(mPage + 1 < pages);
     if (mSelectedItem.notNull()) selectItem(mSelectedItem);
