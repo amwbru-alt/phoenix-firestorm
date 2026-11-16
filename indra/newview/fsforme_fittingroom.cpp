@@ -214,8 +214,9 @@ void FSForMeFittingRoom::drawAvatarPreview()
     if (!mAvatarPreview || !mAvatarPreview->hasGLTexture())
         return;
     LLView* canvas = getChild<LLView>("avatar_preview_canvas");
-    if (!canvas) return;
-    const LLRect rect = canvas->getRect();
+    LLRect rect;
+    if (!canvas || !canvas->localRectToOtherView(canvas->getLocalRect(), &rect, this))
+        return;
     LLGLSUIDefault ui_state;
     gGL.getTexUnit(0)->bind(mAvatarPreview);
     gGL.color4f(1.f, 1.f, 1.f, 1.f);
