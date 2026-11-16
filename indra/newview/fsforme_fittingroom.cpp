@@ -15,6 +15,7 @@
 #include "llcombobox.h"
 #include "llfloaterreg.h"
 #include "llinventorymodel.h"
+#include "llinventorytype.h"
 #include "lllineeditor.h"
 #include "llpanel.h"
 #include "lltextbox.h"
