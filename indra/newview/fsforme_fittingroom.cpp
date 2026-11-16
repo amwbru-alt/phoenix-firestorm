@@ -295,7 +295,7 @@ bool FSForMeFittingRoom::matchesCategory(const LLViewerInventoryItem* item) cons
     if (mCategory == "hair") return item->getType() == LLAssetType::AT_BODYPART && item->getWearableType() == LLWearableType::WT_HAIR;
     if (mCategory == "eyes") return item->getType() == LLAssetType::AT_BODYPART && item->getWearableType() == LLWearableType::WT_EYES;
     if (mCategory == "accessories")
-        return item->getType() == LLAssetType::AT_OBJECT && item->getInventoryType() == LLInventoryType::IT_WEARABLE;
+        return item->getType() == LLAssetType::AT_OBJECT;
     return true;
 }
 void FSForMeFittingRoom::draw()
@@ -335,6 +335,13 @@ void FSForMeFittingRoom::rebuild()
             }
     getChild<LLButton>("fitting_wear_saved")->setEnabled(mSavedOutfitCount > 0);
     getChild<LLButton>("fitting_compare_outfits")->setEnabled(mSavedOutfitCount > 1);
+    if (mSavedOutfitCount > 0)
+    {
+        outfits_combo->selectFirstItem();
+        compare_a->selectFirstItem();
+        compare_b->selectFirstItem();
+        if (mSavedOutfitCount > 1) compare_b->selectNthItem(1);
+    }
     LLInventoryModel::cat_array_t* categories = nullptr;
     LLInventoryModel::item_array_t* items = nullptr;
     gInventory.getDirectDescendentsOf(LLAppearanceMgr::instance().getCOF(), categories, items);
