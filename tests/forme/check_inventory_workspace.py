@@ -90,7 +90,8 @@ assert "setOriginAndLookAt" in fit_cpp and "needsRender() override" in fit_cpp
 assert "gAgentCamera" not in fit_cpp
 assert "handleMouseDown" in fit_cpp and "handleMouseUp" in fit_cpp
 assert "handleHover" in fit_cpp and "handleScrollWheel" in fit_cpp
-assert "mAvatarPreview->rotate" in fit_cpp and "adjustCameraZoom" in fit_cpp
+assert "mAvatarPreview->rotate" in fit_cpp and "mAvatarPreview->tilt" in fit_cpp
+assert "adjustCameraZoom" in fit_cpp and "mLastPreviewMouseY" in fit_cpp
 assert "FSForMeAvatarPreview* mAvatarPreview" in fit_header
 assert "LLThumbnailCtrl" in fit_cpp and "getThumbnailUUID()" in fit_cpp
 for locale in ("en", "ru"):
