@@ -84,10 +84,13 @@ assert 'showInstance("forme_inventory")' in fit_cpp
 assert '#include "lldynamictexture.h"' in fit_cpp
 assert '#include "lldrawpoolavatar.h"' in fit_cpp
 assert "LLViewerDynamicTexture(512, 512" in fit_cpp
-assert "renderAvatars(avatar, -1)" in fit_cpp
+assert "generateImpostor(avatar, true, false)" in fit_cpp
 assert "setPerspective(false, 0, 0, getWidth(), getHeight()" in fit_cpp
 assert "setOriginAndLookAt" in fit_cpp and "needsRender() override" in fit_cpp
 assert "gAgentCamera" not in fit_cpp
+assert "handleMouseDown" in fit_cpp and "handleMouseUp" in fit_cpp
+assert "handleHover" in fit_cpp and "handleScrollWheel" in fit_cpp
+assert "mAvatarPreview->rotate" in fit_cpp and "adjustCameraZoom" in fit_cpp
 assert "FSForMeAvatarPreview* mAvatarPreview" in fit_header
 assert "LLThumbnailCtrl" in fit_cpp and "getThumbnailUUID()" in fit_cpp
 for locale in ("en", "ru"):
