@@ -82,13 +82,14 @@ assert "removeItemFromAvatar" in fit_cpp and "makeNewOutfitLinks" in fit_cpp
 assert "wearInventoryCategoryOnAvatar" in fit_cpp and "FT_MY_OUTFITS" in fit_cpp
 assert 'showInstance("forme_inventory")' in fit_cpp
 assert '#include "lldynamictexture.h"' in fit_cpp
-assert "LLViewerDynamicTexture(512, 512" in fit_cpp
+assert "LLViewerDynamicTexture(512, 307" in fit_cpp
 assert "generateImpostor(avatar, true, false)" in fit_cpp
 assert "localRectToOtherView" in fit_cpp
 assert "setPerspective(false, 0, 0, getWidth(), getHeight()" in fit_cpp
 assert "setOriginAndLookAt" in fit_cpp and "needsRender() override" in fit_cpp
 assert "avatar->mDrawable.isNull()" in fit_cpp
 assert "setActive(!isMinimized())" in fit_cpp
+assert "height=\"730\"" in fit_ui.attrib.get("unused", "") or fit_ui.get("height") == "730"
 assert "gAgentCamera" not in fit_cpp
 assert "handleMouseDown" in fit_cpp and "handleMouseUp" in fit_cpp
 assert "mask & MASK_LEFT" in fit_cpp
@@ -99,7 +100,8 @@ assert "FSForMeAvatarPreview* mAvatarPreview" in fit_header
 assert "LLThumbnailCtrl" in fit_cpp and "getThumbnailUUID()" in fit_cpp
 for locale in ("en", "ru"):
     fit_ui = ET.parse(XUI / locale / "floater_forme_fitting_room.xml").getroot()
-    child(fit_ui, "avatar_preview_canvas")
+    canvas = child(fit_ui, "avatar_preview_canvas")
+    assert canvas.get("width") == "350" and canvas.get("height") == "210"
     for name in ("fitting_camera_front", "fitting_camera_rear", "fitting_camera_three_quarter",
                  "fitting_camera_reset", "fitting_camera_zoom_out", "fitting_camera_zoom_in",
                  "fitting_camera_rotate_left", "fitting_camera_rotate_right"):
