@@ -24,6 +24,7 @@ private:
     void applySelected();
     bool matches(const LLViewerInventoryItem* item) const;
     std::vector<LLUUID> mVisibleItems;
+    std::vector<LLUUID> mRecentItems;
     LLUUID mSelectedItem;
     LLUUID mFolder;
     std::string mCategory = "all";
