@@ -27,5 +27,6 @@ private:
     LLUUID mSelectedItem;
     std::string mCategory = "all";
     std::string mQuery;
+    S32 mPage = 0;
     bool mDirty = true;
 };
