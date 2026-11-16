@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!-- ForMe workspace rail. Navigation is a new surface; existing viewer tools stay native. -->
+<panel name="forme_sidebar" layout="topleft" left="12" top="54" width="76" height="620"
+       follows="left|top|bottom" mouse_opaque="false"
+       background_visible="true" background_opaque="true"
+       bg_opaque_image="Forme_Round_Window" bg_opaque_image_overlay="White">
+  <text name="forme_sidebar_brand" layout="topleft" left="0" top="18" width="76" height="26"
+        halign="center" font="SansSerifLarge" font.style="BOLD"
+        text_color="0.92 0.90 0.94 1">fm</text>
+  <panel name="forme_sidebar_divider" layout="topleft" left="18" top="58" width="40" height="1"
+         background_visible="true" background_opaque="true" bg_opaque_color="0.34 0.31 0.39 0.75"/>
+  <button name="forme_sidebar_world" layout="topleft" left="10" top="76" width="56" height="48"
+          image_overlay="Forme_UI_Map" image_overlay_max_size="22" image_unselected="Forme_WMap_Clear"
+          image_hover_unselected="Forme_Round_Field" image_pressed="Forme_Round_Accent"
+          tool_tip="World map">
+    <button.commit_callback function="Floater.Toggle" parameter="world_map"/>
+    <button.enable_callback function="RLV.EnableIfNot" parameter="showworldmap"/>
+  </button>
+  <text name="forme_sidebar_world_label" layout="topleft" left="0" top="122" width="76" height="16"
+        halign="center" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">World</text>
+  <button name="forme_sidebar_people" layout="topleft" left="10" top="154" width="56" height="48"
+          image_overlay="Forme_UI_People" image_overlay_max_size="22" image_unselected="Forme_WMap_Clear"
+          image_hover_unselected="Forme_Round_Field" image_pressed="Forme_Round_Accent"
+          tool_tip="People">
+    <button.commit_callback function="Floater.Toggle" parameter="people"/>
+  </button>
+  <text name="forme_sidebar_people_label" layout="topleft" left="0" top="200" width="76" height="16"
+        halign="center" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">People</text>
+  <button name="forme_sidebar_inventory" layout="topleft" left="10" top="232" width="56" height="48"
+          image_overlay="Forme_UI_Inventory" image_overlay_max_size="22" image_unselected="Forme_WMap_Clear"
+          image_hover_unselected="Forme_Round_Field" image_pressed="Forme_Round_Accent"
+          tool_tip="Inventory">
+    <button.commit_callback function="Floater.Toggle" parameter="inventory"/>
+  </button>
+  <text name="forme_sidebar_inventory_label" layout="topleft" left="0" top="278" width="76" height="16"
+        halign="center" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">Inventory</text>
+  <button name="forme_sidebar_community" layout="topleft" left="10" top="310" width="56" height="48"
+          image_overlay="Forme_UI_People" image_overlay_max_size="22" image_unselected="Forme_WMap_Clear"
+          image_hover_unselected="Forme_Round_Field" image_pressed="Forme_Round_Accent"
+          tool_tip="Groups and community">
+    <button.commit_callback function="Floater.Toggle" parameter="groups"/>
+  </button>
+  <text name="forme_sidebar_community_label" layout="topleft" left="0" top="356" width="76" height="16"
+        halign="center" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">Community</text>
+  <button name="forme_sidebar_market" layout="topleft" left="10" top="388" width="56" height="48"
+          image_overlay="Forme_HUD_Market" image_overlay_max_size="22" image_unselected="Forme_WMap_Clear"
+          image_hover_unselected="Forme_Round_Field" image_pressed="Forme_Round_Accent"
+          tool_tip="Marketplace">
+    <button.commit_callback function="Avatar.OpenMarketplace" parameter=""/>
+  </button>
+  <text name="forme_sidebar_market_label" layout="topleft" left="0" top="434" width="76" height="16"
+        halign="center" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">Market</text>
+  <panel name="forme_sidebar_bottom_divider" layout="topleft" left="18" top="-76" width="40" height="1"
+         follows="left|bottom" background_visible="true" background_opaque="true"
+         bg_opaque_color="0.34 0.31 0.39 0.75"/>
+  <button name="forme_sidebar_preferences" layout="topleft" left="10" bottom="14" width="56" height="48"
+          follows="left|bottom" image_overlay="Forme_UI_Settings" image_overlay_max_size="22"
+          image_unselected="Forme_WMap_Clear" image_hover_unselected="Forme_Round_Field"
+          image_pressed="Forme_Round_Accent" tool_tip="Preferences">
+    <button.commit_callback function="Floater.Toggle" parameter="preferences"/>
+  </button>
+</panel>
