@@ -48,7 +48,7 @@
   </button>
   <text name="forme_sidebar_community_label" layout="topleft" left="0" top="434" width="76" height="16"
         halign="center" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">Community</text>
-  <button name="forme_sidebar_market" layout="topleft" left="10" top="466 width="56" height="48"
+  <button name="forme_sidebar_market" layout="topleft" left="10" top="466" width="56" height="48"
           image_overlay="Forme_HUD_Market" image_overlay_max_size="22" image_unselected="Forme_WMap_Clear"
           image_hover_unselected="Forme_Round_Field" image_pressed="Forme_Round_Accent"
           tool_tip="Marketplace">
