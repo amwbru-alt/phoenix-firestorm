@@ -25,7 +25,7 @@ class FSForMeAvatarPreview final : public LLViewerDynamicTexture
 {
 public:
     FSForMeAvatarPreview()
-        : LLViewerDynamicTexture(512, 512, 3, ORDER_MIDDLE, false)
+        : LLViewerDynamicTexture(512, 307, 3, ORDER_MIDDLE, false)
     {
     }
 
