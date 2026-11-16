@@ -106,6 +106,8 @@ assert "LLThumbnailCtrl" in fit_cpp and "getThumbnailUUID()" in fit_cpp
 for locale in ("en", "ru"):
     fit_ui = ET.parse(XUI / locale / "floater_forme_fitting_room.xml").getroot()
     canvas = child(fit_ui, "avatar_preview_canvas")
+    for name in ("worn_filter_all", "worn_filter_clothing", "worn_filter_body", "worn_filter_accessories"):
+        child(fit_ui, name)
     child(fit_ui, "avatar_preview_loading")
     assert canvas.get("width") == "350" and canvas.get("height") == "210"
     for name in ("fitting_camera_front", "fitting_camera_rear", "fitting_camera_three_quarter",
