@@ -54,7 +54,7 @@
           tool_tip="Marketplace">
     <button.commit_callback function="Avatar.OpenMarketplace" parameter=""/>
   </button>
-  <text name="forme_sidebar_market_label" layout="topleft" left="0" top="512 width="76" height="16"
+  <text name="forme_sidebar_market_label" layout="topleft" left="0" top="512" width="76" height="16"
         halign="center" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">Market</text>
   <panel name="forme_sidebar_bottom_divider" layout="topleft" left="18" top="-76" width="40" height="1"
          follows="left|bottom" background_visible="true" background_opaque="true"
