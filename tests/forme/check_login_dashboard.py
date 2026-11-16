@@ -55,6 +55,25 @@ for name in ("forme_sidebar_world_label", "forme_sidebar_people_label",
     child(sidebar_en, name)
     child(sidebar_ru, name)
 
+# The Home side tray is now a native ForMe dashboard, not an embedded web page.
+home_en = ET.parse(XUI / "en/panel_sidetray_home_tab.xml").getroot()
+home_ru = ET.parse(XUI / "ru/panel_sidetray_home_tab.xml").getroot()
+assert home_en.find(".//web_browser") is None
+assert home_ru.find(".//web_browser") is None
+for name in ("forme_home_title", "forme_home_section_world",
+             "forme_home_section_social", "forme_home_section_tools",
+             "forme_home_open_map", "forme_home_open_destinations",
+             "forme_home_open_people", "forme_home_open_groups",
+             "forme_home_open_inventory", "forme_home_open_market",
+             "forme_home_open_preferences"):
+    child(home_en, name)
+    child(home_ru, name)
+# Keep the dashboard honest: no fabricated wallet, visitor, friend or event totals.
+for node in home_en.iter():
+    if node.tag == "text":
+        label = (node.text or "").lower()
+        assert not any(token in label for token in ("visitors:", "friends online:", "balance:"))
+
 # Keep the in-world navigation surfaces on the same ForMe theme.
 nav = ET.parse(XUI / "en/panel_navigation_bar.xml").getroot()
 assert nav.get("background_visible") == "true"
