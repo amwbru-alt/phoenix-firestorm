@@ -16,8 +16,8 @@ def child(root, name):
     return node
 
 for name in ("query", "category_all", "category_clothing", "category_accessories",
-             "category_objects", "category_animations", "items_grid", "items_scroll",
-             "details_surface", "detail_icon", "detail_name", "apply", "open_folder",
+             "category_objects", "category_animations", "category_favorites", "category_recent", "items_grid", "items_scroll",
+             "details_surface", "detail_thumbnail", "detail_name", "detail_favorite", "apply", "open_folder",
              "previous", "next", "page", "folder_back", "status"):
     child(en, name)
     if name not in ("detail_icon", "items_scroll"):
@@ -25,7 +25,8 @@ for name in ("query", "category_all", "category_clothing", "category_accessories
 
 for index in range(20):
     child(en, "item_card_%d" % index)
-    child(en, "item_icon_%d" % index)
+    child(en, "item_thumbnail_%d" % index)
+    child(en, "item_favorite_%d" % index)
     child(en, "item_name_%d" % index)
     child(en, "item_select_%d" % index)
     child(ru, "item_card_%d" % index)
@@ -43,6 +44,7 @@ assert "getDirectDescendentsOf" in cpp
 assert "wearItemOnAvatar" in cpp
 assert "mFolder" in cpp and 'showInstance("inventory"' not in cpp
 assert "category_clothing" in cpp and "mQuery" in cpp and "mPage" in cpp
+assert "getThumbnailUUID()" in cpp and "toggle_favorite" in cpp and "mRecentItems" in cpp
 
 registry = (ROOT / "indra/newview/llviewerfloaterreg.cpp").read_text()
 cmake = (ROOT / "indra/newview/CMakeLists.txt").read_text()
