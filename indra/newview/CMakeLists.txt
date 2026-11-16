@@ -514,6 +514,7 @@ set(viewer_SOURCE_FILES
     llmaniptranslate.cpp
     fsmarketbrowser.cpp
     fsformeinventory.cpp
+    fsforme_fittingroom.cpp
     llfloatermarketplace.cpp
     llmarketplacefunctions.cpp
     llmarketplacenotifications.cpp
@@ -1228,6 +1229,7 @@ set(viewer_HEADER_FILES
     formemarketpolicy.h
     fsmarketbrowser.h
     fsformeinventory.h
+    fsforme_fittingroom.h
     llfloatermarketplace.h
     llfloatermarketplacelistings.h
     llfloatermediasettings.h
