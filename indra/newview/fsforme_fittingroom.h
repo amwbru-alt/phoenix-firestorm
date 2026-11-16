@@ -6,6 +6,8 @@
 #include "llinventoryobserver.h"
 #include "lluuid.h"
 #include <vector>
+class FSForMeAvatarPreview;
+
 class FSForMeFittingRoom final : public LLFloater, public LLInventoryObserver
 {
     friend class LLFloaterReg;
@@ -23,12 +25,9 @@ private:
     void saveOutfit();
     void setCameraPreset(S32 preset);
     void adjustCameraZoom(F32 delta);
-    void restoreCameraState();
+    void drawAvatarPreview();
     std::vector<LLUUID> mWornItems;
     S32 mSavedOutfitCount = 0;
     bool mDirty = true;
-    S32 mPreviousCameraMode = 0;
-    S32 mPreviousCameraPreset = 0;
-    F32 mPreviousCameraZoom = 0.5f;
-    bool mCameraStateSaved = false;
+    FSForMeAvatarPreview* mAvatarPreview = nullptr;
 };
