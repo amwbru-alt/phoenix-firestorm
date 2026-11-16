@@ -25,6 +25,8 @@ private:
     FSForMeFittingRoom(const LLSD& key);
     ~FSForMeFittingRoom() override;
     void rebuild();
+    void setCategory(const std::string& category);
+    bool matchesCategory(const LLViewerInventoryItem* item) const;
     void removeWornItem(S32 index);
     void saveOutfit();
     void setCameraPreset(F32 preset);
@@ -33,6 +35,7 @@ private:
     std::vector<LLUUID> mWornItems;
     S32 mSavedOutfitCount = 0;
     bool mDirty = true;
+    std::string mCategory = "all";
     FSForMeAvatarPreview* mAvatarPreview = nullptr;
     bool mDraggingPreview = false;
     S32 mLastPreviewMouseX = 0;
