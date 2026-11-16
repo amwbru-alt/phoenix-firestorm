@@ -158,7 +158,7 @@ void FSForMeFittingRoom::adjustCameraZoom(F32 delta)
 }
 void FSForMeFittingRoom::drawAvatarPreview()
 {
-    if (!mAvatarPreview || !mAvatarPreview->getHasGLTexture())
+    if (!mAvatarPreview || !mAvatarPreview->hasGLTexture())
         return;
     LLView* canvas = getChild<LLView>("avatar_preview_canvas");
     if (!canvas) return;
