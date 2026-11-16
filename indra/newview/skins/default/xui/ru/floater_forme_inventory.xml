@@ -14,6 +14,7 @@
   </panel>
   <panel name="items_surface">
     <text name="items_heading">Мои предметы</text>
+    <button name="folder_back" label="Все папки" enabled="false"/>
     <scroll_container name="items_scroll">
       <panel name="items_grid">
       <panel name="item_card_0"><text name="item_name_0"/><button name="item_select_0" label="Выбрать"/></panel>
