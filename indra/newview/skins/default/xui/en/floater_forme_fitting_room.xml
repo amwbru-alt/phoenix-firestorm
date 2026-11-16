@@ -8,6 +8,7 @@
     <text name="stage_title" layout="topleft" left="20" top="48" width="350" height="34" font="SansSerifLarge" font.style="BOLD">Текущий образ</text>
     <text name="stage_description" layout="topleft" left="20" top="88" width="350" height="30" wrap="true" text_color="0.76 0.73 0.80 1">Independent 3D view · changes do not move the world camera</text>
     <panel name="avatar_preview_canvas" layout="topleft" left="20" top="122" width="350" height="210" background_visible="true" bg_alpha_image="Forme_Round_Window" bg_alpha_color="White"/>
+    <text name="avatar_preview_loading" layout="topleft" left="34" top="220" width="320" height="22" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">Preparing avatar preview…</text>
     <text name="camera_heading" layout="topleft" left="20" top="340" width="350" height="18" font="SansSerifBold">PREVIEW CAMERA</text>
     <button name="fitting_camera_front" layout="topleft" left="20" top="362" width="78" height="30" label="Front" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
     <button name="fitting_camera_rear" layout="topleft" left="104" top="362" width="78" height="30" label="Back" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
