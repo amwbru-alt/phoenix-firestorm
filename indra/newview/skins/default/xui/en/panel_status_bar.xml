@@ -84,31 +84,32 @@
   <text name="forme_hud_location" layout="topleft" width="200" height="20" font="SansSerifSmall" text_color="0.90 0.89 0.90 1" use_ellipses="true" mouse_opaque="false" left="188" top="11" follows="left|top" />
   <text name="forme_hud_star" layout="topleft" width="20" height="24" font="SansSerifLarge" text_color="0.69 0.44 0.87 1" mouse_opaque="false" left="12" top="7" follows="left|top">✱</text>
   <text name="forme_hud_connection" layout="topleft" width="180" height="20" font="SansSerifSmall" text_color="0.30 0.78 0.36 1" mouse_opaque="false" left="404" top="11" follows="left|top" />
-  <panel name="forme_tools_row" layout="topleft" left="8" top="42" right="-8" height="36" follows="left|right|top" background_visible="true" background_opaque="true" bg_opaque_image="Forme_Round_Window" bg_opaque_color="White">
-    <button name="forme_tools_map" layout="topleft" left="0" top="2" width="106" height="32" label="Map" image_overlay="Forme_UI_Map" image_overlay_max_size="20" image_overlay_alignment="left" pad_left="10" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" is_toggle="true">
+  <panel name="forme_tools_row" layout="topleft" left="8" top="42" right="-8" height="40" follows="left|right|top" background_visible="true" background_opaque="true" bg_opaque_image="Forme_Round_Window" bg_opaque_color="White">
+    <!-- Shared native button styling for the ForMe navigation dock. -->
+  <button name="forme_tools_map" layout="topleft" left="4" top="3" width="104" height="34" label="Map" image_overlay="Forme_UI_Map" image_overlay_max_size="20" font="SansSerifSmall" label_color="0.88 0.84 0.94 1" label_color_selected="1 1 1 1" image_overlay_color="0.86 0.79 0.94 1" image_overlay_selected_color="1 1 1 1" image_hover_unselected="Forme_Round_Field" image_pressed="Forme_Round_Accent" image_overlay_alignment="left" pad_left="10" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" is_toggle="true">
       <button.commit_callback function="Floater.Toggle" parameter="world_map" />
       <button.enable_callback function="RLV.EnableIfNot" parameter="showworldmap" />
     </button>
-    <button name="forme_tools_people" layout="topleft" left="110" top="2" width="106" height="32" label="People" image_overlay="Forme_UI_People" image_overlay_max_size="20" image_overlay_alignment="left" pad_left="10" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" is_toggle="true">
+    <button name="forme_tools_people" layout="topleft" left="112" top="3" width="104" height="34" label="People" image_overlay="Forme_UI_People" image_overlay_max_size="20" font="SansSerifSmall" label_color="0.88 0.84 0.94 1" label_color_selected="1 1 1 1" image_overlay_color="0.86 0.79 0.94 1" image_overlay_selected_color="1 1 1 1" image_hover_unselected="Forme_Round_Field" image_pressed="Forme_Round_Accent" image_overlay_alignment="left" pad_left="10" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" is_toggle="true">
       <button.commit_callback function="Floater.Toggle" parameter="people" />
     </button>
-    <button name="forme_tools_inventory" layout="topleft" left="220" top="2" width="106" height="32" label="Inventory" image_overlay="Forme_UI_Inventory" image_overlay_max_size="20" image_overlay_alignment="left" pad_left="10" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" is_toggle="true">
+    <button name="forme_tools_inventory" layout="topleft" left="220" top="3" width="112" height="34" label="Inventory" image_overlay="Forme_UI_Inventory" image_overlay_max_size="20" font="SansSerifSmall" label_color="0.88 0.84 0.94 1" label_color_selected="1 1 1 1" image_overlay_color="0.86 0.79 0.94 1" image_overlay_selected_color="1 1 1 1" image_hover_unselected="Forme_Round_Field" image_pressed="Forme_Round_Accent" image_overlay_alignment="left" pad_left="10" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" is_toggle="true">
       <button.commit_callback function="Floater.Toggle" parameter="inventory" />
     </button>
-    <button name="forme_tools_market" layout="topleft" left="330" top="2" width="106" height="32" label="Market" image_overlay="Forme_HUD_Market" image_overlay_max_size="20" image_overlay_alignment="left" pad_left="10" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" is_toggle="true">
+    <button name="forme_tools_market" layout="topleft" left="336" top="3" width="104" height="34" label="Market" image_overlay="Forme_HUD_Market" image_overlay_max_size="20" font="SansSerifSmall" label_color="0.88 0.84 0.94 1" label_color_selected="1 1 1 1" image_overlay_color="0.86 0.79 0.94 1" image_overlay_selected_color="1 1 1 1" image_hover_unselected="Forme_Round_Field" image_pressed="Forme_Round_Accent" image_overlay_alignment="left" pad_left="10" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" is_toggle="true">
       <button.commit_callback function="Avatar.OpenMarketplace" parameter="" />
     </button>
-    <button name="forme_tools_build" layout="topleft" left="452" top="2" width="32" height="32" image_overlay="Forme_UI_Cube" image_overlay_max_size="20" tool_tip="Build" image_unselected="Forme_WMap_Clear" forme_creator_only="true">
+    <button name="forme_tools_build" layout="topleft" left="448" top="3" width="34" height="34" image_overlay="Forme_UI_Cube" image_overlay_max_size="20" tool_tip="Build" image_unselected="Forme_WMap_Clear" forme_creator_only="true">
       <button.commit_callback function="Tools.SelectTool" parameter="create" />
     </button>
-    <button name="forme_tools_move" layout="topleft" left="488" top="2" width="32" height="32" image_overlay="Forme_UI_Move" image_overlay_max_size="20" tool_tip="Move" image_unselected="Forme_WMap_Clear" forme_creator_only="true">
+    <button name="forme_tools_move" layout="topleft" left="486" top="3" width="34" height="34" image_overlay="Forme_UI_Move" image_overlay_max_size="20" tool_tip="Move" image_unselected="Forme_WMap_Clear" forme_creator_only="true">
       <button.commit_callback function="Tools.SelectTool" parameter="move" />
     </button>
-    <button name="forme_tools_rotate" layout="topleft" left="524" top="2" width="32" height="32" image_overlay="Forme_UI_Rotate" image_overlay_max_size="20" tool_tip="Rotate" image_unselected="Forme_WMap_Clear" forme_creator_only="true">
+    <button name="forme_tools_rotate" layout="topleft" left="524" top="3" width="34" height="34" image_overlay="Forme_UI_Rotate" image_overlay_max_size="20" tool_tip="Rotate" image_unselected="Forme_WMap_Clear" forme_creator_only="true">
       <button.commit_callback function="Tools.SelectTool" parameter="edit" />
     </button>
-    <search_editor name="forme_world_search" layout="topleft" left="574" top="3" right="-48" height="30" follows="left|right|top" label="Search places…" max_length_bytes="128" />
-    <button name="forme_tools_settings" layout="topleft" right="-6" top="2" width="32" height="32" follows="right|top" image_overlay="Forme_UI_Settings" image_overlay_max_size="22" image_unselected="Forme_WMap_Clear" tool_tip="Preferences">
+    <search_editor name="forme_world_search" layout="topleft" left="570" top="4" right="-48" height="30" follows="left|right|top" label="Search places…" max_length_bytes="128" />
+    <button name="forme_tools_settings" layout="topleft" right="-6" top="3" width="34" height="34" follows="right|top" image_overlay="Forme_UI_Settings" image_overlay_max_size="22" image_unselected="Forme_WMap_Clear" tool_tip="Preferences">
       <button.commit_callback function="Floater.Toggle" parameter="preferences" />
     </button>
   </panel>
