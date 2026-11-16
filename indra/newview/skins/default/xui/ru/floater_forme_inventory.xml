@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<floater name="forme_inventory" title="Инвентарь ForMe">
+  <text name="eyebrow">МИР FORME / ЛИЧНОЕ ПРОСТРАНСТВО</text>
+  <text name="title">Инвентарь</text>
+  <search_editor name="query" label="Поиск по предметам…"/>
+  <panel name="category_rail">
+    <text name="category_heading">КАТЕГОРИИ</text>
+    <button name="category_all" label="Все предметы"/>
+    <button name="category_clothing" label="Одежда"/>
+    <button name="category_accessories" label="Аксессуары"/>
+    <button name="category_objects" label="Объекты"/>
+    <button name="category_animations" label="Анимации"/>
+    <text name="inventory_count">Загрузка…</text>
+  </panel>
+  <panel name="items_surface"><text name="items_heading">Мои предметы</text>
+    <panel name="item_card_0"><text name="item_name_0"/><button name="item_select_0" label="Выбрать"/></panel>
+    <panel name="item_card_1"><text name="item_name_1"/><button name="item_select_1" label="Выбрать"/></panel>
+    <panel name="item_card_2"><text name="item_name_2"/><button name="item_select_2" label="Выбрать"/></panel>
+    <panel name="item_card_3"><text name="item_name_3"/><button name="item_select_3" label="Выбрать"/></panel>
+    <panel name="item_card_4"><text name="item_name_4"/><button name="item_select_4" label="Выбрать"/></panel>
+    <panel name="item_card_5"><text name="item_name_5"/><button name="item_select_5" label="Выбрать"/></panel>
+    <panel name="item_card_6"><text name="item_name_6"/><button name="item_select_6" label="Выбрать"/></panel>
+    <panel name="item_card_7"><text name="item_name_7"/><button name="item_select_7" label="Выбрать"/></panel>
+    <panel name="item_card_8"><text name="item_name_8"/><button name="item_select_8" label="Выбрать"/></panel>
+    <panel name="item_card_9"><text name="item_name_9"/><button name="item_select_9" label="Выбрать"/></panel>
+    <panel name="item_card_10"><text name="item_name_10"/><button name="item_select_10" label="Выбрать"/></panel>
+    <panel name="item_card_11"><text name="item_name_11"/><button name="item_select_11" label="Выбрать"/></panel>
+  </panel>
+  <panel name="details_surface">
+    <text name="details_heading">Предмет</text>
+    <text name="detail_name">Выберите предмет</text>
+    <button name="apply" label="Применить"/>
+    <button name="open_folder" label="Открыть папку"/>
+  </panel>
+  <text name="status"/>
+</floater>
