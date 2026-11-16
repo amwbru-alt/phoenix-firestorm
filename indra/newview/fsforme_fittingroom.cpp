@@ -9,7 +9,6 @@
 #include "llvoavatar.h"
 #include "llvoavatarself.h"
 #include "llfocusmgr.h"
-#include "llviewershadermgr.h"
 #include "llrender.h"
 #include "pipeline.h"
 #include "llbutton.h"
@@ -64,7 +63,7 @@ public:
         LLGLEnable cull(GL_CULL_FACE);
         // Use the viewer's dedicated avatar-preview pipeline. It marks the
         // avatar and its attachment bridges visible, hides unrelated world
-        // geometry, and renders rigged attachments into the currently bound
+        // geometry, and renders attached objects supported by the preview into the currently bound
         // dynamic-texture target. The dynamic-texture lifecycle restores the
         // world camera and viewport after this call.
         gPipeline.generateImpostor(avatar, true, false);
