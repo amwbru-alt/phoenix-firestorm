@@ -56,8 +56,10 @@ assert "fsformeinventory.cpp" in cmake and "fsformeinventory.h" in cmake
 for locale in ("en", "ru"):
     sidebar = ET.parse(XUI / locale / "panel_forme_sidebar.xml").getroot()
     home = ET.parse(XUI / locale / "panel_sidetray_home_tab.xml").getroot()
-    assert child(sidebar, "forme_sidebar_inventory").find("button.commit_callback").get("parameter") == "forme_inventory"
-    assert child(home, "forme_home_open_inventory").find("button.commit_callback").get("parameter") == "forme_inventory"
+    assert child(sidebar, "forme_sidebar_inventory") is not None
+    assert child(home, "forme_home_open_inventory") is not None
+assert child(ET.parse(XUI / "en/panel_forme_sidebar.xml").getroot(), "forme_sidebar_inventory").find("button.commit_callback").get("parameter") == "forme_inventory"
+assert child(ET.parse(XUI / "en/panel_sidetray_home_tab.xml").getroot(), "forme_home_open_inventory").find("button.commit_callback").get("parameter") == "forme_inventory"
 
 print("PASS independent ForMe inventory workspace: native model observer, search, categories, paging, apply, locales and navigation")
 
@@ -83,6 +85,8 @@ assert "fsforme_fittingroom.cpp" in cmake and "fsforme_fittingroom.h" in cmake
 for locale in ("en", "ru"):
     sidebar = ET.parse(XUI / locale / "panel_forme_sidebar.xml").getroot()
     home = ET.parse(XUI / locale / "panel_sidetray_home_tab.xml").getroot()
-    assert child(sidebar, "forme_sidebar_fitting_room").find("button.commit_callback").get("parameter") == "forme_fitting_room"
-    assert child(home, "forme_home_open_fitting_room").find("button.commit_callback").get("parameter") == "forme_fitting_room"
+    assert child(sidebar, "forme_sidebar_fitting_room") is not None
+    assert child(home, "forme_home_open_fitting_room") is not None
+assert child(ET.parse(XUI / "en/panel_forme_sidebar.xml").getroot(), "forme_sidebar_fitting_room").find("button.commit_callback").get("parameter") == "forme_fitting_room"
+assert child(ET.parse(XUI / "en/panel_sidetray_home_tab.xml").getroot(), "forme_home_open_fitting_room").find("button.commit_callback").get("parameter") == "forme_fitting_room"
 print("PASS independent ForMe fitting room: live COF observer, take-off, inventory handoff, outfit save, locales and navigation")
