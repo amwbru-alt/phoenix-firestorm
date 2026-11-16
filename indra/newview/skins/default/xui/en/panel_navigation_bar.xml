@@ -4,7 +4,9 @@
 <!-- <FS:Zi> visible="false" to hide the panel on the login screen -->
 <panel
  mouse_opaque="false"
- background_visible="false"
+ background_visible="true"
+ background_opaque="true"
+ bg_opaque_color="MenuBarBgColor"
  top="19"
  left="0"
  follows="left|top|right"
@@ -31,6 +33,9 @@
 <!-- Navigation Bar visibility panel -->
 <layout_panel
  mouse_opaque="false"
+ background_visible="true"
+ background_opaque="true"
+ bg_opaque_color="MenuBarBgColor"
  height="22"
  layout="topleft"
  name="navigation_bar_visibility_panel"
@@ -214,6 +219,9 @@
 <!-- Favorites Bar visibility panel -->
 <layout_panel
  mouse_opaque="false"
+ background_visible="true"
+ background_opaque="true"
+ bg_opaque_color="floater_bg_color"
  height="15"
  layout="topleft"
  name="favorites_bar_visibility_panel"
@@ -238,7 +246,7 @@
          top_pad="2"
          left="10"
          name="favorites_bar_label"
-         text_color="LtGray"
+         text_color="0.78 0.72 0.86 1"
          tool_tip="Drag Landmarks here for quick access to your favorite places!"
 	     valign="bottom"
          width="102">
