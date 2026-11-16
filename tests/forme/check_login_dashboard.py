@@ -39,6 +39,22 @@ for name in ("forme_hub_eyebrow", "forme_hub_title", "forme_hub_intro",
 # The welcome area is informational; native credential and login controls remain intact.
 for name in ("username_combo", "password_edit", "start_location_combo", "connect_btn"):
     child(en, name)
+# The workspace rail is a new native XUI surface, not a recolored legacy toolbar.
+sidebar_en = ET.parse(XUI / "en/panel_forme_sidebar.xml").getroot()
+sidebar_ru = ET.parse(XUI / "ru/panel_forme_sidebar.xml").getroot()
+main_view = ET.parse(XUI / "en/main_view.xml").getroot()
+mounted = child(main_view, "forme_workspace_sidebar")
+assert mounted.get("filename") == "panel_forme_sidebar.xml"
+for name in ("forme_sidebar_world", "forme_sidebar_people", "forme_sidebar_inventory",
+             "forme_sidebar_community", "forme_sidebar_market", "forme_sidebar_preferences"):
+    child(sidebar_en, name)
+    child(sidebar_ru, name)
+for name in ("forme_sidebar_world_label", "forme_sidebar_people_label",
+             "forme_sidebar_inventory_label", "forme_sidebar_community_label",
+             "forme_sidebar_market_label"):
+    child(sidebar_en, name)
+    child(sidebar_ru, name)
+
 # Keep the in-world navigation surfaces on the same ForMe theme.
 nav = ET.parse(XUI / "en/panel_navigation_bar.xml").getroot()
 assert nav.get("background_visible") == "true"
