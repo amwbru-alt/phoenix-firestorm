@@ -239,8 +239,9 @@ void FSForMeFittingRoom::changed(U32) { mDirty = true; }
 void FSForMeFittingRoom::draw()
 {
     if (mDirty) rebuild();
+    if (mAvatarPreview) mAvatarPreview->setActive(!isMinimized());
     LLFloater::draw();
-    if (!isMinimized() && mAvatarPreview && mAvatarPreview->needsRender()) drawAvatarPreview();
+    if (mAvatarPreview && mAvatarPreview->needsRender()) drawAvatarPreview();
 }
 void FSForMeFittingRoom::rebuild()
 {
