@@ -142,6 +142,7 @@ def main():
     subprocess.check_call([sys.executable, str(ROOT / 'tests/forme/check_chat_hud.py')])
     subprocess.check_call([sys.executable, str(ROOT / 'tests/forme/check_ui_theme.py')])
     subprocess.check_call([sys.executable, str(ROOT / 'tests/forme/check_login_dashboard.py')])
+    subprocess.check_call([sys.executable, str(ROOT / 'tests/forme/check_inventory_workspace.py')])
     subprocess.check_call([sys.executable, str(ROOT / 'tests/forme/check_window_layouts.py')])
     subprocess.check_call([sys.executable, str(ROOT / 'tests/forme/test_approved_concepts.py')])
     subprocess.check_call([sys.executable, str(ROOT / 'tests/forme/check_chat_names.py')])
