@@ -55,7 +55,10 @@ contains('indra/llui/llconsole.h', 'mBodyColor', 'mPrefixColor', 'mColoredPrefix
 # No viewer-side static role roster: arbitrary valid server roles are supported.
 assert 'Владелец' not in read('indra/newview/fsavatarbadges.h')
 for path in (ROOT/'indra/newview/skins').glob('*/xui/*/*.xml'):
-    ET.parse(path)
+    try:
+        ET.parse(path)
+    except ET.ParseError as error:
+        raise AssertionError(f"Invalid XUI XML: {path}: {error}") from error
 for path in ('indra/newview/Firestorm.xib','indra/newview/SecondLife.xib'):
     ET.parse(ROOT/path)
 print('PASS badge integration boundaries, nametags, both histories, console callback and all XUI XML')
