@@ -9,6 +9,7 @@
 #include "llviewercamera.h"
 #include "llvoavatar.h"
 #include "llvoavatarself.h"
+#include "llfocusmgr.h"
 #include "llviewershadermgr.h"
 #include "llrender.h"
 #include "pipeline.h"
@@ -146,6 +147,8 @@ void FSForMeFittingRoom::onOpen(const LLSD&)
 }
 void FSForMeFittingRoom::onClose(bool)
 {
+    mDraggingPreview = false;
+    if (hasMouseCapture()) gFocusMgr.setMouseCapture(nullptr);
     if (mAvatarPreview) mAvatarPreview->setActive(false);
 }
 void FSForMeFittingRoom::setCameraPreset(F32 preset)
@@ -156,6 +159,61 @@ void FSForMeFittingRoom::adjustCameraZoom(F32 delta)
 {
     if (mAvatarPreview) mAvatarPreview->adjustDistance(delta);
 }
+bool FSForMeFittingRoom::handleMouseDown(S32 x, S32 y, MASK mask)
+{
+    LLView* canvas = getChild<LLView>("avatar_preview_canvas");
+    LLRect canvas_rect;
+    if (canvas && canvas->localRectToOtherView(canvas->getLocalRect(), &canvas_rect, this)
+        && canvas_rect.pointInRect(x, y) && mAvatarPreview)
+    {
+        mDraggingPreview = true;
+        mLastPreviewMouseX = x;
+        gFocusMgr.setMouseCapture(this);
+        bringToFront(x, y);
+        return true;
+    }
+    return LLFloater::handleMouseDown(x, y, mask);
+}
+
+bool FSForMeFittingRoom::handleMouseUp(S32 x, S32 y, MASK mask)
+{
+    if (mDraggingPreview)
+    {
+        mDraggingPreview = false;
+        if (hasMouseCapture())
+        {
+            gFocusMgr.setMouseCapture(nullptr);
+        }
+        return true;
+    }
+    return LLFloater::handleMouseUp(x, y, mask);
+}
+
+bool FSForMeFittingRoom::handleHover(S32 x, S32 y, MASK mask)
+{
+    if (mDraggingPreview && hasMouseCapture() && mAvatarPreview)
+    {
+        const S32 delta_x = x - mLastPreviewMouseX;
+        mLastPreviewMouseX = x;
+        mAvatarPreview->rotate(-static_cast<F32>(delta_x) * 0.012f);
+        return true;
+    }
+    return LLFloater::handleHover(x, y, mask);
+}
+
+bool FSForMeFittingRoom::handleScrollWheel(S32 x, S32 y, S32 clicks)
+{
+    LLView* canvas = getChild<LLView>("avatar_preview_canvas");
+    LLRect canvas_rect;
+    if (canvas && canvas->localRectToOtherView(canvas->getLocalRect(), &canvas_rect, this)
+        && canvas_rect.pointInRect(x, y) && mAvatarPreview)
+    {
+        adjustCameraZoom(-static_cast<F32>(clicks) * 0.22f);
+        return true;
+    }
+    return LLFloater::handleScrollWheel(x, y, clicks);
+}
+
 void FSForMeFittingRoom::drawAvatarPreview()
 {
     if (!mAvatarPreview || !mAvatarPreview->hasGLTexture())
