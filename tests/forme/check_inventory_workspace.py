@@ -69,7 +69,7 @@ fit_ru = ET.parse(XUI / "ru/floater_forme_fitting_room.xml").getroot()
 assert fit_en.tag == "floater" and fit_en.get("name") == "forme_fitting_room"
 assert fit_ru.tag == "floater" and fit_ru.get("name") == "forme_fitting_room"
 for name in ("avatar_stage", "fitting_item_count", "fitting_open_inventory", "worn_filter_all", "worn_filter_clothing", "worn_filter_shape", "worn_filter_skin", "worn_filter_hair", "worn_filter_eyes", "worn_filter_accessories",
-             "wardrobe_surface", "saved_outfits", "fitting_wear_saved", "outfit_name", "fitting_save_outfit", "fitting_status"):
+             "wardrobe_surface", "saved_outfits", "fitting_wear_saved", "compare_outfit_a", "compare_outfit_b", "fitting_compare_outfits", "outfit_name", "fitting_save_outfit", "fitting_status"):
     child(fit_en, name)
 for index in range(16):
     for suffix in ("card", "name", "type", "remove", "thumbnail"):
@@ -80,6 +80,8 @@ assert "LLInventoryObserver" in fit_header
 assert "getDirectDescendentsOf" in fit_cpp and "getCOF()" in fit_cpp
 assert "removeItemFromAvatar" in fit_cpp and "makeNewOutfitLinks" in fit_cpp
 assert "wearInventoryCategoryOnAvatar" in fit_cpp and "FT_MY_OUTFITS" in fit_cpp
+assert "compareOutfits()" in fit_cpp and "getLinkedUUID()" in fit_cpp
+assert "fitting_compare_outfits" in fit_cpp and "compare_outfit_a" in fit_cpp and "compare_outfit_b" in fit_cpp
 assert "matchesCategory" in fit_cpp and "setCategory" in fit_cpp
 assert "worn_filter_shape" in fit_cpp and "worn_filter_skin" in fit_cpp
 assert "worn_filter_hair" in fit_cpp and "worn_filter_eyes" in fit_cpp
@@ -113,6 +115,9 @@ for locale in ("en", "ru"):
     for name in ("worn_filter_all", "worn_filter_clothing", "worn_filter_shape", "worn_filter_skin", "worn_filter_hair", "worn_filter_eyes", "worn_filter_accessories"):
         child(fit_ui, name)
     child(fit_ui, "avatar_preview_loading")
+    child(fit_ui, "compare_outfit_a")
+    child(fit_ui, "compare_outfit_b")
+    child(fit_ui, "fitting_compare_outfits")
     assert canvas.get("width") == "350" and canvas.get("height") == "210"
     for name in ("fitting_camera_front", "fitting_camera_rear", "fitting_camera_three_quarter",
                  "fitting_camera_reset", "fitting_camera_zoom_out", "fitting_camera_zoom_in",
