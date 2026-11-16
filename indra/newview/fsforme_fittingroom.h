@@ -21,5 +21,6 @@ private:
     void removeWornItem(S32 index);
     void saveOutfit();
     std::vector<LLUUID> mWornItems;
+    S32 mSavedOutfitCount = 0;
     bool mDirty = true;
 };
