@@ -4,6 +4,7 @@
 #include "llviewerprecompiledheaders.h"
 #include "fsforme_fittingroom.h"
 #include "llappearancemgr.h"
+#include "llagentcamera.h"
 #include "llbutton.h"
 #include "llcombobox.h"
 #include "llfloaterreg.h"
@@ -30,6 +31,25 @@ bool FSForMeFittingRoom::postBuild()
 {
     gInventory.addObserver(this);
     getChild<LLButton>("fitting_refresh")->setClickedCallback([this](LLUICtrl*, const LLSD&) { mDirty = true; });
+    getChild<LLButton>("fitting_camera_front")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
+        setCameraPreset(CAMERA_PRESET_FRONT_VIEW);
+    });
+    getChild<LLButton>("fitting_camera_rear")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
+        setCameraPreset(CAMERA_PRESET_REAR_VIEW);
+    });
+    getChild<LLButton>("fitting_camera_three_quarter")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
+        setCameraPreset(CAMERA_PRESET_GROUP_VIEW);
+    });
+    getChild<LLButton>("fitting_camera_reset")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
+        setCameraPreset(CAMERA_PRESET_REAR_VIEW);
+        gAgentCamera.setCameraZoomFraction(0.5f);
+    });
+    getChild<LLButton>("fitting_camera_zoom_out")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
+        adjustCameraZoom(-0.12f);
+    });
+    getChild<LLButton>("fitting_camera_zoom_in")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
+        adjustCameraZoom(0.12f);
+    });
     getChild<LLButton>("fitting_open_inventory")->setClickedCallback([](LLUICtrl*, const LLSD&) {
         LLFloaterReg::showInstance("forme_inventory");
     });
@@ -45,7 +65,53 @@ bool FSForMeFittingRoom::postBuild()
         });
     return true;
 }
-void FSForMeFittingRoom::onOpen(const LLSD&) { mDirty = true; }
+void FSForMeFittingRoom::onOpen(const LLSD&)
+{
+    mPreviousCameraMode = static_cast<S32>(gAgentCamera.getCameraMode());
+    mPreviousCameraPreset = static_cast<S32>(gAgentCamera.getCameraPreset());
+    mPreviousCameraZoom = gAgentCamera.getCameraZoomFraction();
+    mCameraStateSaved = true;
+
+    // This is a camera-control bridge to the live world avatar, not an
+    // embedded/off-screen viewport. The independent preview renderer remains
+    // a separate implementation task.
+    gAgentCamera.changeCameraToThirdPerson(true);
+    gAgentCamera.setFocusOnAvatar(true, true);
+    gAgentCamera.switchCameraPreset(CAMERA_PRESET_REAR_VIEW);
+    gAgentCamera.setCameraZoomFraction(0.5f);
+    mDirty = true;
+}
+void FSForMeFittingRoom::onClose(bool app_quitting)
+{
+    restoreCameraState();
+}
+void FSForMeFittingRoom::setCameraPreset(S32 preset)
+{
+    if (!gAgentAvatarp) return;
+    gAgentCamera.changeCameraToThirdPerson(true);
+    gAgentCamera.setFocusOnAvatar(true, true);
+    gAgentCamera.switchCameraPreset(static_cast<ECameraPreset>(preset));
+}
+void FSForMeFittingRoom::adjustCameraZoom(F32 delta)
+{
+    const F32 zoom = gAgentCamera.getCameraZoomFraction();
+    gAgentCamera.setCameraZoomFraction(llclamp(zoom + delta, 0.f, 1.f));
+}
+void FSForMeFittingRoom::restoreCameraState()
+{
+    if (!mCameraStateSaved) return;
+    gAgentCamera.switchCameraPreset(static_cast<ECameraPreset>(mPreviousCameraPreset));
+    switch (static_cast<ECameraMode>(mPreviousCameraMode))
+    {
+        case CAMERA_MODE_MOUSELOOK: gAgentCamera.changeCameraToMouselook(true); break;
+        case CAMERA_MODE_CUSTOMIZE_AVATAR: gAgentCamera.changeCameraToCustomizeAvatar(); break;
+        case CAMERA_MODE_FOLLOW: gAgentCamera.changeCameraToFollow(true); break;
+        case CAMERA_MODE_THIRD_PERSON:
+        default: gAgentCamera.changeCameraToThirdPerson(true); break;
+    }
+    gAgentCamera.setCameraZoomFraction(mPreviousCameraZoom);
+    mCameraStateSaved = false;
+}
 void FSForMeFittingRoom::changed(U32) { mDirty = true; }
 void FSForMeFittingRoom::draw()
 {
