@@ -68,7 +68,7 @@ fit_en = ET.parse(XUI / "en/floater_forme_fitting_room.xml").getroot()
 fit_ru = ET.parse(XUI / "ru/floater_forme_fitting_room.xml").getroot()
 assert fit_en.tag == "floater" and fit_en.get("name") == "forme_fitting_room"
 assert fit_ru.tag == "floater" and fit_ru.get("name") == "forme_fitting_room"
-for name in ("avatar_stage", "fitting_item_count", "fitting_open_inventory",
+for name in ("avatar_stage", "fitting_item_count", "fitting_open_inventory", "worn_filter_all", "worn_filter_clothing", "worn_filter_body", "worn_filter_accessories",
              "wardrobe_surface", "saved_outfits", "fitting_wear_saved", "outfit_name", "fitting_save_outfit", "fitting_status"):
     child(fit_en, name)
 for index in range(16):
@@ -80,6 +80,8 @@ assert "LLInventoryObserver" in fit_header
 assert "getDirectDescendentsOf" in fit_cpp and "getCOF()" in fit_cpp
 assert "removeItemFromAvatar" in fit_cpp and "makeNewOutfitLinks" in fit_cpp
 assert "wearInventoryCategoryOnAvatar" in fit_cpp and "FT_MY_OUTFITS" in fit_cpp
+assert "matchesCategory" in fit_cpp and "setCategory" in fit_cpp
+assert "worn_filter_body" in fit_cpp and "worn_filter_accessories" in fit_cpp
 assert 'showInstance("forme_inventory")' in fit_cpp
 assert '#include "lldynamictexture.h"' in fit_cpp
 assert "LLViewerDynamicTexture(512, 307" in fit_cpp
