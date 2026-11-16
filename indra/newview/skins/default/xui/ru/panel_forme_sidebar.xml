@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<panel name="forme_sidebar">
+  <text name="forme_sidebar_brand">fm</text>
+  <button name="forme_sidebar_world" tool_tip="Карта мира"/>
+  <text name="forme_sidebar_world_label">Мир</text>
+  <button name="forme_sidebar_people" tool_tip="Люди"/>
+  <text name="forme_sidebar_people_label">Люди</text>
+  <button name="forme_sidebar_inventory" tool_tip="Инвентарь"/>
+  <text name="forme_sidebar_inventory_label">Инвентарь</text>
+  <button name="forme_sidebar_community" tool_tip="Группы и сообщества"/>
+  <text name="forme_sidebar_community_label">Сообщество</text>
+  <button name="forme_sidebar_market" tool_tip="Маркетплейс"/>
+  <text name="forme_sidebar_market_label">Маркет</text>
+  <button name="forme_sidebar_preferences" tool_tip="Настройки"/>
+</panel>
