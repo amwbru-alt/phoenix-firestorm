@@ -81,6 +81,10 @@ assert "getDirectDescendentsOf" in fit_cpp and "getCOF()" in fit_cpp
 assert "removeItemFromAvatar" in fit_cpp and "makeNewOutfitLinks" in fit_cpp
 assert "wearInventoryCategoryOnAvatar" in fit_cpp and "FT_MY_OUTFITS" in fit_cpp
 assert "fitting_move_saved_to_trash" in fit_cpp and "gInventory.removeCategory(outfit_id)" in fit_cpp
+assert "compareInsensitive" in fit_cpp and "sorted_outfits" in fit_cpp
+assert "const S32 item_count" in fit_cpp and "std::to_string(item_count)" in fit_cpp
+assert "Образ с таким названием уже существует" in fit_cpp
+assert "Выбранный образ недоступен" in fit_cpp
 assert "outfit->getParentUUID() != outfits_root" in fit_cpp
 assert "compareOutfits()" in fit_cpp and "getLinkedUUID()" in fit_cpp
 assert "setCurrentByID(previous_outfit)" in fit_cpp
