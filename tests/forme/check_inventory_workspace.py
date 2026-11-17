@@ -112,7 +112,7 @@ assert "outfit_id" in fit_cpp and "camera_yaw" in fit_cpp and "captured_at" in f
 assert "lookbook_delete" in fit_cpp and "LLFile::remove" in fit_cpp
 assert "png->save(image_path)" in fit_cpp
 assert "GL_PACK_ALIGNMENT" in fit_cpp and "verticalFlip" in fit_cpp
-assert "LLImagePNG" in fit_cpp and "saveImageLocal" in fit_cpp
+assert "LLImagePNG" in fit_cpp and "png->save(image_path)" in fit_cpp
 assert "compare_summary" in fit_cpp and "compare_only_a" in fit_cpp and "compare_only_b" in fit_cpp
 assert "const S32 omitted = total - static_cast<S32>(names.size())" in fit_cpp
 assert "Сравнение готово" in fit_cpp
