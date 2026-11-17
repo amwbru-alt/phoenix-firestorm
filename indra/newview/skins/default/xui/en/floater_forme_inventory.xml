@@ -45,7 +45,7 @@
     <button name="category_animations" layout="topleft" left="6" top="470" width="76" height="54" label="◷\nЭмоции" font="SansSerifSmall" text_color="0.82 0.70 0.94 1" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
     <button name="category_recent" layout="topleft" left="6" top="536" width="76" height="44" label="♧\nДругое" font="SansSerifSmall" text_color="0.82 0.70 0.94 1" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
     <button name="category_all" layout="topleft" left="6" top="586" width="76" height="42" label="Все вещи" font="SansSerifSmall" text_color="0.82 0.70 0.94 1" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
-  <button name="category_favorites" visible="false" label="Избранное"/><button name="category_all" visible="false" label="Все вещи"/><text name="inventory_count" layout="topleft" left="24" top="790" width="80" height="40" wrap="true" text_color="0.82 0.70 0.94 1">Покупки</text>
+  <button name="category_favorites" visible="false" label="Избранное"/><text name="inventory_count" layout="topleft" left="24" top="790" width="80" height="40" wrap="true" text_color="0.82 0.70 0.94 1">Покупки</text>
   </panel>
   <panel name="items_surface" layout="topleft" left="610" top="96" width="700" height="790" background_visible="true" bg_alpha_image="Forme_Round_Window" bg_alpha_color="White">
     <text name="items_heading" layout="topleft" left="16" top="14" width="240" height="24" font="SansSerifBold">Инвентарь</text>
