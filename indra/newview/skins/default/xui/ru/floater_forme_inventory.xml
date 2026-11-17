@@ -10,7 +10,15 @@
 
   <search_editor name="query" layout="topleft" left="662" top="144" width="500" height="30" label="Поиск по предметам…"/>
   <button name="refresh" layout="topleft" left="1170" top="144" width="36" height="30" label="↻"/>
-  <panel name="avatar_stage"><text name="avatar_heading">ВАШ АВАТАР</text><panel name="avatar_preview_canvas"/><text name="avatar_preview_loading">Загрузка 3D-аватара…</text><text name="avatar_hint">Перетащите мышью для поворота · колесо — масштаб</text><button name="avatar_reset" label="Сброс"/></panel>
+  <panel name="avatar_stage"><text name="avatar_heading">ВАШ АВАТАР</text><panel name="avatar_preview_canvas"/>
+    <panel name="avatar_camera_controls">
+      <button name="camera_front" label="◉" tool_tip="Вид спереди"/>
+      <button name="camera_side" label="↻" tool_tip="Вид сбоку"/>
+      <button name="camera_back" label="↺" tool_tip="Вид сзади"/>
+      <button name="camera_zoom_in" label="+" tool_tip="Приблизить"/>
+      <button name="camera_zoom_out" label="−" tool_tip="Отдалить"/>
+    </panel>
+    <text name="avatar_preview_loading">Загрузка 3D-аватара…</text><text name="avatar_hint">Перетащите мышью для поворота · колесо — масштаб</text><button name="avatar_reset" label="Сброс"/></panel>
   <panel name="category_rail">
     <text name="category_heading">КАТЕГОРИИ</text>
     <button name="category_all" label="Все предметы"/>
