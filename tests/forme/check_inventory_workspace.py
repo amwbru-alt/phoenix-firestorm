@@ -102,6 +102,9 @@ assert "setCurrentByID(previous_outfit)" in fit_cpp
 assert "setCurrentByID(previous_compare_a)" in fit_cpp and "setCurrentByID(previous_compare_b)" in fit_cpp
 assert "std::set<LLUUID>" in fit_cpp
 assert "collect_names" in fit_cpp and "only_first_names" in fit_cpp and "only_second_names" in fit_cpp
+assert 'getTypedInstance<LLFloaterSnapshot>("snapshot")' in fit_cpp
+assert "llfloatersnapshot.h" in fit_cpp
+assert "отдельный захват preview-рендера пока не подключён" in fit_cpp
 assert "compare_summary" in fit_cpp and "compare_only_a" in fit_cpp and "compare_only_b" in fit_cpp
 assert "const S32 omitted = total - static_cast<S32>(names.size())" in fit_cpp
 assert "Сравнение готово" in fit_cpp
@@ -147,6 +150,7 @@ for locale in ("en", "ru"):
     child(fit_ui, "compare_outfit_a")
     child(fit_ui, "compare_outfit_b")
     child(fit_ui, "fitting_compare_outfits")
+    child(fit_ui, "fitting_open_photo_studio")
     child(fit_ui, "compare_summary")
     child(fit_ui, "compare_only_a")
     child(fit_ui, "compare_only_b")
