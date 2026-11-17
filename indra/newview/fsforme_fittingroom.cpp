@@ -514,7 +514,10 @@ void FSForMeFittingRoom::compareOutfits()
     const LLUUID second_id = getChild<LLComboBox>("compare_outfit_b")->getSelectedValue().asUUID();
     if (first_id.isNull() || second_id.isNull() || first_id == second_id)
     {
-        getChild<LLTextBox>("fitting_status")->setText("Выберите два разных сохранённых образа для сравнения.");
+        getChild<LLTextBox>("compare_summary")->setText("Выберите два разных сохранённых образа.");
+        getChild<LLTextBox>("compare_only_a")->setText("");
+        getChild<LLTextBox>("compare_only_b")->setText("");
+        getChild<LLTextBox>("fitting_status")->setText("Сравнение не выполнено.");
         return;
     }
     auto collect_items = [](const LLUUID& outfit_id, std::set<LLUUID>& item_ids)
@@ -535,7 +538,10 @@ void FSForMeFittingRoom::compareOutfits()
     collect_items(second_id, second_items);
     if (first_items.empty() && second_items.empty())
     {
-        getChild<LLTextBox>("fitting_status")->setText("В выбранных образах пока нет загруженных предметов для сравнения.");
+        getChild<LLTextBox>("compare_summary")->setText("В выбранных образах пока нет предметов для сравнения.");
+        getChild<LLTextBox>("compare_only_a")->setText("");
+        getChild<LLTextBox>("compare_only_b")->setText("");
+        getChild<LLTextBox>("fitting_status")->setText("Сравнение не выполнено.");
         return;
     }
     S32 shared = 0;
@@ -566,13 +572,26 @@ void FSForMeFittingRoom::compareOutfits()
     const auto* second = gInventory.getCategory(second_id);
     const std::string first_name = first ? first->getName() : "Образ A";
     const std::string second_name = second ? second->getName() : "Образ B";
-    getChild<LLTextBox>("fitting_status")->setText(
-        first_name + " / " + second_name + ": общих " + std::to_string(shared)
-        + ", только в A " + std::to_string(only_first) + ", только в B " + std::to_string(only_second)
-        + " предметов. A: " + (only_first_names.empty() ? "—" : only_first_names.front())
-        + ". B: " + (only_second_names.empty() ? "—" : only_second_names.front())
-        + (only_first_names.size() > 1 ? " (+" + std::to_string(only_first_names.size() - 1) + ")" : "")
-        + (only_second_names.size() > 1 ? " (+" + std::to_string(only_second_names.size() - 1) + ")" : ""));
+    auto format_names = [](const std::vector<std::string>& names, S32 total)
+    {
+        if (total == 0) return std::string("Нет уникальных предметов");
+        std::string result;
+        for (const auto& name : names)
+        {
+            if (!result.empty()) result += ", ";
+            result += name;
+        }
+        const S32 omitted = total - static_cast<S32>(names.size());
+        if (omitted > 0) result += " и ещё " + std::to_string(omitted);
+        return result;
+    };
+    getChild<LLTextBox>("compare_summary")->setText(
+        first_name + " / " + second_name + " · общих: " + std::to_string(shared)
+        + " · уникальных в A: " + std::to_string(only_first)
+        + " · уникальных в B: " + std::to_string(only_second));
+    getChild<LLTextBox>("compare_only_a")->setText("Только в A: " + format_names(only_first_names, only_first));
+    getChild<LLTextBox>("compare_only_b")->setText("Только в B: " + format_names(only_second_names, only_second));
+    getChild<LLTextBox>("fitting_status")->setText("Сравнение готово: " + first_name + " и " + second_name + ".");
 }
 
 void FSForMeFittingRoom::saveOutfit()
