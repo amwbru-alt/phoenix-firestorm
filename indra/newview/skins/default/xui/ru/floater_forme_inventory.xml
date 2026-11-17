@@ -3,6 +3,7 @@
   <text name="eyebrow">МИР FORME / ЛИЧНОЕ ПРОСТРАНСТВО</text>
   <text name="title">Инвентарь</text>
   <search_editor name="query" label="Поиск по предметам…"/>
+  <panel name="avatar_stage"><text name="avatar_heading">ВАШ АВАТАР</text><panel name="avatar_preview_canvas"/><text name="avatar_preview_loading">Загрузка 3D-аватара…</text><text name="avatar_hint">Перетащите мышью для поворота · колесо — масштаб</text><button name="avatar_reset" label="Сброс"/></panel>
   <panel name="category_rail">
     <text name="category_heading">КАТЕГОРИИ</text>
     <button name="category_all" label="Все предметы"/>
