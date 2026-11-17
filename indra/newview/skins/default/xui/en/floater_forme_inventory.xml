@@ -52,7 +52,7 @@
     <text name="inventory_count" layout="topleft" left="16" top="44" width="240" height="20" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">Загрузка…</text>
 
     <button name="all_items_tab" layout="topleft" left="236" top="10" width="112" height="30" label="● Все вещи" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"/>
-    <button name="purchased_tab" layout="topleft" left="354" top="10" width="124" height="30" label="Купленные" enabled="false" image_unselected="Forme_WMap_Clear"/>
+    <button name="purchased_tab" layout="topleft" left="354" top="10" width="124" height="30" label="Recent" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
     <button name="favorites_tab" layout="topleft" left="484" top="10" width="122" height="30" label="☆ Избранное" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent"/>
     <button name="folder_back" layout="topleft" left="620" top="10" width="42" height="28" label="↶" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
     <scroll_container name="items_scroll" layout="topleft" left="10" top="86" width="680" height="640" opaque="false" reserve_scroll_corner="true">
