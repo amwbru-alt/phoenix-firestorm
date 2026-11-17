@@ -375,6 +375,7 @@ void FSForMeInventoryBrowser::selectItem(const LLUUID& id)
     mRecentItems.insert(mRecentItems.begin(), id);
     if (mRecentItems.size() > 50) mRecentItems.resize(50);
     getChild<LLButton>("detail_favorite")->setLabel(get_is_favorite(id) ? "Убрать из избранного" : "В избранное");
+    getChild<LLButton>("detail_favorite")->setToggleState(get_is_favorite(id));
     getChild<LLTextBox>("detail_name")->setText(item->getName());
     getChild<LLTextBox>("detail_type")->setText(item->getType() == LLAssetType::AT_CLOTHING ? "Одежда" :
         item->getType() == LLAssetType::AT_BODYPART ? "Часть тела" : item->getType() == LLAssetType::AT_OBJECT ? "Объект / аксессуар" : "Предмет инвентаря");
@@ -394,7 +395,12 @@ void FSForMeInventoryBrowser::selectItem(const LLUUID& id)
     {
         const S32 index = mPage * CARD_COUNT + i;
         if (index < static_cast<S32>(mVisibleItems.size()))
-            getChild<LLButton>("item_select_" + std::to_string(i))->setLabel(mVisibleItems[index] == id ? "Выбрано" : "Выбрать");
+        {
+            LLButton* select_button = getChild<LLButton>("item_select_" + std::to_string(i));
+            const bool selected = mVisibleItems[index] == id;
+            select_button->setLabel(selected ? "✦ Выбрано" : "Выбрать");
+            select_button->setToggleState(selected);
+        }
     }
 }
 void FSForMeInventoryBrowser::applySelected()
