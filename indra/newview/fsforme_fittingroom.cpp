@@ -24,6 +24,7 @@
 #include "llinventoryicon.h"
 #include "llviewerinventory.h"
 #include <set>
+#include <algorithm>
 class FSForMeAvatarPreview final : public LLViewerDynamicTexture
 {
 public:
@@ -139,6 +140,13 @@ bool FSForMeFittingRoom::postBuild()
             setCategory(value);
         });
     getChild<LLButton>("fitting_refresh")->setClickedCallback([this](LLUICtrl*, const LLSD&) { mDirty = true; });
+    getChild<LLButton>("worn_page_previous")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
+        if (mWornPage > 0) { --mWornPage; mDirty = true; }
+    });
+    getChild<LLButton>("worn_page_next")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
+        const S32 page_count = (static_cast<S32>(mWornItems.size()) + WORN_ITEM_SLOTS - 1) / WORN_ITEM_SLOTS;
+        if (mWornPage + 1 < page_count) { ++mWornPage; mDirty = true; }
+    });
     getChild<LLButton>("fitting_camera_front")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
         setCameraPreset(3.14159265f);
     });
@@ -354,12 +362,16 @@ void FSForMeFittingRoom::rebuild()
     if (items)
         for (const auto& item : *items)
             if (item.notNull() && item->getIsLinkType() && matchesCategory(item)) mWornItems.push_back(item->getUUID());
+    const S32 page_count = std::max(1, (static_cast<S32>(mWornItems.size()) + WORN_ITEM_SLOTS - 1) / WORN_ITEM_SLOTS);
+    mWornPage = llclamp(mWornPage, 0, page_count - 1);
+    const S32 page_start = mWornPage * WORN_ITEM_SLOTS;
     for (S32 i = 0; i < WORN_ITEM_SLOTS; ++i)
     {
-        const bool present = i < static_cast<S32>(mWornItems.size());
+        const S32 item_index = page_start + i;
+        const bool present = item_index < static_cast<S32>(mWornItems.size());
         getChild<LLPanel>("worn_card_" + std::to_string(i))->setVisible(present);
         if (!present) continue;
-        const auto* item = gInventory.getItem(mWornItems[i]);
+        const auto* item = gInventory.getItem(mWornItems[item_index]);
         if (!item) continue;
         const auto suffix = std::to_string(i);
         const auto icon_name = LLInventoryIcon::getIconName(item->getType(), item->getInventoryType(), item->getFlags());
@@ -368,7 +380,10 @@ void FSForMeFittingRoom::rebuild()
         getChild<LLTextBox>("worn_name_" + suffix)->setText(item->getName());
         getChild<LLTextBox>("worn_type_" + std::to_string(i))->setText(fittingItemType(item));
     }
-    getChild<LLTextBox>("fitting_item_count")->setText(std::to_string(mWornItems.size()) + " предметов в категории" + (mWornItems.size() > WORN_ITEM_SLOTS ? " · показаны первые 16" : ""));
+    getChild<LLTextBox>("fitting_item_count")->setText(std::to_string(mWornItems.size()) + " предметов в категории");
+    getChild<LLTextBox>("worn_page_label")->setText(std::to_string(mWornPage + 1) + " / " + std::to_string(page_count));
+    getChild<LLButton>("worn_page_previous")->setEnabled(mWornPage > 0);
+    getChild<LLButton>("worn_page_next")->setEnabled(mWornPage + 1 < page_count);
     getChild<LLButton>("worn_filter_all")->setToggleState(mCategory == "all");
     getChild<LLButton>("worn_filter_clothing")->setToggleState(mCategory == "clothing");
     getChild<LLButton>("worn_filter_shape")->setToggleState(mCategory == "shape");
@@ -382,8 +397,9 @@ void FSForMeFittingRoom::rebuild()
 }
 void FSForMeFittingRoom::removeWornItem(S32 index)
 {
-    if (index < 0 || index >= static_cast<S32>(mWornItems.size())) return;
-    LLAppearanceMgr::instance().removeItemFromAvatar(mWornItems[index]);
+    const S32 item_index = mWornPage * WORN_ITEM_SLOTS + index;
+    if (index < 0 || index >= WORN_ITEM_SLOTS || item_index >= static_cast<S32>(mWornItems.size())) return;
+    LLAppearanceMgr::instance().removeItemFromAvatar(mWornItems[item_index]);
     mDirty = true;
 }
 
