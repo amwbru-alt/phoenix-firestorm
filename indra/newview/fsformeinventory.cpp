@@ -320,7 +320,10 @@ void FSForMeInventoryBrowser::rebuild()
     {
         const std::string key = entry.first;
         const std::string value = key == "category_all" ? "all" : key.substr(9);
-        getChild<LLButton>(entry.first)->setLabel(mCategory == value ? std::string("✦ ") + entry.second : entry.second);
+        LLButton* category_button = getChild<LLButton>(entry.first);
+        const bool active = mCategory == value;
+        category_button->setToggleState(active);
+        category_button->setLabel(active ? std::string("✦ ") + entry.second : entry.second);
     }
     getChild<LLTextBox>("page")->setText(std::to_string(mPage + 1) + " / " + std::to_string(pages));
     getChild<LLButton>("folder_back")->setEnabled(mFolder.notNull() && mFolder != gInventory.getRootFolderID());
