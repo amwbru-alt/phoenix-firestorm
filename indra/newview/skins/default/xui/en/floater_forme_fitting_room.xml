@@ -3,7 +3,7 @@
   <text name="eyebrow" layout="topleft" left="22" top="18" width="650" height="18" font="SansSerifSmall" text_color="0.72 0.55 0.88 1">FORME WORLD / PERSONAL STYLE</text>
   <text name="title" layout="topleft" left="22" top="42" width="420" height="36" font="SansSerifLarge" font.style="BOLD">Примерочная</text>
   <button name="fitting_refresh" layout="topleft" left="908" top="42" width="42" height="32" label="↻" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
-  <panel name="avatar_stage" layout="topleft" left="18" top="96" width="400" height="580" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
+  <panel name="avatar_stage" layout="topleft" left="18" top="96" width="400" height="630" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
     <text name="stage_eyebrow" layout="topleft" left="20" top="18" width="350" height="20" font="SansSerifSmall" text_color="0.72 0.55 0.88 1">LIVE AVATAR</text>
     <text name="stage_title" layout="topleft" left="20" top="48" width="350" height="34" font="SansSerifLarge" font.style="BOLD">Текущий образ</text>
     <text name="stage_description" layout="topleft" left="20" top="88" width="350" height="30" wrap="true" text_color="0.76 0.73 0.80 1">Independent 3D view · changes do not move the world camera</text>
@@ -11,7 +11,7 @@
     <text name="avatar_preview_loading" layout="topleft" left="34" top="220" width="320" height="22" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">Preparing avatar preview…</text>
     <text name="camera_heading" layout="topleft" left="20" top="340" width="350" height="18" font="SansSerifBold">PREVIEW CAMERA</text>
     <button name="fitting_camera_front" layout="topleft" left="20" top="362" width="78" height="30" label="Front" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
-    <button name="fitting_capture_preview" layout="topleft" left="20" top="304" width="350" height="28" label="Capture 3D fitting room" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"/>
+    <button name="fitting_capture_preview" layout="topleft" left="20" top="466" width="350" height="30" label="Capture 3D fitting room" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"/>
     <button name="fitting_camera_rear" layout="topleft" left="104" top="362" width="78" height="30" label="Back" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
     <button name="fitting_camera_three_quarter" layout="topleft" left="188" top="362" width="86" height="30" label="3/4 view" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
     <button name="fitting_camera_reset" layout="topleft" left="280" top="362" width="70" height="30" label="Reset" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
@@ -21,13 +21,13 @@
     <button name="fitting_camera_rotate_right" layout="topleft" left="142" top="398" width="34" height="28" label="↷" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
     <text name="camera_zoom_hint" layout="topleft" left="190" top="402" width="158" height="20" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">Drag · wheel to zoom</text>
     <text name="fitting_item_count" layout="topleft" left="20" top="434" width="350" height="26" font="SansSerifBold">Загрузка образа…</text>
-    <button name="fitting_open_inventory" layout="topleft" left="20" top="466" width="350" height="36" label="Открыть гардероб" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
-    <combo_box name="saved_outfits" layout="topleft" left="20" top="510" width="350" height="28" allow_text_entry="false"/>
-    <button name="fitting_wear_saved" layout="topleft" left="20" top="544" width="222" height="30" label="Надеть сохранённый образ" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
-    <button name="fitting_move_saved_to_trash" layout="topleft" left="250" top="544" width="120" height="30" label="Move to Trash" enabled="false" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"/>
-    <text name="saved_outfit_details" layout="topleft" left="20" top="616" width="350" height="42" wrap="true" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">Select a saved look to inspect its contents.</text>
-    <line_editor name="saved_outfit_filter" layout="topleft" left="20" top="584" width="280" height="28" label="Search saved looks…"/>
-    <button name="saved_outfit_filter_clear" layout="topleft" left="308" top="584" width="62" height="28" label="Clear" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"/>
+    <button name="fitting_open_inventory" layout="topleft" left="20" top="500" width="350" height="36" label="Открыть гардероб" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    <combo_box name="saved_outfits" layout="topleft" left="20" top="544" width="350" height="28" allow_text_entry="false"/>
+    <button name="fitting_wear_saved" layout="topleft" left="20" top="578" width="222" height="30" label="Надеть сохранённый образ" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
+    <button name="fitting_move_saved_to_trash" layout="topleft" left="250" top="578" width="120" height="30" label="Move to Trash" enabled="false" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"/>
+    <text name="saved_outfit_details" layout="topleft" left="20" top="650" width="350" height="42" wrap="true" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">Select a saved look to inspect its contents.</text>
+    <line_editor name="saved_outfit_filter" layout="topleft" left="20" top="618" width="280" height="28" label="Search saved looks…"/>
+    <button name="saved_outfit_filter_clear" layout="topleft" left="308" top="618" width="62" height="28" label="Clear" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"/>
     
   </panel>
   <panel name="wardrobe_surface" layout="topleft" left="430" top="96" width="532" height="620" background_visible="true" bg_alpha_image="Forme_Round_Window" bg_alpha_color="White">
