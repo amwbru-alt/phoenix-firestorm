@@ -36,6 +36,7 @@ public:
     FSForMeInventoryAvatarPreview() : LLViewerDynamicTexture(640, 760, 3, ORDER_MIDDLE, false) {}
     bool needsRender() override { return mActive; }
     void setActive(bool active) { mActive = active; }
+    void setYaw(F32 yaw) { mYaw = yaw; }
     void rotate(F32 delta) { mYaw += delta; }
     void tilt(F32 delta) { mElevation = llclamp(mElevation + delta, -0.35f, 0.65f); }
     void zoom(F32 delta) { mDistance = llclamp(mDistance + delta, 1.8f, 7.0f); }
@@ -102,6 +103,21 @@ bool FSForMeInventoryBrowser::postBuild()
     getChild<LLButton>("avatar_reset")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
         if (mAvatarPreview) mAvatarPreview->reset();
     });
+    getChild<LLButton>("camera_front")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
+        if (mAvatarPreview) mAvatarPreview->setYaw(0.f);
+    });
+    getChild<LLButton>("camera_side")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
+        if (mAvatarPreview) mAvatarPreview->setYaw(1.5707963f);
+    });
+    getChild<LLButton>("camera_back")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
+        if (mAvatarPreview) mAvatarPreview->setYaw(3.1415926f);
+    });
+    getChild<LLButton>("camera_zoom_in")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
+        if (mAvatarPreview) mAvatarPreview->zoom(-0.25f);
+    });
+    getChild<LLButton>("camera_zoom_out")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
+        if (mAvatarPreview) mAvatarPreview->zoom(0.25f);
+    });
     getChild<LLButton>("all_items_tab")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
         mCategory = "all"; mPage = 0; mDirty = true;
     });
@@ -164,6 +180,7 @@ bool FSForMeInventoryBrowser::handleMouseDown(S32 x, S32 y, MASK mask)
     {
         mDraggingPreview = true;
         mLastPreviewMouseX = x;
+        mLastPreviewMouseY = y;
         gFocusMgr.setMouseCapture(this);
         bringToFront(x, y);
         return true;
@@ -184,9 +201,12 @@ bool FSForMeInventoryBrowser::handleHover(S32 x, S32 y, MASK mask)
 {
     if (mDraggingPreview && hasMouseCapture() && mAvatarPreview)
     {
-        const S32 delta = x - mLastPreviewMouseX;
+        const S32 delta_x = x - mLastPreviewMouseX;
+        const S32 delta_y = y - mLastPreviewMouseY;
         mLastPreviewMouseX = x;
-        mAvatarPreview->rotate(-static_cast<F32>(delta) * 0.012f);
+        mLastPreviewMouseY = y;
+        mAvatarPreview->rotate(-static_cast<F32>(delta_x) * 0.012f);
+        mAvatarPreview->tilt(-static_cast<F32>(delta_y) * 0.008f);
         return true;
     }
     return LLFloater::handleHover(x, y, mask);
