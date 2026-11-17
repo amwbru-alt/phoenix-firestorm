@@ -36,6 +36,7 @@ private:
     void drawAvatarPreview();
     std::vector<LLUUID> mWornItems;
     S32 mSavedOutfitCount = 0;
+    S32 mWornPage = 0;
     bool mDirty = true;
     std::string mCategory = "all";
     FSForMeAvatarPreview* mAvatarPreview = nullptr;
