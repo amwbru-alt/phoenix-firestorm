@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <floater name="forme_inventory" title="Инвентарь ForMe">
-  <text name="eyebrow">МИР FORME / ЛИЧНОЕ ПРОСТРАНСТВО</text>
-  <text name="title">Инвентарь</text>
-  <search_editor name="query" label="Поиск по предметам…"/>
-  <button name="refresh" label="Обновить"/>
+  <text name="eyebrow" layout="topleft" left="20" top="18" width="200" height="20" font="SansSerifLarge" font.style="BOLD" text_color="0.88 0.62 1 1">✦ ForMe</text>
+  <text name="top_nav_0" layout="topleft" left="340" top="24" width="110" height="24" font="SansSerif" text_color="0.68 0.62 0.74 1" halign="center">Главная</text>
+  <text name="top_nav_1" layout="topleft" left="472" top="24" width="110" height="24" font="SansSerif" text_color="0.68 0.62 0.74 1" halign="center">Мир</text>
+  <text name="top_nav_2" layout="topleft" left="604" top="24" width="110" height="24" font="SansSerif" text_color="0.68 0.62 0.74 1" halign="center">Магазин</text>
+  <text name="top_nav_3" layout="topleft" left="736" top="24" width="110" height="24" font="SansSerifBold" text_color="0.88 0.62 1 1" halign="center">Инвентарь</text>
+  <text name="top_nav_4" layout="topleft" left="868" top="24" width="110" height="24" font="SansSerif" text_color="0.68 0.62 0.74 1" halign="center">Друзья</text>
+  <text name="top_nav_5" layout="topleft" left="1000" top="24" width="110" height="24" font="SansSerif" text_color="0.68 0.62 0.74 1" halign="center">Чаты</text>
   <panel name="avatar_stage"><text name="avatar_heading">ВАШ АВАТАР</text><panel name="avatar_preview_canvas"/><text name="avatar_preview_loading">Загрузка 3D-аватара…</text><text name="avatar_hint">Перетащите мышью для поворота · колесо — масштаб</text><button name="avatar_reset" label="Сброс"/></panel>
   <button name="all_items_tab" label="Все вещи"/><button name="purchased_tab" label="Купленные" enabled="false"/><button name="favorites_tab" label="Избранное"/>
   <panel name="category_rail">
