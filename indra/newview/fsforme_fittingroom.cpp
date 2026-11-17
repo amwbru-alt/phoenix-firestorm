@@ -578,6 +578,7 @@ void FSForMeFittingRoom::selectLookbookPhoto(const std::string& id)
     {
         if ((*it)["id"].asString() != id) continue;
         mSelectedLookbookId = id;
+        mLookbookCompareMode = false;
         getChild<LLLineEditor>("lookbook_title")->setText(
             (*it)["title"].asString().empty() ? (*it)["outfit_name"].asString() : (*it)["title"].asString());
         getChild<LLLineEditor>("lookbook_notes")->setText((*it)["notes"].asString());
