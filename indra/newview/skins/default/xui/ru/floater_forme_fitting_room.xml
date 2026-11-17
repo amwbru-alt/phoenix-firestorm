@@ -62,18 +62,24 @@
       </panel>
     </scroll_container>
   </panel>
-  <panel name="save_surface" layout="topleft" left="18" top="678" width="944" height="50" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
-    <line_editor name="outfit_name" layout="topleft" left="8" top="11" width="145" height="28" label="Название образа…"/>
-    <button name="fitting_save_outfit" layout="topleft" left="158" top="11" width="100" height="28" label="Сохранить" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
-    <text name="fitting_status" layout="topleft" left="264" top="16" width="118" height="20" use_ellipses="true" parse_urls="false" font="SansSerifSmall" text_color="0.76 0.73 0.80 1"/>
-    <button name="lookbook_thumb_0" layout="topleft" left="386" top="5" width="64" height="40" label="" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
-    <button name="lookbook_thumb_1" layout="topleft" left="454" top="5" width="64" height="40" label="" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
-    <button name="lookbook_thumb_2" layout="topleft" left="522" top="5" width="64" height="40" label="" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
-    <button name="lookbook_thumb_3" layout="topleft" left="590" top="5" width="64" height="40" label="" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
-    <button name="lookbook_prev" layout="topleft" left="658" top="11" width="28" height="28" label="‹" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" enabled="false"/>
-    <text name="lookbook_page_label" layout="topleft" left="687" top="16" width="42" height="18" halign="center" font="SansSerifSmall">0 / 0</text>
-    <button name="lookbook_next" layout="topleft" left="731" top="11" width="28" height="28" label="›" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" enabled="false"/>
-    <button name="lookbook_view_avatar" layout="topleft" left="764" top="11" width="78" height="28" label="3D вид" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"/>
-    <button name="lookbook_delete" layout="topleft" left="846" top="11" width="88" height="28" label="Удалить" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" enabled="false"/>
+  <panel name="save_surface" layout="topleft" left="18" top="622" width="944" height="106" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
+    <line_editor name="lookbook_title" layout="topleft" left="8" top="8" width="166" height="26" label="Название фотографии…"/>
+    <combo_box name="lookbook_category" layout="topleft" left="180" top="8" width="126" height="26" allow_text_entry="true"/>
+    <line_editor name="lookbook_notes" layout="topleft" left="310" top="8" width="330" height="26" label="Заметки к образу…"/>
+    <button name="lookbook_save_metadata" layout="topleft" left="646" top="8" width="82" height="26" label="Сохранить" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" enabled="false"/>
+    <text name="fitting_status" layout="topleft" left="734" top="12" width="202" height="20" use_ellipses="true" parse_urls="false" font="SansSerifSmall" text_color="0.76 0.73 0.80 1"/>
+    <button name="lookbook_thumb_0" layout="topleft" left="8" top="60" width="64" height="40" label="" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
+    <button name="lookbook_thumb_1" layout="topleft" left="76" top="60" width="64" height="40" label="" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
+    <button name="lookbook_thumb_2" layout="topleft" left="144" top="60" width="64" height="40" label="" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
+    <button name="lookbook_thumb_3" layout="topleft" left="212" top="60" width="64" height="40" label="" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
+    <button name="lookbook_prev" layout="topleft" left="282" top="66" width="28" height="28" label="‹" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" enabled="false"/>
+    <text name="lookbook_page_label" layout="topleft" left="312" top="72" width="42" height="18" halign="center" font="SansSerifSmall">0 / 0</text>
+    <button name="lookbook_next" layout="topleft" left="356" top="66" width="28" height="28" label="›" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" enabled="false"/>
+    <button name="lookbook_compare_a" layout="topleft" left="392" top="66" width="48" height="28" label="A ←" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" enabled="false"/>
+    <button name="lookbook_compare_b" layout="topleft" left="444" top="66" width="48" height="28" label="B ←" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" enabled="false"/>
+    <button name="lookbook_compare" layout="topleft" left="498" top="66" width="76" height="28" label="Сравнить" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"/>
+    <button name="lookbook_view_avatar" layout="topleft" left="580" top="66" width="76" height="28" label="3D вид" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"/>
+    <button name="lookbook_delete" layout="topleft" left="662" top="66" width="88" height="28" label="Удалить" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" enabled="false"/>
+    <text name="lookbook_compare_slots" layout="topleft" left="760" top="72" width="176" height="18" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">A / B — выбранные фото</text>
   </panel>
 </floater>
