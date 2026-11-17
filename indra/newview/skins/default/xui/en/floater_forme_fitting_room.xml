@@ -63,11 +63,14 @@
     </scroll_container>
   </panel>
   <panel name="save_surface" layout="topleft" left="18" top="622" width="944" height="106" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
-    <line_editor name="lookbook_title" layout="topleft" left="8" top="8" width="166" height="26" label="Photo title…"/>
-    <combo_box name="lookbook_category" layout="topleft" left="180" top="8" width="126" height="26" allow_text_entry="true"/>
-    <line_editor name="lookbook_notes" layout="topleft" left="310" top="8" width="330" height="26" label="Notes about this look…"/>
-    <button name="lookbook_save_metadata" layout="topleft" left="646" top="8" width="82" height="26" label="Save info" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" enabled="false"/>
-    <text name="fitting_status" layout="topleft" left="734" top="12" width="202" height="20" use_ellipses="true" parse_urls="false" font="SansSerifSmall" text_color="0.76 0.73 0.80 1"/>
+    <line_editor name="lookbook_title" layout="topleft" left="8" top="8" width="130" height="26" label="Photo title…"/>
+    <combo_box name="lookbook_category" layout="topleft" left="142" top="8" width="110" height="26" allow_text_entry="true"/>
+    <line_editor name="lookbook_notes" layout="topleft" left="256" top="8" width="280" height="26" label="Notes about this look…"/>
+    <button name="lookbook_save_metadata" layout="topleft" left="540" top="8" width="74" height="26" label="Save info" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" enabled="false"/>
+    <button name="lookbook_toggle_favorite" layout="topleft" left="618" top="8" width="72" height="26" label="☆" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" enabled="false"/>
+    <text name="fitting_status" layout="topleft" left="694" top="12" width="242" height="20" use_ellipses="true" parse_urls="false" font="SansSerifSmall" text_color="0.76 0.73 0.80 1"/>
+    <combo_box name="lookbook_filter_category" layout="topleft" left="8" top="34" width="126" height="22" allow_text_entry="false"/>
+    <button name="lookbook_favorites_only" layout="topleft" left="140" top="34" width="126" height="22" label="☆ Все фото" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"/>
     <button name="lookbook_thumb_0" layout="topleft" left="8" top="60" width="64" height="40" label="" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
     <button name="lookbook_thumb_1" layout="topleft" left="76" top="60" width="64" height="40" label="" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
     <button name="lookbook_thumb_2" layout="topleft" left="144" top="60" width="64" height="40" label="" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
