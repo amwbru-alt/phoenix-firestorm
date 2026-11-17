@@ -380,12 +380,24 @@ void FSForMeFittingRoom::rebuild()
         std::string outfit_filter = utf8str_tolower(getChild<LLLineEditor>("saved_outfit_filter")->getValue().asString());
         for (const auto* outfit : sorted_outfits)
         {
-            if (!outfit_filter.empty()
-                && utf8str_tolower(outfit->getName()).find(outfit_filter) == std::string::npos)
-                continue;
             LLInventoryModel::cat_array_t* child_categories = nullptr;
             LLInventoryModel::item_array_t* child_items = nullptr;
             gInventory.getDirectDescendentsOf(outfit->getUUID(), child_categories, child_items);
+            bool matches_filter = outfit_filter.empty()
+                || utf8str_tolower(outfit->getName()).find(outfit_filter) != std::string::npos;
+            if (!matches_filter && child_items)
+            {
+                for (const auto& item : *child_items)
+                {
+                    if (item.notNull()
+                        && utf8str_tolower(item->getName()).find(outfit_filter) != std::string::npos)
+                    {
+                        matches_filter = true;
+                        break;
+                    }
+                }
+            }
+            if (!matches_filter) continue;
             const S32 item_count = child_items ? static_cast<S32>(child_items->size()) : 0;
             const std::string label = outfit->getName() + " (" + std::to_string(item_count) + ")";
             outfits_combo->add(label, outfit->getUUID());
