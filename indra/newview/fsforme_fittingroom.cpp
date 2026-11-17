@@ -184,7 +184,7 @@ bool FSForMeFittingRoom::postBuild()
         if (snapshot)
         {
             getChild<LLTextBox>("fitting_status")->setText(
-                "Открыта штатная фотостудия Firestorm. Она снимает сцену viewer; отдельный захват preview-рендера пока не подключён.");
+                "Открыта штатная фотостудия ForMe.World. Она снимает сцену viewer; отдельный захват preview-рендера пока не подключён.");
         }
     });
     getChild<LLButton>("fitting_open_inventory")->setClickedCallback([](LLUICtrl*, const LLSD&) {
