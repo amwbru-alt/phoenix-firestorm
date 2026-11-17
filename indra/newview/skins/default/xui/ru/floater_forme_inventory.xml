@@ -4,10 +4,12 @@
   <text name="title">Инвентарь</text>
   <search_editor name="query" label="Поиск по предметам…"/>
   <panel name="avatar_stage"><text name="avatar_heading">ВАШ АВАТАР</text><panel name="avatar_preview_canvas"/><text name="avatar_preview_loading">Загрузка 3D-аватара…</text><text name="avatar_hint">Перетащите мышью для поворота · колесо — масштаб</text><button name="avatar_reset" label="Сброс"/></panel>
+  <button name="all_items_tab" label="Все вещи"/><button name="purchased_tab" label="Купленные" enabled="false"/><button name="favorites_tab" label="Избранное"/>
   <panel name="category_rail">
     <text name="category_heading">КАТЕГОРИИ</text>
     <button name="category_all" label="Все предметы"/>
     <button name="category_clothing" label="Одежда"/>
+    <button name="category_shoes" label="Обувь"/>
     <button name="category_accessories" label="Аксессуары"/>
     <button name="category_objects" label="Объекты"/>
     <button name="category_animations" label="Анимации"/>
@@ -44,7 +46,7 @@
     </scroll_container>
     <button name="previous" label="‹"/><text name="page">1 / 1</text><button name="next" label="›"/>
   </panel>
-  <panel name="details_surface">
+  <panel name="details_surface"><text name="detail_creator"/><text name="detail_created"/><text name="detail_description"/>
     <text name="details_heading">Предмет</text>
     <thumbnail name="detail_thumbnail"/><text name="detail_name">Выберите предмет</text>
     <button name="detail_favorite" label="В избранное"/>
