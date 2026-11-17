@@ -69,7 +69,7 @@ fit_ru = ET.parse(XUI / "ru/floater_forme_fitting_room.xml").getroot()
 assert fit_en.tag == "floater" and fit_en.get("name") == "forme_fitting_room"
 assert fit_ru.tag == "floater" and fit_ru.get("name") == "forme_fitting_room"
 for name in ("avatar_stage", "fitting_item_count", "fitting_open_inventory", "worn_filter_all", "worn_filter_clothing", "worn_filter_shape", "worn_filter_skin", "worn_filter_hair", "worn_filter_eyes", "worn_filter_accessories",
-             "wardrobe_surface", "saved_outfits", "fitting_wear_saved", "compare_outfit_a", "compare_outfit_b", "fitting_compare_outfits", "outfit_name", "fitting_save_outfit", "fitting_status"):
+             "wardrobe_surface", "saved_outfits", "fitting_wear_saved", "fitting_move_saved_to_trash", "compare_outfit_a", "compare_outfit_b", "fitting_compare_outfits", "outfit_name", "fitting_save_outfit", "fitting_status"):
     child(fit_en, name)
 for index in range(16):
     for suffix in ("card", "name", "type", "remove", "thumbnail"):
@@ -80,6 +80,8 @@ assert "LLInventoryObserver" in fit_header
 assert "getDirectDescendentsOf" in fit_cpp and "getCOF()" in fit_cpp
 assert "removeItemFromAvatar" in fit_cpp and "makeNewOutfitLinks" in fit_cpp
 assert "wearInventoryCategoryOnAvatar" in fit_cpp and "FT_MY_OUTFITS" in fit_cpp
+assert "fitting_move_saved_to_trash" in fit_cpp and "gInventory.removeCategory(outfit_id)" in fit_cpp
+assert "outfit->getParentUUID() != outfits_root" in fit_cpp
 assert "compareOutfits()" in fit_cpp and "getLinkedUUID()" in fit_cpp
 assert "setCurrentByID(previous_outfit)" in fit_cpp
 assert "setCurrentByID(previous_compare_a)" in fit_cpp and "setCurrentByID(previous_compare_b)" in fit_cpp
@@ -127,6 +129,7 @@ for locale in ("en", "ru"):
     child(fit_ui, "compare_outfit_a")
     child(fit_ui, "compare_outfit_b")
     child(fit_ui, "fitting_compare_outfits")
+    child(fit_ui, "fitting_move_saved_to_trash")
     child(fit_ui, "worn_page_previous")
     child(fit_ui, "worn_page_next")
     child(fit_ui, "worn_page_label")
