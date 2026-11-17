@@ -62,11 +62,18 @@
       </panel>
     </scroll_container>
   </panel>
-  <panel name="save_surface" layout="topleft" left="18" top="678" width="944" height="38" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
-    <line_editor name="outfit_name" layout="topleft" left="10" top="5" width="240" height="28" label="Название нового образа…"/>
-    <button name="fitting_save_outfit" layout="topleft" left="258" top="5" width="160" height="28" label="Сохранить образ" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
-    <text name="fitting_status" layout="topleft" left="430" top="9" width="170" height="22" use_ellipses="true" parse_urls="false" text_color="0.76 0.73 0.80 1"/>
-    <combo_box name="lookbook_entries" layout="topleft" left="610" top="5" width="230" height="28" allow_text_entry="false"/>
-    <button name="lookbook_delete" layout="topleft" left="846" top="5" width="88" height="28" label="Удалить фото" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"/>
+  <panel name="save_surface" layout="topleft" left="18" top="678" width="944" height="50" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
+    <line_editor name="outfit_name" layout="topleft" left="8" top="11" width="145" height="28" label="Название образа…"/>
+    <button name="fitting_save_outfit" layout="topleft" left="158" top="11" width="100" height="28" label="Сохранить" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    <text name="fitting_status" layout="topleft" left="264" top="16" width="118" height="20" use_ellipses="true" parse_urls="false" font="SansSerifSmall" text_color="0.76 0.73 0.80 1"/>
+    <button name="lookbook_thumb_0" layout="topleft" left="386" top="5" width="64" height="40" label="" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
+    <button name="lookbook_thumb_1" layout="topleft" left="454" top="5" width="64" height="40" label="" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
+    <button name="lookbook_thumb_2" layout="topleft" left="522" top="5" width="64" height="40" label="" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
+    <button name="lookbook_thumb_3" layout="topleft" left="590" top="5" width="64" height="40" label="" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
+    <button name="lookbook_prev" layout="topleft" left="658" top="11" width="28" height="28" label="‹" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" enabled="false"/>
+    <text name="lookbook_page_label" layout="topleft" left="687" top="16" width="42" height="18" halign="center" font="SansSerifSmall">0 / 0</text>
+    <button name="lookbook_next" layout="topleft" left="731" top="11" width="28" height="28" label="›" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" enabled="false"/>
+    <button name="lookbook_view_avatar" layout="topleft" left="764" top="11" width="78" height="28" label="3D вид" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"/>
+    <button name="lookbook_delete" layout="topleft" left="846" top="11" width="88" height="28" label="Удалить" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" enabled="false"/>
   </panel>
 </floater>
