@@ -124,6 +124,9 @@ bool FSForMeInventoryBrowser::postBuild()
     getChild<LLButton>("favorites_tab")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
         mCategory = "favorites"; mPage = 0; mDirty = true;
     });
+    getChild<LLButton>("purchased_tab")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
+        mCategory = "recent"; mPage = 0; mDirty = true;
+    });
     getChild<LLButton>("refresh")->setClickedCallback([this](LLUICtrl*, const LLSD&) { mDirty = true; });
     for (const auto& category : {std::make_pair("category_all", "all"), std::make_pair("category_clothing", "clothing"),
                                  std::make_pair("category_shoes", "shoes"), std::make_pair("category_hair", "hair"),
@@ -310,6 +313,10 @@ void FSForMeInventoryBrowser::rebuild()
     getChild<LLTextBox>("inventory_count")->setText(std::to_string(mVisibleItems.size()) + " предметов");
     getChild<LLButton>("all_items_tab")->setLabel(mCategory == "all" ? "● Все вещи" : "Все вещи");
     getChild<LLButton>("favorites_tab")->setLabel(mCategory == "favorites" ? "★ Избранное" : "☆ Избранное");
+    getChild<LLButton>("purchased_tab")->setLabel(mCategory == "recent" ? "◷ Недавние" : "Недавние");
+    getChild<LLButton>("purchased_tab")->setToggleState(mCategory == "recent");
+    getChild<LLButton>("favorites_tab")->setToggleState(mCategory == "favorites");
+    getChild<LLButton>("all_items_tab")->setToggleState(mCategory == "all");
     const std::pair<const char*, const char*> rail_labels[] = {
         {"category_all", "Все"}, {"category_clothing", "Одежда"}, {"category_accessories", "Аксессуары"},
         {"category_hair", "Причёски"}, {"category_shoes", "Обувь"}, {"category_tattoos", "Тату и макияж"},
