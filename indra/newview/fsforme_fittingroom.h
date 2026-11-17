@@ -26,6 +26,7 @@ private:
     FSForMeFittingRoom(const LLSD& key);
     ~FSForMeFittingRoom() override;
     void rebuild();
+    void rebuildLookbook();
     void setCategory(const std::string& category);
     bool matchesCategory(const LLViewerInventoryItem* item) const;
     void removeWornItem(S32 index);
