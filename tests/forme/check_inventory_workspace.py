@@ -113,6 +113,10 @@ assert "lookbook_delete" in fit_cpp and "LLFile::remove" in fit_cpp
 assert "getFetchedTextureFromFile" in fit_cpp and "drawLookbookThumbnails" in fit_cpp
 assert "drawLookbookPhotoPreview" in fit_cpp
 assert "drawLookbookComparison" in fit_cpp and "saveSelectedLookbookMetadata" in fit_cpp
+assert "lookbook_filter_category" in fit_cpp and "mLookbookFilterCategory" in fit_cpp
+assert "mFilteredLookbookEntries" in fit_cpp and "mLookbookFavoritesOnly" in fit_cpp
+assert 'entry["favorite"] = false' in fit_cpp and '["favorite"].asBoolean()' in fit_cpp
+assert "lookbook_toggle_favorite" in fit_cpp and "lookbook_favorites_only" in fit_cpp
 assert "assignLookbookCompareSlot" in fit_cpp and 'entry["category"] = "Everyday"' in fit_cpp
 assert 'entry["notes"] = ""' in fit_cpp and 'entry["title"] = outfit_name' in fit_cpp
 child(fit_en, "lookbook_thumb_3")
@@ -179,6 +183,9 @@ for locale in ("en", "ru"):
     child(fit_ui, "lookbook_title")
     child(fit_ui, "lookbook_notes")
     child(fit_ui, "lookbook_category")
+    child(fit_ui, "lookbook_filter_category")
+    child(fit_ui, "lookbook_favorites_only")
+    child(fit_ui, "lookbook_toggle_favorite")
     child(fit_ui, "lookbook_save_metadata")
     child(fit_ui, "lookbook_compare_a")
     child(fit_ui, "lookbook_compare_b")
