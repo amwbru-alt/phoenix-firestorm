@@ -15,6 +15,8 @@
 #include "llcombobox.h"
 #include "llfloaterreg.h"
 #include "llfloatersnapshot.h"
+#include "llimagepng.h"
+#include "llviewerwindow.h"
 #include "llinventorymodel.h"
 #include "llinventorytype.h"
 #include "llwearabletype.h"
@@ -44,6 +46,13 @@ public:
     void tilt(F32 delta) { mElevation = llclamp(mElevation + delta, -0.35f, 0.65f); }
     void adjustDistance(F32 delta) { mDistance = llclamp(mDistance + delta, 1.8f, 7.0f); }
     void resetView() { mYaw = 0.f; mDistance = 2.7f; mElevation = 0.18f; }
+    void requestCapture() { mCaptureRequested = true; }
+    LLPointer<LLImageRaw> takeCapturedImage()
+    {
+        LLPointer<LLImageRaw> image = mCapturedImage;
+        mCapturedImage = nullptr;
+        return image;
+    }
 
     bool render() override
     {
@@ -74,11 +83,28 @@ public:
         // world camera and viewport after this call.
         gPipeline.generateImpostor(avatar, true, false);
         gGL.flush();
+
+        // Capture the exact framebuffer used by the isolated ForMe preview.
+        // This runs inside the dynamic-texture render target, before it is unbound.
+        if (mCaptureRequested)
+        {
+            LLPointer<LLImageRaw> image = new LLImageRaw(getWidth(), getHeight(), 4);
+            GLint previous_pack_alignment = 4;
+            glGetIntegerv(GL_PACK_ALIGNMENT, &previous_pack_alignment);
+            glPixelStorei(GL_PACK_ALIGNMENT, 1);
+            glReadPixels(0, 0, getWidth(), getHeight(), GL_RGBA, GL_UNSIGNED_BYTE, image->getData());
+            glPixelStorei(GL_PACK_ALIGNMENT, previous_pack_alignment);
+            image->verticalFlip();
+            mCapturedImage = image;
+            mCaptureRequested = false;
+        }
         return true;
     }
 
 private:
     bool mActive = false;
+    bool mCaptureRequested = false;
+    LLPointer<LLImageRaw> mCapturedImage;
     F32 mYaw = 0.f;
     F32 mDistance = 2.7f;
     F32 mElevation = 0.18f;
@@ -178,6 +204,15 @@ bool FSForMeFittingRoom::postBuild()
     });
     getChild<LLButton>("fitting_camera_rotate_right")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
         if (mAvatarPreview) mAvatarPreview->rotate(0.26179939f);
+    });
+    getChild<LLButton>("fitting_capture_preview")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
+        if (!mAvatarPreview || !gAgentAvatarp || gAgentAvatarp->isDead() || gAgentAvatarp->mDrawable.isNull())
+        {
+            getChild<LLTextBox>("fitting_status")->setText("Невозможно снять preview: аватар ещё не готов.");
+            return;
+        }
+        mAvatarPreview->requestCapture();
+        getChild<LLTextBox>("fitting_status")->setText("Подготовка снимка 3D-примерочной…");
     });
     getChild<LLButton>("fitting_open_photo_studio")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
         LLFloaterSnapshot* snapshot = LLFloaterReg::getTypedInstance<LLFloaterSnapshot>("snapshot");
@@ -350,6 +385,24 @@ bool FSForMeFittingRoom::matchesCategory(const LLViewerInventoryItem* item) cons
 }
 void FSForMeFittingRoom::draw()
 {
+    if (mAvatarPreview)
+    {
+        LLPointer<LLImageRaw> captured = mAvatarPreview->takeCapturedImage();
+        if (captured.notNull())
+        {
+            LLPointer<LLImagePNG> png = new LLImagePNG();
+            if (png->encode(captured, 0.f))
+            {
+                gViewerWindow->saveImageLocal(png,
+                    [this]() { getChild<LLTextBox>("fitting_status")->setText("Снимок 3D-примерочной сохранён."); },
+                    [this]() { getChild<LLTextBox>("fitting_status")->setText("Не удалось сохранить снимок 3D-примерочной."); });
+            }
+            else
+            {
+                getChild<LLTextBox>("fitting_status")->setText("Не удалось подготовить PNG-снимок.");
+            }
+        }
+    }
     if (mDirty) rebuild();
     updateSelectedOutfitDetails();
     if (mAvatarPreview) mAvatarPreview->setActive(!isMinimized());
