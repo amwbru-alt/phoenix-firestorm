@@ -176,6 +176,20 @@ bool FSForMeFittingRoom::postBuild()
     });
     getChild<LLButton>("fitting_save_outfit")->setClickedCallback([this](LLUICtrl*, const LLSD&) { saveOutfit(); });
     getChild<LLButton>("fitting_compare_outfits")->setClickedCallback([this](LLUICtrl*, const LLSD&) { compareOutfits(); });
+    getChild<LLButton>("fitting_move_saved_to_trash")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
+        const LLUUID outfit_id = getChild<LLComboBox>("saved_outfits")->getSelectedValue().asUUID();
+        LLViewerInventoryCategory* outfit = gInventory.getCategory(outfit_id);
+        const LLUUID outfits_root = gInventory.findCategoryUUIDForType(LLFolderType::FT_MY_OUTFITS);
+        if (!outfit || outfit->getParentUUID() != outfits_root)
+        {
+            getChild<LLTextBox>("fitting_status")->setText("Выбранный образ больше не находится в папке «Мои образы».");
+            mDirty = true;
+            return;
+        }
+        gInventory.removeCategory(outfit_id); // Moves the outfit to Trash; it is recoverable.
+        getChild<LLTextBox>("fitting_status")->setText("Образ перемещён в Корзину. Его можно восстановить из инвентаря.");
+        mDirty = true;
+    });
     getChild<LLButton>("fitting_wear_saved")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
         const LLUUID outfit_id = getChild<LLComboBox>("saved_outfits")->getSelectedValue().asUUID();
         if (auto* outfit = gInventory.getCategory(outfit_id))
@@ -347,6 +361,7 @@ void FSForMeFittingRoom::rebuild()
                 ++mSavedOutfitCount;
             }
     getChild<LLButton>("fitting_wear_saved")->setEnabled(mSavedOutfitCount > 0);
+    getChild<LLButton>("fitting_move_saved_to_trash")->setEnabled(mSavedOutfitCount > 0);
     getChild<LLButton>("fitting_compare_outfits")->setEnabled(mSavedOutfitCount > 1);
     if (mSavedOutfitCount > 0)
     {
