@@ -17,6 +17,12 @@
 #include "llfloatersnapshot.h"
 #include "llimagepng.h"
 #include "llviewerwindow.h"
+#include "llfile.h"
+#include "lldir.h"
+#include "llsdserialize.h"
+#include <sstream>
+#include <cstdio>
+
 #include "llinventorymodel.h"
 #include "llinventorytype.h"
 #include "llwearabletype.h"
@@ -47,6 +53,9 @@ public:
     void adjustDistance(F32 delta) { mDistance = llclamp(mDistance + delta, 1.8f, 7.0f); }
     void resetView() { mYaw = 0.f; mDistance = 2.7f; mElevation = 0.18f; }
     void requestCapture() { mCaptureRequested = true; }
+    F32 getYaw() const { return mYaw; }
+    F32 getDistance() const { return mDistance; }
+    F32 getElevation() const { return mElevation; }
     LLPointer<LLImageRaw> takeCapturedImage()
     {
         LLPointer<LLImageRaw> image = mCapturedImage;
@@ -113,6 +122,42 @@ private:
 namespace
 {
 constexpr S32 WORN_ITEM_SLOTS = 16;
+
+std::string formeLookbookDirectory()
+{
+    return gDirUtilp->getOSUserAppDir() + gDirUtilp->getDirDelimiter() + "ForMeLookbook";
+}
+
+std::string formeLookbookMetadataPath()
+{
+    return formeLookbookDirectory() + gDirUtilp->getDirDelimiter() + "lookbook.xml";
+}
+
+LLSD loadFormeLookbook()
+{
+    LLSD entries = LLSD::emptyArray();
+    const std::string contents = LLFile::getContents(formeLookbookMetadataPath());
+    if (contents.empty()) return entries;
+    std::istringstream input(contents);
+    LLSD parsed;
+    if (LLSDSerialize::fromXML(parsed, input) > 0 && parsed.isArray()) return parsed;
+    LL_WARNS("ForMeLookbook") << "Could not parse lookbook metadata; preserving the existing file." << LL_ENDL;
+    return entries;
+}
+
+bool saveFormeLookbook(const LLSD& entries)
+{
+    if (LLFile::mkdir(formeLookbookDirectory()) != 0) return false;
+    std::ostringstream output;
+    if (LLSDSerialize::toPrettyXML(entries, output) <= 0) return false;
+    const std::string serialized = output.str();
+    LLFILE* file = LLFile::fopen(formeLookbookMetadataPath(), "wb");
+    if (!file) return false;
+    const size_t written = fwrite(serialized.data(), 1, serialized.size(), file);
+    LLFile::close(file);
+    return written == serialized.size();
+}
+
 std::string fittingItemType(const LLViewerInventoryItem* item)
 {
     if (!item) return "Предмет";
@@ -205,6 +250,41 @@ bool FSForMeFittingRoom::postBuild()
     getChild<LLButton>("fitting_camera_rotate_right")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
         if (mAvatarPreview) mAvatarPreview->rotate(0.26179939f);
     });
+    getChild<LLComboBox>("lookbook_entries")->setCommitCallback([this](LLUICtrl*, const LLSD&) {
+        const std::string selected_id = getChild<LLComboBox>("lookbook_entries")->getSelectedValue().asString();
+        const LLSD entries = loadFormeLookbook();
+        for (LLSD::array_const_iterator it = entries.beginArray(); it != entries.endArray(); ++it)
+        {
+            if ((*it)["id"].asString() == selected_id)
+            {
+                getChild<LLTextBox>("fitting_status")->setText(
+                    (*it)["outfit_name"].asString() + " · " + (*it)["captured_at"].asString() + " · " + (*it)["file"].asString());
+                return;
+            }
+        }
+    });
+    getChild<LLButton>("lookbook_delete")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
+        const std::string selected_id = getChild<LLComboBox>("lookbook_entries")->getSelectedValue().asString();
+        if (selected_id.empty()) return;
+        const LLSD entries = loadFormeLookbook();
+        LLSD updated = LLSD::emptyArray();
+        bool removed = false;
+        for (LLSD::array_const_iterator it = entries.beginArray(); it != entries.endArray(); ++it)
+        {
+            if ((*it)["id"].asString() == selected_id)
+            {
+                LLFile::remove((*it)["file"].asString());
+                removed = true;
+            }
+            else updated.append(*it);
+        }
+        if (removed && saveFormeLookbook(updated))
+        {
+            rebuildLookbook();
+            getChild<LLTextBox>("fitting_status")->setText("Фотография удалена из ForMe Lookbook.");
+        }
+        else getChild<LLTextBox>("fitting_status")->setText("Не удалось удалить фотографию или обновить каталог.");
+    });
     getChild<LLButton>("fitting_capture_preview")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
         if (!mAvatarPreview || !gAgentAvatarp || gAgentAvatarp->isDead() || gAgentAvatarp->mDrawable.isNull())
         {
@@ -260,6 +340,7 @@ bool FSForMeFittingRoom::postBuild()
         getChild<LLButton>("worn_remove_" + std::to_string(i))->setClickedCallback([this, i](LLUICtrl*, const LLSD&) {
             removeWornItem(i);
         });
+    rebuildLookbook();
     return true;
 }
 void FSForMeFittingRoom::onOpen(const LLSD&)
@@ -391,15 +472,42 @@ void FSForMeFittingRoom::draw()
         if (captured.notNull())
         {
             LLPointer<LLImagePNG> png = new LLImagePNG();
-            if (png->encode(captured, 0.f))
+            LLUUID photo_id;
+            photo_id.generate();
+            const std::string image_path = formeLookbookDirectory() + gDirUtilp->getDirDelimiter() + photo_id.asString() + ".png";
+            LLUUID outfit_id = getChild<LLComboBox>("saved_outfits")->getSelectedValue().asUUID();
+            LLViewerInventoryCategory* outfit = outfit_id.isNull() ? nullptr : gInventory.getCategory(outfit_id);
+            const std::string outfit_name = outfit ? outfit->getName() : "Current outfit";
+            if (png->encode(captured, 0.f) && LLFile::mkdir(formeLookbookDirectory()) == 0 && png->save(image_path))
             {
-                gViewerWindow->saveImageLocal(png,
-                    [this]() { getChild<LLTextBox>("fitting_status")->setText("Снимок 3D-примерочной сохранён."); },
-                    [this]() { getChild<LLTextBox>("fitting_status")->setText("Не удалось сохранить снимок 3D-примерочной."); });
+                LLSD entries = loadFormeLookbook();
+                LLSD entry;
+                entry["id"] = photo_id.asString();
+                entry["file"] = image_path;
+                entry["outfit_id"] = outfit_id.asString();
+                entry["outfit_name"] = outfit_name;
+                entry["captured_at"] = LLDate::now().asString();
+                entry["width"] = captured->getWidth();
+                entry["height"] = captured->getHeight();
+                entry["worn_item_count"] = static_cast<S32>(mWornItems.size());
+                entry["camera_yaw"] = mAvatarPreview->getYaw();
+                entry["camera_distance"] = mAvatarPreview->getDistance();
+                entry["camera_elevation"] = mAvatarPreview->getElevation();
+                entries.append(entry);
+                if (saveFormeLookbook(entries))
+                {
+                    rebuildLookbook();
+                    getChild<LLTextBox>("fitting_status")->setText("Фото сохранено в ForMe Lookbook: " + image_path);
+                }
+                else
+                {
+                    LLFile::remove(image_path);
+                    getChild<LLTextBox>("fitting_status")->setText("PNG создан, но каталог Lookbook не удалось сохранить.");
+                }
             }
             else
             {
-                getChild<LLTextBox>("fitting_status")->setText("Не удалось подготовить PNG-снимок.");
+                getChild<LLTextBox>("fitting_status")->setText("Не удалось сохранить PNG в папку ForMe Lookbook.");
             }
         }
     }
@@ -413,6 +521,25 @@ void FSForMeFittingRoom::draw()
     LLFloater::draw();
     if (mAvatarPreview && mAvatarPreview->needsRender()) drawAvatarPreview();
 }
+void FSForMeFittingRoom::rebuildLookbook()
+{
+    LLComboBox* combo = getChild<LLComboBox>("lookbook_entries");
+    const LLSD previous = combo->getSelectedValue();
+    combo->removeall();
+    const LLSD entries = loadFormeLookbook();
+    for (LLSD::array_const_iterator it = entries.beginArray(); it != entries.endArray(); ++it)
+    {
+        const std::string id = (*it)["id"].asString();
+        const std::string outfit_name = (*it)["outfit_name"].asString();
+        const std::string captured_at = (*it)["captured_at"].asString();
+        const std::string label = outfit_name + " — " + captured_at.substr(0, 16);
+        combo->add(label, LLSD(id));
+    }
+    if (previous.isString()) combo->setCurrentByID(previous);
+    if (combo->getItemCount() == 0)
+        getChild<LLTextBox>("fitting_status")->setText("ForMe Lookbook пока пуст. Сделайте снимок 3D-примерочной.");
+}
+
 void FSForMeFittingRoom::rebuild()
 {
     mDirty = false;
