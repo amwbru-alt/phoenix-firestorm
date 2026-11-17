@@ -80,6 +80,6 @@
     <button name="lookbook_compare" layout="topleft" left="498" top="66" width="76" height="28" label="Compare" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"/>
     <button name="lookbook_view_avatar" layout="topleft" left="580" top="66" width="76" height="28" label="3D view" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"/>
     <button name="lookbook_delete" layout="topleft" left="662" top="66" width="88" height="28" label="Delete" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" enabled="false"/>
-    <text name="lookbook_compare_slots" layout="topleft" left="760" top="72" width="176" height="18" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">A / B — assigned photos</text>
+    <line_editor name="outfit_name" layout="topleft" left="760" top="66" width="176" height="28" label="New outfit name…"/>A / B — assigned photos</text>
   </panel>
 </floater>
