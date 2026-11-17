@@ -30,7 +30,7 @@
     <button name="category_favorites" label="Избранное"/>
     <button name="category_recent" label="Недавние"/>
     <text name="inventory_count">Загрузка…</text>
-  </panel>
+  <button name="category_all" visible="false" label="Все вещи"/></panel>
   <panel name="items_surface" layout="topleft" left="610" top="96" width="700" height="790">
     <text name="items_heading" layout="topleft" left="16" top="14" width="240" height="24">Инвентарь</text>
     <button name="all_items_tab" layout="topleft" left="264" top="10" width="112" height="30" label="Все вещи"/>
