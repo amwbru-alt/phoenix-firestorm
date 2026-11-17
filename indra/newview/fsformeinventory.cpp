@@ -327,7 +327,7 @@ void FSForMeInventoryBrowser::rebuild()
         select_button->setLabel(selected ? "✦ Выбрано" : "Выбрать");
         select_button->setToggleState(selected);
     }
-    grid->reshape(644, 560);
+    grid->reshape(644, 610);
     getChild<LLTextBox>("inventory_count")->setText(std::to_string(mVisibleItems.size()) + " предметов");
     getChild<LLButton>("all_items_tab")->setLabel(mCategory == "all" ? "● Все вещи" : "Все вещи");
     getChild<LLButton>("favorites_tab")->setLabel(mCategory == "favorites" ? "★ Избранное" : "☆ Избранное");
