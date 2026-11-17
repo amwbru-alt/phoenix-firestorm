@@ -88,6 +88,8 @@ assert "saved_outfit_details" in fit_cpp
 assert "mDetailsOutfit" in fit_cpp
 assert "saved_outfit_filter_clear" in fit_cpp and "setText(\"\")" in fit_cpp
 assert "utf8str_tolower(outfit->getName()).find(outfit_filter)" in fit_cpp
+assert "utf8str_tolower(item->getName()).find(outfit_filter)" in fit_cpp
+assert "matches_filter" in fit_cpp
 assert "По запросу не найдено сохранённых образов" in fit_cpp
 assert "const S32 item_count" in fit_cpp and "std::to_string(item_count)" in fit_cpp
 assert "Образ с таким названием уже существует" in fit_cpp
