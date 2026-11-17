@@ -37,6 +37,11 @@
   <panel name="avatar_stage" layout="topleft" left="118" top="96" width="470" height="790" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
     <text name="avatar_heading" layout="topleft" left="20" top="18" width="420" height="24" font="SansSerifBold" text_color="0.91 0.72 1 1">✦ ВАШ АВАТАР</text>
     <panel name="avatar_preview_canvas" layout="topleft" left="14" top="52" width="442" height="650" background_visible="true" bg_alpha_image="Forme_Round_Window" bg_alpha_color="White"/>
+    <panel name="avatar_scene_accent_top" layout="topleft" left="14" top="48" width="442" height="2" background_visible="true" bg_opaque_color="0.67 0.32 0.91 0.92"/>
+    <panel name="avatar_scene_accent_left" layout="topleft" left="12" top="54" width="2" height="646" background_visible="true" bg_opaque_color="0.42 0.22 0.62 0.72"/>
+    <panel name="avatar_scene_accent_right" layout="topleft" left="456" top="54" width="2" height="646" background_visible="true" bg_opaque_color="0.42 0.22 0.62 0.72"/>
+    <text name="avatar_live_label" layout="topleft" left="26" top="674" width="150" height="20" font="SansSerifSmall" text_color="0.83 0.62 1 1">● LIVE AVATAR</text>
+    <text name="avatar_camera_label" layout="topleft" left="278" top="674" width="150" height="20" halign="right" font="SansSerifSmall" text_color="0.70 0.62 0.78 1">3D PREVIEW</text>
     <panel name="avatar_camera_controls" layout="topleft" left="414" top="54" width="42" height="214" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
       <button name="camera_front" layout="topleft" left="4" top="6" width="34" height="32" label="◉" tool_tip="Вид спереди" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
       <button name="camera_side" layout="topleft" left="4" top="44" width="34" height="32" label="↻" tool_tip="Вид сбоку" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
