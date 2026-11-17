@@ -10,6 +10,7 @@
   <text name="top_nav_1" layout="topleft" left="472" top="24" width="110" height="24" font="SansSerif" text_color="0.68 0.62 0.74 1" halign="center">Мир</text>
   <text name="top_nav_2" layout="topleft" left="604" top="24" width="110" height="24" font="SansSerif" text_color="0.68 0.62 0.74 1" halign="center">Магазин</text>
   <text name="top_nav_3" layout="topleft" left="736" top="24" width="110" height="24" font="SansSerifBold" text_color="0.88 0.62 1 1" halign="center">Инвентарь</text>
+  <panel name="top_nav_active_glow" layout="topleft" left="736" top="66" width="110" height="4" background_visible="true" bg_opaque_color="0.72 0.28 1 1"/>
   <text name="top_nav_4" layout="topleft" left="868" top="24" width="110" height="24" font="SansSerif" text_color="0.68 0.62 0.74 1" halign="center">Друзья</text>
   <text name="top_nav_5" layout="topleft" left="1000" top="24" width="110" height="24" font="SansSerif" text_color="0.68 0.62 0.74 1" halign="center">Чаты</text>
   <text name="forme_balance" layout="topleft" left="1330" top="24" width="100" height="22" font="SansSerif" text_color="0.92 0.88 1 1">Ⓚ 24 850</text>
@@ -17,8 +18,8 @@
   <text name="forme_notifications" layout="topleft" left="1550" top="24" width="40" height="22" font="SansSerifLarge" text_color="0.82 0.55 1 1">♟</text>
   <text name="forme_profile" layout="topleft" left="1600" top="24" width="120" height="22" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">Профиль</text>
 
-  <search_editor name="query" layout="topleft" left="620" top="144" width="500" height="30" label="Поиск по предметам…"/>
-  <button name="refresh" layout="topleft" left="1128" top="144" width="36" height="30" label="↻"/>
+  <search_editor name="query" layout="topleft" left="790" top="104" width="286" height="34" label="Поиск по предметам…"/>
+  <button name="refresh" layout="topleft" left="1082" top="104" width="42" height="34" label="↻" text_color="0.90 0.70 1 1" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
   <panel name="avatar_stage" layout="topleft" left="118" top="96" width="470" height="790" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
     <text name="avatar_heading" layout="topleft" left="20" top="18" width="420" height="24" font="SansSerifBold" text_color="0.91 0.72 1 1">✦ ВАШ АВАТАР</text>
     <panel name="avatar_preview_canvas" layout="topleft" left="14" top="52" width="442" height="650" background_visible="true" bg_alpha_image="Forme_Round_Window" bg_alpha_color="White"/>
