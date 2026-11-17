@@ -22,7 +22,8 @@
     <text name="fitting_item_count" layout="topleft" left="20" top="434" width="350" height="26" font="SansSerifBold">Загрузка образа…</text>
     <button name="fitting_open_inventory" layout="topleft" left="20" top="466" width="350" height="36" label="Открыть гардероб" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
     <combo_box name="saved_outfits" layout="topleft" left="20" top="510" width="350" height="28" allow_text_entry="false"/>
-    <button name="fitting_wear_saved" layout="topleft" left="20" top="544" width="350" height="30" label="Надеть сохранённый образ" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
+    <button name="fitting_wear_saved" layout="topleft" left="20" top="544" width="222" height="30" label="Надеть сохранённый образ" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
+    <button name="fitting_move_saved_to_trash" layout="topleft" left="250" top="544" width="120" height="30" label="Move to Trash" enabled="false" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"/>
     
   </panel>
   <panel name="wardrobe_surface" layout="topleft" left="430" top="96" width="532" height="570" background_visible="true" bg_alpha_image="Forme_Round_Window" bg_alpha_color="White">
