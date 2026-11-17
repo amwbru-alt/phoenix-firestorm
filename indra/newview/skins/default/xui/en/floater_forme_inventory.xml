@@ -20,9 +20,9 @@
   <search_editor name="query" layout="topleft" left="620" top="144" width="500" height="30" label="Поиск по предметам…"/>
   <button name="refresh" layout="topleft" left="1128" top="144" width="36" height="30" label="↻"/>
   <panel name="avatar_stage" layout="topleft" left="118" top="96" width="470" height="790" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
-    <text name="avatar_heading" layout="topleft" left="20" top="18" width="420" height="24" font="SansSerifBold">ВАШ АВАТАР</text>
+    <text name="avatar_heading" layout="topleft" left="20" top="18" width="420" height="24" font="SansSerifBold" text_color="0.91 0.72 1 1">✦ ВАШ АВАТАР</text>
     <panel name="avatar_preview_canvas" layout="topleft" left="14" top="52" width="442" height="650" background_visible="true" bg_alpha_image="Forme_Round_Window" bg_alpha_color="White"/>
-    <panel name="avatar_camera_controls" layout="topleft" left="14" top="54" width="42" height="214" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
+    <panel name="avatar_camera_controls" layout="topleft" left="414" top="54" width="42" height="214" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
       <button name="camera_front" layout="topleft" left="4" top="6" width="34" height="32" label="◉" tool_tip="Вид спереди" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
       <button name="camera_side" layout="topleft" left="4" top="44" width="34" height="32" label="↻" tool_tip="Вид сбоку" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
       <button name="camera_back" layout="topleft" left="4" top="82" width="34" height="32" label="↺" tool_tip="Вид сзади" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
@@ -31,8 +31,8 @@
       <button name="camera_zoom_out" layout="topleft" left="4" top="170" width="34" height="32" label="−" tool_tip="Отдалить" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
     </panel>
     <text name="avatar_preview_loading" layout="topleft" left="28" top="360" width="410" height="24" halign="center" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">Загрузка 3D-аватара…</text>
-    <text name="avatar_hint" layout="topleft" left="22" top="712" width="300" height="20" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">Перетащите мышью для поворота · колесо — масштаб</text>
-    <button name="avatar_reset" layout="topleft" left="350" top="706" width="82" height="30" label="Сброс" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"/>
+    <text name="avatar_hint" layout="topleft" left="22" top="712" width="310" height="20" font="SansSerifSmall" text_color="0.78 0.66 0.91 1">Перетащите мышью для поворота · колесо — масштаб</text>
+    <button name="avatar_reset" layout="topleft" left="350" top="706" width="82" height="30" label="Сброс" text_color="0.92 0.78 1 1" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"/>
   </panel>
   <panel name="category_rail" layout="topleft" left="18" top="118" width="88" height="638" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
     <button name="category_clothing" layout="topleft" left="6" top="8" width="76" height="54" label="♙\nОдежда" font="SansSerifSmall" text_color="0.91 0.79 1 1" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
@@ -48,7 +48,7 @@
   <button name="category_favorites" visible="false" label="Избранное"/>
   </panel>
   <panel name="items_surface" layout="topleft" left="610" top="96" width="700" height="790" background_visible="true" bg_alpha_image="Forme_Round_Window" bg_alpha_color="White">
-    <text name="items_heading" layout="topleft" left="16" top="14" width="240" height="24" font="SansSerifBold">Инвентарь</text>
+    <text name="items_heading" layout="topleft" left="16" top="14" width="240" height="24" font="SansSerifBold" text_color="0.94 0.84 1 1">Инвентарь</text>
     <text name="inventory_count" layout="topleft" left="16" top="44" width="240" height="20" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">Загрузка…</text>
 
     <button name="all_items_tab" layout="topleft" left="236" top="10" width="112" height="30" label="● Все вещи" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"/>
@@ -59,7 +59,7 @@
       <panel name="items_grid" layout="topleft" left="0" top="0" width="644" height="560" background_visible="false">
         <panel name="item_card_0" layout="topleft" left="0" top="0" width="124" height="132" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White" follows="left|top">
       <thumbnail name="item_thumbnail_0" layout="topleft" left="8" top="8" width="108" height="78" border_visible="false" show_loading="false"/>
-      <button name="item_favorite_0" layout="topleft" left="88" top="6" width="28" height="24" label="☆" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+      <button name="item_favorite_0" layout="topleft" left="88" top="6" width="28" height="24" label="☆" text_color="0.83 0.65 1 1" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
       <text name="item_name_0" layout="topleft" left="8" top="90" width="108" height="18" font="SansSerifSmall" use_ellipses="true" parse_urls="false"/>
       <button name="item_select_0" layout="topleft" left="8" top="110" width="108" height="20" label="Выбрать" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
     </panel>
@@ -184,7 +184,7 @@
     <button name="next" layout="topleft" left="620" top="742" width="34" height="26" label="›" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
   </panel>
   <panel name="details_surface" layout="topleft" left="1328" top="96" width="414" height="790" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
-    <text name="details_heading" layout="topleft" left="18" top="14" width="340" height="24" font="SansSerifBold">Предмет</text>
+    <text name="details_heading" layout="topleft" left="18" top="14" width="340" height="24" font="SansSerifBold" text_color="0.91 0.72 1 1">✦ Предмет</text>
     <thumbnail name="detail_thumbnail" layout="topleft" left="28" top="54" width="322" height="250" border_visible="false" show_loading="true"/>
     <text name="detail_name" layout="topleft" left="18" top="322" width="340" height="42" font="SansSerifLarge" wrap="true">Выберите предмет</text>
     <text name="detail_type" layout="topleft" left="18" top="370" width="340" height="24" text_color="0.76 0.73 0.80 1"/>
@@ -193,7 +193,7 @@
     <text name="detail_created" layout="topleft" left="18" top="480" width="340" height="24" text_color="0.76 0.73 0.80 1"/>
     <text name="detail_description" layout="topleft" left="18" top="512" width="340" height="84" wrap="true" text_color="0.76 0.73 0.80 1"/>
     <button name="detail_favorite" layout="topleft" left="18" top="650" width="340" height="30" label="В избранное" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
-    <button name="apply" layout="topleft" left="18" top="700" width="340" height="46" label="Применить" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
+    <button name="apply" layout="topleft" left="18" top="700" width="340" height="46" label="Применить" text_color="0.96 0.88 1 1" image_unselected="Forme_Round_Accent" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
     <button name="open_folder" layout="topleft" left="18" top="752" width="340" height="30" label="Открыть папку" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
     <text name="detail_hint" layout="topleft" left="18" top="610" width="340" height="30" wrap="true" text_color="0.65 0.61 0.70 1">Предметы загружаются напрямую из инвентаря аккаунта.</text>
   </panel>
