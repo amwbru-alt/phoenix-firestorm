@@ -118,6 +118,11 @@ assert "mFilteredLookbookEntries" in fit_cpp and "mLookbookFavoritesOnly" in fit
 assert 'entry["favorite"] = false' in fit_cpp and '["favorite"].asBoolean()' in fit_cpp
 assert "lookbook_toggle_favorite" in fit_cpp and "lookbook_favorites_only" in fit_cpp
 assert "lookbook_wear_outfit" in fit_cpp and "wearInventoryCategoryOnAvatar(outfit, false)" in fit_cpp
+assert "lookbook_fullscreen" in fit_cpp and "mLookbookFullscreenMode" in fit_cpp
+assert "handleKeyHere(KEY key, MASK mask)" in fit_cpp and "KEY_LEFT" in fit_cpp and "KEY_RIGHT" in fit_cpp and "KEY_ESCAPE" in fit_cpp
+assert "navigateLookbookPhoto" in fit_cpp and "setLookbookFullscreenMode" in fit_cpp
+assert "mLookbookOldestFirst" in fit_cpp and "lookbook_sort_order" in fit_cpp
+assert "lookbook_history_date" in fit_cpp and "captured_at" in fit_cpp
 assert "assignLookbookCompareSlot" in fit_cpp and 'entry["category"] = "Everyday"' in fit_cpp
 assert 'entry["notes"] = ""' in fit_cpp and 'entry["title"] = outfit_name' in fit_cpp
 child(fit_en, "lookbook_thumb_3")
@@ -188,6 +193,9 @@ for locale in ("en", "ru"):
     child(fit_ui, "lookbook_favorites_only")
     child(fit_ui, "lookbook_toggle_favorite")
     child(fit_ui, "lookbook_wear_outfit")
+    child(fit_ui, "lookbook_fullscreen")
+    child(fit_ui, "lookbook_sort_order")
+    child(fit_ui, "lookbook_history_date")
     child(fit_ui, "lookbook_save_metadata")
     child(fit_ui, "lookbook_compare_a")
     child(fit_ui, "lookbook_compare_b")
