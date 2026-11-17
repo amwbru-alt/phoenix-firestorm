@@ -80,6 +80,6 @@
     <button name="lookbook_compare" layout="topleft" left="498" top="66" width="76" height="28" label="Сравнить" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"/>
     <button name="lookbook_view_avatar" layout="topleft" left="580" top="66" width="76" height="28" label="3D вид" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"/>
     <button name="lookbook_delete" layout="topleft" left="662" top="66" width="88" height="28" label="Удалить" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" enabled="false"/>
-    <line_editor name="outfit_name" layout="topleft" left="760" top="66" width="176" height="28" label="Название комплекта…"/>A / B — выбранные фото</text>
+    <line_editor name="outfit_name" layout="topleft" left="760" top="66" width="176" height="28" label="Название комплекта…"/>
   </panel>
 </floater>
