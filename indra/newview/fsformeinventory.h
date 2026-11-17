@@ -41,4 +41,5 @@ private:
     FSForMeInventoryAvatarPreview* mAvatarPreview = nullptr;
     bool mDraggingPreview = false;
     S32 mLastPreviewMouseX = 0;
+    S32 mLastPreviewMouseY = 0;
 };
