@@ -340,6 +340,7 @@ bool FSForMeFittingRoom::matchesCategory(const LLViewerInventoryItem* item) cons
 void FSForMeFittingRoom::draw()
 {
     if (mDirty) rebuild();
+    updateSelectedOutfitDetails();
     if (mAvatarPreview) mAvatarPreview->setActive(!isMinimized());
     if (LLView* loading = getChild<LLView>("avatar_preview_loading"))
     {
@@ -395,7 +396,6 @@ void FSForMeFittingRoom::rebuild()
     }
     getChild<LLButton>("fitting_wear_saved")->setEnabled(mSavedOutfitCount > 0);
     getChild<LLButton>("fitting_move_saved_to_trash")->setEnabled(mSavedOutfitCount > 0);
-    getChild<LLButton>("fitting_move_saved_to_trash")->setEnabled(mSavedOutfitCount > 0);
     getChild<LLButton>("fitting_compare_outfits")->setEnabled(mSavedOutfitCount > 1);
     if (mSavedOutfitCount > 0)
     {
@@ -448,6 +448,46 @@ void FSForMeFittingRoom::rebuild()
         ? "Ожидаем данные текущего образа. Если аватар ещё загружается, обновите список позже."
         : "Список синхронизирован с текущим образом аватара.");
 }
+
+void FSForMeFittingRoom::updateSelectedOutfitDetails()
+{
+    const LLUUID outfit_id = getChild<LLComboBox>("saved_outfits")->getSelectedValue().asUUID();
+    if (outfit_id == mDetailsOutfit) return;
+    mDetailsOutfit = outfit_id;
+    if (outfit_id.isNull())
+    {
+        getChild<LLTextBox>("saved_outfit_details")->setText("Выберите сохранённый образ, чтобы посмотреть его состав.");
+        return;
+    }
+
+    const LLViewerInventoryCategory* outfit = gInventory.getCategory(outfit_id);
+    if (!outfit || outfit->getParentUUID() != gInventory.findCategoryUUIDForType(LLFolderType::FT_MY_OUTFITS))
+    {
+        getChild<LLTextBox>("saved_outfit_details")->setText("Сведения об образе недоступны.");
+        return;
+    }
+
+    LLInventoryModel::cat_array_t* categories = nullptr;
+    LLInventoryModel::item_array_t* items = nullptr;
+    gInventory.getDirectDescendentsOf(outfit_id, categories, items);
+    S32 item_count = 0;
+    std::vector<std::string> examples;
+    if (items)
+    {
+        for (const auto& item : *items)
+        {
+            if (item.isNull()) continue;
+            ++item_count;
+            if (examples.size() < 2) examples.push_back(item->getName());
+        }
+    }
+
+    std::string details = outfit->getName() + " · " + std::to_string(item_count) + " предметов";
+    if (!examples.empty())
+        details += " · " + examples.front() + (examples.size() > 1 ? ", " + examples.back() : "");
+    getChild<LLTextBox>("saved_outfit_details")->setText(details);
+}
+
 void FSForMeFittingRoom::removeWornItem(S32 index)
 {
     const S32 item_index = mWornPage * WORN_ITEM_SLOTS + index;
