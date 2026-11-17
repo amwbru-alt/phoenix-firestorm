@@ -218,6 +218,8 @@ void FSForMeInventoryBrowser::draw()
 {
     if (mDirty) rebuild();
     if (mAvatarPreview) mAvatarPreview->setActive(!isMinimized());
+    if (LLView* loading = getChild<LLView>("avatar_preview_loading"))
+        loading->setVisible(!mAvatarPreview || !mAvatarPreview->hasGLTexture());
     LLFloater::draw();
     if (mAvatarPreview && mAvatarPreview->needsRender()) drawAvatarPreview();
 }
