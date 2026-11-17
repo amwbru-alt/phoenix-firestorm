@@ -96,6 +96,8 @@ assert "Образ с таким названием уже существует"
 assert "Выбранный образ недоступен" in fit_cpp
 assert "outfit->getParentUUID() != outfits_root" in fit_cpp
 assert "compareOutfits()" in fit_cpp and "getLinkedUUID()" in fit_cpp
+assert 'getChild<LLComboBox>("compare_outfit_a")->setCommitCallback' in fit_cpp
+assert 'getChild<LLComboBox>("compare_outfit_b")->setCommitCallback' in fit_cpp
 assert "setCurrentByID(previous_outfit)" in fit_cpp
 assert "setCurrentByID(previous_compare_a)" in fit_cpp and "setCurrentByID(previous_compare_b)" in fit_cpp
 assert "std::set<LLUUID>" in fit_cpp
