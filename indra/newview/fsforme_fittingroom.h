@@ -5,12 +5,11 @@
 #include "llfloater.h"
 #include "llinventoryobserver.h"
 #include "lluuid.h"
+#include "llviewertexture.h"
+#include <string>
 #include <vector>
 class FSForMeAvatarPreview;
 class LLViewerInventoryItem;
-class LLViewerFetchedTexture;
-#include "llpointer.h"
-#include <string>
 
 class FSForMeFittingRoom final : public LLFloater, public LLInventoryObserver
 {
