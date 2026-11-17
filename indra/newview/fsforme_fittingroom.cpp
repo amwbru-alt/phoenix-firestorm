@@ -124,6 +124,7 @@ private:
 namespace
 {
 constexpr S32 WORN_ITEM_SLOTS = 16;
+constexpr S32 LOOKBOOK_THUMBNAIL_SLOTS = 4;
 
 std::string formeLookbookDirectory()
 {
