@@ -55,6 +55,9 @@ private:
     LLPointer<LLViewerFetchedTexture> mLookbookCompareBTexture;
     std::string mSelectedLookbookId;
     std::vector<std::string> mLookbookIds;
+    LLSD mFilteredLookbookEntries;
+    std::string mLookbookFilterCategory = "all";
+    bool mLookbookFavoritesOnly = false;
     std::vector<LLPointer<LLViewerFetchedTexture>> mLookbookTextures;
     LLPointer<LLViewerFetchedTexture> mLookbookPreviewTexture;
     LLUUID mDetailsOutfit;
