@@ -190,7 +190,10 @@ for locale in ("en", "ru"):
     child(fit_ui, "lookbook_compare_a")
     child(fit_ui, "lookbook_compare_b")
     child(fit_ui, "lookbook_compare")
-    assert child(fit_ui, "lookbook_title").get("width") == "166"
+    assert child(fit_ui, "lookbook_title").get("width") == "130"
+    assert child(fit_ui, "lookbook_filter_category").get("top") == "34"
+    assert child(fit_ui, "lookbook_favorites_only").get("top") == "34"
+    assert child(fit_ui, "lookbook_toggle_favorite").get("width") == "72"
     assert child(fit_ui, "fitting_capture_preview").get("top") == "466"
     assert child(fit_ui, "avatar_stage").get("height") == "630"
     child(fit_ui, "fitting_capture_preview")
