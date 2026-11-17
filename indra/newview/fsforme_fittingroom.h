@@ -23,6 +23,7 @@ public:
     bool handleMouseUp(S32 x, S32 y, MASK mask) override;
     bool handleHover(S32 x, S32 y, MASK mask) override;
     bool handleScrollWheel(S32 x, S32 y, S32 clicks) override;
+    bool handleKeyHere(KEY key, MASK mask) override;
     void changed(U32 mask) override;
 private:
     FSForMeFittingRoom(const LLSD& key);
@@ -30,6 +31,8 @@ private:
     void rebuild();
     void rebuildLookbook();
     void selectLookbookPhoto(const std::string& id);
+    void navigateLookbookPhoto(S32 delta);
+    void setLookbookFullscreenMode(bool enabled);
     void drawLookbookThumbnails();
     void drawLookbookPhotoPreview();
     void drawLookbookComparison();
@@ -58,6 +61,10 @@ private:
     LLSD mFilteredLookbookEntries;
     std::string mLookbookFilterCategory = "all";
     bool mLookbookFavoritesOnly = false;
+    bool mLookbookOldestFirst = false;
+    bool mLookbookFullscreenMode = false;
+    S32 mLookbookPreviewWidth = 512;
+    S32 mLookbookPreviewHeight = 307;
     std::vector<LLPointer<LLViewerFetchedTexture>> mLookbookTextures;
     LLPointer<LLViewerFetchedTexture> mLookbookPreviewTexture;
     LLUUID mDetailsOutfit;
