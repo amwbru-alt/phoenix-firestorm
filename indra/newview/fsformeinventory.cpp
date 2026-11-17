@@ -2,6 +2,13 @@
  * SPDX-License-Identifier: LGPL-2.1-or-later
  */
 #include "llviewerprecompiledheaders.h"
+#include "lldynamictexture.h"
+#include "llviewercamera.h"
+#include "llvoavatar.h"
+#include "llvoavatarself.h"
+#include "llrender.h"
+#include "pipeline.h"
+#include "llfocusmgr.h"
 #include "fsformeinventory.h"
 #include "llagent.h"
 #include "llappearancemgr.h"
@@ -20,6 +27,44 @@
 #include <algorithm>
 #include <cctype>
 #include <set>
+
+class FSForMeInventoryAvatarPreview final : public LLViewerDynamicTexture
+{
+public:
+    FSForMeInventoryAvatarPreview() : LLViewerDynamicTexture(640, 760, 3, ORDER_MIDDLE, false) {}
+    bool needsRender() override { return mActive; }
+    void setActive(bool active) { mActive = active; }
+    void rotate(F32 delta) { mYaw += delta; }
+    void tilt(F32 delta) { mElevation = llclamp(mElevation + delta, -0.35f, 0.65f); }
+    void zoom(F32 delta) { mDistance = llclamp(mDistance + delta, 1.8f, 7.0f); }
+    void reset() { mYaw = 0.f; mDistance = 2.7f; mElevation = 0.18f; }
+    bool render() override
+    {
+        LLVOAvatar* avatar = gAgentAvatarp;
+        if (!mActive || !avatar || avatar->isDead() || avatar->mDrawable.isNull()) return false;
+        LLViewerCamera* camera = LLViewerCamera::getInstance();
+        camera->setAspect(static_cast<F32>(getWidth()) / static_cast<F32>(getHeight()));
+        camera->setViewNoBroadcast(0.78539816f);
+        const LLVector3 focus = avatar->getPositionAgent() + LLVector3(0.f, 0.f, 1.0f);
+        const LLQuaternion orbit = avatar->getRotation() * LLQuaternion(mYaw, LLVector3::z_axis);
+        const LLVector3 offset = LLVector3(-mDistance, 0.f, mDistance * mElevation) * orbit;
+        camera->setOriginAndLookAt(focus + offset, LLVector3::z_axis, focus);
+        camera->setPerspective(false, 0, 0, getWidth(), getHeight(), false, 0.1f, 64.f);
+        glClearColor(0.035f, 0.025f, 0.05f, 1.f);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        LLGLSUIDefault state;
+        LLGLDepthTest depth(GL_TRUE);
+        LLGLEnable cull(GL_CULL_FACE);
+        gPipeline.generateImpostor(avatar, true, false);
+        gGL.flush();
+        return true;
+    }
+private:
+    bool mActive = false;
+    F32 mYaw = 0.f;
+    F32 mDistance = 2.7f;
+    F32 mElevation = 0.18f;
+};
 
 namespace
 {
@@ -42,14 +87,18 @@ void collectItems(const LLUUID& folder, std::vector<LLUUID>& output, std::set<LL
 }
 }
 FSForMeInventoryBrowser::FSForMeInventoryBrowser(const LLSD& key) : LLFloater(key) {}
-FSForMeInventoryBrowser::~FSForMeInventoryBrowser() { gInventory.removeObserver(this); }
+FSForMeInventoryBrowser::~FSForMeInventoryBrowser() { gInventory.removeObserver(this); delete mAvatarPreview; }
 
 bool FSForMeInventoryBrowser::postBuild()
 {
     gInventory.addObserver(this);
+    mAvatarPreview = new FSForMeInventoryAvatarPreview();
     getChild<LLSearchEditor>("query")->setCommitCallback([this](LLUICtrl*, const LLSD&) {
         mQuery = getChild<LLSearchEditor>("query")->getValue().asString();
         mPage = 0; mDirty = true;
+    });
+    getChild<LLButton>("avatar_reset")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
+        if (mAvatarPreview) mAvatarPreview->reset();
     });
     getChild<LLButton>("refresh")->setClickedCallback([this](LLUICtrl*, const LLSD&) { mDirty = true; });
     for (const auto& category : {std::make_pair("category_all", "all"), std::make_pair("category_clothing", "clothing"),
@@ -83,6 +132,7 @@ bool FSForMeInventoryBrowser::postBuild()
 }
 void FSForMeInventoryBrowser::onOpen(const LLSD&)
 {
+    if (mAvatarPreview) mAvatarPreview->setActive(true);
     mSelectedItem.setNull();
     mFolder = gInventory.getRootFolderID();
     mDirty = true;
@@ -91,10 +141,85 @@ void FSForMeInventoryBrowser::changed(U32)
 {
     mDirty = true;
 }
+void FSForMeInventoryBrowser::onClose(bool)
+{
+    mDraggingPreview = false;
+    if (hasMouseCapture()) gFocusMgr.setMouseCapture(nullptr);
+    if (mAvatarPreview) mAvatarPreview->setActive(false);
+}
+bool FSForMeInventoryBrowser::handleMouseDown(S32 x, S32 y, MASK mask)
+{
+    LLView* canvas = getChild<LLView>("avatar_preview_canvas");
+    LLRect rect;
+    if ((mask & MASK_LEFT) && canvas && canvas->localRectToOtherView(canvas->getLocalRect(), &rect, this)
+        && rect.pointInRect(x, y) && mAvatarPreview)
+    {
+        mDraggingPreview = true;
+        mLastPreviewMouseX = x;
+        gFocusMgr.setMouseCapture(this);
+        bringToFront(x, y);
+        return true;
+    }
+    return LLFloater::handleMouseDown(x, y, mask);
+}
+bool FSForMeInventoryBrowser::handleMouseUp(S32 x, S32 y, MASK mask)
+{
+    if (mDraggingPreview)
+    {
+        mDraggingPreview = false;
+        if (hasMouseCapture()) gFocusMgr.setMouseCapture(nullptr);
+        return true;
+    }
+    return LLFloater::handleMouseUp(x, y, mask);
+}
+bool FSForMeInventoryBrowser::handleHover(S32 x, S32 y, MASK mask)
+{
+    if (mDraggingPreview && hasMouseCapture() && mAvatarPreview)
+    {
+        const S32 delta = x - mLastPreviewMouseX;
+        mLastPreviewMouseX = x;
+        mAvatarPreview->rotate(-static_cast<F32>(delta) * 0.012f);
+        return true;
+    }
+    return LLFloater::handleHover(x, y, mask);
+}
+bool FSForMeInventoryBrowser::handleScrollWheel(S32 x, S32 y, S32 clicks)
+{
+    LLView* canvas = getChild<LLView>("avatar_preview_canvas");
+    LLRect rect;
+    if (canvas && canvas->localRectToOtherView(canvas->getLocalRect(), &rect, this)
+        && rect.pointInRect(x, y) && mAvatarPreview)
+    {
+        mAvatarPreview->zoom(-static_cast<F32>(clicks) * 0.22f);
+        return true;
+    }
+    return LLFloater::handleScrollWheel(x, y, clicks);
+}
+void FSForMeInventoryBrowser::drawAvatarPreview()
+{
+    if (!mAvatarPreview || !mAvatarPreview->hasGLTexture()) return;
+    LLView* canvas = getChild<LLView>("avatar_preview_canvas");
+    LLRect rect;
+    if (!canvas || !canvas->localRectToOtherView(canvas->getLocalRect(), &rect, this)) return;
+    LLGLSUIDefault state;
+    gGL.getTexUnit(0)->bind(mAvatarPreview);
+    gGL.color4f(1.f, 1.f, 1.f, 1.f);
+    gGL.begin(LLRender::TRIANGLES);
+    gGL.texCoord2f(0.f, 1.f); gGL.vertex2i(rect.mLeft + 1, rect.mTop - 1);
+    gGL.texCoord2f(0.f, 0.f); gGL.vertex2i(rect.mLeft + 1, rect.mBottom + 1);
+    gGL.texCoord2f(1.f, 0.f); gGL.vertex2i(rect.mRight - 1, rect.mBottom + 1);
+    gGL.texCoord2f(1.f, 0.f); gGL.vertex2i(rect.mRight - 1, rect.mBottom + 1);
+    gGL.texCoord2f(1.f, 1.f); gGL.vertex2i(rect.mRight - 1, rect.mTop - 1);
+    gGL.texCoord2f(0.f, 1.f); gGL.vertex2i(rect.mLeft + 1, rect.mTop - 1);
+    gGL.end();
+    gGL.getTexUnit(0)->unbind(LLTexUnit::TT_TEXTURE);
+}
 void FSForMeInventoryBrowser::draw()
 {
     if (mDirty) rebuild();
+    if (mAvatarPreview) mAvatarPreview->setActive(!isMinimized());
     LLFloater::draw();
+    if (mAvatarPreview && mAvatarPreview->needsRender()) drawAvatarPreview();
 }
 bool FSForMeInventoryBrowser::matches(const LLViewerInventoryItem* item) const
 {
