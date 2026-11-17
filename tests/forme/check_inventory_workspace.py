@@ -155,6 +155,8 @@ for locale in ("en", "ru"):
     child(fit_ui, "fitting_compare_outfits")
     child(fit_ui, "fitting_open_photo_studio")
     child(fit_ui, "fitting_capture_preview")
+    assert child(fit_ui, "fitting_capture_preview").get("top") == "466"
+    assert child(fit_ui, "avatar_stage").get("height") == "630"
     child(fit_ui, "fitting_capture_preview")
     child(fit_ui, "compare_summary")
     child(fit_ui, "compare_only_a")
