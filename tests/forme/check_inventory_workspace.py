@@ -88,6 +88,7 @@ assert "collect_names" in fit_cpp and "only_first_names" in fit_cpp and "only_se
 assert "names.size() < 4" in fit_cpp
 assert "WORN_ITEM_SLOTS" in fit_cpp and "page_count" in fit_cpp
 assert "page_start" in fit_cpp and "mWornPage" in fit_cpp
+assert "mWornPage = 0" in fit_cpp and "mCategory == category" in fit_cpp
 assert "worn_page_previous" in fit_cpp and "worn_page_next" in fit_cpp
 assert "fitting_compare_outfits" in fit_cpp and "compare_outfit_a" in fit_cpp and "compare_outfit_b" in fit_cpp
 assert "matchesCategory" in fit_cpp and "setCategory" in fit_cpp
