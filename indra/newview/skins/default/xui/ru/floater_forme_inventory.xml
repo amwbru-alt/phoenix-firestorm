@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<floater name="forme_inventory" title="Инвентарь ForMe">
+<!-- Independent ForMe inventory workspace. It does not embed or modify the legacy inventory panel. -->
+<floater name="forme_inventory" title="ForMe Inventory" width="1760" height="920" min_width="1580" min_height="840"
+         can_resize="true" can_minimize="true" can_close="true" single_instance="true"
+         legacy_header_height="0" header_height="44" header_vpad="9" header_icon="Forme_UI_Inventory"
+         bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive"
+         bg_opaque_color="White" bg_alpha_color="White">
   <text name="eyebrow" layout="topleft" left="20" top="18" width="200" height="20" font="SansSerifLarge" font.style="BOLD" text_color="0.88 0.62 1 1">✦ ForMe</text>
   <text name="top_nav_0" layout="topleft" left="340" top="24" width="110" height="24" font="SansSerif" text_color="0.68 0.62 0.74 1" halign="center">Главная</text>
   <text name="top_nav_1" layout="topleft" left="472" top="24" width="110" height="24" font="SansSerif" text_color="0.68 0.62 0.74 1" halign="center">Мир</text>
@@ -7,69 +12,190 @@
   <text name="top_nav_3" layout="topleft" left="736" top="24" width="110" height="24" font="SansSerifBold" text_color="0.88 0.62 1 1" halign="center">Инвентарь</text>
   <text name="top_nav_4" layout="topleft" left="868" top="24" width="110" height="24" font="SansSerif" text_color="0.68 0.62 0.74 1" halign="center">Друзья</text>
   <text name="top_nav_5" layout="topleft" left="1000" top="24" width="110" height="24" font="SansSerif" text_color="0.68 0.62 0.74 1" halign="center">Чаты</text>
+  <text name="forme_balance" layout="topleft" left="1330" top="24" width="100" height="22" font="SansSerif" text_color="0.92 0.88 1 1">Ⓚ 24 850</text>
+  <text name="forme_gems" layout="topleft" left="1440" top="24" width="92" height="22" font="SansSerif" text_color="0.92 0.88 1 1">◆ 3 200</text>
+  <text name="forme_notifications" layout="topleft" left="1550" top="24" width="40" height="22" font="SansSerifLarge" text_color="0.82 0.55 1 1">♟</text>
+  <text name="forme_profile" layout="topleft" left="1600" top="24" width="120" height="22" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">Профиль</text>
 
-  <search_editor name="query" layout="topleft" left="662" top="144" width="500" height="30" label="Поиск по предметам…"/>
-  <button name="refresh" layout="topleft" left="1170" top="144" width="36" height="30" label="↻"/>
-  <panel name="avatar_stage" layout="topleft" left="118" top="96" width="470" height="790"><text name="avatar_heading">ВАШ АВАТАР</text><panel name="avatar_preview_canvas"/>
-    <panel name="avatar_camera_controls">
-      <button name="camera_front" label="◉" tool_tip="Вид спереди"/>
-      <button name="camera_side" label="↻" tool_tip="Вид сбоку"/>
-      <button name="camera_back" label="↺" tool_tip="Вид сзади"/>
-      <button name="camera_zoom_in" label="+" tool_tip="Приблизить"/>
-      <button name="camera_zoom_out" label="−" tool_tip="Отдалить"/>
+  <search_editor name="query" layout="topleft" left="620" top="144" width="500" height="30" label="Поиск по предметам…"/>
+  <button name="refresh" layout="topleft" left="1128" top="144" width="36" height="30" label="↻"/>
+  <panel name="avatar_stage" layout="topleft" left="118" top="96" width="470" height="790" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
+    <text name="avatar_heading" layout="topleft" left="20" top="18" width="420" height="24" font="SansSerifBold" text_color="0.91 0.72 1 1">✦ ВАШ АВАТАР</text>
+    <panel name="avatar_preview_canvas" layout="topleft" left="14" top="52" width="442" height="650" background_visible="true" bg_alpha_image="Forme_Round_Window" bg_alpha_color="White"/>
+    <panel name="avatar_camera_controls" layout="topleft" left="414" top="54" width="42" height="214" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
+      <button name="camera_front" layout="topleft" left="4" top="6" width="34" height="32" label="◉" tool_tip="Вид спереди" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+      <button name="camera_side" layout="topleft" left="4" top="44" width="34" height="32" label="↻" tool_tip="Вид сбоку" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+      <button name="camera_back" layout="topleft" left="4" top="82" width="34" height="32" label="↺" tool_tip="Вид сзади" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+      <panel name="camera_separator" layout="topleft" left="8" top="122" width="26" height="1" background_visible="true" bg_opaque_color="0.48 0.28 0.65 0.85"/>
+      <button name="camera_zoom_in" layout="topleft" left="4" top="132" width="34" height="32" label="+" tool_tip="Приблизить" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+      <button name="camera_zoom_out" layout="topleft" left="4" top="170" width="34" height="32" label="−" tool_tip="Отдалить" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
     </panel>
-    <text name="avatar_preview_loading">Загрузка 3D-аватара…</text><text name="avatar_hint">Перетащите мышью для поворота · колесо — масштаб</text><button name="avatar_reset" label="Сброс"/></panel>
-  <panel name="category_rail" layout="topleft" left="18" top="118" width="88" height="638">
-    
-    <button name="category_clothing" layout="topleft" left="6" top="8" width="76" height="54" label="♙\nОдежда" font="SansSerifSmall" text_color="0.82 0.70 0.94 1" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
-    
-    <button name="category_shoes" layout="topleft" left="6" top="8" width="76" height="54" label="♧\nОбувь" font="SansSerifSmall" text_color="0.82 0.70 0.94 1" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
-    <button name="category_accessories" layout="topleft" left="6" top="8" width="76" height="54" label="♧\nАксессуары" font="SansSerifSmall" text_color="0.82 0.70 0.94 1" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/><button name="category_hair" layout="topleft" left="6" top="8" width="76" height="54" label="♙\nПричёски" font="SansSerifSmall" text_color="0.82 0.70 0.94 1" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/><button name="category_tattoos" layout="topleft" left="6" top="8" width="76" height="54" label="✧\nТату и макияж" font="SansSerifSmall" text_color="0.82 0.70 0.94 1" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/><button name="category_jewelry" layout="topleft" left="6" top="8" width="76" height="54" label="♧\nУкрашения" font="SansSerifSmall" text_color="0.82 0.70 0.94 1" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
-    <button name="category_objects" layout="topleft" left="6" top="8" width="76" height="54" label="♧\nДекор" font="SansSerifSmall" text_color="0.82 0.70 0.94 1" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
-    <button name="category_animations" layout="topleft" left="6" top="8" width="76" height="54" label="◷\nЭмоции" font="SansSerifSmall" text_color="0.82 0.70 0.94 1" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
-    <button name="category_favorites" visible="false" label="Избранное"/>
-    <button name="category_recent" layout="topleft" left="6" top="8" width="76" height="54" label="Недавние" font="SansSerifSmall" text_color="0.82 0.70 0.94 1" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
-    
-  <button name="category_all" visible="false" label="Все вещи"/></panel>
-  <panel name="items_surface" layout="topleft" left="610" top="96" width="700" height="790">
-    <text name="items_heading" layout="topleft" left="16" top="14" width="240" height="24">Инвентарь</text>
+    <text name="avatar_preview_loading" layout="topleft" left="28" top="360" width="410" height="24" halign="center" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">Загрузка 3D-аватара…</text>
+    <text name="avatar_hint" layout="topleft" left="22" top="712" width="310" height="20" font="SansSerifSmall" text_color="0.78 0.66 0.91 1">Перетащите мышью для поворота · колесо — масштаб</text>
+    <button name="avatar_reset" layout="topleft" left="350" top="706" width="82" height="30" label="Сброс" text_color="0.92 0.78 1 1" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"/>
+  </panel>
+  <panel name="category_rail" layout="topleft" left="18" top="118" width="88" height="638" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
+    <button name="category_clothing" layout="topleft" left="6" top="8" width="76" height="54" label="♙\nОдежда" font="SansSerifSmall" text_color="0.91 0.79 1 1" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    <button name="category_accessories" layout="topleft" left="6" top="74" width="76" height="54" label="♧\nАксессуары" font="SansSerifSmall" text_color="0.82 0.70 0.94 1" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    <button name="category_hair" layout="topleft" left="6" top="140" width="76" height="54" label="♙\nПричёски" font="SansSerifSmall" text_color="0.82 0.70 0.94 1" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    <button name="category_shoes" layout="topleft" left="6" top="206" width="76" height="54" label="♧\nОбувь" font="SansSerifSmall" text_color="0.82 0.70 0.94 1" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    <button name="category_tattoos" layout="topleft" left="6" top="272" width="76" height="54" label="✧\nТату и макияж" font="SansSerifSmall" text_color="0.82 0.70 0.94 1" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    <button name="category_jewelry" layout="topleft" left="6" top="338" width="76" height="54" label="♧\nУкрашения" font="SansSerifSmall" text_color="0.82 0.70 0.94 1" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    <button name="category_objects" layout="topleft" left="6" top="404" width="76" height="54" label="♧\nДекор" font="SansSerifSmall" text_color="0.82 0.70 0.94 1" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    <button name="category_animations" layout="topleft" left="6" top="470" width="76" height="54" label="◷\nЭмоции" font="SansSerifSmall" text_color="0.82 0.70 0.94 1" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    <button name="category_recent" layout="topleft" left="6" top="536" width="76" height="44" label="♧\nДругое" font="SansSerifSmall" text_color="0.82 0.70 0.94 1" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    <button name="category_all" layout="topleft" left="6" top="586" width="76" height="42" label="Все вещи" font="SansSerifSmall" text_color="0.82 0.70 0.94 1" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+  <button name="category_favorites" visible="false" label="Избранное"/>
+  </panel>
+  <panel name="items_surface" layout="topleft" left="610" top="96" width="700" height="790" background_visible="true" bg_alpha_image="Forme_Round_Window" bg_alpha_color="White">
+    <text name="items_heading" layout="topleft" left="16" top="14" width="240" height="24" font="SansSerifBold" text_color="0.94 0.84 1 1">Инвентарь</text>
     <text name="inventory_count" layout="topleft" left="16" top="44" width="240" height="20" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">Загрузка…</text>
-    <button name="all_items_tab" layout="topleft" left="264" top="10" width="112" height="30" label="Все вещи"/>
-    <button name="purchased_tab" layout="topleft" left="382" top="10" width="124" height="30" label="Недавние"/>
-    <button name="favorites_tab" layout="topleft" left="512" top="10" width="122" height="30" label="Избранное"/>
-    <button name="folder_back" label="Все папки" enabled="false"/>
-    <scroll_container name="items_scroll" layout="topleft" left="10" top="86" width="680" height="640">
-      <panel name="items_grid">
-      <panel name="item_card_0"><thumbnail name="item_thumbnail_0"/><button name="item_favorite_0" label="☆"/><text name="item_name_0"/><button name="item_select_0" label="Выбрать"/></panel>
-      <panel name="item_card_1"><thumbnail name="item_thumbnail_1"/><button name="item_favorite_1" label="☆"/><text name="item_name_1"/><button name="item_select_1" label="Выбрать"/></panel>
-      <panel name="item_card_2"><thumbnail name="item_thumbnail_2"/><button name="item_favorite_2" label="☆"/><text name="item_name_2"/><button name="item_select_2" label="Выбрать"/></panel>
-      <panel name="item_card_3"><thumbnail name="item_thumbnail_3"/><button name="item_favorite_3" label="☆"/><text name="item_name_3"/><button name="item_select_3" label="Выбрать"/></panel>
-      <panel name="item_card_4"><thumbnail name="item_thumbnail_4"/><button name="item_favorite_4" label="☆"/><text name="item_name_4"/><button name="item_select_4" label="Выбрать"/></panel>
-      <panel name="item_card_5"><thumbnail name="item_thumbnail_5"/><button name="item_favorite_5" label="☆"/><text name="item_name_5"/><button name="item_select_5" label="Выбрать"/></panel>
-      <panel name="item_card_6"><thumbnail name="item_thumbnail_6"/><button name="item_favorite_6" label="☆"/><text name="item_name_6"/><button name="item_select_6" label="Выбрать"/></panel>
-      <panel name="item_card_7"><thumbnail name="item_thumbnail_7"/><button name="item_favorite_7" label="☆"/><text name="item_name_7"/><button name="item_select_7" label="Выбрать"/></panel>
-      <panel name="item_card_8"><thumbnail name="item_thumbnail_8"/><button name="item_favorite_8" label="☆"/><text name="item_name_8"/><button name="item_select_8" label="Выбрать"/></panel>
-      <panel name="item_card_9"><thumbnail name="item_thumbnail_9"/><button name="item_favorite_9" label="☆"/><text name="item_name_9"/><button name="item_select_9" label="Выбрать"/></panel>
-      <panel name="item_card_10"><thumbnail name="item_thumbnail_10"/><button name="item_favorite_10" label="☆"/><text name="item_name_10"/><button name="item_select_10" label="Выбрать"/></panel>
-      <panel name="item_card_11"><thumbnail name="item_thumbnail_11"/><button name="item_favorite_11" label="☆"/><text name="item_name_11"/><button name="item_select_11" label="Выбрать"/></panel>
-      <panel name="item_card_12"><thumbnail name="item_thumbnail_12"/><button name="item_favorite_12" label="☆"/><text name="item_name_12"/><button name="item_select_12" label="Выбрать"/></panel>
-      <panel name="item_card_13"><thumbnail name="item_thumbnail_13"/><button name="item_favorite_13" label="☆"/><text name="item_name_13"/><button name="item_select_13" label="Выбрать"/></panel>
-      <panel name="item_card_14"><thumbnail name="item_thumbnail_14"/><button name="item_favorite_14" label="☆"/><text name="item_name_14"/><button name="item_select_14" label="Выбрать"/></panel>
-      <panel name="item_card_15"><thumbnail name="item_thumbnail_15"/><button name="item_favorite_15" label="☆"/><text name="item_name_15"/><button name="item_select_15" label="Выбрать"/></panel>
-      <panel name="item_card_16"><thumbnail name="item_thumbnail_16"/><button name="item_favorite_16" label="☆"/><text name="item_name_16"/><button name="item_select_16" label="Выбрать"/></panel>
-      <panel name="item_card_17"><thumbnail name="item_thumbnail_17"/><button name="item_favorite_17" label="☆"/><text name="item_name_17"/><button name="item_select_17" label="Выбрать"/></panel>
-      <panel name="item_card_18"><thumbnail name="item_thumbnail_18"/><button name="item_favorite_18" label="☆"/><text name="item_name_18"/><button name="item_select_18" label="Выбрать"/></panel>
-      <panel name="item_card_19"><thumbnail name="item_thumbnail_19"/><button name="item_favorite_19" label="☆"/><text name="item_name_19"/><button name="item_select_19" label="Выбрать"/></panel>
+
+    <button name="all_items_tab" layout="topleft" left="236" top="10" width="112" height="30" label="● Все вещи" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"/>
+    <button name="purchased_tab" layout="topleft" left="354" top="10" width="124" height="30" label="Recent" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    <button name="favorites_tab" layout="topleft" left="484" top="10" width="122" height="30" label="☆ Избранное" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent"/>
+    <button name="folder_back" layout="topleft" left="620" top="10" width="42" height="28" label="↶" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
+    <scroll_container name="items_scroll" layout="topleft" left="10" top="86" width="680" height="640" opaque="false" reserve_scroll_corner="true">
+      <panel name="items_grid" layout="topleft" left="0" top="0" width="644" height="560" background_visible="false">
+        <panel name="item_card_0" layout="topleft" left="0" top="0" width="124" height="132" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White" follows="left|top">
+      <thumbnail name="item_thumbnail_0" layout="topleft" left="8" top="8" width="108" height="78" border_visible="false" show_loading="false"/>
+      <button name="item_favorite_0" layout="topleft" left="88" top="6" width="28" height="24" label="☆" text_color="0.83 0.65 1 1" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+      <text name="item_name_0" layout="topleft" left="8" top="90" width="108" height="18" font="SansSerifSmall" use_ellipses="true" parse_urls="false"/>
+      <button name="item_select_0" layout="topleft" left="8" top="110" width="108" height="20" label="Выбрать" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    </panel>
+        <panel name="item_card_1" layout="topleft" left="128" top="0" width="124" height="132" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White" follows="left|top">
+      <thumbnail name="item_thumbnail_1" layout="topleft" left="8" top="8" width="108" height="78" border_visible="false" show_loading="false"/>
+      <button name="item_favorite_1" layout="topleft" left="88" top="6" width="28" height="24" label="☆" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+      <text name="item_name_1" layout="topleft" left="8" top="90" width="108" height="18" font="SansSerifSmall" use_ellipses="true" parse_urls="false"/>
+      <button name="item_select_1" layout="topleft" left="8" top="110" width="108" height="20" label="Выбрать" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    </panel>
+        <panel name="item_card_2" layout="topleft" left="256" top="0" width="124" height="132" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White" follows="left|top">
+      <thumbnail name="item_thumbnail_2" layout="topleft" left="8" top="8" width="108" height="78" border_visible="false" show_loading="false"/>
+      <button name="item_favorite_2" layout="topleft" left="88" top="6" width="28" height="24" label="☆" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+      <text name="item_name_2" layout="topleft" left="8" top="90" width="108" height="18" font="SansSerifSmall" use_ellipses="true" parse_urls="false"/>
+      <button name="item_select_2" layout="topleft" left="8" top="110" width="108" height="20" label="Выбрать" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    </panel>
+        <panel name="item_card_3" layout="topleft" left="384" top="0" width="124" height="132" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White" follows="left|top">
+      <thumbnail name="item_thumbnail_3" layout="topleft" left="8" top="8" width="108" height="78" border_visible="false" show_loading="false"/>
+      <button name="item_favorite_3" layout="topleft" left="88" top="6" width="28" height="24" label="☆" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+      <text name="item_name_3" layout="topleft" left="8" top="90" width="108" height="18" font="SansSerifSmall" use_ellipses="true" parse_urls="false"/>
+      <button name="item_select_3" layout="topleft" left="8" top="110" width="108" height="20" label="Выбрать" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    </panel>
+        <panel name="item_card_4" layout="topleft" left="512" top="0" width="124" height="132" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White" follows="left|top">
+      <thumbnail name="item_thumbnail_4" layout="topleft" left="8" top="8" width="108" height="78" border_visible="false" show_loading="false"/>
+      <button name="item_favorite_4" layout="topleft" left="88" top="6" width="28" height="24" label="☆" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+      <text name="item_name_4" layout="topleft" left="8" top="90" width="108" height="18" font="SansSerifSmall" use_ellipses="true" parse_urls="false"/>
+      <button name="item_select_4" layout="topleft" left="8" top="110" width="108" height="20" label="Выбрать" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    </panel>
+        <panel name="item_card_5" layout="topleft" left="0" top="140" width="124" height="132" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White" follows="left|top">
+      <thumbnail name="item_thumbnail_5" layout="topleft" left="8" top="8" width="108" height="78" border_visible="false" show_loading="false"/>
+      <button name="item_favorite_5" layout="topleft" left="88" top="6" width="28" height="24" label="☆" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+      <text name="item_name_5" layout="topleft" left="8" top="90" width="108" height="18" font="SansSerifSmall" use_ellipses="true" parse_urls="false"/>
+      <button name="item_select_5" layout="topleft" left="8" top="110" width="108" height="20" label="Выбрать" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    </panel>
+        <panel name="item_card_6" layout="topleft" left="128" top="140" width="124" height="132" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White" follows="left|top">
+      <thumbnail name="item_thumbnail_6" layout="topleft" left="8" top="8" width="108" height="78" border_visible="false" show_loading="false"/>
+      <button name="item_favorite_6" layout="topleft" left="88" top="6" width="28" height="24" label="☆" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+      <text name="item_name_6" layout="topleft" left="8" top="90" width="108" height="18" font="SansSerifSmall" use_ellipses="true" parse_urls="false"/>
+      <button name="item_select_6" layout="topleft" left="8" top="110" width="108" height="20" label="Выбрать" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    </panel>
+        <panel name="item_card_7" layout="topleft" left="256" top="140" width="124" height="132" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White" follows="left|top">
+      <thumbnail name="item_thumbnail_7" layout="topleft" left="8" top="8" width="108" height="78" border_visible="false" show_loading="false"/>
+      <button name="item_favorite_7" layout="topleft" left="88" top="6" width="28" height="24" label="☆" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+      <text name="item_name_7" layout="topleft" left="8" top="90" width="108" height="18" font="SansSerifSmall" use_ellipses="true" parse_urls="false"/>
+      <button name="item_select_7" layout="topleft" left="8" top="110" width="108" height="20" label="Выбрать" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    </panel>
+        <panel name="item_card_8" layout="topleft" left="384" top="140" width="124" height="132" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White" follows="left|top">
+      <thumbnail name="item_thumbnail_8" layout="topleft" left="8" top="8" width="108" height="78" border_visible="false" show_loading="false"/>
+      <button name="item_favorite_8" layout="topleft" left="88" top="6" width="28" height="24" label="☆" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+      <text name="item_name_8" layout="topleft" left="8" top="90" width="108" height="18" font="SansSerifSmall" use_ellipses="true" parse_urls="false"/>
+      <button name="item_select_8" layout="topleft" left="8" top="110" width="108" height="20" label="Выбрать" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    </panel>
+        <panel name="item_card_9" layout="topleft" left="512" top="140" width="124" height="132" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White" follows="left|top">
+      <thumbnail name="item_thumbnail_9" layout="topleft" left="8" top="8" width="108" height="78" border_visible="false" show_loading="false"/>
+      <button name="item_favorite_9" layout="topleft" left="88" top="6" width="28" height="24" label="☆" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+      <text name="item_name_9" layout="topleft" left="8" top="90" width="108" height="18" font="SansSerifSmall" use_ellipses="true" parse_urls="false"/>
+      <button name="item_select_9" layout="topleft" left="8" top="110" width="108" height="20" label="Выбрать" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    </panel>
+        <panel name="item_card_10" layout="topleft" left="0" top="280" width="124" height="132" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White" follows="left|top">
+      <thumbnail name="item_thumbnail_10" layout="topleft" left="8" top="8" width="108" height="78" border_visible="false" show_loading="false"/>
+      <button name="item_favorite_10" layout="topleft" left="88" top="6" width="28" height="24" label="☆" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+      <text name="item_name_10" layout="topleft" left="8" top="90" width="108" height="18" font="SansSerifSmall" use_ellipses="true" parse_urls="false"/>
+      <button name="item_select_10" layout="topleft" left="8" top="110" width="108" height="20" label="Выбрать" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    </panel>
+        <panel name="item_card_11" layout="topleft" left="128" top="280" width="124" height="132" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White" follows="left|top">
+      <thumbnail name="item_thumbnail_11" layout="topleft" left="8" top="8" width="108" height="78" border_visible="false" show_loading="false"/>
+      <button name="item_favorite_11" layout="topleft" left="88" top="6" width="28" height="24" label="☆" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+      <text name="item_name_11" layout="topleft" left="8" top="90" width="108" height="18" font="SansSerifSmall" use_ellipses="true" parse_urls="false"/>
+      <button name="item_select_11" layout="topleft" left="8" top="110" width="108" height="20" label="Выбрать" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    </panel>
+        <panel name="item_card_12" layout="topleft" left="256" top="280" width="124" height="132" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White" follows="left|top">
+      <thumbnail name="item_thumbnail_12" layout="topleft" left="8" top="8" width="108" height="78" border_visible="false" show_loading="false"/>
+      <button name="item_favorite_12" layout="topleft" left="88" top="6" width="28" height="24" label="☆" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+      <text name="item_name_12" layout="topleft" left="8" top="90" width="108" height="18" font="SansSerifSmall" use_ellipses="true" parse_urls="false"/>
+      <button name="item_select_12" layout="topleft" left="8" top="110" width="108" height="20" label="Выбрать" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    </panel>
+        <panel name="item_card_13" layout="topleft" left="384" top="280" width="124" height="132" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White" follows="left|top">
+      <thumbnail name="item_thumbnail_13" layout="topleft" left="8" top="8" width="108" height="78" border_visible="false" show_loading="false"/>
+      <button name="item_favorite_13" layout="topleft" left="88" top="6" width="28" height="24" label="☆" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+      <text name="item_name_13" layout="topleft" left="8" top="90" width="108" height="18" font="SansSerifSmall" use_ellipses="true" parse_urls="false"/>
+      <button name="item_select_13" layout="topleft" left="8" top="110" width="108" height="20" label="Выбрать" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    </panel>
+        <panel name="item_card_14" layout="topleft" left="512" top="280" width="124" height="132" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White" follows="left|top">
+      <thumbnail name="item_thumbnail_14" layout="topleft" left="8" top="8" width="108" height="78" border_visible="false" show_loading="false"/>
+      <button name="item_favorite_14" layout="topleft" left="88" top="6" width="28" height="24" label="☆" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+      <text name="item_name_14" layout="topleft" left="8" top="90" width="108" height="18" font="SansSerifSmall" use_ellipses="true" parse_urls="false"/>
+      <button name="item_select_14" layout="topleft" left="8" top="110" width="108" height="20" label="Выбрать" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    </panel>
+        <panel name="item_card_15" layout="topleft" left="0" top="420" width="124" height="132" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White" follows="left|top">
+      <thumbnail name="item_thumbnail_15" layout="topleft" left="8" top="8" width="108" height="78" border_visible="false" show_loading="false"/>
+      <button name="item_favorite_15" layout="topleft" left="88" top="6" width="28" height="24" label="☆" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+      <text name="item_name_15" layout="topleft" left="8" top="90" width="108" height="18" font="SansSerifSmall" use_ellipses="true" parse_urls="false"/>
+      <button name="item_select_15" layout="topleft" left="8" top="110" width="108" height="20" label="Выбрать" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    </panel>
+        <panel name="item_card_16" layout="topleft" left="128" top="420" width="124" height="132" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White" follows="left|top">
+      <thumbnail name="item_thumbnail_16" layout="topleft" left="8" top="8" width="108" height="78" border_visible="false" show_loading="false"/>
+      <button name="item_favorite_16" layout="topleft" left="88" top="6" width="28" height="24" label="☆" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+      <text name="item_name_16" layout="topleft" left="8" top="90" width="108" height="18" font="SansSerifSmall" use_ellipses="true" parse_urls="false"/>
+      <button name="item_select_16" layout="topleft" left="8" top="110" width="108" height="20" label="Выбрать" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    </panel>
+        <panel name="item_card_17" layout="topleft" left="256" top="420" width="124" height="132" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White" follows="left|top">
+      <thumbnail name="item_thumbnail_17" layout="topleft" left="8" top="8" width="108" height="78" border_visible="false" show_loading="false"/>
+      <button name="item_favorite_17" layout="topleft" left="88" top="6" width="28" height="24" label="☆" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+      <text name="item_name_17" layout="topleft" left="8" top="90" width="108" height="18" font="SansSerifSmall" use_ellipses="true" parse_urls="false"/>
+      <button name="item_select_17" layout="topleft" left="8" top="110" width="108" height="20" label="Выбрать" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    </panel>
+        <panel name="item_card_18" layout="topleft" left="384" top="420" width="124" height="132" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White" follows="left|top">
+      <thumbnail name="item_thumbnail_18" layout="topleft" left="8" top="8" width="108" height="78" border_visible="false" show_loading="false"/>
+      <button name="item_favorite_18" layout="topleft" left="88" top="6" width="28" height="24" label="☆" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+      <text name="item_name_18" layout="topleft" left="8" top="90" width="108" height="18" font="SansSerifSmall" use_ellipses="true" parse_urls="false"/>
+      <button name="item_select_18" layout="topleft" left="8" top="110" width="108" height="20" label="Выбрать" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    </panel>
+        <panel name="item_card_19" layout="topleft" left="512" top="420" width="124" height="132" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White" follows="left|top">
+      <thumbnail name="item_thumbnail_19" layout="topleft" left="8" top="8" width="108" height="78" border_visible="false" show_loading="false"/>
+      <button name="item_favorite_19" layout="topleft" left="88" top="6" width="28" height="24" label="☆" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+      <text name="item_name_19" layout="topleft" left="8" top="90" width="108" height="18" font="SansSerifSmall" use_ellipses="true" parse_urls="false"/>
+      <button name="item_select_19" layout="topleft" left="8" top="110" width="108" height="20" label="Выбрать" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    </panel>
       </panel>
     </scroll_container>
-    <button name="previous" label="‹"/><text name="page">1 / 1</text><button name="next" label="›"/>
+    <button name="previous" layout="topleft" left="500" top="742" width="34" height="26" label="‹" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    <text name="page" layout="topleft" left="540" top="746" width="72" height="20" halign="center">1 / 1</text>
+    <button name="next" layout="topleft" left="620" top="742" width="34" height="26" label="›" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
   </panel>
-  <panel name="details_surface" layout="topleft" left="1328" top="96" width="414" height="790"><text name="detail_creator"/><text name="detail_created"/><text name="detail_description"/>
-    <text name="details_heading">Предмет</text>
-    <thumbnail name="detail_thumbnail"/><text name="detail_name">Выберите предмет</text><text name="detail_type"/><text name="detail_folder"/>
-    <button name="detail_favorite" label="В избранное"/>
-    <button name="apply" label="Применить"/>
-    <button name="open_folder" label="Открыть папку"/>
+  <panel name="details_surface" layout="topleft" left="1328" top="96" width="414" height="790" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
+    <text name="details_heading" layout="topleft" left="18" top="14" width="340" height="24" font="SansSerifBold" text_color="0.91 0.72 1 1">✦ Предмет</text>
+    <thumbnail name="detail_thumbnail" layout="topleft" left="28" top="54" width="322" height="250" border_visible="false" show_loading="true"/>
+    <text name="detail_name" layout="topleft" left="18" top="322" width="340" height="42" font="SansSerifLarge" wrap="true">Выберите предмет</text>
+    <text name="detail_type" layout="topleft" left="18" top="370" width="340" height="24" text_color="0.76 0.73 0.80 1"/>
+    <text name="detail_folder" layout="topleft" left="18" top="402" width="340" height="40" wrap="true" text_color="0.76 0.73 0.80 1"/>
+    <text name="detail_creator" layout="topleft" left="18" top="454" width="340" height="24" text_color="0.76 0.73 0.80 1"/>
+    <text name="detail_created" layout="topleft" left="18" top="480" width="340" height="24" text_color="0.76 0.73 0.80 1"/>
+    <text name="detail_description" layout="topleft" left="18" top="512" width="340" height="84" wrap="true" text_color="0.76 0.73 0.80 1"/>
+    <button name="detail_favorite" layout="topleft" left="18" top="650" width="340" height="30" label="В избранное" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
+    <button name="apply" layout="topleft" left="18" top="700" width="340" height="46" label="Применить" text_color="0.96 0.88 1 1" image_unselected="Forme_Round_Accent" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
+    <button name="open_folder" layout="topleft" left="18" top="752" width="340" height="30" label="Открыть папку" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
+    <text name="detail_hint" layout="topleft" left="18" top="610" width="340" height="30" wrap="true" text_color="0.65 0.61 0.70 1">Предметы загружаются напрямую из инвентаря аккаунта.</text>
   </panel>
-  <text name="status"/>
+  <text name="status" layout="topleft" left="650" top="892" width="980" height="24" use_ellipses="true" parse_urls="false" text_color="0.76 0.73 0.80 1"/>
 </floater>
