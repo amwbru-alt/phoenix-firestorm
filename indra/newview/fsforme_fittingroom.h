@@ -31,11 +31,13 @@ private:
     void removeWornItem(S32 index);
     void saveOutfit();
     void compareOutfits();
+    void updateSelectedOutfitDetails();
     void setCameraPreset(F32 preset);
     void adjustCameraZoom(F32 delta);
     void drawAvatarPreview();
     std::vector<LLUUID> mWornItems;
     S32 mSavedOutfitCount = 0;
+    LLUUID mDetailsOutfit;
     S32 mWornPage = 0;
     bool mDirty = true;
     std::string mCategory = "all";
