@@ -151,6 +151,7 @@ for locale in ("en", "ru"):
     child(fit_ui, "compare_outfit_b")
     child(fit_ui, "fitting_compare_outfits")
     child(fit_ui, "fitting_open_photo_studio")
+    child(fit_ui, "fitting_capture_preview")
     child(fit_ui, "compare_summary")
     child(fit_ui, "compare_only_a")
     child(fit_ui, "compare_only_b")
