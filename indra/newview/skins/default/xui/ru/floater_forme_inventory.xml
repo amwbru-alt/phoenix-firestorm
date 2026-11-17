@@ -21,10 +21,10 @@
     <text name="avatar_preview_loading">Загрузка 3D-аватара…</text><text name="avatar_hint">Перетащите мышью для поворота · колесо — масштаб</text><button name="avatar_reset" label="Сброс"/></panel>
   <panel name="category_rail" layout="topleft" left="18" top="118" width="88" height="638">
     
-    <button name="category_all" label="♧\nОдежда"/>
+    <button name="category_clothing" label="♙\nОдежда"/>
     
     <button name="category_shoes" label="♧\nОбувь"/>
-    <button name="category_accessories" label="♧\nАксессуары"/>
+    <button name="category_accessories" label="♧\nАксессуары"/><button name="category_hair" label="♙\nПричёски"/><button name="category_tattoos" label="✧\nТату и макияж"/><button name="category_jewelry" label="♧\nУкрашения"/>
     <button name="category_objects" label="♧\nДекор"/>
     <button name="category_animations" label="◷\nЭмоции"/>
     <button name="category_favorites" label="Избранное"/>
