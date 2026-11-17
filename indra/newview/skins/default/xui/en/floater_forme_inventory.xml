@@ -184,7 +184,7 @@
     <text name="page" layout="topleft" left="540" top="746" width="72" height="20" halign="center">1 / 1</text>
     <button name="next" layout="topleft" left="620" top="742" width="34" height="26" label="›" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
   </panel>
-  <panel name="details_surface" layout="topleft" left="1400" top="96" width="342" height="790" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
+  <panel name="details_surface" layout="topleft" left="1328" top="96" width="342" height="790" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
     <text name="details_heading" layout="topleft" left="18" top="14" width="296" height="24" font="SansSerifBold" text_color="0.91 0.72 1 1">✦ Предмет</text>
     <thumbnail name="detail_thumbnail" layout="topleft" left="28" top="54" width="286" height="250" border_visible="false" show_loading="true"/>
     <text name="detail_name" layout="topleft" left="18" top="322" width="296" height="42" font="SansSerifLarge" wrap="true">Выберите предмет</text>
