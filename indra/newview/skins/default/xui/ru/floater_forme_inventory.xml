@@ -3,6 +3,7 @@
   <text name="eyebrow">МИР FORME / ЛИЧНОЕ ПРОСТРАНСТВО</text>
   <text name="title">Инвентарь</text>
   <search_editor name="query" label="Поиск по предметам…"/>
+  <button name="refresh" label="Обновить"/>
   <panel name="avatar_stage"><text name="avatar_heading">ВАШ АВАТАР</text><panel name="avatar_preview_canvas"/><text name="avatar_preview_loading">Загрузка 3D-аватара…</text><text name="avatar_hint">Перетащите мышью для поворота · колесо — масштаб</text><button name="avatar_reset" label="Сброс"/></panel>
   <button name="all_items_tab" label="Все вещи"/><button name="purchased_tab" label="Купленные" enabled="false"/><button name="favorites_tab" label="Избранное"/>
   <panel name="category_rail">
@@ -48,7 +49,7 @@
   </panel>
   <panel name="details_surface"><text name="detail_creator"/><text name="detail_created"/><text name="detail_description"/>
     <text name="details_heading">Предмет</text>
-    <thumbnail name="detail_thumbnail"/><text name="detail_name">Выберите предмет</text>
+    <thumbnail name="detail_thumbnail"/><text name="detail_name">Выберите предмет</text><text name="detail_type"/><text name="detail_folder"/>
     <button name="detail_favorite" label="В избранное"/>
     <button name="apply" label="Применить"/>
     <button name="open_folder" label="Открыть папку"/>
