@@ -100,6 +100,9 @@ assert "setCurrentByID(previous_outfit)" in fit_cpp
 assert "setCurrentByID(previous_compare_a)" in fit_cpp and "setCurrentByID(previous_compare_b)" in fit_cpp
 assert "std::set<LLUUID>" in fit_cpp
 assert "collect_names" in fit_cpp and "only_first_names" in fit_cpp and "only_second_names" in fit_cpp
+assert "compare_summary" in fit_cpp and "compare_only_a" in fit_cpp and "compare_only_b" in fit_cpp
+assert "const S32 omitted = total - static_cast<S32>(names.size())" in fit_cpp
+assert "Сравнение готово" in fit_cpp
 assert "names.size() < 4" in fit_cpp
 assert "WORN_ITEM_SLOTS" in fit_cpp and "page_count" in fit_cpp
 assert "page_start" in fit_cpp and "mWornPage" in fit_cpp
@@ -142,6 +145,9 @@ for locale in ("en", "ru"):
     child(fit_ui, "compare_outfit_a")
     child(fit_ui, "compare_outfit_b")
     child(fit_ui, "fitting_compare_outfits")
+    child(fit_ui, "compare_summary")
+    child(fit_ui, "compare_only_a")
+    child(fit_ui, "compare_only_b")
     child(fit_ui, "fitting_move_saved_to_trash")
     child(fit_ui, "saved_outfit_filter")
     child(fit_ui, "saved_outfit_filter_clear")
