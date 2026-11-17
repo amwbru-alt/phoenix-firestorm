@@ -368,7 +368,7 @@ void FSForMeFittingRoom::rebuild()
         getChild<LLTextBox>("worn_name_" + suffix)->setText(item->getName());
         getChild<LLTextBox>("worn_type_" + std::to_string(i))->setText(fittingItemType(item));
     }
-    getChild<LLTextBox>("fitting_item_count")->setText(std::to_string(mWornItems.size()) + " предметов в категории");
+    getChild<LLTextBox>("fitting_item_count")->setText(std::to_string(mWornItems.size()) + " предметов в категории" + (mWornItems.size() > WORN_ITEM_SLOTS ? " · показаны первые 16" : ""));
     getChild<LLButton>("worn_filter_all")->setToggleState(mCategory == "all");
     getChild<LLButton>("worn_filter_clothing")->setToggleState(mCategory == "clothing");
     getChild<LLButton>("worn_filter_shape")->setToggleState(mCategory == "shape");
