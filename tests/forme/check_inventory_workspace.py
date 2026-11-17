@@ -106,6 +106,11 @@ assert 'getTypedInstance<LLFloaterSnapshot>("snapshot")' in fit_cpp
 assert "llfloatersnapshot.h" in fit_cpp
 assert "отдельный захват preview-рендера пока не подключён" not in fit_cpp
 assert "requestCapture" in fit_cpp and "glReadPixels" in fit_cpp
+assert "formeLookbookDirectory" in fit_cpp and "saveFormeLookbook" in fit_cpp
+assert "LLSDSerialize::toPrettyXML" in fit_cpp and "LLSDSerialize::fromXML" in fit_cpp
+assert "outfit_id" in fit_cpp and "camera_yaw" in fit_cpp and "captured_at" in fit_cpp
+assert "lookbook_delete" in fit_cpp and "LLFile::remove" in fit_cpp
+assert "png->save(image_path)" in fit_cpp
 assert "GL_PACK_ALIGNMENT" in fit_cpp and "verticalFlip" in fit_cpp
 assert "LLImagePNG" in fit_cpp and "saveImageLocal" in fit_cpp
 assert "compare_summary" in fit_cpp and "compare_only_a" in fit_cpp and "compare_only_b" in fit_cpp
@@ -155,6 +160,8 @@ for locale in ("en", "ru"):
     child(fit_ui, "fitting_compare_outfits")
     child(fit_ui, "fitting_open_photo_studio")
     child(fit_ui, "fitting_capture_preview")
+    child(fit_ui, "lookbook_entries")
+    child(fit_ui, "lookbook_delete")
     assert child(fit_ui, "fitting_capture_preview").get("top") == "466"
     assert child(fit_ui, "avatar_stage").get("height") == "630"
     child(fit_ui, "fitting_capture_preview")
