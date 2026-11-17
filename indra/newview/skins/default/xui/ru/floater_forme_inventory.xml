@@ -7,6 +7,9 @@
   <text name="top_nav_3" layout="topleft" left="736" top="24" width="110" height="24" font="SansSerifBold" text_color="0.88 0.62 1 1" halign="center">Инвентарь</text>
   <text name="top_nav_4" layout="topleft" left="868" top="24" width="110" height="24" font="SansSerif" text_color="0.68 0.62 0.74 1" halign="center">Друзья</text>
   <text name="top_nav_5" layout="topleft" left="1000" top="24" width="110" height="24" font="SansSerif" text_color="0.68 0.62 0.74 1" halign="center">Чаты</text>
+
+  <search_editor name="query" layout="topleft" left="662" top="144" width="500" height="30" label="Поиск по предметам…"/>
+  <button name="refresh" layout="topleft" left="1170" top="144" width="36" height="30" label="↻"/>
   <panel name="avatar_stage"><text name="avatar_heading">ВАШ АВАТАР</text><panel name="avatar_preview_canvas"/><text name="avatar_preview_loading">Загрузка 3D-аватара…</text><text name="avatar_hint">Перетащите мышью для поворота · колесо — масштаб</text><button name="avatar_reset" label="Сброс"/></panel>
   <panel name="category_rail">
     <text name="category_heading">КАТЕГОРИИ</text>
@@ -25,8 +28,6 @@
     <button name="all_items_tab" layout="topleft" left="264" top="10" width="112" height="30" label="Все вещи"/>
     <button name="purchased_tab" layout="topleft" left="382" top="10" width="124" height="30" label="Купленные" enabled="false"/>
     <button name="favorites_tab" layout="topleft" left="512" top="10" width="122" height="30" label="Избранное"/>
-    <search_editor name="query" layout="topleft" left="10" top="48" width="520" height="30" label="Поиск по предметам…"/>
-    <button name="refresh" layout="topleft" left="540" top="48" width="36" height="30" label="↻"/>
     <button name="folder_back" label="Все папки" enabled="false"/>
     <scroll_container name="items_scroll" layout="topleft" left="10" top="86" width="680" height="640">
       <panel name="items_grid">
