@@ -8,7 +8,6 @@
   <text name="top_nav_4" layout="topleft" left="868" top="24" width="110" height="24" font="SansSerif" text_color="0.68 0.62 0.74 1" halign="center">Друзья</text>
   <text name="top_nav_5" layout="topleft" left="1000" top="24" width="110" height="24" font="SansSerif" text_color="0.68 0.62 0.74 1" halign="center">Чаты</text>
   <panel name="avatar_stage"><text name="avatar_heading">ВАШ АВАТАР</text><panel name="avatar_preview_canvas"/><text name="avatar_preview_loading">Загрузка 3D-аватара…</text><text name="avatar_hint">Перетащите мышью для поворота · колесо — масштаб</text><button name="avatar_reset" label="Сброс"/></panel>
-  <button name="all_items_tab" label="Все вещи"/><button name="purchased_tab" label="Купленные" enabled="false"/><button name="favorites_tab" label="Избранное"/>
   <panel name="category_rail">
     <text name="category_heading">КАТЕГОРИИ</text>
     <button name="category_all" label="Все предметы"/>
@@ -22,9 +21,14 @@
     <text name="inventory_count">Загрузка…</text>
   </panel>
   <panel name="items_surface">
-    <text name="items_heading">Мои предметы</text>
+    <text name="items_heading" layout="topleft" left="16" top="14" width="240" height="24">Инвентарь</text>
+    <button name="all_items_tab" layout="topleft" left="264" top="10" width="112" height="30" label="Все вещи"/>
+    <button name="purchased_tab" layout="topleft" left="382" top="10" width="124" height="30" label="Купленные" enabled="false"/>
+    <button name="favorites_tab" layout="topleft" left="512" top="10" width="122" height="30" label="Избранное"/>
+    <search_editor name="query" layout="topleft" left="10" top="48" width="520" height="30" label="Поиск по предметам…"/>
+    <button name="refresh" layout="topleft" left="540" top="48" width="36" height="30" label="↻"/>
     <button name="folder_back" label="Все папки" enabled="false"/>
-    <scroll_container name="items_scroll">
+    <scroll_container name="items_scroll" layout="topleft" left="10" top="86" width="680" height="640">
       <panel name="items_grid">
       <panel name="item_card_0"><thumbnail name="item_thumbnail_0"/><button name="item_favorite_0" label="☆"/><text name="item_name_0"/><button name="item_select_0" label="Выбрать"/></panel>
       <panel name="item_card_1"><thumbnail name="item_thumbnail_1"/><button name="item_favorite_1" label="☆"/><text name="item_name_1"/><button name="item_select_1" label="Выбрать"/></panel>
