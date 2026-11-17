@@ -183,6 +183,8 @@ bool FSForMeFittingRoom::postBuild()
     });
     getChild<LLButton>("fitting_save_outfit")->setClickedCallback([this](LLUICtrl*, const LLSD&) { saveOutfit(); });
     getChild<LLButton>("fitting_compare_outfits")->setClickedCallback([this](LLUICtrl*, const LLSD&) { compareOutfits(); });
+    getChild<LLComboBox>("compare_outfit_a")->setCommitCallback([this](LLUICtrl*, const LLSD&) { compareOutfits(); });
+    getChild<LLComboBox>("compare_outfit_b")->setCommitCallback([this](LLUICtrl*, const LLSD&) { compareOutfits(); });
     getChild<LLButton>("fitting_move_saved_to_trash")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
         const LLUUID outfit_id = getChild<LLComboBox>("saved_outfits")->getSelectedValue().asUUID();
         LLViewerInventoryCategory* outfit = gInventory.getCategory(outfit_id);
