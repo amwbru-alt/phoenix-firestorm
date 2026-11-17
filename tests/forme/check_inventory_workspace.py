@@ -112,6 +112,9 @@ assert "outfit_id" in fit_cpp and "camera_yaw" in fit_cpp and "captured_at" in f
 assert "lookbook_delete" in fit_cpp and "LLFile::remove" in fit_cpp
 assert "getFetchedTextureFromFile" in fit_cpp and "drawLookbookThumbnails" in fit_cpp
 assert "drawLookbookPhotoPreview" in fit_cpp
+assert "drawLookbookComparison" in fit_cpp and "saveSelectedLookbookMetadata" in fit_cpp
+assert "assignLookbookCompareSlot" in fit_cpp and 'entry["category"] = "Everyday"' in fit_cpp
+assert 'entry["notes"] = ""' in fit_cpp and 'entry["title"] = outfit_name' in fit_cpp
 child(fit_en, "lookbook_thumb_3")
 assert "lookbook_entries" not in (XUI / "en/floater_forme_fitting_room.xml").read_text()
 assert "png->save(image_path)" in fit_cpp
@@ -173,6 +176,14 @@ for locale in ("en", "ru"):
     child(fit_ui, "lookbook_view_avatar")
     child(fit_ui, "lookbook_page_label")
     child(fit_ui, "lookbook_delete")
+    child(fit_ui, "lookbook_title")
+    child(fit_ui, "lookbook_notes")
+    child(fit_ui, "lookbook_category")
+    child(fit_ui, "lookbook_save_metadata")
+    child(fit_ui, "lookbook_compare_a")
+    child(fit_ui, "lookbook_compare_b")
+    child(fit_ui, "lookbook_compare")
+    assert child(fit_ui, "lookbook_title").get("width") == "166"
     assert child(fit_ui, "fitting_capture_preview").get("top") == "466"
     assert child(fit_ui, "avatar_stage").get("height") == "630"
     child(fit_ui, "fitting_capture_preview")
