@@ -29,7 +29,7 @@
     <button name="saved_outfit_filter_clear" layout="topleft" left="308" top="584" width="62" height="28" label="Сброс" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"/>
     
   </panel>
-  <panel name="wardrobe_surface" layout="topleft" left="430" top="96" width="532" height="570" background_visible="true" bg_alpha_image="Forme_Round_Window" bg_alpha_color="White">
+  <panel name="wardrobe_surface" layout="topleft" left="430" top="96" width="532" height="620" background_visible="true" bg_alpha_image="Forme_Round_Window" bg_alpha_color="White">
     <text name="wardrobe_heading" layout="topleft" left="18" top="16" width="360" height="26" font="SansSerifBold">Сейчас надето</text>
     <text name="wardrobe_subtitle" layout="topleft" left="18" top="44" width="480" height="22" text_color="0.76 0.73 0.80 1">Список синхронизирован с текущим образом</text>
 <button name="worn_filter_all" layout="topleft" left="18" top="68" width="112" height="26" label="Всё" toggle="true" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"/><button name="worn_filter_clothing" layout="topleft" left="136" top="68" width="112" height="26" label="Одежда" toggle="true" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"/><button name="worn_filter_shape" layout="topleft" left="254" top="68" width="112" height="26" label="Форма" toggle="true" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"/><button name="worn_filter_skin" layout="topleft" left="372" top="68" width="128" height="26" label="Кожа" toggle="true" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"/>
