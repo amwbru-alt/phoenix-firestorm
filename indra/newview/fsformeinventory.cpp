@@ -257,6 +257,9 @@ bool FSForMeInventoryBrowser::matches(const LLViewerInventoryItem* item) const
     const auto type = item->getType();
     if (mCategory == "clothing" && type != LLAssetType::AT_CLOTHING && type != LLAssetType::AT_BODYPART) return false;
     if (mCategory == "shoes" && (type != LLAssetType::AT_CLOTHING || item->getWearableType() != LLWearableType::WT_SHOES)) return false;
+    if (mCategory == "hair" && (type != LLAssetType::AT_BODYPART || item->getWearableType() != LLWearableType::WT_HAIR)) return false;
+    if (mCategory == "tattoos" && (type != LLAssetType::AT_BODYPART || item->getWearableType() != LLWearableType::WT_SKIN)) return false;
+    if (mCategory == "jewelry" && type != LLAssetType::AT_OBJECT) return false;
     if (mCategory == "accessories" && (type != LLAssetType::AT_OBJECT || item->getInventoryType() != LLInventoryType::IT_WEARABLE)) return false;
     if (mCategory == "objects" && (type != LLAssetType::AT_OBJECT || item->getInventoryType() == LLInventoryType::IT_WEARABLE)) return false;
     if (mCategory == "animations" && type != LLAssetType::AT_ANIMATION && type != LLAssetType::AT_GESTURE) return false;
@@ -305,6 +308,16 @@ void FSForMeInventoryBrowser::rebuild()
     getChild<LLTextBox>("inventory_count")->setText(std::to_string(mVisibleItems.size()) + " предметов");
     getChild<LLButton>("all_items_tab")->setLabel(mCategory == "all" ? "● Все вещи" : "Все вещи");
     getChild<LLButton>("favorites_tab")->setLabel(mCategory == "favorites" ? "★ Избранное" : "☆ Избранное");
+    const std::pair<const char*, const char*> rail_labels[] = {
+        {"category_all", "Все"}, {"category_clothing", "Одежда"}, {"category_accessories", "Аксессуары"},
+        {"category_hair", "Причёски"}, {"category_shoes", "Обувь"}, {"category_tattoos", "Тату и макияж"},
+        {"category_jewelry", "Украшения"}, {"category_objects", "Декор"}, {"category_animations", "Эмоции"},
+        {"category_recent", "Другое"}
+    };
+    for (const auto& entry : rail_labels)
+        const std::string key = entry.first;
+        const std::string value = key == "category_all" ? "all" : key.substr(9);
+        getChild<LLButton>(entry.first)->setLabel(mCategory == value ? std::string("✦ ") + entry.second : entry.second);
     getChild<LLTextBox>("page")->setText(std::to_string(mPage + 1) + " / " + std::to_string(pages));
     getChild<LLButton>("folder_back")->setEnabled(mFolder.notNull() && mFolder != gInventory.getRootFolderID());
     getChild<LLButton>("previous")->setEnabled(mPage > 0);
