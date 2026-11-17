@@ -305,9 +305,14 @@ void FSForMeInventoryBrowser::rebuild()
         if (!item) continue;
         const auto icon_name = LLInventoryIcon::getIconName(item->getType(), item->getInventoryType(), item->getFlags());
         getChild<LLThumbnailCtrl>("item_thumbnail_" + suffix)->setValue(item->getThumbnailUUID().notNull() ? LLSD(item->getThumbnailUUID()) : LLSD(icon_name));
-        getChild<LLButton>("item_favorite_" + suffix)->setLabel(get_is_favorite(item->getUUID()) ? "★" : "☆");
+        LLButton* favorite_button = getChild<LLButton>("item_favorite_" + suffix);
+        favorite_button->setLabel(get_is_favorite(item->getUUID()) ? "★" : "☆");
+        favorite_button->setToggleState(get_is_favorite(item->getUUID()));
         getChild<LLTextBox>("item_name_" + suffix)->setText(item->getName());
-        getChild<LLButton>("item_select_" + suffix)->setLabel(mSelectedItem == item->getUUID() ? "Выбрано" : "Выбрать");
+        LLButton* select_button = getChild<LLButton>("item_select_" + suffix);
+        const bool selected = mSelectedItem == item->getUUID();
+        select_button->setLabel(selected ? "✦ Выбрано" : "Выбрать");
+        select_button->setToggleState(selected);
     }
     grid->reshape(644, 560);
     getChild<LLTextBox>("inventory_count")->setText(std::to_string(mVisibleItems.size()) + " предметов");
