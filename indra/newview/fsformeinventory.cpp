@@ -315,9 +315,11 @@ void FSForMeInventoryBrowser::rebuild()
         {"category_recent", "Другое"}
     };
     for (const auto& entry : rail_labels)
+    {
         const std::string key = entry.first;
         const std::string value = key == "category_all" ? "all" : key.substr(9);
         getChild<LLButton>(entry.first)->setLabel(mCategory == value ? std::string("✦ ") + entry.second : entry.second);
+    }
     getChild<LLTextBox>("page")->setText(std::to_string(mPage + 1) + " / " + std::to_string(pages));
     getChild<LLButton>("folder_back")->setEnabled(mFolder.notNull() && mFolder != gInventory.getRootFolderID());
     getChild<LLButton>("previous")->setEnabled(mPage > 0);
