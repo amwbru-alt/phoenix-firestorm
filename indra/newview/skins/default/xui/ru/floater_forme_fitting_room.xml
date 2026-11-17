@@ -69,9 +69,12 @@
     <button name="lookbook_save_metadata" layout="topleft" left="540" top="8" width="74" height="26" label="Сохранить" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" enabled="false"/>
     <button name="lookbook_toggle_favorite" layout="topleft" left="618" top="8" width="72" height="26" label="☆" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" enabled="false"/>
     <button name="lookbook_wear_outfit" layout="topleft" left="694" top="8" width="116" height="26" label="Надеть комплект" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" enabled="false"/>
+    <button name="lookbook_fullscreen" layout="topleft" left="750" top="8" width="56" height="26" label="⛶" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" enabled="false"/>
     <text name="fitting_status" layout="topleft" left="814" top="12" width="122" height="20" use_ellipses="true" parse_urls="false" font="SansSerifSmall" text_color="0.76 0.73 0.80 1"/>
     <combo_box name="lookbook_filter_category" layout="topleft" left="8" top="34" width="126" height="22" allow_text_entry="false"/>
     <button name="lookbook_favorites_only" layout="topleft" left="140" top="34" width="126" height="22" label="☆ Все фото" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"/>
+    <button name="lookbook_sort_order" layout="topleft" left="274" top="34" width="126" height="22" label="Сначала старые" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"/>
+    <text name="lookbook_history_date" layout="topleft" left="410" top="38" width="520" height="18" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">Дата снимка: —</text>
     <button name="lookbook_thumb_0" layout="topleft" left="8" top="60" width="64" height="40" label="" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
     <button name="lookbook_thumb_1" layout="topleft" left="76" top="60" width="64" height="40" label="" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
     <button name="lookbook_thumb_2" layout="topleft" left="144" top="60" width="64" height="40" label="" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
