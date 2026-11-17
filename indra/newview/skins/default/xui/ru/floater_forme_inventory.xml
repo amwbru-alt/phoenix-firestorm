@@ -10,7 +10,7 @@
 
   <search_editor name="query" layout="topleft" left="662" top="144" width="500" height="30" label="Поиск по предметам…"/>
   <button name="refresh" layout="topleft" left="1170" top="144" width="36" height="30" label="↻"/>
-  <panel name="avatar_stage"><text name="avatar_heading">ВАШ АВАТАР</text><panel name="avatar_preview_canvas"/>
+  <panel name="avatar_stage" layout="topleft" left="118" top="96" width="470" height="790"><text name="avatar_heading">ВАШ АВАТАР</text><panel name="avatar_preview_canvas"/>
     <panel name="avatar_camera_controls">
       <button name="camera_front" label="◉" tool_tip="Вид спереди"/>
       <button name="camera_side" label="↻" tool_tip="Вид сбоку"/>
@@ -19,19 +19,19 @@
       <button name="camera_zoom_out" label="−" tool_tip="Отдалить"/>
     </panel>
     <text name="avatar_preview_loading">Загрузка 3D-аватара…</text><text name="avatar_hint">Перетащите мышью для поворота · колесо — масштаб</text><button name="avatar_reset" label="Сброс"/></panel>
-  <panel name="category_rail">
-    <text name="category_heading">КАТЕГОРИИ</text>
-    <button name="category_all" label="Все предметы"/>
-    <button name="category_clothing" label="Одежда"/>
-    <button name="category_shoes" label="Обувь"/>
-    <button name="category_accessories" label="Аксессуары"/>
-    <button name="category_objects" label="Объекты"/>
-    <button name="category_animations" label="Анимации"/>
+  <panel name="category_rail" layout="topleft" left="18" top="118" width="88" height="638">
+    
+    <button name="category_all" label="♧\nОдежда"/>
+    
+    <button name="category_shoes" label="♧\nОбувь"/>
+    <button name="category_accessories" label="♧\nАксессуары"/>
+    <button name="category_objects" label="♧\nДекор"/>
+    <button name="category_animations" label="◷\nЭмоции"/>
     <button name="category_favorites" label="Избранное"/>
     <button name="category_recent" label="Недавние"/>
     <text name="inventory_count">Загрузка…</text>
   </panel>
-  <panel name="items_surface">
+  <panel name="items_surface" layout="topleft" left="610" top="96" width="700" height="790">
     <text name="items_heading" layout="topleft" left="16" top="14" width="240" height="24">Инвентарь</text>
     <button name="all_items_tab" layout="topleft" left="264" top="10" width="112" height="30" label="Все вещи"/>
     <button name="purchased_tab" layout="topleft" left="382" top="10" width="124" height="30" label="Купленные" enabled="false"/>
@@ -63,7 +63,7 @@
     </scroll_container>
     <button name="previous" label="‹"/><text name="page">1 / 1</text><button name="next" label="›"/>
   </panel>
-  <panel name="details_surface"><text name="detail_creator"/><text name="detail_created"/><text name="detail_description"/>
+  <panel name="details_surface" layout="topleft" left="1328" top="96" width="414" height="790"><text name="detail_creator"/><text name="detail_created"/><text name="detail_description"/>
     <text name="details_heading">Предмет</text>
     <thumbnail name="detail_thumbnail"/><text name="detail_name">Выберите предмет</text><text name="detail_type"/><text name="detail_folder"/>
     <button name="detail_favorite" label="В избранное"/>
