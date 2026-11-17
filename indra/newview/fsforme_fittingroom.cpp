@@ -418,8 +418,27 @@ void FSForMeFittingRoom::compareOutfits()
         return;
     }
     S32 shared = 0;
+    std::vector<std::string> only_first_names;
+    std::vector<std::string> only_second_names;
+    auto collect_names = [](const LLUUID& outfit_id, const std::set<LLUUID>& other_items,
+                            std::vector<std::string>& names)
+    {
+        LLInventoryModel::cat_array_t* categories = nullptr;
+        LLInventoryModel::item_array_t* items = nullptr;
+        gInventory.getDirectDescendentsOf(outfit_id, categories, items);
+        if (!items) return;
+        for (const auto& item : *items)
+        {
+            if (item.isNull()) continue;
+            const LLUUID linked_id = item->getIsLinkType() ? item->getLinkedUUID() : item->getUUID();
+            if (linked_id.notNull() && !other_items.count(linked_id) && names.size() < 4)
+                names.push_back(item->getName());
+        }
+    };
     for (const auto& item_id : first_items)
         if (second_items.count(item_id)) ++shared;
+    collect_names(first_id, second_items, only_first_names);
+    collect_names(second_id, first_items, only_second_names);
     const S32 only_first = static_cast<S32>(first_items.size()) - shared;
     const S32 only_second = static_cast<S32>(second_items.size()) - shared;
     const auto* first = gInventory.getCategory(first_id);
@@ -429,7 +448,10 @@ void FSForMeFittingRoom::compareOutfits()
     getChild<LLTextBox>("fitting_status")->setText(
         first_name + " / " + second_name + ": общих " + std::to_string(shared)
         + ", только в A " + std::to_string(only_first) + ", только в B " + std::to_string(only_second)
-        + " предметов.");
+        + " предметов. A: " + (only_first_names.empty() ? "—" : only_first_names.front())
+        + ". B: " + (only_second_names.empty() ? "—" : only_second_names.front())
+        + (only_first_names.size() > 1 ? " (+" + std::to_string(only_first_names.size() - 1) + ")" : "")
+        + (only_second_names.size() > 1 ? " (+" + std::to_string(only_second_names.size() - 1) + ")" : ""));
 }
 
 void FSForMeFittingRoom::saveOutfit()
