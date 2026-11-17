@@ -83,6 +83,7 @@ assert "wearInventoryCategoryOnAvatar" in fit_cpp and "FT_MY_OUTFITS" in fit_cpp
 assert "fitting_move_saved_to_trash" in fit_cpp and "gInventory.removeCategory(outfit_id)" in fit_cpp
 assert "compareInsensitive" in fit_cpp and "sorted_outfits" in fit_cpp
 assert "saved_outfit_filter" in fit_cpp and "setKeystrokeCallback" in fit_cpp
+assert "saved_outfit_filter_clear" in fit_cpp and "setText(\"\")" in fit_cpp
 assert "utf8str_tolower(outfit->getName()).find(outfit_filter)" in fit_cpp
 assert "По запросу не найдено сохранённых образов" in fit_cpp
 assert "const S32 item_count" in fit_cpp and "std::to_string(item_count)" in fit_cpp
@@ -138,6 +139,7 @@ for locale in ("en", "ru"):
     child(fit_ui, "fitting_compare_outfits")
     child(fit_ui, "fitting_move_saved_to_trash")
     child(fit_ui, "saved_outfit_filter")
+    child(fit_ui, "saved_outfit_filter_clear")
     child(fit_ui, "worn_page_previous")
     child(fit_ui, "worn_page_next")
     child(fit_ui, "worn_page_label")
