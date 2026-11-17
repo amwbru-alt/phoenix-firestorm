@@ -66,5 +66,7 @@
     <line_editor name="outfit_name" layout="topleft" left="10" top="5" width="240" height="28" label="Название нового образа…"/>
     <button name="fitting_save_outfit" layout="topleft" left="258" top="5" width="160" height="28" label="Сохранить образ" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
     <text name="fitting_status" layout="topleft" left="430" top="9" width="170" height="22" use_ellipses="true" parse_urls="false" text_color="0.76 0.73 0.80 1"/>
-  
+    <combo_box name="lookbook_entries" layout="topleft" left="610" top="5" width="230" height="28" allow_text_entry="false"/>
+    <button name="lookbook_delete" layout="topleft" left="846" top="5" width="88" height="28" label="Удалить фото" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"/>
+  </panel>
 </floater>
