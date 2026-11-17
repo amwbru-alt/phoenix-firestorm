@@ -13,6 +13,7 @@
 #include "llagent.h"
 #include "llappearancemgr.h"
 #include "llbutton.h"
+#include "llcombobox.h"
 #include "lliconctrl.h"
 #include "llinventoryicon.h"
 #include "llinventorymodel.h"
@@ -140,6 +141,11 @@ bool FSForMeInventoryBrowser::postBuild()
         mCategory = "recent"; mPage = 0; mDirty = true;
     });
     getChild<LLButton>("refresh")->setClickedCallback([this](LLUICtrl*, const LLSD&) { mDirty = true; });
+    getChild<LLComboBox>("category_filter")->setCommitCallback([this](LLUICtrl*, const LLSD&) {
+        mCategory = getChild<LLComboBox>("category_filter")->getValue().asString();
+        mPage = 0;
+        mDirty = true;
+    });
     for (const auto& category : {std::make_pair("category_all", "all"), std::make_pair("category_clothing", "clothing"),
                                  std::make_pair("category_shoes", "shoes"), std::make_pair("category_hair", "hair"),
                                  std::make_pair("category_tattoos", "tattoos"), std::make_pair("category_jewelry", "jewelry"),
@@ -330,6 +336,7 @@ void FSForMeInventoryBrowser::rebuild()
     grid->reshape(644, 610);
     getChild<LLTextBox>("inventory_count")->setText(std::to_string(mVisibleItems.size()) + " предметов");
     getChild<LLButton>("all_items_tab")->setLabel(mCategory == "all" ? "● Все вещи" : "Все вещи");
+    getChild<LLComboBox>("category_filter")->setValue(mCategory);
     getChild<LLButton>("favorites_tab")->setLabel(mCategory == "favorites" ? "★ Избранное" : "☆ Избранное");
     getChild<LLButton>("purchased_tab")->setLabel(mCategory == "recent" ? "◷ Недавние" : "Недавние");
     getChild<LLButton>("purchased_tab")->setToggleState(mCategory == "recent");
