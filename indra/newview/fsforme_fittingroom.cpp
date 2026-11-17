@@ -375,6 +375,8 @@ bool FSForMeFittingRoom::postBuild()
             mSelectedLookbookId.clear();
             mLookbookPreviewTexture = nullptr;
             mLookbookPreviewMode = false;
+            getChild<LLButton>("lookbook_fullscreen")->setEnabled(false);
+            getChild<LLTextBox>("lookbook_history_date")->setText("Дата снимка: —");
             mLookbookCompareMode = false;
             if (mLookbookCompareAId == selected_id) { mLookbookCompareAId.clear(); mLookbookCompareATexture = nullptr; }
             if (mLookbookCompareBId == selected_id) { mLookbookCompareBId.clear(); mLookbookCompareBTexture = nullptr; }
@@ -644,6 +646,7 @@ void FSForMeFittingRoom::selectLookbookPhoto(const std::string& id)
         getChild<LLComboBox>("lookbook_category")->setValue(LLSD(category));
         getChild<LLButton>("lookbook_save_metadata")->setEnabled(true);
         getChild<LLButton>("lookbook_toggle_favorite")->setEnabled(true);
+        getChild<LLButton>("lookbook_fullscreen")->setEnabled(true);
         LLUUID outfit_id;
         outfit_id.set((*it)["outfit_id"].asString());
         const LLUUID outfits_root = gInventory.findCategoryUUIDForType(LLFolderType::FT_MY_OUTFITS);
