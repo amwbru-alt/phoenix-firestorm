@@ -308,8 +308,11 @@ void FSForMeInventoryBrowser::selectItem(const LLUUID& id)
         item->getType() == LLAssetType::AT_BODYPART ? "Часть тела" : item->getType() == LLAssetType::AT_OBJECT ? "Объект / аксессуар" : "Предмет инвентаря");
     auto* folder = gInventory.getCategory(item->getParentUUID());
     getChild<LLTextBox>("detail_folder")->setText(folder ? "Папка: " + folder->getName() : "");
-    getChild<LLTextBox>("detail_creator")->setText("Автор UUID: " + item->getCreatorUUID().asString());
-    getChild<LLTextBox>("detail_created")->setText("Создан: " + LLDate(static_cast<F64>(item->getCreationDate())).asString());
+    getChild<LLTextBox>("detail_creator")->setText(item->getCreatorUUID().isNull()
+        ? "Автор: не указан" : "Автор UUID: " + item->getCreatorUUID().asString());
+    getChild<LLTextBox>("detail_created")->setText(item->getCreationDate() > 0
+        ? "Создан: " + LLDate(static_cast<F64>(item->getCreationDate())).asString()
+        : "Дата создания: неизвестна");
     const std::string description = item->getDescription();
     getChild<LLTextBox>("detail_description")->setText(description.empty() ? "Описание не указано." : description);
     getChild<LLButton>("apply")->setEnabled(item->getType() == LLAssetType::AT_CLOTHING || item->getType() == LLAssetType::AT_BODYPART || item->getType() == LLAssetType::AT_OBJECT);
