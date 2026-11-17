@@ -5,10 +5,13 @@
          legacy_header_height="0" header_height="44" header_vpad="9" header_icon="Forme_UI_Inventory"
          bg_opaque_image="Forme_Round_Window" bg_alpha_image="Forme_Round_WindowInactive"
          bg_opaque_color="White" bg_alpha_color="White">
-  <text name="eyebrow" layout="topleft" left="20" top="18" width="300" height="18" font="SansSerifSmall" text_color="0.72 0.55 0.88 1">ForMe  /  PERSONAL STYLE</text>
-  <text name="title" layout="topleft" left="20" top="42" width="250" height="36" font="SansSerifLarge" font.style="BOLD">Инвентарь</text>
-  <search_editor name="query" layout="topleft" left="1190" top="42" width="460" height="32" label="Поиск по предметам…"/>
-  <button name="refresh" layout="topleft" left="1660" top="42" width="36" height="32" label="↻" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+  <text name="eyebrow" layout="topleft" left="20" top="18" width="200" height="20" font="SansSerifLarge" font.style="BOLD" text_color="0.88 0.62 1 1">✦ ForMe</text>
+  <text name="top_nav_0" layout="topleft" left="340" top="24" width="110" height="24" font="SansSerif" text_color="0.68 0.62 0.74 1" halign="center">Главная</text>
+  <text name="top_nav_1" layout="topleft" left="472" top="24" width="110" height="24" font="SansSerif" text_color="0.68 0.62 0.74 1" halign="center">Мир</text>
+  <text name="top_nav_2" layout="topleft" left="604" top="24" width="110" height="24" font="SansSerif" text_color="0.68 0.62 0.74 1" halign="center">Магазин</text>
+  <text name="top_nav_3" layout="topleft" left="736" top="24" width="110" height="24" font="SansSerifBold" text_color="0.88 0.62 1 1" halign="center">Инвентарь</text>
+  <text name="top_nav_4" layout="topleft" left="868" top="24" width="110" height="24" font="SansSerif" text_color="0.68 0.62 0.74 1" halign="center">Друзья</text>
+  <text name="top_nav_5" layout="topleft" left="1000" top="24" width="110" height="24" font="SansSerif" text_color="0.68 0.62 0.74 1" halign="center">Чаты</text>
   <panel name="avatar_stage" layout="topleft" left="18" top="96" width="470" height="790" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
     <text name="avatar_heading" layout="topleft" left="20" top="18" width="420" height="24" font="SansSerifBold">ВАШ АВАТАР</text>
     <panel name="avatar_preview_canvas" layout="topleft" left="14" top="52" width="442" height="650" background_visible="true" bg_alpha_image="Forme_Round_Window" bg_alpha_color="White"/>
@@ -30,12 +33,15 @@
     <text name="inventory_count" layout="topleft" left="12" top="454" width="116" height="50" wrap="true" text_color="0.76 0.73 0.80 1">Загрузка…</text>
   </panel>
   <panel name="items_surface" layout="topleft" left="652" top="96" width="700" height="790" background_visible="true" bg_alpha_image="Forme_Round_Window" bg_alpha_color="White">
-    <text name="items_heading" layout="topleft" left="16" top="14" width="240" height="24" font="SansSerifBold">Мои предметы</text>
+    <text name="items_heading" layout="topleft" left="16" top="14" width="240" height="24" font="SansSerifBold">Инвентарь</text>
+  <search_editor name="query" layout="topleft" left="10" top="48" width="520" height="30" label="Поиск по предметам…"/>
+  <button name="refresh" layout="topleft" left="540" top="48" width="36" height="30" label="↻" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+
     <button name="all_items_tab" layout="topleft" left="264" top="10" width="112" height="30" label="● Все вещи" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"/>
     <button name="purchased_tab" layout="topleft" left="382" top="10" width="124" height="30" label="Купленные" enabled="false" image_unselected="Forme_WMap_Clear"/>
     <button name="favorites_tab" layout="topleft" left="512" top="10" width="122" height="30" label="☆ Избранное" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent"/>
     <button name="folder_back" layout="topleft" left="646" top="10" width="42" height="28" label="↶" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection" enabled="false"/>
-    <scroll_container name="items_scroll" layout="topleft" left="10" top="48" width="680" height="680" opaque="false" reserve_scroll_corner="true">
+    <scroll_container name="items_scroll" layout="topleft" left="10" top="86" width="680" height="640" opaque="false" reserve_scroll_corner="true">
       <panel name="items_grid" layout="topleft" left="0" top="0" width="644" height="560" background_visible="false">
         <panel name="item_card_0" layout="topleft" left="0" top="0" width="124" height="132" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White" follows="left|top">
       <thumbnail name="item_thumbnail_0" layout="topleft" left="8" top="8" width="108" height="78" border_visible="false" show_loading="false"/>
