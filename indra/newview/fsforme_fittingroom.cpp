@@ -17,6 +17,7 @@
 #include "llfloatersnapshot.h"
 #include "llimagepng.h"
 #include "llviewerwindow.h"
+#include "llviewertexture.h"
 #include "llfile.h"
 #include "lldate.h"
 #include "lldir.h"
@@ -251,22 +252,25 @@ bool FSForMeFittingRoom::postBuild()
     getChild<LLButton>("fitting_camera_rotate_right")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
         if (mAvatarPreview) mAvatarPreview->rotate(0.26179939f);
     });
-    getChild<LLComboBox>("lookbook_entries")->setCommitCallback([this](LLUICtrl*, const LLSD&) {
-        const std::string selected_id = getChild<LLComboBox>("lookbook_entries")->getSelectedValue().asString();
+    for (S32 i = 0; i < LOOKBOOK_THUMBNAIL_SLOTS; ++i)
+        getChild<LLButton>("lookbook_thumb_" + std::to_string(i))->setClickedCallback([this, i](LLUICtrl*, const LLSD&) {
+            if (i >= static_cast<S32>(mLookbookIds.size()) || mLookbookIds[i].empty()) return;
+            selectLookbookPhoto(mLookbookIds[i]);
+        });
+    getChild<LLButton>("lookbook_prev")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
+        if (mLookbookPage > 0) { --mLookbookPage; rebuildLookbook(); }
+    });
+    getChild<LLButton>("lookbook_next")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
         const LLSD entries = loadFormeLookbook();
-        for (LLSD::array_const_iterator it = entries.beginArray(); it != entries.endArray(); ++it)
-        {
-            if ((*it)["id"].asString() == selected_id)
-            {
-                getChild<LLTextBox>("fitting_status")->setText(
-                    (*it)["outfit_name"].asString() + " · " + (*it)["captured_at"].asString() + " · " + (*it)["file"].asString());
-                return;
-            }
-        }
+        const S32 pages = std::max(1, (static_cast<S32>(entries.size()) + LOOKBOOK_THUMBNAIL_SLOTS - 1) / LOOKBOOK_THUMBNAIL_SLOTS);
+        if (mLookbookPage + 1 < pages) { ++mLookbookPage; rebuildLookbook(); }
+    });
+    getChild<LLButton>("lookbook_view_avatar")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
+        mLookbookPreviewMode = false;
     });
     getChild<LLButton>("lookbook_delete")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
-        const std::string selected_id = getChild<LLComboBox>("lookbook_entries")->getSelectedValue().asString();
-        if (selected_id.empty()) return;
+        if (mSelectedLookbookId.empty()) return;
+        const std::string selected_id = mSelectedLookbookId;
         const LLSD entries = loadFormeLookbook();
         LLSD updated = LLSD::emptyArray();
         bool removed = false;
@@ -281,6 +285,9 @@ bool FSForMeFittingRoom::postBuild()
         }
         if (removed && saveFormeLookbook(updated))
         {
+            mSelectedLookbookId.clear();
+            mLookbookPreviewTexture = nullptr;
+            mLookbookPreviewMode = false;
             rebuildLookbook();
             getChild<LLTextBox>("fitting_status")->setText("Фотография удалена из ForMe Lookbook.");
         }
@@ -520,25 +527,126 @@ void FSForMeFittingRoom::draw()
         loading->setVisible(!mAvatarPreview || !mAvatarPreview->hasGLTexture());
     }
     LLFloater::draw();
-    if (mAvatarPreview && mAvatarPreview->needsRender()) drawAvatarPreview();
+    drawLookbookThumbnails();
+    if (mLookbookPreviewMode) drawLookbookPhotoPreview();
+    else if (mAvatarPreview && mAvatarPreview->needsRender()) drawAvatarPreview();
 }
-void FSForMeFittingRoom::rebuildLookbook()
+void FSForMeFittingRoom::selectLookbookPhoto(const std::string& id)
 {
-    LLComboBox* combo = getChild<LLComboBox>("lookbook_entries");
-    const LLSD previous = combo->getSelectedValue();
-    combo->removeall();
     const LLSD entries = loadFormeLookbook();
     for (LLSD::array_const_iterator it = entries.beginArray(); it != entries.endArray(); ++it)
     {
-        const std::string id = (*it)["id"].asString();
-        const std::string outfit_name = (*it)["outfit_name"].asString();
-        const std::string captured_at = (*it)["captured_at"].asString();
-        const std::string label = outfit_name + " — " + captured_at.substr(0, 16);
-        combo->add(label, LLSD(id));
+        if ((*it)["id"].asString() != id) continue;
+        mSelectedLookbookId = id;
+        const std::string path = (*it)["file"].asString();
+        mLookbookPreviewTexture = LLViewerTextureManager::getFetchedTextureFromFile(
+            path, FTT_LOCAL_FILE, true, LLGLTexture::BOOST_THUMBNAIL);
+        if (mLookbookPreviewTexture)
+        {
+            mLookbookPreviewTexture->setKnownDrawSize(512, 307);
+            mLookbookPreviewMode = true;
+            getChild<LLTextBox>("fitting_status")->setText(
+                (*it)["outfit_name"].asString() + " · " + (*it)["captured_at"].asString());
+        }
+        else
+        {
+            mLookbookPreviewMode = false;
+            getChild<LLTextBox>("fitting_status")->setText("Не удалось загрузить выбранную фотографию.");
+        }
+        return;
     }
-    if (previous.isString()) combo->setCurrentByID(previous);
-    if (combo->getItemCount() == 0)
+}
+
+void FSForMeFittingRoom::rebuildLookbook()
+{
+    const LLSD entries = loadFormeLookbook();
+    const S32 count = static_cast<S32>(entries.size());
+    const S32 page_count = std::max(1, (count + LOOKBOOK_THUMBNAIL_SLOTS - 1) / LOOKBOOK_THUMBNAIL_SLOTS);
+    mLookbookPage = llclamp(mLookbookPage, 0, page_count - 1);
+    mLookbookIds.assign(LOOKBOOK_THUMBNAIL_SLOTS, std::string());
+    mLookbookTextures.clear();
+    mLookbookTextures.resize(LOOKBOOK_THUMBNAIL_SLOTS);
+    for (S32 slot = 0; slot < LOOKBOOK_THUMBNAIL_SLOTS; ++slot)
+    {
+        const S32 index = count - 1 - (mLookbookPage * LOOKBOOK_THUMBNAIL_SLOTS + slot);
+        LLButton* button = getChild<LLButton>("lookbook_thumb_" + std::to_string(slot));
+        if (index < 0)
+        {
+            button->setEnabled(false);
+            continue;
+        }
+        const LLSD& entry = entries[index];
+        const std::string id = entry["id"].asString();
+        mLookbookIds[slot] = id;
+        button->setEnabled(true);
+        mLookbookTextures[slot] = LLViewerTextureManager::getFetchedTextureFromFile(
+            entry["file"].asString(), FTT_LOCAL_FILE, true, LLGLTexture::BOOST_THUMBNAIL);
+        if (mLookbookTextures[slot])
+            mLookbookTextures[slot]->setKnownDrawSize(128, 80);
+    }
+    getChild<LLButton>("lookbook_prev")->setEnabled(mLookbookPage > 0);
+    getChild<LLButton>("lookbook_next")->setEnabled(mLookbookPage + 1 < page_count);
+    getChild<LLTextBox>("lookbook_page_label")->setText(
+        count == 0 ? "0 / 0" : std::to_string(mLookbookPage + 1) + " / " + std::to_string(page_count));
+    getChild<LLButton>("lookbook_delete")->setEnabled(!mSelectedLookbookId.empty());
+    if (!mSelectedLookbookId.empty())
+    {
+        bool found = false;
+        for (LLSD::array_const_iterator it = entries.beginArray(); it != entries.endArray(); ++it)
+            if ((*it)["id"].asString() == mSelectedLookbookId) { found = true; break; }
+        if (!found)
+        {
+            mSelectedLookbookId.clear();
+            mLookbookPreviewTexture = nullptr;
+            mLookbookPreviewMode = false;
+        }
+    }
+    if (count == 0)
         getChild<LLTextBox>("fitting_status")->setText("ForMe Lookbook пока пуст. Сделайте снимок 3D-примерочной.");
+}
+
+void FSForMeFittingRoom::drawLookbookThumbnails()
+{
+    LLGLSUIDefault ui_state;
+    for (S32 i = 0; i < LOOKBOOK_THUMBNAIL_SLOTS; ++i)
+    {
+        if (i >= static_cast<S32>(mLookbookTextures.size()) || !mLookbookTextures[i]
+            || !mLookbookTextures[i]->hasGLTexture()) continue;
+        LLView* view = getChild<LLView>("lookbook_thumb_" + std::to_string(i));
+        LLRect rect;
+        if (!view || !view->localRectToOtherView(view->getLocalRect(), &rect, this)) continue;
+        gGL.getTexUnit(0)->bind(mLookbookTextures[i]);
+        gGL.color4f(1.f, 1.f, 1.f, 1.f);
+        gGL.begin(LLRender::TRIANGLES);
+        gGL.texCoord2f(0.f, 1.f); gGL.vertex2i(rect.mLeft + 2, rect.mTop - 2);
+        gGL.texCoord2f(0.f, 0.f); gGL.vertex2i(rect.mLeft + 2, rect.mBottom + 2);
+        gGL.texCoord2f(1.f, 0.f); gGL.vertex2i(rect.mRight - 2, rect.mBottom + 2);
+        gGL.texCoord2f(1.f, 0.f); gGL.vertex2i(rect.mRight - 2, rect.mBottom + 2);
+        gGL.texCoord2f(1.f, 1.f); gGL.vertex2i(rect.mRight - 2, rect.mTop - 2);
+        gGL.texCoord2f(0.f, 1.f); gGL.vertex2i(rect.mLeft + 2, rect.mTop - 2);
+        gGL.end();
+    }
+    gGL.getTexUnit(0)->unbind(LLTexUnit::TT_TEXTURE);
+}
+
+void FSForMeFittingRoom::drawLookbookPhotoPreview()
+{
+    if (!mLookbookPreviewMode || !mLookbookPreviewTexture || !mLookbookPreviewTexture->hasGLTexture()) return;
+    LLView* canvas = getChild<LLView>("avatar_preview_canvas");
+    LLRect rect;
+    if (!canvas || !canvas->localRectToOtherView(canvas->getLocalRect(), &rect, this)) return;
+    LLGLSUIDefault ui_state;
+    gGL.getTexUnit(0)->bind(mLookbookPreviewTexture);
+    gGL.color4f(1.f, 1.f, 1.f, 1.f);
+    gGL.begin(LLRender::TRIANGLES);
+    gGL.texCoord2f(0.f, 1.f); gGL.vertex2i(rect.mLeft + 1, rect.mTop - 1);
+    gGL.texCoord2f(0.f, 0.f); gGL.vertex2i(rect.mLeft + 1, rect.mBottom + 1);
+    gGL.texCoord2f(1.f, 0.f); gGL.vertex2i(rect.mRight - 1, rect.mBottom + 1);
+    gGL.texCoord2f(1.f, 0.f); gGL.vertex2i(rect.mRight - 1, rect.mBottom + 1);
+    gGL.texCoord2f(1.f, 1.f); gGL.vertex2i(rect.mRight - 1, rect.mTop - 1);
+    gGL.texCoord2f(0.f, 1.f); gGL.vertex2i(rect.mLeft + 1, rect.mTop - 1);
+    gGL.end();
+    gGL.getTexUnit(0)->unbind(LLTexUnit::TT_TEXTURE);
 }
 
 void FSForMeFittingRoom::rebuild()
