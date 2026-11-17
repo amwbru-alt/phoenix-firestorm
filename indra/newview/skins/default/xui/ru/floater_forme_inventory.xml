@@ -21,18 +21,19 @@
     <text name="avatar_preview_loading">Загрузка 3D-аватара…</text><text name="avatar_hint">Перетащите мышью для поворота · колесо — масштаб</text><button name="avatar_reset" label="Сброс"/></panel>
   <panel name="category_rail" layout="topleft" left="18" top="118" width="88" height="638">
     
-    <button name="category_clothing" label="♙\nОдежда"/>
+    <button name="category_clothing" layout="topleft" left="6" top="8" width="76" height="54" label="♙\nОдежда" font="SansSerifSmall" text_color="0.82 0.70 0.94 1" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
     
-    <button name="category_shoes" label="♧\nОбувь"/>
-    <button name="category_accessories" label="♧\nАксессуары"/><button name="category_hair" label="♙\nПричёски"/><button name="category_tattoos" label="✧\nТату и макияж"/><button name="category_jewelry" label="♧\nУкрашения"/>
-    <button name="category_objects" label="♧\nДекор"/>
-    <button name="category_animations" label="◷\nЭмоции"/>
-    <button name="category_favorites" label="Избранное"/>
-    <button name="category_recent" label="Недавние"/>
-    <text name="inventory_count">Загрузка…</text>
+    <button name="category_shoes" layout="topleft" left="6" top="8" width="76" height="54" label="♧\nОбувь" font="SansSerifSmall" text_color="0.82 0.70 0.94 1" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    <button name="category_accessories" layout="topleft" left="6" top="8" width="76" height="54" label="♧\nАксессуары" font="SansSerifSmall" text_color="0.82 0.70 0.94 1" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/><button name="category_hair" layout="topleft" left="6" top="8" width="76" height="54" label="♙\nПричёски" font="SansSerifSmall" text_color="0.82 0.70 0.94 1" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/><button name="category_tattoos" layout="topleft" left="6" top="8" width="76" height="54" label="✧\nТату и макияж" font="SansSerifSmall" text_color="0.82 0.70 0.94 1" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/><button name="category_jewelry" layout="topleft" left="6" top="8" width="76" height="54" label="♧\nУкрашения" font="SansSerifSmall" text_color="0.82 0.70 0.94 1" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    <button name="category_objects" layout="topleft" left="6" top="8" width="76" height="54" label="♧\nДекор" font="SansSerifSmall" text_color="0.82 0.70 0.94 1" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    <button name="category_animations" layout="topleft" left="6" top="8" width="76" height="54" label="◷\nЭмоции" font="SansSerifSmall" text_color="0.82 0.70 0.94 1" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    <button name="category_favorites" visible="false" label="Избранное"/>
+    <button name="category_recent" layout="topleft" left="6" top="8" width="76" height="54" label="Недавние" font="SansSerifSmall" text_color="0.82 0.70 0.94 1" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    
   <button name="category_all" visible="false" label="Все вещи"/></panel>
   <panel name="items_surface" layout="topleft" left="610" top="96" width="700" height="790">
     <text name="items_heading" layout="topleft" left="16" top="14" width="240" height="24">Инвентарь</text>
+    <text name="inventory_count" layout="topleft" left="16" top="44" width="240" height="20" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">Загрузка…</text>
     <button name="all_items_tab" layout="topleft" left="264" top="10" width="112" height="30" label="Все вещи"/>
     <button name="purchased_tab" layout="topleft" left="382" top="10" width="124" height="30" label="Купленные" enabled="false"/>
     <button name="favorites_tab" layout="topleft" left="512" top="10" width="122" height="30" label="Избранное"/>
