@@ -192,8 +192,16 @@ bool FSForMeFittingRoom::postBuild()
     });
     getChild<LLButton>("fitting_wear_saved")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
         const LLUUID outfit_id = getChild<LLComboBox>("saved_outfits")->getSelectedValue().asUUID();
-        if (auto* outfit = gInventory.getCategory(outfit_id))
-            LLAppearanceMgr::instance().wearInventoryCategoryOnAvatar(outfit, false);
+        const LLUUID outfits_root = gInventory.findCategoryUUIDForType(LLFolderType::FT_MY_OUTFITS);
+        LLViewerInventoryCategory* outfit = gInventory.getCategory(outfit_id);
+        if (!outfit || outfit->getParentUUID() != outfits_root)
+        {
+            getChild<LLTextBox>("fitting_status")->setText("Выбранный образ недоступен в папке «Мои образы».");
+            mDirty = true;
+            return;
+        }
+        LLAppearanceMgr::instance().wearInventoryCategoryOnAvatar(outfit, false);
+        getChild<LLTextBox>("fitting_status")->setText("Применяем образ «" + outfit->getName() + "»…");
     });
     for (S32 i = 0; i < WORN_ITEM_SLOTS; ++i)
         getChild<LLButton>("worn_remove_" + std::to_string(i))->setClickedCallback([this, i](LLUICtrl*, const LLSD&) {
@@ -352,14 +360,28 @@ void FSForMeFittingRoom::rebuild()
     LLInventoryModel::item_array_t* outfit_items = nullptr;
     gInventory.getDirectDescendentsOf(outfits_id, outfit_categories, outfit_items);
     if (outfit_categories)
+    {
+        std::vector<LLViewerInventoryCategory*> sorted_outfits;
         for (const auto& outfit : *outfit_categories)
-            if (outfit.notNull())
+            if (outfit.notNull()) sorted_outfits.push_back(outfit);
+        std::sort(sorted_outfits.begin(), sorted_outfits.end(),
+            [](const LLViewerInventoryCategory* left, const LLViewerInventoryCategory* right)
             {
-                outfits_combo->add(outfit->getName(), outfit->getUUID());
-                compare_a->add(outfit->getName(), outfit->getUUID());
-                compare_b->add(outfit->getName(), outfit->getUUID());
-                ++mSavedOutfitCount;
-            }
+                return LLStringUtil::compareInsensitive(left->getName(), right->getName()) < 0;
+            });
+        for (const auto* outfit : sorted_outfits)
+        {
+            LLInventoryModel::cat_array_t* child_categories = nullptr;
+            LLInventoryModel::item_array_t* child_items = nullptr;
+            gInventory.getDirectDescendentsOf(outfit->getUUID(), child_categories, child_items);
+            const S32 item_count = child_items ? static_cast<S32>(child_items->size()) : 0;
+            const std::string label = outfit->getName() + " (" + std::to_string(item_count) + ")";
+            outfits_combo->add(label, outfit->getUUID());
+            compare_a->add(label, outfit->getUUID());
+            compare_b->add(label, outfit->getUUID());
+            ++mSavedOutfitCount;
+        }
+    }
     getChild<LLButton>("fitting_wear_saved")->setEnabled(mSavedOutfitCount > 0);
     getChild<LLButton>("fitting_move_saved_to_trash")->setEnabled(mSavedOutfitCount > 0);
     getChild<LLButton>("fitting_compare_outfits")->setEnabled(mSavedOutfitCount > 1);
@@ -498,6 +520,21 @@ void FSForMeFittingRoom::saveOutfit()
     }
     const auto last = name.find_last_not_of(" \t\r\n");
     name = name.substr(first, last - first + 1);
+    const LLUUID outfits_root = gInventory.findCategoryUUIDForType(LLFolderType::FT_MY_OUTFITS);
+    LLInventoryModel::cat_array_t* outfit_categories = nullptr;
+    LLInventoryModel::item_array_t* outfit_items = nullptr;
+    gInventory.getDirectDescendentsOf(outfits_root, outfit_categories, outfit_items);
+    if (outfit_categories)
+    {
+        for (const auto& outfit : *outfit_categories)
+        {
+            if (outfit.notNull() && LLStringUtil::compareInsensitive(outfit->getName(), name) == 0)
+            {
+                getChild<LLTextBox>("fitting_status")->setText("Образ с таким названием уже существует. Выберите другое название.");
+                return;
+            }
+        }
+    }
     LLAppearanceMgr::instance().makeNewOutfitLinks(name, false);
     getChild<LLTextBox>("fitting_status")->setText("Создаём комплект «" + name + "» в папке «Мои образы»…");
 }
