@@ -84,6 +84,8 @@ assert "compareOutfits()" in fit_cpp and "getLinkedUUID()" in fit_cpp
 assert "setCurrentByID(previous_outfit)" in fit_cpp
 assert "setCurrentByID(previous_compare_a)" in fit_cpp and "setCurrentByID(previous_compare_b)" in fit_cpp
 assert "std::set<LLUUID>" in fit_cpp
+assert "collect_names" in fit_cpp and "only_first_names" in fit_cpp and "only_second_names" in fit_cpp
+assert "names.size() < 4" in fit_cpp
 assert "fitting_compare_outfits" in fit_cpp and "compare_outfit_a" in fit_cpp and "compare_outfit_b" in fit_cpp
 assert "matchesCategory" in fit_cpp and "setCategory" in fit_cpp
 assert "worn_filter_shape" in fit_cpp and "worn_filter_skin" in fit_cpp
