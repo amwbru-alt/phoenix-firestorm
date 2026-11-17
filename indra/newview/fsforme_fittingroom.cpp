@@ -478,6 +478,20 @@ void FSForMeFittingRoom::adjustCameraZoom(F32 delta)
 }
 bool FSForMeFittingRoom::handleMouseDown(S32 x, S32 y, MASK mask)
 {
+    if (mLookbookFullscreenMode && (mask & MASK_LEFT))
+    {
+        const S32 edge = getLocalRect().getWidth() / 5;
+        if (x < edge)
+        {
+            navigateLookbookPhoto(-1);
+            return true;
+        }
+        if (x > getLocalRect().getWidth() - edge)
+        {
+            navigateLookbookPhoto(1);
+            return true;
+        }
+    }
     LLView* canvas = getChild<LLView>("avatar_preview_canvas");
     LLRect canvas_rect;
     if ((mask & MASK_LEFT) && canvas && canvas->localRectToOtherView(canvas->getLocalRect(), &canvas_rect, this)
@@ -711,7 +725,8 @@ void FSForMeFittingRoom::navigateLookbookPhoto(S32 delta)
         }
     }
     if (selected_index < 0) return;
-    const S32 next_index = llclamp(selected_index + delta, 0, static_cast<S32>(mFilteredLookbookEntries.size()) - 1);
+    const S32 display_step = mLookbookOldestFirst ? delta : -delta;
+    const S32 next_index = llclamp(selected_index + display_step, 0, static_cast<S32>(mFilteredLookbookEntries.size()) - 1);
     if (next_index == selected_index) return;
     selectLookbookPhoto(mFilteredLookbookEntries[next_index]["id"].asString());
 }
@@ -948,6 +963,21 @@ void FSForMeFittingRoom::drawLookbookPhotoPreview()
     gGL.texCoord2f(0.f, 1.f); gGL.vertex2i(rect.mLeft + 1, rect.mTop - 1);
     gGL.end();
     gGL.getTexUnit(0)->unbind(LLTexUnit::TT_TEXTURE);
+    if (mLookbookFullscreenMode)
+    {
+        const S32 center_y = rect.mBottom + rect.getHeight() / 2;
+        const S32 left_x = rect.mLeft + 42;
+        const S32 right_x = rect.mRight - 42;
+        gGL.color4f(1.f, 1.f, 1.f, 0.78f);
+        gGL.begin(LLRender::TRIANGLES);
+        gGL.vertex2i(left_x - 12, center_y);
+        gGL.vertex2i(left_x + 8, center_y + 22);
+        gGL.vertex2i(left_x + 8, center_y - 22);
+        gGL.vertex2i(right_x + 12, center_y);
+        gGL.vertex2i(right_x - 8, center_y - 22);
+        gGL.vertex2i(right_x - 8, center_y + 22);
+        gGL.end();
+    }
 }
 
 void FSForMeFittingRoom::rebuild()
