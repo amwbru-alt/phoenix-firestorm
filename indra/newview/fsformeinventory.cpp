@@ -24,6 +24,8 @@
 #include "llscrollcontainer.h"
 #include "lltextbox.h"
 #include "llviewerinventory.h"
+#include "llwearabletype.h"
+#include "lldate.h"
 #include <algorithm>
 #include <cctype>
 #include <set>
@@ -99,6 +101,12 @@ bool FSForMeInventoryBrowser::postBuild()
     });
     getChild<LLButton>("avatar_reset")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
         if (mAvatarPreview) mAvatarPreview->reset();
+    });
+    getChild<LLButton>("all_items_tab")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
+        mCategory = "all"; mPage = 0; mDirty = true;
+    });
+    getChild<LLButton>("favorites_tab")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
+        mCategory = "favorites"; mPage = 0; mDirty = true;
     });
     getChild<LLButton>("refresh")->setClickedCallback([this](LLUICtrl*, const LLSD&) { mDirty = true; });
     for (const auto& category : {std::make_pair("category_all", "all"), std::make_pair("category_clothing", "clothing"),
@@ -228,6 +236,7 @@ bool FSForMeInventoryBrowser::matches(const LLViewerInventoryItem* item) const
     if (!item) return false;
     const auto type = item->getType();
     if (mCategory == "clothing" && type != LLAssetType::AT_CLOTHING && type != LLAssetType::AT_BODYPART) return false;
+    if (mCategory == "shoes" && (type != LLAssetType::AT_CLOTHING || item->getWearableType() != LLWearableType::WT_SHOES)) return false;
     if (mCategory == "accessories" && (type != LLAssetType::AT_OBJECT || item->getInventoryType() != LLInventoryType::IT_WEARABLE)) return false;
     if (mCategory == "objects" && (type != LLAssetType::AT_OBJECT || item->getInventoryType() == LLInventoryType::IT_WEARABLE)) return false;
     if (mCategory == "animations" && type != LLAssetType::AT_ANIMATION && type != LLAssetType::AT_GESTURE) return false;
@@ -274,6 +283,8 @@ void FSForMeInventoryBrowser::rebuild()
     }
     grid->reshape(644, 560);
     getChild<LLTextBox>("inventory_count")->setText(std::to_string(mVisibleItems.size()) + " предметов");
+    getChild<LLButton>("all_items_tab")->setLabel(mCategory == "all" ? "● Все вещи" : "Все вещи");
+    getChild<LLButton>("favorites_tab")->setLabel(mCategory == "favorites" ? "★ Избранное" : "☆ Избранное");
     getChild<LLTextBox>("page")->setText(std::to_string(mPage + 1) + " / " + std::to_string(pages));
     getChild<LLButton>("folder_back")->setEnabled(mFolder.notNull() && mFolder != gInventory.getRootFolderID());
     getChild<LLButton>("previous")->setEnabled(mPage > 0);
@@ -297,6 +308,10 @@ void FSForMeInventoryBrowser::selectItem(const LLUUID& id)
         item->getType() == LLAssetType::AT_BODYPART ? "Часть тела" : item->getType() == LLAssetType::AT_OBJECT ? "Объект / аксессуар" : "Предмет инвентаря");
     auto* folder = gInventory.getCategory(item->getParentUUID());
     getChild<LLTextBox>("detail_folder")->setText(folder ? "Папка: " + folder->getName() : "");
+    getChild<LLTextBox>("detail_creator")->setText("Автор UUID: " + item->getCreatorUUID().asString());
+    getChild<LLTextBox>("detail_created")->setText("Создан: " + LLDate(static_cast<F64>(item->getCreationDate())).asString());
+    const std::string description = item->getDescription();
+    getChild<LLTextBox>("detail_description")->setText(description.empty() ? "Описание не указано." : description);
     getChild<LLButton>("apply")->setEnabled(item->getType() == LLAssetType::AT_CLOTHING || item->getType() == LLAssetType::AT_BODYPART || item->getType() == LLAssetType::AT_OBJECT);
     getChild<LLButton>("open_folder")->setEnabled(folder != nullptr);
     getChild<LLButton>("detail_favorite")->setEnabled(true);
