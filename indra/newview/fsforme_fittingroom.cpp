@@ -18,6 +18,7 @@
 #include "llimagepng.h"
 #include "llviewerwindow.h"
 #include "llfile.h"
+#include "lldate.h"
 #include "lldir.h"
 #include "llsdserialize.h"
 #include <sstream>
