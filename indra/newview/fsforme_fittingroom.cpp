@@ -315,7 +315,7 @@ void FSForMeFittingRoom::drawAvatarPreview()
     gGL.end();
     gGL.getTexUnit(0)->unbind(LLTexUnit::TT_TEXTURE);
 }
-void FSForMeFittingRoom::changed(U32) { mDirty = true; }
+void FSForMeFittingRoom::changed(U32) { mDetailsOutfit.setNull(); mDirty = true; }
 
 void FSForMeFittingRoom::setCategory(const std::string& category)
 {
