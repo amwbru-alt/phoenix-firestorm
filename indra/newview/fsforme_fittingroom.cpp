@@ -23,6 +23,7 @@
 #include "llthumbnailctrl.h"
 #include "llinventoryicon.h"
 #include "llviewerinventory.h"
+#include "llstring.h"
 #include <set>
 #include <algorithm>
 class FSForMeAvatarPreview final : public LLViewerDynamicTexture
