@@ -291,6 +291,16 @@ bool FSForMeFittingRoom::postBuild()
         mLookbookPage = 0;
         rebuildLookbook();
     });
+    getChild<LLButton>("lookbook_fullscreen")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
+        setLookbookFullscreenMode(!mLookbookFullscreenMode);
+    });
+    getChild<LLButton>("lookbook_sort_order")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
+        mLookbookOldestFirst = !mLookbookOldestFirst;
+        getChild<LLButton>("lookbook_sort_order")->setLabel(
+            mLookbookOldestFirst ? "Сначала новые" : "Сначала старые");
+        mLookbookPage = 0;
+        rebuildLookbook();
+    });
     getChild<LLButton>("lookbook_favorites_only")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
         mLookbookFavoritesOnly = !mLookbookFavoritesOnly;
         mLookbookPage = 0;
@@ -454,6 +464,7 @@ void FSForMeFittingRoom::onOpen(const LLSD&)
 void FSForMeFittingRoom::onClose(bool)
 {
     mDraggingPreview = false;
+    setLookbookFullscreenMode(false);
     if (hasMouseCapture()) gFocusMgr.setMouseCapture(nullptr);
     if (mAvatarPreview) mAvatarPreview->setActive(false);
 }
@@ -639,6 +650,9 @@ void FSForMeFittingRoom::selectLookbookPhoto(const std::string& id)
         if ((*it)["id"].asString() != id) continue;
         mSelectedLookbookId = id;
         mLookbookCompareMode = false;
+        mLookbookPreviewWidth = std::max(1, (*it)["width"].asInteger() > 0 ? (*it)["width"].asInteger() : 512);
+        mLookbookPreviewHeight = std::max(1, (*it)["height"].asInteger() > 0 ? (*it)["height"].asInteger() : 307);
+        getChild<LLTextBox>("lookbook_history_date")->setText("Снимок: " + (*it)["captured_at"].asString());
         getChild<LLLineEditor>("lookbook_title")->setText(
             (*it)["title"].asString().empty() ? (*it)["outfit_name"].asString() : (*it)["title"].asString());
         getChild<LLLineEditor>("lookbook_notes")->setText((*it)["notes"].asString());
@@ -673,6 +687,55 @@ void FSForMeFittingRoom::selectLookbookPhoto(const std::string& id)
         }
         return;
     }
+}
+
+void FSForMeFittingRoom::setLookbookFullscreenMode(bool enabled)
+{
+    mLookbookFullscreenMode = enabled && mLookbookPreviewMode && mLookbookPreviewTexture.notNull();
+    getChild<LLView>("avatar_stage")->setVisible(!mLookbookFullscreenMode);
+    getChild<LLView>("wardrobe_surface")->setVisible(!mLookbookFullscreenMode);
+    getChild<LLView>("save_surface")->setVisible(!mLookbookFullscreenMode);
+    if (mLookbookFullscreenMode)
+        getChild<LLTextBox>("fitting_status")->setText("Полноэкранный просмотр · ← / → — предыдущая и следующая фотография · Esc — закрыть");
+}
+void FSForMeFittingRoom::navigateLookbookPhoto(S32 delta)
+{
+    if (mSelectedLookbookId.empty() || mFilteredLookbookEntries.size() == 0) return;
+    S32 selected_index = -1;
+    for (S32 i = 0; i < static_cast<S32>(mFilteredLookbookEntries.size()); ++i)
+    {
+        if (mFilteredLookbookEntries[i]["id"].asString() == mSelectedLookbookId)
+        {
+            selected_index = i;
+            break;
+        }
+    }
+    if (selected_index < 0) return;
+    const S32 next_index = llclamp(selected_index + delta, 0, static_cast<S32>(mFilteredLookbookEntries.size()) - 1);
+    if (next_index == selected_index) return;
+    selectLookbookPhoto(mFilteredLookbookEntries[next_index]["id"].asString());
+}
+bool FSForMeFittingRoom::handleKeyHere(KEY key, MASK mask)
+{
+    if (mLookbookFullscreenMode)
+    {
+        if (key == KEY_ESCAPE)
+        {
+            setLookbookFullscreenMode(false);
+            return true;
+        }
+        if (key == KEY_LEFT)
+        {
+            navigateLookbookPhoto(-1);
+            return true;
+        }
+        if (key == KEY_RIGHT)
+        {
+            navigateLookbookPhoto(1);
+            return true;
+        }
+    }
+    return LLFloater::handleKeyHere(key, mask);
 }
 
 void FSForMeFittingRoom::saveSelectedLookbookMetadata()
@@ -776,7 +839,8 @@ void FSForMeFittingRoom::rebuildLookbook()
     mLookbookTextures.resize(LOOKBOOK_THUMBNAIL_SLOTS);
     for (S32 slot = 0; slot < LOOKBOOK_THUMBNAIL_SLOTS; ++slot)
     {
-        const S32 index = count - 1 - (mLookbookPage * LOOKBOOK_THUMBNAIL_SLOTS + slot);
+        const S32 page_offset = mLookbookPage * LOOKBOOK_THUMBNAIL_SLOTS + slot;
+        const S32 index = mLookbookOldestFirst ? page_offset : count - 1 - page_offset;
         LLButton* button = getChild<LLButton>("lookbook_thumb_" + std::to_string(slot));
         if (index < 0)
         {
@@ -842,9 +906,36 @@ void FSForMeFittingRoom::drawLookbookThumbnails()
 void FSForMeFittingRoom::drawLookbookPhotoPreview()
 {
     if (!mLookbookPreviewMode || !mLookbookPreviewTexture || !mLookbookPreviewTexture->hasGLTexture()) return;
-    LLView* canvas = getChild<LLView>("avatar_preview_canvas");
     LLRect rect;
-    if (!canvas || !canvas->localRectToOtherView(canvas->getLocalRect(), &rect, this)) return;
+    if (mLookbookFullscreenMode)
+    {
+        rect = getLocalRect();
+        rect.mTop -= getHeaderHeight();
+    }
+    else
+    {
+        LLView* canvas = getChild<LLView>("avatar_preview_canvas");
+        if (!canvas || !canvas->localRectToOtherView(canvas->getLocalRect(), &rect, this)) return;
+    }
+    if (mLookbookFullscreenMode)
+    {
+        const F32 source_aspect = static_cast<F32>(mLookbookPreviewWidth) / static_cast<F32>(mLookbookPreviewHeight);
+        const F32 target_aspect = static_cast<F32>(rect.getWidth()) / static_cast<F32>(std::max(1, rect.getHeight()));
+        if (source_aspect > target_aspect)
+        {
+            const S32 fitted_height = static_cast<S32>(rect.getWidth() / source_aspect);
+            const S32 offset = (rect.getHeight() - fitted_height) / 2;
+            rect.mBottom += offset;
+            rect.mTop = rect.mBottom + fitted_height;
+        }
+        else
+        {
+            const S32 fitted_width = static_cast<S32>(rect.getHeight() * source_aspect);
+            const S32 offset = (rect.getWidth() - fitted_width) / 2;
+            rect.mLeft += offset;
+            rect.mRight = rect.mLeft + fitted_width;
+        }
+    }
     LLGLSUIDefault ui_state;
     gGL.getTexUnit(0)->bind(mLookbookPreviewTexture);
     gGL.color4f(1.f, 1.f, 1.f, 1.f);
