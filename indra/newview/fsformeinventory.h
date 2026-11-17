@@ -5,8 +5,8 @@
 #include "llfloater.h"
 #include "llinventoryobserver.h"
 #include "lluuid.h"
-class FSForMeInventoryAvatarPreview;
 #include <string>
+class FSForMeInventoryAvatarPreview;
 #include <vector>
 class LLViewerInventoryItem;
 class FSForMeInventoryBrowser final : public LLFloater, public LLInventoryObserver
