@@ -141,6 +141,8 @@ bool FSForMeFittingRoom::postBuild()
             setCategory(value);
         });
     getChild<LLButton>("fitting_refresh")->setClickedCallback([this](LLUICtrl*, const LLSD&) { mDirty = true; });
+    getChild<LLLineEditor>("saved_outfit_filter")->setKeystrokeCallback(
+        [this](LLLineEditor*, void*) { mDirty = true; }, nullptr);
     getChild<LLButton>("worn_page_previous")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
         if (mWornPage > 0) { --mWornPage; mDirty = true; }
     });
@@ -370,8 +372,12 @@ void FSForMeFittingRoom::rebuild()
             {
                 return LLStringUtil::compareInsensitive(left->getName(), right->getName()) < 0;
             });
+        std::string outfit_filter = utf8str_tolower(getChild<LLLineEditor>("saved_outfit_filter")->getValue().asString());
         for (const auto* outfit : sorted_outfits)
         {
+            if (!outfit_filter.empty()
+                && utf8str_tolower(outfit->getName()).find(outfit_filter) == std::string::npos)
+                continue;
             LLInventoryModel::cat_array_t* child_categories = nullptr;
             LLInventoryModel::item_array_t* child_items = nullptr;
             gInventory.getDirectDescendentsOf(outfit->getUUID(), child_categories, child_items);
@@ -384,6 +390,7 @@ void FSForMeFittingRoom::rebuild()
         }
     }
     getChild<LLButton>("fitting_wear_saved")->setEnabled(mSavedOutfitCount > 0);
+    getChild<LLButton>("fitting_move_saved_to_trash")->setEnabled(mSavedOutfitCount > 0);
     getChild<LLButton>("fitting_move_saved_to_trash")->setEnabled(mSavedOutfitCount > 0);
     getChild<LLButton>("fitting_compare_outfits")->setEnabled(mSavedOutfitCount > 1);
     if (mSavedOutfitCount > 0)
@@ -431,7 +438,9 @@ void FSForMeFittingRoom::rebuild()
     getChild<LLButton>("worn_filter_hair")->setToggleState(mCategory == "hair");
     getChild<LLButton>("worn_filter_eyes")->setToggleState(mCategory == "eyes");
     getChild<LLButton>("worn_filter_accessories")->setToggleState(mCategory == "accessories");
-    getChild<LLTextBox>("fitting_status")->setText(mWornItems.empty()
+    if (!outfit_filter.empty() && mSavedOutfitCount == 0)
+        getChild<LLTextBox>("fitting_status")->setText("По запросу не найдено сохранённых образов.");
+    else getChild<LLTextBox>("fitting_status")->setText(mWornItems.empty()
         ? "Ожидаем данные текущего образа. Если аватар ещё загружается, обновите список позже."
         : "Список синхронизирован с текущим образом аватара.");
 }
