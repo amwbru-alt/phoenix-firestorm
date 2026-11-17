@@ -102,15 +102,27 @@ bool FSForMeInventoryBrowser::postBuild()
     });
     getChild<LLButton>("avatar_reset")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
         if (mAvatarPreview) mAvatarPreview->reset();
+        getChild<LLButton>("camera_front")->setToggleState(true);
+        getChild<LLButton>("camera_side")->setToggleState(false);
+        getChild<LLButton>("camera_back")->setToggleState(false);
     });
     getChild<LLButton>("camera_front")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
         if (mAvatarPreview) mAvatarPreview->setYaw(0.f);
+        getChild<LLButton>("camera_front")->setToggleState(true);
+        getChild<LLButton>("camera_side")->setToggleState(false);
+        getChild<LLButton>("camera_back")->setToggleState(false);
     });
     getChild<LLButton>("camera_side")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
         if (mAvatarPreview) mAvatarPreview->setYaw(1.5707963f);
+        getChild<LLButton>("camera_front")->setToggleState(false);
+        getChild<LLButton>("camera_side")->setToggleState(true);
+        getChild<LLButton>("camera_back")->setToggleState(false);
     });
     getChild<LLButton>("camera_back")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
         if (mAvatarPreview) mAvatarPreview->setYaw(3.1415926f);
+        getChild<LLButton>("camera_front")->setToggleState(false);
+        getChild<LLButton>("camera_side")->setToggleState(false);
+        getChild<LLButton>("camera_back")->setToggleState(true);
     });
     getChild<LLButton>("camera_zoom_in")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
         if (mAvatarPreview) mAvatarPreview->zoom(-0.25f);
@@ -162,6 +174,7 @@ bool FSForMeInventoryBrowser::postBuild()
 void FSForMeInventoryBrowser::onOpen(const LLSD&)
 {
     if (mAvatarPreview) mAvatarPreview->setActive(true);
+    getChild<LLButton>("camera_front")->setToggleState(true);
     mSelectedItem.setNull();
     mFolder = gInventory.getRootFolderID();
     mDirty = true;
