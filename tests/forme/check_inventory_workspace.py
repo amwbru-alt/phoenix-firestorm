@@ -110,6 +110,9 @@ assert "formeLookbookDirectory" in fit_cpp and "saveFormeLookbook" in fit_cpp
 assert "LLSDSerialize::toPrettyXML" in fit_cpp and "LLSDSerialize::fromXML" in fit_cpp
 assert "outfit_id" in fit_cpp and "camera_yaw" in fit_cpp and "captured_at" in fit_cpp
 assert "lookbook_delete" in fit_cpp and "LLFile::remove" in fit_cpp
+assert "getFetchedTextureFromFile" in fit_cpp and "drawLookbookThumbnails" in fit_cpp
+assert "drawLookbookPhotoPreview" in fit_cpp and "lookbook_thumb_3" in fit_ui
+assert "lookbook_entries" not in fit_ui
 assert "png->save(image_path)" in fit_cpp
 assert "GL_PACK_ALIGNMENT" in fit_cpp and "verticalFlip" in fit_cpp
 assert "LLImagePNG" in fit_cpp and "png->save(image_path)" in fit_cpp
@@ -160,7 +163,14 @@ for locale in ("en", "ru"):
     child(fit_ui, "fitting_compare_outfits")
     child(fit_ui, "fitting_open_photo_studio")
     child(fit_ui, "fitting_capture_preview")
-    child(fit_ui, "lookbook_entries")
+    child(fit_ui, "lookbook_thumb_0")
+    child(fit_ui, "lookbook_thumb_1")
+    child(fit_ui, "lookbook_thumb_2")
+    child(fit_ui, "lookbook_thumb_3")
+    child(fit_ui, "lookbook_prev")
+    child(fit_ui, "lookbook_next")
+    child(fit_ui, "lookbook_view_avatar")
+    child(fit_ui, "lookbook_page_label")
     child(fit_ui, "lookbook_delete")
     assert child(fit_ui, "fitting_capture_preview").get("top") == "466"
     assert child(fit_ui, "avatar_stage").get("height") == "630"
