@@ -35,7 +35,7 @@
     <text name="items_heading" layout="topleft" left="16" top="14" width="240" height="24">Инвентарь</text>
     <text name="inventory_count" layout="topleft" left="16" top="44" width="240" height="20" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">Загрузка…</text>
     <button name="all_items_tab" layout="topleft" left="264" top="10" width="112" height="30" label="Все вещи"/>
-    <button name="purchased_tab" layout="topleft" left="382" top="10" width="124" height="30" label="Купленные" enabled="false"/>
+    <button name="purchased_tab" layout="topleft" left="382" top="10" width="124" height="30" label="Недавние"/>
     <button name="favorites_tab" layout="topleft" left="512" top="10" width="122" height="30" label="Избранное"/>
     <button name="folder_back" label="Все папки" enabled="false"/>
     <scroll_container name="items_scroll" layout="topleft" left="10" top="86" width="680" height="640">
