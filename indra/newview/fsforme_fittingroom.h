@@ -8,6 +8,9 @@
 #include <vector>
 class FSForMeAvatarPreview;
 class LLViewerInventoryItem;
+class LLViewerFetchedTexture;
+#include "llpointer.h"
+#include <string>
 
 class FSForMeFittingRoom final : public LLFloater, public LLInventoryObserver
 {
@@ -27,6 +30,9 @@ private:
     ~FSForMeFittingRoom() override;
     void rebuild();
     void rebuildLookbook();
+    void selectLookbookPhoto(const std::string& id);
+    void drawLookbookThumbnails();
+    void drawLookbookPhotoPreview();
     void setCategory(const std::string& category);
     bool matchesCategory(const LLViewerInventoryItem* item) const;
     void removeWornItem(S32 index);
@@ -38,6 +44,12 @@ private:
     void drawAvatarPreview();
     std::vector<LLUUID> mWornItems;
     S32 mSavedOutfitCount = 0;
+    S32 mLookbookPage = 0;
+    bool mLookbookPreviewMode = false;
+    std::string mSelectedLookbookId;
+    std::vector<std::string> mLookbookIds;
+    std::vector<LLPointer<LLViewerFetchedTexture>> mLookbookTextures;
+    LLPointer<LLViewerFetchedTexture> mLookbookPreviewTexture;
     LLUUID mDetailsOutfit;
     S32 mWornPage = 0;
     bool mDirty = true;
