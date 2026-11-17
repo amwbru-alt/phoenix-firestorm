@@ -19,7 +19,21 @@
   <text name="forme_profile" layout="topleft" left="1600" top="24" width="120" height="22" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">Профиль</text>
 
   <search_editor name="query" layout="topleft" left="790" top="104" width="286" height="34" label="Поиск по предметам…"/>
-  <button name="refresh" layout="topleft" left="1082" top="104" width="42" height="34" label="↻" text_color="0.90 0.70 1 1" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+  <combo_box name="category_filter" layout="topleft" left="1084" top="104" width="154" height="34" follows="top|left" allow_text_entry="false">
+    <combo_item name="filter_all" label="Все категории" value="all"/>
+    <combo_item name="filter_clothing" label="Одежда" value="clothing"/>
+    <combo_item name="filter_accessories" label="Аксессуары" value="accessories"/>
+    <combo_item name="filter_hair" label="Причёски" value="hair"/>
+    <combo_item name="filter_shoes" label="Обувь" value="shoes"/>
+    <combo_item name="filter_tattoos" label="Тату и макияж" value="tattoos"/>
+    <combo_item name="filter_jewelry" label="Украшения" value="jewelry"/>
+    <combo_item name="filter_objects" label="Декор" value="objects"/>
+    <combo_item name="filter_animations" label="Эмоции" value="animations"/>
+    <combo_item name="filter_favorites" label="Избранное" value="favorites"/>
+    <combo_item name="filter_recent" label="Недавние" value="recent"/>
+  </combo_box>
+
+  <button name="refresh" layout="topleft" left="1244" top="104" width="42" height="34" label="⌕" text_color="0.90 0.70 1 1" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
   <panel name="avatar_stage" layout="topleft" left="118" top="96" width="470" height="790" background_visible="true" bg_alpha_image="Forme_Round_Field" bg_alpha_color="White">
     <text name="avatar_heading" layout="topleft" left="20" top="18" width="420" height="24" font="SansSerifBold" text_color="0.91 0.72 1 1">✦ ВАШ АВАТАР</text>
     <panel name="avatar_preview_canvas" layout="topleft" left="14" top="52" width="442" height="650" background_visible="true" bg_alpha_image="Forme_Round_Window" bg_alpha_color="White"/>
