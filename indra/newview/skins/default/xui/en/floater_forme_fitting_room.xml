@@ -11,6 +11,7 @@
     <text name="avatar_preview_loading" layout="topleft" left="34" top="220" width="320" height="22" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">Preparing avatar preview…</text>
     <text name="camera_heading" layout="topleft" left="20" top="340" width="350" height="18" font="SansSerifBold">PREVIEW CAMERA</text>
     <button name="fitting_camera_front" layout="topleft" left="20" top="362" width="78" height="30" label="Front" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
+    <button name="fitting_capture_preview" layout="topleft" left="20" top="304" width="350" height="28" label="Capture 3D fitting room" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent"/>
     <button name="fitting_camera_rear" layout="topleft" left="104" top="362" width="78" height="30" label="Back" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
     <button name="fitting_camera_three_quarter" layout="topleft" left="188" top="362" width="86" height="30" label="3/4 view" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
     <button name="fitting_camera_reset" layout="topleft" left="280" top="362" width="70" height="30" label="Reset" image_unselected="Forme_Round_Field" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
