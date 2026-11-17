@@ -298,6 +298,26 @@ bool FSForMeFittingRoom::postBuild()
             mLookbookFavoritesOnly ? "★ Избранное" : "☆ Все фото");
         rebuildLookbook();
     });
+    getChild<LLButton>("lookbook_wear_outfit")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
+        if (mSelectedLookbookId.empty()) return;
+        const LLSD entries = loadFormeLookbook();
+        for (LLSD::array_const_iterator it = entries.beginArray(); it != entries.endArray(); ++it)
+        {
+            if ((*it)["id"].asString() != mSelectedLookbookId) continue;
+            LLUUID outfit_id;
+            outfit_id.set((*it)["outfit_id"].asString());
+            const LLUUID outfits_root = gInventory.findCategoryUUIDForType(LLFolderType::FT_MY_OUTFITS);
+            LLViewerInventoryCategory* outfit = outfit_id.isNull() ? nullptr : gInventory.getCategory(outfit_id);
+            if (!outfit || outfit->getParentUUID() != outfits_root)
+            {
+                getChild<LLTextBox>("fitting_status")->setText("Связанный комплект больше не доступен в «Мои образы».");
+                return;
+            }
+            LLAppearanceMgr::instance().wearInventoryCategoryOnAvatar(outfit, false);
+            getChild<LLTextBox>("fitting_status")->setText("Применяем комплект «" + outfit->getName() + "»…");
+            return;
+        }
+    });
     getChild<LLButton>("lookbook_toggle_favorite")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
         if (mSelectedLookbookId.empty()) return;
         LLSD entries = loadFormeLookbook();
@@ -624,6 +644,11 @@ void FSForMeFittingRoom::selectLookbookPhoto(const std::string& id)
         getChild<LLComboBox>("lookbook_category")->setValue(LLSD(category));
         getChild<LLButton>("lookbook_save_metadata")->setEnabled(true);
         getChild<LLButton>("lookbook_toggle_favorite")->setEnabled(true);
+        LLUUID outfit_id;
+        outfit_id.set((*it)["outfit_id"].asString());
+        const LLUUID outfits_root = gInventory.findCategoryUUIDForType(LLFolderType::FT_MY_OUTFITS);
+        LLViewerInventoryCategory* outfit = outfit_id.isNull() ? nullptr : gInventory.getCategory(outfit_id);
+        getChild<LLButton>("lookbook_wear_outfit")->setEnabled(outfit && outfit->getParentUUID() == outfits_root);
         getChild<LLButton>("lookbook_toggle_favorite")->setLabel(
             (*it)["favorite"].asBoolean() ? "★ В избранном" : "☆ В избранное");
         getChild<LLButton>("lookbook_compare_a")->setEnabled(true);
@@ -770,6 +795,7 @@ void FSForMeFittingRoom::rebuildLookbook()
         count == 0 ? "0 / 0" : std::to_string(mLookbookPage + 1) + " / " + std::to_string(page_count));
     getChild<LLButton>("lookbook_delete")->setEnabled(!mSelectedLookbookId.empty());
     getChild<LLButton>("lookbook_toggle_favorite")->setEnabled(!mSelectedLookbookId.empty());
+    getChild<LLButton>("lookbook_wear_outfit")->setEnabled(false);
     if (!mSelectedLookbookId.empty())
     {
         bool found = false;
