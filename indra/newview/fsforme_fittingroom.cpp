@@ -14,6 +14,7 @@
 #include "llbutton.h"
 #include "llcombobox.h"
 #include "llfloaterreg.h"
+#include "llfloatersnapshot.h"
 #include "llinventorymodel.h"
 #include "llinventorytype.h"
 #include "llwearabletype.h"
@@ -177,6 +178,14 @@ bool FSForMeFittingRoom::postBuild()
     });
     getChild<LLButton>("fitting_camera_rotate_right")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
         if (mAvatarPreview) mAvatarPreview->rotate(0.26179939f);
+    });
+    getChild<LLButton>("fitting_open_photo_studio")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
+        LLFloaterSnapshot* snapshot = LLFloaterReg::getTypedInstance<LLFloaterSnapshot>("snapshot");
+        if (snapshot)
+        {
+            getChild<LLTextBox>("fitting_status")->setText(
+                "Открыта штатная фотостудия Firestorm. Она снимает сцену viewer; отдельный захват preview-рендера пока не подключён.");
+        }
     });
     getChild<LLButton>("fitting_open_inventory")->setClickedCallback([](LLUICtrl*, const LLSD&) {
         LLFloaterReg::showInstance("forme_inventory");
