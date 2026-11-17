@@ -111,7 +111,8 @@ assert "LLSDSerialize::toPrettyXML" in fit_cpp and "LLSDSerialize::fromXML" in f
 assert "outfit_id" in fit_cpp and "camera_yaw" in fit_cpp and "captured_at" in fit_cpp
 assert "lookbook_delete" in fit_cpp and "LLFile::remove" in fit_cpp
 assert "getFetchedTextureFromFile" in fit_cpp and "drawLookbookThumbnails" in fit_cpp
-assert "drawLookbookPhotoPreview" in fit_cpp and "lookbook_thumb_3" in fit_en
+assert "drawLookbookPhotoPreview" in fit_cpp
+child(fit_en, "lookbook_thumb_3")
 assert "lookbook_entries" not in fit_ui
 assert "png->save(image_path)" in fit_cpp
 assert "GL_PACK_ALIGNMENT" in fit_cpp and "verticalFlip" in fit_cpp
