@@ -86,7 +86,9 @@ assert "setCurrentByID(previous_compare_a)" in fit_cpp and "setCurrentByID(previ
 assert "std::set<LLUUID>" in fit_cpp
 assert "collect_names" in fit_cpp and "only_first_names" in fit_cpp and "only_second_names" in fit_cpp
 assert "names.size() < 4" in fit_cpp
-assert "показаны первые 16" in fit_cpp and "WORN_ITEM_SLOTS" in fit_cpp
+assert "WORN_ITEM_SLOTS" in fit_cpp and "page_count" in fit_cpp
+assert "page_start" in fit_cpp and "mWornPage" in fit_cpp
+assert "worn_page_previous" in fit_cpp and "worn_page_next" in fit_cpp
 assert "fitting_compare_outfits" in fit_cpp and "compare_outfit_a" in fit_cpp and "compare_outfit_b" in fit_cpp
 assert "matchesCategory" in fit_cpp and "setCategory" in fit_cpp
 assert "worn_filter_shape" in fit_cpp and "worn_filter_skin" in fit_cpp
@@ -124,6 +126,9 @@ for locale in ("en", "ru"):
     child(fit_ui, "compare_outfit_a")
     child(fit_ui, "compare_outfit_b")
     child(fit_ui, "fitting_compare_outfits")
+    child(fit_ui, "worn_page_previous")
+    child(fit_ui, "worn_page_next")
+    child(fit_ui, "worn_page_label")
     assert canvas.get("width") == "350" and canvas.get("height") == "210"
     for name in ("fitting_camera_front", "fitting_camera_rear", "fitting_camera_three_quarter",
                  "fitting_camera_reset", "fitting_camera_zoom_out", "fitting_camera_zoom_in",
