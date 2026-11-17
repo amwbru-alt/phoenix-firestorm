@@ -126,6 +126,8 @@ bool FSForMeInventoryBrowser::postBuild()
     });
     getChild<LLButton>("refresh")->setClickedCallback([this](LLUICtrl*, const LLSD&) { mDirty = true; });
     for (const auto& category : {std::make_pair("category_all", "all"), std::make_pair("category_clothing", "clothing"),
+                                 std::make_pair("category_shoes", "shoes"), std::make_pair("category_hair", "hair"),
+                                 std::make_pair("category_tattoos", "tattoos"), std::make_pair("category_jewelry", "jewelry"),
                                  std::make_pair("category_accessories", "accessories"), std::make_pair("category_objects", "objects"),
                                  std::make_pair("category_animations", "animations"), std::make_pair("category_favorites", "favorites"),
                                  std::make_pair("category_recent", "recent")})
