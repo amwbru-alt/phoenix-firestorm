@@ -32,6 +32,9 @@ private:
     void selectLookbookPhoto(const std::string& id);
     void drawLookbookThumbnails();
     void drawLookbookPhotoPreview();
+    void drawLookbookComparison();
+    void saveSelectedLookbookMetadata();
+    void assignLookbookCompareSlot(bool first);
     void setCategory(const std::string& category);
     bool matchesCategory(const LLViewerInventoryItem* item) const;
     void removeWornItem(S32 index);
@@ -45,6 +48,11 @@ private:
     S32 mSavedOutfitCount = 0;
     S32 mLookbookPage = 0;
     bool mLookbookPreviewMode = false;
+    bool mLookbookCompareMode = false;
+    std::string mLookbookCompareAId;
+    std::string mLookbookCompareBId;
+    LLPointer<LLViewerFetchedTexture> mLookbookCompareATexture;
+    LLPointer<LLViewerFetchedTexture> mLookbookCompareBTexture;
     std::string mSelectedLookbookId;
     std::vector<std::string> mLookbookIds;
     std::vector<LLPointer<LLViewerFetchedTexture>> mLookbookTextures;
