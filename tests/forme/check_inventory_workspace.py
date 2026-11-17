@@ -113,7 +113,7 @@ assert "lookbook_delete" in fit_cpp and "LLFile::remove" in fit_cpp
 assert "getFetchedTextureFromFile" in fit_cpp and "drawLookbookThumbnails" in fit_cpp
 assert "drawLookbookPhotoPreview" in fit_cpp
 child(fit_en, "lookbook_thumb_3")
-assert "lookbook_entries" not in fit_ui
+assert "lookbook_entries" not in (XUI / "en/floater_forme_fitting_room.xml").read_text()
 assert "png->save(image_path)" in fit_cpp
 assert "GL_PACK_ALIGNMENT" in fit_cpp and "verticalFlip" in fit_cpp
 assert "LLImagePNG" in fit_cpp and "png->save(image_path)" in fit_cpp
