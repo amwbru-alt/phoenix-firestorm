@@ -262,8 +262,7 @@ bool FSForMeFittingRoom::postBuild()
         if (mLookbookPage > 0) { --mLookbookPage; rebuildLookbook(); }
     });
     getChild<LLButton>("lookbook_next")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
-        const LLSD entries = loadFormeLookbook();
-        const S32 pages = std::max(1, (static_cast<S32>(entries.size()) + LOOKBOOK_THUMBNAIL_SLOTS - 1) / LOOKBOOK_THUMBNAIL_SLOTS);
+        const S32 pages = std::max(1, (static_cast<S32>(mFilteredLookbookEntries.size()) + LOOKBOOK_THUMBNAIL_SLOTS - 1) / LOOKBOOK_THUMBNAIL_SLOTS);
         if (mLookbookPage + 1 < pages) { ++mLookbookPage; rebuildLookbook(); }
     });
     getChild<LLButton>("lookbook_view_avatar")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
@@ -278,6 +277,44 @@ bool FSForMeFittingRoom::postBuild()
                                  std::make_pair("Fantasy", "Fantasy")})
         photo_category->add(category.first, LLSD(category.second));
     photo_category->setValue(LLSD("Everyday"));
+    LLComboBox* photo_filter = getChild<LLComboBox>("lookbook_filter_category");
+    photo_filter->add("Все категории", LLSD("all"));
+    for (const auto& category : {std::make_pair("Everyday", "Everyday"),
+                                 std::make_pair("Casual", "Casual"),
+                                 std::make_pair("Formal", "Formal"),
+                                 std::make_pair("Party", "Party"),
+                                 std::make_pair("Fantasy", "Fantasy")})
+        photo_filter->add(category.first, LLSD(category.second));
+    photo_filter->setValue(LLSD("all"));
+    photo_filter->setCommitCallback([this](LLUICtrl*, const LLSD&) {
+        mLookbookFilterCategory = getChild<LLComboBox>("lookbook_filter_category")->getValue().asString();
+        mLookbookPage = 0;
+        rebuildLookbook();
+    });
+    getChild<LLButton>("lookbook_favorites_only")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
+        mLookbookFavoritesOnly = !mLookbookFavoritesOnly;
+        mLookbookPage = 0;
+        getChild<LLButton>("lookbook_favorites_only")->setLabel(
+            mLookbookFavoritesOnly ? "★ Избранное" : "☆ Все фото");
+        rebuildLookbook();
+    });
+    getChild<LLButton>("lookbook_toggle_favorite")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
+        if (mSelectedLookbookId.empty()) return;
+        LLSD entries = loadFormeLookbook();
+        for (LLSD::array_iterator it = entries.beginArray(); it != entries.endArray(); ++it)
+        {
+            if ((*it)["id"].asString() != mSelectedLookbookId) continue;
+            (*it)["favorite"] = !(*it)["favorite"].asBoolean();
+            if (saveFormeLookbook(entries))
+            {
+                getChild<LLButton>("lookbook_toggle_favorite")->setLabel(
+                    (*it)["favorite"].asBoolean() ? "★ В избранном" : "☆ В избранное");
+                rebuildLookbook();
+            }
+            else getChild<LLTextBox>("fitting_status")->setText("Не удалось сохранить избранное.");
+            return;
+        }
+    });
     getChild<LLButton>("lookbook_save_metadata")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
         saveSelectedLookbookMetadata();
     });
@@ -532,6 +569,7 @@ void FSForMeFittingRoom::draw()
                 entry["outfit_name"] = outfit_name;
                 entry["title"] = outfit_name;
                 entry["category"] = "Everyday";
+                entry["favorite"] = false;
                 entry["notes"] = "";
                 entry["captured_at"] = LLDate::now().asString();
                 entry["width"] = captured->getWidth();
@@ -585,6 +623,9 @@ void FSForMeFittingRoom::selectLookbookPhoto(const std::string& id)
         const std::string category = (*it)["category"].asString().empty() ? "Everyday" : (*it)["category"].asString();
         getChild<LLComboBox>("lookbook_category")->setValue(LLSD(category));
         getChild<LLButton>("lookbook_save_metadata")->setEnabled(true);
+        getChild<LLButton>("lookbook_toggle_favorite")->setEnabled(true);
+        getChild<LLButton>("lookbook_toggle_favorite")->setLabel(
+            (*it)["favorite"].asBoolean() ? "★ В избранном" : "☆ В избранное");
         getChild<LLButton>("lookbook_compare_a")->setEnabled(true);
         getChild<LLButton>("lookbook_compare_b")->setEnabled(true);
         const std::string path = (*it)["file"].asString();
@@ -691,7 +732,15 @@ void FSForMeFittingRoom::drawLookbookComparison()
 void FSForMeFittingRoom::rebuildLookbook()
 {
     const LLSD entries = loadFormeLookbook();
-    const S32 count = static_cast<S32>(entries.size());
+    mFilteredLookbookEntries = LLSD::emptyArray();
+    for (LLSD::array_const_iterator it = entries.beginArray(); it != entries.endArray(); ++it)
+    {
+        const std::string category = (*it)["category"].asString().empty() ? "Everyday" : (*it)["category"].asString();
+        if (mLookbookFilterCategory != "all" && category != mLookbookFilterCategory) continue;
+        if (mLookbookFavoritesOnly && !(*it)["favorite"].asBoolean()) continue;
+        mFilteredLookbookEntries.append(*it);
+    }
+    const S32 count = static_cast<S32>(mFilteredLookbookEntries.size());
     const S32 page_count = std::max(1, (count + LOOKBOOK_THUMBNAIL_SLOTS - 1) / LOOKBOOK_THUMBNAIL_SLOTS);
     mLookbookPage = llclamp(mLookbookPage, 0, page_count - 1);
     mLookbookIds.assign(LOOKBOOK_THUMBNAIL_SLOTS, std::string());
@@ -706,7 +755,7 @@ void FSForMeFittingRoom::rebuildLookbook()
             button->setEnabled(false);
             continue;
         }
-        const LLSD& entry = entries[index];
+        const LLSD& entry = mFilteredLookbookEntries[index];
         const std::string id = entry["id"].asString();
         mLookbookIds[slot] = id;
         button->setEnabled(true);
@@ -720,6 +769,7 @@ void FSForMeFittingRoom::rebuildLookbook()
     getChild<LLTextBox>("lookbook_page_label")->setText(
         count == 0 ? "0 / 0" : std::to_string(mLookbookPage + 1) + " / " + std::to_string(page_count));
     getChild<LLButton>("lookbook_delete")->setEnabled(!mSelectedLookbookId.empty());
+    getChild<LLButton>("lookbook_toggle_favorite")->setEnabled(!mSelectedLookbookId.empty());
     if (!mSelectedLookbookId.empty())
     {
         bool found = false;
