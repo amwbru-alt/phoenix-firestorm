@@ -143,6 +143,10 @@ bool FSForMeFittingRoom::postBuild()
     getChild<LLButton>("fitting_refresh")->setClickedCallback([this](LLUICtrl*, const LLSD&) { mDirty = true; });
     getChild<LLLineEditor>("saved_outfit_filter")->setKeystrokeCallback(
         [this](LLLineEditor*, void*) { mDirty = true; }, nullptr);
+    getChild<LLButton>("saved_outfit_filter_clear")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
+        getChild<LLLineEditor>("saved_outfit_filter")->setText("");
+        mDirty = true;
+    });
     getChild<LLButton>("worn_page_previous")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
         if (mWornPage > 0) { --mWornPage; mDirty = true; }
     });
