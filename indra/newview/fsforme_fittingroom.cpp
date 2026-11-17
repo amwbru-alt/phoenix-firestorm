@@ -290,7 +290,9 @@ void FSForMeFittingRoom::changed(U32) { mDirty = true; }
 
 void FSForMeFittingRoom::setCategory(const std::string& category)
 {
+    if (mCategory == category) return;
     mCategory = category;
+    mWornPage = 0;
     mDirty = true;
 }
 
