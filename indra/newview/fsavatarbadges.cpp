@@ -26,6 +26,7 @@
 #include "llcoros.h"
 #include "llcorehttputil.h"
 #include "llstartup.h"
+#include "llapp.h"
 #include "llvoavatar.h"
 #include <chrono>
 #include "llhttpnode.h"
@@ -43,7 +44,7 @@ namespace ForMeAvatarBadges
 namespace
 {
 ForMeBadge::Data s_badge;
-LLUUID s_agent;
+LLUUID s_agent, s_session;
 std::string s_cap;
 U64 s_generation = 0;
 bool s_pending = false;
@@ -53,7 +54,7 @@ Clock::time_point s_next, s_fetched;
 std::string capability()
 {
     LLViewerRegion* region = gAgent.getRegion();
-    if (LLStartUp::getStartupState() != STATE_STARTED || !region || gAgent.getID().isNull()) return "";
+    if (gDisconnected || LLStartUp::getStartupState() != STATE_STARTED || gAgent.getTeleportState() != LLAgent::TELEPORT_NONE || !region || gAgent.getID().isNull()) return "";
     const std::string cap = region->getCapability("ForMeAvatarBadge");
     return ForMeGrid::allowedServiceURI(cap) ? cap : "";
 }
@@ -64,7 +65,7 @@ void fetch(LLUUID agent, std::string cap, U64 generation)
     LLSD result;
     try { result = adapter->getJsonAndSuspend(request, cap); }
     catch (...) { result = LLSD(); }
-    if (generation != s_generation || agent != gAgent.getID() || cap != capability()) return;
+    if (generation != s_generation || agent != gAgent.getID() || s_session != gAgent.getSessionID() || cap != capability()) return;
     s_pending = false;
     const LLCore::HttpStatus status = LLCoreHttpUtil::HttpCoroutineAdapter::getStatusFromLLSD(
         result[LLCoreHttpUtil::HttpCoroutineAdapter::HTTP_RESULTS]);
@@ -81,7 +82,7 @@ void fetch(LLUUID agent, std::string cap, U64 generation)
 }
 ForMeBadge::Data self()
 {
-    if (s_agent != gAgent.getID() || s_cap.empty() || s_cap != capability()
+    if (s_agent != gAgent.getID() || s_session != gAgent.getSessionID() || s_cap.empty() || s_cap != capability()
         || Clock::now() - s_fetched > std::chrono::seconds(25)) return {};
     return s_badge;
 }
@@ -90,13 +91,18 @@ bool creatorGranted()
     if (capability().empty()) return true; // Compatibility grids have no independent grant service yet.
     return self().valid && s_creator_grant;
 }
+void invalidate()
+{
+    ++s_generation; s_pending = false; s_creator_grant = false; s_badge = {}; s_cap.clear(); s_next = {}; s_fetched = {};
+    if (s_agent.notNull()) LLVOAvatar::invalidateNameTag(s_agent);
+}
 void updateSelf()
 {
     const std::string cap = capability();
-    if (s_agent != gAgent.getID() || s_cap != cap)
+    if (s_agent != gAgent.getID() || s_session != gAgent.getSessionID() || s_cap != cap)
     {
         const LLUUID old_agent = s_agent;
-        s_agent = gAgent.getID(); s_cap = cap; ++s_generation;
+        s_agent = gAgent.getID(); s_session = gAgent.getSessionID(); s_cap = cap; ++s_generation;
         s_pending = false; s_creator_grant = false; s_badge = {}; s_next = {};
         if (old_agent.notNull()) LLVOAvatar::invalidateNameTag(old_agent);
     }

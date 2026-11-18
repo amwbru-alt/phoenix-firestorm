@@ -30,6 +30,7 @@
 #include "formecreatorpolicy.h"
 #include "fsavatarbadges.h"
 #include "llagent.h"
+#include "llapp.h"
 #include "llstartup.h"
 #include "llviewerregion.h"
 namespace ForMeCreatorAccess
@@ -38,7 +39,7 @@ inline bool allowed()
 {
     // Use the current authenticated avatar's simulator metadata, never a label,
     // friend role, god mode, saved setting or another avatar's badge.
-    if (LLStartUp::getStartupState() != STATE_STARTED) return false;
+    if (gDisconnected || LLStartUp::getStartupState() != STATE_STARTED || gAgent.getTeleportState() != LLAgent::TELEPORT_NONE) return false;
     LLViewerRegion* region = gAgent.getRegion();
     LLViewerObject* self = gObjectList.findObject(gAgent.getID());
     if (!region || !self || self->isDead() || self->getRegion() != region || gAgent.getID().isNull()) return false;

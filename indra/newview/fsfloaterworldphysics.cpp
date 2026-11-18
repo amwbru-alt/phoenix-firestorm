@@ -21,6 +21,12 @@ bool FSFloaterWorldPhysics::postBuild()
     return true;
 }
 void FSFloaterWorldPhysics::onOpen(const LLSD& key) { refresh(); }
+void FSFloaterWorldPhysics::resetRegionContext()
+{
+    ++mRequest; mPending = false; mTarget.setNull(); mEntity = LLSD(); controls(false);
+    getChild<LLTextBox>("entity_id")->setText(std::string()); getChild<LLTextBox>("revision")->setText(std::string());
+    getChild<LLTextBox>("status")->setText(getString("select_object"));
+}
 void FSFloaterWorldPhysics::controls(bool enabled)
 {
     for (const char* field : {"density", "friction", "restitution", "gravity"}) getChild<LLSpinCtrl>(field)->setEnabled(enabled);
@@ -57,9 +63,9 @@ void FSFloaterWorldPhysics::refresh()
     { getChild<LLTextBox>("status")->setText(getString("select_object")); return; }
     mTarget = object->getID(); mPending = true;
     getChild<LLTextBox>("status")->setText(getString("loading"));
-    LLHandle<LLFloater> handle = getHandle(); LLUUID target = mTarget;
-    ForMeWorldEntities::readPhysicalObject(target, [handle,target](bool success,const LLSD& entity) {
-        auto* self = dynamic_cast<FSFloaterWorldPhysics*>(handle.get()); if (!self || self->mTarget != target) return;
+    LLHandle<LLFloater> handle = getHandle(); LLUUID target = mTarget; const U64 request = ++mRequest;
+    ForMeWorldEntities::readPhysicalObject(target, [handle,target,request](bool success,const LLSD& entity) {
+        auto* self = dynamic_cast<FSFloaterWorldPhysics*>(handle.get()); if (!self || self->mTarget != target || self->mRequest != request) return;
         self->mPending = false;
         if (success) self->populate(entity);
         self->getChild<LLTextBox>("status")->setText(self->getString(success ? "ready" : "failed"));
@@ -89,9 +95,9 @@ void FSFloaterWorldPhysics::apply()
     const ForMeWorldPhysics::Profile validated{mode,shape,profile["density"].asReal(),profile["friction"].asReal(),profile["restitution"].asReal(),profile["gravityModifier"].asReal(),profile["phantom"].asBoolean()};
     if(!validated.valid()){getChild<LLTextBox>("status")->setText(getString("failed"));return;}
     mPending = true; controls(false);getChild<LLTextBox>("status")->setText(getString("saving"));
-    LLHandle<LLFloater> handle = getHandle(); LLUUID target = mTarget;
-    ForMeWorldEntities::setPhysicsProfile(target,mEntity["revision"].asString(),profile,[handle,target](bool success,const LLSD& response) {
-        auto* self = dynamic_cast<FSFloaterWorldPhysics*>(handle.get()); if (!self || self->mTarget != target) return;
+    LLHandle<LLFloater> handle = getHandle(); LLUUID target = mTarget; const U64 request = ++mRequest;
+    ForMeWorldEntities::setPhysicsProfile(target,mEntity["revision"].asString(),profile,[handle,target,request](bool success,const LLSD& response) {
+        auto* self = dynamic_cast<FSFloaterWorldPhysics*>(handle.get()); if (!self || self->mTarget != target || self->mRequest != request) return;
         self->mPending = false;
         if (success) self->populate(response);
         const std::string code = response["code"].asString();

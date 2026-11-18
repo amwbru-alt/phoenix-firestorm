@@ -10,6 +10,7 @@ using EntityCallback = std::function<void(bool,const LLSD&)>;
 void readPhysicalObject(const LLUUID& id, EntityCallback done);
 void setPhysicsProfile(const LLUUID& id, const std::string& revision, const LLSD& profile, EntityCallback done);
 void update();
+void invalidate();
 LLSD entity(const LLUUID& id);
 std::string capability();
 void setMaterial(const LLUUID& id, const LLSD& material, std::function<void(bool,const std::string&)> done);
