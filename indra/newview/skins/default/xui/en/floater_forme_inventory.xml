@@ -66,7 +66,8 @@
     <button name="category_favorites" layout="topleft" left="6" top="440" width="76" height="48" label="☆\nИзбранное" font="SansSerifSmall" text_color="0.82 0.70 0.94 1" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
     <button name="category_recent" layout="topleft" left="6" top="494" width="76" height="48" label="◷\nНедавние" font="SansSerifSmall" text_color="0.82 0.70 0.94 1" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
     <button name="category_all" layout="topleft" left="6" top="548" width="76" height="48" label="Все вещи" font="SansSerifSmall" text_color="0.82 0.70 0.94 1" image_unselected="Forme_WMap_Clear" image_selected="Forme_Round_Accent" image_pressed="Forme_Round_Selection"/>
-  
+  </panel>
+
   <panel name="items_surface" layout="topleft" left="610" top="96" width="700" height="790" background_visible="true" bg_alpha_image="Forme_Round_Window" bg_alpha_color="White">
     <text name="items_heading" layout="topleft" left="16" top="14" width="240" height="24" font="SansSerifBold" text_color="0.94 0.84 1 1">Инвентарь</text>
     <text name="inventory_count" layout="topleft" left="16" top="44" width="240" height="20" font="SansSerifSmall" text_color="0.76 0.73 0.80 1">Загрузка…</text>
