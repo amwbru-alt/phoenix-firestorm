@@ -179,9 +179,24 @@ bool FSForMeInventoryBrowser::postBuild()
 }
 void FSForMeInventoryBrowser::onOpen(const LLSD&)
 {
-    if (mAvatarPreview) mAvatarPreview->setActive(true);
+    if (mAvatarPreview)
+    {
+        mAvatarPreview->reset();
+        mAvatarPreview->setActive(true);
+    }
     getChild<LLButton>("camera_front")->setToggleState(true);
+    getChild<LLButton>("camera_side")->setToggleState(false);
+    getChild<LLButton>("camera_back")->setToggleState(false);
     mSelectedItem.setNull();
+    getChild<LLTextBox>("detail_name")->setText("Выберите предмет");
+    getChild<LLTextBox>("detail_type")->setText("");
+    getChild<LLTextBox>("detail_folder")->setText("");
+    getChild<LLTextBox>("detail_creator")->setText("");
+    getChild<LLTextBox>("detail_created")->setText("");
+    getChild<LLTextBox>("detail_description")->setText("Информация о выбранном предмете появится здесь.");
+    getChild<LLButton>("apply")->setEnabled(false);
+    getChild<LLButton>("open_folder")->setEnabled(false);
+    getChild<LLButton>("detail_favorite")->setEnabled(false);
     mFolder = gInventory.getRootFolderID();
     mDirty = true;
 }
