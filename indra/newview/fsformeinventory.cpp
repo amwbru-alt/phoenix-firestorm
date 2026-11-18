@@ -188,12 +188,12 @@ void FSForMeInventoryBrowser::onOpen(const LLSD&)
     getChild<LLButton>("camera_side")->setToggleState(false);
     getChild<LLButton>("camera_back")->setToggleState(false);
     mSelectedItem.setNull();
-    getChild<LLTextBox>("detail_name")->setText("Выберите предмет");
-    getChild<LLTextBox>("detail_type")->setText("");
-    getChild<LLTextBox>("detail_folder")->setText("");
-    getChild<LLTextBox>("detail_creator")->setText("");
-    getChild<LLTextBox>("detail_created")->setText("");
-    getChild<LLTextBox>("detail_description")->setText("Информация о выбранном предмете появится здесь.");
+    getChild<LLTextBox>("detail_name")->setText(std::string("Выберите предмет");
+    getChild<LLTextBox>("detail_type")->setText(std::string("");
+    getChild<LLTextBox>("detail_folder")->setText(std::string("");
+    getChild<LLTextBox>("detail_creator")->setText(std::string("");
+    getChild<LLTextBox>("detail_created")->setText(std::string("");
+    getChild<LLTextBox>("detail_description")->setText(std::string("Информация о выбранном предмете появится здесь.");
     getChild<LLButton>("apply")->setEnabled(false);
     getChild<LLButton>("open_folder")->setEnabled(false);
     getChild<LLButton>("detail_favorite")->setEnabled(false);
@@ -328,12 +328,12 @@ void FSForMeInventoryBrowser::rebuild()
     if (mSelectedItem.notNull() && std::find(mVisibleItems.begin(), mVisibleItems.end(), mSelectedItem) == mVisibleItems.end())
     {
         mSelectedItem.setNull();
-        getChild<LLTextBox>("detail_name")->setText("Выберите предмет");
-        getChild<LLTextBox>("detail_type")->setText("");
-        getChild<LLTextBox>("detail_folder")->setText("");
-        getChild<LLTextBox>("detail_creator")->setText("");
-        getChild<LLTextBox>("detail_created")->setText("");
-        getChild<LLTextBox>("detail_description")->setText("Информация о выбранном предмете появится здесь.");
+        getChild<LLTextBox>("detail_name")->setText(std::string("Выберите предмет");
+        getChild<LLTextBox>("detail_type")->setText(std::string("");
+        getChild<LLTextBox>("detail_folder")->setText(std::string("");
+        getChild<LLTextBox>("detail_creator")->setText(std::string("");
+        getChild<LLTextBox>("detail_created")->setText(std::string("");
+        getChild<LLTextBox>("detail_description")->setText(std::string("Информация о выбранном предмете появится здесь.");
         getChild<LLButton>("apply")->setEnabled(false);
         getChild<LLButton>("open_folder")->setEnabled(false);
         getChild<LLButton>("detail_favorite")->setEnabled(false);
