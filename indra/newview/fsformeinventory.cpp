@@ -360,8 +360,8 @@ void FSForMeInventoryBrowser::rebuild()
     const std::pair<const char*, const char*> rail_labels[] = {
         {"category_all", "Все"}, {"category_clothing", "Одежда"}, {"category_accessories", "Аксессуары"},
         {"category_hair", "Причёски"}, {"category_shoes", "Обувь"}, {"category_tattoos", "Тату и макияж"},
-        {"category_jewelry", "Украшения"}, {"category_objects", "Декор"}, {"category_animations", "Эмоции"},
-        {"category_recent", "Другое"}
+        {"category_jewelry", "Украшения"}, {"category_objects", "Декор"}, {"category_animations", "Эмоции"}, {"category_favorites", "Избранное"},
+        {"category_recent", "Недавние"}
     };
     for (const auto& entry : rail_labels)
     {
