@@ -320,11 +320,11 @@ bool FSForMeFittingRoom::postBuild()
             LLViewerInventoryCategory* outfit = outfit_id.isNull() ? nullptr : gInventory.getCategory(outfit_id);
             if (!outfit || outfit->getParentUUID() != outfits_root)
             {
-                getChild<LLTextBox>("fitting_status")->setText(std::string("Связанный комплект больше не доступен в «Мои образы».");
+                getChild<LLTextBox>("fitting_status")->setText(std::string("Связанный комплект больше не доступен в «Мои образы»."));
                 return;
             }
             LLAppearanceMgr::instance().wearInventoryCategoryOnAvatar(outfit, false);
-            getChild<LLTextBox>("fitting_status")->setText(std::string("Применяем комплект «" + outfit->getName() + "»…");
+            getChild<LLTextBox>("fitting_status")->setText(std::string("Применяем комплект «") + outfit->getName() + "»…");
             return;
         }
     });
@@ -341,7 +341,7 @@ bool FSForMeFittingRoom::postBuild()
                     (*it)["favorite"].asBoolean() ? "★ В избранном" : "☆ В избранное");
                 rebuildLookbook();
             }
-            else getChild<LLTextBox>("fitting_status")->setText(std::string("Не удалось сохранить избранное.");
+            else getChild<LLTextBox>("fitting_status")->setText(std::string("Не удалось сохранить избранное."));
             return;
         }
     });
@@ -358,12 +358,12 @@ bool FSForMeFittingRoom::postBuild()
         if (mLookbookCompareAId.empty() || mLookbookCompareBId.empty()
             || mLookbookCompareAId == mLookbookCompareBId)
         {
-            getChild<LLTextBox>("fitting_status")->setText(std::string("Выберите два разных снимка: назначьте A и B.");
+            getChild<LLTextBox>("fitting_status")->setText(std::string("Выберите два разных снимка: назначьте A и B."));
             return;
         }
         mLookbookPreviewMode = false;
         mLookbookCompareMode = true;
-        getChild<LLTextBox>("fitting_status")->setText(std::string("Сравнение фотографий A / B.");
+        getChild<LLTextBox>("fitting_status")->setText(std::string("Сравнение фотографий A / B."));
     });
     getChild<LLButton>("lookbook_delete")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
         if (mSelectedLookbookId.empty()) return;
@@ -386,7 +386,7 @@ bool FSForMeFittingRoom::postBuild()
             mLookbookPreviewTexture = nullptr;
             mLookbookPreviewMode = false;
             getChild<LLButton>("lookbook_fullscreen")->setEnabled(false);
-            getChild<LLTextBox>("lookbook_history_date")->setText(std::string("Дата снимка: —");
+            getChild<LLTextBox>("lookbook_history_date")->setText(std::string("Дата снимка: —"));
             mLookbookCompareMode = false;
             if (mLookbookCompareAId == selected_id) { mLookbookCompareAId.clear(); mLookbookCompareATexture = nullptr; }
             if (mLookbookCompareBId == selected_id) { mLookbookCompareBId.clear(); mLookbookCompareBTexture = nullptr; }
@@ -394,25 +394,25 @@ bool FSForMeFittingRoom::postBuild()
             getChild<LLButton>("lookbook_compare_a")->setEnabled(false);
             getChild<LLButton>("lookbook_compare_b")->setEnabled(false);
             rebuildLookbook();
-            getChild<LLTextBox>("fitting_status")->setText(std::string("Фотография удалена из ForMe Lookbook.");
+            getChild<LLTextBox>("fitting_status")->setText(std::string("Фотография удалена из ForMe Lookbook."));
         }
-        else getChild<LLTextBox>("fitting_status")->setText(std::string("Не удалось удалить фотографию или обновить каталог.");
+        else getChild<LLTextBox>("fitting_status")->setText(std::string("Не удалось удалить фотографию или обновить каталог."));
     });
     getChild<LLButton>("fitting_capture_preview")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
         if (!mAvatarPreview || !gAgentAvatarp || gAgentAvatarp->isDead() || gAgentAvatarp->mDrawable.isNull())
         {
-            getChild<LLTextBox>("fitting_status")->setText(std::string("Невозможно снять preview: аватар ещё не готов.");
+            getChild<LLTextBox>("fitting_status")->setText(std::string("Невозможно снять preview: аватар ещё не готов."));
             return;
         }
         mAvatarPreview->requestCapture();
-        getChild<LLTextBox>("fitting_status")->setText(std::string("Подготовка снимка 3D-примерочной…");
+        getChild<LLTextBox>("fitting_status")->setText(std::string("Подготовка снимка 3D-примерочной…"));
     });
     getChild<LLButton>("fitting_open_photo_studio")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
         LLFloaterSnapshot* snapshot = LLFloaterReg::getTypedInstance<LLFloaterSnapshot>("snapshot");
         if (snapshot)
         {
             getChild<LLTextBox>("fitting_status")->setText(
-                std::string("Открыта штатная фотостудия ForMe.World для дополнительных снимков сцены viewer. Для изолированного аватара используйте кнопку захвата preview.");
+                std::string("Открыта штатная фотостудия ForMe.World для дополнительных снимков сцены viewer. Для изолированного аватара используйте кнопку захвата preview."));
         }
     });
     getChild<LLButton>("fitting_open_inventory")->setClickedCallback([](LLUICtrl*, const LLSD&) {
@@ -428,12 +428,12 @@ bool FSForMeFittingRoom::postBuild()
         const LLUUID outfits_root = gInventory.findCategoryUUIDForType(LLFolderType::FT_MY_OUTFITS);
         if (!outfit || outfit->getParentUUID() != outfits_root)
         {
-            getChild<LLTextBox>("fitting_status")->setText(std::string("Выбранный образ больше не находится в папке «Мои образы».");
+            getChild<LLTextBox>("fitting_status")->setText(std::string("Выбранный образ больше не находится в папке «Мои образы»."));
             mDirty = true;
             return;
         }
         gInventory.removeCategory(outfit_id); // Moves the outfit to Trash; it is recoverable.
-        getChild<LLTextBox>("fitting_status")->setText(std::string("Образ перемещён в Корзину. Его можно восстановить из инвентаря.");
+        getChild<LLTextBox>("fitting_status")->setText(std::string("Образ перемещён в Корзину. Его можно восстановить из инвентаря."));
         mDirty = true;
     });
     getChild<LLButton>("fitting_wear_saved")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
@@ -442,12 +442,12 @@ bool FSForMeFittingRoom::postBuild()
         LLViewerInventoryCategory* outfit = gInventory.getCategory(outfit_id);
         if (!outfit || outfit->getParentUUID() != outfits_root)
         {
-            getChild<LLTextBox>("fitting_status")->setText(std::string("Выбранный образ недоступен в папке «Мои образы».");
+            getChild<LLTextBox>("fitting_status")->setText(std::string("Выбранный образ недоступен в папке «Мои образы»."));
             mDirty = true;
             return;
         }
         LLAppearanceMgr::instance().wearInventoryCategoryOnAvatar(outfit, false);
-        getChild<LLTextBox>("fitting_status")->setText(std::string("Применяем образ «" + outfit->getName() + "»…");
+        getChild<LLTextBox>("fitting_status")->setText(std::string("Применяем образ «") + outfit->getName() + "»…");
     });
     for (S32 i = 0; i < WORN_ITEM_SLOTS; ++i)
         getChild<LLButton>("worn_remove_" + std::to_string(i))->setClickedCallback([this, i](LLUICtrl*, const LLSD&) {
@@ -629,17 +629,17 @@ void FSForMeFittingRoom::draw()
                 if (saveFormeLookbook(entries))
                 {
                     rebuildLookbook();
-                    getChild<LLTextBox>("fitting_status")->setText(std::string("Фото сохранено в ForMe Lookbook: " + image_path);
+                    getChild<LLTextBox>("fitting_status")->setText(std::string("Фото сохранено в ForMe Lookbook: ") + image_path);
                 }
                 else
                 {
                     LLFile::remove(image_path);
-                    getChild<LLTextBox>("fitting_status")->setText(std::string("PNG создан, но каталог Lookbook не удалось сохранить.");
+                    getChild<LLTextBox>("fitting_status")->setText(std::string("PNG создан, но каталог Lookbook не удалось сохранить."));
                 }
             }
             else
             {
-                getChild<LLTextBox>("fitting_status")->setText(std::string("Не удалось сохранить PNG в папку ForMe Lookbook.");
+                getChild<LLTextBox>("fitting_status")->setText(std::string("Не удалось сохранить PNG в папку ForMe Lookbook."));
             }
         }
     }
@@ -666,7 +666,7 @@ void FSForMeFittingRoom::selectLookbookPhoto(const std::string& id)
         mLookbookCompareMode = false;
         mLookbookPreviewWidth = std::max(1, (*it)["width"].asInteger() > 0 ? (*it)["width"].asInteger() : 512);
         mLookbookPreviewHeight = std::max(1, (*it)["height"].asInteger() > 0 ? (*it)["height"].asInteger() : 307);
-        getChild<LLTextBox>("lookbook_history_date")->setText(std::string("Снимок: " + (*it)["captured_at"].asString());
+        getChild<LLTextBox>("lookbook_history_date")->setText(std::string("Снимок: ") + (*it)["captured_at"].asString());
         getChild<LLLineEditor>("lookbook_title")->setText(
             (*it)["title"].asString().empty() ? (*it)["outfit_name"].asString() : (*it)["title"].asString());
         getChild<LLLineEditor>("lookbook_notes")->setText((*it)["notes"].asString());
@@ -697,7 +697,7 @@ void FSForMeFittingRoom::selectLookbookPhoto(const std::string& id)
         else
         {
             mLookbookPreviewMode = false;
-            getChild<LLTextBox>("fitting_status")->setText(std::string("Не удалось загрузить выбранную фотографию.");
+            getChild<LLTextBox>("fitting_status")->setText(std::string("Не удалось загрузить выбранную фотографию."));
         }
         return;
     }
@@ -710,7 +710,7 @@ void FSForMeFittingRoom::setLookbookFullscreenMode(bool enabled)
     getChild<LLView>("wardrobe_surface")->setVisible(!mLookbookFullscreenMode);
     getChild<LLView>("save_surface")->setVisible(!mLookbookFullscreenMode);
     if (mLookbookFullscreenMode)
-        getChild<LLTextBox>("fitting_status")->setText(std::string("Полноэкранный просмотр · ← / → — предыдущая и следующая фотография · Esc — закрыть");
+        getChild<LLTextBox>("fitting_status")->setText(std::string("Полноэкранный просмотр · ← / → — предыдущая и следующая фотография · Esc — закрыть"));
 }
 void FSForMeFittingRoom::navigateLookbookPhoto(S32 delta)
 {
@@ -757,7 +757,7 @@ void FSForMeFittingRoom::saveSelectedLookbookMetadata()
 {
     if (mSelectedLookbookId.empty())
     {
-        getChild<LLTextBox>("fitting_status")->setText(std::string("Сначала выберите фотографию в Lookbook.");
+        getChild<LLTextBox>("fitting_status")->setText(std::string("Сначала выберите фотографию в Lookbook."));
         return;
     }
     LLSD entries = loadFormeLookbook();
@@ -775,10 +775,10 @@ void FSForMeFittingRoom::saveSelectedLookbookMetadata()
     }
     if (updated && saveFormeLookbook(entries))
     {
-        getChild<LLTextBox>("fitting_status")->setText(std::string("Сведения о фотографии сохранены.");
+        getChild<LLTextBox>("fitting_status")->setText(std::string("Сведения о фотографии сохранены."));
         rebuildLookbook();
     }
-    else getChild<LLTextBox>("fitting_status")->setText(std::string("Не удалось сохранить сведения о фотографии.");
+    else getChild<LLTextBox>("fitting_status")->setText(std::string("Не удалось сохранить сведения о фотографии."));
 }
 
 void FSForMeFittingRoom::assignLookbookCompareSlot(bool first)
@@ -891,7 +891,7 @@ void FSForMeFittingRoom::rebuildLookbook()
         }
     }
     if (count == 0)
-        getChild<LLTextBox>("fitting_status")->setText(std::string("ForMe Lookbook пока пуст. Сделайте снимок 3D-примерочной.");
+        getChild<LLTextBox>("fitting_status")->setText(std::string("ForMe Lookbook пока пуст. Сделайте снимок 3D-примерочной."));
 }
 
 void FSForMeFittingRoom::drawLookbookThumbnails()
@@ -1086,7 +1086,7 @@ void FSForMeFittingRoom::rebuild()
     getChild<LLButton>("worn_filter_eyes")->setToggleState(mCategory == "eyes");
     getChild<LLButton>("worn_filter_accessories")->setToggleState(mCategory == "accessories");
     if (!outfit_filter.empty() && mSavedOutfitCount == 0)
-        getChild<LLTextBox>("fitting_status")->setText(std::string("По запросу не найдено сохранённых образов.");
+        getChild<LLTextBox>("fitting_status")->setText(std::string("По запросу не найдено сохранённых образов."));
     else getChild<LLTextBox>("fitting_status")->setText(mWornItems.empty()
         ? "Ожидаем данные текущего образа. Если аватар ещё загружается, обновите список позже."
         : "Список синхронизирован с текущим образом аватара.");
@@ -1099,14 +1099,14 @@ void FSForMeFittingRoom::updateSelectedOutfitDetails()
     mDetailsOutfit = outfit_id;
     if (outfit_id.isNull())
     {
-        getChild<LLTextBox>("saved_outfit_details")->setText(std::string("Выберите сохранённый образ, чтобы посмотреть его состав.");
+        getChild<LLTextBox>("saved_outfit_details")->setText(std::string("Выберите сохранённый образ, чтобы посмотреть его состав."));
         return;
     }
 
     const LLViewerInventoryCategory* outfit = gInventory.getCategory(outfit_id);
     if (!outfit || outfit->getParentUUID() != gInventory.findCategoryUUIDForType(LLFolderType::FT_MY_OUTFITS))
     {
-        getChild<LLTextBox>("saved_outfit_details")->setText(std::string("Сведения об образе недоступны.");
+        getChild<LLTextBox>("saved_outfit_details")->setText(std::string("Сведения об образе недоступны."));
         return;
     }
 
@@ -1145,10 +1145,10 @@ void FSForMeFittingRoom::compareOutfits()
     const LLUUID second_id = getChild<LLComboBox>("compare_outfit_b")->getSelectedValue().asUUID();
     if (first_id.isNull() || second_id.isNull() || first_id == second_id)
     {
-        getChild<LLTextBox>("compare_summary")->setText(std::string("Выберите два разных сохранённых образа.");
-        getChild<LLTextBox>("compare_only_a")->setText(std::string("");
-        getChild<LLTextBox>("compare_only_b")->setText(std::string("");
-        getChild<LLTextBox>("fitting_status")->setText(std::string("Сравнение не выполнено.");
+        getChild<LLTextBox>("compare_summary")->setText(std::string("Выберите два разных сохранённых образа."));
+        getChild<LLTextBox>("compare_only_a")->setText(std::string(""));
+        getChild<LLTextBox>("compare_only_b")->setText(std::string(""));
+        getChild<LLTextBox>("fitting_status")->setText(std::string("Сравнение не выполнено."));
         return;
     }
     auto collect_items = [](const LLUUID& outfit_id, std::set<LLUUID>& item_ids)
@@ -1169,10 +1169,10 @@ void FSForMeFittingRoom::compareOutfits()
     collect_items(second_id, second_items);
     if (first_items.empty() && second_items.empty())
     {
-        getChild<LLTextBox>("compare_summary")->setText(std::string("В выбранных образах пока нет предметов для сравнения.");
-        getChild<LLTextBox>("compare_only_a")->setText(std::string("");
-        getChild<LLTextBox>("compare_only_b")->setText(std::string("");
-        getChild<LLTextBox>("fitting_status")->setText(std::string("Сравнение не выполнено.");
+        getChild<LLTextBox>("compare_summary")->setText(std::string("В выбранных образах пока нет предметов для сравнения."));
+        getChild<LLTextBox>("compare_only_a")->setText(std::string(""));
+        getChild<LLTextBox>("compare_only_b")->setText(std::string(""));
+        getChild<LLTextBox>("fitting_status")->setText(std::string("Сравнение не выполнено."));
         return;
     }
     S32 shared = 0;
@@ -1220,9 +1220,9 @@ void FSForMeFittingRoom::compareOutfits()
         first_name + " / " + second_name + " · общих: " + std::to_string(shared)
         + " · уникальных в A: " + std::to_string(only_first)
         + " · уникальных в B: " + std::to_string(only_second));
-    getChild<LLTextBox>("compare_only_a")->setText(std::string("Только в A: " + format_names(only_first_names, only_first));
-    getChild<LLTextBox>("compare_only_b")->setText(std::string("Только в B: " + format_names(only_second_names, only_second));
-    getChild<LLTextBox>("fitting_status")->setText(std::string("Сравнение готово: " + first_name + " и " + second_name + ".");
+    getChild<LLTextBox>("compare_only_a")->setText(std::string("Только в A: ") + format_names(only_first_names, only_first));
+    getChild<LLTextBox>("compare_only_b")->setText(std::string("Только в B: ") + format_names(only_second_names, only_second));
+    getChild<LLTextBox>("fitting_status")->setText(std::string("Сравнение готово: ") + first_name + " и " + second_name + ".");
 }
 
 void FSForMeFittingRoom::saveOutfit()
@@ -1231,7 +1231,7 @@ void FSForMeFittingRoom::saveOutfit()
     const auto first = name.find_first_not_of(" \t\r\n");
     if (first == std::string::npos)
     {
-        getChild<LLTextBox>("fitting_status")->setText(std::string("Введите название комплекта перед сохранением.");
+        getChild<LLTextBox>("fitting_status")->setText(std::string("Введите название комплекта перед сохранением."));
         return;
     }
     const auto last = name.find_last_not_of(" \t\r\n");
@@ -1246,11 +1246,11 @@ void FSForMeFittingRoom::saveOutfit()
         {
             if (outfit.notNull() && LLStringUtil::compareInsensitive(outfit->getName(), name) == 0)
             {
-                getChild<LLTextBox>("fitting_status")->setText(std::string("Образ с таким названием уже существует. Выберите другое название.");
+                getChild<LLTextBox>("fitting_status")->setText(std::string("Образ с таким названием уже существует. Выберите другое название."));
                 return;
             }
         }
     }
     LLAppearanceMgr::instance().makeNewOutfitLinks(name, false);
-    getChild<LLTextBox>("fitting_status")->setText(std::string("Создаём комплект «" + name + "» в папке «Мои образы»…");
+    getChild<LLTextBox>("fitting_status")->setText(std::string("Создаём комплект «") + name + "» в папке «Мои образы»…");
 }
