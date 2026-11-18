@@ -325,6 +325,19 @@ void FSForMeInventoryBrowser::rebuild()
         });
         for (const auto& id : all) if (matches(gInventory.getItem(id))) mVisibleItems.push_back(id);
     }
+    if (mSelectedItem.notNull() && std::find(mVisibleItems.begin(), mVisibleItems.end(), mSelectedItem) == mVisibleItems.end())
+    {
+        mSelectedItem.setNull();
+        getChild<LLTextBox>("detail_name")->setText("Выберите предмет");
+        getChild<LLTextBox>("detail_type")->setText("");
+        getChild<LLTextBox>("detail_folder")->setText("");
+        getChild<LLTextBox>("detail_creator")->setText("");
+        getChild<LLTextBox>("detail_created")->setText("");
+        getChild<LLTextBox>("detail_description")->setText("Информация о выбранном предмете появится здесь.");
+        getChild<LLButton>("apply")->setEnabled(false);
+        getChild<LLButton>("open_folder")->setEnabled(false);
+        getChild<LLButton>("detail_favorite")->setEnabled(false);
+    }
     const S32 pages = llmax(1, (static_cast<S32>(mVisibleItems.size()) + CARD_COUNT - 1) / CARD_COUNT);
     mPage = llclamp(mPage, 0, pages - 1);
     auto* grid = getChild<LLPanel>("items_grid");
