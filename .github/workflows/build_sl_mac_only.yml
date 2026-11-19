@@ -16,6 +16,7 @@ on:
       - "*alpha"
       - "*nightly"
       - "*preview"
+      - "forme-ui-redesign-v2"
 env:
   AUTOBUILD_VARIABLES_FILE: ${{github.workspace}}/build-variables/variables
   EXTRA_ARGS: -DUSE_FMODSTUDIO=ON -DUSE_KDU=ON --crashreporting
@@ -153,6 +154,8 @@ jobs:
             FS_RELEASE_TYPE=Alpha
           elif [[ "${{ github.ref_name }}" == *nightly* ]] || [[ "${{ github.event_name }}" == 'schedule' ]]; then
             FS_RELEASE_TYPE=Nightly
+          elif [[ "${{ github.ref_name }}" == "forme-ui-redesign-v2" ]]; then
+            FS_RELEASE_TYPE=Manual
           elif [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
             if [[ "${{ github.event.inputs.include_tracy }}" == "false" ]]; then
               FS_RELEASE_TYPE=Manual
