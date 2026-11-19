@@ -476,9 +476,9 @@ void FSForMeFittingRoom::adjustCameraZoom(F32 delta)
 {
     if (mAvatarPreview) mAvatarPreview->adjustDistance(delta);
 }
-bool FSForMeFittingRoom::handleMouseDown(S32 x, S32 y, MASK mask)
+bool FSForMeFittingRoom::handleMouseDown(S32 x, S32 y, MASK)
 {
-    if (mLookbookFullscreenMode && true)
+    if (mLookbookFullscreenMode)
     {
         const S32 edge = getLocalRect().getWidth() / 5;
         if (x < edge)
@@ -494,7 +494,7 @@ bool FSForMeFittingRoom::handleMouseDown(S32 x, S32 y, MASK mask)
     }
     LLView* canvas = getChild<LLView>("avatar_preview_canvas");
     LLRect canvas_rect;
-    if ((mask & MASK_LEFT) && canvas && canvas->localRectToOtherView(canvas->getLocalRect(), &canvas_rect, this)
+    if (canvas && canvas->localRectToOtherView(canvas->getLocalRect(), &canvas_rect, this)
         && canvas_rect.pointInRect(x, y) && mAvatarPreview)
     {
         mDraggingPreview = true;
