@@ -46,16 +46,6 @@
 //FSParticipantList retrieves add, clear and remove events and updates view accordingly
 
 
-static void update_speaker_indicator(const LLAvatarList* const avatar_list, const LLUUID& avatar_uuid, bool is_muted)
-{
-    LLAvatarListItem* item = dynamic_cast<LLAvatarListItem*>(avatar_list->getItemByValue(avatar_uuid));
-    if (item)
-    {
-
-
-    }
-}
-
 FSParticipantList::FSParticipantList(LLSpeakerMgr* data_source,
                                      LLAvatarList* avatar_list,
                                      bool use_context_menu/* = true*/,
