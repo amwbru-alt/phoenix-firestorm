@@ -9,7 +9,7 @@ public:
     bool postBuild() override;
     void onOpen(const LLSD& key) override;
 private:
-    void refresh();
+    void refresh() override;
     void apply();
     void preset();
     void populate(const LLSD& entity);
