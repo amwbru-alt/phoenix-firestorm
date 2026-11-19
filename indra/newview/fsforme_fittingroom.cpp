@@ -219,7 +219,7 @@ bool FSForMeFittingRoom::postBuild()
     getChild<LLLineEditor>("saved_outfit_filter")->setKeystrokeCallback(
         [this](LLLineEditor*, void*) { mDirty = true; }, nullptr);
     getChild<LLButton>("saved_outfit_filter_clear")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
-        getChild<LLLineEditor>("saved_outfit_filter")->setText("");
+        getChild<LLLineEditor>("saved_outfit_filter")->setText("", true);
         mDirty = true;
     });
     getChild<LLButton>("worn_page_previous")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
@@ -478,7 +478,7 @@ void FSForMeFittingRoom::adjustCameraZoom(F32 delta)
 }
 bool FSForMeFittingRoom::handleMouseDown(S32 x, S32 y, MASK mask)
 {
-    if (mLookbookFullscreenMode && (mask & MASK_LEFT))
+    if (mLookbookFullscreenMode && true)
     {
         const S32 edge = getLocalRect().getWidth() / 5;
         if (x < edge)
@@ -800,7 +800,7 @@ void FSForMeFittingRoom::assignLookbookCompareSlot(bool first)
             mLookbookCompareBId = mSelectedLookbookId;
             mLookbookCompareBTexture = texture;
         }
-        getChild<LLTextBox>("fitting_status")->setText(first ? "Снимок назначен в слот A." : "Снимок назначен в слот B.");
+        getChild<LLTextBox>("fitting_status")->setText(std::string(first ? "Снимок назначен в слот A." : "Снимок назначен в слот B."));
         return;
     }
 }
@@ -990,6 +990,7 @@ void FSForMeFittingRoom::rebuild()
     const LLUUID previous_outfit = outfits_combo->getSelectedValue().asUUID();
     const LLUUID previous_compare_a = compare_a->getSelectedValue().asUUID();
     const LLUUID previous_compare_b = compare_b->getSelectedValue().asUUID();
+    const std::string outfit_filter = utf8str_tolower(getChild<LLLineEditor>("saved_outfit_filter")->getValue().asString());
     outfits_combo->removeall();
     compare_a->removeall();
     compare_b->removeall();
@@ -1008,7 +1009,6 @@ void FSForMeFittingRoom::rebuild()
             {
                 return LLStringUtil::compareInsensitive(left->getName(), right->getName()) < 0;
             });
-        std::string outfit_filter = utf8str_tolower(getChild<LLLineEditor>("saved_outfit_filter")->getValue().asString());
         for (const auto* outfit : sorted_outfits)
         {
             LLInventoryModel::cat_array_t* child_categories = nullptr;
@@ -1087,9 +1087,9 @@ void FSForMeFittingRoom::rebuild()
     getChild<LLButton>("worn_filter_accessories")->setToggleState(mCategory == "accessories");
     if (!outfit_filter.empty() && mSavedOutfitCount == 0)
         getChild<LLTextBox>("fitting_status")->setText(std::string("По запросу не найдено сохранённых образов."));
-    else getChild<LLTextBox>("fitting_status")->setText(mWornItems.empty()
+    else getChild<LLTextBox>("fitting_status")->setText(std::string(mWornItems.empty()
         ? "Ожидаем данные текущего образа. Если аватар ещё загружается, обновите список позже."
-        : "Список синхронизирован с текущим образом аватара.");
+        : "Список синхронизирован с текущим образом аватара."));
 }
 
 void FSForMeFittingRoom::updateSelectedOutfitDetails()
