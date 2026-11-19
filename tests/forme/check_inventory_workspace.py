@@ -86,7 +86,7 @@ assert "saved_outfit_filter" in fit_cpp and "setKeystrokeCallback" in fit_cpp
 assert "updateSelectedOutfitDetails" in fit_cpp
 assert "saved_outfit_details" in fit_cpp
 assert "mDetailsOutfit" in fit_cpp
-assert "saved_outfit_filter_clear" in fit_cpp and "setText(\"\")" in fit_cpp
+assert "saved_outfit_filter_clear" in fit_cpp and 'setText("", true)' in fit_cpp
 assert "utf8str_tolower(outfit->getName()).find(outfit_filter)" in fit_cpp
 assert "utf8str_tolower(item->getName()).find(outfit_filter)" in fit_cpp
 assert "matches_filter" in fit_cpp
@@ -160,7 +160,8 @@ assert fit_en.get("min_width") == "980" and fit_ru.get("min_width") == "980"
 assert fit_en.get("min_height") == "730" and fit_ru.get("min_height") == "730"
 assert "gAgentCamera" not in fit_cpp
 assert "handleMouseDown" in fit_cpp and "handleMouseUp" in fit_cpp
-assert "mask & MASK_LEFT" in fit_cpp
+assert "const std::string outfit_filter =" in fit_cpp
+assert "MASK_LEFT" not in fit_cpp
 assert "handleHover" in fit_cpp and "handleScrollWheel" in fit_cpp
 assert "mAvatarPreview->rotate" in fit_cpp and "mAvatarPreview->tilt" in fit_cpp
 assert "adjustCameraZoom" in fit_cpp and "mLastPreviewMouseY" in fit_cpp
