@@ -154,7 +154,7 @@ assert "localRectToOtherView" in fit_cpp
 assert "setPerspective(false, 0, 0, getWidth(), getHeight()" in fit_cpp
 assert "setOriginAndLookAt" in fit_cpp and "needsRender() override" in fit_cpp
 assert "avatar->mDrawable.isNull()" in fit_cpp
-assert "setActive(!isMinimized())" in fit_cpp
+assert "setPreviewActive(!isMinimized())" in fit_cpp
 assert fit_en.get("height") == "730" and fit_ru.get("height") == "730"
 assert fit_en.get("min_width") == "980" and fit_ru.get("min_width") == "980"
 assert fit_en.get("min_height") == "730" and fit_ru.get("min_height") == "730"
