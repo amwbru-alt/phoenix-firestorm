@@ -48,7 +48,7 @@ public:
     ~FSForMeAvatarPreview() override = default;
 
     bool needsRender() override { return mActive; }
-    void setActive(bool active) { mActive = active; }
+    void setPreviewActive(bool active) { mActive = active; }
     void setYaw(F32 yaw) { mYaw = yaw; }
     void rotate(F32 delta) { mYaw += delta; }
     void tilt(F32 delta) { mElevation = llclamp(mElevation + delta, -0.35f, 0.65f); }
@@ -458,7 +458,7 @@ bool FSForMeFittingRoom::postBuild()
 }
 void FSForMeFittingRoom::onOpen(const LLSD&)
 {
-    if (mAvatarPreview) mAvatarPreview->setActive(true);
+    if (mAvatarPreview) mAvatarPreview->setPreviewActive(true);
     mDirty = true;
 }
 void FSForMeFittingRoom::onClose(bool)
@@ -466,7 +466,7 @@ void FSForMeFittingRoom::onClose(bool)
     mDraggingPreview = false;
     setLookbookFullscreenMode(false);
     if (hasMouseCapture()) gFocusMgr.setMouseCapture(nullptr);
-    if (mAvatarPreview) mAvatarPreview->setActive(false);
+    if (mAvatarPreview) mAvatarPreview->setPreviewActive(false);
 }
 void FSForMeFittingRoom::setCameraPreset(F32 preset)
 {
@@ -645,7 +645,7 @@ void FSForMeFittingRoom::draw()
     }
     if (mDirty) rebuild();
     updateSelectedOutfitDetails();
-    if (mAvatarPreview) mAvatarPreview->setActive(!isMinimized());
+    if (mAvatarPreview) mAvatarPreview->setPreviewActive(!isMinimized());
     if (LLView* loading = getChild<LLView>("avatar_preview_loading"))
     {
         loading->setVisible(!mAvatarPreview || !mAvatarPreview->hasGLTexture());
