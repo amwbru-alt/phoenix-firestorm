@@ -323,37 +323,12 @@ void LLAgent::setCanEditParcel() // called via mParcelChangedSignal
 // static
 bool LLAgent::isActionAllowed(const LLSD& sdname)
 {
-    bool retval = false;
-
     const std::string& param = sdname.asString();
 
     if (param == "speak")
     {
-        bool allow_agent_voice = false;
-        LLVoiceChannel* channel = LLVoiceChannel::getCurrentVoiceChannel();
-        if (channel != NULL)
-        {
-            if (channel->getSessionName().empty() && channel->getSessionID().isNull())
-            {
-                // default channel
-                allow_agent_voice = LLViewerParcelMgr::getInstance()->allowAgentVoice();
-            }
-            else
-            {
-                allow_agent_voice = channel->isActive();
-            }
-        }
-
-        if (gAgent.isVoiceConnected() &&
-            allow_agent_voice &&
-            !LLVoiceClient::getInstance()->inTuningMode())
-        {
-            retval = true;
-        }
-        else
-        {
-            retval = false;
-        }
+        // Voice communication is intentionally disabled in this viewer build.
+        return false;
     }
     else if (param == "fs_when_not_sitting")
     {
@@ -364,33 +339,7 @@ bool LLAgent::isActionAllowed(const LLSD& sdname)
         return !gAgentAvatarp->isSitting();
     }
 
-    return retval;
-}
-
-// static
-void LLAgent::pressMicrophone(const LLSD& name)
-{
-    LLFirstUse::speak(false);
-
-     LLVoiceClient::getInstance()->inputUserControlState(true);
-}
-
-// static
-void LLAgent::releaseMicrophone(const LLSD& name)
-{
-    LLVoiceClient::getInstance()->inputUserControlState(false);
-}
-
-// static
-void LLAgent::toggleMicrophone(const LLSD& name)
-{
-    LLVoiceClient::getInstance()->toggleUserPTTState();
-}
-
-// static
-bool LLAgent::isMicrophoneOn(const LLSD& sdname)
-{
-    return LLVoiceClient::getInstance()->getUserPTTState();
+    return false;
 }
 
 // ************************************************************
