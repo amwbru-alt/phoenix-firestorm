@@ -36,7 +36,7 @@ class FSForMeInventoryAvatarPreview final : public LLViewerDynamicTexture
 public:
     FSForMeInventoryAvatarPreview() : LLViewerDynamicTexture(640, 760, 3, ORDER_MIDDLE, false) {}
     bool needsRender() override { return mActive; }
-    void setActive(bool active) { mActive = active; }
+    void setPreviewActive(bool active) { mActive = active; }
     void setYaw(F32 yaw) { mYaw = yaw; }
     void rotate(F32 delta) { mYaw += delta; }
     void tilt(F32 delta) { mElevation = llclamp(mElevation + delta, -0.35f, 0.65f); }
@@ -182,7 +182,7 @@ void FSForMeInventoryBrowser::onOpen(const LLSD&)
     if (mAvatarPreview)
     {
         mAvatarPreview->reset();
-        mAvatarPreview->setActive(true);
+        mAvatarPreview->setPreviewActive(true);
     }
     getChild<LLButton>("camera_front")->setToggleState(true);
     getChild<LLButton>("camera_side")->setToggleState(false);
@@ -208,13 +208,13 @@ void FSForMeInventoryBrowser::onClose(bool)
 {
     mDraggingPreview = false;
     if (hasMouseCapture()) gFocusMgr.setMouseCapture(nullptr);
-    if (mAvatarPreview) mAvatarPreview->setActive(false);
+    if (mAvatarPreview) mAvatarPreview->setPreviewActive(false);
 }
 bool FSForMeInventoryBrowser::handleMouseDown(S32 x, S32 y, MASK mask)
 {
     LLView* canvas = getChild<LLView>("avatar_preview_canvas");
     LLRect rect;
-    if ((mask & MASK_LEFT) && canvas && canvas->localRectToOtherView(canvas->getLocalRect(), &rect, this)
+    if (canvas && canvas->localRectToOtherView(canvas->getLocalRect(), &rect, this)
         && rect.pointInRect(x, y) && mAvatarPreview)
     {
         mDraggingPreview = true;
@@ -284,7 +284,7 @@ void FSForMeInventoryBrowser::drawAvatarPreview()
 void FSForMeInventoryBrowser::draw()
 {
     if (mDirty) rebuild();
-    if (mAvatarPreview) mAvatarPreview->setActive(!isMinimized());
+    if (mAvatarPreview) mAvatarPreview->setPreviewActive(!isMinimized());
     if (LLView* loading = getChild<LLView>("avatar_preview_loading"))
         loading->setVisible(!mAvatarPreview || !mAvatarPreview->hasGLTexture());
     LLFloater::draw();
@@ -390,7 +390,7 @@ void FSForMeInventoryBrowser::rebuild()
     getChild<LLButton>("previous")->setEnabled(mPage > 0);
     getChild<LLButton>("next")->setEnabled(mPage + 1 < pages);
     if (mSelectedItem.notNull()) selectItem(mSelectedItem);
-    getChild<LLTextBox>("status")->setText(mVisibleItems.empty() ? "В этой категории пока нет предметов." : "");
+    getChild<LLTextBox>("status")->setText(LLStringExplicit(mVisibleItems.empty() ? "В этой категории пока нет предметов." : ""));
 }
 void FSForMeInventoryBrowser::selectItem(const LLUUID& id)
 {
@@ -405,8 +405,8 @@ void FSForMeInventoryBrowser::selectItem(const LLUUID& id)
     getChild<LLButton>("detail_favorite")->setLabel(get_is_favorite(id) ? "Убрать из избранного" : "В избранное");
     getChild<LLButton>("detail_favorite")->setToggleState(get_is_favorite(id));
     getChild<LLTextBox>("detail_name")->setText(item->getName());
-    getChild<LLTextBox>("detail_type")->setText(item->getType() == LLAssetType::AT_CLOTHING ? "Одежда" :
-        item->getType() == LLAssetType::AT_BODYPART ? "Часть тела" : item->getType() == LLAssetType::AT_OBJECT ? "Объект / аксессуар" : "Предмет инвентаря");
+    getChild<LLTextBox>("detail_type")->setText(LLStringExplicit(item->getType() == LLAssetType::AT_CLOTHING ? "Одежда" :
+        item->getType() == LLAssetType::AT_BODYPART ? "Часть тела" : item->getType() == LLAssetType::AT_OBJECT ? "Объект / аксессуар" : "Предмет инвентаря"));
     auto* folder = gInventory.getCategory(item->getParentUUID());
     getChild<LLTextBox>("detail_folder")->setText(folder ? "Папка: " + folder->getName() : "");
     getChild<LLTextBox>("detail_creator")->setText(item->getCreatorUUID().isNull()
