@@ -8,6 +8,7 @@ public:
     explicit FSFloaterWorldPhysics(const LLSD& key) : LLFloater(key) {}
     bool postBuild() override;
     void onOpen(const LLSD& key) override;
+    void resetRegionContext();
 private:
     void refresh() override;
     void apply();
@@ -17,5 +18,6 @@ private:
     LLUUID mTarget;
     LLSD mEntity;
     bool mPending = false;
+    U64 mRequest = 0;
 };
 #endif

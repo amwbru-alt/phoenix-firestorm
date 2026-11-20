@@ -28,6 +28,8 @@
 #include "llviewerprecompiledheaders.h"
 
 #include "llagent.h"
+#include "fsworldentities.h"
+#include "fsavatarbadges.h"
 
 #include "pipeline.h"
 
@@ -1129,6 +1131,9 @@ void LLAgent::setRegion(LLViewerRegion *regionp)
     llassert(regionp);
     if (mRegionp != regionp)
     {
+        ForMeWorldEntities::invalidate();
+        ForMeAvatarBadges::invalidate();
+        LLView::setForMeCreatorAccess(false);
 
         LL_INFOS("AgentLocation","Teleport") << "Moving agent into region: handle " << regionp->getHandle()
                                              << " id " << regionp->getRegionID()
@@ -5498,6 +5503,12 @@ void LLAgent::setTeleportState(ETeleportState state)
                           << " Previous state: "
                           << teleportStateName(mTeleportState) << "(" << mTeleportState << ")"
                           << LL_ENDL;
+    if (mTeleportState != state)
+    {
+        ForMeWorldEntities::invalidate();
+        ForMeAvatarBadges::invalidate();
+        LLView::setForMeCreatorAccess(false);
+    }
     mTeleportState = state;
     // <FS:PP> Speed optimisation
     // if (mTeleportState > TELEPORT_NONE && gSavedSettings.getBOOL("FreezeTime"))

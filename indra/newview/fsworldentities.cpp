@@ -2,6 +2,9 @@
 #include "llviewerprecompiledheaders.h"
 #include "fsworldentities.h"
 #include "formeworldreplica.h"
+#include "formeworldcontext.h"
+#include "fsfloaterworldphysics.h"
+#include "llfloaterreg.h"
 #include "formegridpolicy.h"
 #include "fscreatoraccess.h"
 #include "llagent.h"
@@ -20,10 +23,20 @@ using Clock = std::chrono::steady_clock;
 ForMeWorldProtocol::Replica<LLSD> cache;
 LLUUID agent, session, region;
 std::string uri;
-U64 generation = 0;
+ForMeWorldProtocol::RequestContext context;
 bool pending = false, editing = false;
 std::map<std::string,std::uint64_t> minimumRevisions;
 Clock::time_point next, fresh;
+ForMeWorldProtocol::Binding liveBinding()
+{
+    auto* current = gAgent.getRegion();
+    return {gAgent.getID().asString(), gAgent.getSessionID().asString(), current ? current->getRegionID().asString() : "", capability()};
+}
+void clearProjection()
+{
+    cache.clear(); minimumRevisions.clear(); pending = editing = false; next = {}; fresh = {};
+    if (auto* editor = LLFloaterReg::findTypedInstance<FSFloaterWorldPhysics>("forme_world_physics")) editor->resetRegionContext();
+}
 bool validEntity(const LLSD& value, ForMeWorldProtocol::Entity<LLSD>& entity)
 {
     entity.id = value["entityId"].asString();
@@ -63,7 +76,7 @@ void poll(U64 requestGeneration, std::string cap)
     LLSD body; body["action"] = "poll"; body["epoch"] = cache.epoch(); body["after"] = std::to_string(cache.cursor());
     LLSD result;
     try { result = adapter->postJsonAndSuspend(request, cap, body); } catch (...) { result = LLSD(); }
-    if (generation != requestGeneration || cap != capability()) return;
+    if (!context.matches(requestGeneration, liveBinding())) return;
     pending = false;
     auto status = LLCoreHttpUtil::HttpCoroutineAdapter::getStatusFromLLSD(result[LLCoreHttpUtil::HttpCoroutineAdapter::HTTP_RESULTS]);
     if (status && accept(result))
@@ -82,21 +95,25 @@ void poll(U64 requestGeneration, std::string cap)
 std::string capability()
 {
     LLViewerRegion* current = gAgent.getRegion();
-    if (gDisconnected || LLStartUp::getStartupState() != STATE_STARTED || !current || gAgent.getID().isNull()) return {};
+    if (gDisconnected || LLStartUp::getStartupState() != STATE_STARTED || gAgent.getTeleportState() != LLAgent::TELEPORT_NONE || !current || gAgent.getID().isNull()) return {};
     std::string cap = current->getCapability("ForMeWorld"); return ForMeGrid::allowedServiceURI(cap) ? cap : "";
+}
+void invalidate()
+{
+    context.invalidate(); uri.clear(); clearProjection();
 }
 void update()
 {
-    std::string current = capability(); LLUUID currentRegion = gAgent.getRegion() ? gAgent.getRegion()->getRegionID() : LLUUID::null;
-    if (agent != gAgent.getID() || session != gAgent.getSessionID() || uri != current || region != currentRegion)
-    { agent = gAgent.getID(); session = gAgent.getSessionID(); region = currentRegion; uri = current; ++generation; cache.clear(); minimumRevisions.clear(); pending = editing = false; next = {}; fresh = {}; }
-    if (uri.empty() || pending || editing || Clock::now() < next) return;
+    const auto binding = liveBinding();
+    if (context.bind(binding))
+    { agent = gAgent.getID(); session = gAgent.getSessionID(); region = gAgent.getRegion() ? gAgent.getRegion()->getRegionID() : LLUUID::null; uri = binding.capability; clearProjection(); }
+    if (!context.matches(context.token(), binding) || pending || editing || Clock::now() < next) return;
     pending = true; next = Clock::now() + std::chrono::seconds(2);
-    LLCoros::instance().launch("ForMeWorldEntities", [cap = uri, version = generation]() { poll(version, cap); });
+    LLCoros::instance().launch("ForMeWorldEntities", [cap = uri, version = context.token()]() { poll(version, cap); });
 }
 LLSD entity(const LLUUID& id)
 {
-    if (uri.empty() || uri != capability() || minimumRevisions.contains(id.asString()) || Clock::now() - fresh > std::chrono::seconds(10)) return LLSD();
+    if (!context.matches(context.token(), liveBinding()) || minimumRevisions.contains(id.asString()) || Clock::now() - fresh > std::chrono::seconds(10)) return LLSD();
     const auto& entities = cache.entities(); auto it = entities.find(id.asString()); return it == entities.end() ? LLSD() : it->second.data;
 }
 namespace
@@ -104,14 +121,14 @@ namespace
 void physicalRequest(const LLUUID& id, LLSD body, bool mutation, EntityCallback done)
 {
     const std::string cap = capability();
-    if (cap.empty() || cap != uri || editing || (mutation && !ForMeCreatorAccess::allowed())) { LLSD error; error["code"]="unavailable";done(false,error);return; }
+    if (!context.matches(context.token(), liveBinding()) || editing || (mutation && !ForMeCreatorAccess::allowed())) { LLSD error; error["code"]="unavailable";done(false,error);return; }
     if (mutation) editing = true;
     body["entityId"] = id.asString();
-    LLCoros::instance().launch("ForMeWorldPhysicalObject", [id,body,mutation,done,cap,version=generation]() {
+    LLCoros::instance().launch("ForMeWorldPhysicalObject", [id,body,mutation,done,cap,version=context.token()]() {
         auto adapter = std::make_shared<LLCoreHttpUtil::HttpCoroutineAdapter>("ForMeWorldPhysicalObject", LLCore::HttpRequest::DEFAULT_POLICY_ID);
         auto request = std::make_shared<LLCore::HttpRequest>();LLSD result;
         try { result = adapter->postJsonAndSuspend(request,cap,body); } catch (...) { result = LLSD(); }
-        if (version != generation || cap != capability()) { LLSD error;error["code"]="session";done(false,error);return; }
+        if (!context.matches(version, liveBinding())) { LLSD error;error["code"]="session";done(false,error);return; }
         if (mutation) editing = false;
         auto status = LLCoreHttpUtil::HttpCoroutineAdapter::getStatusFromLLSD(result[LLCoreHttpUtil::HttpCoroutineAdapter::HTTP_RESULTS]);
         ForMeWorldProtocol::Entity<LLSD> validated;
@@ -131,15 +148,15 @@ void setPhysicsProfile(const LLUUID& id,const std::string& revision,const LLSD& 
 void setMaterial(const LLUUID& id, const LLSD& material, std::function<void(bool,const std::string&)> done)
 {
     const LLSD target = entity(id); const std::string cap = capability();
-    if (!ForMeCreatorAccess::allowed() || !target.isMap() || cap.empty() || editing) { done(false, "unavailable"); return; }
+    if (!ForMeCreatorAccess::allowed() || !target.isMap() || !context.matches(context.token(), liveBinding()) || editing) { done(false, "unavailable"); return; }
     editing = true;
-    LLCoros::instance().launch("ForMeWorldMaterial", [id, material, done, cap, target, version = generation]() {
+    LLCoros::instance().launch("ForMeWorldMaterial", [id, material, done, cap, target, version = context.token()]() {
         auto adapter = std::make_shared<LLCoreHttpUtil::HttpCoroutineAdapter>("ForMeWorldMaterial", LLCore::HttpRequest::DEFAULT_POLICY_ID);
         auto request = std::make_shared<LLCore::HttpRequest>();
         LLSD body; body["action"] = "material"; body["entityId"] = id.asString(); body["expectedRevision"] = target["revision"]; body["material"] = material;
         LLSD result;
         try { result = adapter->postJsonAndSuspend(request, cap, body); } catch (...) { result = LLSD(); }
-        if (generation != version || cap != capability()) { done(false, "session"); return; }
+        if (!context.matches(version, liveBinding())) { done(false, "session"); return; }
         editing = false; next = Clock::now() + std::chrono::seconds(1);
         auto status = LLCoreHttpUtil::HttpCoroutineAdapter::getStatusFromLLSD(result[LLCoreHttpUtil::HttpCoroutineAdapter::HTTP_RESULTS]);
         // The next ordinary poll obtains the changed revision; a mutation response cannot advance the subscription cursor.

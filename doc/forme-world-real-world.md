@@ -1,10 +1,10 @@
-# ForMe Real World Simulation: client packages RWS-001–RWS-004
+# ForMe Real World Simulation: client packages RWS-001–RWS-005
 
 The new native entity cache uses the authenticated `ForMeWorld` capability and the shared [protocol](../protocol/README.md). It preserves existing viewer objects and their UUIDs. Region/session changes clear the cache; responses from previous sessions, cursor gaps, stale revisions and oversized pages are rejected.
 
 Creators can open **ForMe.World → Object physics**, select an editable object and select static/dynamic body mode, standard/convex collision shape, material presets, density, friction, restitution, gravity and collision flag through the server. The server rechecks its own role, creator grant, object/land permissions and revision. Region and backend limits are enforced. A direct selected-object read avoids depending on the nearest-200 interest cache. Experimental soft-body physics is not active. A revoked creator grant also closes the general creation/upload UI at the next badge refresh.
 
-Canonical project status, specification, audit, Windows server instructions and remaining work are tracked in the [server repository](https://github.com/amwbru-alt/SERVER/blob/fix/server-audit-20261113/doc/real-world/STATUS.md). In-world acceptance A–H, independent rendering, the full bundle pipeline and the financial cutover are not complete in this package. No client installer is generated automatically by this change.
+Canonical project status, specification, audit, Windows server instructions and remaining work are tracked in the [server repository](https://github.com/amwbru-alt/SERVER/blob/work/rws005-region-transitions-20261118/doc/real-world/STATUS.md). In-world acceptance A–H, independent rendering, the full bundle pipeline and the financial cutover are not complete in this package. No client installer is generated automatically by this change.
 
 Run the standalone production replica tests:
 
@@ -23,3 +23,13 @@ g++ -std=c++20 -Wall -Wextra -Werror -pedantic -Iindra/llcommon tests/forme/worl
 RWS-003 continues stage 2: residents may place an owned object from their personal inventory and take existing objects back through native ownership checks. Drag preview and final send retain owner/source/type checks; Ctrl-drop into object contents still uses the creator-only authoring path. Land, no-copy and RLVa checks remain active. Uploads, primitive creation, geometry/physics/script edits, world duplication and publication still require creator authorization. The server resolves canonical inventory records; packet permission masks are not trusted. This package does not complete all stage-2 adapters or distributed inventory/scene transactions.
 
 RWS-004 extends existing-content placement to an owned object's inventory. Both drag preview and final send verify the source object and item ownership; foreign contents retain legacy copy/transfer/creator checks. Parcel placement permission is separated from authoring access so a resident may drop a worn object onto permitted land without gaining build/upload/edit rights. Task placement and attachment drop use the server's integrated inventory checks; no new endpoint or local setting is required. Region crossings, full scripted gameplay and avatar/attachment visual acceptance remain pending.
+
+
+RWS-005 is **in progress** against roadmap v4.4. This work branch is based on `forme-ui-redesign-v2`, preserving its inventory workspace and fitting room. Native region/teleport events invalidate the world projection, physical editor and creator/badge state immediately. Replies bind to request generation, live agent/session/region and capability; returning A → B → A or a failed teleport to A cannot revive an old response. The physical editor also checks its operation number. Creation stays disabled during teleport/disconnection until current authority is fetched.
+
+```sh
+g++ -std=c++20 -Wall -Wextra -Werror -pedantic -Iindra/llcommon tests/forme/world_context_test.cpp -o /tmp/world-context-test
+/tmp/world-context-test
+```
+
+All 21 policy workflow run steps passed on the v2 base, including inventory/fitting-room checks; changed entity/physics/badge/agent translation units passed GCC C++20 syntax checks. These checks do not replace full viewer linking, installation, visual review, two-client acceptance or a performance benchmark. Distributed crash-safe region handoff remains server work in progress. Money remains deferred and no installer build is dispatched automatically.
