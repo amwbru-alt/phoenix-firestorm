@@ -86,7 +86,7 @@ assert "saved_outfit_filter" in fit_cpp and "setKeystrokeCallback" in fit_cpp
 assert "updateSelectedOutfitDetails" in fit_cpp
 assert "saved_outfit_details" in fit_cpp
 assert "mDetailsOutfit" in fit_cpp
-assert "saved_outfit_filter_clear" in fit_cpp and 'setText("")' in fit_cpp
+assert "saved_outfit_filter_clear" in fit_cpp and 'setText(std::string())' in fit_cpp
 assert "utf8str_tolower(outfit->getName()).find(outfit_filter)" in fit_cpp
 assert "utf8str_tolower(item->getName()).find(outfit_filter)" in fit_cpp
 assert "matches_filter" in fit_cpp

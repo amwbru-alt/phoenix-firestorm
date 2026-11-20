@@ -219,7 +219,7 @@ bool FSForMeFittingRoom::postBuild()
     getChild<LLLineEditor>("saved_outfit_filter")->setKeystrokeCallback(
         [this](LLLineEditor*, void*) { mDirty = true; }, nullptr);
     getChild<LLButton>("saved_outfit_filter_clear")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
-        getChild<LLLineEditor>("saved_outfit_filter")->setText("");
+        getChild<LLLineEditor>("saved_outfit_filter")->setText(std::string());
         mDirty = true;
     });
     getChild<LLButton>("worn_page_previous")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
