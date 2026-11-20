@@ -10,6 +10,21 @@ ru = ET.parse(XUI / "ru/floater_forme_inventory.xml").getroot()
 assert en.tag == "floater" and en.get("name") == "forme_inventory"
 assert ru.tag == "floater" and ru.get("name") == "forme_inventory"
 
+# Keep the native three-column workspace aligned to the approved 1672px reference.
+for root in (en, ru):
+    assert root.get("width") == "1672" and root.get("height") == "941"
+    assert child(root, "avatar_stage").get("left") == "118"
+    assert child(root, "category_rail").get("left") == "18"
+    surface = child(root, "items_surface")
+    assert surface.get("left") == "610" and surface.get("width") == "700"
+    assert child(surface, "all_items_tab").get("top") == "70"
+    assert child(surface, "purchased_tab").get("top") == "70"
+    scroll = child(surface, "items_scroll")
+    assert scroll.get("top") == "146" and scroll.get("height") == "580"
+    details = child(root, "details_surface")
+    assert details.get("left") == "1334" and details.get("width") == "300"
+    assert child(details, "detail_thumbnail").get("width") == "260"
+
 def child(root, name):
     node = root.find(".//*[@name='%s']" % name)
     assert node is not None, name
@@ -47,6 +62,7 @@ assert "wearItemOnAvatar" in cpp
 assert "mFolder" in cpp and 'showInstance("inventory"' not in cpp
 assert "category_clothing" in cpp and "mQuery" in cpp and "mPage" in cpp
 assert "getThumbnailUUID()" in cpp and "toggle_favorite" in cpp and "mRecentItems" in cpp
+assert "LLViewerDynamicTexture(516, 760" in cpp
 
 registry = (ROOT / "indra/newview/llviewerfloaterreg.cpp").read_text()
 cmake = (ROOT / "indra/newview/CMakeLists.txt").read_text()
