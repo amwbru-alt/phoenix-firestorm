@@ -219,7 +219,7 @@ bool FSForMeFittingRoom::postBuild()
     getChild<LLLineEditor>("saved_outfit_filter")->setKeystrokeCallback(
         [this](LLLineEditor*, void*) { mDirty = true; }, nullptr);
     getChild<LLButton>("saved_outfit_filter_clear")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
-        getChild<LLLineEditor>("saved_outfit_filter")->setText("", true);
+        getChild<LLLineEditor>("saved_outfit_filter")->setText("");
         mDirty = true;
     });
     getChild<LLButton>("worn_page_previous")->setClickedCallback([this](LLUICtrl*, const LLSD&) {
@@ -476,7 +476,7 @@ void FSForMeFittingRoom::adjustCameraZoom(F32 delta)
 {
     if (mAvatarPreview) mAvatarPreview->adjustDistance(delta);
 }
-bool FSForMeFittingRoom::handleMouseDown(S32 x, S32 y, MASK)
+bool FSForMeFittingRoom::handleMouseDown(S32 x, S32 y, MASK mask)
 {
     if (mLookbookFullscreenMode)
     {
