@@ -50,12 +50,12 @@ def main():
                     errors.append(f'{rel}: missing source {token}')
 
     literal = re.compile(
-        r'getChild\s*<\s*LLTextBox\s*>\s*\([^;]*?\)\s*->\s*setText\s*\(\s*"', re.S)
+        r'getChild\s*<\s*(LLTextBox|LLLineEditor)\s*>\s*\([^;]*?\)\s*->\s*setText\s*\(\s*"', re.S)
     for path in (ROOT / 'indra/newview').glob('*.cpp'):
         source = path.read_text()
         for match in literal.finditer(source):
             line = source.count('\n', 0, match.start()) + 1
-            errors.append(f'{path.name}:{line}: use std::string or LLStringExplicit for LLTextBox::setText')
+            errors.append(f'{path.name}:{line}: use std::string or LLStringExplicit for {match.group(1)}::setText')
 
     # Do not reintroduce Chromium to repair compilation after browser removal.
     # CMake/package checks alone miss leftover includes and version macros in
@@ -93,23 +93,24 @@ def main():
         errors.append('llweb.cpp: obsolete embedded-browser media callback')
 
     # Compile a regression probe using the actual string class and actual
-    # LLTextBox declaration. Verify the bad call fails and the replacement works.
+    # widget declarations. Verify the bad call fails and the replacements work.
     header = (ROOT / 'indra/llcommon/llstring.h').read_text()
     string_type = re.search(r'class LLStringExplicit\s*:[\s\S]*?\n};', header).group()
-    declaration = re.search(r'void setText\([^;]+;',
-                            (ROOT / 'indra/llui/lltextbox.h').read_text()).group()
-    declaration = declaration.replace(' override;', ';')
-    prefix = '#include <string>\n' + string_type + '\n'
-    prefix += 'struct LLStyle { struct Params {}; };\n'
-    prefix += 'struct LLTextBox { ' + declaration + ' };\n'
     with tempfile.TemporaryDirectory() as temp:
-        probe = pathlib.Path(temp) / 'textbox.cpp'
-        for argument, expected in [('""', False), ('std::string()', True)]:
-            probe.write_text(prefix + '\nvoid probe(LLTextBox& box) { box.setText(' + argument + '); }\n')
-            result = subprocess.run(['c++', '-std=c++17', '-fsyntax-only', str(probe)],
-                                    capture_output=True, text=True)
-            if (result.returncode == 0) != expected:
-                errors.append('LLTextBox type regression probe failed: ' + result.stderr)
+        for widget, filename in [('LLTextBox', 'lltextbox.h'), ('LLLineEditor', 'lllineeditor.h')]:
+            declaration = re.search(r'\bvoid\s+setText\([^;]+;',
+                                    (ROOT / 'indra/llui' / filename).read_text()).group()
+            declaration = declaration.replace(' override;', ';')
+            prefix = '#include <string>\n' + string_type + '\n'
+            prefix += 'struct LLStyle { struct Params {}; };\n'
+            prefix += 'struct ' + widget + ' { ' + declaration + ' };\n'
+            probe = pathlib.Path(temp) / (widget + '.cpp')
+            for argument, expected in [('""', False), ('std::string()', True), ('LLStringExplicit("")', True)]:
+                probe.write_text(prefix + '\nvoid probe(' + widget + '& box) { box.setText(' + argument + '); }\n')
+                result = subprocess.run(['c++', '-std=c++17', '-fsyntax-only', str(probe)],
+                                        capture_output=True, text=True)
+                if (result.returncode == 0) != expected:
+                    errors.append(widget + ' type regression probe failed: ' + result.stderr)
 
     # Run the standalone recovery/URL policy probe without building the viewer.
     with tempfile.TemporaryDirectory() as temp:
