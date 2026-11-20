@@ -34,7 +34,8 @@
 class FSForMeInventoryAvatarPreview final : public LLViewerDynamicTexture
 {
 public:
-    FSForMeInventoryAvatarPreview() : LLViewerDynamicTexture(640, 760, 3, ORDER_MIDDLE, false) {}
+    // Match the tall avatar stage viewport to avoid stretching the live model.
+    FSForMeInventoryAvatarPreview() : LLViewerDynamicTexture(516, 760, 3, ORDER_MIDDLE, false) {}
     bool needsRender() override { return mActive; }
     void setPreviewActive(bool active) { mActive = active; }
     void setYaw(F32 yaw) { mYaw = yaw; }
